@@ -257,6 +257,22 @@ export class World {
 
   remove(p: Pos): void { this.setBlock(p, AIR, 3); }
 
+  /**
+   * Paste a block exactly as given, with NO updates and no placement hooks (what pasting a saved schematic does).
+   * Block states are taken as-is, so a saved settled build stays settled.
+   */
+  setRaw(p: Pos, type: string, props: Record<string, any> = {}): void {
+    if (!(type in DEFS)) throw new Error(`unknown block type: ${type}`);
+    const b: Block = { type, p: { ...props } };
+    if (type === 'redstone_wire') { b.p.power ??= 0; for (const d of HORIZONTAL) b.p[d] ??= 'none'; }
+    if (type === 'comparator') b.p.output ??= 0;
+    this.store(p, b);
+    const size = CONTAINER_SIZE[type];
+    this.bes.delete(key(p));
+    if (size) this.bes.set(key(p), this.newBE(type, size, b.p.inv));
+    delete b.p.inv;
+  }
+
   /** Right-click: toggle lever / press button. */
   use(p: Pos): void {
     const b = this.get(p);

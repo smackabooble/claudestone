@@ -28,7 +28,7 @@ test('door survives export -> import round trip and still works', () => {
   const { buffer, origin } = exportSchem(w);
   const sch = loadSchematic(buffer);
   const w2 = new World();
-  for (const b of sch.blocks) w2.place(b.pos, b.type, b.props);
+  for (const b of sch.blocks) w2.setRaw(b.pos, b.type, b.props);
   w2.run(60);
   const off = (p: Pos): Pos => [p[0] - origin[0], p[1] - origin[1], p[2] - origin[2]];
   assert.ok(all(w2, door.map(off), 'stone'), 'closed after paste');

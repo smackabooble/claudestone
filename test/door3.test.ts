@@ -54,7 +54,7 @@ test('3x3 door: survives export -> import and still works', () => {
   const w2 = new World();
   const sch = loadSchematic(buffer);
   for (const b of sch.blocks) {
-    try { w2.place(b.pos, b.type, b.props); } catch { /* unsupported support order is reported by the loader */ }
+    w2.setRaw(b.pos, b.type, b.props);
   }
   w2.run(150);
   const o = (p: Pos): Pos => [p[0] - origin[0], p[1] - origin[1], p[2] - origin[2]];

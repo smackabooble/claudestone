@@ -42,7 +42,7 @@ export function simulate(spec: Spec, baseDir = '.'): Result {
     warnings.push(...sch.warnings);
     const [ox, oy, oz] = spec.origin ?? [0, 0, 0];
     for (const b of sch.blocks) {
-      try { w.place([b.pos[0] + ox, b.pos[1] + oy, b.pos[2] + oz], b.type, b.props); }
+      try { w.setRaw([b.pos[0] + ox, b.pos[1] + oy, b.pos[2] + oz], b.type, b.props); }
       catch (e) { warnings.push(`skipped ${b.type} at ${b.pos.join(',')}: ${(e as Error).message}`); }
     }
   }

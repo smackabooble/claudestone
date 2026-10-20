@@ -13,7 +13,7 @@ const DIRECT = new Set([
   'sticky_piston', 'hopper', 'dropper', 'dispenser', 'chest', 'barrel', 'stone_button', 'honey_block', 'tnt', 'stone_pressure_plate',
 ]);
 const AIR = new Set(['air', 'cave_air', 'void_air']);
-const SKIP = new Set(['piston_head', 'moving_piston']);
+const SKIP = new Set(['moving_piston']);
 
 const parseVal = (v: string): any => (v === 'true' ? true : v === 'false' ? false : /^-?\d+$/.test(v) ? Number(v) : v);
 
@@ -27,7 +27,8 @@ export function convertState(full: string, warn: (m: string) => void): { type: s
   if (AIR.has(name) || SKIP.has(name)) return null;
   const keep = (...ks: string[]) => Object.fromEntries(ks.filter((k) => k in raw).map((k) => [k, raw[k]]));
   switch (name) {
-    case 'redstone_wire': return { type: name, props: {} };
+    case 'redstone_wire': return { type: name, props: keep('power', 'north', 'east', 'south', 'west') };
+    case 'piston_head': return { type: name, props: keep('facing', 'type') };
     case 'iron_door': return raw.half === 'upper' ? null : { type: name, props: keep('facing') };
     case 'lever': return { type: name, props: keep('face', 'facing', 'powered') };
     case 'repeater': return { type: name, props: keep('facing', 'delay', 'powered') };
@@ -36,7 +37,7 @@ export function convertState(full: string, warn: (m: string) => void): { type: s
     case 'redstone_torch': return { type: name, props: keep('lit') };
     case 'redstone_wall_torch': return { type: name, props: keep('facing', 'lit') };
     case 'redstone_lamp': return { type: name, props: keep('lit') };
-    case 'piston': case 'sticky_piston': return { type: name, props: keep('facing') };
+    case 'piston': case 'sticky_piston': return { type: name, props: keep('facing', 'extended') };
     case 'hopper': return { type: name, props: keep('facing') };
     case 'dropper': case 'dispenser': return { type: name, props: keep('facing') };
     default:

@@ -109,14 +109,14 @@ server.registerTool('set_item', {
 }, guard(({ pos: p, slot, item }) => { world.setItem(p as Pos, slot, item); return text('ok'); }));
 
 server.registerTool('load_schematic', {
-  description: 'Paste a .schem (Sponge v2/v3) or .litematic file into the current world at an origin. Unsupported blocks become stone with warnings.',
+  description: 'Paste a .schem (Sponge v2/v3) or .litematic file into the current world at an origin, keeping every block state exactly as saved and running no updates (like a real paste). Unsupported blocks become stone with warnings.',
   inputSchema: { path: z.string(), origin: pos.optional() },
 }, guard(({ path, origin }) => {
   const sch = loadSchematic(readFileSync(path));
   const [ox, oy, oz] = origin ?? [0, 0, 0];
   const warnings = [...sch.warnings];
   for (const b of sch.blocks) {
-    try { world.place([b.pos[0] + ox, b.pos[1] + oy, b.pos[2] + oz], b.type, b.props); }
+    try { world.setRaw([b.pos[0] + ox, b.pos[1] + oy, b.pos[2] + oz], b.type, b.props); }
     catch (e) { warnings.push(`skipped ${b.type} at ${b.pos.join(',')}: ${(e as Error).message}`); }
   }
   return text(`size ${sch.size.join('x')}, ${sch.blocks.length} blocks\n${warnings.slice(0, 40).join('\n')}`);
