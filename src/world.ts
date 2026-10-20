@@ -135,7 +135,28 @@ export class World {
       this.updateNeighborsAt(p);
       if (this.hasAnalog(nb)) this.updateComparatorsAround(p);
     }
-    if (!(flags & 16)) this.updateNeighbourShapes(p, flags & ~34);
+    if (!(flags & 16)) {
+      const sf = flags & ~34;
+      if (old.type === 'redstone_wire') this.wireIndirect(p, old, sf);
+      this.updateNeighbourShapes(p, sf);
+      if (nb.type === 'redstone_wire') this.wireIndirect(p, nb, sf);
+    }
+  }
+
+  /**
+   * RedStoneWireBlock.updateIndirectNeighbourShapes: where this dust connects sideways to a non-dust block,
+   * dust one step above/below that block is not an adjacent neighbor but must still re-evaluate its shape.
+   */
+  private wireIndirect(p: Pos, state: Block, sf: number): void {
+    for (const d of HORIZONTAL) {
+      if (state.p[d] === 'none' || state.p[d] === undefined) continue;
+      const side = rel(p, d);
+      if (this.get(side).type === 'redstone_wire') continue;
+      for (const q of [rel(side, 'down'), rel(side, 'up')]) {
+        const qb = this.get(q);
+        if (qb.type === 'redstone_wire') this.wireShapeUpdate(q, qb, opposite(d), sf);
+      }
+    }
   }
 
   /** neighbor.updateShape(dirTowardP, ...) for each neighbor, in vanilla shape order. */

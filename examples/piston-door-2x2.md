@@ -79,3 +79,6 @@ Minecraft, the likely suspects are piston timing and whether dust survives next 
 
 ## Rebuild or change it
 `npx tsx examples/piston-door-2x2.ts` rebuilds the door, tests open/close, and rewrites the .schem.
+
+## Revision note
+The first version of this file had stale dust connections on the dust staircase (dust pointing sideways where real Minecraft would connect it up or down the step). That is a state that cannot occur in regular Minecraft. The simulator now applies the same indirect shape updates as the game, and a test checks every dust block against what a fresh placement would give. Re-download this file.
