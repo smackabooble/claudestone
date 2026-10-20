@@ -19,3 +19,7 @@ observer indirect shape updates, honey blocks, containers/hoppers (phase 3).
 ## Schematics
 `"schematic": "build.schem"` (Sponge v2\/v3) or `.litematic` in a spec; unsupported blocks become stone with a warning.
 Droppers\/dispensers use a seeded java.util.Random (`world.rng`); item entities, double chests and dispenser special behaviors are not simulated.
+
+## MCP server (for Claude)
+`.mcp.json` registers it for Claude Code (`npx tsx src/mcp.ts`). Tools: `reset`, `place`, `fill`, `remove`, `use`,
+`step` (with `watch` + timed `actions`), `read`, `view` (ASCII layers), `set_item`, `load_schematic`, `run_spec`.
