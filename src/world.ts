@@ -867,6 +867,11 @@ export class World {
     const sig = this.pistonSignal(p, d);
     if (sig && !b.p.extended) {
       if (this.resolve(p, d, true)) this.blockEvent(p, 0, d);
+      else if (this.trace) {
+        let q = p; const ahead: string[] = [];
+        for (let i = 0; i < 14; i++) { q = rel(q, d); const nb = this.get(q); ahead.push(nb.type === 'air' ? '.' : nb.type); if (nb.type === 'air') break; }
+        this.trace(`t${this.time} piston ${p.join(',')} ${b.type} facing ${d} powered but CANNOT extend; ahead: ${ahead.join(' ')}`);
+      }
     } else if (!sig && b.p.extended) {
       const q = rel(rel(p, d), d);
       const nb = this.get(q);
