@@ -1,14 +1,15 @@
 import { parseNbt, type Tag } from './nbt.ts';
 import type { Pos } from './dirs.ts';
 
-export interface SpecBlock { pos: Pos; type: string; props?: Record<string, any>; soft?: boolean }
-export interface Loaded { blocks: SpecBlock[]; size: Pos; warnings: string[] }
+export interface SpecBlock { pos: Pos; type: string; props?: Record<string, any>; soft?: boolean; /** original vanilla name when the block was approximated */ orig?: string }
+export interface SpecItems { pos: Pos; items: { slot: number; id: string; count: number }[] }
+export interface Loaded { blocks: SpecBlock[]; size: Pos; warnings: string[]; /** container contents from the file's tile entities (litematic only) */ items?: SpecItems[] }
 
 type C = { [k: string]: Tag };
 const num = (v: Tag): number => Number(v as number | bigint);
 
 const DIRECT = new Set([
-  'stone', 'glass', 'obsidian', 'furnace', 'slime_block', 'redstone_wire', 'redstone_block', 'lever', 'repeater',
+  'stone', 'glass', 'obsidian', 'furnace', 'leaves', 'partial', 'campfire', 'slime_block', 'redstone_wire', 'redstone_block', 'lever', 'repeater',
   'comparator', 'observer', 'redstone_torch', 'redstone_wall_torch', 'redstone_lamp', 'piston',
   'sticky_piston', 'hopper', 'dropper', 'dispenser', 'chest', 'barrel', 'stone_button', 'honey_block', 'tnt', 'stone_pressure_plate',
 ]);
@@ -18,7 +19,7 @@ const SKIP = new Set(['moving_piston']);
 const parseVal = (v: string): any => (v === 'true' ? true : v === 'false' ? false : /^-?\d+$/.test(v) ? Number(v) : v);
 
 /** Map a vanilla block state onto an engine block. Returns null for air/skipped blocks. */
-export function convertState(full: string, warn: (m: string) => void): { type: string; props: Record<string, any> } | null {
+export function convertState(full: string, warn: (m: string) => void): { type: string; props: Record<string, any>; orig?: string } | null {
   const m = /^(?:minecraft:)?([a-z0-9_]+)(?:\[(.*)\])?$/.exec(full);
   if (!m) { warn(`unparsable block state ${full}`); return null; }
   const name = m[1];
@@ -47,8 +48,16 @@ export function convertState(full: string, warn: (m: string) => void): { type: s
       }
       if (DIRECT.has(name)) return { type: name, props: {} };
       if (/glass/.test(name)) return { type: 'glass', props: {} };
+      // shape/behaviour classes (what matters for redstone + pistons): leaves = full support but no power conduction;
+      // partial = not a full block (slabs, stairs, rails, composter ...): cannot hold dust, does not conduct
+      if (/_leaves$/.test(name)) { warn(`${name} treated as leaves (supports dust, does not conduct)`); return { type: 'leaves', props: {}, orig: name }; }
+      if (name === 'campfire' || name === 'soul_campfire') { warn(`${name} treated as campfire (block entity, partial)`); return { type: 'campfire', props: {}, orig: name }; }
+      if (/_(slab|stairs|carpet|trapdoor|wall|fence|fence_gate|button|pressure_plate)$|(^|_)rail$|^(composter|tripwire_hook|cauldron|lectern|flower_pot|snow)$/.test(name)) {
+        warn(`${name} treated as a partial block (no dust support, no conduction)`);
+        return { type: 'partial', props: {}, orig: name };
+      }
       warn(`unsupported block ${name} treated as stone`);
-      return { type: 'stone', props: {} };
+      return { type: 'stone', props: {}, orig: name };
   }
 }
 
@@ -83,7 +92,7 @@ function fromSponge(root: C, warnings: string[]): Loaded {
     const c = convertState(byIdx[v], warn);
     if (!c) continue;
     const x = i % W, z = Math.floor(i / W) % L, y = Math.floor(i / (W * L));
-    out.push({ pos: [x, y, z], type: c.type, props: c.props, soft: true });
+    out.push({ pos: [x, y, z], type: c.type, props: c.props, soft: true, orig: c.orig });
   }
   return { blocks: order(out), size: [W, H, L], warnings };
 }
@@ -93,12 +102,17 @@ function fromLitematic(root: C, warnings: string[]): Loaded {
   const out: SpecBlock[] = [];
   const regions = root.Regions as C;
   let min: Pos = [Infinity, Infinity, Infinity], max: Pos = [-Infinity, -Infinity, -Infinity];
-  const parsed: { pos: Pos; type: string; props: Record<string, any> }[] = [];
+  const parsed: { pos: Pos; type: string; props: Record<string, any>; orig?: string }[] = [];
+  const rawItems: SpecItems[] = [];
   for (const reg of Object.values(regions) as C[]) {
     const P = reg.Position as C, S = reg.Size as C;
     const sx = num(S.x), sy = num(S.y), sz = num(S.z);
     const ax = Math.abs(sx), ay = Math.abs(sy), az = Math.abs(sz);
     const ox = num(P.x) + (sx < 0 ? sx + 1 : 0), oy = num(P.y) + (sy < 0 ? sy + 1 : 0), oz = num(P.z) + (sz < 0 ? sz + 1 : 0);
+    for (const te of ((reg.TileEntities as C[] | undefined) ?? [])) {
+      const its = ((te.Items as C[] | undefined) ?? []).map((it) => ({ slot: num(it.Slot ?? it.slot ?? 0), id: String(it.id ?? it.Id).replace(/^minecraft:/, ''), count: num(it.count ?? it.Count ?? 1) }));
+      if (its.length) rawItems.push({ pos: [ox + num(te.x), oy + num(te.y), oz + num(te.z)], items: its });
+    }
     const pal = (reg.BlockStatePalette as C[]).map((e) => {
       const props = e.Properties as C | undefined;
       const ps = props ? Object.entries(props).map(([k, v]) => `${k}=${v}`).join(',') : '';
@@ -117,13 +131,14 @@ function fromLitematic(root: C, warnings: string[]): Loaded {
       const c = convertState(pal[idx], warn);
       if (!c) continue;
       const x = ox + (i % ax), z = oz + (Math.floor(i / ax) % az), y = oy + Math.floor(i / (ax * az));
-      parsed.push({ pos: [x, y, z], type: c.type, props: c.props });
+      parsed.push({ pos: [x, y, z], type: c.type, props: c.props, orig: c.orig });
       min = [Math.min(min[0], x), Math.min(min[1], y), Math.min(min[2], z)];
       max = [Math.max(max[0], x), Math.max(max[1], y), Math.max(max[2], z)];
     }
   }
   for (const b of parsed) out.push({ ...b, pos: [b.pos[0] - min[0], b.pos[1] - min[1], b.pos[2] - min[2]], soft: true });
-  return { blocks: order(out), size: parsed.length ? [max[0] - min[0] + 1, max[1] - min[1] + 1, max[2] - min[2] + 1] : [0, 0, 0], warnings };
+  const items = rawItems.map((r) => ({ ...r, pos: [r.pos[0] - min[0], r.pos[1] - min[1], r.pos[2] - min[2]] as Pos }));
+  return { blocks: order(out), size: parsed.length ? [max[0] - min[0] + 1, max[1] - min[1] + 1, max[2] - min[2] + 1] : [0, 0, 0], warnings, items };
 }
 
 /** Load a .schem (Sponge v2/v3) or .litematic file. */

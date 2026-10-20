@@ -25,6 +25,9 @@ interface Def { solid: boolean; conductor: boolean; source: boolean }
 const DEFS: Record<string, Def> = {
   obsidian: { solid: true, conductor: true, source: false },
   furnace: { solid: true, conductor: true, source: false }, // block entity: pistons cannot push it
+  leaves: { solid: true, conductor: false, source: false }, // full support for dust, but not a redstone conductor
+  partial: { solid: false, conductor: false, source: false }, // slabs, stairs, rails, composter ...
+  campfire: { solid: false, conductor: false, source: false }, // block entity: immovable
   honey_block: { solid: true, conductor: false, source: false },
   tnt: { solid: true, conductor: true, source: false },
   iron_door: { solid: false, conductor: false, source: false },
@@ -68,7 +71,7 @@ const isPistonType = (b: Block): boolean => b.type === 'piston' || b.type === 's
 const DESTROY = new Set(['iron_door', 'stone_pressure_plate', 'redstone_wire', 'lever', 'stone_button', 'redstone_torch', 'redstone_wall_torch', 'repeater', 'comparator']);
 const BLOCKING = new Set(['moving_piston', 'piston_head', 'obsidian']);
 const CONTAINER_SIZE: Record<string, number> = { chest: 27, barrel: 27, hopper: 5, dropper: 9, dispenser: 9 };
-const BLOCK_ENTITY = new Set(['comparator', 'furnace', ...Object.keys(CONTAINER_SIZE)]);
+const BLOCK_ENTITY = new Set(['comparator', 'furnace', 'campfire', ...Object.keys(CONTAINER_SIZE)]);
 
 export interface Item { id: string; count: number }
 interface BE { type: string; inv: (Item | null)[]; cooldown: number; ticked: number; seq: number }
