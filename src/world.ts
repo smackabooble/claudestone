@@ -192,7 +192,14 @@ export class World {
   // ---------- survival ----------
   private sturdy(p: Pos, face: Dir): boolean {
     const b = this.get(p);
-    if (isPistonType(b)) return !b.p.extended || b.p.facing !== face;
+    // extended piston base (and the retracting 'source' moving piston, whose collision shape is the extended base) only
+    // has a full BACK face; sides and front are partial in vanilla, so dust/torches there cannot survive
+    if (isPistonType(b)) return !b.p.extended || face === opposite(b.p.facing);
+    if (b.type === 'moving_piston') {
+      const e = this.ents.get(key(p));
+      if (e && e.isSource && !e.extending && isPistonType(e.moved)) return face === opposite(e.moved.p.facing);
+      return false;
+    }
     return def(b).solid;
   }
   private canSurvive(p: Pos, b: Block): boolean {

@@ -141,3 +141,5 @@ What it does differently from my big doors (and what to copy next):
 4. Pistons, observers and stone double as wiring (stone conducts, observer output powers the block behind it).
 5. Pushing two sides toward each other (S> at x=1 and S< at x=7) with a gap in between fills the doorway from both ends.
 => Next compact designs should be 'ring of nooks + short pushes + observer chain' not 'whole door slides out'.
+
+- SIM FIX found by the reference door: dust on the BACK of a retracting piston survives in vanilla (the retracting base becomes a moving_piston whose collision shape is the extended base; only its back face is a full face). My sim popped it, so the second cycle of the reference door broke. Rule now: extended piston and retracting source piston are sturdy only on the back face (opposite of facing); retracted piston all faces. Caveat: sides of an extended piston being non-sturdy is from the vanilla shapes (partial boxes), not yet confirmed in the real game. This also means my earlier rule "dust on top of a retracting piston pops" was only true for pistons facing UP/sideways, not for pistons facing DOWN.
