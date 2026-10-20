@@ -112,3 +112,31 @@ test('redstone torch clock burns out and recovers', () => {
   w.run(200); // must terminate without exceptions or runaway recursion
   assert.ok(true);
 });
+
+test('lone dust is a cross: powers adjacent lamps on all four sides; right-click makes a dot that powers none', () => {
+  const w = new World();
+  w.place([0, 0, 0], 'stone');
+  w.place([0, 1, 0], 'redstone_wire');
+  w.place([1, 0, 0], 'stone'); w.place([-1, 0, 0], 'stone');
+  w.place([0, 0, 1], 'stone'); w.place([0, 0, -1], 'stone');
+  w.place([1, 1, 0], 'redstone_lamp'); w.place([-1, 1, 0], 'redstone_lamp');
+  w.place([0, 1, 1], 'redstone_lamp'); w.place([0, 1, -1], 'redstone_lamp');
+  w.place([0, 2, 0], 'redstone_block'); // above the wire: powers it
+  assert.equal(w.read([0, 1, 0], 'power'), 15);
+  for (const [x, z] of [[1, 0], [-1, 0], [0, 1], [0, -1]]) assert.equal(w.read([x, 1, z], 'lit'), true);
+  w.use([0, 1, 0]); // cross -> dot
+  w.run(5);
+  for (const [x, z] of [[1, 0], [-1, 0], [0, 1], [0, -1]]) assert.equal(w.read([x, 1, z], 'lit'), false);
+  w.use([0, 1, 0]); // dot -> cross
+  for (const [x, z] of [[1, 0], [-1, 0], [0, 1], [0, -1]]) assert.equal(w.read([x, 1, z], 'lit'), true);
+});
+
+test('a wire that loses its only neighbor stays a cross', () => {
+  const w = new World();
+  w.place([0, 0, 0], 'stone'); w.place([1, 0, 0], 'stone');
+  w.place([0, 1, 0], 'redstone_wire');
+  w.place([1, 1, 0], 'redstone_wire');
+  w.remove([1, 1, 0]);
+  const b = w.get([0, 1, 0]).p;
+  assert.deepEqual([b.north, b.east, b.south, b.west], ['side', 'side', 'side', 'side']);
+});

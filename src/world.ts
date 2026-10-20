@@ -135,17 +135,20 @@ export class World {
       this.updateNeighborsAt(p);
       if (this.hasAnalog(nb)) this.updateComparatorsAround(p);
     }
-    if (!(flags & 16)) this.updateNeighbourShapes(p);
+    if (!(flags & 16)) this.updateNeighbourShapes(p, flags & ~34);
   }
 
   /** neighbor.updateShape(dirTowardP, ...) for each neighbor, in vanilla shape order. */
-  private updateNeighbourShapes(p: Pos): void {
-    for (const d of SHAPE_ORDER) this.shapeUpdate(rel(p, d), opposite(d));
+  private updateNeighbourShapes(p: Pos, sf = 0): void {
+    for (const d of SHAPE_ORDER) this.shapeUpdate(rel(p, d), opposite(d), sf);
   }
 
-  private shapeUpdate(q: Pos, dirToChanged: Dir): void {
+  private shapeUpdate(q: Pos, dirToChanged: Dir, sf: number): void {
     const b = this.get(q);
     switch (b.type) {
+      case 'redstone_wire':
+        if (isHorizontal(dirToChanged)) this.wireShapeUpdate(q, b, dirToChanged, sf);
+        break;
       case 'observer':
         if (b.p.facing === dirToChanged && !b.p.powered && !this.hasTick(q)) this.scheduleTick(q, 2, 0);
         break;
@@ -158,7 +161,7 @@ export class World {
         if ((dirToChanged === 'up') === lower && (dirToChanged === 'up' || dirToChanged === 'down')) {
           const o = this.get(rel(q, dirToChanged));
           if (o.type !== 'iron_door' || o.p.half === b.p.half) this.setBlock(q, AIR, 3);
-          else this.setBlock(q, { type: b.type, p: { ...b.p, open: o.p.open, powered: o.p.powered, facing: o.p.facing } }, 0);
+          else this.setBlock(q, { type: b.type, p: { ...b.p, open: o.p.open, powered: o.p.powered, facing: o.p.facing } }, sf);
         } else if (lower && dirToChanged === 'down' && !this.canSurvive(q, b)) this.setBlock(q, AIR, 3);
         break;
       }
@@ -194,7 +197,13 @@ export class World {
     if (!(type in DEFS)) throw new Error(`unknown block type: ${type}`);
     const b: Block = { type, p: { ...props } };
     switch (type) {
-      case 'redstone_wire': b.p.power ??= 0; break;
+      case 'redstone_wire': {
+        b.p.power ??= 0;
+        let sides = this.wireRegulate({ north: 'none', east: 'none', south: 'none', west: 'none' }, p);
+        if (this.sidesDot(sides)) sides = this.sidesCross();
+        Object.assign(b.p, sides);
+        break;
+      }
       case 'lever': case 'stone_button':
         b.p.face ??= 'floor'; b.p.facing ??= 'north'; b.p.powered ??= false; break;
       case 'redstone_torch': b.p.lit ??= true; break;
@@ -239,6 +248,8 @@ export class World {
       this.scheduleTick(p, 20, 0);
     } else if (b.type === 'repeater') {
       this.setBlock(p, { type: b.type, p: { ...b.p, delay: (b.p.delay % 4) + 1 } }, 3);
+    } else if (b.type === 'redstone_wire') {
+      this.wireToggle(p, b);
     } else if (b.type === 'stone_pressure_plate') {
       const k = key(p);
       if (this.held.has(k)) this.held.delete(k);
@@ -483,7 +494,7 @@ export class World {
         const power: number = b.p.power;
         if (power === 0) return 0;
         if (dir === 'up') return power;
-        return this.wireConnections(p)[opposite(dir) as string] !== 'none' ? power : 0;
+        return b.p[opposite(dir) as string] !== 'none' ? power : 0;
       }
       default: return 0;
     }
@@ -508,19 +519,48 @@ export class World {
     return 'none';
   }
 
-  /** Connection state per horizontal direction, including line/dot extension rules. */
-  wireConnections(p: Pos): Record<string, Conn> {
+  // Wire shape is stored state (north/east/south/west = none|side|up), ported from MCHPRS's
+  // wire module: a lone wire is a "cross" (powers all four sides); only right-click makes a "dot".
+  private sidesOf(b: Block): Record<string, Conn> {
+    return { north: b.p.north, east: b.p.east, south: b.p.south, west: b.p.west };
+  }
+  private sidesDot(c: Record<string, Conn>): boolean { return HORIZONTAL.every((d) => c[d] === 'none'); }
+  private sidesCross(): Record<string, Conn> { return { north: 'side', east: 'side', south: 'side', west: 'side' }; }
+  private sidesIsCross(c: Record<string, Conn>): boolean { return HORIZONTAL.every((d) => c[d] === 'side'); }
+  private wireAllSides(p: Pos): Record<string, Conn> {
     const above = !this.isConductor(rel(p, 'up'));
     const c: Record<string, Conn> = {};
     for (const d of HORIZONTAL) c[d] = this.connectingSide(p, d, above);
-    const n = c.north !== 'none', s = c.south !== 'none', e = c.east !== 'none', w = c.west !== 'none';
-    if (!n && !s && !e && !w) return c; // dot
-    const ns = !n && !s, ew = !e && !w;
-    if (!w && ns) c.west = 'side';
-    if (!e && ns) c.east = 'side';
-    if (!n && ew) c.north = 'side';
-    if (!s && ew) c.south = 'side';
     return c;
+  }
+  /** get_regulated_sides: recompute from the world, then extend lone connections into lines. */
+  private wireRegulate(inp: Record<string, Conn>, p: Pos): Record<string, Conn> {
+    const st = this.wireAllSides(p);
+    if (this.sidesDot(inp) && this.sidesDot(st)) return st;
+    const nN = st.north === 'none', nS = st.south === 'none', nE = st.east === 'none', nW = st.west === 'none';
+    const ns = nN && nS, ew = nE && nW;
+    if (nN && ew) st.north = 'side';
+    if (nS && ew) st.south = 'side';
+    if (nE && ns) st.east = 'side';
+    if (nW && ns) st.west = 'side';
+    return st;
+  }
+  private wireShapeUpdate(q: Pos, b: Block, d: Dir, sf: number): void {
+    const old = this.sidesOf(b);
+    const ns = this.connectingSide(q, d, !this.isConductor(rel(q, 'up')));
+    let nw = this.wireRegulate({ ...old, [d]: ns }, q);
+    if (this.sidesIsCross(old) && ns === 'none') nw = old;
+    else if (!this.sidesDot(old) && this.sidesDot(nw)) nw = this.sidesCross();
+    if (HORIZONTAL.some((x) => nw[x] !== old[x])) this.setBlock(q, { type: b.type, p: { ...b.p, ...nw } }, sf);
+  }
+  private wireToggle(p: Pos, b: Block): void {
+    const old = this.sidesOf(b);
+    if (!this.sidesDot(old) && !this.sidesIsCross(old)) return;
+    const start = this.sidesIsCross(old)
+      ? { north: 'none', east: 'none', south: 'none', west: 'none' } as Record<string, Conn>
+      : this.sidesCross();
+    const nw = this.wireRegulate(start, p);
+    if (HORIZONTAL.some((x) => nw[x] !== old[x])) this.setBlock(p, { type: b.type, p: { ...b.p, ...nw } }, 3);
   }
 
   private wirePower(b: Block): number { return b.type === 'redstone_wire' ? b.p.power : 0; }
@@ -597,7 +637,7 @@ export class World {
     const powered: boolean = b.p.powered;
     const should = this.diodeShouldTurnOn(p, b);
     if (powered !== should && !this.willTickThisTick(p)) {
-      let prio: Prio = 0;
+      let prio: Prio = -1;
       const front = this.get(rel(p, opposite(b.p.facing)));
       if (this.isDiode(front) && front.p.facing !== b.p.facing) prio = -3;
       else if (powered) prio = -2;
@@ -723,7 +763,7 @@ export class World {
     const j = b.p.output ?? 0;
     if (i !== j || b.p.powered !== this.cmpShouldTurnOn(p, b)) {
       const front = this.get(rel(p, opposite(b.p.facing)));
-      const prio: Prio = this.isDiode(front) && front.p.facing !== b.p.facing ? -3 : -1;
+      const prio: Prio = this.isDiode(front) && front.p.facing !== b.p.facing ? -1 : 0;
       this.scheduleTick(p, 2, prio);
     }
   }
