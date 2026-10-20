@@ -21,5 +21,7 @@ Nothing here is verified against a real game. "Golden" = a recorded real-Minecra
 | Update order (west,east,down,up,north,south) | medium-high | |
 | HashSet order of wire neighbor updates | medium | emulated Java hash order |
 
+Folk-knowledge tests (`test/known.test.ts`) and a 300-seed fuzz (`test/fuzz.test.ts`) pass; they are not real recordings.
+
 Not simulated: item entities, double chests, honey blocks, redstone ore, rails, doors/trapdoors/note blocks,
 TNT, dispenser special behaviors, chunk loading, 1.21 changes.
