@@ -6,6 +6,7 @@ import { buildUpright } from '../examples/double-piston-extender-vertical.ts';
 import { buildFlatArm3 } from '../examples/flat-arm3.ts';
 import { buildFlatArm, QUAD } from '../examples/flat-armN.ts';
 import { buildDoor6 } from '../examples/piston-door-6x6.ts';
+import { buildDoor8 } from '../examples/piston-door-8x8.ts';
 import { buildDoor } from '../examples/piston-door-2x2.ts';
 import { buildDoor3 } from '../examples/piston-door-3x3.ts';
 import { buildDoor4 } from '../examples/piston-door-4x4.ts';
@@ -78,6 +79,13 @@ export const DESIGNS: Design[] = [
     realGameVerified: true, settle: 800,
     usage: 'lever OFF = closed, ON = open (torch inverter). Open: all 36 cells clear after about 130 ticks, mechanism fully reset after about 400; close about 65 ticks. Keep the doorway x=0..5, y=1..6 and 4 blocks either side clear.',
     build: (w) => ({ lever: buildDoor6(w).lever }),
+  },
+  {
+    name: 'piston-door-8x8',
+    description: '8x8 slime/honey piston door: 4 rows, each a left and a right 2x4 unit pulled 4 blocks out by quad extenders (8 modules). Same scheme as the confirmed 6x6. About 73x10x66. Open clears in about 130 ticks (full reset about 400), close about 70.',
+    realGameVerified: false, settle: 1000,
+    usage: 'lever OFF = closed, ON = open (torch inverter at the far north end of the left side). Keep the doorway x=0..7, y=1..8 and 5 blocks either side clear.',
+    build: (w) => ({ lever: buildDoor8(w).lever }),
   },
 ];
 

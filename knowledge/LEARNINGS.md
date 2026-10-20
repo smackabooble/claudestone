@@ -124,3 +124,5 @@ Curated lessons from building and testing redstone in this simulator. Read this 
   * Why centre quads are the problem: any 2x2 quad needs distance 4 for the centre column, so a row is split left quad (2) + right unit (4).
 
 - REAL GAME CONFIRMED (user, Java 1.21.x): the 6x6 door works. That also confirms the flat-armN.ts generator for N=2 and N=4 (one-sided, stacked, obsidian taps) and the slime/honey-as-door-blocks scheme. Triple (flat-arm3) alone and the stand-alone quad were not separately reported.
+
+- 8x8 DOOR (examples/piston-door-8x8.ts, design `piston-door-8x8`, sim only): same recipe as the confirmed 6x6 but every row is two 8-block units (left/right), all 8 arms are N=4 quad modules. Riser got a repeater at lead k=2 (long staircases lose signal) and the bus joins the stair top from OUTSIDE the stair column (a repeater inside the lead blocks signals flowing the other way).
