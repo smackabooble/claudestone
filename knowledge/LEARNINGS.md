@@ -104,3 +104,10 @@ Curated lessons from building and testing redstone in this simulator. Read this 
   Defaults sit inside wide windows (sweep: every waveform tolerates about +-2..3 rt). Dust-only chain heads die
   (15 decay) -> make chains of repeaters (balanced delays) instead of dust + a few repeaters.
   Layout rule: lanes to taps must be 2 apart, modules spread outward (W/E) and the middle lane goes furthest north.
+
+- QUAD EXTENDER (examples/flat-armN.ts, design `quad-piston-extender`, sim only). flat-armN.ts is a DATA-DRIVEN generator:
+  give it holds {x,on,off} and pulses {x,side,rear} (rt, absolute) and it lays out trunk, lanes, chains, comparators.
+  Mechanical sequence for N=4: ON P1..P4 at taps x0,x2,x4,x6; OFF P4,P3,P2,P1; then pulses at taps x5,x3,x4,x1,x2,x3
+  (P4,P3,P4,P2,P3,P4 - a bubble-sort of the gaps). After all pistons are off they sit at x0,x1,x3,x5 and the tip at x7.
+  Delay margins about +-1..2 rt per waveform (hold off times and pulse widths are the tightest: keep pulse width 3 rt).
+  Gotcha: rep(x,z,OUT,..) takes the OUTPUT direction, facing = opposite. Wrong out dir silently breaks pulses.
