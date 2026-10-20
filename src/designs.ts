@@ -3,6 +3,7 @@ import { World } from './world.ts';
 import type { Pos } from './dirs.ts';
 import { buildExtender } from '../examples/double-piston-extender.ts';
 import { buildUpright } from '../examples/double-piston-extender-vertical.ts';
+import { buildFlatArm3 } from '../examples/flat-arm3.ts';
 import { buildDoor } from '../examples/piston-door-2x2.ts';
 import { buildDoor3 } from '../examples/piston-door-3x3.ts';
 import { buildDoor4 } from '../examples/piston-door-4x4.ts';
@@ -33,6 +34,13 @@ export const DESIGNS: Design[] = [
     realGameVerified: true, settle: 40,
     usage: 'lever ON: tip y=2 -> 4 (about 10 ticks); lever OFF: back (about 22 ticks).',
     build: (w) => ({ lever: buildUpright(w).lever }),
+  },
+  {
+    name: 'triple-piston-extender',
+    description: 'Flat TRIPLE piston extender (arm along +x, 3 sticky pistons + pulse return). Tip travels 3 blocks. About 60x40 footprint (long delay lines).',
+    realGameVerified: false, settle: 200,
+    usage: 'lever ON: tip x=3 -> 6 (about 60 ticks); lever OFF: back home (about 65 ticks). Lever is at the far north end.',
+    build: (w) => ({ lever: buildFlatArm3(w).lever }),
   },
   {
     name: 'piston-door-2x2',

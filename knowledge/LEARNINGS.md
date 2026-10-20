@@ -96,3 +96,11 @@ Curated lessons from building and testing redstone in this simulator. Read this 
 ## 9. Lessons log (newest last; the `add_learning` MCP tool appends here)
 
 - Comparator-subtract pulse generator: feed BOTH inputs straight from repeater outputs (rear repeater behind the comparator, side repeater beside it facing away). Via dust the strengths decay/linger and the pulse is only ~2 strong; with repeaters it is a clean 15-strength pulse of (rear delay - side delay) rt, at the falling edge. Verified in sim only (scratch pulse2 test).
+
+- TRIPLE EXTENDER (examples/flat-arm3.ts, design `triple-piston-extender`, sim only): 3 stacked sticky pistons, tip +3.
+  Return needs 3 pulses (P3, P2, P3) after P3/P2/P1 turn off. Controller = one trunk of dust (repeater every 8 cells)
+  + delay chains per tap; absolute time base K+d, each chain delay = K+d - trunk delay at its branch point.
+  OR = two repeaters/dust feeding one dust cell. Pulse = subtract comparator fed by two repeaters.
+  Defaults sit inside wide windows (sweep: every waveform tolerates about +-2..3 rt). Dust-only chain heads die
+  (15 decay) -> make chains of repeaters (balanced delays) instead of dust + a few repeaters.
+  Layout rule: lanes to taps must be 2 apart, modules spread outward (W/E) and the middle lane goes furthest north.
