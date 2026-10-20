@@ -4,11 +4,12 @@ import { World } from '../src/world.ts';
 import { buildExtender } from '../examples/double-piston-extender.ts';
 import { buildUpright } from '../examples/double-piston-extender-vertical.ts';
 import { buildDoor } from '../examples/piston-door-2x2.ts';
+import { buildDoor3 } from '../examples/piston-door-3x3.ts';
 
 const SIDES = ['north', 'east', 'south', 'west'];
 
 // Dust shapes must be exactly what vanilla would compute for the same surroundings (no stale/impossible states).
-for (const [name, build] of [['flat extender', buildExtender], ['upright extender', buildUpright], ['piston door', buildDoor]] as const) {
+for (const [name, build] of [['flat extender', buildExtender], ['upright extender', buildUpright], ['piston door', buildDoor], ['3x3 piston door', buildDoor3]] as const) {
   test(`${name}: every dust shape matches a fresh vanilla placement`, () => {
     const w: any = new World();
     (build as (w: World) => unknown)(w);
