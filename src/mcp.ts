@@ -1,6 +1,9 @@
 #!/usr/bin/env node
 /** MCP server (stdio): a persistent headless redstone world Claude can build in, run and inspect. */
-import { readFileSync } from 'node:fs';
+import { readFileSync, appendFileSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
+import { dirname, resolve } from 'node:path';
+import { DESIGNS, findDesign, materialise } from './designs.ts';
 import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
 import { z } from 'zod';
@@ -16,11 +19,20 @@ import type { Pos } from './dirs.ts';
 let world = new World();
 const pos = z.tuple([z.number().int(), z.number().int(), z.number().int()]).describe('[x, y, z]; y is up, north = -z, east = +x');
 const text = (s: string) => ({ content: [{ type: 'text' as const, text: s }] });
+const text_ = text;
 const json = (v: unknown) => text(JSON.stringify(v, null, 1));
 const fail = (e: unknown) => ({ ...text(`error: ${(e as Error).message}`), isError: true });
 const guard = <A>(f: (a: A) => ReturnType<typeof text>) => (a: A) => { try { return f(a); } catch (e) { return fail(e); } };
 
-const server = new McpServer({ name: 'claudestone', version: '0.1.0' });
+const LEARNINGS = process.env.CLAUDESTONE_LEARNINGS_FILE ?? resolve(dirname(fileURLToPath(import.meta.url)), '../knowledge/LEARNINGS.md');
+
+const server = new McpServer({ name: 'claudestone', version: '0.2.0' }, {
+  instructions:
+    'Headless redstone simulator (Java 1.20 rules). FIRST call `learnings` to load what earlier sessions learned (conventions, ' +
+    'glue rules, extender timing, door theory). Repeater/comparator `facing` is the INPUT side. Place supports before dust. ' +
+    'Everything next to slime/honey must be obsidian. Use `list_designs`/`build_design` for finished, tested builds. ' +
+    'Only the double piston extenders are confirmed in the real game; say so honestly. Record new lessons with `add_learning`. Keep replies short.',
+});
 
 server.registerTool('reset', {
   description: 'Start a fresh empty world (game time 0). Optional seed for dropper/dispenser slot randomness.',
@@ -129,6 +141,41 @@ server.registerTool('export_schematic', {
   const r = exportSchem(world);
   writeFileSync(path, r.buffer);
   return text(`wrote ${path}: size ${r.size.join('x')}, world origin of schematic (0,0,0) = ${r.origin.join(',')}`);
+}));
+
+server.registerTool('learnings', {
+  description: 'Everything learned so far about building redstone in this simulator (conventions, mechanics, glue, extenders, doors, tooling, roadmap). Call this FIRST. Optional `section` filters by heading text.',
+  inputSchema: { section: z.string().optional() },
+}, guard(({ section }) => {
+  const text = readFileSync(LEARNINGS, 'utf8');
+  if (!section) return text_(text);
+  const parts = text.split(/\n(?=## )/).filter((p) => p.toLowerCase().includes(section.toLowerCase()));
+  return text_(parts.join('\n\n') || `no section matching "${section}"`);
+}));
+
+server.registerTool('add_learning', {
+  description: 'Append a lesson to knowledge/LEARNINGS.md (lessons log) so future sessions know it. Be specific and short; say whether it was verified in the simulator or the real game.',
+  inputSchema: { category: z.string(), text: z.string() },
+}, guard(({ category, text: t }) => {
+  appendFileSync(LEARNINGS, `- [${new Date().toISOString().slice(0, 10)}] **${category}**: ${t.replace(/\n+/g, ' ')}\n`);
+  return text_('recorded');
+}));
+
+server.registerTool('list_designs', {
+  description: 'Finished, tested designs you can build with `build_design`, with usage and whether the user confirmed them in the real game.',
+  inputSchema: {},
+}, guard(() => json(DESIGNS.map(({ name, description, realGameVerified, usage }) => ({ name, description, realGameVerified, usage })))));
+
+server.registerTool('build_design', {
+  description: 'Build a finished design into the current world at `origin` (exact settled block states, no updates). Returns the lever position to use with `use`.',
+  inputSchema: { name: z.string(), origin: pos.optional() },
+}, guard(({ name, origin }) => {
+  const d = findDesign(name);
+  if (!d) throw new Error(`unknown design ${name}; try list_designs`);
+  const { blocks, lever } = materialise(d);
+  const [ox, oy, oz] = origin ?? [0, 0, 0];
+  for (const b of blocks) world.setRaw([b.pos[0] + ox, b.pos[1] + oy, b.pos[2] + oz], b.type, b.props);
+  return json({ built: name, blocks: blocks.length, lever: [lever[0] + ox, lever[1] + oy, lever[2] + oz], usage: d.usage, realGameVerified: d.realGameVerified });
 }));
 
 server.registerTool('run_spec', {

@@ -24,3 +24,8 @@ Droppers\/dispensers use a seeded java.util.Random (`world.rng`); item entities,
 ## MCP server (for Claude)
 `.mcp.json` registers it for Claude Code (`npx tsx src/mcp.ts`). Tools: `reset`, `place`, `fill`, `remove`, `use`,
 `step` (with `watch` + timed `actions`), `read`, `view` (ASCII layers), `set_item`, `load_schematic`, `run_spec`.
+
+## Knowledge (read first)
+`knowledge/LEARNINGS.md` holds what we have learned (conventions, glue rules, extender theory, door theory, roadmap);
+`CLAUDE.md` points sessions at it. MCP tools `learnings`, `add_learning`, `list_designs`, `build_design` expose it
+and the finished designs (`src/designs.ts`).
