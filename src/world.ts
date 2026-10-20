@@ -24,6 +24,10 @@ const AIR: Block = { type: 'air', p: {} };
 interface Def { solid: boolean; conductor: boolean; source: boolean }
 const DEFS: Record<string, Def> = {
   obsidian: { solid: true, conductor: true, source: false },
+  honey_block: { solid: true, conductor: false, source: false },
+  tnt: { solid: true, conductor: true, source: false },
+  iron_door: { solid: false, conductor: false, source: false },
+  stone_pressure_plate: { solid: false, conductor: false, source: true },
   slime_block: { solid: true, conductor: false, source: false },
   chest: { solid: false, conductor: false, source: false },
   observer: { solid: true, conductor: false, source: true },
@@ -60,7 +64,7 @@ interface Moving {
 const MIN_Y = -64, MAX_Y = 320;
 const SHAPE_ORDER: Dir[] = ['west', 'east', 'north', 'south', 'down', 'up'];
 const isPistonType = (b: Block): boolean => b.type === 'piston' || b.type === 'sticky_piston';
-const DESTROY = new Set(['redstone_wire', 'lever', 'stone_button', 'redstone_torch', 'redstone_wall_torch', 'repeater', 'comparator']);
+const DESTROY = new Set(['iron_door', 'stone_pressure_plate', 'redstone_wire', 'lever', 'stone_button', 'redstone_torch', 'redstone_wall_torch', 'repeater', 'comparator']);
 const BLOCKING = new Set(['moving_piston', 'piston_head', 'obsidian']);
 const CONTAINER_SIZE: Record<string, number> = { chest: 27, barrel: 27, hopper: 5, dropper: 9, dispenser: 9 };
 const BLOCK_ENTITY = new Set(['comparator', ...Object.keys(CONTAINER_SIZE)]);
@@ -86,6 +90,9 @@ export class World {
   private events: { pos: Pos; id: number; dir: Dir }[] = [];
   private ents = new Map<string, Moving>();
   private bes = new Map<string, BE>();
+  private held = new Set<string>();
+  /** Event log for things that are only recorded, not simulated (TNT). */
+  log: { tick: number; event: string; pos: Pos }[] = [];
   private beSeq = 0;
   /** Items dropped into the world by droppers/dispensers (no item entities are simulated). */
   drops: { tick: number; pos: Pos; item: Item }[] = [];
@@ -143,9 +150,18 @@ export class World {
         if (b.p.facing === dirToChanged && !b.p.powered && !this.hasTick(q)) this.scheduleTick(q, 2, 0);
         break;
       case 'redstone_torch': case 'redstone_wall_torch': case 'lever': case 'stone_button':
-      case 'repeater': case 'comparator':
+      case 'repeater': case 'comparator': case 'stone_pressure_plate':
         if (!this.canSurvive(q, b)) this.setBlock(q, AIR, 3);
         break;
+      case 'iron_door': {
+        const lower = b.p.half === 'lower';
+        if ((dirToChanged === 'up') === lower && (dirToChanged === 'up' || dirToChanged === 'down')) {
+          const o = this.get(rel(q, dirToChanged));
+          if (o.type !== 'iron_door' || o.p.half === b.p.half) this.setBlock(q, AIR, 3);
+          else this.setBlock(q, { type: b.type, p: { ...b.p, open: o.p.open, powered: o.p.powered, facing: o.p.facing } }, 0);
+        } else if (lower && dirToChanged === 'down' && !this.canSurvive(q, b)) this.setBlock(q, AIR, 3);
+        break;
+      }
     }
   }
 
@@ -157,8 +173,12 @@ export class World {
   }
   private canSurvive(p: Pos, b: Block): boolean {
     switch (b.type) {
-      case 'redstone_wire': case 'repeater': case 'comparator': case 'redstone_torch':
+      case 'redstone_wire': case 'repeater': case 'comparator': case 'redstone_torch': case 'stone_pressure_plate':
         return this.sturdy(rel(p, 'down'), 'up');
+      case 'iron_door': {
+        const below = this.get(rel(p, 'down'));
+        return b.p.half === 'lower' ? this.sturdy(rel(p, 'down'), 'up') : below.type === 'iron_door';
+      }
       case 'redstone_wall_torch':
         return this.sturdy(rel(p, opposite(b.p.facing)), b.p.facing);
       case 'lever': case 'stone_button': {
@@ -188,10 +208,19 @@ export class World {
       case 'piston': case 'sticky_piston': b.p.facing ??= 'north'; b.p.extended = false; break;
       case 'hopper': b.p.facing ??= 'down'; b.p.enabled = true; break;
       case 'dropper': case 'dispenser': b.p.facing ??= 'north'; b.p.triggered = false; break;
+      case 'iron_door': {
+        b.p.half = 'lower'; b.p.facing ??= 'north';
+        const on = this.hasNeighborSignal(p) || this.hasNeighborSignal(rel(p, 'up'));
+        b.p.open = on; b.p.powered = on;
+        break;
+      }
+      case 'stone_pressure_plate': b.p.powered = false; break;
       case 'piston_head': case 'moving_piston': throw new Error(`${type} cannot be placed directly`);
     }
     if (!this.canSurvive(p, b)) throw new Error(`cannot place ${type} at ${p.join(',')}: no valid support`);
+    if (type === 'iron_door' && this.get(rel(p, 'up')).type !== 'air') throw new Error(`cannot place iron_door at ${p.join(',')}: needs 2 free blocks`);
     this.setBlock(p, b, 3);
+    if (type === 'iron_door') this.setBlock(rel(p, 'up'), { type, p: { ...b.p, half: 'upper' } }, 3);
     if (type === 'repeater' && this.diodeShouldTurnOn(p, this.get(p))) this.scheduleTick(p, 1, 0);
     if (type === 'comparator' && this.cmpShouldTurnOn(p, this.get(p))) this.scheduleTick(p, 1, 0);
   }
@@ -210,6 +239,10 @@ export class World {
       this.scheduleTick(p, 20, 0);
     } else if (b.type === 'repeater') {
       this.setBlock(p, { type: b.type, p: { ...b.p, delay: (b.p.delay % 4) + 1 } }, 3);
+    } else if (b.type === 'stone_pressure_plate') {
+      const k = key(p);
+      if (this.held.has(k)) this.held.delete(k);
+      else { this.held.add(k); this.plateCheck(p); }
     } else if (b.type === 'comparator') {
       this.setBlock(p, { type: b.type, p: { ...b.p, mode: b.p.mode === 'compare' ? 'subtract' : 'compare' } }, 2);
       this.cmpRefresh(p, this.get(p));
@@ -262,6 +295,7 @@ export class World {
       case 'repeater': this.repeaterTick(p, b); break;
       case 'comparator': this.cmpTick(p, b); break;
       case 'dropper': case 'dispenser': this.dispenseFrom(p, b); break;
+      case 'stone_pressure_plate': if (b.p.powered) this.plateCheck(p); break;
       case 'observer':
         if (b.p.powered) {
           this.setBlock(p, { type: b.type, p: { ...b.p, powered: false } }, 2);
@@ -305,6 +339,18 @@ export class World {
         break;
       case 'piston': case 'sticky_piston': this.checkIfExtend(p, b); break;
       case 'hopper': this.hopperPowered(p, b); break;
+      case 'tnt':
+        if (this.hasNeighborSignal(p)) this.primeTnt(p);
+        break;
+      case 'iron_door': {
+        if (this.get(from).type === 'iron_door') break;
+        const on = this.hasNeighborSignal(p) || this.hasNeighborSignal(rel(p, b.p.half === 'lower' ? 'up' : 'down'));
+        if (on !== b.p.powered) this.setBlock(p, { type: b.type, p: { ...b.p, powered: on, open: on } }, 2);
+        break;
+      }
+      case 'stone_pressure_plate':
+        if (!this.canSurvive(p, b)) this.setBlock(p, AIR, 3);
+        break;
       case 'dropper': case 'dispenser': {
         const sig = this.hasNeighborSignal(p) || this.hasNeighborSignal(rel(p, 'up'));
         if (sig && !b.p.triggered) {
@@ -352,6 +398,7 @@ export class World {
         if (old.type !== b.type && !this.ents.has(key(p))) this.checkIfExtend(p, b);
         break;
       case 'hopper': if (old.type !== b.type) this.hopperPowered(p, b); break;
+      case 'tnt': if (old.type !== b.type && this.hasNeighborSignal(p)) this.primeTnt(p); break;
     }
   }
 
@@ -396,6 +443,7 @@ export class World {
       case 'redstone_torch': case 'redstone_wall_torch':
         return dir === 'down' ? this.blockSignal(b, p, dir) : 0;
       case 'repeater': case 'comparator': case 'observer': return this.blockSignal(b, p, dir);
+      case 'stone_pressure_plate': return dir === 'up' ? this.blockSignal(b, p, dir) : 0;
       default: return 0;
     }
   }
@@ -424,7 +472,7 @@ export class World {
   private blockSignal(b: Block, p: Pos, dir: Dir): number {
     switch (b.type) {
       case 'redstone_block': return 15;
-      case 'lever': case 'stone_button': return b.p.powered ? 15 : 0;
+      case 'lever': case 'stone_button': case 'stone_pressure_plate': return b.p.powered ? 15 : 0;
       case 'redstone_torch': return b.p.lit && dir !== 'up' ? 15 : 0;
       case 'redstone_wall_torch': return b.p.lit && b.p.facing !== dir ? 15 : 0;
       case 'repeater': return b.p.powered && b.p.facing === dir ? 15 : 0;
@@ -603,6 +651,30 @@ export class World {
     }
   }
 
+  // ---------- pressure plate / TNT ----------
+  private plateCheck(p: Pos): void {
+    const b = this.get(p);
+    if (b.type !== 'stone_pressure_plate') return;
+    const held = this.held.has(key(p));
+    if (held) {
+      if (!b.p.powered) {
+        this.setBlock(p, { type: b.type, p: { ...b.p, powered: true } }, 3);
+        this.updateNeighborsAt(p);
+        this.updateNeighborsAt(rel(p, 'down'));
+      }
+      this.scheduleTick(p, 20, 0);
+    } else if (b.p.powered) {
+      this.setBlock(p, { type: b.type, p: { ...b.p, powered: false } }, 3);
+      this.updateNeighborsAt(p);
+      this.updateNeighborsAt(rel(p, 'down'));
+    }
+  }
+
+  private primeTnt(p: Pos): void {
+    this.log.push({ tick: this.time, event: 'tnt_primed', pos: p });
+    this.setBlock(p, AIR, 3);
+  }
+
   // ---------- comparator ----------
   private hasAnalog(b: Block): boolean { return b.type in CONTAINER_SIZE; }
   private analog(b: Block, p: Pos): number {
@@ -763,8 +835,12 @@ export class World {
     const toPush: Pos[] = [];
     const toDestroy: Pos[] = [];
     const idx = (q: Pos) => toPush.findIndex((e) => key(e) === key(q));
-    const sticky = (q: Pos) => this.get(q).type === 'slime_block';
-    const stick = (a: Pos, b: Pos) => sticky(a) || sticky(b);
+    const sticky = (q: Pos) => ['slime_block', 'honey_block'].includes(this.get(q).type);
+    const stick = (a: Pos, b: Pos) => {
+      const ta = this.get(a).type, tb = this.get(b).type;
+      if ((ta === 'honey_block' && tb === 'slime_block') || (ta === 'slime_block' && tb === 'honey_block')) return false;
+      return sticky(a) || sticky(b);
+    };
     const same = (a: Pos, b: Pos) => key(a) === key(b);
 
     // axis test: d.axis != pushDir.axis
@@ -788,11 +864,10 @@ export class World {
       const walk = (from: Pos, d: Dir, n: number): Pos => { let r = from; for (let m = 0; m < n; m++) r = rel(r, d); return r; };
       let i = 1;
       if (i + toPush.length > 12) return false;
-      while (bs.type === 'slime_block') {
+      while (sticky(walk(start, opposite(pushDir), i - 1))) {
         const q = walk(start, opposite(pushDir), i);
-        const prev = bs;
         bs = this.get(q);
-        if (bs.type === 'air' || !(prev.type === 'slime_block' || bs.type === 'slime_block') ||
+        if (bs.type === 'air' || !stick(walk(start, opposite(pushDir), i - 1), q) ||
             !this.isPushable(bs, q, pushDir, false, opposite(pushDir)) || same(q, pistonPos)) break;
         if (++i + toPush.length > 12) return false;
       }

@@ -7,7 +7,8 @@ Headless redstone simulator (Java Edition 1.20 rules), built so Claude can build
 
 Blocks: stone, glass, obsidian, slime_block, redstone_wire, redstone_block, lever, stone_button,
 redstone_torch, redstone_wall_torch, repeater, comparator, observer, redstone_lamp,
-piston, sticky_piston, chest, barrel, hopper, dropper, dispenser (real item inventories).
+piston, sticky_piston, honey_block, chest, barrel, hopper, dropper, dispenser (real item inventories),
+iron_door, stone_pressure_plate (`use` = step on/off), tnt (primed event logged in `world.log`; no blast damage).
 
 Conventions: repeater/comparator `facing` = INPUT side. Torch/lever `facing` = direction away from support.
 

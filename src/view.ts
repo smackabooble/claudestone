@@ -5,7 +5,7 @@ import type { Pos } from './dirs.ts';
 export const LEGEND =
   '#stone g=glass X=obsidian s=slime R=redstone_block 0-f=wire power l/L=lever off/on b/B=button t/T=torch off/on ' +
   '^v<>=repeater (points to output) c/C=comparator o/O=observer p/P=piston S=sticky ==head ~=moving z/Z=lamp off/on ' +
-  'H=hopper D=dropper N=dispenser K=chest/barrel ?=other';
+  'y=honey x=tnt M/m=iron door closed/open q/Q=pressure plate H=hopper D=dropper N=dispenser K=chest/barrel ?=other';
 
 const OUT: Record<string, string> = { north: '^', south: 'v', west: '<', east: '>' };
 const OPP: Record<string, string> = { north: 'south', south: 'north', west: 'east', east: 'west' };
@@ -18,6 +18,10 @@ export function symbol(b: Block): string {
     case 'glass': return 'g';
     case 'obsidian': return 'X';
     case 'slime_block': return 's';
+    case 'honey_block': return 'y';
+    case 'tnt': return 'x';
+    case 'iron_door': return p.open ? 'm' : 'M';
+    case 'stone_pressure_plate': return p.powered ? 'Q' : 'q';
     case 'redstone_block': return 'R';
     case 'redstone_wire': return p.power.toString(16);
     case 'lever': return p.powered ? 'L' : 'l';

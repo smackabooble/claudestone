@@ -23,5 +23,5 @@ Nothing here is verified against a real game. "Golden" = a recorded real-Minecra
 
 Folk-knowledge tests (`test/known.test.ts`) and a 300-seed fuzz (`test/fuzz.test.ts`) pass; they are not real recordings.
 
-Not simulated: item entities, double chests, honey blocks, redstone ore, rails, doors/trapdoors/note blocks,
+Not simulated: item entities, double chests, wooden doors/trapdoors/gates, note blocks, rails, TNT blast, tripwire,
 TNT, dispenser special behaviors, chunk loading, 1.21 changes.

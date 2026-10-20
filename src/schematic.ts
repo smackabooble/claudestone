@@ -10,7 +10,7 @@ const num = (v: Tag): number => Number(v as number | bigint);
 const DIRECT = new Set([
   'stone', 'glass', 'obsidian', 'slime_block', 'redstone_wire', 'redstone_block', 'lever', 'repeater',
   'comparator', 'observer', 'redstone_torch', 'redstone_wall_torch', 'redstone_lamp', 'piston',
-  'sticky_piston', 'hopper', 'dropper', 'dispenser', 'chest', 'barrel', 'stone_button',
+  'sticky_piston', 'hopper', 'dropper', 'dispenser', 'chest', 'barrel', 'stone_button', 'honey_block', 'tnt', 'stone_pressure_plate',
 ]);
 const AIR = new Set(['air', 'cave_air', 'void_air']);
 const SKIP = new Set(['piston_head', 'moving_piston']);
@@ -28,6 +28,7 @@ export function convertState(full: string, warn: (m: string) => void): { type: s
   const keep = (...ks: string[]) => Object.fromEntries(ks.filter((k) => k in raw).map((k) => [k, raw[k]]));
   switch (name) {
     case 'redstone_wire': return { type: name, props: {} };
+    case 'iron_door': return raw.half === 'upper' ? null : { type: name, props: keep('facing') };
     case 'lever': return { type: name, props: keep('face', 'facing', 'powered') };
     case 'repeater': return { type: name, props: keep('facing', 'delay', 'powered') };
     case 'comparator': return { type: name, props: keep('facing', 'mode', 'powered') };
@@ -50,7 +51,7 @@ export function convertState(full: string, warn: (m: string) => void): { type: s
   }
 }
 
-const isSupport = (t: string) => ['stone', 'glass', 'obsidian', 'slime_block', 'redstone_block', 'redstone_lamp', 'observer', 'dropper', 'dispenser', 'barrel', 'piston', 'sticky_piston'].includes(t);
+const isSupport = (t: string) => ['stone', 'glass', 'obsidian', 'slime_block', 'redstone_block', 'redstone_lamp', 'observer', 'dropper', 'dispenser', 'barrel', 'piston', 'sticky_piston', 'honey_block', 'tnt'].includes(t);
 
 function order(blocks: SpecBlock[]): SpecBlock[] {
   const cmp = (a: SpecBlock, b: SpecBlock) => a.pos[1] - b.pos[1] || a.pos[2] - b.pos[2] || a.pos[0] - b.pos[0];
