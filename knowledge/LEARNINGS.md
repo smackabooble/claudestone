@@ -94,3 +94,5 @@ Curated lessons from building and testing redstone in this simulator. Read this 
 - Real gaps vs the real game: piston timing details, slime/honey push resolver edge cases, hopper/dropper RNG.
 
 ## 9. Lessons log (newest last; the `add_learning` MCP tool appends here)
+
+- Comparator-subtract pulse generator: feed BOTH inputs straight from repeater outputs (rear repeater behind the comparator, side repeater beside it facing away). Via dust the strengths decay/linger and the pulse is only ~2 strong; with repeaters it is a clean 15-strength pulse of (rear delay - side delay) rt, at the falling edge. Verified in sim only (scratch pulse2 test).
