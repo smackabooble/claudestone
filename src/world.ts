@@ -25,6 +25,7 @@ interface Def { solid: boolean; conductor: boolean; source: boolean }
 const DEFS: Record<string, Def> = {
   obsidian: { solid: true, conductor: true, source: false },
   furnace: { solid: true, conductor: true, source: false }, // block entity: pistons cannot push it
+  note_block: { solid: true, conductor: true, source: false }, // right-click changes `note` (a state change observers see); powered state follows redstone
   leaves: { solid: true, conductor: false, source: false }, // full support for dust, but not a redstone conductor
   partial: { solid: false, conductor: false, source: false }, // slabs, stairs, rails, composter ...
   campfire: { solid: false, conductor: false, source: false }, // block entity: immovable
@@ -82,6 +83,8 @@ export const maxStack = (id: string): number =>
 const norm = (id: string): string => id.replace(/^minecraft:/, '');
 
 export class World {
+  /** optional debug hook: observer triggers etc. (CLI/analysis only) */
+  trace?: (msg: string) => void;
   blocks = new Map<string, Block>();
   time = 0;
   private seq = 0;
@@ -175,7 +178,10 @@ export class World {
         if (isHorizontal(dirToChanged)) this.wireShapeUpdate(q, b, dirToChanged, sf);
         break;
       case 'observer':
-        if (b.p.facing === dirToChanged && !b.p.powered && !this.hasTick(q)) this.scheduleTick(q, 2, 0);
+        if (b.p.facing === dirToChanged && !b.p.powered && !this.hasTick(q)) {
+          if (this.trace) this.trace(`t${this.time} observer ${q.join(',')} saw ${rel(q, dirToChanged).join(',')} (${this.get(rel(q, dirToChanged)).type})`);
+          this.scheduleTick(q, 2, 0);
+        }
         break;
       case 'redstone_torch': case 'redstone_wall_torch': case 'lever': case 'stone_button':
       case 'repeater': case 'comparator': case 'stone_pressure_plate':
@@ -246,6 +252,7 @@ export class World {
       case 'comparator':
         b.p.facing ??= 'north'; b.p.mode ??= 'compare'; b.p.powered ??= false; b.p.output = 0; break;
       case 'observer': b.p.facing ??= 'north'; b.p.powered ??= false; break;
+      case 'note_block': b.p.note ??= 0; b.p.instrument ??= 'harp'; b.p.powered ??= false; break;
       case 'piston': case 'sticky_piston': b.p.facing ??= 'north'; b.p.extended = false; break;
       case 'hopper': b.p.facing ??= 'down'; b.p.enabled = true; break;
       case 'dropper': case 'dispenser': b.p.facing ??= 'north'; b.p.triggered = false; break;
@@ -294,6 +301,8 @@ export class World {
       this.setBlock(p, { type: b.type, p: { ...b.p, powered: true } }, 3);
       this.attachedUpdate(p, b);
       this.scheduleTick(p, 20, 0);
+    } else if (b.type === 'note_block') {
+      this.setBlock(p, { type: b.type, p: { ...b.p, note: (b.p.note + 1) % 25 } }, 3);
     } else if (b.type === 'repeater') {
       this.setBlock(p, { type: b.type, p: { ...b.p, delay: (b.p.delay % 4) + 1 } }, 3);
     } else if (b.type === 'redstone_wire') {
@@ -397,6 +406,11 @@ export class World {
         else this.cmpRefresh(p, b);
         break;
       case 'piston': case 'sticky_piston': this.checkIfExtend(p, b); break;
+      case 'note_block': {
+        const on = this.hasNeighborSignal(p);
+        if (on !== !!b.p.powered) this.setBlock(p, { type: b.type, p: { ...b.p, powered: on } }, 3);
+        break;
+      }
       case 'hopper': this.hopperPowered(p, b); break;
       case 'tnt':
         if (this.hasNeighborSignal(p)) this.primeTnt(p);

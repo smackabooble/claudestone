@@ -19,6 +19,10 @@ export function toBlockState(b: Block): string {
     case 'repeater': return st({ delay: p.delay, facing: p.facing, locked: false, powered: !!p.powered });
     case 'comparator': return st({ facing: p.facing, mode: p.mode === 'subtract' ? 'subtract' : 'compare', powered: !!p.powered });
     case 'observer': return st({ facing: p.facing, powered: !!p.powered });
+    case 'note_block': return st({ instrument: p.instrument ?? 'harp', note: p.note ?? 0, powered: !!p.powered });
+    case 'leaves': return 'minecraft:oak_leaves[distance=1,persistent=true,waterlogged=false]';
+    case 'partial': return 'minecraft:stone_slab[type=bottom,waterlogged=false]';
+    case 'campfire': return 'minecraft:campfire[facing=north,lit=false,signal_fire=false,waterlogged=false]';
     case 'piston': case 'sticky_piston': return st({ extended: !!p.extended, facing: p.facing });
     case 'piston_head': return st({ facing: p.facing, short: false, type: p.type === 'sticky' ? 'sticky' : 'normal' });
     case 'hopper': return st({ enabled: p.enabled !== false, facing: p.facing });

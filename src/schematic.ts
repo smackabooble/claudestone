@@ -35,6 +35,7 @@ export function convertState(full: string, warn: (m: string) => void): { type: s
     case 'repeater': return { type: name, props: keep('facing', 'delay', 'powered') };
     case 'comparator': return { type: name, props: keep('facing', 'mode', 'powered') };
     case 'observer': return { type: name, props: keep('facing', 'powered') };
+    case 'note_block': return { type: name, props: keep('note', 'instrument', 'powered') };
     case 'redstone_torch': return { type: name, props: keep('lit') };
     case 'redstone_wall_torch': return { type: name, props: keep('facing', 'lit') };
     case 'redstone_lamp': return { type: name, props: keep('lit') };
@@ -52,6 +53,12 @@ export function convertState(full: string, warn: (m: string) => void): { type: s
       // partial = not a full block (slabs, stairs, rails, composter ...): cannot hold dust, does not conduct
       if (/_leaves$/.test(name)) { warn(`${name} treated as leaves (supports dust, does not conduct)`); return { type: 'leaves', props: {}, orig: name }; }
       if (name === 'campfire' || name === 'soul_campfire') { warn(`${name} treated as campfire (block entity, partial)`); return { type: 'campfire', props: {}, orig: name }; }
+      // top slabs / upside-down stairs have a FULL top face (dust can sit on them) but do not conduct; double slabs are full blocks
+      if (/_slab$/.test(name) && raw.type === 'double') return { type: 'stone', props: {}, orig: name };
+      if ((/_slab$/.test(name) && raw.type === 'top') || (/_stairs$/.test(name) && raw.half === 'top')) {
+        warn(`${name}[top] treated as leaves (supports dust on top, does not conduct)`);
+        return { type: 'leaves', props: {}, orig: name };
+      }
       if (/_(slab|stairs|carpet|trapdoor|wall|fence|fence_gate|button|pressure_plate)$|(^|_)rail$|^(composter|tripwire_hook|cauldron|lectern|flower_pot|snow)$/.test(name)) {
         warn(`${name} treated as a partial block (no dust support, no conduction)`);
         return { type: 'partial', props: {}, orig: name };

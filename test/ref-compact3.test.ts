@@ -39,3 +39,21 @@ test('reference compact 4x4 door (observer chain, no slime): closes with 16 bloc
     assert.equal(filled(), 0, `open #${i}`);
   }
 });
+
+test('note block: clicking changes its state and an observer facing it fires; powered state follows redstone', () => {
+  const w = new World();
+  w.place([0, 0, 0], 'stone');
+  w.place([1, 1, 0], 'note_block');
+  w.place([0, 1, 0], 'observer', { facing: 'east' });
+  w.place([2, 1, 0], 'stone');
+  w.place([1, 2, 0], 'redstone_block');
+  w.run(10);
+  assert.equal(w.get([1, 1, 0]).p.powered, true, 'redstone block above powers the note block');
+  w.remove([1, 2, 0]); w.run(10);
+  assert.equal(w.get([1, 1, 0]).p.powered, false);
+  let fired = 0;
+  w.trace = (m) => { if (m.includes('observer 0,1,0')) fired++; };
+  w.use([1, 1, 0]); w.run(6);
+  assert.equal(w.get([1, 1, 0]).p.note, 1);
+  assert.equal(fired, 1, 'observer saw the note change');
+});
