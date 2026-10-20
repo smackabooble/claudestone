@@ -60,6 +60,13 @@ export const DOUBLE: ArmSpec = {
   pulses: [{ x: 1, side: 12, rear: 15 }],
 };
 
+/** N=3 in the generic format (same waveforms as examples/flat-arm3.ts): P1 0/13, P2 3/9, P3 6; pulses P3@x3, P2@x1, P3@x2. */
+export const TRIPLE: ArmSpec = {
+  n: 3, K: 10, xw: -16, xe: 22,
+  holds: [{ x: 0, on: 0, off: 13 }, { x: 2, on: 3, off: 9 }, { x: 4, on: 6, off: 6 }],
+  pulses: [{ x: 3, side: 12, rear: 15 }, { x: 1, side: 16, rear: 19 }, { x: 2, side: 19, rear: 22 }],
+};
+
 type XZ = [number, number];
 const dirOf = (a: XZ, b: XZ): Dir => (b[0] > a[0] ? 'east' : b[0] < a[0] ? 'west' : b[1] > a[1] ? 'south' : 'north');
 const line = (a: XZ, b: XZ): XZ[] => {

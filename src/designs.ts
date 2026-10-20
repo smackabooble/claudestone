@@ -5,6 +5,7 @@ import { buildExtender } from '../examples/double-piston-extender.ts';
 import { buildUpright } from '../examples/double-piston-extender-vertical.ts';
 import { buildFlatArm3 } from '../examples/flat-arm3.ts';
 import { buildFlatArm, QUAD } from '../examples/flat-armN.ts';
+import { buildDoor5 } from '../examples/piston-door-5x5.ts';
 import { buildDoor6 } from '../examples/piston-door-6x6.ts';
 import { buildDoor8 } from '../examples/piston-door-8x8.ts';
 import { buildDoor } from '../examples/piston-door-2x2.ts';
@@ -86,6 +87,13 @@ export const DESIGNS: Design[] = [
     realGameVerified: false, settle: 1000,
     usage: 'lever OFF = closed, ON = open (torch inverter at the far north end of the left side). Keep the doorway x=0..7, y=1..8 and 5 blocks either side clear.',
     build: (w) => ({ lever: buildDoor8(w).lever }),
+  },
+  {
+    name: 'piston-door-5x5',
+    description: '5x5 slime/honey piston door: 3 bands (2+2+1 rows), each a left 2-wide pack (double extender) and a right 3-wide pack (triple extender). Same wiring as the confirmed 6x6, about 51x8x40.',
+    realGameVerified: false, settle: 800,
+    usage: 'lever OFF = closed, ON = open (torch inverter at the far north end of the left side). Keep the doorway x=0..4, y=1..5 and 4 blocks either side clear.',
+    build: (w) => ({ lever: buildDoor5(w).lever }),
   },
 ];
 
