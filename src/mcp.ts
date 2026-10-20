@@ -8,6 +8,8 @@ import { World } from './world.ts';
 import { JavaRandom } from './jrandom.ts';
 import { loadSchematic } from './schematic.ts';
 import { simulate } from './sim.ts';
+import { exportSchem } from './export.ts';
+import { writeFileSync } from 'node:fs';
 import { LEGEND, bounds, render } from './view.ts';
 import type { Pos } from './dirs.ts';
 
@@ -118,6 +120,15 @@ server.registerTool('load_schematic', {
     catch (e) { warnings.push(`skipped ${b.type} at ${b.pos.join(',')}: ${(e as Error).message}`); }
   }
   return text(`size ${sch.size.join('x')}, ${sch.blocks.length} blocks\n${warnings.slice(0, 40).join('\n')}`);
+}));
+
+server.registerTool('export_schematic', {
+  description: 'Write the current world as a Sponge .schem (Minecraft 1.20.1, loads in WorldEdit/Litematica). Returns size and the min-corner origin used.',
+  inputSchema: { path: z.string() },
+}, guard(({ path }) => {
+  const r = exportSchem(world);
+  writeFileSync(path, r.buffer);
+  return text(`wrote ${path}: size ${r.size.join('x')}, world origin of schematic (0,0,0) = ${r.origin.join(',')}`);
 }));
 
 server.registerTool('run_spec', {
