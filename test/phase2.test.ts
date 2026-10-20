@@ -101,16 +101,22 @@ test('observer pulses 2 ticks after the watched block changes, for 2 ticks', () 
   assert.equal(w.read([1, 1, 0], 'powered'), false);
 });
 
-test('comparator reads a container (signal 7) and outputs 7 after 2 ticks', () => {
+test('comparator placed next to a container (signal 7) outputs 7 after 1 tick (setPlacedBy)', () => {
   const w = new World();
   w.place([0, 0, 0], 'stone'); w.place([1, 0, 0], 'stone'); w.place([2, 0, 0], 'stone');
   w.place([0, 1, 0], 'chest', { signal: 7 });
   w.place([1, 1, 0], 'comparator', { facing: 'west' }); // input west, output east
   w.place([2, 1, 0], 'redstone_wire');
-  w.run(1);
   assert.equal(w.read([2, 1, 0], 'power'), 0);
   w.run(1);
   assert.equal(w.read([2, 1, 0], 'power'), 7);
+  // later changes take the normal 2-tick comparator delay
+  w.get([0, 1, 0]).p.signal = 3;
+  w.setItem([0, 1, 0], 0, null);
+  w.run(1);
+  assert.equal(w.read([2, 1, 0], 'power'), 7);
+  w.run(1);
+  assert.equal(w.read([2, 1, 0], 'power'), 3);
 });
 
 test('subtract mode: output = rear - side', () => {

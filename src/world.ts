@@ -7,6 +7,7 @@
  *  - lever/button `face` = floor|wall|ceiling, `facing` = direction the lever points away from its support
  *  - redstone_wall_torch `facing` = direction the torch points away from the wall
  */
+import { JavaRandom } from './jrandom.ts';
 import {
   DIRS, UPDATE_ORDER, HORIZONTAL, clockwise, counterClockwise, isHorizontal,
   javaSetOrder, key, opposite, rel,
@@ -27,6 +28,10 @@ const DEFS: Record<string, Def> = {
   chest: { solid: false, conductor: false, source: false },
   observer: { solid: true, conductor: false, source: true },
   comparator: { solid: false, conductor: false, source: true },
+  hopper: { solid: false, conductor: false, source: false },
+  dropper: { solid: true, conductor: true, source: false },
+  dispenser: { solid: true, conductor: true, source: false },
+  barrel: { solid: true, conductor: true, source: false },
   piston: { solid: true, conductor: false, source: false },
   sticky_piston: { solid: true, conductor: false, source: false },
   piston_head: { solid: false, conductor: false, source: false },
@@ -49,7 +54,7 @@ type Prio = -3 | -2 | -1 | 0;
 interface Tick { k: string; pos: Pos; time: number; prio: Prio; seq: number }
 type Conn = 'none' | 'side' | 'up';
 interface Moving {
-  moved: Block; dir: Dir; extending: boolean; isSource: boolean;
+  seq: number; moved: Block; dir: Dir; extending: boolean; isSource: boolean;
   progress: number; progressO: number; lastTicked: number;
 }
 const MIN_Y = -64, MAX_Y = 320;
@@ -57,7 +62,16 @@ const SHAPE_ORDER: Dir[] = ['west', 'east', 'north', 'south', 'down', 'up'];
 const isPistonType = (b: Block): boolean => b.type === 'piston' || b.type === 'sticky_piston';
 const DESTROY = new Set(['redstone_wire', 'lever', 'stone_button', 'redstone_torch', 'redstone_wall_torch', 'repeater', 'comparator']);
 const BLOCKING = new Set(['moving_piston', 'piston_head', 'obsidian']);
-const BLOCK_ENTITY = new Set(['chest', 'comparator']);
+const CONTAINER_SIZE: Record<string, number> = { chest: 27, barrel: 27, hopper: 5, dropper: 9, dispenser: 9 };
+const BLOCK_ENTITY = new Set(['comparator', ...Object.keys(CONTAINER_SIZE)]);
+
+export interface Item { id: string; count: number }
+interface BE { type: string; inv: (Item | null)[]; cooldown: number; ticked: number; seq: number }
+const STACK16 = new Set(['ender_pearl', 'snowball', 'egg', 'bucket', 'oak_sign', 'honey_bottle']);
+const STACK1 = /(_sword|_pickaxe|_axe|_shovel|_hoe|_helmet|_chestplate|_leggings|_boots|_boat|_bed|_bucket)$|^(bow|shield|minecart|saddle|potion|cake|elytra|shears|fishing_rod|flint_and_steel)$/;
+export const maxStack = (id: string): number =>
+  STACK16.has(id) ? 16 : STACK1.test(id) && id !== 'bucket' ? 1 : 64;
+const norm = (id: string): string => id.replace(/^minecraft:/, '');
 
 export class World {
   blocks = new Map<string, Block>();
@@ -71,6 +85,11 @@ export class World {
   private handlingTick = false;
   private events: { pos: Pos; id: number; dir: Dir }[] = [];
   private ents = new Map<string, Moving>();
+  private bes = new Map<string, BE>();
+  private beSeq = 0;
+  /** Items dropped into the world by droppers/dispensers (no item entities are simulated). */
+  drops: { tick: number; pos: Pos; item: Item }[] = [];
+  rng = new JavaRandom(0);
 
   // ---------- basic access ----------
   get(p: Pos): Block { return this.blocks.get(key(p)) ?? AIR; }
@@ -97,9 +116,18 @@ export class World {
     if (this.sameState(old, nb)) return;
     if (nb.type === 'comparator' && old.type === 'comparator') nb.p.output = old.p.output;
     this.store(p, nb);
-    if (old.type !== nb.type) this.onRemove(p, old, nb, (flags & 64) !== 0);
+    if (old.type !== nb.type) {
+      this.bes.delete(key(p));
+      const size = CONTAINER_SIZE[nb.type];
+      if (size) this.bes.set(key(p), this.newBE(nb.type, size, nb.p.inv));
+      delete nb.p.inv;
+      this.onRemove(p, old, nb, (flags & 64) !== 0);
+    }
     this.onPlace(p, nb, old);
-    if (flags & 1) this.updateNeighborsAt(p);
+    if (flags & 1) {
+      this.updateNeighborsAt(p);
+      if (this.hasAnalog(nb)) this.updateComparatorsAround(p);
+    }
     if (!(flags & 16)) this.updateNeighbourShapes(p);
   }
 
@@ -158,13 +186,14 @@ export class World {
         b.p.facing ??= 'north'; b.p.mode ??= 'compare'; b.p.powered ??= false; b.p.output = 0; break;
       case 'observer': b.p.facing ??= 'north'; b.p.powered ??= false; break;
       case 'piston': case 'sticky_piston': b.p.facing ??= 'north'; b.p.extended = false; break;
-      case 'chest': b.p.signal ??= 0; break;
+      case 'hopper': b.p.facing ??= 'down'; b.p.enabled = true; break;
+      case 'dropper': case 'dispenser': b.p.facing ??= 'north'; b.p.triggered = false; break;
       case 'piston_head': case 'moving_piston': throw new Error(`${type} cannot be placed directly`);
     }
     if (!this.canSurvive(p, b)) throw new Error(`cannot place ${type} at ${p.join(',')}: no valid support`);
     this.setBlock(p, b, 3);
-    if ((type === 'repeater' || type === 'comparator') && this.diodeShouldTurnOn(p, this.get(p)))
-      this.scheduleTick(p, 1, 0);
+    if (type === 'repeater' && this.diodeShouldTurnOn(p, this.get(p))) this.scheduleTick(p, 1, 0);
+    if (type === 'comparator' && this.cmpShouldTurnOn(p, this.get(p))) this.scheduleTick(p, 1, 0);
   }
 
   remove(p: Pos): void { this.setBlock(p, AIR, 3); }
@@ -221,7 +250,7 @@ export class World {
       this.tickBlock(t.pos);
     }
     while (this.events.length) this.pistonEvent(this.events.shift()!);
-    this.tickMoving();
+    this.tickBlockEntities();
     this.handlingTick = false;
     actions?.();
   }
@@ -232,6 +261,7 @@ export class World {
     switch (b.type) {
       case 'repeater': this.repeaterTick(p, b); break;
       case 'comparator': this.cmpTick(p, b); break;
+      case 'dropper': case 'dispenser': this.dispenseFrom(p, b); break;
       case 'observer':
         if (b.p.powered) {
           this.setBlock(p, { type: b.type, p: { ...b.p, powered: false } }, 2);
@@ -274,6 +304,17 @@ export class World {
         else this.cmpRefresh(p, b);
         break;
       case 'piston': case 'sticky_piston': this.checkIfExtend(p, b); break;
+      case 'hopper': this.hopperPowered(p, b); break;
+      case 'dropper': case 'dispenser': {
+        const sig = this.hasNeighborSignal(p) || this.hasNeighborSignal(rel(p, 'up'));
+        if (sig && !b.p.triggered) {
+          this.scheduleTick(p, 4, 0);
+          this.setBlock(p, { type: b.type, p: { ...b.p, triggered: true } }, 4);
+        } else if (!sig && b.p.triggered) {
+          this.setBlock(p, { type: b.type, p: { ...b.p, triggered: false } }, 4);
+        }
+        break;
+      }
       case 'piston_head':
         if (this.headCanSurvive(p, b)) {
           const bp = rel(p, opposite(b.p.facing));
@@ -310,6 +351,7 @@ export class World {
       case 'piston': case 'sticky_piston':
         if (old.type !== b.type && !this.ents.has(key(p))) this.checkIfExtend(p, b);
         break;
+      case 'hopper': if (old.type !== b.type) this.hopperPowered(p, b); break;
     }
   }
 
@@ -562,19 +604,31 @@ export class World {
   }
 
   // ---------- comparator ----------
-  private hasAnalog(b: Block): boolean { return b.type === 'chest'; }
-  private analog(b: Block): number { return b.p.signal ?? 0; }
+  private hasAnalog(b: Block): boolean { return b.type in CONTAINER_SIZE; }
+  private analog(b: Block, p: Pos): number {
+    if (b.p.signal !== undefined) return b.p.signal; // manual override
+    const be = this.bes.get(key(p));
+    if (!be) return 0;
+    let f = 0, used = 0;
+    for (const it of be.inv) {
+      if (!it) continue;
+      f = Math.fround(f + Math.fround(it.count / Math.min(64, maxStack(it.id))));
+      used++;
+    }
+    f = Math.fround(f / be.inv.length);
+    return Math.floor(Math.fround(f * 14)) + (used > 0 ? 1 : 0);
+  }
 
   private cmpInput(p: Pos, b: Block): number {
     let i = this.diodeInput(p, b);
     const d: Dir = b.p.facing;
     let q = rel(p, d);
     let nb = this.get(q);
-    if (this.hasAnalog(nb)) i = this.analog(nb);
+    if (this.hasAnalog(nb)) i = this.analog(nb, q);
     else if (i < 15 && def(nb).conductor) {
       q = rel(q, d);
       nb = this.get(q);
-      if (this.hasAnalog(nb)) i = this.analog(nb);
+      if (this.hasAnalog(nb)) i = this.analog(nb, q);
     }
     return i;
   }
@@ -817,7 +871,7 @@ export class World {
   }
 
   private addMoving(p: Pos, moved: Block, dir: Dir, extending: boolean, isSource: boolean): void {
-    this.ents.set(key(p), { moved, dir, extending, isSource, progress: 0, progressO: 0, lastTicked: this.time });
+    this.ents.set(key(p), { seq: this.beSeq++, moved, dir, extending, isSource, progress: 0, progressO: 0, lastTicked: this.time });
   }
 
   private finishMoving(p: Pos, e: Moving, forced: boolean): void {
@@ -832,14 +886,153 @@ export class World {
     const e = this.ents.get(key(p));
     if (e && e.progressO < 1) { e.progress = e.progressO = 1; this.finishMoving(p, e, true); }
   }
-  private tickMoving(): void {
-    for (const [k, e] of [...this.ents]) {
-      if (this.ents.get(k) !== e) continue;
+  private tickMoving(p: Pos, e: Moving): void {
+    e.lastTicked = this.time;
+    e.progressO = e.progress;
+    if (e.progressO >= 1) this.finishMoving(p, e, false);
+    else e.progress = Math.min(1, e.progress + 0.5);
+  }
+
+  /** Block entities tick in creation order (hoppers, moving pistons). */
+  private tickBlockEntities(): void {
+    const list: { seq: number; run: () => void }[] = [];
+    for (const [k, e] of this.ents) {
       const p = k.split(',').map(Number) as Pos;
-      e.lastTicked = this.time;
-      e.progressO = e.progress;
-      if (e.progressO >= 1) this.finishMoving(p, e, false);
-      else e.progress = Math.min(1, e.progress + 0.5);
+      list.push({ seq: e.seq, run: () => { if (this.ents.get(k) === e) this.tickMoving(p, e); } });
+    }
+    for (const [k, be] of this.bes) {
+      if (be.type !== 'hopper') continue;
+      const p = k.split(',').map(Number) as Pos;
+      list.push({ seq: be.seq, run: () => { if (this.bes.get(k) === be) this.hopperTick(p, be); } });
+    }
+    list.sort((a, b) => a.seq - b.seq);
+    for (const t of list) t.run();
+  }
+
+  // ---------- containers ----------
+  private newBE(type: string, size: number, inv?: (Item | null | [string, number])[]): BE {
+    const items: (Item | null)[] = Array(size).fill(null);
+    (inv ?? []).slice(0, size).forEach((it, i) => {
+      if (!it) return;
+      const [id, count] = Array.isArray(it) ? it : [it.id, it.count];
+      items[i] = { id: norm(id), count };
+    });
+    return { type, inv: items, cooldown: -1, ticked: -1, seq: this.beSeq++ };
+  }
+
+  /** Items in a container (null for empty slots). */
+  items(p: Pos): (Item | null)[] | undefined { return this.bes.get(key(p))?.inv.map((i) => (i ? { ...i } : null)); }
+  setItem(p: Pos, slot: number, item: Item | null): void {
+    const be = this.bes.get(key(p));
+    if (!be) throw new Error(`no container at ${p.join(',')}`);
+    be.inv[slot] = item ? { id: norm(item.id), count: item.count } : null;
+    this.updateComparatorsAround(p);
+  }
+
+  private updateComparatorsAround(p: Pos): void {
+    for (const d of HORIZONTAL) {
+      let q = rel(p, d);
+      let nb = this.get(q);
+      if (nb.type === 'comparator') this.neighborChanged(q, p);
+      else if (def(nb).conductor) {
+        q = rel(q, d);
+        nb = this.get(q);
+        if (nb.type === 'comparator') this.neighborChanged(q, p);
+      }
+    }
+  }
+
+  private isEmptyBE(be: BE): boolean { return be.inv.every((i) => !i); }
+  private isFullBE(be: BE): boolean { return be.inv.every((i) => i && i.count >= maxStack(i.id)); }
+
+  /** HopperBlockEntity.addItem for a single item; true if fully inserted. */
+  private insertOne(srcBE: BE | null, destP: Pos, dest: BE, item: Item): boolean {
+    for (let slot = 0; slot < dest.inv.length; slot++) {
+      const cur = dest.inv[slot];
+      const wasEmpty = this.isEmptyBE(dest);
+      let moved = false;
+      if (!cur) { dest.inv[slot] = { id: item.id, count: 1 }; moved = true; }
+      else if (cur.id === item.id && cur.count < maxStack(cur.id)) { cur.count++; moved = true; }
+      if (moved) {
+        if (wasEmpty && dest.type === 'hopper' && dest.cooldown <= 8) {
+          const k = srcBE && srcBE.type === 'hopper' && dest.ticked >= srcBE.ticked ? 1 : 0;
+          dest.cooldown = 8 - k;
+        }
+        this.updateComparatorsAround(destP);
+        return true;
+      }
+    }
+    return false;
+  }
+
+  private takeOne(be: BE, slot: number, p: Pos): Item {
+    const it = be.inv[slot]!;
+    const one = { id: it.id, count: 1 };
+    if (--it.count <= 0) be.inv[slot] = null;
+    this.updateComparatorsAround(p);
+    return one;
+  }
+
+  private hopperPowered(p: Pos, b: Block): void {
+    const enabled = !this.hasNeighborSignal(p);
+    if (enabled !== b.p.enabled) this.setBlock(p, { type: b.type, p: { ...b.p, enabled } }, 4);
+  }
+
+  private hopperTick(p: Pos, be: BE): void {
+    be.cooldown--;
+    be.ticked = this.time;
+    if (be.cooldown > 0) return;
+    be.cooldown = 0;
+    const b = this.get(p);
+    if (b.type !== 'hopper' || !b.p.enabled) return;
+    let moved = false;
+    if (!this.isEmptyBE(be)) moved = this.hopperEject(p, b, be);
+    if (!this.isFullBE(be)) moved = this.hopperSuck(p, be) || moved;
+    if (moved) {
+      be.cooldown = 8;
+      this.updateComparatorsAround(p);
+    }
+  }
+
+  private hopperEject(p: Pos, b: Block, be: BE): boolean {
+    const dp = rel(p, b.p.facing);
+    const dest = this.bes.get(key(dp));
+    if (!dest || this.isFullBE(dest)) return false;
+    for (let i = 0; i < be.inv.length; i++) {
+      if (!be.inv[i]) continue;
+      const one = { id: be.inv[i]!.id, count: 1 };
+      if (this.insertOne(be, dp, dest, one)) { this.takeOne(be, i, p); return true; }
+    }
+    return false;
+  }
+
+  private hopperSuck(p: Pos, be: BE): boolean {
+    const sp = rel(p, 'up');
+    const src = this.bes.get(key(sp));
+    if (!src || this.isEmptyBE(src)) return false;
+    for (let i = 0; i < src.inv.length; i++) {
+      if (!src.inv[i]) continue;
+      const one = { id: src.inv[i]!.id, count: 1 };
+      if (this.insertOne(src, p, be, one)) { this.takeOne(src, i, sp); return true; }
+    }
+    return false;
+  }
+
+  private dispenseFrom(p: Pos, b: Block): void {
+    const be = this.bes.get(key(p));
+    if (!be) return;
+    let slot = -1, j = 1;
+    for (let k = 0; k < be.inv.length; k++) if (be.inv[k] && this.rng.nextInt(j++) === 0) slot = k;
+    if (slot < 0) return;
+    const d: Dir = b.p.facing;
+    const fp = rel(p, d);
+    const dest = this.bes.get(key(fp));
+    const one = { id: be.inv[slot]!.id, count: 1 };
+    if (b.type === 'dropper' && dest) {
+      if (this.insertOne(be, fp, dest, one)) this.takeOne(be, slot, p);
+    } else {
+      this.takeOne(be, slot, p);
+      this.drops.push({ tick: this.time, pos: fp, item: one });
     }
   }
 
