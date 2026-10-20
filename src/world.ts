@@ -22,6 +22,15 @@ const AIR: Block = { type: 'air', p: {} };
 
 interface Def { solid: boolean; conductor: boolean; source: boolean }
 const DEFS: Record<string, Def> = {
+  obsidian: { solid: true, conductor: true, source: false },
+  slime_block: { solid: true, conductor: false, source: false },
+  chest: { solid: false, conductor: false, source: false },
+  observer: { solid: true, conductor: false, source: true },
+  comparator: { solid: false, conductor: false, source: true },
+  piston: { solid: true, conductor: false, source: false },
+  sticky_piston: { solid: true, conductor: false, source: false },
+  piston_head: { solid: false, conductor: false, source: false },
+  moving_piston: { solid: false, conductor: false, source: false },
   air: { solid: false, conductor: false, source: false },
   stone: { solid: true, conductor: true, source: false },
   glass: { solid: true, conductor: false, source: false },
@@ -39,6 +48,16 @@ const def = (b: Block): Def => DEFS[b.type] ?? DEFS.air;
 type Prio = -3 | -2 | -1 | 0;
 interface Tick { k: string; pos: Pos; time: number; prio: Prio; seq: number }
 type Conn = 'none' | 'side' | 'up';
+interface Moving {
+  moved: Block; dir: Dir; extending: boolean; isSource: boolean;
+  progress: number; progressO: number; lastTicked: number;
+}
+const MIN_Y = -64, MAX_Y = 320;
+const SHAPE_ORDER: Dir[] = ['west', 'east', 'north', 'south', 'down', 'up'];
+const isPistonType = (b: Block): boolean => b.type === 'piston' || b.type === 'sticky_piston';
+const DESTROY = new Set(['redstone_wire', 'lever', 'stone_button', 'redstone_torch', 'redstone_wall_torch', 'repeater', 'comparator']);
+const BLOCKING = new Set(['moving_piston', 'piston_head', 'obsidian']);
+const BLOCK_ENTITY = new Set(['chest', 'comparator']);
 
 export class World {
   blocks = new Map<string, Block>();
@@ -49,6 +68,9 @@ export class World {
   private toRunSet = new Set<string>();
   private toggles: { k: string; when: number }[] = [];
   private wireShouldSignal = true;
+  private handlingTick = false;
+  private events: { pos: Pos; id: number; dir: Dir }[] = [];
+  private ents = new Map<string, Moving>();
 
   // ---------- basic access ----------
   get(p: Pos): Block { return this.blocks.get(key(p)) ?? AIR; }
@@ -59,13 +81,64 @@ export class World {
     if (b.type === 'air') this.blocks.delete(key(p)); else this.blocks.set(key(p), b);
   }
 
-  /** Vanilla setBlock: flags&1 => notify neighbors. onPlace/onRemove always run. */
+  private sameState(a: Block, b: Block): boolean {
+    if (a.type !== b.type) return false;
+    const ka = Object.keys(a.p).filter((k) => k !== 'output');
+    const kb = Object.keys(b.p).filter((k) => k !== 'output');
+    return ka.length === kb.length && ka.every((k) => a.p[k] === b.p[k]);
+  }
+
+  /**
+   * Vanilla setBlock. flags: 1 notify neighbors, 16 suppress shape updates, 64 "isMoving".
+   * Returns early when the state is unchanged, like LevelChunk.setBlockState.
+   */
   private setBlock(p: Pos, nb: Block, flags: number): void {
     const old = this.get(p);
+    if (this.sameState(old, nb)) return;
+    if (nb.type === 'comparator' && old.type === 'comparator') nb.p.output = old.p.output;
     this.store(p, nb);
-    if (old.type !== nb.type) this.onRemove(p, old, nb);
+    if (old.type !== nb.type) this.onRemove(p, old, nb, (flags & 64) !== 0);
     this.onPlace(p, nb, old);
     if (flags & 1) this.updateNeighborsAt(p);
+    if (!(flags & 16)) this.updateNeighbourShapes(p);
+  }
+
+  /** neighbor.updateShape(dirTowardP, ...) for each neighbor, in vanilla shape order. */
+  private updateNeighbourShapes(p: Pos): void {
+    for (const d of SHAPE_ORDER) this.shapeUpdate(rel(p, d), opposite(d));
+  }
+
+  private shapeUpdate(q: Pos, dirToChanged: Dir): void {
+    const b = this.get(q);
+    switch (b.type) {
+      case 'observer':
+        if (b.p.facing === dirToChanged && !b.p.powered && !this.hasTick(q)) this.scheduleTick(q, 2, 0);
+        break;
+      case 'redstone_torch': case 'redstone_wall_torch': case 'lever': case 'stone_button':
+      case 'repeater': case 'comparator':
+        if (!this.canSurvive(q, b)) this.setBlock(q, AIR, 3);
+        break;
+    }
+  }
+
+  // ---------- survival ----------
+  private sturdy(p: Pos, face: Dir): boolean {
+    const b = this.get(p);
+    if (isPistonType(b)) return !b.p.extended || b.p.facing !== face;
+    return def(b).solid;
+  }
+  private canSurvive(p: Pos, b: Block): boolean {
+    switch (b.type) {
+      case 'redstone_wire': case 'repeater': case 'comparator': case 'redstone_torch':
+        return this.sturdy(rel(p, 'down'), 'up');
+      case 'redstone_wall_torch':
+        return this.sturdy(rel(p, opposite(b.p.facing)), b.p.facing);
+      case 'lever': case 'stone_button': {
+        const c = this.connectedDir(b);
+        return this.sturdy(rel(p, opposite(c)), c);
+      }
+      default: return true;
+    }
   }
 
   /** Place a block like a player would (applies defaults, placement hooks). */
@@ -81,9 +154,17 @@ export class World {
       case 'repeater':
         b.p.facing ??= 'north'; b.p.delay ??= 1; b.p.powered ??= false; break;
       case 'redstone_lamp': b.p.lit = b.p.lit ?? this.hasNeighborSignal(p); break;
+      case 'comparator':
+        b.p.facing ??= 'north'; b.p.mode ??= 'compare'; b.p.powered ??= false; b.p.output = 0; break;
+      case 'observer': b.p.facing ??= 'north'; b.p.powered ??= false; break;
+      case 'piston': case 'sticky_piston': b.p.facing ??= 'north'; b.p.extended = false; break;
+      case 'chest': b.p.signal ??= 0; break;
+      case 'piston_head': case 'moving_piston': throw new Error(`${type} cannot be placed directly`);
     }
+    if (!this.canSurvive(p, b)) throw new Error(`cannot place ${type} at ${p.join(',')}: no valid support`);
     this.setBlock(p, b, 3);
-    if (type === 'repeater' && this.diodeShouldTurnOn(p, b)) this.scheduleTick(p, 1, 0);
+    if ((type === 'repeater' || type === 'comparator') && this.diodeShouldTurnOn(p, this.get(p)))
+      this.scheduleTick(p, 1, 0);
   }
 
   remove(p: Pos): void { this.setBlock(p, AIR, 3); }
@@ -100,6 +181,9 @@ export class World {
       this.scheduleTick(p, 20, 0);
     } else if (b.type === 'repeater') {
       this.setBlock(p, { type: b.type, p: { ...b.p, delay: (b.p.delay % 4) + 1 } }, 3);
+    } else if (b.type === 'comparator') {
+      this.setBlock(p, { type: b.type, p: { ...b.p, mode: b.p.mode === 'compare' ? 'subtract' : 'compare' } }, 2);
+      this.cmpRefresh(p, this.get(p));
     }
   }
 
@@ -120,10 +204,13 @@ export class World {
   private hasTick(p: Pos): boolean { return this.pending.has(key(p)); }
   private willTickThisTick(p: Pos): boolean { return this.toRunSet.has(key(p)); }
 
-  /** Advance one game tick. */
+  /**
+   * Advance one game tick: scheduled block ticks, block events, moving-piston entities.
+   * `actions` run afterwards (player input is handled after the level tick in vanilla).
+   */
   step(actions?: () => void): void {
     this.time++;
-    actions?.();
+    this.handlingTick = true;
     const due = [...this.pending.values()].filter((t) => t.time <= this.time);
     due.sort((a, b) => a.time - b.time || a.prio - b.prio || a.seq - b.seq);
     for (const t of due) { this.pending.delete(t.k); this.toRunSet.add(t.k); }
@@ -133,6 +220,10 @@ export class World {
       this.toRunSet.delete(t.k);
       this.tickBlock(t.pos);
     }
+    while (this.events.length) this.pistonEvent(this.events.shift()!);
+    this.tickMoving();
+    this.handlingTick = false;
+    actions?.();
   }
   run(n: number): void { for (let i = 0; i < n; i++) this.step(); }
 
@@ -140,6 +231,16 @@ export class World {
     const b = this.get(p);
     switch (b.type) {
       case 'repeater': this.repeaterTick(p, b); break;
+      case 'comparator': this.cmpTick(p, b); break;
+      case 'observer':
+        if (b.p.powered) {
+          this.setBlock(p, { type: b.type, p: { ...b.p, powered: false } }, 2);
+        } else {
+          this.setBlock(p, { type: b.type, p: { ...b.p, powered: true } }, 2);
+          this.scheduleTick(p, 2, 0);
+        }
+        this.updateNeighborsInFront(p, b);
+        break;
       case 'redstone_torch': case 'redstone_wall_torch': this.torchTick(p, b); break;
       case 'redstone_lamp':
         if (b.p.lit && !this.hasNeighborSignal(p))
@@ -162,8 +263,23 @@ export class World {
   private neighborChanged(p: Pos, from: Pos): void {
     const b = this.get(p);
     switch (b.type) {
-      case 'redstone_wire': this.updatePowerStrength(p); break;
-      case 'repeater': this.checkTickOnNeighbor(p, b); break;
+      case 'redstone_wire':
+        if (this.canSurvive(p, b)) this.updatePowerStrength(p); else this.setBlock(p, AIR, 3);
+        break;
+      case 'repeater': case 'comparator':
+        if (!this.canSurvive(p, b)) {
+          this.setBlock(p, AIR, 3);
+          for (const d of DIRS) this.updateNeighborsAt(rel(p, d));
+        } else if (b.type === 'repeater') this.checkTickOnNeighbor(p, b);
+        else this.cmpRefresh(p, b);
+        break;
+      case 'piston': case 'sticky_piston': this.checkIfExtend(p, b); break;
+      case 'piston_head':
+        if (this.headCanSurvive(p, b)) {
+          const bp = rel(p, opposite(b.p.facing));
+          this.neighborChanged(bp, from);
+        }
+        break;
       case 'redstone_torch': case 'redstone_wall_torch':
         if (b.p.lit === this.torchHasSignal(p, b) && !this.willTickThisTick(p)) this.scheduleTick(p, 2, 0);
         break;
@@ -190,22 +306,35 @@ export class World {
       case 'redstone_torch': case 'redstone_wall_torch':
         for (const d of DIRS) this.updateNeighborsAt(rel(p, d));
         break;
-      case 'repeater': this.updateNeighborsInFront(p, b); break;
+      case 'repeater': case 'comparator': this.updateNeighborsInFront(p, b); break;
+      case 'piston': case 'sticky_piston':
+        if (old.type !== b.type && !this.ents.has(key(p))) this.checkIfExtend(p, b);
+        break;
     }
   }
 
-  private onRemove(p: Pos, old: Block, _nw: Block): void {
+  private onRemove(p: Pos, old: Block, _nw: Block, moving: boolean): void {
     switch (old.type) {
-      case 'redstone_wire':
-        for (const d of DIRS) this.updateNeighborsAt(rel(p, d));
+      case 'redstone_wire': case 'redstone_torch': case 'redstone_wall_torch':
+        if (!moving) for (const d of DIRS) this.updateNeighborsAt(rel(p, d));
         break;
-      case 'redstone_torch': case 'redstone_wall_torch':
-        for (const d of DIRS) this.updateNeighborsAt(rel(p, d));
+      case 'repeater': case 'comparator': case 'observer':
+        if (!moving) {
+          if (old.type === 'observer') {
+            if (old.p.powered && this.hasTick(p)) this.updateNeighborsInFront(p, { ...old, p: { ...old.p, powered: false } });
+          } else this.updateNeighborsInFront(p, old);
+        }
         break;
-      case 'repeater': this.updateNeighborsInFront(p, old); break;
       case 'lever': case 'stone_button':
-        if (old.p.powered) this.attachedUpdate(p, old);
+        if (!moving && old.p.powered) this.attachedUpdate(p, old);
         break;
+      case 'piston_head': {
+        const bp = rel(p, opposite(old.p.facing));
+        const base = this.get(bp);
+        if (isPistonType(base) && base.p.extended && base.p.facing === old.p.facing &&
+            base.type === (old.p.type === 'sticky' ? 'sticky_piston' : 'piston')) this.setBlock(bp, AIR, 3);
+        break;
+      }
     }
   }
 
@@ -224,7 +353,7 @@ export class World {
         return b.p.powered && this.connectedDir(b) === dir ? 15 : 0;
       case 'redstone_torch': case 'redstone_wall_torch':
         return dir === 'down' ? this.blockSignal(b, p, dir) : 0;
-      case 'repeater': return this.blockSignal(b, p, dir);
+      case 'repeater': case 'comparator': case 'observer': return this.blockSignal(b, p, dir);
       default: return 0;
     }
   }
@@ -257,6 +386,8 @@ export class World {
       case 'redstone_torch': return b.p.lit && dir !== 'up' ? 15 : 0;
       case 'redstone_wall_torch': return b.p.lit && b.p.facing !== dir ? 15 : 0;
       case 'repeater': return b.p.powered && b.p.facing === dir ? 15 : 0;
+      case 'observer': return b.p.powered && b.p.facing === dir ? 15 : 0;
+      case 'comparator': return b.p.powered && b.p.facing === dir ? (b.p.output ?? 0) : 0;
       case 'redstone_wire': {
         if (!this.wireShouldSignal || dir === 'down') return 0;
         const power: number = b.p.power;
@@ -272,6 +403,7 @@ export class World {
   private wireConnectsTo(b: Block, dir: Dir | null): boolean {
     if (b.type === 'redstone_wire') return true;
     if (b.type === 'repeater') return dir !== null && (b.p.facing === dir || opposite(b.p.facing) === dir);
+    if (b.type === 'observer') return dir !== null && b.p.facing === dir;
     return dir !== null && def(b).source;
   }
 
@@ -345,7 +477,7 @@ export class World {
   }
 
   // ---------- repeater ----------
-  private isDiode(b: Block): boolean { return b.type === 'repeater'; }
+  private isDiode(b: Block): boolean { return b.type === 'repeater' || b.type === 'comparator'; }
 
   private diodeInput(p: Pos, b: Block): number {
     const d: Dir = b.p.facing;
@@ -356,13 +488,19 @@ export class World {
   }
   private diodeShouldTurnOn(p: Pos, b: Block): boolean { return this.diodeInput(p, b) > 0; }
 
-  private diodeLocked(p: Pos, b: Block): boolean {
-    for (const d of [clockwise(b.p.facing), counterClockwise(b.p.facing)]) {
+  /** DiodeBlock.getAlternateSignal: strongest side input. */
+  private alternateSignal(p: Pos, b: Block, onlyDiodes: boolean): number {
+    let m = 0;
+    for (const d of [clockwise(b.p.facing as Dir), counterClockwise(b.p.facing as Dir)]) {
       const q = rel(p, d);
-      if (this.isDiode(this.get(q)) && this.getDirectSignal(q, d) > 0) return true;
+      const nb = this.get(q);
+      if (onlyDiodes && !this.isDiode(nb)) continue;
+      if (!def(nb).source) continue;
+      m = Math.max(m, nb.type === 'redstone_block' ? 15 : nb.type === 'redstone_wire' ? nb.p.power : this.getDirectSignal(q, d));
     }
-    return false;
+    return m;
   }
+  private diodeLocked(p: Pos, b: Block): boolean { return this.alternateSignal(p, b, true) > 0; }
 
   private checkTickOnNeighbor(p: Pos, b: Block): void {
     if (this.diodeLocked(p, b)) return;
@@ -423,11 +561,300 @@ export class World {
     }
   }
 
+  // ---------- comparator ----------
+  private hasAnalog(b: Block): boolean { return b.type === 'chest'; }
+  private analog(b: Block): number { return b.p.signal ?? 0; }
+
+  private cmpInput(p: Pos, b: Block): number {
+    let i = this.diodeInput(p, b);
+    const d: Dir = b.p.facing;
+    let q = rel(p, d);
+    let nb = this.get(q);
+    if (this.hasAnalog(nb)) i = this.analog(nb);
+    else if (i < 15 && def(nb).conductor) {
+      q = rel(q, d);
+      nb = this.get(q);
+      if (this.hasAnalog(nb)) i = this.analog(nb);
+    }
+    return i;
+  }
+  private cmpOutput(p: Pos, b: Block): number {
+    const i = this.cmpInput(p, b);
+    if (i === 0) return 0;
+    const j = this.alternateSignal(p, b, false);
+    if (j > i) return 0;
+    return b.p.mode === 'subtract' ? i - j : i;
+  }
+  private cmpShouldTurnOn(p: Pos, b: Block): boolean {
+    const i = this.cmpInput(p, b);
+    if (i === 0) return false;
+    const j = this.alternateSignal(p, b, false);
+    return i > j || (i === j && b.p.mode === 'compare');
+  }
+  private cmpRefresh(p: Pos, b: Block): void {
+    if (this.willTickThisTick(p)) return;
+    const i = this.cmpOutput(p, b);
+    const j = b.p.output ?? 0;
+    if (i !== j || b.p.powered !== this.cmpShouldTurnOn(p, b)) {
+      const front = this.get(rel(p, opposite(b.p.facing)));
+      const prio: Prio = this.isDiode(front) && front.p.facing !== b.p.facing ? -3 : -1;
+      this.scheduleTick(p, 2, prio);
+    }
+  }
+  private cmpTick(p: Pos, b: Block): void {
+    const i = this.cmpOutput(p, b);
+    const j = b.p.output ?? 0;
+    b.p.output = i;
+    if (j !== i || b.p.mode === 'compare') {
+      const should = this.cmpShouldTurnOn(p, b);
+      if (b.p.powered && !should) this.setBlock(p, { type: b.type, p: { ...b.p, powered: false } }, 2);
+      else if (!b.p.powered && should) this.setBlock(p, { type: b.type, p: { ...b.p, powered: true } }, 2);
+      this.updateNeighborsInFront(p, this.get(p));
+    }
+  }
+
+  // ---------- pistons ----------
+  private headCanSurvive(p: Pos, h: Block): boolean {
+    const b = this.get(rel(p, opposite(h.p.facing)));
+    const fitting = isPistonType(b) && b.p.extended && b.p.facing === h.p.facing &&
+      b.type === (h.p.type === 'sticky' ? 'sticky_piston' : 'piston');
+    return fitting || (b.type === 'moving_piston' && b.p.facing === h.p.facing);
+  }
+
+  private pistonSignal(p: Pos, facing: Dir): boolean {
+    for (const d of DIRS) if (d !== facing && this.hasSignal(rel(p, d), d)) return true;
+    if (this.hasSignal(p, 'down')) return true;
+    const above = rel(p, 'up');
+    for (const d of DIRS) if (d !== 'down' && this.hasSignal(rel(above, d), d)) return true;
+    return false;
+  }
+
+  private blockEvent(pos: Pos, id: number, dir: Dir): void {
+    if (this.events.some((e) => e.id === id && e.dir === dir && key(e.pos) === key(pos))) return;
+    this.events.push({ pos, id, dir });
+  }
+
+  private checkIfExtend(p: Pos, b: Block): void {
+    const d: Dir = b.p.facing;
+    const sig = this.pistonSignal(p, d);
+    if (sig && !b.p.extended) {
+      if (this.resolve(p, d, true)) this.blockEvent(p, 0, d);
+    } else if (!sig && b.p.extended) {
+      const q = rel(rel(p, d), d);
+      const nb = this.get(q);
+      let id = 1;
+      const e = this.ents.get(key(q));
+      if (nb.type === 'moving_piston' && e && e.dir === d && e.extending &&
+          (e.progress < 0.5 || this.time === e.lastTicked || this.handlingTick)) id = 2;
+      this.blockEvent(p, id, d);
+    }
+  }
+
+  private pistonEvent(ev: { pos: Pos; id: number; dir: Dir }): void {
+    const p = ev.pos, id = ev.id;
+    const b = this.get(p);
+    if (!isPistonType(b)) return;
+    const sticky = b.type === 'sticky_piston';
+    const d: Dir = b.p.facing;
+    const sig = this.pistonSignal(p, d);
+    if (sig && (id === 1 || id === 2)) {
+      this.setBlock(p, { type: b.type, p: { ...b.p, extended: true } }, 2);
+      return;
+    }
+    if (!sig && id === 0) return;
+    if (id === 0) {
+      if (!this.moveBlocks(p, d, true)) return;
+      this.setBlock(p, { type: b.type, p: { ...b.p, extended: true } }, 67);
+    } else {
+      const hp = rel(p, d);
+      if (this.ents.has(key(hp))) this.finalTick(hp);
+      this.setBlock(p, { type: 'moving_piston', p: { facing: d, type: sticky ? 'sticky' : 'normal' } }, 20);
+      this.addMoving(p, { type: b.type, p: { facing: d, extended: false } }, d, false, true);
+      this.updateNeighborsAt(p);
+      this.updateNeighbourShapes(p);
+      if (sticky) {
+        const q = rel(hp, d);
+        const bs1 = this.get(q);
+        let handled = false;
+        if (bs1.type === 'moving_piston') {
+          const e = this.ents.get(key(q));
+          if (e && e.dir === d && e.extending) { this.finalTick(q); handled = true; }
+        }
+        if (!handled) {
+          if (id === 1 && bs1.type !== 'air' && this.isPushable(bs1, q, opposite(d), false, d) &&
+              (!DESTROY.has(bs1.type) && !BLOCKING.has(bs1.type) || isPistonType(bs1))) this.moveBlocks(p, d, false);
+          else this.setBlock(hp, AIR, 3);
+        }
+      } else this.setBlock(hp, AIR, 3);
+    }
+  }
+
+  private isPushable(b: Block, p: Pos, moveDir: Dir, allowDestroy: boolean, pistonFacing: Dir): boolean {
+    if (p[1] < MIN_Y || p[1] > MAX_Y - 1) return false;
+    if (b.type === 'air') return true;
+    if (moveDir === 'down' && p[1] === MIN_Y) return false;
+    if (moveDir === 'up' && p[1] === MAX_Y - 1) return false;
+    if (!isPistonType(b)) {
+      if (BLOCKING.has(b.type)) return false;
+      if (DESTROY.has(b.type)) return allowDestroy;
+    } else if (b.p.extended) return false;
+    void pistonFacing;
+    return !BLOCK_ENTITY.has(b.type);
+  }
+
+  /** PistonStructureResolver. */
+  private resolve(pistonPos: Pos, pistonDir: Dir, extending: boolean): { push: Pos[]; destroy: Pos[] } | null {
+    const pushDir = extending ? pistonDir : opposite(pistonDir);
+    const startPos = extending ? rel(pistonPos, pistonDir) : rel(rel(pistonPos, pistonDir), pistonDir);
+    const toPush: Pos[] = [];
+    const toDestroy: Pos[] = [];
+    const idx = (q: Pos) => toPush.findIndex((e) => key(e) === key(q));
+    const sticky = (q: Pos) => this.get(q).type === 'slime_block';
+    const stick = (a: Pos, b: Pos) => sticky(a) || sticky(b);
+    const same = (a: Pos, b: Pos) => key(a) === key(b);
+
+    // axis test: d.axis != pushDir.axis
+    const axis = (d: Dir) => (d === 'up' || d === 'down' ? 'y' : d === 'east' || d === 'west' ? 'x' : 'z');
+    const addBranching2 = (q: Pos): boolean => {
+      for (const d of DIRS) {
+        if (axis(d) !== axis(pushDir)) {
+          const q1 = rel(q, d);
+          if (stick(q1, q) && !addBlockLine(q1, d)) return false;
+        }
+      }
+      return true;
+    };
+
+    const addBlockLine = (start: Pos, dir: Dir): boolean => {
+      let bs = this.get(start);
+      if (bs.type === 'air') return true;
+      if (!this.isPushable(bs, start, pushDir, false, dir)) return true;
+      if (same(start, pistonPos)) return true;
+      if (idx(start) > -1) return true;
+      const walk = (from: Pos, d: Dir, n: number): Pos => { let r = from; for (let m = 0; m < n; m++) r = rel(r, d); return r; };
+      let i = 1;
+      if (i + toPush.length > 12) return false;
+      while (bs.type === 'slime_block') {
+        const q = walk(start, opposite(pushDir), i);
+        const prev = bs;
+        bs = this.get(q);
+        if (bs.type === 'air' || !(prev.type === 'slime_block' || bs.type === 'slime_block') ||
+            !this.isPushable(bs, q, pushDir, false, opposite(pushDir)) || same(q, pistonPos)) break;
+        if (++i + toPush.length > 12) return false;
+      }
+      let l = 0;
+      for (let i1 = i - 1; i1 >= 0; i1--) { toPush.push(walk(start, opposite(pushDir), i1)); l++; }
+      let j1 = 1;
+      for (;;) {
+        const p1 = walk(start, pushDir, j1);
+        const k = idx(p1);
+        if (k > -1) {
+          // reorderListAtCollision(l, k)
+          const first = toPush.slice(0, k);
+          const last = toPush.slice(toPush.length - l);
+          const mid = toPush.slice(k, toPush.length - l);
+          toPush.length = 0;
+          toPush.push(...first, ...last, ...mid);
+          for (let l1 = 0; l1 <= k + l; l1++) {
+            const p2 = toPush[l1];
+            if (sticky(p2) && !addBranching2(p2)) return false;
+          }
+          return true;
+        }
+        const b1 = this.get(p1);
+        if (b1.type === 'air') return true;
+        if (!this.isPushable(b1, p1, pushDir, true, pushDir) || same(p1, pistonPos)) return false;
+        if (DESTROY.has(b1.type)) { toDestroy.push(p1); return true; }
+        if (toPush.length >= 12) return false;
+        toPush.push(p1); l++; j1++;
+      }
+    };
+
+    const bs = this.get(startPos);
+    if (!this.isPushable(bs, startPos, pushDir, false, pistonDir)) {
+      if (extending && DESTROY.has(bs.type)) { toDestroy.push(startPos); return { push: toPush, destroy: toDestroy }; }
+      return null;
+    }
+    if (!addBlockLine(startPos, pushDir)) return null;
+    for (let i = 0; i < toPush.length; i++) {
+      const q = toPush[i];
+      if (sticky(q) && !addBranching2(q)) return null;
+    }
+    return { push: toPush, destroy: toDestroy };
+  }
+
+  private moveBlocks(p: Pos, d: Dir, extending: boolean): boolean {
+    const base = this.get(p);
+    const stickyType = base.type === 'sticky_piston' ? 'sticky' : 'normal';
+    const headPos = rel(p, d);
+    if (!extending && this.get(headPos).type === 'piston_head') this.setBlock(headPos, AIR, 20);
+    const r = this.resolve(p, d, extending);
+    if (!r) return false;
+    const { push, destroy } = r;
+    const olds = push.map((q) => this.get(q));
+    const vacated = new Map<string, Pos>();
+    for (const q of push) vacated.set(key(q), q);
+    const d1 = extending ? d : opposite(d);
+    for (let j = destroy.length - 1; j >= 0; j--) this.setBlock(destroy[j], AIR, 18);
+    for (let k = push.length - 1; k >= 0; k--) {
+      const q = rel(push[k], d1);
+      vacated.delete(key(q));
+      this.setBlock(q, { type: 'moving_piston', p: { facing: d } }, 68);
+      this.addMoving(q, olds[k], d, extending, false);
+    }
+    if (extending) {
+      vacated.delete(key(headPos));
+      this.setBlock(headPos, { type: 'moving_piston', p: { facing: d, type: stickyType } }, 68);
+      this.addMoving(headPos, { type: 'piston_head', p: { facing: d, type: stickyType } }, d, true, true);
+    }
+    const order = javaSetOrder([...vacated.values()]);
+    for (const q of order) this.setBlock(q, AIR, 82);
+    for (const q of order) this.updateNeighbourShapes(q);
+    for (let j = destroy.length - 1; j >= 0; j--) this.updateNeighborsAt(destroy[j]);
+    for (let k = push.length - 1; k >= 0; k--) this.updateNeighborsAt(push[k]);
+    if (extending) this.updateNeighborsAt(headPos);
+    return true;
+  }
+
+  private addMoving(p: Pos, moved: Block, dir: Dir, extending: boolean, isSource: boolean): void {
+    this.ents.set(key(p), { moved, dir, extending, isSource, progress: 0, progressO: 0, lastTicked: this.time });
+  }
+
+  private finishMoving(p: Pos, e: Moving, forced: boolean): void {
+    this.ents.delete(key(p));
+    if (this.get(p).type === 'moving_piston') {
+      const nb = forced && e.isSource ? AIR : { type: e.moved.type, p: { ...e.moved.p } };
+      this.setBlock(p, nb, 3);
+      this.neighborChanged(p, p);
+    }
+  }
+  private finalTick(p: Pos): void {
+    const e = this.ents.get(key(p));
+    if (e && e.progressO < 1) { e.progress = e.progressO = 1; this.finishMoving(p, e, true); }
+  }
+  private tickMoving(): void {
+    for (const [k, e] of [...this.ents]) {
+      if (this.ents.get(k) !== e) continue;
+      const p = k.split(',').map(Number) as Pos;
+      e.lastTicked = this.time;
+      e.progressO = e.progress;
+      if (e.progressO >= 1) this.finishMoving(p, e, false);
+      else e.progress = Math.min(1, e.progress + 0.5);
+    }
+  }
+
   // ---------- inspection ----------
   /** Value of a state property (`power`, `lit`, `powered`, ...) at a position. */
   read(p: Pos, prop: string): any {
     const b = this.get(p);
     if (prop === 'type') return b.type;
     return b.p[prop];
+  }
+
+  /** All non-air blocks, sorted by y, z, x (for debugging). */
+  listBlocks(): { pos: Pos; type: string; props: Record<string, any> }[] {
+    return [...this.blocks.entries()]
+      .map(([k, b]) => ({ pos: k.split(',').map(Number) as Pos, type: b.type, props: b.p }))
+      .sort((a, b) => a.pos[1] - b.pos[1] || a.pos[2] - b.pos[2] || a.pos[0] - b.pos[0]);
   }
 }

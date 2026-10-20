@@ -20,7 +20,10 @@ export interface Result {
 
 const defaultProp = (w: World, p: Pos): string => {
   const t = w.get(p).type;
-  return t === 'redstone_wire' ? 'power' : t === 'redstone_lamp' || t.includes('torch') ? 'lit' : 'powered';
+  if (t === 'redstone_wire') return 'power';
+  if (t === 'comparator') return 'output';
+  if (t.endsWith('piston')) return 'extended';
+  return t === 'redstone_lamp' || t.includes('torch') ? 'lit' : 'powered';
 };
 
 export function simulate(spec: Spec): Result {
