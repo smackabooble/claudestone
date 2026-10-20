@@ -122,3 +122,5 @@ Curated lessons from building and testing redstone in this simulator. Read this 
     a missing back-input north of the input repeater silently killed the top row. Bus over the doorway at y=8 on a beam.
   * Lever OFF = closed through a torch inverter. Open ~130 ticks, close ~65.
   * Why centre quads are the problem: any 2x2 quad needs distance 4 for the centre column, so a row is split left quad (2) + right unit (4).
+
+- REAL GAME CONFIRMED (user, Java 1.21.x): the 6x6 door works. That also confirms the flat-armN.ts generator for N=2 and N=4 (one-sided, stacked, obsidian taps) and the slime/honey-as-door-blocks scheme. Triple (flat-arm3) alone and the stand-alone quad were not separately reported.

@@ -1,6 +1,6 @@
 # 6x6 piston door (slime / honey)
 
-**Simulated only (Java 1.20 rules). Not tested in the real game.** Please try it and tell me what breaks.
+**Confirmed working in the real game by the user** (after being simulated with Java 1.20 rules).
 
 - Doorway: x=0..5, y=1..6, walk through along z (door plane z=0).
 - 3 rows. Each row: a LEFT 2x2 quad (slides 2 blocks left) and a RIGHT 2x4 unit (slides 4 blocks right).

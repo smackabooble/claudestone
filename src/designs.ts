@@ -75,7 +75,7 @@ export const DESIGNS: Design[] = [
   {
     name: 'piston-door-6x6',
     description: '6x6 slime/honey piston door: 3 rows, each a left 2x2 quad (double extender, 2 out) and a right 2x4 unit (quad extender, 4 out). Door blocks are the glue. Big (about 58x8x56): delay-line circuits stacked every 2 blocks in the side walls.',
-    realGameVerified: false, settle: 800,
+    realGameVerified: true, settle: 800,
     usage: 'lever OFF = closed, ON = open (torch inverter). Open: all 36 cells clear after about 130 ticks, mechanism fully reset after about 400; close about 65 ticks. Keep the doorway x=0..5, y=1..6 and 4 blocks either side clear.',
     build: (w) => ({ lever: buildDoor6(w).lever }),
   },
