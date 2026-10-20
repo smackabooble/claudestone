@@ -13,8 +13,8 @@ Nothing here is verified against a real game. "Golden" = a recorded real-Minecra
 | Comparator 2gt, compare/subtract, container reading | medium-high | placement tick (1gt) from setPlacedBy |
 | Observer 2gt delay, 2gt pulse | high | indirect (wire) shape updates not modelled |
 | Piston 12-block limit, slime, destroy reactions | medium-high | |
-| Piston extend/retract animation (block lands 2gt after event) | LOW | block-entity tick order assumed |
-| Lamp / slime / observer / piston conductivity | LOW | lamp=conductor, others not |
+| Piston extend/retract animation (block lands 2gt after event, in block-entity phase) | medium-high | matches wiki + techmcdocs: start same tick if powered in tick/event phase else next tick; arrival 2gt later; chained pistons 3gt apart (tested) |
+| Conductivity: lamp, slime = conductor; observer, piston, redstone block, glass, honey = not | medium | lamp (wiki list), slime (Bedrock wiki + default full-collision rule), observer (wiki) corroborated; piston/honey/redstone-block from memory |
 | Wire shape (lone dust = cross, right-click = dot, line extension) | medium-high | ported from MCHPRS wire logic |
 | Hopper 8gt cooldown, transfer-cooldown rule | medium | |
 | Dropper 4gt, seeded slot choice | high / n/a | RNG can't match a real world |
@@ -34,3 +34,6 @@ comparator subtract/compare math, wire power/connection rules, torch/lever/plate
 Adopted from it: lone dust is a cross; repeater default tick priority HIGH; comparator priority HIGH/NORMAL.
 Disagreement left as-is (from vanilla memory): repeater "prioritize" requires the front diode to face a different direction.
 Not reachable from this environment: minecraft.wiki, bloxelizer.com (DNS blocked).
+
+Sources for the piston/conductivity checks were search-result summaries of minecraft.wiki, techmcdocs.github.io and the Bedrock wiki
+(pages themselves are not fetchable here). The Bedrock wiki describes Bedrock; Java was inferred from it plus the vanilla default rule.

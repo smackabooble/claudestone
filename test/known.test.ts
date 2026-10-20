@@ -140,3 +140,28 @@ test('a wire that loses its only neighbor stays a cross', () => {
   const b = w.get([0, 1, 0]).p;
   assert.deepEqual([b.north, b.east, b.south, b.west], ['side', 'side', 'side', 'side']);
 });
+
+test('chained pistons fire 3 ticks apart (wiki: block arrives in block-entity phase, event next tick)', () => {
+  const w = new World();
+  w.place([0, 1, 0], 'piston', { facing: 'east' });
+  w.place([2, 1, 1], 'piston', { facing: 'east' });
+  w.place([1, 1, 0], 'redstone_block'); // pushed to (2,1,0), where it powers B (a piston ignores power from its front)
+  w.place([0, 1, 1], 'redstone_block'); // powers A from the side
+  const at: Record<string, number> = {};
+  for (let t = 1; t <= 10; t++) {
+    w.step();
+    if (w.read([0, 1, 0], 'extended') && !('A' in at)) at.A = t;
+    if (w.read([2, 1, 1], 'extended') && !('B' in at)) at.B = t;
+  }
+  assert.equal(at.A, 1);
+  assert.equal(at.B! - at.A!, 3);
+});
+
+test('slime blocks conduct redstone power (strongly powered slime powers adjacent lamps)', () => {
+  const w = new World();
+  w.place([0, 0, 0], 'slime_block');
+  w.place([0, 1, 0], 'lever', { face: 'floor' });
+  w.place([1, 0, 0], 'redstone_lamp');
+  w.use([0, 1, 0]);
+  assert.equal(w.read([1, 0, 0], 'lit'), true);
+});

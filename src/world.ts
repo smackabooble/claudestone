@@ -28,7 +28,7 @@ const DEFS: Record<string, Def> = {
   tnt: { solid: true, conductor: true, source: false },
   iron_door: { solid: false, conductor: false, source: false },
   stone_pressure_plate: { solid: false, conductor: false, source: true },
-  slime_block: { solid: true, conductor: false, source: false },
+  slime_block: { solid: true, conductor: true, source: false },
   chest: { solid: false, conductor: false, source: false },
   observer: { solid: true, conductor: false, source: true },
   comparator: { solid: false, conductor: false, source: true },
