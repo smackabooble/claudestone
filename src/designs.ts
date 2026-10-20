@@ -5,6 +5,7 @@ import { buildExtender } from '../examples/double-piston-extender.ts';
 import { buildUpright } from '../examples/double-piston-extender-vertical.ts';
 import { buildFlatArm3 } from '../examples/flat-arm3.ts';
 import { buildFlatArm, QUAD } from '../examples/flat-armN.ts';
+import { buildDoor6 } from '../examples/piston-door-6x6.ts';
 import { buildDoor } from '../examples/piston-door-2x2.ts';
 import { buildDoor3 } from '../examples/piston-door-3x3.ts';
 import { buildDoor4 } from '../examples/piston-door-4x4.ts';
@@ -70,6 +71,13 @@ export const DESIGNS: Design[] = [
     realGameVerified: false, settle: 150,
     usage: 'lever ON = open (about 24 ticks), OFF = closed (about 26). Everything touching slime/honey must stay obsidian.',
     build: (w) => ({ lever: buildDoor4(w).lever }),
+  },
+  {
+    name: 'piston-door-6x6',
+    description: '6x6 slime/honey piston door: 3 rows, each a left 2x2 quad (double extender, 2 out) and a right 2x4 unit (quad extender, 4 out). Door blocks are the glue. Big (about 58x8x56): delay-line circuits stacked every 2 blocks in the side walls.',
+    realGameVerified: false, settle: 800,
+    usage: 'lever OFF = closed, ON = open (torch inverter). Open: all 36 cells clear after about 130 ticks, mechanism fully reset after about 400; close about 65 ticks. Keep the doorway x=0..5, y=1..6 and 4 blocks either side clear.',
+    build: (w) => ({ lever: buildDoor6(w).lever }),
   },
 ];
 

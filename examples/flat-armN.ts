@@ -17,6 +17,29 @@ import { opposite } from '../src/dirs.ts';
 export interface Hold { x: number; on: number; off: number }
 export interface Pulse { x: number; side: number; rear: number }
 export interface ArmSpec { n: number; K: number; holds: Hold[]; pulses: Pulse[]; xw: number; xe: number }
+/** anything with place(): a World, or an Xf that rotates/mirrors/moves a module into a bigger build */
+export interface Placer { place(p: Pos, type: string, props?: Record<string, any>): unknown }
+export interface ArmOpts {
+  /** every row comes from the west trunk only (module never reaches east of the arm's own cells) */
+  oneSided?: boolean;
+  /** place the stone tip block (default true). Doors use their own glue blocks as the tip. */
+  tip?: boolean;
+  /** taps are stone (default) or obsidian (needed next to slime/honey: glue drags stone) */
+  tapBlock?: 'stone' | 'obsidian';
+  /** no lever: leave a plain input dust cell at the returned `input` position */
+  noLever?: boolean;
+}
+const FLIP: Record<string, string> = { east: 'west', west: 'east' };
+/** Place a module mirrored in x (mx) and moved by o. Facings of repeaters/comparators/pistons are mirrored too. */
+export class Xf implements Placer {
+  constructor(private w: Placer, private o: Pos, private mx = false) {}
+  at(p: Pos): Pos { return [(this.mx ? -p[0] : p[0]) + this.o[0], p[1] + this.o[1], p[2] + this.o[2]]; }
+  place(p: Pos, type: string, props: Record<string, any> = {}) {
+    const q = { ...props };
+    if (this.mx && typeof q.facing === 'string' && FLIP[q.facing]) q.facing = FLIP[q.facing];
+    return this.w.place(this.at(p), type, q);
+  }
+}
 
 /** Mechanical sequence found with scripted power (see knowledge/LEARNINGS.md): 4 stages. */
 export const QUAD: ArmSpec = {
@@ -28,6 +51,13 @@ export const QUAD: ArmSpec = {
     { x: 5, side: 16, rear: 19 }, { x: 3, side: 20, rear: 23 }, { x: 4, side: 24, rear: 27 },
     { x: 1, side: 28, rear: 31 }, { x: 2, side: 32, rear: 35 }, { x: 3, side: 36, rear: 39 },
   ],
+};
+
+/** N=2: P1 on 0, P2 on 3; off P2 (3), P1 (7); then one pulse of P2 at tap x1 pulls the tip home. */
+export const DOUBLE: ArmSpec = {
+  n: 2, K: 6, xw: -12, xe: 16,
+  holds: [{ x: 0, on: 0, off: 8 }, { x: 2, on: 3, off: 3 }],
+  pulses: [{ x: 1, side: 12, rear: 15 }],
 };
 
 type XZ = [number, number];
@@ -42,8 +72,9 @@ const line = (a: XZ, b: XZ): XZ[] => {
 interface Src { kind: 'chain' | 'pulse'; abs: number; side?: number; dx: number; z: number; }
 interface Lane { x: number; s: number; srcs: Src[]; deep: number }
 
-export function buildFlatArm(w: World, spec: ArmSpec): { lever: Pos; tip: Pos } {
+export function buildFlatArm(w: Placer, spec: ArmSpec, opts: ArmOpts = {}): { lever: Pos; input: Pos; tip: Pos } {
   const { K, xw, xe } = spec;
+  const one = !!opts.oneSided;
   // ---------- plan ----------
   const lanes: Lane[] = [];
   for (let x = 0; x < 2 * spec.n - 1 + 1; x++) {
@@ -55,8 +86,8 @@ export function buildFlatArm(w: World, spec: ArmSpec): { lever: Pos; tip: Pos } 
   let zTop = 0, zBot = 0;
   for (const s of [-1, 1]) {
     const L = lanes.filter((l) => l.s === s).sort((a, b) => a.x - b.x);
-    const half = Math.floor(L.length / 2);
-    const west = L.slice(0, half), east = L.slice(L.length - half).reverse(), mid = L.length % 2 ? L[half] : null;
+    const half = one ? L.length : Math.floor(L.length / 2);
+    const west = L.slice(0, half), east = one ? [] : L.slice(L.length - half).reverse(), mid = !one && L.length % 2 ? L[half] : null;
     let curW = 2, curE = 2;
     const alloc = (lane: Lane, dxs: number[], cur: number): number => {
       lane.srcs.forEach((src, i) => {
@@ -82,11 +113,11 @@ export function buildFlatArm(w: World, spec: ArmSpec): { lever: Pos; tip: Pos } 
 
   // ---------- arm + taps ----------
   for (let x = 0; x < spec.n; x++) w.place([x, 0, 0], 'sticky_piston', { facing: 'east' });
-  w.place([spec.n, 0, 0], 'stone');
-  for (const l of lanes) { floor.add(`${l.x},${l.s}`); w.place([l.x, 0, l.s], 'stone'); }
+  if (opts.tip !== false) w.place([spec.n, 0, 0], 'stone');
+  for (const l of lanes) { floor.add(`${l.x},${l.s}`); w.place([l.x, 0, l.s], opts.tapBlock ?? 'stone'); }
 
   // ---------- trunk ----------
-  const xc = Math.floor((xw + xe) / 2);
+  const xc = one ? xw : Math.floor((xw + xe) / 2);
   const attach = new Set<string>();
   const rowZ = (l: Lane, src: Src): number[] => (src.kind === 'pulse' ? [src.z, src.z + 2 * l.s] : [src.z]);
   for (const l of lanes) for (const src of l.srcs) for (const z of rowZ(l, src)) attach.add(`${src.dx > 0 ? xw : xe},${z}`);
@@ -103,10 +134,11 @@ export function buildFlatArm(w: World, spec: ArmSpec): { lever: Pos; tip: Pos } 
       else dust(c[0], c[1]);
     });
   };
-  lay([...line([xc, zTop], [xw, zTop]), ...line([xw, zTop + 1], [xw, zBot])]);
-  lay([...line([xc, zTop], [xe, zTop]), ...line([xe, zTop + 1], [xe, zBot])]);
+  lay(one ? line([xw, zTop], [xw, zBot]) : [...line([xc, zTop], [xw, zTop]), ...line([xw, zTop + 1], [xw, zBot])]);
+  if (!one) lay([...line([xc, zTop], [xe, zTop]), ...line([xe, zTop + 1], [xe, zBot])]);
   floor.add(`${xc},${zTop - 1}`); w.place([xc, 0, zTop - 1], 'obsidian');
-  w.place([xc, 1, zTop - 1], 'lever', { face: 'floor' });
+  if (opts.noLever) w.place([xc, 1, zTop - 1], 'redstone_wire');
+  else w.place([xc, 1, zTop - 1], 'lever', { face: 'floor' });
   const td = (x: number, z: number) => trunkDelay.get(`${x},${z}`) ?? 0;
 
   // ---------- sources ----------
@@ -124,28 +156,35 @@ export function buildFlatArm(w: World, spec: ArmSpec): { lever: Pos; tip: Pos } 
   };
   for (const l of lanes) {
     const farthest = Math.max(...l.srcs.map((s) => Math.abs(s.z)));
-    for (let z = 1; z <= farthest; z++) dust(l.x, l.s * z);
+    // long lanes lose signal (15 blocks): a repeater (1 rt) every ~10 cells, never at a cell where a row joins
+    const joins = new Set(l.srcs.map((s) => Math.abs(s.z)));
+    const laneReps: number[] = [];
+    for (let z = 10; z < farthest; z += 10) { let a = z; while (joins.has(a)) a++; if (a < farthest) laneReps.push(a); }
+    for (let z = 1; z <= farthest; z++) {
+      if (laneReps.includes(z)) rep(l.x, l.s * z, l.s < 0 ? 'south' : 'north', 1); else dust(l.x, l.s * z);
+    }
+    const laneDelay = (a: number) => laneReps.filter((r) => r < a).length;
     for (const src of l.srcs) {
       const dx = src.dx, X = dx > 0 ? xw : xe, z = src.z, o = l.s; // o: outward step in z
       const first = X + dx;
       if (src.kind === 'chain') {
         const cells = line([first, z], [l.x - dx, z]);
-        row(cells, K + src.abs - td(X, z), dx > 0 ? 'east' : 'west', false, `chain x${l.x} abs${src.abs}`);
+        row(cells, K + src.abs - td(X, z) - laneDelay(Math.abs(z)), dx > 0 ? 'east' : 'west', false, `chain x${l.x} abs${src.abs}`);
       } else {
         const cx = l.x - 2 * dx;
         dust(l.x - dx, z);
         cmp(cx, z, dx > 0 ? 'east' : 'west');
         const rearCells = line([first, z], [l.x - 3 * dx, z]);
-        row(rearCells, K + src.abs - td(X, z), dx > 0 ? 'east' : 'west', true, `pulse x${l.x} rear${src.abs}`);
+        row(rearCells, K + src.abs - td(X, z) - laneDelay(Math.abs(z)), dx > 0 ? 'east' : 'west', true, `pulse x${l.x} rear${src.abs}`);
         const zs = z + 2 * o;
         dust(cx, zs);
         rep(cx, z + o, o > 0 ? 'north' : 'south', 1); // side repeater: between the side dust and the comparator
         const sideCells = line([first, zs], [l.x - 3 * dx, zs]);
-        row(sideCells, K + src.side! - td(X, zs) - 1, dx > 0 ? 'east' : 'west', true, `pulse x${l.x} side${src.side}`);
+        row(sideCells, K + src.side! - td(X, zs) - 1 - laneDelay(Math.abs(z)), dx > 0 ? 'east' : 'west', true, `pulse x${l.x} side${src.side}`);
       }
     }
   }
-  return { lever: [xc, 1, zTop - 1], tip: [spec.n, 0, 0] };
+  return { lever: [xc, 1, zTop - 1], input: [xc, 1, zTop - 1], tip: [spec.n, 0, 0] };
 }
 
 export const tipXN = (w: World, n: number): number | null => {

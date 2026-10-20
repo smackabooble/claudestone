@@ -111,3 +111,14 @@ Curated lessons from building and testing redstone in this simulator. Read this 
   (P4,P3,P4,P2,P3,P4 - a bubble-sort of the gaps). After all pistons are off they sit at x0,x1,x3,x5 and the tip at x7.
   Delay margins about +-1..2 rt per waveform (hold off times and pulse widths are the tightest: keep pulse width 3 rt).
   Gotcha: rep(x,z,OUT,..) takes the OUTPUT direction, facing = opposite. Wrong out dir silently breaks pulses.
+
+- 6x6 DOOR (examples/piston-door-6x6.ts, design `piston-door-6x6`, sim only). Design that worked:
+  * door blocks are slime/honey themselves (no sheets/tails); rows alternate type; row = left quad (N=2 arm) + right unit of 2 quads (8 blocks, N=4 arm).
+  * All arms horizontal, one per row at y=1,3,5, modules one-sided (rows of delay lines extend away from the door),
+    stacked every 2 y (floor at y_a, circuits y_a+1, next module's floor directly on top).
+  * Taps must be OBSIDIAN next to slime (stone gets dragged).  Xf class in flat-armN.ts mirrors/moves a module.
+  * Long lanes need a repeater every ~10 cells (done inside flat-armN.ts, compensated in the chain delays).
+  * Riser: dust staircase (1 up per step) joins the three module inputs; every input cell is a repeater (regenerates);
+    a missing back-input north of the input repeater silently killed the top row. Bus over the doorway at y=8 on a beam.
+  * Lever OFF = closed through a torch inverter. Open ~130 ticks, close ~65.
+  * Why centre quads are the problem: any 2x2 quad needs distance 4 for the centre column, so a row is split left quad (2) + right unit (4).
