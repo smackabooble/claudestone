@@ -126,3 +126,18 @@ Curated lessons from building and testing redstone in this simulator. Read this 
 - REAL GAME CONFIRMED (user, Java 1.21.x): the 6x6 door works. That also confirms the flat-armN.ts generator for N=2 and N=4 (one-sided, stacked, obsidian taps) and the slime/honey-as-door-blocks scheme. Triple (flat-arm3) alone and the stand-alone quad were not separately reported.
 
 - 8x8 DOOR (examples/piston-door-8x8.ts, design `piston-door-8x8`, sim only): same recipe as the confirmed 6x6 but every row is two 8-block units (left/right), all 8 arms are N=4 quad modules. Riser got a repeater at lead k=2 (long staircases lose signal) and the bus joins the stair top from OUTSIDE the stair column (a repeater inside the lead blocks signals flowing the other way).
+
+## 10. Lessons from real compact designs (reference: knowledge/refs/compact-3x3.litematic, user supplied)
+The reference is a 3x3 door in ONE plane (51 blocks: 10 sticky pistons, 7 observers, 2 hoppers, 1 repeater, 7 dust, 1 lever;
+doorway x=3..5,y=6..8 at z=4). The simulator runs it correctly (test/ref-compact3.test.ts: lever closes, reopens, 3 cycles).
+What it does differently from my big doors (and what to copy next):
+1. NO big extenders. The 9 door blocks rest in a ring of nooks around the opening (left column, right column, top row,
+   bottom row) and each is shoved 1-2 cells INTO the opening when closing. Short travel = tiny machine.
+2. The centre block is filled by a piston column from below: a sticky piston extends and pushes a stack that includes
+   another sticky piston (pistons are pushable blocks), so one pulse moves several blocks.
+3. Timing comes from observers chained to each other and to hoppers: an observer watching a hopper fires when the hopper
+   gets powered/unpowered (hopper `enabled` is a block-state change), a cheap level->pulse converter. A single repeater
+   (delay 4) orders the stages. Compare my multi-hundred-block delay-line controllers.
+4. Pistons, observers and stone double as wiring (stone conducts, observer output powers the block behind it).
+5. Pushing two sides toward each other (S> at x=1 and S< at x=7) with a gap in between fills the doorway from both ends.
+=> Next compact designs should be 'ring of nooks + short pushes + observer chain' not 'whole door slides out'.
