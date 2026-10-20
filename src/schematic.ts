@@ -8,7 +8,7 @@ type C = { [k: string]: Tag };
 const num = (v: Tag): number => Number(v as number | bigint);
 
 const DIRECT = new Set([
-  'stone', 'glass', 'obsidian', 'slime_block', 'redstone_wire', 'redstone_block', 'lever', 'repeater',
+  'stone', 'glass', 'obsidian', 'furnace', 'slime_block', 'redstone_wire', 'redstone_block', 'lever', 'repeater',
   'comparator', 'observer', 'redstone_torch', 'redstone_wall_torch', 'redstone_lamp', 'piston',
   'sticky_piston', 'hopper', 'dropper', 'dispenser', 'chest', 'barrel', 'stone_button', 'honey_block', 'tnt', 'stone_pressure_plate',
 ]);
