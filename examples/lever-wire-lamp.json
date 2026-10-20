@@ -1,0 +1,24 @@
+{
+  "blocks": [
+    { "pos": [0,0,0], "type": "stone" },
+    { "pos": [1,0,0], "type": "stone" },
+    { "pos": [2,0,0], "type": "stone" },
+    { "pos": [3,0,0], "type": "stone" },
+    { "pos": [4,1,0], "type": "redstone_lamp" },
+    { "pos": [0,1,0], "type": "lever", "props": { "face": "floor" } },
+    { "pos": [1,1,0], "type": "redstone_wire" },
+    { "pos": [2,1,0], "type": "redstone_wire" },
+    { "pos": [3,1,0], "type": "redstone_wire" }
+  ],
+  "script": [{ "tick": 2, "use": [0,1,0] }, { "tick": 10, "use": [0,1,0] }],
+  "probes": [
+    { "name": "wire3", "pos": [3,1,0] },
+    { "name": "lamp", "pos": [4,1,0] }
+  ],
+  "expect": [
+    { "tick": 2, "probe": "lamp", "equals": true },
+    { "tick": 13, "probe": "lamp", "equals": true },
+    { "tick": 14, "probe": "lamp", "equals": false }
+  ],
+  "ticks": 16
+}

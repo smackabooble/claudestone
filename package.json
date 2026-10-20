@@ -1,0 +1,16 @@
+{
+  "name": "claudestone",
+  "version": "0.1.0",
+  "description": "Headless redstone simulator (Java Edition 1.20 rules) for Claude to build and debug circuits",
+  "type": "module",
+  "scripts": {
+    "test": "node --import tsx --test test/*.test.ts",
+    "sim": "tsx src/cli.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.5",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2"
+  }
+}
