@@ -12,7 +12,7 @@ const glue = (w: World) => w.listBlocks().filter((b) => b.type === 'slime_block'
 test('10x10 door: closes on build, opens/closes 3 times, mechanism returns to the same state', () => {
   const w = new World();
   const { lever, door } = buildDoor10(w);
-  assert.equal(w.listBlocks().filter((b) => b.type === 'sticky_piston').length, 60);
+  assert.equal(w.listBlocks().filter((b) => b.type === 'sticky_piston').length, 100);
   w.run(1500);
   assert.ok(isClosed10(w, door), 'closed after settling');
   const closedSnap = snapshot(w);
@@ -21,7 +21,7 @@ test('10x10 door: closes on build, opens/closes 3 times, mechanism returns to th
     w.use(lever); w.run(1500);
     assert.ok(isOpen10(w, door), `open #${i}`);
     if (i === 0) openSnap = snapshot(w); else assert.equal(snapshot(w), openSnap);
-    assert.equal(glue(w), 90);
+    assert.equal(glue(w), 100);
     w.use(lever); w.run(1500);
     assert.ok(isClosed10(w, door), `closed #${i}`);
     assert.equal(snapshot(w), closedSnap);

@@ -216,7 +216,10 @@ export class World {
   }
   private canSurvive(p: Pos, b: Block): boolean {
     switch (b.type) {
-      case 'redstone_wire': case 'repeater': case 'comparator': case 'redstone_torch': case 'stone_pressure_plate':
+      case 'redstone_wire':
+        // vanilla: dust may also sit on a hopper (a non-conductor that pistons cannot move)
+        return this.sturdy(rel(p, 'down'), 'up') || this.get(rel(p, 'down')).type === 'hopper';
+      case 'repeater': case 'comparator': case 'redstone_torch': case 'stone_pressure_plate':
         return this.sturdy(rel(p, 'down'), 'up');
       case 'iron_door': {
         const below = this.get(rel(p, 'down'));
@@ -577,7 +580,7 @@ export class World {
     const p1 = rel(p, dir);
     const b = this.get(p1);
     if (nonSolidAbove) {
-      if (def(b).solid && this.wireConnectsTo(this.get(rel(p1, 'up')), null)) return 'up';
+      if ((def(b).solid || b.type === 'hopper') && this.wireConnectsTo(this.get(rel(p1, 'up')), null)) return 'up';
     }
     if (this.wireConnectsTo(b, dir) ||
         (!def(b).conductor && this.wireConnectsTo(this.get(rel(p1, 'down')), null))) return 'side';

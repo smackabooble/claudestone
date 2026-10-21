@@ -91,9 +91,9 @@ export const DESIGNS: Design[] = [
   },
   {
     name: 'piston-door-10x10',
-    description: '10x10 slime/honey piston door: 5 bands, each a left and a right 4x2 unit (8 blocks, the 12-push limit with 4 pistons) pulled 5 out by QUINT extenders (10 modules), plus a 1-block edge piece on each side per band (the extended arm piston head fills the cell below it), moved 1 block by a plain sticky piston and gated by a torch AND + delay so it closes after and opens before the units. Whole door flush in z=0. About 105x12x97. Sim only.',
+    description: '10x10 slime/honey piston door, flush, ALL glue: ten 1-tall rows at pitch 1, each side of each row a quint extender pulling a 5-block unit 5 out (100 sticky pistons). Only 2 controller modules (left, right); their tap lanes end in dust+hopper ladders that power the same piston of every row (direct + quasi-connectivity), idea from the abfielder 10x10 reference. About 100x11x69. Sim only.',
     realGameVerified: false, settle: 1500,
-    usage: 'lever OFF = closed, ON = open (torch inverter at the far north end of the left side). Doorway x=0..9, y=1..10, plane z=0. Keep x=0..9 clear south of the door; the edge pieces (open at z=1) and their lines sit in columns x=0 and x=9 for z>=1.',
+    usage: 'lever OFF = closed, ON = open (lever + torch inverter at the far north end of the left side). Doorway x=0..9, y=1..10, plane z=0. Keep x=-15..24 and y=1..10 clear around z=0 (units slide 5 out each side); the flat bus runs across the floor at the north.',
     build: (w) => ({ lever: buildDoor10(w).lever }),
   },
   {

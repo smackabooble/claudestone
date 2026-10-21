@@ -28,6 +28,16 @@ export interface ArmOpts {
   tapBlock?: 'stone' | 'obsidian';
   /** no lever: leave a plain input dust cell at the returned `input` position */
   noLever?: boolean;
+  /** place the arm's sticky pistons at y=0 (default true). Stacked doors place their own rows. */
+  arm?: boolean;
+  /**
+   * Ladder mode for stacked rows: piston rows at y=1..H share every tap (lane plane y=1, arm row y=0 is a dummy).
+   * Each tap lane ends in a zigzag of dust and hoppers (dust may sit on a hopper; hoppers are non-conductors that
+   * pistons cannot move) next to the pistons: dust at z=+-1 on even y powers that row directly and the row below
+   * through quasi-connectivity (a piston is also powered when the cell above it would be). Because the supports are
+   * non-conductors the zigzag only carries power UP, so it is fed at the bottom (a repeater at lane z=3 gives 15).
+   */
+  ladder?: number;
 }
 const FLIP: Record<string, string> = { east: 'west', west: 'east' };
 /** Place a module mirrored in x (mx) and moved by o. Facings of repeaters/comparators/pistons are mirrored too. */
@@ -128,9 +138,9 @@ export function buildFlatArm(w: Placer, spec: ArmSpec, opts: ArmOpts = {}): { le
   const cmp = (x: number, z: number, out: Dir) => { under(x, z); w.place([x, 1, z], 'comparator', { facing: opposite(out), mode: 'subtract' }); };
 
   // ---------- arm + taps ----------
-  for (let x = 0; x < spec.n; x++) w.place([x, 0, 0], 'sticky_piston', { facing: 'east' });
-  if (opts.tip !== false) w.place([spec.n, 0, 0], 'stone');
-  for (const l of lanes) { floor.add(`${l.x},${l.s}`); w.place([l.x, 0, l.s], opts.tapBlock ?? 'stone'); }
+  if (opts.arm !== false) for (let x = 0; x < spec.n; x++) w.place([x, 0, 0], 'sticky_piston', { facing: 'east' });
+  if (opts.tip !== false && opts.arm !== false) w.place([spec.n, 0, 0], 'stone');
+  for (const l of lanes) { if (opts.ladder) continue; floor.add(`${l.x},${l.s}`); w.place([l.x, 0, l.s], opts.tapBlock ?? 'stone'); }
 
   // ---------- trunk ----------
   const xc = one ? xw : Math.floor((xw + xe) / 2);
@@ -180,8 +190,10 @@ export function buildFlatArm(w: Placer, spec: ArmSpec, opts: ArmOpts = {}): { le
     // long lanes lose signal (15 blocks): a repeater (1 rt) every ~10 cells, never at a cell where a row joins
     const joins = new Set(l.srcs.map((s) => Math.abs(s.z)));
     const laneReps: number[] = [];
+    if (opts.ladder && farthest > 3) laneReps.push(3); // strong signal into the ladder
     for (let z = 10; z < farthest; z += 10) { let a = z; while (joins.has(a)) a++; if (a < farthest) laneReps.push(a); }
     for (let z = 1; z <= farthest; z++) {
+      if (opts.ladder && z === 1) { w.place([l.x, 1, l.s], 'hopper', { facing: 'down' }); continue; }
       if (laneReps.includes(z)) rep(l.x, l.s * z, l.s < 0 ? 'south' : 'north', 1); else dust(l.x, l.s * z);
     }
     const laneDelay = (a: number) => laneReps.filter((r) => r < a).length;
@@ -202,6 +214,15 @@ export function buildFlatArm(w: Placer, spec: ArmSpec, opts: ArmOpts = {}): { le
         rep(cx, z + o, o > 0 ? 'north' : 'south', 1); // side repeater: between the side dust and the comparator
         const sideCells = line([first, zs], [l.x - 3 * dx, zs]);
         row(sideCells, K + src.side! - td(X, zs) - 1 - laneDelay(Math.abs(z)), dx > 0 ? 'east' : 'west', true, `pulse x${l.x} side${src.side}`);
+      }
+    }
+  }
+  if (opts.ladder) {
+    for (const l of lanes) {
+      const hop = (p: Pos) => w.place(p, 'hopper', { facing: 'down' });
+      for (let y = 2; y <= opts.ladder; y++) {
+        const A: Pos = [l.x, y, l.s], B: Pos = [l.x, y, 2 * l.s];
+        if (y % 2 === 0) { w.place(A, 'redstone_wire'); hop(B); } else { hop(A); w.place(B, 'redstone_wire'); }
       }
     }
   }
