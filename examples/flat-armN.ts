@@ -60,6 +60,15 @@ export const DOUBLE: ArmSpec = {
   pulses: [{ x: 1, side: 12, rear: 15 }],
 };
 
+/** N=5 (quint). Pulse order found by searching the simulator: 7 5 3 1 6 4 2 5 3 4 (taps), 4 rt apart. */
+export const QUINT: ArmSpec = {
+  n: 5, K: 16, xw: -34, xe: 40,
+  holds: [
+    { x: 0, on: 0, off: 25 }, { x: 2, on: 3, off: 21 }, { x: 4, on: 6, off: 18 }, { x: 6, on: 9, off: 15 }, { x: 8, on: 12, off: 12 },
+  ],
+  pulses: [7, 5, 3, 1, 6, 4, 2, 5, 3, 4].map((x, i) => ({ x, side: 19 + 4 * i, rear: 22 + 4 * i })),
+};
+
 /** N=3 in the generic format (same waveforms as examples/flat-arm3.ts): P1 0/13, P2 3/9, P3 6; pulses P3@x3, P2@x1, P3@x2. */
 export const TRIPLE: ArmSpec = {
   n: 3, K: 10, xw: -16, xe: 22,
@@ -151,14 +160,19 @@ export function buildFlatArm(w: Placer, spec: ArmSpec, opts: ArmOpts = {}): { le
   // ---------- sources ----------
   /** repeater/dust row: `cells` in flow order, ending into `into`. repeaters at the end when `tail` is false (comparator inputs) */
   const row = (cells: XZ[], D: number, outLast: Dir, repeatersLast: boolean, what: string) => {
+    if (process.env.ARM_DEBUG) console.log(`${what}: D=${D} cells=${cells.length}`);
     if (D < 1) throw new Error(`${what}: delay ${D} < 1 (raise K)`);
-    const n = Math.min(cells.length, D);
+    // repeaters spaced evenly along the row (never more than ~8 dust cells apart, dust dies after 15), delays 1..4 each
+    const n = Math.min(cells.length, D, Math.max(Math.ceil(D / 4), Math.ceil(cells.length / 8)));
     if (D > 4 * n) throw new Error(`${what}: delay ${D} does not fit ${cells.length} cells (widen xw/xe)`);
     const d = Array.from({ length: n }, (_, i) => Math.floor(D / n) + (i < D % n ? 1 : 0));
+    const at = new Map<number, number>();
+    for (let j = 0; j < n; j++) at.set(Math.round(((j + 1) * cells.length) / n) - 1, d[j]);
+    void repeatersLast;
     cells.forEach((c, i) => {
-      const k = repeatersLast ? i - (cells.length - n) : i;
-      if (k < 0 || k >= n) { dust(c[0], c[1]); return; }
-      rep(c[0], c[1], i + 1 < cells.length ? dirOf(c, cells[i + 1]) : outLast, d[k]);
+      const dl = at.get(i);
+      if (dl === undefined) { dust(c[0], c[1]); return; }
+      rep(c[0], c[1], i + 1 < cells.length ? dirOf(c, cells[i + 1]) : outLast, dl);
     });
   };
   for (const l of lanes) {
