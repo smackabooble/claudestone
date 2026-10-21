@@ -83,6 +83,8 @@ export const maxStack = (id: string): number =>
 const norm = (id: string): string => id.replace(/^minecraft:/, '');
 
 export class World {
+  /** experimental rule switches used to compare against the real game (defaults = what we believe vanilla 1.20 does) */
+  knobs: { entitiesFirst?: boolean; retractBaseSkip?: boolean; stepExt?: number; stepRet?: number; obsDelay?: number } = {};
   /** optional debug hook: observer triggers etc. (CLI/analysis only) */
   trace?: (msg: string) => void;
   blocks = new Map<string, Block>();
@@ -180,7 +182,7 @@ export class World {
       case 'observer':
         if (b.p.facing === dirToChanged && !b.p.powered && !this.hasTick(q)) {
           if (this.trace) this.trace(`t${this.time} observer ${q.join(',')} saw ${rel(q, dirToChanged).join(',')} (${this.get(rel(q, dirToChanged)).type})`);
-          this.scheduleTick(q, 2, 0);
+          this.scheduleTick(q, this.knobs.obsDelay ?? 2, 0);
         }
         break;
       case 'redstone_torch': case 'redstone_wall_torch': case 'lever': case 'stone_button':
@@ -341,6 +343,7 @@ export class World {
   step(actions?: () => void): void {
     this.time++;
     this.handlingTick = true;
+    if (this.knobs.entitiesFirst) this.tickBlockEntities();
     const due = [...this.pending.values()].filter((t) => t.time <= this.time);
     due.sort((a, b) => a.time - b.time || a.prio - b.prio || a.seq - b.seq);
     for (const t of due) { this.pending.delete(t.k); this.toRunSet.add(t.k); }
@@ -351,7 +354,7 @@ export class World {
       this.tickBlock(t.pos);
     }
     while (this.events.length) this.pistonEvent(this.events.shift()!);
-    this.tickBlockEntities();
+    if (!this.knobs.entitiesFirst) this.tickBlockEntities();
     this.handlingTick = false;
     actions?.();
   }
@@ -1053,7 +1056,8 @@ export class World {
   }
 
   private addMoving(p: Pos, moved: Block, dir: Dir, extending: boolean, isSource: boolean): void {
-    this.ents.set(key(p), { seq: this.beSeq++, moved, dir, extending, isSource, progress: 0, progressO: 0, lastTicked: this.time });
+    const fast = this.knobs.retractBaseSkip && isSource && !extending && (moved.type === 'piston' || moved.type === 'sticky_piston');
+    this.ents.set(key(p), { seq: this.beSeq++, moved, dir, extending, isSource, progress: fast ? 0.5 : 0, progressO: fast ? 0.5 : 0, lastTicked: this.time });
   }
 
   private finishMoving(p: Pos, e: Moving, forced: boolean): void {
@@ -1072,7 +1076,7 @@ export class World {
     e.lastTicked = this.time;
     e.progressO = e.progress;
     if (e.progressO >= 1) this.finishMoving(p, e, false);
-    else e.progress = Math.min(1, e.progress + 0.5);
+    else e.progress = Math.min(1, e.progress + (e.extending ? (this.knobs.stepExt ?? 0.5) : (this.knobs.stepRet ?? 0.5)));
   }
 
   /** Block entities tick in creation order (hoppers, moving pistons). */
