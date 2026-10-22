@@ -40,7 +40,7 @@ export function convertState(full: string, warn: (m: string) => void): { type: s
     case 'redstone_wall_torch': return { type: name, props: keep('facing', 'lit') };
     case 'redstone_lamp': return { type: name, props: keep('lit') };
     case 'piston': case 'sticky_piston': return { type: name, props: keep('facing', 'extended') };
-    case 'hopper': return { type: name, props: keep('facing') };
+    case 'hopper': return { type: name, props: keep('facing', 'enabled') };
     case 'dropper': case 'dispenser': return { type: name, props: keep('facing') };
     default:
       if (/_button$/.test(name)) {

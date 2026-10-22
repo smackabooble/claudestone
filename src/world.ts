@@ -281,7 +281,7 @@ export class World {
       case 'observer': b.p.facing ??= 'north'; b.p.powered ??= false; break;
       case 'note_block': b.p.note ??= 0; b.p.instrument ??= 'harp'; b.p.powered ??= false; break;
       case 'piston': case 'sticky_piston': b.p.facing ??= 'north'; b.p.extended = false; break;
-      case 'hopper': b.p.facing ??= 'down'; b.p.enabled = true; break;
+      case 'hopper': b.p.facing ??= 'down'; b.p.enabled ??= true; break;
       case 'dropper': case 'dispenser': b.p.facing ??= 'north'; b.p.triggered = false; break;
       case 'iron_door': {
         b.p.half = 'lower'; b.p.facing ??= 'north';
