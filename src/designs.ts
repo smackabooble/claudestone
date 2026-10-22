@@ -121,9 +121,9 @@ export const DESIGNS: Design[] = [
   },
   {
     name: 'extender-10-stacked',
-    description: 'The fast 10-long extender with its controller stacked in 4 layers (4 blocks apart) instead of one flat plane: every tap lane sits in one layer and reaches the arm through a torch tower, so the footprint drops from 95x2x135 to 95x14x67. The arm is in the top layer with nothing around it. Simulated only.',
+    description: 'The fast 10-long extender with its controller stacked in 4 layers (4 blocks apart) instead of one flat plane: every tap lane sits in one layer and reaches the arm through a torch tower, so the footprint drops from 95x2x135 to 95x18x68 (4 layers plus a wire plane). The arm is in the top layer with nothing around it. Simulated only.',
     realGameVerified: false, settle: 400,
-    usage: 'lever ON = extend, OFF = retract. The arm is in the TOP plane (y=12): pistons x=0..9, tip x=10 moving to x=20, along +x. Keep x=0..20 clear. The lever is on the west side at the bottom layer.',
+    usage: 'lever ON = extend, OFF = retract. The arm is in the TOP plane (y=12): pistons x=0..9, tip x=10 moving to x=20, along +x. Keep x=0..20 clear. The lever is 3 blocks west of the first piston (top plane); its wire runs down a dust staircase and along a plane under everything.',
     build: (w) => ({ lever: buildLayeredArm(w, makeArmSpec(10, { timing: FAST }), 4).lever }),
   },
   {

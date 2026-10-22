@@ -286,9 +286,33 @@ export function buildLayeredArm(w: Placer, spec: ArmSpec, layers: number, opts: 
     const y0 = 4 * m + 1;
     w.place([xc, y0 + 1, zT - 1], 'redstone_torch', { lit: true }); w.place([xc, y0 + 2, zT - 1], 'stone'); w.place([xc, y0 + 3, zT - 1], 'redstone_torch', { lit: false });
   }
-  const lever: Pos = [xc, 1, zT - 2];
-  if (opts.noLever) w.place(lever, 'redstone_wire'); else w.place(lever, 'lever', { face: 'wall', facing: 'north' });
-  return { lever, tip: [spec.n, 4 * (layers - 1), 0] };
+  if (opts.noLever) { const lv: Pos = [xc, 1, zT - 2]; w.place(lv, 'redstone_wire'); return { lever: lv, tip: [spec.n, 4 * (layers - 1), 0] }; }
+  // lever beside the arm (top plane, 3 west of the first piston). Its wire runs down a dust staircase (x<0, z=0: nothing else
+  // is there), along an empty plane under everything, and up a two-torch tower into the feed tower of the layers.
+  const Y = 4 * (layers - 1), lever: Pos = [-3, Y, 0];
+  const PL = -3; // plane of the long wire (dust level)
+  w.place([xc, PL, zT - 1], 'stone'); w.place([xc, PL + 1, zT - 1], 'redstone_torch', { lit: true });
+  w.place([xc, PL + 2, zT - 1], 'stone'); w.place([xc, PL + 3, zT - 1], 'redstone_torch', { lit: false });
+  w.place([-4, Y, 0], 'stone'); w.place(lever, 'lever', { face: 'wall', facing: 'east' });
+  const flat = (x: number, l: number, z: number, kind: 'dust' | 'rep', face?: Dir) => {
+    w.place([x, l - 1, z], l - 1 < PL ? 'obsidian' : 'stone');
+    if (kind === 'dust') w.place([x, l, z], 'redstone_wire'); else w.place([x, l, z], 'repeater', { facing: face!, delay: 1 });
+  };
+  let x = -4, l = Y + 1, since = 0;
+  w.place([x, l, 0], 'redstone_wire');
+  while (l > PL) {
+    if (since >= 6) { x--; flat(x, l, 0, 'rep', 'east'); x--; flat(x, l, 0, 'dust'); since = 0; continue; }
+    x--; l--; flat(x, l, 0, 'dust'); since++;
+  }
+  // flat part: north along x, then east along z=zT-3 into (xc, zT-2), pointing south into the tower base
+  const xcol = x; let cnt = since;
+  const run = (cells: XZ[], out: (c: XZ, i: number) => Dir) => cells.forEach((c, i) => {
+    cnt++;
+    if (cnt >= 8 && i > 0 && i < cells.length - 1) { flat(c[0], PL, c[1], 'rep', opposite(out(c, i))); cnt = 0; } else flat(c[0], PL, c[1], 'dust');
+  });
+  const north = line([xcol, -1], [xcol, zT - 3]), east = line([xcol + 1, zT - 3], [xc, zT - 3]), south = line([xc, zT - 2], [xc, zT - 2]);
+  run(north, () => 'north'); run(east, () => 'east'); run(south, () => 'south');
+  return { lever, tip: [spec.n, Y, 0] };
 }
 
 export const tipXN = (w: World, n: number): number | null => {
