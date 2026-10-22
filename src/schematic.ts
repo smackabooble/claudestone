@@ -9,7 +9,7 @@ type C = { [k: string]: Tag };
 const num = (v: Tag): number => Number(v as number | bigint);
 
 const DIRECT = new Set([
-  'stone', 'glass', 'obsidian', 'furnace', 'leaves', 'partial', 'campfire', 'slime_block', 'redstone_wire', 'redstone_block', 'lever', 'repeater',
+  'stone', 'glass', 'obsidian', 'furnace', 'leaves', 'partial', 'campfire', 'stairs', 'slime_block', 'redstone_wire', 'redstone_block', 'lever', 'repeater',
   'comparator', 'observer', 'redstone_torch', 'redstone_wall_torch', 'redstone_lamp', 'piston',
   'sticky_piston', 'hopper', 'dropper', 'dispenser', 'chest', 'barrel', 'stone_button', 'honey_block', 'tnt', 'stone_pressure_plate',
 ]);
@@ -59,7 +59,8 @@ export function convertState(full: string, warn: (m: string) => void): { type: s
         warn(`${name}[top] treated as leaves (supports dust on top, does not conduct)`);
         return { type: 'leaves', props: {}, orig: name };
       }
-      if (/_(slab|stairs|carpet|trapdoor|wall|fence|fence_gate|button|pressure_plate)$|(^|_)rail$|^(composter|tripwire_hook|cauldron|lectern|flower_pot|snow)$/.test(name)) {
+      if (/_stairs$/.test(name)) { warn(`${name} imported as a bottom stair (shape follows neighbouring stairs, observers see shape changes)`); return { type: 'stairs', props: { facing: raw.facing ?? 'north', half: 'bottom', shape: raw.shape ?? 'straight' }, orig: name }; }
+      if (/_(slab|carpet|trapdoor|wall|fence|fence_gate|button|pressure_plate)$|(^|_)rail$|^(composter|tripwire_hook|cauldron|lectern|flower_pot|snow)$/.test(name)) {
         warn(`${name} treated as a partial block (no dust support, no conduction)`);
         return { type: 'partial', props: {}, orig: name };
       }

@@ -27,7 +27,8 @@ const DEFS: Record<string, Def> = {
   furnace: { solid: true, conductor: true, source: false }, // block entity: pistons cannot push it
   note_block: { solid: true, conductor: true, source: false }, // right-click changes `note` (a state change observers see); powered state follows redstone
   leaves: { solid: true, conductor: false, source: false }, // full support for dust, but not a redstone conductor
-  partial: { solid: false, conductor: false, source: false }, // slabs, stairs, rails, composter ...
+  partial: { solid: false, conductor: false, source: false }, // slabs, rails, composter ...
+  stairs: { solid: false, conductor: false, source: false }, // bottom stairs: only the shape property (inner/outer corners) matters, observers see it change
   campfire: { solid: false, conductor: false, source: false }, // block entity: immovable
   honey_block: { solid: true, conductor: false, source: false },
   tnt: { solid: true, conductor: true, source: false },
@@ -185,6 +186,11 @@ export class World {
           this.scheduleTick(q, this.knobs.obsDelay ?? 2, 0);
         }
         break;
+      case 'stairs': {
+        const shape = this.stairShape(q, b);
+        if (shape !== b.p.shape) this.setBlock(q, { type: b.type, p: { ...b.p, shape } }, sf);
+        break;
+      }
       case 'redstone_torch': case 'redstone_wall_torch': case 'lever': case 'stone_button':
       case 'repeater': case 'comparator': case 'stone_pressure_plate':
         if (!this.canSurvive(q, b)) this.setBlock(q, AIR, 3);
@@ -613,6 +619,27 @@ export class World {
     if (nW && ns) st.west = 'side';
     return st;
   }
+  /** StairBlock.getStairsShape (bottom half only) */
+  private stairShape(p: Pos, b: Block): string {
+    const f: Dir = b.p.facing;
+    const ccw: Record<string, Dir> = { north: 'west', west: 'south', south: 'east', east: 'north' };
+    const isSt = (q: Pos) => this.get(q).type === 'stairs';
+    const axisOf = (d: Dir) => (d === 'north' || d === 'south' ? 'z' : 'x');
+    const canTake = (d: Dir) => { const o = this.get(rel(p, d)); return o.type !== 'stairs' || o.p.facing !== f; };
+    const front = this.get(rel(p, f));
+    if (front.type === 'stairs') {
+      const d2: Dir = front.p.facing;
+      if (axisOf(d2) !== axisOf(f) && canTake(opposite(d2))) return d2 === ccw[f] ? 'outer_left' : 'outer_right';
+    }
+    const back = this.get(rel(p, opposite(f)));
+    if (back.type === 'stairs') {
+      const d3: Dir = back.p.facing;
+      if (axisOf(d3) !== axisOf(f) && canTake(d3)) return d3 === ccw[f] ? 'inner_left' : 'inner_right';
+    }
+    void isSt;
+    return 'straight';
+  }
+
   private wireShapeUpdate(q: Pos, b: Block, d: Dir, sf: number): void {
     const old = this.sidesOf(b);
     const ns = this.connectingSide(q, d, !this.isConductor(rel(q, 'up')));
