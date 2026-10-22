@@ -27,6 +27,7 @@ export function convertState(full: string, warn: (m: string) => void): { type: s
   if (m[2]) for (const kv of m[2].split(',')) { const [k, v] = kv.split('='); raw[k] = parseVal(v); }
   if (AIR.has(name) || SKIP.has(name)) return null;
   const keep = (...ks: string[]) => Object.fromEntries(ks.filter((k) => k in raw).map((k) => [k, raw[k]]));
+  if (/^[a-z_]+_wool$/.test(name)) return { type: name, props: {} };
   if (/(^|_)copper_bulb$/.test(name)) return { type: 'copper_bulb', props: keep('lit', 'powered'), orig: name }; // oxidation / wax only change light and looks
   switch (name) {
     case 'redstone_wire': return { type: name, props: keep('power', 'north', 'east', 'south', 'west') };
@@ -75,7 +76,7 @@ export function convertState(full: string, warn: (m: string) => void): { type: s
   }
 }
 
-const isSupport = (t: string) => ['stone', 'glass', 'obsidian', 'slime_block', 'redstone_block', 'redstone_lamp', 'copper_bulb', 'observer', 'dropper', 'dispenser', 'barrel', 'piston', 'sticky_piston', 'honey_block', 'tnt'].includes(t);
+const isSupport = (t: string) => t.endsWith('_wool') || ['stone', 'glass', 'obsidian', 'slime_block', 'redstone_block', 'redstone_lamp', 'copper_bulb', 'observer', 'dropper', 'dispenser', 'barrel', 'piston', 'sticky_piston', 'honey_block', 'tnt'].includes(t);
 
 function order(blocks: SpecBlock[]): SpecBlock[] {
   const cmp = (a: SpecBlock, b: SpecBlock) => a.pos[1] - b.pos[1] || a.pos[2] - b.pos[2] || a.pos[0] - b.pos[0];

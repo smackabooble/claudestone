@@ -66,6 +66,9 @@ const DEFS: Record<string, Def> = {
   redstone_wall_torch: { solid: false, conductor: false, source: true },
   repeater: { solid: false, conductor: false, source: true },
 };
+/** all 16 wool colours: ordinary movable solid conductor blocks (colour codes the parts of a build) */
+export const WOOL_COLORS = ['white', 'orange', 'magenta', 'light_blue', 'yellow', 'lime', 'pink', 'gray', 'light_gray', 'cyan', 'purple', 'blue', 'brown', 'green', 'red', 'black'];
+for (const c of WOOL_COLORS) DEFS[`${c}_wool`] = { solid: true, conductor: true, source: false };
 const def = (b: Block): Def => DEFS[b.type] ?? DEFS.air;
 
 type Prio = -3 | -2 | -1 | 0;

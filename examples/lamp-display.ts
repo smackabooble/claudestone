@@ -24,7 +24,7 @@ export interface Lamp7 { buttons: Pos[]; clr: Pos; lamps: Record<string, Pos[]> 
 
 export function buildLampDisplay(w: World): Lamp7 {
   const ox = (n: number) => X0 + STEPX * n;
-  for (let x = PB - 6; x <= XS + 1; x++) for (let z = laneZ(9) - 2; z <= ZR + 1; z++) w.place([x, 1, z], 'obsidian');
+  for (let x = PB - 6; x <= XS + 1; x++) for (let z = laneZ(9) - 2; z <= ZR + 1; z++) w.place([x, 1, z], 'light_gray_wool'); // floor
   const put = (p: Pos, t: string, props?: any) => w.place(p, t, props);
   const buttons: Pos[] = [];
   // ---- R bus: collector (x=PB-1) flows south, then east along z=ZR; repeaters every 12 cells ----
@@ -41,11 +41,11 @@ export function buildLampDisplay(w: World): Lamp7 {
     else put([x, 2, ZR], 'redstone_wire');
   }
   // ---- CLR button on the collector ----
-  put([PB - 3, 2, 6], 'stone'); const clr: Pos = [PB - 2, 2, 6]; put(clr, 'stone_button', { face: 'wall', facing: 'east' });
+  put([PB - 3, 2, 6], 'red_wool'); const clr: Pos = [PB - 2, 2, 6]; put(clr, 'stone_button', { face: 'wall', facing: 'east' });
   for (let n = 0; n < 10; n++) {
     const o = ox(n), zl = laneZ(n);
     // latch: B1 (reset) (o,2,4), T1 (o,2,3) north, Q dust (o,2,2),(o,2,1), B2 (set) (o,2,0), T2 (o+1,2,0) east, return dust x=o+2 z=0..4, (o+1,2,4)
-    put([o, 2, 4], 'stone'); put([o, 2, 0], 'stone');
+    put([o, 2, 4], 'orange_wool'); put([o, 2, 0], 'orange_wool'); // latch blocks
     put([o, 2, 3], 'redstone_wall_torch', { facing: 'north' });
     put([o, 2, 2], 'redstone_wire'); put([o, 2, 1], 'redstone_wire');
     put([o + 1, 2, 0], 'redstone_wall_torch', { facing: 'east' });
@@ -54,7 +54,7 @@ export function buildLampDisplay(w: World): Lamp7 {
     // R stub (south of B1)
     for (let z = 5; z < ZR; z++) put([o, 2, z], 'redstone_wire');
     // button n in the panel: block X (PB+1), button (PB) faces west, collector dust (PB-1); S lane starts at PB+2
-    put([PB + 1, 2, zl], 'stone');
+    put([PB + 1, 2, zl], 'red_wool'); // button block
     const btn: Pos = [PB, 2, zl]; put(btn, 'stone_button', { face: 'wall', facing: 'west' }); buttons.push(btn);
     // S path: lane east along z=zl (2 slow repeaters first: S must outlast R), corner at (o,zl), descent south into B2.
     // A repeater (delay 1) whenever 7 cells of dust have gone by on a straight piece.
@@ -72,13 +72,13 @@ export function buildLampDisplay(w: World): Lamp7 {
     // towers: A at o-2 (true copy, fed from Q via dust (o-1,2,2)), B at o+4 (inverted, fed via (o+3,2,2))
     put([o - 1, 2, 2], 'redstone_wire'); put([o + 3, 2, 2], 'redstone_wire');
     const tower = (tx: number, top: number) => {
-      for (let y = 2; y <= top; y += 2) put([tx, y, TZ], 'stone');
+      for (let y = 2; y <= top; y += 2) put([tx, y, TZ], 'cyan_wool'); // torch tower
       for (let y = 3; y <= top; y += 2) put([tx, y, TZ], 'redstone_torch');
     };
     tower(o - 2, 13); tower(o + 4, 11);
     for (const s of SEGS[n]) {
       const L = LAYER[s]; const tx = L.tw === 'A' ? o - 2 : o + 4;
-      for (let k = 1; k <= 3; k++) { const z = TZ + L.side * k; put([tx, L.y - 1, z], 'stone'); put([tx, L.y, z], 'redstone_wire'); }
+      for (let k = 1; k <= 3; k++) { const z = TZ + L.side * k; put([tx, L.y - 1, z], 'lime_wool'); put([tx, L.y, z], 'redstone_wire'); } // tap supports
     }
   }
   // ---- segment buses and screen ----
@@ -88,7 +88,7 @@ export function buildLampDisplay(w: World): Lamp7 {
     const tees = new Set<number>(); for (let n = 0; n < 10; n++) if (SEGS[n].includes(s)) tees.add(L.tw === 'A' ? ox(n) - 2 : ox(n) + 4);
     let run = 0;
     for (let x = ox(0) - 2; x < XS; x++) {
-      put([x, L.y - 1, zb], 'stone');
+      put([x, L.y - 1, zb], 'lime_wool'); // segment bus supports
       if (run >= 8 && !tees.has(x) && x < XS - 1) { put([x, L.y, zb], 'repeater', { facing: 'west', delay: 1 }); run = 0; } // flows east
       else { put([x, L.y, zb], 'redstone_wire'); run++; }
     }

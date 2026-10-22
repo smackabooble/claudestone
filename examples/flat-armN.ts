@@ -46,6 +46,8 @@ export interface ArmOpts {
   layer?: { lanes: Set<number>; top: boolean; rise: number; zTop?: number };
   /** pulse sources share ONE delay row: the comparator's rear input is the same signal delayed by (rear-side+1) rt through a local repeater (width 1..3 rt), instead of a second long row */
   shared?: boolean;
+  /** build with coloured wool, one colour per part (trunk yellow, hold rows lime, pulse rows light blue, comparators magenta, lanes orange, taps red, towers cyan, input purple, remote wire pink) instead of obsidian floors. Default: on, except ladder doors / obsidian taps (glue drags wool). */
+  wool?: boolean;
 }
 const FLIP: Record<string, string> = { east: 'west', west: 'east' };
 /** Place a module mirrored in x (mx) and moved by o. Facings of repeaters/comparators/pistons are mirrored too. */
@@ -142,7 +144,10 @@ export function buildFlatArm(w: Placer, spec: ArmSpec, opts: ArmOpts = {}): { le
 
   // ---------- placement helpers ----------
   const floor = new Set<string>();
-  const under = (x: number, z: number) => { const k = `${x},${z}`; if (!floor.has(k)) { floor.add(k); w.place([x, 0, z], 'obsidian'); } };
+  const useWool = opts.wool ?? (!opts.ladder && opts.tapBlock !== 'obsidian');
+  const blk = (color: string) => (useWool ? `${color}_wool` : 'obsidian');
+  let part = 'white';
+  const under = (x: number, z: number) => { const k = `${x},${z}`; if (!floor.has(k)) { floor.add(k); w.place([x, 0, z], blk(part)); } };
   const dust = (x: number, z: number) => { under(x, z); w.place([x, 1, z], 'redstone_wire'); };
   const rep = (x: number, z: number, out: Dir, delay: number) => { under(x, z); w.place([x, 1, z], 'repeater', { facing: opposite(out), delay }); };
   const cmp = (x: number, z: number, out: Dir) => { under(x, z); w.place([x, 1, z], 'comparator', { facing: opposite(out), mode: 'subtract' }); };
@@ -153,7 +158,7 @@ export function buildFlatArm(w: Placer, spec: ArmSpec, opts: ArmOpts = {}): { le
   for (const l of lanes) {
     if (opts.ladder) continue;
     if (opts.layer && !opts.layer.top) continue; // lower layers: the tap stone is placed with the tower
-    floor.add(`${l.x},${l.s}`); w.place([l.x, 0, l.s], opts.tapBlock ?? 'stone');
+    floor.add(`${l.x},${l.s}`); w.place([l.x, 0, l.s], opts.tapBlock ?? (useWool ? 'red_wool' : 'stone'));
   }
 
   // ---------- trunk ----------
@@ -175,11 +180,12 @@ export function buildFlatArm(w: Placer, spec: ArmSpec, opts: ArmOpts = {}): { le
       else dust(c[0], c[1]);
     });
   };
+  part = 'yellow';
   lay(one ? line([xw, zTop], [xw, zBot]) : [...line([xc, zTop], [xw, zTop]), ...line([xw, zTop + 1], [xw, zBot])]);
   if (!one) lay([...line([xc, zTop], [xe, zTop]), ...line([xe, zTop + 1], [xe, zBot])]);
-  if (opts.layer) { w.place([xc, 1, zTop - 1], 'stone'); } // feed tower block (the trunk starts next to it)
+  if (opts.layer) { w.place([xc, 1, zTop - 1], useWool ? 'purple_wool' : 'stone'); } // feed tower block (the trunk starts next to it)
   else {
-    floor.add(`${xc},${zTop - 1}`); w.place([xc, 0, zTop - 1], 'obsidian');
+    floor.add(`${xc},${zTop - 1}`); w.place([xc, 0, zTop - 1], blk('purple'));
     if (opts.noLever) w.place([xc, 1, zTop - 1], 'redstone_wire');
     else w.place([xc, 1, zTop - 1], 'lever', { face: 'floor' });
   }
@@ -211,6 +217,7 @@ export function buildFlatArm(w: Placer, spec: ArmSpec, opts: ArmOpts = {}): { le
     if (opts.ladder && farthest > 3) laneReps.push(3); // strong signal into the ladder
     for (let z = 10; z < farthest; z += 10) { let a = z; while (joins.has(a)) a++; if (a < farthest) laneReps.push(a); }
     const tower = opts.layer && !opts.layer.top;
+    part = 'orange';
     for (let z = tower ? 3 : 1; z <= farthest; z++) {
       if (opts.ladder && z === 1) { w.place([l.x, 1, l.s], 'hopper', { facing: 'down' }); continue; }
       if (laneReps.includes(z)) rep(l.x, l.s * z, l.s < 0 ? 'south' : 'north', 1); else dust(l.x, l.s * z);
@@ -218,8 +225,8 @@ export function buildFlatArm(w: Placer, spec: ArmSpec, opts: ArmOpts = {}): { le
     if (tower) {
       // block at z=2 (the lane dust points into it), torch/block tower up to the plane of the arm, tap stone + dust beside the arm
       const rise = opts.layer!.rise, tz = 2 * l.s;
-      for (let j = 0; j <= rise; j++) { if (j % 2 === 0) w.place([l.x, 1 + j, tz], 'stone'); else w.place([l.x, 1 + j, tz], 'redstone_torch', { lit: j % 4 === 1 }); } // rest state: input off, torches alternate lit / unlit
-      w.place([l.x, rise, l.s], opts.tapBlock ?? 'stone');
+      for (let j = 0; j <= rise; j++) { if (j % 2 === 0) w.place([l.x, 1 + j, tz], useWool ? 'cyan_wool' : 'stone'); else w.place([l.x, 1 + j, tz], 'redstone_torch', { lit: j % 4 === 1 }); } // rest state: input off, torches alternate lit / unlit
+      w.place([l.x, rise, l.s], opts.tapBlock ?? (useWool ? 'red_wool' : 'stone'));
       w.place([l.x, rise + 1, l.s], 'redstone_wire');
     }
     const laneDelay = (a: number) => laneReps.filter((r) => r < a).length;
@@ -227,16 +234,20 @@ export function buildFlatArm(w: Placer, spec: ArmSpec, opts: ArmOpts = {}): { le
       const dx = src.dx, X = dx > 0 ? xw : xe, z = src.z, o = l.s; // o: outward step in z
       const first = X + dx;
       if (src.kind === 'chain') {
+        part = 'lime';
         const cells = line([first, z], [l.x - dx, z]);
         row(cells, K + src.abs - td(X, z) - laneDelay(Math.abs(z)), dx > 0 ? 'east' : 'west', false, `chain x${l.x} abs${src.abs}`);
       } else {
         const cx = l.x - 2 * dx;
+        part = 'magenta';
         dust(l.x - dx, z);
         cmp(cx, z, dx > 0 ? 'east' : 'west');
         if (sharedOk(src)) {
           // one row to A (x = l.x-4dx), then: rear = A -> repeater (delay rear-side+1) -> comparator; side = A -> dust around -> side repeater -> comparator
           const A = l.x - 4 * dx, out: Dir = dx > 0 ? 'east' : 'west';
+          part = 'light_blue';
           row(line([first, z], [l.x - 5 * dx, z]), K + src.side! - td(X, z) - 1 - laneDelay(Math.abs(z)), out, true, `pulse x${l.x} row${src.side}`);
+          part = 'magenta';
           dust(A, z);
           rep(l.x - 3 * dx, z, out, src.abs - src.side! + 1);
           const zs2 = z + 2 * o;
@@ -244,11 +255,14 @@ export function buildFlatArm(w: Placer, spec: ArmSpec, opts: ArmOpts = {}): { le
           rep(cx, z + o, o > 0 ? 'north' : 'south', 1);
           continue;
         }
+        part = 'light_blue';
         const rearCells = line([first, z], [l.x - 3 * dx, z]);
         row(rearCells, K + src.abs - td(X, z) - laneDelay(Math.abs(z)), dx > 0 ? 'east' : 'west', true, `pulse x${l.x} rear${src.abs}`);
+        part = 'magenta';
         const zs = z + 2 * o;
         dust(cx, zs);
         rep(cx, z + o, o > 0 ? 'north' : 'south', 1); // side repeater: between the side dust and the comparator
+        part = 'light_blue';
         const sideCells = line([first, zs], [l.x - 3 * dx, zs]);
         row(sideCells, K + src.side! - td(X, zs) - 1 - laneDelay(Math.abs(z)), dx > 0 ? 'east' : 'west', true, `pulse x${l.x} side${src.side}`);
       }
@@ -285,7 +299,8 @@ export function buildLayeredArm(w: Placer, spec: ArmSpec, layers: number, opts: 
     for (const { x, weight } of xs.filter((a) => a.x % 2 === par).sort((a, b) => b.weight - a.weight)) { const m = load.indexOf(Math.min(...load)); load[m] += weight; sets[m].add(x); }
   }
   const nul: Placer = { place: () => undefined };
-  const base = { ...opts, noLever: true, arm: false, tip: false };
+  const useWool = opts.wool ?? (!opts.ladder && opts.tapBlock !== 'obsidian');
+  const base = { ...opts, wool: useWool, noLever: true, arm: false, tip: false };
   let zT = 0;
   for (let m = 0; m < layers; m++) zT = Math.min(zT, buildFlatArm(nul, spec, { ...base, layer: { lanes: sets[m], top: m === layers - 1, rise: 4 * (layers - 1 - m) } }).zTop);
   let xc = 0;
@@ -298,18 +313,19 @@ export function buildLayeredArm(w: Placer, spec: ArmSpec, layers: number, opts: 
   // feed tower from the lever up: B0 (layer 0) -> torch, block, torch -> block of layer 1 ...
   for (let m = 0; m < layers - 1; m++) {
     const y0 = 4 * m + 1;
-    w.place([xc, y0 + 1, zT - 1], 'redstone_torch', { lit: true }); w.place([xc, y0 + 2, zT - 1], 'stone'); w.place([xc, y0 + 3, zT - 1], 'redstone_torch', { lit: false });
+    w.place([xc, y0 + 1, zT - 1], 'redstone_torch', { lit: true }); w.place([xc, y0 + 2, zT - 1], useWool ? 'purple_wool' : 'stone'); w.place([xc, y0 + 3, zT - 1], 'redstone_torch', { lit: false });
   }
   if (opts.noLever) { const lv: Pos = [xc, 1, zT - 2]; w.place(lv, 'redstone_wire'); return { lever: lv, tip: [spec.n, 4 * (layers - 1), 0] }; }
   // lever beside the arm (top plane, 3 west of the first piston). Its wire runs down a dust staircase (x<0, z=0: nothing else
   // is there), along an empty plane under everything, and up a two-torch tower into the feed tower of the layers.
   const Y = 4 * (layers - 1), lever: Pos = [-3, Y, 0];
   const PL = -3; // plane of the long wire (dust level)
-  w.place([xc, PL, zT - 1], 'stone'); w.place([xc, PL + 1, zT - 1], 'redstone_torch', { lit: true });
-  w.place([xc, PL + 2, zT - 1], 'stone'); w.place([xc, PL + 3, zT - 1], 'redstone_torch', { lit: false });
-  w.place([-4, Y, 0], 'stone'); w.place(lever, 'lever', { face: 'wall', facing: 'east' });
+  const pk = useWool ? 'pink_wool' : 'stone', pf = useWool ? 'pink_wool' : 'obsidian';
+  w.place([xc, PL, zT - 1], useWool ? 'purple_wool' : 'stone'); w.place([xc, PL + 1, zT - 1], 'redstone_torch', { lit: true });
+  w.place([xc, PL + 2, zT - 1], useWool ? 'purple_wool' : 'stone'); w.place([xc, PL + 3, zT - 1], 'redstone_torch', { lit: false });
+  w.place([-4, Y, 0], pk); w.place(lever, 'lever', { face: 'wall', facing: 'east' });
   const flat = (x: number, l: number, z: number, kind: 'dust' | 'rep', face?: Dir) => {
-    w.place([x, l - 1, z], l - 1 < PL ? 'obsidian' : 'stone');
+    w.place([x, l - 1, z], l - 1 < PL ? pf : pk);
     if (kind === 'dust') w.place([x, l, z], 'redstone_wire'); else w.place([x, l, z], 'repeater', { facing: face!, delay: 1 });
   };
   let x = -4, l = Y + 1, since = 0;

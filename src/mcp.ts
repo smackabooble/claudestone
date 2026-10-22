@@ -30,7 +30,7 @@ const server = new McpServer({ name: 'claudestone', version: '0.2.0' }, {
   instructions:
     'Headless redstone simulator (Java 1.20 rules). FIRST call `learnings` to load what earlier sessions learned (conventions, ' +
     'glue rules, extender timing, door theory). Repeater/comparator `facing` is the INPUT side. Place supports before dust. ' +
-    'Everything next to slime/honey must be obsidian. Use `list_designs`/`build_design` for finished, tested builds. ' +
+    'Everything next to slime/honey must be obsidian. Otherwise build with COLOURED WOOL, one colour per part of the build (trunk, delay rows, taps, ...), and use obsidian only where a block must be immovable. Use `list_designs`/`build_design` for finished, tested builds. ' +
     'Only the double piston extenders are confirmed in the real game; say so honestly. Record new lessons with `add_learning`. Keep replies short.',
 });
 
@@ -42,7 +42,7 @@ server.registerTool('reset', {
 server.registerTool('place', {
   description:
     'Place blocks in order, like a player (neighbor updates run). Place supports first (wire/torch/repeater need a solid block below). ' +
-    'Types: stone glass obsidian slime_block redstone_block redstone_wire lever stone_button redstone_torch redstone_wall_torch ' +
+    'Types: stone glass obsidian white_wool orange_wool magenta_wool light_blue_wool yellow_wool lime_wool pink_wool gray_wool light_gray_wool cyan_wool purple_wool blue_wool brown_wool green_wool red_wool black_wool slime_block redstone_block redstone_wire lever stone_button redstone_torch redstone_wall_torch ' +
     'repeater comparator observer redstone_lamp piston sticky_piston hopper dropper dispenser chest barrel. ' +
     'props: repeater/comparator `facing`=INPUT side (+delay 1-4, mode compare|subtract); observer/piston/hopper/dropper `facing`; ' +
     'lever/button `face` floor|wall|ceiling + `facing`; wall torch `facing`=away from wall; containers `inv`=[{id,count}|null,...].',
