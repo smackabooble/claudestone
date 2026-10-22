@@ -509,6 +509,14 @@ export class World {
         for (const d of DIRS) this.updateNeighborsAt(rel(p, d));
         break;
       case 'repeater': case 'comparator': this.updateNeighborsInFront(p, b); break;
+      case 'observer':
+        // ObserverBlock.onPlace: a powered observer that arrives (e.g. moved by a piston) with no scheduled tick switches off
+        if (old.type !== b.type && b.p.powered && !this.hasTick(p)) {
+          const off = { type: b.type, p: { ...b.p, powered: false } };
+          this.setBlock(p, off, 18);
+          this.updateNeighborsInFront(p, off);
+        }
+        break;
       case 'piston': case 'sticky_piston':
         if (old.type !== b.type && !this.ents.has(key(p))) this.checkIfExtend(p, b);
         break;
