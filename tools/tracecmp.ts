@@ -19,6 +19,7 @@ export function loadTrace(path: string) {
   const init = new Map<string, Cell>(); const ticks: { t: number; ch: [string, Cell][] }[] = [];
   let cur: { t: number; ch: [string, Cell][] } | null = null;
   for (const l of readFileSync(path, 'utf8').split('\n')) {
+    if (l.startsWith('CLICK ')) continue;
     if (l.startsWith('T ')) { cur = { t: Number(l.slice(2)), ch: [] }; ticks.push(cur); continue; }
     const p = parseLine(l.trim()); if (!p) continue;
     if (cur) cur.ch.push(p); else init.set(p[0], p[1]);

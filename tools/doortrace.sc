@@ -5,6 +5,7 @@
 //            ...flip the lever, wait until the door stops...
 //            /doortrace stop
 // Output:    <world>/scripts/doortrace.data/trace.txt    (send me this file)
+// v2: writes a "T <tick>" line EVERY tick (even if nothing changed) and a "CLICK <tick> <block> <x,y,z>" line whenever you right-click a block.
 // Lines: "T <tick>" then "x,y,z <block>{state}" for every block whose block or state changed that tick.
 // The first lines (before the first T) are the starting state. Do NOT freeze ticks, just let it run normally.
 
@@ -61,6 +62,10 @@ __on_tick() -> (
   if (global_on, (
     global_lines = ['T ' + (tick_time() - global_t0)];
     trace_scan(false);
-    if (length(global_lines) > 1, for(global_lines, write_file('trace', 'text', _)));
+    for(global_lines, write_file('trace', 'text', _));
   ));
+);
+
+__on_player_right_clicks_block(player, item_tuple, hand, block, face, hitvec) -> (
+  if (global_on, write_file('trace', 'text', 'CLICK ' + (tick_time() - global_t0) + ' ' + block + ' ' + pos(block)));
 );
