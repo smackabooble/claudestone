@@ -49,6 +49,7 @@ const DEFS: Record<string, Def> = {
   air: { solid: false, conductor: false, source: false },
   stone: { solid: true, conductor: true, source: false },
   pane: { solid: false, conductor: false, source: false }, // glass panes / iron bars: only their connection flags matter (observers see them change)
+  hay_block: { solid: true, conductor: true, source: false }, // like stone, but a campfire above it gets signal_fire=true
   target: { solid: true, conductor: true, source: true }, // solid conductor like stone, but isSignalSource: dust connects to it (output power 0 without projectiles)
   glass: { solid: true, conductor: false, source: false },
   redstone_lamp: { solid: true, conductor: true, source: false },
@@ -188,6 +189,12 @@ export class World {
           this.scheduleTick(q, this.knobs.obsDelay ?? 2, 0);
         }
         break;
+      case 'campfire': {
+        if (dirToChanged !== 'down') break;
+        const sig = this.get(rel(q, 'down')).type === 'hay_block';
+        if (!!b.p.signal_fire !== sig) this.setBlock(q, { type: b.type, p: { ...b.p, signal_fire: sig } }, sf);
+        break;
+      }
       case 'pane': {
         if (!isHorizontal(dirToChanged)) break;
         const nb = this.get(rel(q, dirToChanged));
