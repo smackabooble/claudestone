@@ -57,6 +57,7 @@ const DEFS: Record<string, Def> = {
   target: { solid: true, conductor: true, source: true }, // solid conductor like stone, but isSignalSource: dust connects to it (output power 0 without projectiles)
   glass: { solid: true, conductor: false, source: false },
   redstone_lamp: { solid: true, conductor: true, source: false },
+  copper_bulb: { solid: true, conductor: true, source: false }, // toggles `lit` on every rising edge of neighbour power; comparators read 15 when lit
   redstone_block: { solid: true, conductor: false, source: true },
   redstone_wire: { solid: false, conductor: false, source: true },
   lever: { solid: false, conductor: false, source: true },
@@ -286,6 +287,7 @@ export class World {
       case 'repeater':
         b.p.facing ??= 'north'; b.p.delay ??= 1; b.p.powered ??= false; break;
       case 'redstone_lamp': b.p.lit = b.p.lit ?? this.hasNeighborSignal(p); break;
+      case 'copper_bulb': b.p.lit ??= false; b.p.powered ??= false; break;
       case 'comparator':
         b.p.facing ??= 'north'; b.p.mode ??= 'compare'; b.p.powered ??= false; b.p.output = 0; break;
       case 'observer': b.p.facing ??= 'north'; b.p.powered ??= false; break;
@@ -521,6 +523,7 @@ export class World {
       case 'redstone_torch': case 'redstone_wall_torch':
         if (b.p.lit === this.torchHasSignal(p, b) && !this.willTickThisTick(p)) this.scheduleTick(p, 2, 0);
         break;
+      case 'copper_bulb': this.bulbCheck(p); break;
       case 'redstone_lamp': {
         const sig = this.hasNeighborSignal(p);
         if (b.p.lit !== sig) {
@@ -557,6 +560,7 @@ export class World {
         if (old.type !== b.type && !this.ents.has(key(p))) this.checkIfExtend(p, b);
         break;
       case 'hopper': if (old.type !== b.type) this.hopperPowered(p, b); break;
+      case 'copper_bulb': if (old.type !== b.type) this.bulbCheck(p); break; // CopperBulbBlock.onPlace -> checkAndFlip
       case 'tnt': if (old.type !== b.type && this.hasNeighborSignal(p)) this.primeTnt(p); break;
     }
   }
@@ -885,11 +889,22 @@ export class World {
     this.setBlock(p, AIR, 3);
   }
 
+  /** CopperBulbBlock.checkAndFlip: on a change of the neighbour signal, `powered` follows it and `lit` flips on the rising edge. */
+  private bulbCheck(p: Pos): void {
+    const b = this.get(p);
+    if (b.type !== 'copper_bulb') return;
+    const sig = this.hasNeighborSignal(p);
+    if (sig === !!b.p.powered) return;
+    const lit = b.p.powered ? !!b.p.lit : !b.p.lit;
+    this.setBlock(p, { type: b.type, p: { ...b.p, lit, powered: sig } }, 3);
+  }
+
   // ---------- comparator ----------
-  private hasAnalog(b: Block): boolean { return b.type in CONTAINER_SIZE || b.type === 'composter'; }
+  private hasAnalog(b: Block): boolean { return b.type in CONTAINER_SIZE || b.type === 'composter' || b.type === 'copper_bulb'; }
   private analog(b: Block, p: Pos): number {
     if (b.p.signal !== undefined) return b.p.signal; // manual override
     if (b.type === 'composter') return b.p.level ?? 0;
+    if (b.type === 'copper_bulb') return b.p.lit ? 15 : 0;
     const be = this.bes.get(key(p));
     if (!be) return 0;
     let f = 0, used = 0;

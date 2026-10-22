@@ -36,6 +36,7 @@ export function toBlockState(b: Block): string {
     case 'hopper': return st({ enabled: p.enabled !== false, facing: p.facing });
     case 'dropper': case 'dispenser': return st({ facing: p.facing, triggered: !!p.triggered });
     case 'redstone_lamp': return st({ lit: !!p.lit });
+    case 'copper_bulb': return st({ lit: !!p.lit, powered: !!p.powered });
     case 'iron_door': return st({ facing: p.facing, half: p.half, hinge: 'left', open: !!p.open, powered: !!p.powered });
     case 'stone_pressure_plate': return st({ powered: !!p.powered });
     case 'chest': return st({ facing: 'north', type: 'single', waterlogged: false });
