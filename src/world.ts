@@ -48,6 +48,7 @@ const DEFS: Record<string, Def> = {
   moving_piston: { solid: false, conductor: false, source: false },
   air: { solid: false, conductor: false, source: false },
   stone: { solid: true, conductor: true, source: false },
+  pane: { solid: false, conductor: false, source: false }, // glass panes / iron bars: only their connection flags matter (observers see them change)
   target: { solid: true, conductor: true, source: true }, // solid conductor like stone, but isSignalSource: dust connects to it (output power 0 without projectiles)
   glass: { solid: true, conductor: false, source: false },
   redstone_lamp: { solid: true, conductor: true, source: false },
@@ -187,6 +188,13 @@ export class World {
           this.scheduleTick(q, this.knobs.obsDelay ?? 2, 0);
         }
         break;
+      case 'pane': {
+        if (!isHorizontal(dirToChanged)) break;
+        const nb = this.get(rel(q, dirToChanged));
+        const attach = nb.type === 'pane' || (nb.type !== 'leaves' && this.sturdy(rel(q, dirToChanged), opposite(dirToChanged)));
+        if (!!b.p[dirToChanged] !== attach) this.setBlock(q, { type: b.type, p: { ...b.p, [dirToChanged]: attach } }, sf);
+        break;
+      }
       case 'stairs': {
         const shape = this.stairShape(q, b);
         if (shape !== b.p.shape) this.setBlock(q, { type: b.type, p: { ...b.p, shape } }, sf);

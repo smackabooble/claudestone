@@ -9,7 +9,7 @@ type C = { [k: string]: Tag };
 const num = (v: Tag): number => Number(v as number | bigint);
 
 const DIRECT = new Set([
-  'stone', 'target', 'glass', 'obsidian', 'furnace', 'leaves', 'partial', 'campfire', 'stairs', 'slime_block', 'redstone_wire', 'redstone_block', 'lever', 'repeater',
+  'stone', 'target', 'pane', 'glass', 'obsidian', 'furnace', 'leaves', 'partial', 'campfire', 'stairs', 'slime_block', 'redstone_wire', 'redstone_block', 'lever', 'repeater',
   'comparator', 'observer', 'redstone_torch', 'redstone_wall_torch', 'redstone_lamp', 'piston',
   'sticky_piston', 'hopper', 'dropper', 'dispenser', 'chest', 'barrel', 'stone_button', 'honey_block', 'tnt', 'stone_pressure_plate',
 ]);
@@ -48,6 +48,7 @@ export function convertState(full: string, warn: (m: string) => void): { type: s
         return { type: 'stone_button', props: keep('face', 'facing', 'powered') };
       }
       if (DIRECT.has(name)) return { type: name, props: {} };
+      if (/glass_pane$|^iron_bars$/.test(name)) return { type: 'pane', props: { north: raw.north === true, east: raw.east === true, south: raw.south === true, west: raw.west === true }, orig: name };
       if (/glass/.test(name)) return { type: 'glass', props: {} };
       // shape/behaviour classes (what matters for redstone + pistons): leaves = full support but no power conduction;
       // partial = not a full block (slabs, stairs, rails, composter ...): cannot hold dust, does not conduct

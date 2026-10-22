@@ -21,6 +21,7 @@ export function toBlockState(b: Block): string {
     case 'observer': return st({ facing: p.facing, powered: !!p.powered });
     case 'note_block': return st({ instrument: p.instrument ?? 'harp', note: p.note ?? 0, powered: !!p.powered });
     case 'leaves': return 'minecraft:oak_leaves[distance=1,persistent=true,waterlogged=false]';
+    case 'pane': return `minecraft:glass_pane[east=${!!p.east},north=${!!p.north},south=${!!p.south},waterlogged=false,west=${!!p.west}]`;
     case 'target': return 'minecraft:target[power=0]';
     case 'stairs': return `minecraft:stone_brick_stairs[facing=${p.facing ?? 'north'},half=bottom,shape=${p.shape ?? 'straight'},waterlogged=false]`;
     case 'partial': return 'minecraft:stone_slab[type=bottom,waterlogged=false]';
