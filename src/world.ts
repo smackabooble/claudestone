@@ -387,7 +387,13 @@ export class World {
       this.toRunSet.delete(t.k);
       this.tickBlock(t.pos);
     }
-    while (this.events.length) this.pistonEvent(this.events.shift()!);
+    // ServerLevel.runBlockEvents: events are processed one generation at a time; an event queued while a generation runs
+    // goes into the next one (and is only de-duplicated against events already queued for that next generation)
+    while (this.events.length) {
+      const batch = this.events;
+      this.events = [];
+      for (const e of batch) this.pistonEvent(e);
+    }
     if (!this.knobs.entitiesFirst) this.tickBlockEntities();
     this.handlingTick = false;
     actions?.();
