@@ -28,6 +28,7 @@ export function toBlockState(b: Block): string {
     case 'campfire': return `minecraft:campfire[facing=${p.facing ?? 'north'},lit=false,signal_fire=${!!p.signal_fire},waterlogged=false]`;
     case 'leafblock': return `minecraft:spruce_leaves[distance=${p.distance ?? 7},persistent=true,waterlogged=false]`;
     case 'log': return 'minecraft:oak_log[axis=y]';
+    case 'tripwire_hook': return `minecraft:tripwire_hook[attached=${!!p.attached},facing=${p.facing ?? 'north'},powered=${!!p.powered}]`;
     case 'composter': return `minecraft:composter[level=${p.level ?? 0}]`;
     case 'hay_block': return 'minecraft:hay_block[axis=y]';
     case 'piston': case 'sticky_piston': return st({ extended: !!p.extended, facing: p.facing });

@@ -51,6 +51,7 @@ const DEFS: Record<string, Def> = {
   pane: { solid: false, conductor: false, source: false }, // glass panes / iron bars: only their connection flags matter (observers see them change)
   log: { solid: true, conductor: true, source: false }, // BlockTags.LOGS: leaf distance 0
   leafblock: { solid: true, conductor: false, source: false }, // real leaves with a distance (1..7) that follows nearby logs
+  tripwire_hook: { solid: false, conductor: false, source: true }, // isSignalSource: dust connects to it (it emits only when powered; not modelled)
   composter: { solid: false, conductor: false, source: false }, // analog output = level (comparators read it)
   hay_block: { solid: true, conductor: true, source: false }, // like stone, but a campfire above it gets signal_fire=true
   target: { solid: true, conductor: true, source: true }, // solid conductor like stone, but isSignalSource: dust connects to it (output power 0 without projectiles)
