@@ -12,6 +12,7 @@ import { buildDoor10 } from '../examples/piston-door-10x10.ts';
 import { buildDoor } from '../examples/piston-door-2x2.ts';
 import { buildDoor3 } from '../examples/piston-door-3x3.ts';
 import { buildDoor4 } from '../examples/piston-door-4x4.ts';
+import { buildLampDisplay } from '../examples/lamp-display.ts';
 
 export interface Design {
   name: string;
@@ -95,6 +96,13 @@ export const DESIGNS: Design[] = [
     realGameVerified: true, settle: 1500,
     usage: 'lever OFF = closed, ON = open (lever + torch inverter at the far north end of the left side). Doorway x=0..9, y=1..10, plane z=0. Keep x=-15..24 and y=1..10 clear around z=0 (units slide 5 out each side); the flat bus runs across the floor at the north.',
     build: (w) => ({ lever: buildDoor10(w).lever }),
+  },
+  {
+    name: 'lamp-display',
+    description: '7-segment redstone lamp display with 10 number buttons (0-9) and a CLR button. Press a button and its digit shows and stays (one-hot NOR latches); torch towers carry each digit up to the segment buses, so no wires cross. About 100x13x34. Simulated only, never tried in the real game.',
+    realGameVerified: false, settle: 10,
+    usage: 'Buttons 0-9 in a panel at the west end (one per row, row 0 is the southernmost), CLR button at the south end of the same panel. The lamp screen is at the east end (x=86, 9 wide, 5 rows). After pasting press CLR once. Wait about 4 seconds between presses.',
+    build: (w) => { const l = buildLampDisplay(w); w.run(100); w.use(l.clr); w.run(120); w.use(l.buttons[8]); w.run(150); return { lever: l.buttons[0] }; },
   },
   {
     name: 'piston-door-5x5',
