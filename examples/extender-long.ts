@@ -82,7 +82,7 @@ if (process.argv[1]?.endsWith('extender-long.ts')) {
   const layers = Number(process.argv[4] ?? 1);
   const spec = makeArmSpec(n, fast ? { timing: FAST } : {});
   console.log(`N=${n} layers=${layers} pulses=${spec.pulses.length} K=${spec.K} xw=${spec.xw} xe=${spec.xe}`);
-  const build = (w: World) => (layers > 1 ? buildLayeredArm(w, spec, layers) : buildFlatArm(w, spec));
+  const build = (w: World) => (layers > 1 ? buildLayeredArm(w, spec, layers, { shared: true }) : buildFlatArm(w, spec, { shared: true }));
   const w = new World();
   const { lever } = build(w);
   const size = (() => { const b = w.listBlocks(); const mn = [1e9, 1e9, 1e9], mx = [-1e9, -1e9, -1e9]; for (const k of b) for (let i = 0; i < 3; i++) { mn[i] = Math.min(mn[i], k.pos[i]); mx[i] = Math.max(mx[i], k.pos[i]); } return mx.map((v, i) => v - mn[i] + 1).join('x'); })();

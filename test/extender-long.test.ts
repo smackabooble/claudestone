@@ -13,7 +13,7 @@ for (const [n, fast] of [[6, false], [10, false], [10, true], [12, true]] as con
   test(`${n}-long extender${fast ? ' (fast)' : ''}: reaches ${n} blocks and comes home, twice`, () => {
     const spec = makeArmSpec(n, fast ? { timing: FAST } : {});
     const w = new World();
-    const { lever } = buildFlatArm(w, spec);
+    const { lever } = buildFlatArm(w, spec, { shared: true });
     w.run(400);
     assert.ok(homeN(w, n), 'home after settling');
     const T = spec.pulses.at(-1)!.rear * 2 + 400;
@@ -41,7 +41,7 @@ for (const [n, L] of [[6, 3], [10, 4]] as const) {
   test(`${n}-long extender stacked in ${L} layers: reaches ${n} blocks, comes home, survives export/import`, () => {
     const spec = makeArmSpec(n, { timing: FAST });
     const w = new World();
-    const { lever } = buildLayeredArm(w, spec, L);
+    const { lever } = buildLayeredArm(w, spec, L, { shared: true });
     const Y = 4 * (L - 1);
     w.run(400);
     assert.ok(armAt(w, n, Y).home, 'home after settling');

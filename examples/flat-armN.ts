@@ -44,6 +44,8 @@ export interface ArmOpts {
    * that rises `rise` blocks to the tap stone beside the arm, and the input is a stone block (feed tower) not a lever.
    */
   layer?: { lanes: Set<number>; top: boolean; rise: number; zTop?: number };
+  /** pulse sources share ONE delay row: the comparator's rear input is the same signal delayed by (rear-side+1) rt through a local repeater (width 1..3 rt), instead of a second long row */
+  shared?: boolean;
 }
 const FLIP: Record<string, string> = { east: 'west', west: 'east' };
 /** Place a module mirrored in x (mx) and moved by o. Facings of repeaters/comparators/pistons are mirrored too. */
@@ -157,7 +159,8 @@ export function buildFlatArm(w: Placer, spec: ArmSpec, opts: ArmOpts = {}): { le
   // ---------- trunk ----------
   const xc = one ? xw : Math.floor((xw + xe) / 2);
   const attach = new Set<string>();
-  const rowZ = (l: Lane, src: Src): number[] => (src.kind === 'pulse' ? [src.z, src.z + 2 * l.s] : [src.z]);
+  const sharedOk = (src: Src) => !!opts.shared && src.kind === 'pulse' && src.abs - src.side! >= 1 && src.abs - src.side! <= 3;
+  const rowZ = (l: Lane, src: Src): number[] => (src.kind === 'pulse' && !sharedOk(src) ? [src.z, src.z + 2 * l.s] : [src.z]);
   for (const l of lanes) for (const src of l.srcs) for (const z of rowZ(l, src)) attach.add(`${src.dx > 0 ? xw : xe},${z}`);
   attach.add(`${xc},${zTop}`);
   const trunkDelay = new Map<string, number>();
@@ -230,6 +233,17 @@ export function buildFlatArm(w: Placer, spec: ArmSpec, opts: ArmOpts = {}): { le
         const cx = l.x - 2 * dx;
         dust(l.x - dx, z);
         cmp(cx, z, dx > 0 ? 'east' : 'west');
+        if (sharedOk(src)) {
+          // one row to A (x = l.x-4dx), then: rear = A -> repeater (delay rear-side+1) -> comparator; side = A -> dust around -> side repeater -> comparator
+          const A = l.x - 4 * dx, out: Dir = dx > 0 ? 'east' : 'west';
+          row(line([first, z], [l.x - 5 * dx, z]), K + src.side! - td(X, z) - 1 - laneDelay(Math.abs(z)), out, true, `pulse x${l.x} row${src.side}`);
+          dust(A, z);
+          rep(l.x - 3 * dx, z, out, src.abs - src.side! + 1);
+          const zs2 = z + 2 * o;
+          dust(A, z + o); dust(A, zs2); dust(l.x - 3 * dx, zs2); dust(cx, zs2);
+          rep(cx, z + o, o > 0 ? 'north' : 'south', 1);
+          continue;
+        }
         const rearCells = line([first, z], [l.x - 3 * dx, z]);
         row(rearCells, K + src.abs - td(X, z) - laneDelay(Math.abs(z)), dx > 0 ? 'east' : 'west', true, `pulse x${l.x} rear${src.abs}`);
         const zs = z + 2 * o;
