@@ -1111,6 +1111,9 @@ export class World {
     if (this.get(p).type === 'moving_piston') {
       const nb = forced && e.isSource ? AIR : { type: e.moved.type, p: { ...e.moved.p } };
       this.setBlock(p, nb, 3);
+      // PistonMovingBlockEntity.tick: Block.updateFromNeighbourShapes(movedState): the arriving block gets updateShape from all
+      // six sides, so a moved OBSERVER (facing any side) starts its own pulse
+      if (!(forced && e.isSource)) for (const d of SHAPE_ORDER) this.shapeUpdate(p, d, 0);
       this.neighborChanged(p, p);
     }
   }
