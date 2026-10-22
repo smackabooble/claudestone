@@ -1,6 +1,6 @@
 # 10x10 piston door (slime / honey), flush, all glue
 
-**Simulated only (Java 1.20 rules). Not tested in the real game.** Needs your testing, and the quasi-connectivity part is the first thing to check.
+**Confirmed working in the real game (Java 1.21.x).** Designed and verified in the simulator first.
 
 - Doorway: x=0..9, y=1..10, one flat plane z=0. Closed = only slime and honey in the doorway.
 - 10 rows, each 1 tall, stacked with no gaps. Each row has a quint extender (5 sticky pistons) on each side pulling a 5-block unit 5 blocks out: left unit x=0..4 -> x=-5..-1, right unit x=5..9 -> x=10..14. Slime and honey alternate per row and between the two units of a row.

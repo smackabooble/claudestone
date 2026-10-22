@@ -178,3 +178,4 @@ What it does differently from my big doors (and what to copy next):
 - Generator: ArmOpts.ladder = H (rows y=1..H share the taps, arm:false skips the dummy arm). Each tap lane is the same waveform as before; only the tap end differs. Door builder: 2 modules (left QUINT oneSided, right mirrored via Xf), flat bus on the floor, lever + torch at the left input.
 - Sim: hopper counts as a dust support and an 'up' connection target (src/world.ts).
 - Still to check in the real game: quasi-connectivity dust ladder timing, hoppers next to glue.
+- REAL GAME CONFIRMED (user): the pitch-1 dust+hopper ladder 10x10 door works. So hoppers as dust supports, quasi-connectivity rows and the ladder fed from the bottom are all correct in vanilla.
