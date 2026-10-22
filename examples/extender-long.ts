@@ -11,7 +11,7 @@
 import { writeFileSync } from 'node:fs';
 import { World } from '../src/world.ts';
 import { exportSchem } from '../src/export.ts';
-import { buildFlatArm, homeN, tipXN } from './flat-armN.ts';
+import { buildFlatArm, buildLayeredArm, homeN, tipXN } from './flat-armN.ts';
 import type { ArmSpec } from './flat-armN.ts';
 
 export function pulseOrder(n: number): number[] {
@@ -79,19 +79,26 @@ export function makeArmSpec(n: number, opt: { K?: number; xw?: number; xe?: numb
 if (process.argv[1]?.endsWith('extender-long.ts')) {
   const n = Number(process.argv[2] ?? 10);
   const fast = process.argv[3] === 'fast';
+  const layers = Number(process.argv[4] ?? 1);
   const spec = makeArmSpec(n, fast ? { timing: FAST } : {});
-  console.log(`N=${n} pulses=${spec.pulses.length} order=${pulseOrder(n).join(' ')} K=${spec.K} xw=${spec.xw} xe=${spec.xe}`);
+  console.log(`N=${n} layers=${layers} pulses=${spec.pulses.length} K=${spec.K} xw=${spec.xw} xe=${spec.xe}`);
+  const build = (w: World) => (layers > 1 ? buildLayeredArm(w, spec, layers) : buildFlatArm(w, spec));
   const w = new World();
-  const { lever } = buildFlatArm(w, spec);
+  const { lever } = build(w);
   const size = (() => { const b = w.listBlocks(); const mn = [1e9, 1e9, 1e9], mx = [-1e9, -1e9, -1e9]; for (const k of b) for (let i = 0; i < 3; i++) { mn[i] = Math.min(mn[i], k.pos[i]); mx[i] = Math.max(mx[i], k.pos[i]); } return mx.map((v, i) => v - mn[i] + 1).join('x'); })();
   console.log('built', w.listBlocks().length, 'blocks, size', size);
+  const Y = 4 * (layers - 1);
+  const tip = () => { for (let x = -1; x <= 3 * n + 2; x++) if (w.get([x, Y, 0]).type === 'stone') return x; return null; };
+  const home = () => tip() === n && Array.from({ length: n }, (_, x) => x).every((x) => w.get([x, Y, 0]).type === 'sticky_piston' && !w.read([x, Y, 0], 'extended'));
   w.run(400);
-  console.log('rest: home', homeN(w, n));
-  w.use(lever); w.run(spec.pulses.at(-1)!.rear * 2 + 200);
-  console.log('lever ON: tip at', tipXN(w, n), '(want', 2 * n + ')');
-  w.use(lever); w.run(spec.pulses.at(-1)!.rear * 2 + 400);
-  console.log('lever OFF: tip at', tipXN(w, n), 'home', homeN(w, n));
-  const f = new World(); buildFlatArm(f, spec); f.run(400);
-  writeFileSync(`examples/extender-${n}${fast ? '-fast' : ''}.schem`, exportSchem(f).buffer);
-  console.log(`wrote examples/extender-${n}${fast ? '-fast' : ''}.schem`);
+  console.log('rest: home', home());
+  const T = spec.pulses.at(-1)!.rear * 2 + 200;
+  w.use(lever); w.run(T);
+  console.log('lever ON: tip at', tip(), '(want', 2 * n + ')');
+  w.use(lever); w.run(T + 200);
+  console.log('lever OFF: tip at', tip(), 'home', home());
+  const f = new World(); build(f); f.run(400);
+  const name = `examples/extender-${n}${fast ? '-fast' : ''}${layers > 1 ? `-stacked${layers}` : ''}.schem`;
+  writeFileSync(name, exportSchem(f).buffer);
+  console.log('wrote', name);
 }

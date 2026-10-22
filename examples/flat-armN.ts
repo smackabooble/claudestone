@@ -38,6 +38,12 @@ export interface ArmOpts {
    * non-conductors the zigzag only carries power UP, so it is fed at the bottom (a repeater at lane z=3 gives 15).
    */
   ladder?: number;
+  /**
+   * Layered build (see buildLayeredArm): this call builds one controller layer. Lanes outside `lanes` are skipped,
+   * rows start 4 cells out from the arm (room for the lane towers), lower layers end their lanes in a torch tower
+   * that rises `rise` blocks to the tap stone beside the arm, and the input is a stone block (feed tower) not a lever.
+   */
+  layer?: { lanes: Set<number>; top: boolean; rise: number; zTop?: number };
 }
 const FLIP: Record<string, string> = { east: 'west', west: 'east' };
 /** Place a module mirrored in x (mx) and moved by o. Facings of repeaters/comparators/pistons are mirrored too. */
@@ -98,7 +104,7 @@ const line = (a: XZ, b: XZ): XZ[] => {
 interface Src { kind: 'chain' | 'pulse'; abs: number; side?: number; dx: number; z: number; }
 interface Lane { x: number; s: number; srcs: Src[]; deep: number }
 
-export function buildFlatArm(w: Placer, spec: ArmSpec, opts: ArmOpts = {}): { lever: Pos; input: Pos; tip: Pos } {
+export function buildFlatArm(w: Placer, spec: ArmSpec, opts: ArmOpts = {}): { lever: Pos; input: Pos; tip: Pos; zTop: number; xc: number } {
   const { K, xw, xe } = spec;
   const one = !!opts.oneSided;
   // ---------- plan ----------
@@ -107,14 +113,14 @@ export function buildFlatArm(w: Placer, spec: ArmSpec, opts: ArmOpts = {}): { le
     const srcs: Src[] = [];
     for (const h of spec.holds) if (h.x === x) { srcs.push({ kind: 'chain', abs: h.on, dx: 0, z: 0 }); if (h.off !== h.on) srcs.push({ kind: 'chain', abs: h.off, dx: 0, z: 0 }); }
     for (const p of spec.pulses) if (p.x === x) srcs.push({ kind: 'pulse', abs: p.rear, side: p.side, dx: 0, z: 0 });
-    if (srcs.length) lanes.push({ x, s: x % 2 === 0 ? -1 : 1, srcs, deep: 0 });
+    if (srcs.length && (!opts.layer || opts.layer.lanes.has(x))) lanes.push({ x, s: x % 2 === 0 ? -1 : 1, srcs, deep: 0 });
   }
   let zTop = 0, zBot = 0;
   for (const s of [-1, 1]) {
     const L = lanes.filter((l) => l.s === s).sort((a, b) => a.x - b.x);
     const half = one ? L.length : Math.floor(L.length / 2);
     const west = L.slice(0, half), east = one ? [] : L.slice(L.length - half).reverse(), mid = !one && L.length % 2 ? L[half] : null;
-    let curW = 2, curE = 2;
+    let curW = opts.layer ? 5 : 2, curE = opts.layer ? 5 : 2;
     const alloc = (lane: Lane, dxs: number[], cur: number): number => {
       lane.srcs.forEach((src, i) => {
         src.dx = dxs[i % dxs.length]; src.z = s * cur;
@@ -129,6 +135,8 @@ export function buildFlatArm(w: Placer, spec: ArmSpec, opts: ArmOpts = {}): { le
     const deepest = Math.max(0, ...L.map((l) => l.deep));
     if (s < 0) zTop = -(deepest + 3); else zBot = deepest + 3;
   }
+  const zTopNeeded = zTop;
+  if (opts.layer?.zTop !== undefined) zTop = Math.min(zTop, opts.layer.zTop);
 
   // ---------- placement helpers ----------
   const floor = new Set<string>();
@@ -140,7 +148,11 @@ export function buildFlatArm(w: Placer, spec: ArmSpec, opts: ArmOpts = {}): { le
   // ---------- arm + taps ----------
   if (opts.arm !== false) for (let x = 0; x < spec.n; x++) w.place([x, 0, 0], 'sticky_piston', { facing: 'east' });
   if (opts.tip !== false && opts.arm !== false) w.place([spec.n, 0, 0], 'stone');
-  for (const l of lanes) { if (opts.ladder) continue; floor.add(`${l.x},${l.s}`); w.place([l.x, 0, l.s], opts.tapBlock ?? 'stone'); }
+  for (const l of lanes) {
+    if (opts.ladder) continue;
+    if (opts.layer && !opts.layer.top) continue; // lower layers: the tap stone is placed with the tower
+    floor.add(`${l.x},${l.s}`); w.place([l.x, 0, l.s], opts.tapBlock ?? 'stone');
+  }
 
   // ---------- trunk ----------
   const xc = one ? xw : Math.floor((xw + xe) / 2);
@@ -162,9 +174,12 @@ export function buildFlatArm(w: Placer, spec: ArmSpec, opts: ArmOpts = {}): { le
   };
   lay(one ? line([xw, zTop], [xw, zBot]) : [...line([xc, zTop], [xw, zTop]), ...line([xw, zTop + 1], [xw, zBot])]);
   if (!one) lay([...line([xc, zTop], [xe, zTop]), ...line([xe, zTop + 1], [xe, zBot])]);
-  floor.add(`${xc},${zTop - 1}`); w.place([xc, 0, zTop - 1], 'obsidian');
-  if (opts.noLever) w.place([xc, 1, zTop - 1], 'redstone_wire');
-  else w.place([xc, 1, zTop - 1], 'lever', { face: 'floor' });
+  if (opts.layer) { w.place([xc, 1, zTop - 1], 'stone'); } // feed tower block (the trunk starts next to it)
+  else {
+    floor.add(`${xc},${zTop - 1}`); w.place([xc, 0, zTop - 1], 'obsidian');
+    if (opts.noLever) w.place([xc, 1, zTop - 1], 'redstone_wire');
+    else w.place([xc, 1, zTop - 1], 'lever', { face: 'floor' });
+  }
   const td = (x: number, z: number) => trunkDelay.get(`${x},${z}`) ?? 0;
 
   // ---------- sources ----------
@@ -192,9 +207,17 @@ export function buildFlatArm(w: Placer, spec: ArmSpec, opts: ArmOpts = {}): { le
     const laneReps: number[] = [];
     if (opts.ladder && farthest > 3) laneReps.push(3); // strong signal into the ladder
     for (let z = 10; z < farthest; z += 10) { let a = z; while (joins.has(a)) a++; if (a < farthest) laneReps.push(a); }
-    for (let z = 1; z <= farthest; z++) {
+    const tower = opts.layer && !opts.layer.top;
+    for (let z = tower ? 3 : 1; z <= farthest; z++) {
       if (opts.ladder && z === 1) { w.place([l.x, 1, l.s], 'hopper', { facing: 'down' }); continue; }
       if (laneReps.includes(z)) rep(l.x, l.s * z, l.s < 0 ? 'south' : 'north', 1); else dust(l.x, l.s * z);
+    }
+    if (tower) {
+      // block at z=2 (the lane dust points into it), torch/block tower up to the plane of the arm, tap stone + dust beside the arm
+      const rise = opts.layer!.rise, tz = 2 * l.s;
+      for (let j = 0; j <= rise; j++) { if (j % 2 === 0) w.place([l.x, 1 + j, tz], 'stone'); else w.place([l.x, 1 + j, tz], 'redstone_torch', { lit: j % 4 === 1 }); } // rest state: input off, torches alternate lit / unlit
+      w.place([l.x, rise, l.s], opts.tapBlock ?? 'stone');
+      w.place([l.x, rise + 1, l.s], 'redstone_wire');
     }
     const laneDelay = (a: number) => laneReps.filter((r) => r < a).length;
     for (const src of l.srcs) {
@@ -226,7 +249,46 @@ export function buildFlatArm(w: Placer, spec: ArmSpec, opts: ArmOpts = {}): { le
       }
     }
   }
-  return { lever: [xc, 1, zTop - 1], input: [xc, 1, zTop - 1], tip: [spec.n, 0, 0] };
+  return { lever: [xc, 1, zTop - 1], input: [xc, 1, zTop - 1], tip: [spec.n, 0, 0], zTop: zTopNeeded, xc };
+}
+
+/**
+ * Controller stacked in `layers` planes 4 blocks apart instead of one flat plane: every tap lane lives in one layer and
+ * reaches the tap stone beside the arm through a torch tower (2 torches per layer step, so the signal stays true and every
+ * lane gets the same extra delay 2*(layers-1) rt, which shifts all waveforms equally). The lever feeds every layer's trunk
+ * through a tower too. The arm is in the TOP layer's plane (y = 4*(layers-1)); everything else is below it.
+ */
+export function buildLayeredArm(w: Placer, spec: ArmSpec, layers: number, opts: ArmOpts = {}): { lever: Pos; tip: Pos; size?: never } {
+  const xs: { x: number; weight: number }[] = [];
+  for (let x = 0; x < 2 * spec.n; x++) {
+    const weight = spec.holds.filter((h) => h.x === x).reduce((a, h) => a + (h.off !== h.on ? 4 : 2), 0) + spec.pulses.filter((p) => p.x === x).length * 4;
+    if (weight) xs.push({ x, weight });
+  }
+  // balance the rows per side (even taps north, odd south): the depth of a layer is set by its fuller side
+  const sets: Set<number>[] = Array.from({ length: layers }, () => new Set<number>());
+  for (const par of [0, 1]) {
+    const load = Array(layers).fill(0);
+    for (const { x, weight } of xs.filter((a) => a.x % 2 === par).sort((a, b) => b.weight - a.weight)) { const m = load.indexOf(Math.min(...load)); load[m] += weight; sets[m].add(x); }
+  }
+  const nul: Placer = { place: () => undefined };
+  const base = { ...opts, noLever: true, arm: false, tip: false };
+  let zT = 0;
+  for (let m = 0; m < layers; m++) zT = Math.min(zT, buildFlatArm(nul, spec, { ...base, layer: { lanes: sets[m], top: m === layers - 1, rise: 4 * (layers - 1 - m) } }).zTop);
+  let xc = 0;
+  for (let m = 0; m < layers; m++) {
+    const top = m === layers - 1;
+    const L = new Xf(w, [0, 4 * m, 0], false);
+    const r = buildFlatArm(L, spec, { ...base, arm: top, tip: top && opts.tip !== false, layer: { lanes: sets[m], top, rise: 4 * (layers - 1 - m), zTop: zT } });
+    xc = r.xc;
+  }
+  // feed tower from the lever up: B0 (layer 0) -> torch, block, torch -> block of layer 1 ...
+  for (let m = 0; m < layers - 1; m++) {
+    const y0 = 4 * m + 1;
+    w.place([xc, y0 + 1, zT - 1], 'redstone_torch', { lit: true }); w.place([xc, y0 + 2, zT - 1], 'stone'); w.place([xc, y0 + 3, zT - 1], 'redstone_torch', { lit: false });
+  }
+  const lever: Pos = [xc, 1, zT - 2];
+  if (opts.noLever) w.place(lever, 'redstone_wire'); else w.place(lever, 'lever', { face: 'wall', facing: 'north' });
+  return { lever, tip: [spec.n, 4 * (layers - 1), 0] };
 }
 
 export const tipXN = (w: World, n: number): number | null => {

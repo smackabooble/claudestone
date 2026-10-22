@@ -4,7 +4,7 @@ import type { Pos } from './dirs.ts';
 import { buildExtender } from '../examples/double-piston-extender.ts';
 import { buildUpright } from '../examples/double-piston-extender-vertical.ts';
 import { buildFlatArm3 } from '../examples/flat-arm3.ts';
-import { buildFlatArm, QUAD } from '../examples/flat-armN.ts';
+import { buildFlatArm, buildLayeredArm, QUAD } from '../examples/flat-armN.ts';
 import { buildDoor5 } from '../examples/piston-door-5x5.ts';
 import { buildDoor6 } from '../examples/piston-door-6x6.ts';
 import { buildDoor8 } from '../examples/piston-door-8x8.ts';
@@ -118,6 +118,13 @@ export const DESIGNS: Design[] = [
     realGameVerified: false, settle: 400,
     usage: 'lever ON = extend (tip moves from x=10 to x=20 along +x at y=0), OFF = retract. Keep x=0..20 clear east of the arm.',
     build: (w) => ({ lever: buildFlatArm(w, makeArmSpec(10, { timing: FAST })).lever }),
+  },
+  {
+    name: 'extender-10-stacked',
+    description: 'The fast 10-long extender with its controller stacked in 4 layers (4 blocks apart) instead of one flat plane: every tap lane sits in one layer and reaches the arm through a torch tower, so the footprint drops from 95x2x135 to 95x14x67. The arm is in the top layer with nothing around it. Simulated only.',
+    realGameVerified: false, settle: 400,
+    usage: 'lever ON = extend, OFF = retract. The arm is in the TOP plane (y=12): pistons x=0..9, tip x=10 moving to x=20, along +x. Keep x=0..20 clear. The lever is on the west side at the bottom layer.',
+    build: (w) => ({ lever: buildLayeredArm(w, makeArmSpec(10, { timing: FAST }), 4).lever }),
   },
   {
     name: 'piston-door-5x5',
