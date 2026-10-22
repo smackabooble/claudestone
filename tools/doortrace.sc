@@ -13,11 +13,14 @@ __config() -> {
   'scope' -> 'global',
   'commands' -> {
     'start <from> <to>' -> 'trace_start',
-    'stop' -> 'trace_stop'
+    'stop' -> 'trace_stop',
+    'freeze' -> 'trace_freeze',
+    'go <ticks>' -> 'trace_go'
   },
   'arguments' -> {
     'from' -> {'type' -> 'pos'},
-    'to' -> {'type' -> 'pos'}
+    'to' -> {'type' -> 'pos'},
+    'ticks' -> {'type' -> 'int', 'min' -> 1, 'max' -> 2000}
   }
 };
 
@@ -39,6 +42,18 @@ trace_start(a, b) -> (
   for(global_lines, write_file('trace', 'text', _));
   global_on = true;
   print('doortrace: recording ' + global_lo + ' to ' + global_hi + ' - now flip the lever, then /doortrace stop');
+);
+
+// v3 exact mode: /doortrace start ..., /doortrace freeze, right-click the lever (game is frozen, nothing moves),
+// /doortrace go 400  (runs exactly 400 game ticks, one "T" line per tick), /doortrace stop, /tick unfreeze
+trace_freeze() -> (
+  run('tick freeze');
+  print('doortrace: game frozen. Now right-click the lever ONCE, then /doortrace go 400');
+);
+
+trace_go(n) -> (
+  run('tick step ' + n);
+  print('doortrace: stepping ' + n + ' ticks. When done: /doortrace stop and /tick unfreeze');
 );
 
 trace_stop() -> (
