@@ -26,6 +26,8 @@ export function toBlockState(b: Block): string {
     case 'stairs': return `minecraft:stone_brick_stairs[facing=${p.facing ?? 'north'},half=bottom,shape=${p.shape ?? 'straight'},waterlogged=false]`;
     case 'partial': return 'minecraft:stone_slab[type=bottom,waterlogged=false]';
     case 'campfire': return `minecraft:campfire[facing=${p.facing ?? 'north'},lit=false,signal_fire=${!!p.signal_fire},waterlogged=false]`;
+    case 'leafblock': return `minecraft:spruce_leaves[distance=${p.distance ?? 7},persistent=true,waterlogged=false]`;
+    case 'log': return 'minecraft:oak_log[axis=y]';
     case 'hay_block': return 'minecraft:hay_block[axis=y]';
     case 'piston': case 'sticky_piston': return st({ extended: !!p.extended, facing: p.facing });
     case 'piston_head': return st({ facing: p.facing, short: false, type: p.type === 'sticky' ? 'sticky' : 'normal' });

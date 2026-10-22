@@ -9,7 +9,7 @@ type C = { [k: string]: Tag };
 const num = (v: Tag): number => Number(v as number | bigint);
 
 const DIRECT = new Set([
-  'stone', 'hay_block', 'target', 'pane', 'glass', 'obsidian', 'furnace', 'leaves', 'partial', 'campfire', 'stairs', 'slime_block', 'redstone_wire', 'redstone_block', 'lever', 'repeater',
+  'stone', 'log', 'leafblock', 'hay_block', 'target', 'pane', 'glass', 'obsidian', 'furnace', 'leaves', 'partial', 'campfire', 'stairs', 'slime_block', 'redstone_wire', 'redstone_block', 'lever', 'repeater',
   'comparator', 'observer', 'redstone_torch', 'redstone_wall_torch', 'redstone_lamp', 'piston',
   'sticky_piston', 'hopper', 'dropper', 'dispenser', 'chest', 'barrel', 'stone_button', 'honey_block', 'tnt', 'stone_pressure_plate',
 ]);
@@ -53,7 +53,8 @@ export function convertState(full: string, warn: (m: string) => void): { type: s
       if (/glass/.test(name)) return { type: 'glass', props: {} };
       // shape/behaviour classes (what matters for redstone + pistons): leaves = full support but no power conduction;
       // partial = not a full block (slabs, stairs, rails, composter ...): cannot hold dust, does not conduct
-      if (/_leaves$/.test(name)) { warn(`${name} treated as leaves (supports dust, does not conduct)`); return { type: 'leaves', props: {}, orig: name }; }
+      if (/_leaves$/.test(name)) return { type: 'leafblock', props: { distance: Number(raw.distance ?? 7) }, orig: name };
+      if (/_(log|wood)$/.test(name) || /^stripped_.*_(log|wood)$/.test(name)) return { type: 'log', props: {}, orig: name };
       if (name === 'campfire' || name === 'soul_campfire') { warn(`${name} treated as campfire (block entity, partial)`); return { type: 'campfire', props: { facing: raw.facing ?? 'north', signal_fire: raw.signal_fire === true }, orig: name }; }
       // top slabs / upside-down stairs have a FULL top face (dust can sit on them) but do not conduct; double slabs are full blocks
       if (/_slab$/.test(name) && raw.type === 'double') return { type: 'stone', props: {}, orig: name };

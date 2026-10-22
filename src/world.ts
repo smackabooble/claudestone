@@ -49,6 +49,8 @@ const DEFS: Record<string, Def> = {
   air: { solid: false, conductor: false, source: false },
   stone: { solid: true, conductor: true, source: false },
   pane: { solid: false, conductor: false, source: false }, // glass panes / iron bars: only their connection flags matter (observers see them change)
+  log: { solid: true, conductor: true, source: false }, // BlockTags.LOGS: leaf distance 0
+  leafblock: { solid: true, conductor: false, source: false }, // real leaves with a distance (1..7) that follows nearby logs
   hay_block: { solid: true, conductor: true, source: false }, // like stone, but a campfire above it gets signal_fire=true
   target: { solid: true, conductor: true, source: true }, // solid conductor like stone, but isSignalSource: dust connects to it (output power 0 without projectiles)
   glass: { solid: true, conductor: false, source: false },
@@ -189,6 +191,12 @@ export class World {
           this.scheduleTick(q, this.knobs.obsDelay ?? 2, 0);
         }
         break;
+      case 'leafblock': {
+        // LeavesBlock.updateShape: schedule a tick when the distance would change
+        const i = this.leafDistAt(this.get(rel(q, dirToChanged))) + 1;
+        if (i !== 1 || b.p.distance !== i) this.scheduleTick(q, 1, 0);
+        break;
+      }
       case 'campfire': {
         if (dirToChanged !== 'down') break;
         const sig = this.get(rel(q, 'down')).type === 'hay_block';
@@ -389,6 +397,12 @@ export class World {
     const b = this.get(p);
     switch (b.type) {
       case 'repeater': this.repeaterTick(p, b); break;
+      case 'leafblock': {
+        let d = 7;
+        for (const dir of DIRS) { d = Math.min(d, this.leafDistAt(this.get(rel(p, dir))) + 1); if (d === 1) break; }
+        if (d !== b.p.distance) this.setBlock(p, { type: b.type, p: { ...b.p, distance: d } }, 3);
+        break;
+      }
       case 'comparator': this.cmpTick(p, b); break;
       case 'dropper': case 'dispenser': this.dispenseFrom(p, b); break;
       case 'stone_pressure_plate': if (b.p.powered) this.plateCheck(p); break;
@@ -635,6 +649,7 @@ export class World {
     if (nW && ns) st.west = 'side';
     return st;
   }
+  private leafDistAt(n: Block): number { return n.type === 'log' ? 0 : n.type === 'leafblock' ? n.p.distance : 7; }
   /** StairBlock.getStairsShape (bottom half only) */
   private stairShape(p: Pos, b: Block): string {
     const f: Dir = b.p.facing;
