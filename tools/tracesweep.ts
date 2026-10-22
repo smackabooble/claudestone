@@ -1,6 +1,6 @@
 import { loadTrace, toBlock, sigOf } from './tracecmp.ts';
 import { World } from '../src/world.ts';
-const tr=loadTrace('../knowledge/refs/lum3ndo-real-trace.txt');
+const tr=loadTrace('knowledge/refs/lum3ndo-real-trace.txt');
 const START=+(process.env.START??197), ON=process.env.START==='248';
 const all=new Map(tr.init); for(const t of tr.ticks){ if(t.t>=START)break; for(const [k,c] of t.ch) all.set(k,c); }
 const keys=[...all.keys()];
