@@ -11,6 +11,7 @@ Three copies: A (x=0), B (x=8), C (x=16). Each has a plain piston facing EAST at
 |---|---|---|
 | A | air above the piston, redstone block on top of that air cell | extends |
 | B | stone, stone above it, lever on the side of the top stone | extends |
+| D (x=24) | air above the piston, a dust line beside that air cell (north side), lever on a stone feeds the dust (flip it) | sim: extends right away (dust updates the piston) |
 | C | stone, stone above it, only a redstone block on top of the top stone | does NOT extend |
 
 If your game disagrees with any row, tell me which: that is a quasi-connectivity rule I have wrong.

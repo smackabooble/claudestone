@@ -6,6 +6,7 @@
  * Question: did the piston extend after step 2?   (Before step 2 it must NOT have extended anywhere.)
  *   copy A (x=0):  air above the piston, a redstone block on top of that air cell                         -> sim: extends
  *   copy B (x=8):  stone above the piston, another stone above that, lever on the side of the top stone  -> sim: extends
+ *   copy D (x=24): air above the piston, DUST beside that air cell (north), fed by a lever on a stone  -> see sim output
  *   copy C (x=16): same stones as B but only a REDSTONE BLOCK on top of the top stone (weak power)       -> sim: does NOT extend
  * Run: npx tsx examples/microtests/quasi.ts   (writes quasi.schem)
  */
@@ -14,12 +15,17 @@ import { World } from '../../src/world.ts';
 import { exportSchem } from '../../src/export.ts';
 import type { Pos } from '../../src/dirs.ts';
 
-export function buildCopy(w: World, ox: number, kind: 'A' | 'B' | 'C'): { lever?: Pos; piston: Pos; update: Pos } {
+export function buildCopy(w: World, ox: number, kind: 'A' | 'B' | 'C' | 'D'): { lever?: Pos; piston: Pos; update: Pos } {
   const P = (x: number, y: number, z: number): Pos => [ox + x, y, z];
   for (let x = -3; x <= 3; x++) for (let z = -1; z <= 1; z++) w.place(P(x, 1, z), 'obsidian');
   w.place(P(0, 2, 0), 'piston', { facing: 'east' });
   let lever: Pos | undefined;
-  if (kind === 'A') {
+  if (kind === 'D') {
+    for (let x = -3; x <= 3; x++) for (let z = -3; z <= -2; z++) w.place(P(x, 1, z), 'obsidian');
+    w.place(P(0, 2, -1), 'stone'); w.place(P(0, 2, -2), 'stone');
+    w.place(P(0, 3, -1), 'redstone_wire'); w.place(P(0, 3, -2), 'redstone_wire');
+    lever = P(1, 2, -2); w.place(lever, 'lever', { face: 'wall', facing: 'east' });
+  } else if (kind === 'A') {
     w.place(P(0, 4, 0), 'redstone_block');
   } else {
     w.place(P(0, 3, 0), 'stone'); w.place(P(0, 4, 0), 'stone');
@@ -31,13 +37,13 @@ export function buildCopy(w: World, ox: number, kind: 'A' | 'B' | 'C'): { lever?
 
 if (process.argv[1]?.endsWith('quasi.ts')) {
   const fresh = new World();
-  (['A', 'B', 'C'] as const).forEach((k, i) => buildCopy(fresh, i * 8, k));
+  (['A', 'B', 'C', 'D'] as const).forEach((k, i) => buildCopy(fresh, i * 8, k));
   fresh.run(20);
   const out = exportSchem(fresh);
   writeFileSync('examples/microtests/quasi.schem', out.buffer);
   console.log('wrote quasi.schem', out.size.join('x'), 'origin', out.origin.join(','));
   const w = new World();
-  const cs = (['A', 'B', 'C'] as const).map((k, i) => ({ k, ...buildCopy(w, i * 8, k) }));
+  const cs = (['A', 'B', 'C', 'D'] as const).map((k, i) => ({ k, ...buildCopy(w, i * 8, k) }));
   w.run(20);
   for (const c of cs) {
     if (c.lever) w.use(c.lever);
