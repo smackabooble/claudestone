@@ -1,0 +1,1864 @@
+81,5,-124 obsidian{}
+81,5,-123 obsidian{}
+81,5,-122 obsidian{}
+81,5,-121 obsidian{}
+81,5,-120 obsidian{}
+81,5,-119 obsidian{}
+81,5,-118 obsidian{}
+81,5,-117 obsidian{}
+81,5,-116 obsidian{}
+81,5,-115 obsidian{}
+82,5,-124 obsidian{}
+82,5,-123 obsidian{}
+82,5,-122 obsidian{}
+82,5,-121 obsidian{}
+82,5,-120 obsidian{}
+82,5,-119 obsidian{}
+82,5,-118 obsidian{}
+82,5,-117 obsidian{}
+82,5,-116 obsidian{}
+82,5,-115 obsidian{}
+83,5,-124 obsidian{}
+83,5,-123 obsidian{}
+83,5,-122 obsidian{}
+83,5,-121 obsidian{}
+83,5,-120 obsidian{}
+83,5,-119 obsidian{}
+83,5,-118 obsidian{}
+83,5,-117 obsidian{}
+83,5,-116 obsidian{}
+83,5,-115 obsidian{}
+84,5,-124 obsidian{}
+84,5,-123 obsidian{}
+84,5,-122 obsidian{}
+84,5,-121 obsidian{}
+84,5,-120 obsidian{}
+84,5,-119 obsidian{}
+84,5,-118 obsidian{}
+84,5,-117 obsidian{}
+84,5,-116 obsidian{}
+84,5,-115 obsidian{}
+85,5,-124 obsidian{}
+85,5,-123 obsidian{}
+85,5,-122 obsidian{}
+85,5,-121 obsidian{}
+85,5,-120 obsidian{}
+85,5,-119 obsidian{}
+85,5,-118 obsidian{}
+85,5,-117 obsidian{}
+85,5,-116 obsidian{}
+85,5,-115 obsidian{}
+86,5,-124 obsidian{}
+86,5,-123 obsidian{}
+86,5,-122 obsidian{}
+86,5,-121 obsidian{}
+86,5,-120 obsidian{}
+86,5,-119 obsidian{}
+86,5,-118 obsidian{}
+86,5,-117 obsidian{}
+86,5,-116 obsidian{}
+86,5,-115 obsidian{}
+87,5,-124 obsidian{}
+87,5,-123 obsidian{}
+87,5,-122 obsidian{}
+87,5,-121 obsidian{}
+87,5,-120 obsidian{}
+87,5,-119 obsidian{}
+87,5,-118 obsidian{}
+87,5,-117 obsidian{}
+87,5,-116 obsidian{}
+87,5,-115 obsidian{}
+88,5,-124 obsidian{}
+88,5,-123 obsidian{}
+88,5,-122 obsidian{}
+88,5,-121 obsidian{}
+88,5,-120 obsidian{}
+88,5,-119 obsidian{}
+88,5,-118 obsidian{}
+88,5,-117 obsidian{}
+88,5,-116 obsidian{}
+88,5,-115 obsidian{}
+89,5,-124 obsidian{}
+89,5,-123 obsidian{}
+89,5,-122 obsidian{}
+89,5,-121 obsidian{}
+89,5,-120 obsidian{}
+89,5,-119 obsidian{}
+89,5,-118 obsidian{}
+89,5,-117 obsidian{}
+89,5,-116 obsidian{}
+89,5,-115 obsidian{}
+90,5,-124 obsidian{}
+90,5,-123 obsidian{}
+90,5,-122 obsidian{}
+90,5,-121 obsidian{}
+90,5,-120 obsidian{}
+90,5,-119 obsidian{}
+90,5,-118 obsidian{}
+90,5,-117 obsidian{}
+90,5,-116 obsidian{}
+90,5,-115 obsidian{}
+91,5,-124 obsidian{}
+91,5,-123 obsidian{}
+91,5,-122 obsidian{}
+91,5,-121 obsidian{}
+91,5,-120 obsidian{}
+91,5,-119 obsidian{}
+91,5,-118 obsidian{}
+91,5,-117 obsidian{}
+91,5,-116 obsidian{}
+91,5,-115 obsidian{}
+92,5,-124 obsidian{}
+92,5,-123 obsidian{}
+92,5,-122 obsidian{}
+92,5,-121 obsidian{}
+92,5,-120 obsidian{}
+92,5,-119 obsidian{}
+92,5,-118 obsidian{}
+92,5,-117 obsidian{}
+92,5,-116 obsidian{}
+92,5,-115 obsidian{}
+93,5,-124 obsidian{}
+93,5,-123 obsidian{}
+93,5,-122 obsidian{}
+93,5,-121 obsidian{}
+93,5,-120 obsidian{}
+93,5,-119 obsidian{}
+93,5,-118 obsidian{}
+93,5,-117 obsidian{}
+93,5,-116 obsidian{}
+93,5,-115 obsidian{}
+94,5,-124 obsidian{}
+94,5,-123 obsidian{}
+94,5,-122 obsidian{}
+94,5,-121 obsidian{}
+94,5,-120 obsidian{}
+94,5,-119 obsidian{}
+94,5,-118 obsidian{}
+94,5,-117 obsidian{}
+94,5,-116 obsidian{}
+94,5,-115 obsidian{}
+95,5,-124 obsidian{}
+95,5,-123 obsidian{}
+95,5,-122 obsidian{}
+95,5,-121 obsidian{}
+95,5,-120 obsidian{}
+95,5,-119 obsidian{}
+95,5,-118 obsidian{}
+95,5,-117 obsidian{}
+95,5,-116 obsidian{}
+95,5,-115 obsidian{}
+96,5,-124 obsidian{}
+96,5,-123 obsidian{}
+96,5,-122 obsidian{}
+96,5,-121 obsidian{}
+96,5,-120 obsidian{}
+96,5,-119 obsidian{}
+96,5,-118 obsidian{}
+96,5,-117 obsidian{}
+96,5,-116 obsidian{}
+96,5,-115 obsidian{}
+97,5,-124 obsidian{}
+97,5,-123 obsidian{}
+97,5,-122 obsidian{}
+97,5,-121 obsidian{}
+97,5,-120 obsidian{}
+97,5,-119 obsidian{}
+97,5,-118 obsidian{}
+97,5,-117 obsidian{}
+97,5,-116 obsidian{}
+97,5,-115 obsidian{}
+98,5,-124 obsidian{}
+98,5,-123 obsidian{}
+98,5,-122 obsidian{}
+98,5,-121 obsidian{}
+98,5,-120 obsidian{}
+98,5,-119 obsidian{}
+98,5,-118 obsidian{}
+98,5,-117 obsidian{}
+98,5,-116 obsidian{}
+98,5,-115 obsidian{}
+99,5,-124 obsidian{}
+99,5,-123 obsidian{}
+99,5,-122 obsidian{}
+99,5,-121 obsidian{}
+99,5,-120 obsidian{}
+99,5,-119 obsidian{}
+99,5,-118 obsidian{}
+99,5,-117 obsidian{}
+99,5,-116 obsidian{}
+99,5,-115 obsidian{}
+100,5,-124 obsidian{}
+100,5,-123 obsidian{}
+100,5,-122 obsidian{}
+100,5,-121 obsidian{}
+100,5,-120 obsidian{}
+100,5,-119 obsidian{}
+100,5,-118 obsidian{}
+100,5,-117 obsidian{}
+100,5,-116 obsidian{}
+100,5,-115 obsidian{}
+101,5,-124 obsidian{}
+101,5,-123 obsidian{}
+101,5,-122 obsidian{}
+101,5,-121 obsidian{}
+101,5,-120 obsidian{}
+101,5,-119 obsidian{}
+101,5,-118 obsidian{}
+101,5,-117 obsidian{}
+101,5,-116 obsidian{}
+101,5,-115 obsidian{}
+102,5,-124 obsidian{}
+102,5,-123 obsidian{}
+102,5,-122 obsidian{}
+102,5,-121 obsidian{}
+102,5,-120 obsidian{}
+102,5,-119 obsidian{}
+102,5,-118 obsidian{}
+102,5,-117 obsidian{}
+102,5,-116 obsidian{}
+102,5,-115 obsidian{}
+103,5,-124 obsidian{}
+103,5,-123 obsidian{}
+103,5,-122 obsidian{}
+103,5,-121 obsidian{}
+103,5,-120 obsidian{}
+103,5,-119 obsidian{}
+103,5,-118 obsidian{}
+103,5,-117 obsidian{}
+103,5,-116 obsidian{}
+103,5,-115 obsidian{}
+104,5,-124 obsidian{}
+104,5,-123 obsidian{}
+104,5,-122 obsidian{}
+104,5,-121 obsidian{}
+104,5,-120 obsidian{}
+104,5,-119 obsidian{}
+104,5,-118 obsidian{}
+104,5,-117 obsidian{}
+104,5,-116 obsidian{}
+104,5,-115 obsidian{}
+105,5,-124 obsidian{}
+105,5,-123 obsidian{}
+105,5,-122 obsidian{}
+105,5,-121 obsidian{}
+105,5,-120 obsidian{}
+105,5,-119 obsidian{}
+105,5,-118 obsidian{}
+105,5,-117 obsidian{}
+105,5,-116 obsidian{}
+105,5,-115 obsidian{}
+106,5,-124 obsidian{}
+106,5,-123 obsidian{}
+106,5,-122 obsidian{}
+106,5,-121 obsidian{}
+106,5,-120 obsidian{}
+106,5,-119 obsidian{}
+106,5,-118 obsidian{}
+106,5,-117 obsidian{}
+106,5,-116 obsidian{}
+106,5,-115 obsidian{}
+107,5,-124 obsidian{}
+107,5,-123 obsidian{}
+107,5,-122 obsidian{}
+107,5,-121 obsidian{}
+107,5,-120 obsidian{}
+107,5,-119 obsidian{}
+107,5,-118 obsidian{}
+107,5,-117 obsidian{}
+107,5,-116 obsidian{}
+107,5,-115 obsidian{}
+108,5,-124 obsidian{}
+108,5,-123 obsidian{}
+108,5,-122 obsidian{}
+108,5,-121 obsidian{}
+108,5,-120 obsidian{}
+108,5,-119 obsidian{}
+108,5,-118 obsidian{}
+108,5,-117 obsidian{}
+108,5,-116 obsidian{}
+108,5,-115 obsidian{}
+109,5,-124 obsidian{}
+109,5,-123 obsidian{}
+109,5,-122 obsidian{}
+109,5,-121 obsidian{}
+109,5,-120 obsidian{}
+109,5,-119 obsidian{}
+109,5,-118 obsidian{}
+109,5,-117 obsidian{}
+109,5,-116 obsidian{}
+109,5,-115 obsidian{}
+110,5,-124 obsidian{}
+110,5,-123 obsidian{}
+110,5,-122 obsidian{}
+110,5,-121 obsidian{}
+110,5,-120 obsidian{}
+110,5,-119 obsidian{}
+110,5,-118 obsidian{}
+110,5,-117 obsidian{}
+110,5,-116 obsidian{}
+110,5,-115 obsidian{}
+111,5,-124 obsidian{}
+111,5,-123 obsidian{}
+111,5,-122 obsidian{}
+111,5,-121 obsidian{}
+111,5,-120 obsidian{}
+111,5,-119 obsidian{}
+111,5,-118 obsidian{}
+111,5,-117 obsidian{}
+111,5,-116 obsidian{}
+111,5,-115 obsidian{}
+112,5,-124 obsidian{}
+112,5,-123 obsidian{}
+112,5,-122 obsidian{}
+112,5,-121 obsidian{}
+112,5,-120 obsidian{}
+112,5,-119 obsidian{}
+112,5,-118 obsidian{}
+112,5,-117 obsidian{}
+112,5,-116 obsidian{}
+112,5,-115 obsidian{}
+113,5,-124 obsidian{}
+113,5,-123 obsidian{}
+113,5,-122 obsidian{}
+113,5,-121 obsidian{}
+113,5,-120 obsidian{}
+113,5,-119 obsidian{}
+113,5,-118 obsidian{}
+113,5,-117 obsidian{}
+113,5,-116 obsidian{}
+113,5,-115 obsidian{}
+114,5,-124 obsidian{}
+114,5,-123 obsidian{}
+114,5,-122 obsidian{}
+114,5,-121 obsidian{}
+114,5,-120 obsidian{}
+114,5,-119 obsidian{}
+114,5,-118 obsidian{}
+114,5,-117 obsidian{}
+114,5,-116 obsidian{}
+114,5,-115 obsidian{}
+115,5,-124 obsidian{}
+115,5,-123 obsidian{}
+115,5,-122 obsidian{}
+115,5,-121 obsidian{}
+115,5,-120 obsidian{}
+115,5,-119 obsidian{}
+115,5,-118 obsidian{}
+115,5,-117 obsidian{}
+115,5,-116 obsidian{}
+115,5,-115 obsidian{}
+116,5,-124 obsidian{}
+116,5,-123 obsidian{}
+116,5,-122 obsidian{}
+116,5,-121 obsidian{}
+116,5,-120 obsidian{}
+116,5,-119 obsidian{}
+116,5,-118 obsidian{}
+116,5,-117 obsidian{}
+116,5,-116 obsidian{}
+116,5,-115 obsidian{}
+117,5,-124 obsidian{}
+117,5,-123 obsidian{}
+117,5,-122 obsidian{}
+117,5,-121 obsidian{}
+117,5,-120 obsidian{}
+117,5,-119 obsidian{}
+117,5,-118 obsidian{}
+117,5,-117 obsidian{}
+117,5,-116 obsidian{}
+117,5,-115 obsidian{}
+118,5,-124 obsidian{}
+118,5,-123 obsidian{}
+118,5,-122 obsidian{}
+118,5,-121 obsidian{}
+118,5,-120 obsidian{}
+118,5,-119 obsidian{}
+118,5,-118 obsidian{}
+118,5,-117 obsidian{}
+118,5,-116 obsidian{}
+118,5,-115 obsidian{}
+119,5,-124 obsidian{}
+119,5,-123 obsidian{}
+119,5,-122 obsidian{}
+119,5,-121 obsidian{}
+119,5,-120 obsidian{}
+119,5,-119 obsidian{}
+119,5,-118 obsidian{}
+119,5,-117 obsidian{}
+119,5,-116 obsidian{}
+119,5,-115 obsidian{}
+120,5,-124 obsidian{}
+120,5,-123 obsidian{}
+120,5,-122 obsidian{}
+120,5,-121 obsidian{}
+120,5,-120 obsidian{}
+120,5,-119 obsidian{}
+120,5,-118 obsidian{}
+120,5,-117 obsidian{}
+120,5,-116 obsidian{}
+120,5,-115 obsidian{}
+121,5,-124 obsidian{}
+121,5,-123 obsidian{}
+121,5,-122 obsidian{}
+121,5,-121 obsidian{}
+121,5,-120 obsidian{}
+121,5,-119 obsidian{}
+121,5,-118 obsidian{}
+121,5,-117 obsidian{}
+121,5,-116 obsidian{}
+121,5,-115 obsidian{}
+122,5,-124 obsidian{}
+122,5,-123 obsidian{}
+122,5,-122 obsidian{}
+122,5,-121 obsidian{}
+122,5,-120 obsidian{}
+122,5,-119 obsidian{}
+122,5,-118 obsidian{}
+122,5,-117 obsidian{}
+122,5,-116 obsidian{}
+122,5,-115 obsidian{}
+123,5,-124 obsidian{}
+123,5,-123 obsidian{}
+123,5,-122 obsidian{}
+123,5,-121 obsidian{}
+123,5,-120 obsidian{}
+123,5,-119 obsidian{}
+123,5,-118 obsidian{}
+123,5,-117 obsidian{}
+123,5,-116 obsidian{}
+123,5,-115 obsidian{}
+124,5,-124 obsidian{}
+124,5,-123 obsidian{}
+124,5,-122 obsidian{}
+124,5,-121 obsidian{}
+124,5,-120 obsidian{}
+124,5,-119 obsidian{}
+124,5,-118 obsidian{}
+124,5,-117 obsidian{}
+124,5,-116 obsidian{}
+124,5,-115 obsidian{}
+125,5,-124 obsidian{}
+125,5,-123 obsidian{}
+125,5,-122 obsidian{}
+125,5,-121 obsidian{}
+125,5,-120 obsidian{}
+125,5,-119 obsidian{}
+125,5,-118 obsidian{}
+125,5,-117 obsidian{}
+125,5,-116 obsidian{}
+125,5,-115 obsidian{}
+126,5,-124 obsidian{}
+126,5,-123 obsidian{}
+126,5,-122 obsidian{}
+126,5,-121 obsidian{}
+126,5,-120 obsidian{}
+126,5,-119 obsidian{}
+126,5,-118 obsidian{}
+126,5,-117 obsidian{}
+126,5,-116 obsidian{}
+126,5,-115 obsidian{}
+127,5,-124 obsidian{}
+127,5,-123 obsidian{}
+127,5,-122 obsidian{}
+127,5,-121 obsidian{}
+127,5,-120 obsidian{}
+127,5,-119 obsidian{}
+127,5,-118 obsidian{}
+127,5,-117 obsidian{}
+127,5,-116 obsidian{}
+127,5,-115 obsidian{}
+128,5,-124 obsidian{}
+128,5,-123 obsidian{}
+128,5,-122 obsidian{}
+128,5,-121 obsidian{}
+128,5,-120 obsidian{}
+128,5,-119 obsidian{}
+128,5,-118 obsidian{}
+128,5,-117 obsidian{}
+128,5,-116 obsidian{}
+128,5,-115 obsidian{}
+82,6,-117 obsidian{}
+83,6,-117 lever{face: wall, powered: false, facing: east}
+84,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+85,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+86,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+87,6,-117 repeater{powered: false, facing: west, delay: 1, locked: false}
+88,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+89,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+90,6,-119 copper_bulb{lit: false, powered: false}
+90,6,-118 redstone_wire{east: none, power: 0, south: side, north: side, west: none}
+90,6,-117 redstone_wire{east: side, power: 0, south: none, north: side, west: side}
+91,6,-119 comparator{mode: compare, powered: false, facing: west}
+91,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+92,6,-119 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+92,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+93,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+94,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+95,6,-117 repeater{powered: false, facing: west, delay: 1, locked: false}
+96,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+97,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+98,6,-120 copper_bulb{lit: false, powered: false}
+98,6,-119 repeater{powered: false, facing: south, delay: 1, locked: false}
+98,6,-118 redstone_wire{east: none, power: 0, south: side, north: side, west: none}
+98,6,-117 redstone_wire{east: side, power: 0, south: none, north: side, west: side}
+99,6,-120 comparator{mode: compare, powered: false, facing: west}
+99,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+100,6,-120 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+100,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+101,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+102,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+103,6,-117 repeater{powered: false, facing: west, delay: 1, locked: false}
+104,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+105,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+106,6,-120 copper_bulb{lit: false, powered: false}
+106,6,-119 observer{powered: false, facing: south}
+106,6,-118 redstone_wire{east: none, power: 0, south: side, north: side, west: none}
+106,6,-117 redstone_wire{east: side, power: 0, south: none, north: side, west: side}
+107,6,-120 comparator{mode: compare, powered: true, facing: west}
+107,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+108,6,-120 redstone_wire{east: side, power: 15, south: none, north: none, west: side}
+108,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+109,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+110,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+111,6,-117 repeater{powered: false, facing: west, delay: 1, locked: false}
+112,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+113,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+114,6,-121 redstone_wire{east: none, power: 0, south: side, north: side, west: none}
+114,6,-120 comparator{mode: compare, powered: false, facing: south}
+114,6,-119 copper_bulb{lit: false, powered: false}
+114,6,-118 repeater{powered: false, facing: south, delay: 1, locked: false}
+114,6,-117 redstone_wire{east: side, power: 0, south: none, north: side, west: side}
+115,6,-119 repeater{powered: false, facing: east, delay: 4, locked: false}
+115,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+116,6,-119 redstone_wire{east: none, power: 0, south: side, north: none, west: side}
+116,6,-118 redstone_wire{east: none, power: 0, south: side, north: side, west: none}
+116,6,-117 redstone_wire{east: side, power: 0, south: none, north: side, west: side}
+117,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+118,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+119,6,-117 repeater{powered: false, facing: west, delay: 1, locked: false}
+120,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+121,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+122,6,-122 redstone_block{}
+122,6,-120 copper_bulb{lit: false, powered: false}
+122,6,-119 sticky_piston{extended: false, facing: north}
+122,6,-118 redstone_wire{east: none, power: 0, south: side, north: side, west: none}
+122,6,-117 redstone_wire{east: side, power: 0, south: none, north: side, west: side}
+123,6,-121 comparator{mode: compare, powered: false, facing: west}
+123,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+124,6,-121 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+124,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+125,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+126,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+127,6,-117 repeater{powered: false, facing: west, delay: 1, locked: false}
+128,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+T 1
+T 2
+T 3
+T 4
+T 5
+T 6
+T 7
+T 8
+T 9
+T 10
+T 11
+T 12
+T 13
+T 14
+T 15
+T 16
+T 17
+T 18
+T 19
+T 20
+T 21
+T 22
+T 23
+T 24
+T 25
+T 26
+T 27
+T 28
+T 29
+T 30
+T 31
+T 32
+T 33
+T 34
+T 35
+T 36
+T 37
+T 38
+T 39
+T 40
+T 41
+T 42
+T 43
+T 44
+T 45
+T 46
+T 47
+T 48
+T 49
+T 50
+T 51
+T 52
+T 53
+T 54
+T 55
+T 56
+T 57
+T 58
+T 59
+T 60
+T 61
+T 62
+T 63
+T 64
+T 65
+T 66
+T 67
+T 68
+T 69
+T 70
+T 71
+T 72
+T 73
+T 74
+T 75
+T 76
+T 77
+CLICK 77 lever [83, 6, -117]
+T 78
+83,6,-117 lever{face: wall, powered: true, facing: east}
+84,6,-117 redstone_wire{east: side, power: 15, south: none, north: none, west: side}
+85,6,-117 redstone_wire{east: side, power: 14, south: none, north: none, west: side}
+86,6,-117 redstone_wire{east: side, power: 13, south: none, north: none, west: side}
+T 79
+87,6,-117 repeater{powered: true, facing: west, delay: 1, locked: false}
+88,6,-117 redstone_wire{east: side, power: 15, south: none, north: none, west: side}
+89,6,-117 redstone_wire{east: side, power: 14, south: none, north: none, west: side}
+90,6,-119 copper_bulb{lit: true, powered: true}
+90,6,-118 redstone_wire{east: none, power: 12, south: side, north: side, west: none}
+90,6,-117 redstone_wire{east: side, power: 13, south: none, north: side, west: side}
+91,6,-117 redstone_wire{east: side, power: 12, south: none, north: none, west: side}
+92,6,-117 redstone_wire{east: side, power: 11, south: none, north: none, west: side}
+93,6,-117 redstone_wire{east: side, power: 10, south: none, north: none, west: side}
+94,6,-117 redstone_wire{east: side, power: 9, south: none, north: none, west: side}
+T 80
+T 81
+91,6,-119 comparator{mode: compare, powered: true, facing: west}
+92,6,-119 redstone_wire{east: side, power: 15, south: none, north: none, west: side}
+95,6,-117 repeater{powered: true, facing: west, delay: 1, locked: false}
+96,6,-117 redstone_wire{east: side, power: 15, south: none, north: none, west: side}
+97,6,-117 redstone_wire{east: side, power: 14, south: none, north: none, west: side}
+98,6,-118 redstone_wire{east: none, power: 12, south: side, north: side, west: none}
+98,6,-117 redstone_wire{east: side, power: 13, south: none, north: side, west: side}
+99,6,-117 redstone_wire{east: side, power: 12, south: none, north: none, west: side}
+100,6,-117 redstone_wire{east: side, power: 11, south: none, north: none, west: side}
+101,6,-117 redstone_wire{east: side, power: 10, south: none, north: none, west: side}
+102,6,-117 redstone_wire{east: side, power: 9, south: none, north: none, west: side}
+T 82
+T 83
+98,6,-120 copper_bulb{lit: true, powered: true}
+98,6,-119 repeater{powered: true, facing: south, delay: 1, locked: false}
+103,6,-117 repeater{powered: true, facing: west, delay: 1, locked: false}
+104,6,-117 redstone_wire{east: side, power: 15, south: none, north: none, west: side}
+105,6,-117 redstone_wire{east: side, power: 14, south: none, north: none, west: side}
+106,6,-118 redstone_wire{east: none, power: 12, south: side, north: side, west: none}
+106,6,-117 redstone_wire{east: side, power: 13, south: none, north: side, west: side}
+107,6,-117 redstone_wire{east: side, power: 12, south: none, north: none, west: side}
+108,6,-117 redstone_wire{east: side, power: 11, south: none, north: none, west: side}
+109,6,-117 redstone_wire{east: side, power: 10, south: none, north: none, west: side}
+110,6,-117 redstone_wire{east: side, power: 9, south: none, north: none, west: side}
+T 84
+T 85
+99,6,-120 comparator{mode: compare, powered: true, facing: west}
+100,6,-120 redstone_wire{east: side, power: 15, south: none, north: none, west: side}
+106,6,-120 copper_bulb{lit: true, powered: true}
+106,6,-119 observer{powered: true, facing: south}
+111,6,-117 repeater{powered: true, facing: west, delay: 1, locked: false}
+112,6,-117 redstone_wire{east: side, power: 15, south: none, north: none, west: side}
+113,6,-117 redstone_wire{east: side, power: 14, south: none, north: none, west: side}
+114,6,-117 redstone_wire{east: side, power: 13, south: none, north: side, west: side}
+115,6,-117 redstone_wire{east: side, power: 12, south: none, north: none, west: side}
+116,6,-119 redstone_wire{east: none, power: 9, south: side, north: none, west: side}
+116,6,-118 redstone_wire{east: none, power: 10, south: side, north: side, west: none}
+116,6,-117 redstone_wire{east: side, power: 11, south: none, north: side, west: side}
+117,6,-117 redstone_wire{east: side, power: 10, south: none, north: none, west: side}
+118,6,-117 redstone_wire{east: side, power: 9, south: none, north: none, west: side}
+T 86
+T 87
+106,6,-120 copper_bulb{lit: true, powered: false}
+106,6,-119 observer{powered: false, facing: south}
+114,6,-119 copper_bulb{lit: true, powered: true}
+114,6,-118 repeater{powered: true, facing: south, delay: 1, locked: false}
+119,6,-117 repeater{powered: true, facing: west, delay: 1, locked: false}
+120,6,-117 redstone_wire{east: side, power: 15, south: none, north: none, west: side}
+121,6,-117 redstone_wire{east: side, power: 14, south: none, north: none, west: side}
+122,6,-121 moving_piston{type: normal, facing: north}
+122,6,-120 moving_piston{type: sticky, facing: north}
+122,6,-119 sticky_piston{extended: true, facing: north}
+122,6,-118 redstone_wire{east: none, power: 12, south: side, north: side, west: none}
+122,6,-117 redstone_wire{east: side, power: 13, south: none, north: side, west: side}
+123,6,-117 redstone_wire{east: side, power: 12, south: none, north: none, west: side}
+124,6,-117 redstone_wire{east: side, power: 11, south: none, north: none, west: side}
+125,6,-117 redstone_wire{east: side, power: 10, south: none, north: none, west: side}
+126,6,-117 redstone_wire{east: side, power: 9, south: none, north: none, west: side}
+T 88
+T 89
+114,6,-121 redstone_wire{east: none, power: 15, south: side, north: side, west: none}
+114,6,-120 comparator{mode: compare, powered: true, facing: south}
+122,6,-121 copper_bulb{lit: true, powered: true}
+122,6,-120 piston_head{type: sticky, short: false, facing: north}
+127,6,-117 repeater{powered: true, facing: west, delay: 1, locked: false}
+128,6,-117 redstone_wire{east: side, power: 15, south: none, north: none, west: side}
+T 90
+T 91
+123,6,-121 comparator{mode: compare, powered: true, facing: west}
+124,6,-121 redstone_wire{east: side, power: 15, south: none, north: none, west: side}
+T 92
+T 93
+115,6,-119 repeater{powered: true, facing: east, delay: 4, locked: false}
+T 94
+T 95
+T 96
+T 97
+T 98
+T 99
+T 100
+T 101
+T 102
+T 103
+T 104
+T 105
+T 106
+T 107
+T 108
+T 109
+T 110
+T 111
+T 112
+T 113
+T 114
+T 115
+T 116
+T 117
+T 118
+T 119
+T 120
+T 121
+T 122
+T 123
+T 124
+T 125
+T 126
+T 127
+T 128
+T 129
+T 130
+T 131
+T 132
+T 133
+T 134
+T 135
+T 136
+T 137
+T 138
+T 139
+T 140
+T 141
+T 142
+T 143
+T 144
+T 145
+T 146
+T 147
+T 148
+T 149
+T 150
+T 151
+T 152
+T 153
+T 154
+T 155
+T 156
+T 157
+T 158
+T 159
+T 160
+T 161
+T 162
+T 163
+T 164
+T 165
+T 166
+T 167
+T 168
+T 169
+T 170
+T 171
+T 172
+T 173
+T 174
+T 175
+T 176
+T 177
+T 178
+T 179
+T 180
+T 181
+T 182
+T 183
+T 184
+T 185
+T 186
+T 187
+T 188
+T 189
+T 190
+T 191
+T 192
+T 193
+T 194
+T 195
+T 196
+T 197
+T 198
+T 199
+T 200
+T 201
+T 202
+T 203
+T 204
+T 205
+T 206
+T 207
+T 208
+T 209
+T 210
+T 211
+T 212
+T 213
+T 214
+T 215
+T 216
+T 217
+T 218
+T 219
+T 220
+T 221
+T 222
+T 223
+T 224
+T 225
+T 226
+T 227
+T 228
+T 229
+T 230
+T 231
+T 232
+T 233
+T 234
+T 235
+T 236
+T 237
+T 238
+T 239
+T 240
+T 241
+T 242
+T 243
+T 244
+T 245
+T 246
+T 247
+T 248
+T 249
+T 250
+T 251
+T 252
+T 253
+T 254
+T 255
+T 256
+T 257
+T 258
+T 259
+T 260
+T 261
+T 262
+T 263
+T 264
+T 265
+T 266
+T 267
+T 268
+T 269
+T 270
+T 271
+T 272
+T 273
+T 274
+T 275
+T 276
+T 277
+T 278
+T 279
+T 280
+T 281
+T 282
+T 283
+T 284
+T 285
+T 286
+T 287
+T 288
+T 289
+T 290
+T 291
+T 292
+T 293
+T 294
+T 295
+T 296
+T 297
+T 298
+T 299
+T 300
+T 301
+T 302
+T 303
+T 304
+T 305
+T 306
+T 307
+T 308
+T 309
+T 310
+T 311
+T 312
+T 313
+T 314
+T 315
+T 316
+T 317
+T 318
+T 319
+T 320
+T 321
+T 322
+T 323
+T 324
+T 325
+T 326
+T 327
+T 328
+T 329
+T 330
+T 331
+T 332
+T 333
+T 334
+T 335
+T 336
+T 337
+T 338
+T 339
+T 340
+T 341
+T 342
+T 343
+T 344
+T 345
+T 346
+T 347
+T 348
+T 349
+T 350
+T 351
+T 352
+T 353
+T 354
+T 355
+T 356
+T 357
+T 358
+T 359
+T 360
+T 361
+T 362
+T 363
+T 364
+T 365
+T 366
+T 367
+T 368
+T 369
+T 370
+T 371
+T 372
+T 373
+T 374
+T 375
+T 376
+T 377
+T 378
+T 379
+T 380
+T 381
+T 382
+T 383
+T 384
+T 385
+T 386
+T 387
+T 388
+T 389
+T 390
+T 391
+T 392
+T 393
+T 394
+T 395
+T 396
+T 397
+T 398
+T 399
+T 400
+T 401
+T 402
+T 403
+T 404
+T 405
+T 406
+T 407
+T 408
+T 409
+T 410
+T 411
+T 412
+T 413
+T 414
+T 415
+T 416
+T 417
+T 418
+CLICK 418 lever [83, 6, -117]
+T 419
+83,6,-117 lever{face: wall, powered: false, facing: east}
+84,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+85,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+86,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+T 420
+87,6,-117 repeater{powered: false, facing: west, delay: 1, locked: false}
+88,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+89,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+90,6,-119 copper_bulb{lit: true, powered: false}
+90,6,-118 redstone_wire{east: none, power: 0, south: side, north: side, west: none}
+90,6,-117 redstone_wire{east: side, power: 0, south: none, north: side, west: side}
+91,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+92,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+93,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+94,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+T 421
+T 422
+95,6,-117 repeater{powered: false, facing: west, delay: 1, locked: false}
+96,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+97,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+98,6,-118 redstone_wire{east: none, power: 0, south: side, north: side, west: none}
+98,6,-117 redstone_wire{east: side, power: 0, south: none, north: side, west: side}
+99,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+100,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+101,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+102,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+T 423
+T 424
+98,6,-120 copper_bulb{lit: true, powered: false}
+98,6,-119 repeater{powered: false, facing: south, delay: 1, locked: false}
+103,6,-117 repeater{powered: false, facing: west, delay: 1, locked: false}
+104,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+105,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+106,6,-118 redstone_wire{east: none, power: 0, south: side, north: side, west: none}
+106,6,-117 redstone_wire{east: side, power: 0, south: none, north: side, west: side}
+107,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+108,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+109,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+110,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+T 425
+T 426
+106,6,-120 copper_bulb{lit: false, powered: true}
+106,6,-119 observer{powered: true, facing: south}
+111,6,-117 repeater{powered: false, facing: west, delay: 1, locked: false}
+112,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+113,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+114,6,-117 redstone_wire{east: side, power: 0, south: none, north: side, west: side}
+115,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+116,6,-119 redstone_wire{east: none, power: 0, south: side, north: none, west: side}
+116,6,-118 redstone_wire{east: none, power: 0, south: side, north: side, west: none}
+116,6,-117 redstone_wire{east: side, power: 0, south: none, north: side, west: side}
+117,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+118,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+T 427
+T 428
+106,6,-120 copper_bulb{lit: false, powered: false}
+106,6,-119 observer{powered: false, facing: south}
+107,6,-120 comparator{mode: compare, powered: false, facing: west}
+108,6,-120 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+114,6,-118 repeater{powered: false, facing: south, delay: 1, locked: false}
+119,6,-117 repeater{powered: false, facing: west, delay: 1, locked: false}
+120,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+121,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+122,6,-121 air{}
+122,6,-120 moving_piston{type: normal, facing: north}
+122,6,-119 moving_piston{type: sticky, facing: north}
+122,6,-118 redstone_wire{east: none, power: 0, south: side, north: side, west: none}
+122,6,-117 redstone_wire{east: side, power: 0, south: none, north: side, west: side}
+123,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+124,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+125,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+126,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+T 429
+T 430
+122,6,-120 copper_bulb{lit: true, powered: false}
+122,6,-119 sticky_piston{extended: false, facing: north}
+123,6,-121 comparator{mode: compare, powered: false, facing: west}
+124,6,-121 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+127,6,-117 repeater{powered: false, facing: west, delay: 1, locked: false}
+128,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+T 431
+T 432
+T 433
+T 434
+114,6,-119 copper_bulb{lit: true, powered: false}
+115,6,-119 repeater{powered: false, facing: east, delay: 4, locked: false}
+T 435
+T 436
+T 437
+T 438
+T 439
+T 440
+T 441
+T 442
+T 443
+T 444
+T 445
+T 446
+T 447
+T 448
+T 449
+T 450
+T 451
+T 452
+T 453
+T 454
+T 455
+T 456
+T 457
+T 458
+T 459
+T 460
+T 461
+T 462
+T 463
+CLICK 463 lever [83, 6, -117]
+T 464
+83,6,-117 lever{face: wall, powered: true, facing: east}
+84,6,-117 redstone_wire{east: side, power: 15, south: none, north: none, west: side}
+85,6,-117 redstone_wire{east: side, power: 14, south: none, north: none, west: side}
+86,6,-117 redstone_wire{east: side, power: 13, south: none, north: none, west: side}
+T 465
+87,6,-117 repeater{powered: true, facing: west, delay: 1, locked: false}
+88,6,-117 redstone_wire{east: side, power: 15, south: none, north: none, west: side}
+89,6,-117 redstone_wire{east: side, power: 14, south: none, north: none, west: side}
+90,6,-119 copper_bulb{lit: false, powered: true}
+90,6,-118 redstone_wire{east: none, power: 12, south: side, north: side, west: none}
+90,6,-117 redstone_wire{east: side, power: 13, south: none, north: side, west: side}
+91,6,-117 redstone_wire{east: side, power: 12, south: none, north: none, west: side}
+92,6,-117 redstone_wire{east: side, power: 11, south: none, north: none, west: side}
+93,6,-117 redstone_wire{east: side, power: 10, south: none, north: none, west: side}
+94,6,-117 redstone_wire{east: side, power: 9, south: none, north: none, west: side}
+T 466
+T 467
+91,6,-119 comparator{mode: compare, powered: false, facing: west}
+92,6,-119 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+95,6,-117 repeater{powered: true, facing: west, delay: 1, locked: false}
+96,6,-117 redstone_wire{east: side, power: 15, south: none, north: none, west: side}
+97,6,-117 redstone_wire{east: side, power: 14, south: none, north: none, west: side}
+98,6,-118 redstone_wire{east: none, power: 12, south: side, north: side, west: none}
+98,6,-117 redstone_wire{east: side, power: 13, south: none, north: side, west: side}
+99,6,-117 redstone_wire{east: side, power: 12, south: none, north: none, west: side}
+100,6,-117 redstone_wire{east: side, power: 11, south: none, north: none, west: side}
+101,6,-117 redstone_wire{east: side, power: 10, south: none, north: none, west: side}
+102,6,-117 redstone_wire{east: side, power: 9, south: none, north: none, west: side}
+T 468
+T 469
+98,6,-120 copper_bulb{lit: false, powered: true}
+98,6,-119 repeater{powered: true, facing: south, delay: 1, locked: false}
+103,6,-117 repeater{powered: true, facing: west, delay: 1, locked: false}
+104,6,-117 redstone_wire{east: side, power: 15, south: none, north: none, west: side}
+105,6,-117 redstone_wire{east: side, power: 14, south: none, north: none, west: side}
+106,6,-118 redstone_wire{east: none, power: 12, south: side, north: side, west: none}
+106,6,-117 redstone_wire{east: side, power: 13, south: none, north: side, west: side}
+107,6,-117 redstone_wire{east: side, power: 12, south: none, north: none, west: side}
+108,6,-117 redstone_wire{east: side, power: 11, south: none, north: none, west: side}
+109,6,-117 redstone_wire{east: side, power: 10, south: none, north: none, west: side}
+110,6,-117 redstone_wire{east: side, power: 9, south: none, north: none, west: side}
+T 470
+T 471
+99,6,-120 comparator{mode: compare, powered: false, facing: west}
+100,6,-120 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+106,6,-120 copper_bulb{lit: true, powered: true}
+106,6,-119 observer{powered: true, facing: south}
+111,6,-117 repeater{powered: true, facing: west, delay: 1, locked: false}
+112,6,-117 redstone_wire{east: side, power: 15, south: none, north: none, west: side}
+113,6,-117 redstone_wire{east: side, power: 14, south: none, north: none, west: side}
+114,6,-117 redstone_wire{east: side, power: 13, south: none, north: side, west: side}
+115,6,-117 redstone_wire{east: side, power: 12, south: none, north: none, west: side}
+116,6,-119 redstone_wire{east: none, power: 9, south: side, north: none, west: side}
+116,6,-118 redstone_wire{east: none, power: 10, south: side, north: side, west: none}
+116,6,-117 redstone_wire{east: side, power: 11, south: none, north: side, west: side}
+117,6,-117 redstone_wire{east: side, power: 10, south: none, north: none, west: side}
+118,6,-117 redstone_wire{east: side, power: 9, south: none, north: none, west: side}
+T 472
+T 473
+106,6,-120 copper_bulb{lit: true, powered: false}
+106,6,-119 observer{powered: false, facing: south}
+107,6,-120 comparator{mode: compare, powered: true, facing: west}
+108,6,-120 redstone_wire{east: side, power: 15, south: none, north: none, west: side}
+114,6,-119 copper_bulb{lit: false, powered: true}
+114,6,-118 repeater{powered: true, facing: south, delay: 1, locked: false}
+119,6,-117 repeater{powered: true, facing: west, delay: 1, locked: false}
+120,6,-117 redstone_wire{east: side, power: 15, south: none, north: none, west: side}
+121,6,-117 redstone_wire{east: side, power: 14, south: none, north: none, west: side}
+122,6,-121 moving_piston{type: normal, facing: north}
+122,6,-120 moving_piston{type: sticky, facing: north}
+122,6,-119 sticky_piston{extended: true, facing: north}
+122,6,-118 redstone_wire{east: none, power: 12, south: side, north: side, west: none}
+122,6,-117 redstone_wire{east: side, power: 13, south: none, north: side, west: side}
+123,6,-117 redstone_wire{east: side, power: 12, south: none, north: none, west: side}
+124,6,-117 redstone_wire{east: side, power: 11, south: none, north: none, west: side}
+125,6,-117 redstone_wire{east: side, power: 10, south: none, north: none, west: side}
+126,6,-117 redstone_wire{east: side, power: 9, south: none, north: none, west: side}
+T 474
+T 475
+114,6,-121 redstone_wire{east: none, power: 0, south: side, north: side, west: none}
+114,6,-120 comparator{mode: compare, powered: false, facing: south}
+122,6,-121 copper_bulb{lit: false, powered: true}
+122,6,-120 piston_head{type: sticky, short: false, facing: north}
+127,6,-117 repeater{powered: true, facing: west, delay: 1, locked: false}
+128,6,-117 redstone_wire{east: side, power: 15, south: none, north: none, west: side}
+T 476
+T 477
+T 478
+T 479
+115,6,-119 repeater{powered: true, facing: east, delay: 4, locked: false}
+T 480
+T 481
+T 482
+T 483
+T 484
+T 485
+T 486
+T 487
+T 488
+T 489
+T 490
+T 491
+T 492
+T 493
+T 494
+T 495
+T 496
+T 497
+T 498
+T 499
+T 500
+T 501
+T 502
+T 503
+T 504
+T 505
+T 506
+T 507
+T 508
+T 509
+T 510
+T 511
+T 512
+CLICK 512 lever [83, 6, -117]
+T 513
+83,6,-117 lever{face: wall, powered: false, facing: east}
+84,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+85,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+86,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+T 514
+87,6,-117 repeater{powered: false, facing: west, delay: 1, locked: false}
+88,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+89,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+90,6,-119 copper_bulb{lit: false, powered: false}
+90,6,-118 redstone_wire{east: none, power: 0, south: side, north: side, west: none}
+90,6,-117 redstone_wire{east: side, power: 0, south: none, north: side, west: side}
+91,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+92,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+93,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+94,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+T 515
+T 516
+95,6,-117 repeater{powered: false, facing: west, delay: 1, locked: false}
+96,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+97,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+98,6,-118 redstone_wire{east: none, power: 0, south: side, north: side, west: none}
+98,6,-117 redstone_wire{east: side, power: 0, south: none, north: side, west: side}
+99,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+100,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+101,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+102,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+T 517
+T 518
+98,6,-120 copper_bulb{lit: false, powered: false}
+98,6,-119 repeater{powered: false, facing: south, delay: 1, locked: false}
+103,6,-117 repeater{powered: false, facing: west, delay: 1, locked: false}
+104,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+105,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+106,6,-118 redstone_wire{east: none, power: 0, south: side, north: side, west: none}
+106,6,-117 redstone_wire{east: side, power: 0, south: none, north: side, west: side}
+107,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+108,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+109,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+110,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+T 519
+T 520
+106,6,-120 copper_bulb{lit: false, powered: true}
+106,6,-119 observer{powered: true, facing: south}
+111,6,-117 repeater{powered: false, facing: west, delay: 1, locked: false}
+112,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+113,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+114,6,-117 redstone_wire{east: side, power: 0, south: none, north: side, west: side}
+115,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+116,6,-119 redstone_wire{east: none, power: 0, south: side, north: none, west: side}
+116,6,-118 redstone_wire{east: none, power: 0, south: side, north: side, west: none}
+116,6,-117 redstone_wire{east: side, power: 0, south: none, north: side, west: side}
+117,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+118,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+T 521
+T 522
+106,6,-120 copper_bulb{lit: false, powered: false}
+106,6,-119 observer{powered: false, facing: south}
+107,6,-120 comparator{mode: compare, powered: false, facing: west}
+108,6,-120 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+114,6,-118 repeater{powered: false, facing: south, delay: 1, locked: false}
+119,6,-117 repeater{powered: false, facing: west, delay: 1, locked: false}
+120,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+121,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+122,6,-121 air{}
+122,6,-120 moving_piston{type: normal, facing: north}
+122,6,-119 moving_piston{type: sticky, facing: north}
+122,6,-118 redstone_wire{east: none, power: 0, south: side, north: side, west: none}
+122,6,-117 redstone_wire{east: side, power: 0, south: none, north: side, west: side}
+123,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+124,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+125,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+126,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+T 523
+T 524
+122,6,-120 copper_bulb{lit: false, powered: false}
+122,6,-119 sticky_piston{extended: false, facing: north}
+127,6,-117 repeater{powered: false, facing: west, delay: 1, locked: false}
+128,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+T 525
+T 526
+T 527
+T 528
+114,6,-119 copper_bulb{lit: false, powered: false}
+115,6,-119 repeater{powered: false, facing: east, delay: 4, locked: false}
+T 529
+T 530
+T 531
+T 532
+T 533
+T 534
+T 535
+T 536
+T 537
+T 538
+T 539
+T 540
+T 541
+T 542
+T 543
+T 544
+T 545
+T 546
+T 547
+T 548
+T 549
+T 550
+T 551
+T 552
+CLICK 552 lever [83, 6, -117]
+T 553
+83,6,-117 lever{face: wall, powered: true, facing: east}
+84,6,-117 redstone_wire{east: side, power: 15, south: none, north: none, west: side}
+85,6,-117 redstone_wire{east: side, power: 14, south: none, north: none, west: side}
+86,6,-117 redstone_wire{east: side, power: 13, south: none, north: none, west: side}
+T 554
+87,6,-117 repeater{powered: true, facing: west, delay: 1, locked: false}
+88,6,-117 redstone_wire{east: side, power: 15, south: none, north: none, west: side}
+89,6,-117 redstone_wire{east: side, power: 14, south: none, north: none, west: side}
+90,6,-119 copper_bulb{lit: true, powered: true}
+90,6,-118 redstone_wire{east: none, power: 12, south: side, north: side, west: none}
+90,6,-117 redstone_wire{east: side, power: 13, south: none, north: side, west: side}
+91,6,-117 redstone_wire{east: side, power: 12, south: none, north: none, west: side}
+92,6,-117 redstone_wire{east: side, power: 11, south: none, north: none, west: side}
+93,6,-117 redstone_wire{east: side, power: 10, south: none, north: none, west: side}
+94,6,-117 redstone_wire{east: side, power: 9, south: none, north: none, west: side}
+T 555
+T 556
+91,6,-119 comparator{mode: compare, powered: true, facing: west}
+92,6,-119 redstone_wire{east: side, power: 15, south: none, north: none, west: side}
+95,6,-117 repeater{powered: true, facing: west, delay: 1, locked: false}
+96,6,-117 redstone_wire{east: side, power: 15, south: none, north: none, west: side}
+97,6,-117 redstone_wire{east: side, power: 14, south: none, north: none, west: side}
+98,6,-118 redstone_wire{east: none, power: 12, south: side, north: side, west: none}
+98,6,-117 redstone_wire{east: side, power: 13, south: none, north: side, west: side}
+99,6,-117 redstone_wire{east: side, power: 12, south: none, north: none, west: side}
+100,6,-117 redstone_wire{east: side, power: 11, south: none, north: none, west: side}
+101,6,-117 redstone_wire{east: side, power: 10, south: none, north: none, west: side}
+102,6,-117 redstone_wire{east: side, power: 9, south: none, north: none, west: side}
+T 557
+T 558
+98,6,-120 copper_bulb{lit: true, powered: true}
+98,6,-119 repeater{powered: true, facing: south, delay: 1, locked: false}
+103,6,-117 repeater{powered: true, facing: west, delay: 1, locked: false}
+104,6,-117 redstone_wire{east: side, power: 15, south: none, north: none, west: side}
+105,6,-117 redstone_wire{east: side, power: 14, south: none, north: none, west: side}
+106,6,-118 redstone_wire{east: none, power: 12, south: side, north: side, west: none}
+106,6,-117 redstone_wire{east: side, power: 13, south: none, north: side, west: side}
+107,6,-117 redstone_wire{east: side, power: 12, south: none, north: none, west: side}
+108,6,-117 redstone_wire{east: side, power: 11, south: none, north: none, west: side}
+109,6,-117 redstone_wire{east: side, power: 10, south: none, north: none, west: side}
+110,6,-117 redstone_wire{east: side, power: 9, south: none, north: none, west: side}
+T 559
+T 560
+99,6,-120 comparator{mode: compare, powered: true, facing: west}
+100,6,-120 redstone_wire{east: side, power: 15, south: none, north: none, west: side}
+106,6,-120 copper_bulb{lit: true, powered: true}
+106,6,-119 observer{powered: true, facing: south}
+111,6,-117 repeater{powered: true, facing: west, delay: 1, locked: false}
+112,6,-117 redstone_wire{east: side, power: 15, south: none, north: none, west: side}
+113,6,-117 redstone_wire{east: side, power: 14, south: none, north: none, west: side}
+114,6,-117 redstone_wire{east: side, power: 13, south: none, north: side, west: side}
+115,6,-117 redstone_wire{east: side, power: 12, south: none, north: none, west: side}
+116,6,-119 redstone_wire{east: none, power: 9, south: side, north: none, west: side}
+116,6,-118 redstone_wire{east: none, power: 10, south: side, north: side, west: none}
+116,6,-117 redstone_wire{east: side, power: 11, south: none, north: side, west: side}
+117,6,-117 redstone_wire{east: side, power: 10, south: none, north: none, west: side}
+118,6,-117 redstone_wire{east: side, power: 9, south: none, north: none, west: side}
+T 561
+T 562
+106,6,-120 copper_bulb{lit: true, powered: false}
+106,6,-119 observer{powered: false, facing: south}
+107,6,-120 comparator{mode: compare, powered: true, facing: west}
+108,6,-120 redstone_wire{east: side, power: 15, south: none, north: none, west: side}
+114,6,-119 copper_bulb{lit: true, powered: true}
+114,6,-118 repeater{powered: true, facing: south, delay: 1, locked: false}
+119,6,-117 repeater{powered: true, facing: west, delay: 1, locked: false}
+120,6,-117 redstone_wire{east: side, power: 15, south: none, north: none, west: side}
+121,6,-117 redstone_wire{east: side, power: 14, south: none, north: none, west: side}
+122,6,-121 moving_piston{type: normal, facing: north}
+122,6,-120 moving_piston{type: sticky, facing: north}
+122,6,-119 sticky_piston{extended: true, facing: north}
+122,6,-118 redstone_wire{east: none, power: 12, south: side, north: side, west: none}
+122,6,-117 redstone_wire{east: side, power: 13, south: none, north: side, west: side}
+123,6,-117 redstone_wire{east: side, power: 12, south: none, north: none, west: side}
+124,6,-117 redstone_wire{east: side, power: 11, south: none, north: none, west: side}
+125,6,-117 redstone_wire{east: side, power: 10, south: none, north: none, west: side}
+126,6,-117 redstone_wire{east: side, power: 9, south: none, north: none, west: side}
+T 563
+T 564
+114,6,-121 redstone_wire{east: none, power: 15, south: side, north: side, west: none}
+114,6,-120 comparator{mode: compare, powered: true, facing: south}
+122,6,-121 copper_bulb{lit: true, powered: true}
+122,6,-120 piston_head{type: sticky, short: false, facing: north}
+127,6,-117 repeater{powered: true, facing: west, delay: 1, locked: false}
+128,6,-117 redstone_wire{east: side, power: 15, south: none, north: none, west: side}
+T 565
+T 566
+123,6,-121 comparator{mode: compare, powered: true, facing: west}
+124,6,-121 redstone_wire{east: side, power: 15, south: none, north: none, west: side}
+T 567
+T 568
+115,6,-119 repeater{powered: true, facing: east, delay: 4, locked: false}
+T 569
+T 570
+T 571
+T 572
+T 573
+T 574
+T 575
+T 576
+T 577
+T 578
+T 579
+T 580
+T 581
+T 582
+T 583
+T 584
+T 585
+T 586
+T 587
+T 588
+T 589
+CLICK 589 lever [83, 6, -117]
+T 590
+83,6,-117 lever{face: wall, powered: false, facing: east}
+84,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+85,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+86,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+T 591
+87,6,-117 repeater{powered: false, facing: west, delay: 1, locked: false}
+88,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+89,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+90,6,-119 copper_bulb{lit: true, powered: false}
+90,6,-118 redstone_wire{east: none, power: 0, south: side, north: side, west: none}
+90,6,-117 redstone_wire{east: side, power: 0, south: none, north: side, west: side}
+91,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+92,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+93,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+94,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+T 592
+T 593
+95,6,-117 repeater{powered: false, facing: west, delay: 1, locked: false}
+96,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+97,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+98,6,-118 redstone_wire{east: none, power: 0, south: side, north: side, west: none}
+98,6,-117 redstone_wire{east: side, power: 0, south: none, north: side, west: side}
+99,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+100,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+101,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+102,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+T 594
+T 595
+98,6,-120 copper_bulb{lit: true, powered: false}
+98,6,-119 repeater{powered: false, facing: south, delay: 1, locked: false}
+103,6,-117 repeater{powered: false, facing: west, delay: 1, locked: false}
+104,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+105,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+106,6,-118 redstone_wire{east: none, power: 0, south: side, north: side, west: none}
+106,6,-117 redstone_wire{east: side, power: 0, south: none, north: side, west: side}
+107,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+108,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+109,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+110,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+T 596
+T 597
+106,6,-120 copper_bulb{lit: false, powered: true}
+106,6,-119 observer{powered: true, facing: south}
+111,6,-117 repeater{powered: false, facing: west, delay: 1, locked: false}
+112,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+113,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+114,6,-117 redstone_wire{east: side, power: 0, south: none, north: side, west: side}
+115,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+116,6,-119 redstone_wire{east: none, power: 0, south: side, north: none, west: side}
+116,6,-118 redstone_wire{east: none, power: 0, south: side, north: side, west: none}
+116,6,-117 redstone_wire{east: side, power: 0, south: none, north: side, west: side}
+117,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+118,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+T 598
+T 599
+106,6,-120 copper_bulb{lit: false, powered: false}
+106,6,-119 observer{powered: false, facing: south}
+107,6,-120 comparator{mode: compare, powered: false, facing: west}
+108,6,-120 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+114,6,-118 repeater{powered: false, facing: south, delay: 1, locked: false}
+119,6,-117 repeater{powered: false, facing: west, delay: 1, locked: false}
+120,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+121,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+122,6,-121 air{}
+122,6,-120 moving_piston{type: normal, facing: north}
+122,6,-119 moving_piston{type: sticky, facing: north}
+122,6,-118 redstone_wire{east: none, power: 0, south: side, north: side, west: none}
+122,6,-117 redstone_wire{east: side, power: 0, south: none, north: side, west: side}
+123,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+124,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+125,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+126,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+T 600
+T 601
+122,6,-120 copper_bulb{lit: true, powered: false}
+122,6,-119 sticky_piston{extended: false, facing: north}
+123,6,-121 comparator{mode: compare, powered: false, facing: west}
+124,6,-121 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+127,6,-117 repeater{powered: false, facing: west, delay: 1, locked: false}
+128,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+T 602
+T 603
+T 604
+T 605
+114,6,-119 copper_bulb{lit: true, powered: false}
+115,6,-119 repeater{powered: false, facing: east, delay: 4, locked: false}
+T 606
+T 607
+T 608
+T 609
+T 610
+T 611
+T 612
+T 613
+T 614
+T 615
+T 616
+T 617
+T 618
+T 619
+T 620
+T 621
+T 622
+T 623
+T 624
+CLICK 624 lever [83, 6, -117]
+T 625
+83,6,-117 lever{face: wall, powered: true, facing: east}
+84,6,-117 redstone_wire{east: side, power: 15, south: none, north: none, west: side}
+85,6,-117 redstone_wire{east: side, power: 14, south: none, north: none, west: side}
+86,6,-117 redstone_wire{east: side, power: 13, south: none, north: none, west: side}
+T 626
+87,6,-117 repeater{powered: true, facing: west, delay: 1, locked: false}
+88,6,-117 redstone_wire{east: side, power: 15, south: none, north: none, west: side}
+89,6,-117 redstone_wire{east: side, power: 14, south: none, north: none, west: side}
+90,6,-119 copper_bulb{lit: false, powered: true}
+90,6,-118 redstone_wire{east: none, power: 12, south: side, north: side, west: none}
+90,6,-117 redstone_wire{east: side, power: 13, south: none, north: side, west: side}
+91,6,-117 redstone_wire{east: side, power: 12, south: none, north: none, west: side}
+92,6,-117 redstone_wire{east: side, power: 11, south: none, north: none, west: side}
+93,6,-117 redstone_wire{east: side, power: 10, south: none, north: none, west: side}
+94,6,-117 redstone_wire{east: side, power: 9, south: none, north: none, west: side}
+T 627
+T 628
+91,6,-119 comparator{mode: compare, powered: false, facing: west}
+92,6,-119 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+95,6,-117 repeater{powered: true, facing: west, delay: 1, locked: false}
+96,6,-117 redstone_wire{east: side, power: 15, south: none, north: none, west: side}
+97,6,-117 redstone_wire{east: side, power: 14, south: none, north: none, west: side}
+98,6,-118 redstone_wire{east: none, power: 12, south: side, north: side, west: none}
+98,6,-117 redstone_wire{east: side, power: 13, south: none, north: side, west: side}
+99,6,-117 redstone_wire{east: side, power: 12, south: none, north: none, west: side}
+100,6,-117 redstone_wire{east: side, power: 11, south: none, north: none, west: side}
+101,6,-117 redstone_wire{east: side, power: 10, south: none, north: none, west: side}
+102,6,-117 redstone_wire{east: side, power: 9, south: none, north: none, west: side}
+T 629
+T 630
+98,6,-120 copper_bulb{lit: false, powered: true}
+98,6,-119 repeater{powered: true, facing: south, delay: 1, locked: false}
+103,6,-117 repeater{powered: true, facing: west, delay: 1, locked: false}
+104,6,-117 redstone_wire{east: side, power: 15, south: none, north: none, west: side}
+105,6,-117 redstone_wire{east: side, power: 14, south: none, north: none, west: side}
+106,6,-118 redstone_wire{east: none, power: 12, south: side, north: side, west: none}
+106,6,-117 redstone_wire{east: side, power: 13, south: none, north: side, west: side}
+107,6,-117 redstone_wire{east: side, power: 12, south: none, north: none, west: side}
+108,6,-117 redstone_wire{east: side, power: 11, south: none, north: none, west: side}
+109,6,-117 redstone_wire{east: side, power: 10, south: none, north: none, west: side}
+110,6,-117 redstone_wire{east: side, power: 9, south: none, north: none, west: side}
+T 631
+T 632
+99,6,-120 comparator{mode: compare, powered: false, facing: west}
+100,6,-120 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+106,6,-120 copper_bulb{lit: true, powered: true}
+106,6,-119 observer{powered: true, facing: south}
+111,6,-117 repeater{powered: true, facing: west, delay: 1, locked: false}
+112,6,-117 redstone_wire{east: side, power: 15, south: none, north: none, west: side}
+113,6,-117 redstone_wire{east: side, power: 14, south: none, north: none, west: side}
+114,6,-117 redstone_wire{east: side, power: 13, south: none, north: side, west: side}
+115,6,-117 redstone_wire{east: side, power: 12, south: none, north: none, west: side}
+116,6,-119 redstone_wire{east: none, power: 9, south: side, north: none, west: side}
+116,6,-118 redstone_wire{east: none, power: 10, south: side, north: side, west: none}
+116,6,-117 redstone_wire{east: side, power: 11, south: none, north: side, west: side}
+117,6,-117 redstone_wire{east: side, power: 10, south: none, north: none, west: side}
+118,6,-117 redstone_wire{east: side, power: 9, south: none, north: none, west: side}
+T 633
+T 634
+106,6,-120 copper_bulb{lit: true, powered: false}
+106,6,-119 observer{powered: false, facing: south}
+107,6,-120 comparator{mode: compare, powered: true, facing: west}
+108,6,-120 redstone_wire{east: side, power: 15, south: none, north: none, west: side}
+114,6,-119 copper_bulb{lit: false, powered: true}
+114,6,-118 repeater{powered: true, facing: south, delay: 1, locked: false}
+119,6,-117 repeater{powered: true, facing: west, delay: 1, locked: false}
+120,6,-117 redstone_wire{east: side, power: 15, south: none, north: none, west: side}
+121,6,-117 redstone_wire{east: side, power: 14, south: none, north: none, west: side}
+122,6,-121 moving_piston{type: normal, facing: north}
+122,6,-120 moving_piston{type: sticky, facing: north}
+122,6,-119 sticky_piston{extended: true, facing: north}
+122,6,-118 redstone_wire{east: none, power: 12, south: side, north: side, west: none}
+122,6,-117 redstone_wire{east: side, power: 13, south: none, north: side, west: side}
+123,6,-117 redstone_wire{east: side, power: 12, south: none, north: none, west: side}
+124,6,-117 redstone_wire{east: side, power: 11, south: none, north: none, west: side}
+125,6,-117 redstone_wire{east: side, power: 10, south: none, north: none, west: side}
+126,6,-117 redstone_wire{east: side, power: 9, south: none, north: none, west: side}
+T 635
+T 636
+114,6,-121 redstone_wire{east: none, power: 0, south: side, north: side, west: none}
+114,6,-120 comparator{mode: compare, powered: false, facing: south}
+122,6,-121 copper_bulb{lit: false, powered: true}
+122,6,-120 piston_head{type: sticky, short: false, facing: north}
+127,6,-117 repeater{powered: true, facing: west, delay: 1, locked: false}
+128,6,-117 redstone_wire{east: side, power: 15, south: none, north: none, west: side}
+T 637
+T 638
+T 639
+T 640
+115,6,-119 repeater{powered: true, facing: east, delay: 4, locked: false}
+T 641
+T 642
+T 643
+T 644
+T 645
+T 646
+T 647
+T 648
+T 649
+T 650
+T 651
+T 652
+T 653
+T 654
+T 655
+T 656
+T 657
+T 658
+T 659
+T 660
+T 661
+CLICK 661 lever [83, 6, -117]
+T 662
+83,6,-117 lever{face: wall, powered: false, facing: east}
+84,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+85,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+86,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+T 663
+87,6,-117 repeater{powered: false, facing: west, delay: 1, locked: false}
+88,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+89,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+90,6,-119 copper_bulb{lit: false, powered: false}
+90,6,-118 redstone_wire{east: none, power: 0, south: side, north: side, west: none}
+90,6,-117 redstone_wire{east: side, power: 0, south: none, north: side, west: side}
+91,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+92,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+93,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+94,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+T 664
+T 665
+95,6,-117 repeater{powered: false, facing: west, delay: 1, locked: false}
+96,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+97,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+98,6,-118 redstone_wire{east: none, power: 0, south: side, north: side, west: none}
+98,6,-117 redstone_wire{east: side, power: 0, south: none, north: side, west: side}
+99,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+100,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+101,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+102,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+T 666
+T 667
+98,6,-120 copper_bulb{lit: false, powered: false}
+98,6,-119 repeater{powered: false, facing: south, delay: 1, locked: false}
+103,6,-117 repeater{powered: false, facing: west, delay: 1, locked: false}
+104,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+105,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+106,6,-118 redstone_wire{east: none, power: 0, south: side, north: side, west: none}
+106,6,-117 redstone_wire{east: side, power: 0, south: none, north: side, west: side}
+107,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+108,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+109,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+110,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+T 668
+T 669
+106,6,-120 copper_bulb{lit: false, powered: true}
+106,6,-119 observer{powered: true, facing: south}
+111,6,-117 repeater{powered: false, facing: west, delay: 1, locked: false}
+112,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+113,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+114,6,-117 redstone_wire{east: side, power: 0, south: none, north: side, west: side}
+115,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+116,6,-119 redstone_wire{east: none, power: 0, south: side, north: none, west: side}
+116,6,-118 redstone_wire{east: none, power: 0, south: side, north: side, west: none}
+116,6,-117 redstone_wire{east: side, power: 0, south: none, north: side, west: side}
+117,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+118,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+T 670
+T 671
+106,6,-120 copper_bulb{lit: false, powered: false}
+106,6,-119 observer{powered: false, facing: south}
+107,6,-120 comparator{mode: compare, powered: false, facing: west}
+108,6,-120 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+114,6,-118 repeater{powered: false, facing: south, delay: 1, locked: false}
+119,6,-117 repeater{powered: false, facing: west, delay: 1, locked: false}
+120,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+121,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+122,6,-121 air{}
+122,6,-120 moving_piston{type: normal, facing: north}
+122,6,-119 moving_piston{type: sticky, facing: north}
+122,6,-118 redstone_wire{east: none, power: 0, south: side, north: side, west: none}
+122,6,-117 redstone_wire{east: side, power: 0, south: none, north: side, west: side}
+123,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+124,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+125,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+126,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+T 672
+T 673
+122,6,-120 copper_bulb{lit: false, powered: false}
+122,6,-119 sticky_piston{extended: false, facing: north}
+127,6,-117 repeater{powered: false, facing: west, delay: 1, locked: false}
+128,6,-117 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+T 674
+T 675
+T 676
+T 677
+114,6,-119 copper_bulb{lit: false, powered: false}
+115,6,-119 repeater{powered: false, facing: east, delay: 4, locked: false}
+T 678
+T 679
+T 680
+T 681
+T 682
+T 683
+T 684
+T 685
+T 686
+T 687
+T 688
+T 689
+T 690
+T 691
+T 692
+T 693
+T 694
+T 695
+T 696
+T 697
+T 698
+T 699
+T 700
+T 701
+T 702
+T 703
+T 704
+T 705
+T 706
+T 707
+T 708
+T 709
+T 710
+T 711
+T 712
+T 713
+T 714
+T 715
+T 716
+T 717
+T 718
+T 719
+T 720

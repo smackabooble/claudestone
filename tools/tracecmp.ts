@@ -53,6 +53,9 @@ export const sigOf = (type: string, p: Record<string, any>): string => {
   if (type === 'moving_piston') return 'moving';
   if (type === 'piston' || type === 'sticky_piston') return `${type[0] === 's' ? 'S' : 'P'}:${p.facing}${p.extended ? '*' : ''}`;
   if (type === 'piston_head') return `head:${p.facing}`;
+  if (type === 'copper_bulb') return `bulb:${p.lit ? 'L' : 'o'}${p.powered ? 'P' : ''}`;
+  if (type === 'comparator' || type === 'repeater') return `${type[0]}${p.powered ? '!' : ''}`;
+  if (type === 'redstone_wire') return `w${p.power}`;
   if (type === 'observer') return `obs:${p.facing}${p.powered ? '!' : ''}`;
   if (type === 'redstone_block' || type === 'stone' || type === 'glass' || type === 'leaves' || type === 'slime_block' || type === 'honey_block') return type;
   return type;
