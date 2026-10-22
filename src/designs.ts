@@ -13,6 +13,7 @@ import { buildDoor } from '../examples/piston-door-2x2.ts';
 import { buildDoor3 } from '../examples/piston-door-3x3.ts';
 import { buildDoor4 } from '../examples/piston-door-4x4.ts';
 import { buildLampDisplay } from '../examples/lamp-display.ts';
+import { makeArmSpec } from '../examples/extender-long.ts';
 
 export interface Design {
   name: string;
@@ -103,6 +104,13 @@ export const DESIGNS: Design[] = [
     realGameVerified: false, settle: 10,
     usage: 'Buttons 0-9 in a panel at the west end (one per row, row 0 is the southernmost), CLR button at the south end of the same panel. The lamp screen is at the east end (x=86, 9 wide, 5 rows). After pasting press CLR once. Wait about 4 seconds between presses.',
     build: (w) => { const l = buildLampDisplay(w); w.run(100); w.use(l.clr); w.run(120); w.use(l.buttons[8]); w.run(150); return { lever: l.buttons[0] }; },
+  },
+  {
+    name: 'extender-10',
+    description: '10-long sticky piston extender: 10 pistons in a row, the tip block travels 10 blocks (P1 pushes 9 pistons + the tip = 10 blocks, inside the 12-block limit). Same controller as the quint extender, with the pulse order computed by search (works for any N up to 12 in the sim). About 163x2x128, mostly dust and repeaters. Simulated only.',
+    realGameVerified: false, settle: 400,
+    usage: 'lever ON = extend (tip moves from x=10 to x=20 along +x at y=0), OFF = retract. Keep x=0..20 clear east of the arm. Allow about 25 s to extend and 40 s to come home.',
+    build: (w) => ({ lever: buildFlatArm(w, makeArmSpec(10)).lever }),
   },
   {
     name: 'piston-door-5x5',

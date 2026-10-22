@@ -213,3 +213,6 @@ Method that worked: replay the trace, find the first tick where cells differ, lo
 
 ## Quasi-connectivity real trace (26.2)
 `knowledge/refs/quasi-auto-real-trace.txt` (examples/microtests/quasi-auto.schem, lever 75,-46,174). Real game: all 5 pistons (control, dust-QC, dust-QC+kick, stone-above QC, +kick) extend as soon as the dust powers up (no kick needed, dust update reaches the piston), retract on OFF. Sim replay (`NOITEMS=1 tracecmp.ts <trace> 75,-46,174 1`, PHASE 0 and 1) matches with 0 differing cells. QC via dust is correct in the sim.
+
+## Long extenders (any N)
+`examples/extender-long.ts`: `makeArmSpec(n)` computes holds (P_k on 3(k-1) rt, off 3(n-1)+3(n-1-k) rt, P1 +1) and the pulse order that closes the gaps after retract-all (BFS on an abstract model: a piston at x with free x+1 and a block at x+2 pulls it to x+1; reproduces the hand-found N=3..5 orders). Pulses 4 rt apart starting at 3n+4. In the sim N=6, 8, 10, 12 extend n blocks and come home; N=13 stops at 12 blocks (12-block push limit: n-1 pistons + tip <= 12). N=10: 45 pulses, 163x2x128. Not tried in the real game.
