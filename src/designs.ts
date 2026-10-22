@@ -13,6 +13,7 @@ import { buildDoor } from '../examples/piston-door-2x2.ts';
 import { buildDoor3 } from '../examples/piston-door-3x3.ts';
 import { buildDoor4 } from '../examples/piston-door-4x4.ts';
 import { buildLampDisplay } from '../examples/lamp-display.ts';
+import { buildWaveArm } from '../examples/wave-arm.ts';
 import { FAST, makeArmSpec } from '../examples/extender-long.ts';
 
 export interface Design {
@@ -125,6 +126,20 @@ export const DESIGNS: Design[] = [
     realGameVerified: false, settle: 400,
     usage: 'lever ON = extend, OFF = retract. The arm is in the TOP plane (y=12): pistons x=0..9, tip x=10 moving to x=20, along +x. Keep x=0..20 clear. The lever is 3 blocks west of the first piston (top plane); its wire runs down a dust staircase and along a plane under everything.',
     build: (w) => ({ lever: buildLayeredArm(w, makeArmSpec(10, { timing: FAST }), 4, { shared: true }).lever }),
+  },
+  {
+    name: 'extender-10-wave',
+    description: 'Compact 10-long sticky piston extender (tip travels 10 blocks), 30x2x17 and under 500 blocks: no delay row per pulse any more. Extension is a level wave along the even taps; retraction leaves the pistons spaced by one gap, and 9 pulse "runs" (waves along two repeater lines, injected at the right tap by a timeline) close the gaps. Simulated only; about 10 s to come home. 12-long (34x2x17) via buildWaveArm(w, 12).',
+    realGameVerified: false, settle: 400,
+    usage: 'lever ON = extend, OFF = retract. Pistons at x=0..9, y=1, z=0 facing +x, tip stone x=10 moving to x=20. Lever 6 blocks west of the first piston. Keep x=0..22 clear on the arm row z=0. Allow about 11 s to come home.',
+    build: (w) => ({ lever: buildWaveArm(w, 10).lever }),
+  },
+  {
+    name: 'extender-12-wave',
+    description: 'Longest possible extender (12 pistons = 12-block push limit), wave controller: 34x2x17, about 560 blocks. Simulated only; about 12.5 s to come home.',
+    realGameVerified: false, settle: 400,
+    usage: 'lever ON = extend, OFF = retract. Pistons x=0..11, y=1, z=0 facing +x, tip stone x=12 moving to x=24. Keep x=0..26 clear on the arm row z=0.',
+    build: (w) => ({ lever: buildWaveArm(w, 12).lever }),
   },
   {
     name: 'piston-door-5x5',
