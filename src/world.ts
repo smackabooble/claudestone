@@ -48,6 +48,7 @@ const DEFS: Record<string, Def> = {
   moving_piston: { solid: false, conductor: false, source: false },
   air: { solid: false, conductor: false, source: false },
   stone: { solid: true, conductor: true, source: false },
+  target: { solid: true, conductor: true, source: true }, // solid conductor like stone, but isSignalSource: dust connects to it (output power 0 without projectiles)
   glass: { solid: true, conductor: false, source: false },
   redstone_lamp: { solid: true, conductor: true, source: false },
   redstone_block: { solid: true, conductor: false, source: true },

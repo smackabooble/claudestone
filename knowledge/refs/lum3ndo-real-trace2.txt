@@ -1,0 +1,4004 @@
+97,-10,233 sticky_piston{extended: true, facing: south}
+97,-10,234 piston_head{type: sticky, short: false, facing: south}
+97,-10,235 hay_block{axis: z}
+97,-10,236 piston{extended: true, facing: south}
+97,-10,237 piston_head{type: normal, short: false, facing: south}
+98,-10,233 redstone_block{}
+98,-10,234 sticky_piston{extended: true, facing: south}
+98,-10,235 piston_head{type: sticky, short: false, facing: south}
+98,-10,236 redstone_block{}
+98,-10,237 sticky_piston{extended: true, facing: east}
+99,-10,233 piston_head{type: sticky, short: false, facing: west}
+99,-10,235 observer{powered: false, facing: west}
+99,-10,236 sticky_piston{extended: true, facing: up}
+99,-10,237 piston_head{type: sticky, short: false, facing: east}
+100,-10,233 sticky_piston{extended: true, facing: west}
+100,-10,234 observer{powered: false, facing: east}
+100,-10,236 piston{extended: false, facing: up}
+100,-10,237 glass{}
+101,-10,233 redstone_block{}
+101,-10,234 observer{powered: false, facing: east}
+101,-10,236 polished_blackstone_bricks{}
+101,-10,237 note_block{instrument: basedrum, powered: false, note: 0}
+102,-10,233 piston_head{type: sticky, short: false, facing: west}
+102,-10,234 sticky_piston{extended: false, facing: south}
+102,-10,235 observer{powered: false, facing: west}
+102,-10,237 sticky_piston{extended: false, facing: east}
+103,-10,233 sticky_piston{extended: true, facing: west}
+103,-10,235 sticky_piston{extended: false, facing: up}
+103,-10,237 redstone_block{}
+104,-10,233 redstone_block{}
+104,-10,234 piston{extended: true, facing: south}
+104,-10,235 piston_head{type: normal, short: false, facing: south}
+104,-10,237 tinted_glass{}
+105,-10,233 piston_head{type: sticky, short: false, facing: west}
+105,-10,236 piston{extended: false, facing: up}
+105,-10,237 tinted_glass{}
+106,-10,233 sticky_piston{extended: true, facing: west}
+106,-10,234 observer{powered: false, facing: east}
+106,-10,236 piston_head{type: sticky, short: false, facing: west}
+106,-10,237 tinted_glass{}
+107,-10,233 piston_head{type: normal, short: false, facing: west}
+107,-10,234 observer{powered: false, facing: south}
+107,-10,235 piston{extended: false, facing: west}
+107,-10,236 sticky_piston{extended: true, facing: west}
+107,-10,237 piston_head{type: normal, short: false, facing: west}
+108,-10,233 piston{extended: true, facing: west}
+108,-10,234 sticky_piston{extended: true, facing: south}
+108,-10,235 piston_head{type: sticky, short: false, facing: south}
+108,-10,236 redstone_block{}
+108,-10,237 piston{extended: true, facing: west}
+109,-10,233 piston{extended: true, facing: south}
+109,-10,234 piston_head{type: normal, short: false, facing: south}
+109,-10,235 observer{powered: false, facing: north}
+109,-10,236 piston{extended: true, facing: south}
+109,-10,237 piston_head{type: normal, short: false, facing: south}
+97,-9,233 note_block{instrument: harp, powered: true, note: 0}
+97,-9,234 cobbled_deepslate_slab{waterlogged: false, type: top}
+97,-9,235 campfire{lit: false, waterlogged: false, facing: east, signal_fire: true}
+97,-9,236 observer{powered: false, facing: north}
+97,-9,237 piston{extended: false, facing: up}
+98,-9,233 note_block{instrument: harp, powered: true, note: 0}
+98,-9,234 observer{powered: false, facing: north}
+98,-9,235 observer{powered: false, facing: west}
+98,-9,236 observer{powered: false, facing: up}
+99,-9,233 polished_blackstone_bricks{}
+99,-9,234 sticky_piston{extended: true, facing: up}
+99,-9,235 repeater{powered: false, facing: west, delay: 1, locked: false}
+99,-9,236 piston_head{type: sticky, short: false, facing: up}
+99,-9,237 cobbled_deepslate_slab{waterlogged: false, type: top}
+100,-9,234 observer{powered: false, facing: down}
+100,-9,235 polished_blackstone_bricks{}
+100,-9,236 observer{powered: false, facing: west}
+100,-9,237 observer{powered: false, facing: down}
+101,-9,233 dropper{triggered: true, facing: south}
+101,-9,234 hopper{enabled: true, facing: north}
+101,-9,235 polished_blackstone_bricks{}
+101,-9,236 comparator{mode: compare, powered: false, facing: north}
+101,-9,237 polished_blackstone_bricks{}
+102,-9,233 observer{powered: false, facing: up}
+102,-9,234 observer{powered: false, facing: north}
+102,-9,235 sticky_piston{extended: false, facing: up}
+102,-9,237 polished_blackstone_bricks{}
+103,-9,233 redstone_lamp{lit: true}
+103,-9,234 observer{powered: false, facing: north}
+103,-9,236 observer{powered: false, facing: south}
+103,-9,237 dropper{triggered: true, facing: up}
+104,-9,235 observer{powered: false, facing: down}
+104,-9,237 sticky_piston{extended: false, facing: north}
+105,-9,236 obsidian{}
+106,-9,234 observer{powered: false, facing: down}
+106,-9,236 observer{powered: false, facing: down}
+106,-9,237 piston{extended: false, facing: west}
+107,-9,233 polished_blackstone_bricks{}
+107,-9,234 sticky_piston{extended: true, facing: up}
+107,-9,235 observer{powered: false, facing: down}
+107,-9,236 observer{powered: false, facing: north}
+107,-9,237 observer{powered: false, facing: north}
+108,-9,233 note_block{instrument: harp, powered: true, note: 0}
+108,-9,234 observer{powered: false, facing: north}
+108,-9,235 observer{powered: false, facing: down}
+108,-9,236 observer{powered: false, facing: down}
+109,-9,234 cobbled_deepslate_slab{waterlogged: false, type: top}
+109,-9,236 polished_blackstone_bricks{}
+109,-9,237 piston{extended: false, facing: up}
+97,-8,233 cobbled_deepslate_slab{waterlogged: false, type: top}
+97,-8,234 redstone_wire{east: none, power: 6, south: side, north: side, west: none}
+97,-8,235 cherry_log{axis: x}
+97,-8,236 comparator{mode: compare, powered: true, facing: south}
+97,-8,237 composter{level: 6}
+98,-8,233 redstone_wire{east: side, power: 14, south: none, north: none, west: side}
+98,-8,234 observer{powered: false, facing: down}
+98,-8,235 piston_head{type: sticky, short: false, facing: west}
+98,-8,236 spruce_leaves{waterlogged: false, distance: 7, persistent: true}
+98,-8,237 polished_blackstone_bricks{}
+99,-8,233 redstone_wire{east: side, power: 15, south: none, north: none, west: side}
+99,-8,234 piston_head{type: sticky, short: false, facing: up}
+99,-8,235 sticky_piston{extended: true, facing: west}
+99,-8,236 target{power: 0}
+99,-8,237 redstone_wire{east: none, power: 14, south: none, north: side, west: up}
+100,-8,233 redstone_block{}
+100,-8,234 piston{extended: true, facing: up}
+100,-8,236 glass{}
+100,-8,237 observer{powered: false, facing: down}
+101,-8,233 piston_head{type: sticky, short: false, facing: west}
+101,-8,234 observer{powered: false, facing: north}
+101,-8,235 repeater{powered: false, facing: north, delay: 1, locked: false}
+101,-8,236 sticky_piston{extended: false, facing: east}
+101,-8,237 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+102,-8,233 sticky_piston{extended: true, facing: west}
+102,-8,236 observer{powered: false, facing: down}
+102,-8,237 repeater{powered: false, facing: west, delay: 2, locked: false}
+103,-8,232 lever{face: wall, powered: true, facing: north}
+103,-8,233 polished_blackstone_bricks{}
+103,-8,235 sticky_piston{extended: false, facing: up}
+103,-8,237 composter{level: 0}
+104,-8,233 sticky_piston{extended: true, facing: east}
+104,-8,235 polished_blackstone_bricks{}
+104,-8,236 piston{extended: false, facing: west}
+105,-8,233 piston_head{type: sticky, short: false, facing: east}
+105,-8,235 polished_blackstone_bricks{}
+105,-8,236 redstone_wire{east: none, power: 0, south: side, north: side, west: none}
+105,-8,237 target{power: 0}
+106,-8,233 redstone_block{}
+106,-8,234 piston{extended: true, facing: up}
+106,-8,236 polished_blackstone_bricks{}
+106,-8,237 piston{extended: false, facing: up}
+107,-8,233 redstone_wire{east: side, power: 15, south: none, north: none, west: side}
+107,-8,234 piston_head{type: sticky, short: false, facing: up}
+107,-8,235 sticky_piston{extended: false, facing: east}
+107,-8,236 observer{powered: false, facing: south}
+107,-8,237 observer{powered: false, facing: down}
+108,-8,233 redstone_wire{east: side, power: 14, south: none, north: none, west: side}
+108,-8,234 observer{powered: false, facing: down}
+108,-8,235 polished_blackstone_bricks{}
+108,-8,236 polished_blackstone_bricks{}
+109,-8,233 cobbled_deepslate_slab{waterlogged: false, type: top}
+109,-8,234 redstone_wire{east: none, power: 0, south: side, north: side, west: none}
+109,-8,236 comparator{mode: compare, powered: true, facing: south}
+109,-8,237 composter{level: 6}
+97,-7,233 redstone_wire{east: side, power: 13, south: side, north: none, west: none}
+97,-7,234 cobbled_deepslate_slab{waterlogged: false, type: top}
+97,-7,235 piston{extended: true, facing: south}
+97,-7,236 piston_head{type: normal, short: false, facing: south}
+97,-7,237 redstone_block{}
+98,-7,233 observer{powered: false, facing: west}
+98,-7,234 polished_blackstone_bricks{}
+98,-7,235 obsidian{}
+98,-7,236 piston{extended: false, facing: up}
+98,-7,237 redstone_wire{east: side, power: 15, south: none, north: none, west: side}
+99,-7,233 piston_head{type: sticky, short: false, facing: west}
+99,-7,234 piston{extended: false, facing: up}
+99,-7,235 piston{extended: false, facing: east}
+99,-7,236 observer{powered: false, facing: south}
+100,-7,233 sticky_piston{extended: true, facing: west}
+100,-7,234 piston_head{type: normal, short: false, facing: up}
+100,-7,235 polished_blackstone_bricks{}
+100,-7,236 observer{powered: false, facing: down}
+100,-7,237 piston{extended: false, facing: west}
+101,-7,233 polished_blackstone_bricks{}
+101,-7,234 polished_blackstone_bricks{}
+101,-7,235 polished_blackstone_bricks{}
+101,-7,236 polished_blackstone_bricks{}
+101,-7,237 polished_blackstone_bricks{}
+102,-7,233 polished_blackstone_bricks{}
+102,-7,234 polished_blackstone_bricks{}
+102,-7,235 sticky_piston{extended: false, facing: up}
+102,-7,236 polished_blackstone_bricks{}
+102,-7,237 polished_blackstone_bricks{}
+103,-7,233 polished_blackstone_bricks{}
+103,-7,234 polished_blackstone_bricks{}
+103,-7,236 polished_blackstone_bricks{}
+103,-7,237 polished_blackstone_bricks{}
+104,-7,233 polished_blackstone_bricks{}
+104,-7,234 polished_blackstone_bricks{}
+104,-7,236 polished_blackstone_bricks{}
+104,-7,237 polished_blackstone_bricks{}
+105,-7,233 polished_blackstone_bricks{}
+105,-7,234 polished_blackstone_bricks{}
+105,-7,235 sticky_piston{extended: false, facing: west}
+105,-7,236 polished_blackstone_bricks{}
+105,-7,237 polished_blackstone_bricks{}
+106,-7,233 sticky_piston{extended: true, facing: east}
+106,-7,234 piston_head{type: normal, short: false, facing: up}
+106,-7,235 white_stained_glass{}
+106,-7,236 observer{powered: false, facing: down}
+107,-7,233 piston_head{type: sticky, short: false, facing: east}
+107,-7,234 piston{extended: false, facing: up}
+107,-7,237 piston_head{type: normal, short: false, facing: west}
+108,-7,233 observer{powered: false, facing: east}
+108,-7,234 polished_blackstone_bricks{}
+108,-7,235 piston{extended: false, facing: west}
+108,-7,236 piston{extended: false, facing: up}
+108,-7,237 piston{extended: true, facing: west}
+109,-7,233 redstone_wire{east: none, power: 13, south: side, north: none, west: side}
+109,-7,234 cobbled_deepslate_slab{waterlogged: false, type: top}
+109,-7,235 piston{extended: false, facing: south}
+109,-7,237 redstone_block{}
+97,-6,234 redstone_wire{east: side, power: 12, south: none, north: side, west: none}
+97,-6,235 note_block{instrument: harp, powered: false, note: 0}
+97,-6,236 cobbled_deepslate_slab{waterlogged: false, type: top}
+97,-6,237 redstone_block{}
+98,-6,234 cobbled_deepslate_slab{waterlogged: false, type: top}
+98,-6,235 sticky_piston{extended: false, facing: east}
+98,-6,237 spruce_leaves{waterlogged: false, distance: 7, persistent: true}
+99,-6,233 piston{extended: true, facing: south}
+99,-6,234 piston_head{type: normal, short: false, facing: south}
+99,-6,235 sticky_piston{extended: true, facing: east}
+99,-6,237 sticky_piston{extended: false, facing: north}
+100,-6,233 polished_blackstone_bricks{}
+100,-6,234 polished_blackstone_bricks{}
+100,-6,235 piston_head{type: sticky, short: false, facing: east}
+100,-6,236 polished_blackstone_bricks{}
+100,-6,237 polished_blackstone_bricks{}
+101,-6,235 polished_blackstone_bricks{}
+102,-6,235 polished_blackstone_bricks{}
+103,-6,235 polished_blackstone_bricks{}
+104,-6,235 polished_blackstone_bricks{}
+105,-6,235 polished_blackstone_bricks{}
+106,-6,233 polished_blackstone_bricks{}
+106,-6,234 polished_blackstone_bricks{}
+106,-6,235 piston_head{type: sticky, short: false, facing: west}
+106,-6,236 polished_blackstone_bricks{}
+106,-6,237 polished_blackstone_bricks{}
+107,-6,233 piston{extended: true, facing: south}
+107,-6,234 piston_head{type: normal, short: false, facing: south}
+107,-6,235 sticky_piston{extended: true, facing: west}
+107,-6,237 sticky_piston{extended: false, facing: north}
+108,-6,234 cobbled_deepslate_slab{waterlogged: false, type: top}
+108,-6,235 sticky_piston{extended: false, facing: west}
+109,-6,234 redstone_wire{east: none, power: 12, south: none, north: side, west: side}
+109,-6,235 note_block{instrument: harp, powered: false, note: 0}
+109,-6,236 cobbled_deepslate_slab{waterlogged: false, type: top}
+109,-6,237 redstone_block{}
+97,-5,234 cobbled_deepslate_slab{waterlogged: false, type: top}
+97,-5,235 target{power: 0}
+97,-5,236 redstone_wire{east: none, power: 0, south: side, north: side, west: none}
+97,-5,237 glass{}
+98,-5,233 observer{powered: false, facing: west}
+98,-5,234 redstone_wire{east: side, power: 11, south: none, north: none, west: side}
+98,-5,235 sticky_piston{extended: false, facing: east}
+98,-5,236 cherry_log{axis: y}
+98,-5,237 observer{powered: false, facing: west}
+99,-5,233 piston{extended: false, facing: south}
+99,-5,234 white_concrete_powder{}
+99,-5,235 sticky_piston{extended: true, facing: east}
+99,-5,237 sticky_piston{extended: false, facing: north}
+100,-5,233 polished_blackstone_bricks{}
+100,-5,234 polished_blackstone_bricks{}
+100,-5,235 piston_head{type: sticky, short: false, facing: east}
+100,-5,236 polished_blackstone_bricks{}
+100,-5,237 polished_blackstone_bricks{}
+101,-5,235 polished_blackstone_bricks{}
+102,-5,235 polished_blackstone_bricks{}
+103,-5,235 polished_blackstone_bricks{}
+104,-5,235 polished_blackstone_bricks{}
+105,-5,235 polished_blackstone_bricks{}
+106,-5,233 polished_blackstone_bricks{}
+106,-5,234 polished_blackstone_bricks{}
+106,-5,235 piston_head{type: sticky, short: false, facing: west}
+106,-5,236 polished_blackstone_bricks{}
+106,-5,237 polished_blackstone_bricks{}
+107,-5,233 piston{extended: false, facing: south}
+107,-5,234 white_concrete_powder{}
+107,-5,235 sticky_piston{extended: true, facing: west}
+107,-5,237 sticky_piston{extended: false, facing: north}
+108,-5,233 observer{powered: false, facing: east}
+108,-5,234 redstone_wire{east: side, power: 11, south: none, north: none, west: side}
+108,-5,235 sticky_piston{extended: false, facing: west}
+108,-5,236 glass{}
+108,-5,237 observer{powered: false, facing: east}
+109,-5,234 cobbled_deepslate_slab{waterlogged: false, type: top}
+109,-5,235 polished_blackstone_bricks{}
+109,-5,236 redstone_wire{east: side, power: 0, south: side, north: side, west: side}
+109,-5,237 glass{}
+97,-4,233 piston{extended: false, facing: down}
+97,-4,234 redstone_wire{east: side, power: 10, south: none, north: none, west: side}
+97,-4,235 observer{powered: false, facing: north}
+97,-4,236 polished_blackstone_bricks{}
+97,-4,237 redstone_block{}
+98,-4,233 polished_blackstone_bricks{}
+98,-4,234 cobbled_deepslate_slab{waterlogged: false, type: top}
+98,-4,235 sticky_piston{extended: false, facing: east}
+98,-4,236 polished_blackstone_bricks{}
+99,-4,233 piston{extended: true, facing: south}
+99,-4,234 piston_head{type: normal, short: false, facing: south}
+99,-4,235 sticky_piston{extended: true, facing: east}
+99,-4,237 sticky_piston{extended: false, facing: north}
+100,-4,233 polished_blackstone_bricks{}
+100,-4,234 polished_blackstone_bricks{}
+100,-4,235 piston_head{type: sticky, short: false, facing: east}
+100,-4,236 polished_blackstone_bricks{}
+100,-4,237 polished_blackstone_bricks{}
+101,-4,235 polished_blackstone_bricks{}
+102,-4,235 polished_blackstone_bricks{}
+103,-4,235 polished_blackstone_bricks{}
+104,-4,235 polished_blackstone_bricks{}
+105,-4,235 polished_blackstone_bricks{}
+106,-4,233 polished_blackstone_bricks{}
+106,-4,234 polished_blackstone_bricks{}
+106,-4,235 piston_head{type: sticky, short: false, facing: west}
+106,-4,236 polished_blackstone_bricks{}
+106,-4,237 polished_blackstone_bricks{}
+107,-4,233 piston{extended: true, facing: south}
+107,-4,234 piston_head{type: normal, short: false, facing: south}
+107,-4,235 sticky_piston{extended: true, facing: west}
+107,-4,237 sticky_piston{extended: false, facing: north}
+108,-4,233 polished_blackstone_bricks{}
+108,-4,234 cobbled_deepslate_slab{waterlogged: false, type: top}
+108,-4,235 sticky_piston{extended: false, facing: west}
+108,-4,236 polished_blackstone_bricks{}
+109,-4,233 piston{extended: false, facing: down}
+109,-4,234 redstone_wire{east: side, power: 10, south: none, north: none, west: side}
+109,-4,235 observer{powered: false, facing: north}
+109,-4,236 polished_blackstone_bricks{}
+109,-4,237 redstone_block{}
+97,-3,233 polished_blackstone_bricks{}
+97,-3,234 cobbled_deepslate_slab{waterlogged: false, type: top}
+97,-3,235 polished_blackstone_bricks{}
+97,-3,236 redstone_wire{east: side, power: 0, south: side, north: side, west: side}
+97,-3,237 glass{}
+98,-3,233 repeater{powered: false, facing: west, delay: 1, locked: false}
+98,-3,234 redstone_wire{east: side, power: 9, south: none, north: none, west: side}
+98,-3,235 sticky_piston{extended: false, facing: east}
+98,-3,236 observer{powered: false, facing: up}
+98,-3,237 observer{powered: false, facing: west}
+99,-3,233 piston{extended: false, facing: south}
+99,-3,234 white_concrete{}
+99,-3,235 sticky_piston{extended: true, facing: east}
+99,-3,237 sticky_piston{extended: false, facing: north}
+100,-3,233 polished_blackstone_bricks{}
+100,-3,234 polished_blackstone_bricks{}
+100,-3,235 piston_head{type: sticky, short: false, facing: east}
+100,-3,236 polished_blackstone_bricks{}
+100,-3,237 polished_blackstone_bricks{}
+101,-3,235 polished_blackstone_bricks{}
+102,-3,235 polished_blackstone_bricks{}
+103,-3,235 polished_blackstone_bricks{}
+104,-3,235 polished_blackstone_bricks{}
+105,-3,235 polished_blackstone_bricks{}
+106,-3,233 polished_blackstone_bricks{}
+106,-3,234 polished_blackstone_bricks{}
+106,-3,235 piston_head{type: sticky, short: false, facing: west}
+106,-3,236 polished_blackstone_bricks{}
+106,-3,237 polished_blackstone_bricks{}
+107,-3,233 piston{extended: false, facing: south}
+107,-3,234 white_concrete{}
+107,-3,235 sticky_piston{extended: true, facing: west}
+107,-3,237 sticky_piston{extended: false, facing: north}
+108,-3,233 repeater{powered: false, facing: east, delay: 1, locked: false}
+108,-3,234 redstone_wire{east: side, power: 9, south: none, north: none, west: side}
+108,-3,235 sticky_piston{extended: false, facing: west}
+108,-3,236 observer{powered: false, facing: up}
+108,-3,237 observer{powered: false, facing: east}
+109,-3,233 polished_blackstone_bricks{}
+109,-3,234 cobbled_deepslate_slab{waterlogged: false, type: top}
+109,-3,235 polished_blackstone_bricks{}
+109,-3,236 redstone_wire{east: side, power: 0, south: side, north: side, west: side}
+109,-3,237 glass{}
+97,-2,233 observer{powered: false, facing: up}
+97,-2,234 redstone_wire{east: side, power: 8, south: side, north: none, west: none}
+97,-2,235 cobbled_deepslate_slab{waterlogged: false, type: top}
+97,-2,237 polished_blackstone_brick_stairs{waterlogged: false, half: bottom, shape: straight, facing: east}
+98,-2,235 note_block{instrument: harp, powered: true, note: 0}
+98,-2,236 observer{powered: false, facing: south}
+98,-2,237 cobbled_deepslate_slab{waterlogged: false, type: top}
+99,-2,235 sticky_piston{extended: true, facing: east}
+99,-2,236 spruce_leaves{waterlogged: false, distance: 7, persistent: true}
+100,-2,233 polished_blackstone_bricks{}
+100,-2,234 polished_blackstone_bricks{}
+100,-2,235 piston_head{type: sticky, short: false, facing: east}
+100,-2,236 polished_blackstone_bricks{}
+100,-2,237 polished_blackstone_bricks{}
+101,-2,235 polished_blackstone_bricks{}
+102,-2,235 polished_blackstone_bricks{}
+103,-2,235 polished_blackstone_bricks{}
+104,-2,235 polished_blackstone_bricks{}
+105,-2,235 polished_blackstone_bricks{}
+106,-2,233 polished_blackstone_bricks{}
+106,-2,234 polished_blackstone_bricks{}
+106,-2,235 polished_blackstone_bricks{}
+106,-2,236 polished_blackstone_bricks{}
+106,-2,237 polished_blackstone_bricks{}
+107,-2,233 sticky_piston{extended: false, facing: up}
+107,-2,236 piston{extended: false, facing: up}
+108,-2,233 observer{powered: false, facing: east}
+108,-2,235 piston{extended: false, facing: west}
+108,-2,236 observer{powered: false, facing: south}
+109,-2,233 observer{powered: false, facing: up}
+109,-2,234 redstone_wire{east: none, power: 8, south: side, north: none, west: side}
+109,-2,235 cobbled_deepslate_slab{waterlogged: false, type: top}
+109,-2,236 sticky_piston{extended: true, facing: up}
+109,-2,237 polished_blackstone_brick_stairs{waterlogged: false, half: bottom, shape: straight, facing: north}
+97,-1,233 repeater{powered: false, facing: south, delay: 3, locked: false}
+97,-1,234 observer{powered: false, facing: south}
+97,-1,235 redstone_wire{east: side, power: 7, south: none, north: up, west: none}
+97,-1,236 polished_blackstone_brick_stairs{waterlogged: false, half: bottom, shape: straight, facing: north}
+97,-1,237 redstone_block{}
+98,-1,233 sticky_piston{extended: true, facing: south}
+98,-1,234 piston_head{type: sticky, short: false, facing: south}
+98,-1,235 target{power: 0}
+98,-1,236 cherry_log{axis: y}
+98,-1,237 redstone_wire{east: side, power: 15, south: none, north: none, west: side}
+99,-1,234 sticky_piston{extended: false, facing: down}
+99,-1,235 sticky_piston{extended: true, facing: east}
+99,-1,236 observer{powered: false, facing: down}
+99,-1,237 cobbled_deepslate_slab{waterlogged: false, type: top}
+100,-1,233 sticky_piston{extended: false, facing: west}
+100,-1,234 observer{powered: false, facing: up}
+100,-1,235 piston_head{type: sticky, short: false, facing: east}
+100,-1,237 pink_terracotta{}
+101,-1,233 polished_blackstone_bricks{}
+101,-1,234 polished_blackstone_bricks{}
+101,-1,235 sticky_piston{extended: false, facing: east}
+101,-1,236 polished_blackstone_bricks{}
+101,-1,237 polished_blackstone_bricks{}
+102,-1,233 polished_blackstone_bricks{}
+102,-1,234 polished_blackstone_bricks{}
+102,-1,235 sticky_piston{extended: false, facing: down}
+102,-1,236 polished_blackstone_bricks{}
+102,-1,237 polished_blackstone_bricks{}
+103,-1,233 polished_blackstone_bricks{}
+103,-1,234 polished_blackstone_bricks{}
+103,-1,235 piston_head{type: sticky, short: false, facing: down}
+103,-1,236 polished_blackstone_bricks{}
+103,-1,237 polished_blackstone_bricks{}
+104,-1,233 polished_blackstone_bricks{}
+104,-1,234 polished_blackstone_bricks{}
+104,-1,235 piston_head{type: sticky, short: false, facing: down}
+104,-1,236 polished_blackstone_bricks{}
+104,-1,237 polished_blackstone_bricks{}
+105,-1,233 polished_blackstone_bricks{}
+105,-1,234 polished_blackstone_bricks{}
+105,-1,235 piston_head{type: sticky, short: false, facing: down}
+105,-1,236 polished_blackstone_bricks{}
+105,-1,237 polished_blackstone_bricks{}
+106,-1,233 obsidian{}
+106,-1,234 observer{powered: false, facing: up}
+106,-1,235 observer{powered: false, facing: up}
+106,-1,236 tinted_glass{}
+106,-1,237 pink_terracotta{}
+107,-1,234 sticky_piston{extended: false, facing: down}
+107,-1,235 observer{powered: false, facing: west}
+107,-1,237 observer{powered: false, facing: east}
+108,-1,233 piston_head{type: sticky, short: false, facing: down}
+108,-1,234 observer{powered: false, facing: east}
+108,-1,236 piston{extended: false, facing: down}
+108,-1,237 polished_blackstone_brick_stairs{waterlogged: false, half: bottom, shape: straight, facing: west}
+109,-1,233 repeater{powered: false, facing: south, delay: 3, locked: false}
+109,-1,234 observer{powered: false, facing: south}
+109,-1,235 redstone_wire{east: none, power: 7, south: side, north: up, west: none}
+109,-1,236 piston_head{type: sticky, short: false, facing: up}
+97,0,233 polished_blackstone_bricks{}
+97,0,234 redstone_wire{east: none, power: 6, south: side, north: up, west: none}
+97,0,235 observer{powered: false, facing: down}
+97,0,236 observer{powered: false, facing: down}
+98,0,233 dropper{triggered: true, facing: east}
+98,0,234 observer{powered: false, facing: west}
+98,0,235 polished_blackstone_bricks{}
+98,0,236 piston{extended: false, facing: down}
+99,0,233 hopper{enabled: false, facing: west}
+99,0,234 comparator{mode: compare, powered: true, facing: north}
+99,0,235 hopper{enabled: false, facing: down}
+99,0,236 polished_blackstone_bricks{}
+99,0,237 redstone_wire{east: side, power: 14, south: none, north: none, west: side}
+100,0,233 observer{powered: false, facing: west}
+100,0,234 glass{}
+100,0,235 observer{powered: false, facing: west}
+100,0,236 piston{extended: false, facing: down}
+100,0,237 redstone_wire{east: up, power: 13, south: none, north: none, west: side}
+101,0,233 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+101,0,234 cobbled_deepslate_slab{waterlogged: false, type: top}
+101,0,235 sticky_piston{extended: false, facing: down}
+101,0,236 redstone_wire{east: side, power: 11, south: up, north: none, west: none}
+101,0,237 pink_terracotta{}
+102,0,233 pink_terracotta{}
+102,0,234 cobbled_deepslate_slab{waterlogged: false, type: top}
+102,0,235 sticky_piston{extended: false, facing: down}
+102,0,236 tripwire_hook{powered: false, attached: false, facing: north}
+102,0,237 tinted_glass{}
+103,0,233 pink_terracotta{}
+103,0,234 redstone_wire{east: side, power: 15, south: none, north: none, west: side}
+103,0,235 sticky_piston{extended: true, facing: down}
+103,0,236 piston_head{type: sticky, short: false, facing: north}
+103,0,237 sticky_piston{extended: true, facing: north}
+104,0,233 repeater{powered: true, facing: east, delay: 1, locked: false}
+104,0,234 redstone_wire{east: side, power: 14, south: none, north: none, west: side}
+104,0,235 sticky_piston{extended: true, facing: down}
+104,0,236 observer{powered: false, facing: south}
+104,0,237 redstone_wire{east: side, power: 14, south: none, north: up, west: none}
+105,0,233 redstone_block{}
+105,0,234 redstone_wire{east: side, power: 15, south: none, north: side, west: side}
+105,0,235 sticky_piston{extended: true, facing: down}
+105,0,236 observer{powered: false, facing: south}
+105,0,237 redstone_wire{east: side, power: 15, south: none, north: none, west: side}
+106,0,233 piston_head{type: sticky, short: false, facing: west}
+106,0,234 observer{powered: false, facing: east}
+106,0,235 observer{powered: false, facing: east}
+106,0,237 redstone_wire{east: side, power: 14, south: none, north: none, west: side}
+107,0,233 sticky_piston{extended: true, facing: west}
+107,0,234 observer{powered: false, facing: east}
+107,0,235 observer{powered: false, facing: east}
+107,0,236 pink_terracotta{}
+107,0,237 redstone_wire{east: side, power: 13, south: none, north: none, west: side}
+108,0,233 sticky_piston{extended: true, facing: down}
+108,0,234 white_stained_glass_pane{waterlogged: false, east: false, south: true, north: false, west: true}
+108,0,235 observer{powered: false, facing: north}
+108,0,236 observer{powered: false, facing: east}
+108,0,237 observer{powered: false, facing: down}
+109,0,233 polished_blackstone_bricks{}
+109,0,234 redstone_wire{east: none, power: 6, south: side, north: up, west: none}
+109,0,235 spruce_leaves{waterlogged: false, distance: 1, persistent: true}
+109,0,236 cherry_log{axis: y}
+109,0,237 piston{extended: false, facing: down}
+97,1,233 redstone_wire{east: side, power: 5, south: side, north: none, west: none}
+97,1,235 polished_blackstone_bricks{}
+97,1,236 polished_blackstone_bricks{}
+97,1,237 piston{extended: false, facing: down}
+98,1,233 redstone_wire{east: side, power: 4, south: none, north: none, west: side}
+98,1,234 observer{powered: false, facing: north}
+98,1,235 repeater{powered: false, facing: west, delay: 2, locked: false}
+98,1,236 redstone_wire{east: side, power: 0, south: side, north: side, west: side}
+98,1,237 sticky_piston{extended: false, facing: east}
+99,1,233 sticky_piston{extended: true, facing: east}
+99,1,234 observer{powered: false, facing: west}
+99,1,235 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+99,1,236 sticky_piston{extended: false, facing: east}
+99,1,237 pink_terracotta{}
+100,1,233 piston_head{type: sticky, short: false, facing: east}
+100,1,234 piston{extended: false, facing: down}
+100,1,236 observer{powered: false, facing: south}
+101,1,233 pink_terracotta{}
+101,1,234 redstone_wire{east: side, power: 0, south: side, north: none, west: none}
+101,1,235 target{power: 0}
+101,1,236 piston_head{type: sticky, short: false, facing: west}
+101,1,237 redstone_wire{east: side, power: 12, south: none, north: side, west: side}
+102,1,233 redstone_wire{east: side, power: 15, south: none, north: none, west: side}
+102,1,234 repeater{powered: false, facing: west, delay: 4, locked: false}
+102,1,235 activator_rail{waterlogged: false, powered: false, shape: east_west}
+102,1,236 sticky_piston{extended: true, facing: west}
+102,1,237 target{power: 0}
+103,1,233 redstone_block{}
+103,1,235 sticky_piston{extended: false, facing: down}
+103,1,236 observer{powered: false, facing: south}
+103,1,237 hopper{enabled: false, facing: down}
+104,1,233 piston_head{type: sticky, short: false, facing: west}
+104,1,234 pink_terracotta{}
+104,1,235 target{power: 0}
+104,1,236 redstone_wire{east: side, power: 13, south: side, north: side, west: none}
+104,1,237 observer{powered: false, facing: east}
+105,1,233 sticky_piston{extended: true, facing: west}
+105,1,234 sticky_piston{extended: false, facing: west}
+105,1,235 barrel{open: false, facing: up}
+105,1,236 comparator{mode: compare, powered: true, facing: north}
+105,1,237 pink_terracotta{}
+106,1,234 piston{extended: false, facing: down}
+106,1,235 repeater{powered: false, facing: east, delay: 2, locked: false}
+106,1,236 piston{extended: false, facing: down}
+107,1,234 observer{powered: false, facing: east}
+107,1,235 repeater{powered: false, facing: east, delay: 1, locked: false}
+107,1,236 repeater{powered: false, facing: east, delay: 3, locked: false}
+107,1,237 sticky_piston{extended: false, facing: west}
+108,1,233 target{power: 0}
+108,1,234 redstone_wall_torch{lit: false, facing: south}
+108,1,235 observer{powered: false, facing: east}
+108,1,236 observer{powered: false, facing: east}
+108,1,237 polished_blackstone_bricks{}
+109,1,233 redstone_wire{east: none, power: 5, south: side, north: none, west: side}
+109,1,235 observer{powered: false, facing: down}
+109,1,237 piston{extended: false, facing: north}
+T 1
+T 2
+T 3
+T 4
+T 5
+T 6
+T 7
+T 8
+T 9
+T 10
+T 11
+T 12
+T 13
+T 14
+T 15
+T 16
+T 17
+T 18
+T 19
+T 20
+T 21
+T 22
+T 23
+T 24
+T 25
+T 26
+T 27
+T 28
+T 29
+T 30
+T 31
+T 32
+T 33
+T 34
+T 35
+T 36
+T 37
+T 38
+T 39
+T 40
+T 41
+T 42
+T 43
+T 44
+T 45
+T 46
+T 47
+T 48
+T 49
+T 50
+T 51
+T 52
+T 53
+T 54
+T 55
+T 56
+T 57
+T 58
+T 59
+T 60
+T 61
+T 62
+T 63
+T 64
+T 65
+T 66
+T 67
+T 68
+T 69
+T 70
+CLICK 70 lever [103, -8, 232]
+T 71
+97,-10,233 moving_piston{type: sticky, facing: south}
+97,-10,234 moving_piston{type: normal, facing: south}
+97,-10,235 air{}
+97,-10,236 moving_piston{type: normal, facing: south}
+97,-10,237 air{}
+98,-10,233 air{}
+98,-10,234 moving_piston{type: sticky, facing: south}
+98,-10,235 moving_piston{type: normal, facing: south}
+98,-10,236 air{}
+98,-10,237 moving_piston{type: sticky, facing: east}
+99,-10,233 moving_piston{type: normal, facing: west}
+99,-10,236 moving_piston{type: sticky, facing: up}
+99,-10,237 moving_piston{type: normal, facing: east}
+100,-10,233 moving_piston{type: sticky, facing: west}
+100,-10,237 air{}
+101,-10,233 air{}
+102,-10,233 moving_piston{type: normal, facing: west}
+103,-10,233 moving_piston{type: sticky, facing: west}
+104,-10,233 air{}
+104,-10,234 moving_piston{type: normal, facing: south}
+104,-10,235 air{}
+105,-10,233 moving_piston{type: normal, facing: west}
+105,-10,236 air{}
+106,-10,233 moving_piston{type: sticky, facing: west}
+106,-10,236 moving_piston{type: normal, facing: west}
+107,-10,233 air{}
+107,-10,236 moving_piston{type: sticky, facing: west}
+107,-10,237 air{}
+108,-10,233 moving_piston{type: normal, facing: west}
+108,-10,234 moving_piston{type: sticky, facing: south}
+108,-10,235 moving_piston{type: normal, facing: south}
+108,-10,236 air{}
+108,-10,237 moving_piston{type: normal, facing: west}
+109,-10,233 moving_piston{type: normal, facing: south}
+109,-10,234 air{}
+109,-10,236 moving_piston{type: normal, facing: south}
+109,-10,237 air{}
+97,-9,233 note_block{instrument: harp, powered: false, note: 0}
+97,-9,235 campfire{lit: false, waterlogged: false, facing: east, signal_fire: false}
+97,-9,237 piston{extended: true, facing: up}
+98,-9,233 note_block{instrument: harp, powered: false, note: 0}
+99,-9,234 moving_piston{type: sticky, facing: up}
+99,-9,236 moving_piston{type: normal, facing: up}
+101,-9,233 dropper{triggered: false, facing: south}
+107,-9,234 moving_piston{type: sticky, facing: up}
+108,-9,233 note_block{instrument: harp, powered: false, note: 0}
+109,-9,237 piston{extended: true, facing: up}
+97,-8,234 redstone_wire{east: none, power: 0, south: side, north: side, west: none}
+97,-8,235 air{}
+97,-8,237 moving_piston{type: normal, facing: up}
+98,-8,233 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+98,-8,235 moving_piston{type: normal, facing: west}
+99,-8,233 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+99,-8,234 moving_piston{type: normal, facing: up}
+99,-8,235 moving_piston{type: sticky, facing: west}
+99,-8,236 air{}
+99,-8,237 redstone_wire{east: side, power: 0, south: none, north: none, west: up}
+100,-8,233 air{}
+100,-8,234 moving_piston{type: normal, facing: up}
+101,-8,233 moving_piston{type: normal, facing: west}
+102,-8,233 moving_piston{type: sticky, facing: west}
+102,-8,235 moving_piston{type: normal, facing: down}
+103,-8,232 lever{face: wall, powered: false, facing: north}
+104,-8,233 moving_piston{type: sticky, facing: east}
+105,-8,233 moving_piston{type: normal, facing: east}
+106,-8,233 air{}
+106,-8,234 moving_piston{type: normal, facing: up}
+107,-8,233 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+107,-8,234 moving_piston{type: normal, facing: up}
+108,-8,233 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+109,-8,237 moving_piston{type: normal, facing: up}
+97,-7,233 redstone_wire{east: side, power: 0, south: side, north: none, west: none}
+97,-7,235 moving_piston{type: normal, facing: south}
+97,-7,236 air{}
+97,-7,237 moving_piston{type: normal, facing: up}
+98,-7,233 air{}
+98,-7,237 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+99,-7,233 moving_piston{type: normal, facing: west}
+99,-7,234 air{}
+100,-7,233 moving_piston{type: sticky, facing: west}
+100,-7,234 air{}
+102,-7,235 moving_piston{type: normal, facing: down}
+103,-7,235 moving_piston{type: normal, facing: down}
+106,-7,233 moving_piston{type: sticky, facing: east}
+106,-7,234 air{}
+107,-7,233 moving_piston{type: normal, facing: east}
+107,-7,234 air{}
+107,-7,237 air{}
+108,-7,233 air{}
+108,-7,237 moving_piston{type: normal, facing: west}
+109,-7,233 redstone_wire{east: none, power: 0, south: side, north: none, west: side}
+109,-7,237 moving_piston{type: normal, facing: up}
+97,-6,234 redstone_wire{east: side, power: 0, south: none, north: side, west: none}
+97,-6,237 moving_piston{type: normal, facing: up}
+99,-6,233 moving_piston{type: normal, facing: south}
+99,-6,234 air{}
+99,-6,235 moving_piston{type: sticky, facing: east}
+100,-6,235 moving_piston{type: normal, facing: east}
+101,-6,235 air{}
+102,-6,235 moving_piston{type: normal, facing: down}
+103,-6,235 moving_piston{type: normal, facing: down}
+105,-6,235 air{}
+106,-6,235 moving_piston{type: normal, facing: west}
+107,-6,233 moving_piston{type: normal, facing: south}
+107,-6,234 air{}
+107,-6,235 moving_piston{type: sticky, facing: west}
+109,-6,234 redstone_wire{east: none, power: 0, south: none, north: side, west: side}
+109,-6,237 moving_piston{type: normal, facing: up}
+97,-5,237 moving_piston{type: normal, facing: up}
+98,-5,234 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+99,-5,235 moving_piston{type: sticky, facing: east}
+100,-5,235 moving_piston{type: normal, facing: east}
+101,-5,235 air{}
+102,-5,235 moving_piston{type: normal, facing: down}
+103,-5,235 moving_piston{type: normal, facing: down}
+105,-5,235 air{}
+106,-5,235 moving_piston{type: normal, facing: west}
+107,-5,235 moving_piston{type: sticky, facing: west}
+108,-5,234 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+109,-5,237 moving_piston{type: normal, facing: up}
+97,-4,234 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+97,-4,237 moving_piston{type: normal, facing: up}
+99,-4,233 moving_piston{type: normal, facing: south}
+99,-4,234 air{}
+99,-4,235 moving_piston{type: sticky, facing: east}
+100,-4,235 moving_piston{type: normal, facing: east}
+101,-4,235 air{}
+102,-4,235 moving_piston{type: normal, facing: down}
+103,-4,235 moving_piston{type: normal, facing: down}
+105,-4,235 air{}
+106,-4,235 moving_piston{type: normal, facing: west}
+107,-4,233 moving_piston{type: normal, facing: south}
+107,-4,234 air{}
+107,-4,235 moving_piston{type: sticky, facing: west}
+109,-4,234 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+109,-4,237 moving_piston{type: normal, facing: up}
+97,-3,237 moving_piston{type: normal, facing: up}
+98,-3,234 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+99,-3,235 moving_piston{type: sticky, facing: east}
+100,-3,235 moving_piston{type: normal, facing: east}
+101,-3,235 air{}
+102,-3,235 moving_piston{type: normal, facing: down}
+103,-3,235 moving_piston{type: sticky, facing: down}
+105,-3,235 air{}
+106,-3,235 moving_piston{type: normal, facing: west}
+107,-3,235 moving_piston{type: sticky, facing: west}
+108,-3,234 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+109,-3,237 moving_piston{type: normal, facing: up}
+97,-2,234 redstone_wire{east: side, power: 0, south: side, north: none, west: none}
+97,-2,237 moving_piston{type: normal, facing: up}
+98,-2,235 note_block{instrument: harp, powered: false, note: 0}
+99,-2,235 moving_piston{type: sticky, facing: east}
+100,-2,235 moving_piston{type: normal, facing: east}
+101,-2,235 moving_piston{type: sticky, facing: east}
+102,-2,235 air{}
+103,-2,235 sticky_piston{extended: true, facing: down}
+104,-2,235 moving_piston{type: normal, facing: east}
+105,-2,235 moving_piston{type: normal, facing: east}
+106,-2,235 moving_piston{type: normal, facing: east}
+107,-2,235 moving_piston{type: normal, facing: east}
+108,-2,233 air{}
+109,-2,234 redstone_wire{east: none, power: 0, south: side, north: none, west: side}
+109,-2,236 moving_piston{type: sticky, facing: up}
+109,-2,237 moving_piston{type: normal, facing: up}
+97,-1,235 redstone_wire{east: none, power: 0, south: side, north: up, west: none}
+97,-1,237 moving_piston{type: normal, facing: up}
+98,-1,233 moving_piston{type: sticky, facing: south}
+98,-1,234 moving_piston{type: normal, facing: south}
+98,-1,235 air{}
+98,-1,237 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+100,-1,233 moving_piston{type: sticky, facing: west}
+101,-1,235 air{}
+102,-1,235 air{}
+108,-1,233 moving_piston{type: normal, facing: down}
+109,-1,235 redstone_wire{east: none, power: 0, south: side, north: up, west: none}
+109,-1,236 moving_piston{type: normal, facing: up}
+109,-1,237 moving_piston{type: normal, facing: up}
+97,0,234 redstone_wire{east: none, power: 0, south: side, north: up, west: none}
+97,0,237 moving_piston{type: normal, facing: up}
+98,0,233 dropper{triggered: false, facing: east}
+99,0,233 hopper{enabled: true, facing: west}
+99,0,237 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+100,0,237 redstone_wire{east: up, power: 0, south: none, north: none, west: side}
+101,0,233 redstone_wire{east: up, power: 0, south: side, north: none, west: side}
+101,0,235 moving_piston{type: sticky, facing: down}
+101,0,236 redstone_wire{east: side, power: 0, south: up, north: none, west: none}
+102,0,235 moving_piston{type: sticky, facing: down}
+103,0,236 air{}
+103,0,237 moving_piston{type: sticky, facing: north}
+105,0,233 air{}
+105,0,234 redstone_wire{east: side, power: 13, south: none, north: none, west: side}
+106,0,233 moving_piston{type: normal, facing: west}
+107,0,233 moving_piston{type: sticky, facing: west}
+108,0,233 moving_piston{type: sticky, facing: down}
+109,0,234 redstone_wire{east: none, power: 0, south: side, north: up, west: none}
+109,0,236 air{}
+97,1,233 redstone_wire{east: side, power: 0, south: side, north: none, west: none}
+98,1,233 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+99,1,233 moving_piston{type: sticky, facing: east}
+100,1,233 moving_piston{type: normal, facing: east}
+100,1,236 air{}
+101,1,233 air{}
+101,1,234 redstone_wire{east: side, power: 0, south: side, north: side, west: none}
+101,1,236 moving_piston{type: normal, facing: west}
+101,1,237 redstone_wire{east: side, power: 0, south: none, north: side, west: side}
+102,1,233 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+102,1,236 moving_piston{type: sticky, facing: west}
+103,1,233 air{}
+103,1,237 hopper{enabled: true, facing: down}
+104,1,233 moving_piston{type: normal, facing: west}
+105,1,233 moving_piston{type: sticky, facing: west}
+109,1,233 redstone_wire{east: none, power: 0, south: side, north: none, west: side}
+T 72
+109,0,235 spruce_leaves{waterlogged: false, distance: 7, persistent: true}
+T 73
+97,-10,233 sticky_piston{extended: false, facing: south}
+97,-10,234 hay_block{axis: z}
+97,-10,236 piston{extended: false, facing: south}
+98,-10,234 sticky_piston{extended: false, facing: south}
+98,-10,235 redstone_block{}
+98,-10,237 sticky_piston{extended: false, facing: east}
+99,-10,233 redstone_block{}
+99,-10,235 observer{powered: true, facing: west}
+99,-10,236 sticky_piston{extended: false, facing: up}
+99,-10,237 glass{}
+100,-10,233 sticky_piston{extended: false, facing: west}
+102,-10,233 redstone_block{}
+103,-10,233 sticky_piston{extended: false, facing: west}
+104,-10,234 piston{extended: false, facing: south}
+105,-10,233 redstone_block{}
+106,-10,233 sticky_piston{extended: false, facing: west}
+106,-10,236 piston{extended: false, facing: up}
+107,-10,236 sticky_piston{extended: false, facing: west}
+108,-10,233 piston{extended: false, facing: west}
+108,-10,234 sticky_piston{extended: false, facing: south}
+108,-10,235 redstone_block{}
+108,-10,237 piston{extended: false, facing: west}
+109,-10,233 piston{extended: false, facing: south}
+109,-10,235 observer{powered: true, facing: north}
+109,-10,236 piston{extended: false, facing: south}
+97,-9,236 observer{powered: true, facing: north}
+98,-9,234 observer{powered: true, facing: north}
+98,-9,235 observer{powered: true, facing: west}
+99,-9,234 sticky_piston{extended: false, facing: up}
+99,-9,236 target{power: 0}
+100,-9,236 observer{powered: true, facing: west}
+100,-9,237 observer{powered: true, facing: down}
+101,-9,233 dropper{triggered: true, facing: south}
+102,-9,233 observer{powered: true, facing: up}
+104,-9,235 observer{powered: true, facing: down}
+104,-9,236 moving_piston{type: sticky, facing: north}
+104,-9,237 sticky_piston{extended: true, facing: north}
+105,-9,237 moving_piston{type: normal, facing: west}
+106,-9,236 observer{powered: true, facing: down}
+106,-9,237 piston{extended: true, facing: west}
+107,-9,234 sticky_piston{extended: false, facing: up}
+108,-9,234 observer{powered: true, facing: north}
+108,-9,235 observer{powered: true, facing: down}
+108,-9,236 observer{powered: true, facing: down}
+97,-8,236 comparator{mode: compare, powered: false, facing: south}
+97,-8,237 piston_head{type: normal, short: false, facing: up}
+98,-8,235 cherry_log{axis: x}
+99,-8,234 piston{extended: false, facing: up}
+99,-8,235 sticky_piston{extended: false, facing: west}
+100,-8,234 piston{extended: false, facing: up}
+101,-8,233 redstone_block{}
+101,-8,234 observer{powered: true, facing: north}
+102,-8,233 sticky_piston{extended: false, facing: west}
+102,-8,235 sticky_piston{extended: false, facing: up}
+103,-8,236 moving_piston{type: normal, facing: west}
+104,-8,233 sticky_piston{extended: false, facing: east}
+104,-8,236 piston{extended: true, facing: west}
+105,-8,233 redstone_block{}
+105,-8,236 redstone_wire{east: none, power: 15, south: side, north: side, west: none}
+106,-8,234 piston{extended: false, facing: up}
+106,-8,237 piston{extended: true, facing: up}
+107,-8,234 piston{extended: false, facing: up}
+109,-8,236 comparator{mode: compare, powered: false, facing: south}
+109,-8,237 piston_head{type: normal, short: false, facing: up}
+97,-7,235 piston{extended: false, facing: south}
+97,-7,237 composter{level: 6}
+99,-7,233 observer{powered: false, facing: west}
+100,-7,233 sticky_piston{extended: false, facing: west}
+102,-7,235 polished_blackstone_bricks{}
+103,-7,235 polished_blackstone_bricks{}
+104,-7,235 moving_piston{type: sticky, facing: west}
+105,-7,235 sticky_piston{extended: true, facing: west}
+106,-7,233 sticky_piston{extended: false, facing: east}
+106,-7,237 moving_piston{type: normal, facing: up}
+107,-7,233 observer{powered: false, facing: east}
+107,-7,235 moving_piston{type: normal, facing: west}
+108,-7,235 piston{extended: true, facing: west}
+108,-7,236 piston{extended: true, facing: up}
+108,-7,237 piston{extended: false, facing: west}
+109,-7,235 piston{extended: true, facing: south}
+109,-7,236 moving_piston{type: normal, facing: south}
+109,-7,237 composter{level: 6}
+97,-6,235 note_block{instrument: harp, powered: true, note: 0}
+97,-6,237 redstone_block{}
+99,-6,233 piston{extended: false, facing: south}
+99,-6,235 sticky_piston{extended: false, facing: east}
+99,-6,236 moving_piston{type: sticky, facing: north}
+99,-6,237 sticky_piston{extended: true, facing: north}
+100,-6,235 polished_blackstone_bricks{}
+102,-6,235 polished_blackstone_bricks{}
+103,-6,235 polished_blackstone_bricks{}
+106,-6,235 polished_blackstone_bricks{}
+107,-6,233 piston{extended: false, facing: south}
+107,-6,235 sticky_piston{extended: false, facing: west}
+107,-6,236 moving_piston{type: sticky, facing: north}
+107,-6,237 sticky_piston{extended: true, facing: north}
+108,-6,236 moving_piston{type: normal, facing: up}
+109,-6,235 note_block{instrument: harp, powered: true, note: 0}
+109,-6,237 redstone_block{}
+97,-5,236 redstone_wire{east: none, power: 15, south: side, north: side, west: none}
+97,-5,237 redstone_block{}
+98,-5,237 observer{powered: true, facing: west}
+99,-5,234 air{}
+99,-5,235 sticky_piston{extended: false, facing: east}
+99,-5,236 moving_piston{type: sticky, facing: north}
+99,-5,237 sticky_piston{extended: true, facing: north}
+100,-5,235 polished_blackstone_bricks{}
+102,-5,235 polished_blackstone_bricks{}
+103,-5,235 polished_blackstone_bricks{}
+106,-5,235 polished_blackstone_bricks{}
+107,-5,234 air{}
+107,-5,235 sticky_piston{extended: false, facing: west}
+107,-5,236 moving_piston{type: sticky, facing: north}
+107,-5,237 sticky_piston{extended: true, facing: north}
+108,-5,237 observer{powered: true, facing: east}
+109,-5,236 redstone_wire{east: none, power: 15, south: side, north: side, west: none}
+109,-5,237 redstone_block{}
+97,-4,235 observer{powered: true, facing: north}
+97,-4,237 glass{}
+99,-4,233 piston{extended: false, facing: south}
+99,-4,235 sticky_piston{extended: false, facing: east}
+99,-4,236 moving_piston{type: sticky, facing: north}
+99,-4,237 sticky_piston{extended: true, facing: north}
+100,-4,235 polished_blackstone_bricks{}
+102,-4,235 polished_blackstone_bricks{}
+103,-4,235 polished_blackstone_bricks{}
+106,-4,235 polished_blackstone_bricks{}
+107,-4,233 piston{extended: false, facing: south}
+107,-4,235 sticky_piston{extended: false, facing: west}
+107,-4,236 moving_piston{type: sticky, facing: north}
+107,-4,237 sticky_piston{extended: true, facing: north}
+109,-4,235 observer{powered: true, facing: north}
+109,-4,237 glass{}
+97,-3,236 redstone_wire{east: none, power: 15, south: side, north: side, west: none}
+97,-3,237 redstone_block{}
+98,-3,237 observer{powered: true, facing: west}
+99,-3,235 sticky_piston{extended: false, facing: east}
+99,-3,236 moving_piston{type: sticky, facing: north}
+99,-3,237 sticky_piston{extended: true, facing: north}
+100,-3,235 polished_blackstone_bricks{}
+102,-3,235 polished_blackstone_bricks{}
+103,-3,235 piston_head{type: sticky, short: false, facing: down}
+106,-3,235 polished_blackstone_bricks{}
+107,-3,235 sticky_piston{extended: false, facing: west}
+107,-3,236 moving_piston{type: sticky, facing: north}
+107,-3,237 sticky_piston{extended: true, facing: north}
+108,-3,237 observer{powered: true, facing: east}
+109,-3,236 redstone_wire{east: none, power: 15, south: side, north: side, west: none}
+109,-3,237 redstone_block{}
+97,-2,237 glass{}
+99,-2,234 moving_piston{type: sticky, facing: down}
+99,-2,235 sticky_piston{extended: false, facing: east}
+100,-2,235 polished_blackstone_bricks{}
+101,-2,235 sticky_piston{extended: false, facing: east}
+104,-2,235 polished_blackstone_bricks{}
+105,-2,235 polished_blackstone_bricks{}
+106,-2,235 polished_blackstone_bricks{}
+107,-2,235 polished_blackstone_bricks{}
+107,-2,236 piston{extended: true, facing: up}
+109,-2,236 sticky_piston{extended: false, facing: up}
+109,-2,237 glass{}
+97,-1,234 observer{powered: true, facing: south}
+97,-1,236 polished_blackstone_brick_stairs{waterlogged: false, half: bottom, shape: inner_right, facing: north}
+97,-1,237 polished_blackstone_brick_stairs{waterlogged: false, half: bottom, shape: straight, facing: east}
+98,-1,233 sticky_piston{extended: false, facing: south}
+98,-1,234 target{power: 0}
+99,-1,234 sticky_piston{extended: true, facing: down}
+99,-1,235 moving_piston{type: sticky, facing: east}
+100,-1,233 sticky_piston{extended: false, facing: west}
+100,-1,235 air{}
+107,-1,236 moving_piston{type: normal, facing: up}
+108,-1,233 observer{powered: false, facing: east}
+108,-1,237 polished_blackstone_brick_stairs{waterlogged: false, half: bottom, shape: inner_right, facing: west}
+109,-1,234 observer{powered: true, facing: south}
+109,-1,236 cherry_log{axis: y}
+109,-1,237 polished_blackstone_brick_stairs{waterlogged: false, half: bottom, shape: straight, facing: north}
+97,0,235 observer{powered: true, facing: down}
+97,0,237 redstone_block{}
+98,0,234 observer{powered: true, facing: west}
+99,0,234 comparator{mode: compare, powered: false, facing: north}
+99,0,235 hopper{enabled: true, facing: down}
+100,0,233 observer{powered: true, facing: west}
+101,0,233 redstone_wire{east: up, power: 15, south: side, north: none, west: side}
+101,0,235 sticky_piston{extended: false, facing: down}
+102,0,235 sticky_piston{extended: false, facing: down}
+103,0,234 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+103,0,237 sticky_piston{extended: false, facing: north}
+104,0,233 repeater{powered: false, facing: east, delay: 1, locked: false}
+104,0,234 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+105,0,234 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+106,0,233 redstone_block{}
+107,0,233 sticky_piston{extended: false, facing: west}
+107,0,237 redstone_wire{east: side, power: 15, south: none, north: none, west: side}
+108,0,233 sticky_piston{extended: false, facing: down}
+108,0,234 white_stained_glass_pane{waterlogged: false, east: false, south: true, north: true, west: true}
+108,0,236 observer{powered: true, facing: east}
+98,1,234 observer{powered: true, facing: north}
+99,1,233 sticky_piston{extended: false, facing: east}
+100,1,233 pink_terracotta{}
+101,1,234 redstone_wire{east: side, power: 14, south: side, north: side, west: none}
+101,1,236 observer{powered: false, facing: south}
+102,1,233 redstone_wire{east: side, power: 14, south: none, north: none, west: side}
+102,1,235 activator_rail{waterlogged: false, powered: true, shape: east_west}
+102,1,236 sticky_piston{extended: false, facing: west}
+103,1,236 observer{powered: true, facing: south}
+104,1,233 redstone_block{}
+105,1,233 sticky_piston{extended: false, facing: west}
+108,1,234 redstone_wall_torch{lit: true, facing: south}
+T 74
+102,-10,234 sticky_piston{extended: true, facing: south}
+102,-10,235 moving_piston{type: sticky, facing: south}
+102,-10,236 moving_piston{type: normal, facing: south}
+106,-10,235 moving_piston{type: normal, facing: west}
+106,-10,236 piston{extended: true, facing: up}
+107,-10,235 piston{extended: true, facing: west}
+109,-10,236 piston{extended: true, facing: south}
+109,-10,237 moving_piston{type: normal, facing: south}
+103,-9,233 redstone_lamp{lit: false}
+104,-9,235 air{}
+104,-9,236 moving_piston{type: normal, facing: north}
+104,-9,237 moving_piston{type: sticky, facing: north}
+105,-9,237 air{}
+106,-9,236 moving_piston{type: normal, facing: up}
+106,-9,237 moving_piston{type: normal, facing: west}
+109,-9,237 moving_piston{type: normal, facing: up}
+98,-8,236 spruce_leaves{waterlogged: false, distance: 1, persistent: true}
+103,-8,235 moving_piston{type: sticky, facing: up}
+103,-8,236 air{}
+104,-8,236 moving_piston{type: normal, facing: west}
+105,-8,236 redstone_wire{east: none, power: 0, south: side, north: side, west: none}
+106,-8,236 moving_piston{type: normal, facing: up}
+106,-8,237 moving_piston{type: normal, facing: up}
+109,-8,237 air{}
+97,-7,235 piston{extended: true, facing: south}
+97,-7,236 moving_piston{type: normal, facing: south}
+103,-7,235 moving_piston{type: normal, facing: up}
+104,-7,235 moving_piston{type: normal, facing: west}
+105,-7,235 moving_piston{type: sticky, facing: west}
+106,-7,236 moving_piston{type: normal, facing: up}
+106,-7,237 air{}
+107,-7,237 moving_piston{type: normal, facing: west}
+108,-7,237 piston{extended: true, facing: west}
+103,-6,235 air{}
+106,-6,236 moving_piston{type: normal, facing: up}
+106,-5,236 moving_piston{type: normal, facing: up}
+103,-4,235 air{}
+106,-4,236 moving_piston{type: normal, facing: up}
+103,-3,235 moving_piston{type: normal, facing: down}
+106,-3,236 moving_piston{type: normal, facing: up}
+103,-2,235 moving_piston{type: sticky, facing: down}
+106,-2,236 moving_piston{type: normal, facing: up}
+99,-1,233 moving_piston{type: sticky, facing: west}
+100,-1,233 sticky_piston{extended: true, facing: west}
+101,-1,235 moving_piston{type: sticky, facing: down}
+102,-1,235 moving_piston{type: sticky, facing: down}
+106,-1,236 moving_piston{type: normal, facing: up}
+101,0,235 sticky_piston{extended: true, facing: down}
+102,0,235 sticky_piston{extended: true, facing: down}
+106,0,236 moving_piston{type: normal, facing: up}
+109,1,235 observer{powered: true, facing: down}
+T 75
+99,-10,235 observer{powered: false, facing: west}
+100,-10,236 piston{extended: true, facing: up}
+109,-10,235 observer{powered: false, facing: north}
+109,-10,236 moving_piston{type: normal, facing: south}
+109,-10,237 air{}
+97,-9,236 observer{powered: false, facing: north}
+97,-9,237 moving_piston{type: normal, facing: up}
+98,-9,234 observer{powered: false, facing: north}
+98,-9,235 observer{powered: false, facing: west}
+99,-9,235 repeater{powered: true, facing: west, delay: 1, locked: false}
+100,-9,236 moving_piston{type: normal, facing: up}
+100,-9,237 observer{powered: false, facing: down}
+102,-9,233 observer{powered: false, facing: up}
+102,-9,234 observer{powered: true, facing: north}
+102,-9,235 sticky_piston{extended: true, facing: up}
+108,-9,234 observer{powered: false, facing: north}
+108,-9,235 observer{powered: false, facing: down}
+108,-9,236 observer{powered: false, facing: down}
+97,-8,237 moving_piston{type: normal, facing: down}
+98,-8,234 observer{powered: true, facing: down}
+100,-8,236 moving_piston{type: normal, facing: up}
+100,-8,237 observer{powered: true, facing: down}
+101,-8,234 observer{powered: false, facing: north}
+101,-8,235 repeater{powered: true, facing: north, delay: 1, locked: false}
+101,-8,236 sticky_piston{extended: true, facing: east}
+102,-8,235 moving_piston{type: sticky, facing: up}
+102,-8,236 moving_piston{type: sticky, facing: east}
+103,-8,236 moving_piston{type: normal, facing: east}
+108,-8,234 observer{powered: true, facing: down}
+109,-8,237 moving_piston{type: normal, facing: down}
+97,-7,235 moving_piston{type: normal, facing: south}
+97,-7,236 air{}
+97,-7,237 moving_piston{type: normal, facing: down}
+99,-7,233 observer{powered: true, facing: west}
+99,-7,237 moving_piston{type: normal, facing: west}
+100,-7,234 moving_piston{type: normal, facing: down}
+100,-7,236 moving_piston{type: normal, facing: up}
+100,-7,237 piston{extended: true, facing: west}
+102,-7,235 moving_piston{type: normal, facing: up}
+106,-7,234 moving_piston{type: normal, facing: down}
+107,-7,233 observer{powered: true, facing: east}
+107,-7,235 piston_head{type: normal, short: false, facing: west}
+107,-7,237 air{}
+108,-7,236 moving_piston{type: normal, facing: up}
+108,-7,237 moving_piston{type: normal, facing: west}
+109,-7,235 moving_piston{type: normal, facing: south}
+109,-7,236 air{}
+109,-7,237 moving_piston{type: normal, facing: down}
+97,-6,235 note_block{instrument: harp, powered: false, note: 0}
+97,-6,237 moving_piston{type: normal, facing: down}
+98,-6,235 moving_piston{type: sticky, facing: east}
+98,-6,236 moving_piston{type: normal, facing: down}
+99,-6,235 moving_piston{type: normal, facing: east}
+99,-6,236 moving_piston{type: normal, facing: north}
+99,-6,237 moving_piston{type: sticky, facing: north}
+100,-6,234 moving_piston{type: normal, facing: down}
+100,-6,235 air{}
+100,-6,236 moving_piston{type: normal, facing: up}
+102,-6,235 moving_piston{type: normal, facing: up}
+106,-6,234 moving_piston{type: normal, facing: down}
+106,-6,235 air{}
+107,-6,235 moving_piston{type: normal, facing: west}
+107,-6,236 moving_piston{type: normal, facing: north}
+107,-6,237 moving_piston{type: sticky, facing: north}
+108,-6,235 moving_piston{type: sticky, facing: west}
+108,-6,236 moving_piston{type: normal, facing: down}
+109,-6,235 note_block{instrument: harp, powered: false, note: 0}
+109,-6,237 moving_piston{type: normal, facing: down}
+97,-5,236 redstone_wire{east: none, power: 0, south: side, north: side, west: none}
+97,-5,237 moving_piston{type: normal, facing: down}
+98,-5,235 moving_piston{type: sticky, facing: east}
+98,-5,236 moving_piston{type: normal, facing: down}
+98,-5,237 observer{powered: false, facing: west}
+99,-5,235 moving_piston{type: normal, facing: east}
+99,-5,236 moving_piston{type: normal, facing: north}
+99,-5,237 moving_piston{type: sticky, facing: north}
+100,-5,234 moving_piston{type: normal, facing: down}
+100,-5,235 air{}
+100,-5,236 moving_piston{type: normal, facing: up}
+102,-5,235 moving_piston{type: normal, facing: up}
+106,-5,234 moving_piston{type: normal, facing: down}
+106,-5,235 air{}
+107,-5,235 moving_piston{type: normal, facing: west}
+107,-5,236 moving_piston{type: normal, facing: north}
+107,-5,237 moving_piston{type: sticky, facing: north}
+108,-5,235 moving_piston{type: sticky, facing: west}
+108,-5,236 moving_piston{type: normal, facing: down}
+108,-5,237 observer{powered: false, facing: east}
+109,-5,236 redstone_wire{east: side, power: 0, south: side, north: side, west: side}
+109,-5,237 moving_piston{type: normal, facing: down}
+97,-4,235 observer{powered: false, facing: north}
+97,-4,237 moving_piston{type: normal, facing: down}
+98,-4,235 moving_piston{type: sticky, facing: east}
+98,-4,236 moving_piston{type: normal, facing: down}
+99,-4,235 moving_piston{type: normal, facing: east}
+99,-4,236 moving_piston{type: normal, facing: north}
+99,-4,237 moving_piston{type: sticky, facing: north}
+100,-4,234 moving_piston{type: normal, facing: down}
+100,-4,235 air{}
+100,-4,236 moving_piston{type: normal, facing: up}
+102,-4,235 moving_piston{type: normal, facing: up}
+106,-4,234 moving_piston{type: normal, facing: down}
+106,-4,235 air{}
+107,-4,235 moving_piston{type: normal, facing: west}
+107,-4,236 moving_piston{type: normal, facing: north}
+107,-4,237 moving_piston{type: sticky, facing: north}
+108,-4,235 moving_piston{type: sticky, facing: west}
+108,-4,236 moving_piston{type: normal, facing: down}
+109,-4,235 observer{powered: false, facing: north}
+109,-4,237 moving_piston{type: normal, facing: down}
+97,-3,236 redstone_wire{east: side, power: 0, south: side, north: side, west: side}
+97,-3,237 moving_piston{type: normal, facing: down}
+98,-3,235 moving_piston{type: sticky, facing: east}
+98,-3,236 moving_piston{type: normal, facing: down}
+98,-3,237 observer{powered: false, facing: west}
+99,-3,234 air{}
+99,-3,235 moving_piston{type: normal, facing: east}
+99,-3,236 moving_piston{type: normal, facing: north}
+99,-3,237 moving_piston{type: sticky, facing: north}
+100,-3,234 moving_piston{type: normal, facing: down}
+100,-3,235 air{}
+100,-3,236 moving_piston{type: normal, facing: up}
+102,-3,235 moving_piston{type: normal, facing: up}
+106,-3,234 moving_piston{type: normal, facing: down}
+106,-3,235 air{}
+107,-3,235 moving_piston{type: normal, facing: west}
+107,-3,236 moving_piston{type: normal, facing: north}
+107,-3,237 moving_piston{type: sticky, facing: north}
+108,-3,235 moving_piston{type: sticky, facing: west}
+108,-3,236 moving_piston{type: normal, facing: down}
+108,-3,237 observer{powered: false, facing: east}
+109,-3,236 redstone_wire{east: side, power: 0, south: side, north: side, west: side}
+109,-3,237 moving_piston{type: normal, facing: down}
+97,-2,237 moving_piston{type: normal, facing: down}
+98,-2,236 moving_piston{type: normal, facing: down}
+99,-2,234 moving_piston{type: normal, facing: down}
+100,-2,234 moving_piston{type: normal, facing: down}
+100,-2,236 moving_piston{type: normal, facing: up}
+102,-2,235 moving_piston{type: normal, facing: up}
+106,-2,234 moving_piston{type: normal, facing: down}
+107,-2,233 sticky_piston{extended: true, facing: up}
+107,-2,234 moving_piston{type: sticky, facing: down}
+107,-2,236 moving_piston{type: normal, facing: up}
+108,-2,236 moving_piston{type: normal, facing: down}
+109,-2,237 moving_piston{type: normal, facing: down}
+97,-1,234 observer{powered: false, facing: south}
+97,-1,236 polished_blackstone_brick_stairs{waterlogged: false, half: bottom, shape: straight, facing: north}
+97,-1,237 moving_piston{type: normal, facing: down}
+98,-1,233 air{}
+98,-1,236 moving_piston{type: normal, facing: down}
+99,-1,233 moving_piston{type: normal, facing: west}
+99,-1,234 moving_piston{type: sticky, facing: down}
+99,-1,235 sticky_piston{extended: false, facing: east}
+100,-1,233 moving_piston{type: sticky, facing: west}
+100,-1,234 moving_piston{type: normal, facing: down}
+100,-1,236 moving_piston{type: normal, facing: up}
+106,-1,234 moving_piston{type: normal, facing: down}
+107,-1,233 moving_piston{type: sticky, facing: up}
+107,-1,234 sticky_piston{extended: true, facing: down}
+107,-1,236 air{}
+107,-1,237 observer{powered: true, facing: east}
+108,-1,233 observer{powered: true, facing: east}
+108,-1,234 observer{powered: true, facing: east}
+108,-1,236 piston{extended: true, facing: down}
+108,-1,237 polished_blackstone_brick_stairs{waterlogged: false, half: bottom, shape: straight, facing: west}
+109,-1,234 observer{powered: false, facing: south}
+109,-1,237 moving_piston{type: normal, facing: down}
+97,0,235 observer{powered: false, facing: down}
+97,0,236 observer{powered: true, facing: down}
+97,0,237 moving_piston{type: normal, facing: down}
+98,0,234 observer{powered: false, facing: west}
+98,0,236 piston{extended: true, facing: down}
+100,0,233 observer{powered: false, facing: west}
+100,0,234 moving_piston{type: normal, facing: down}
+100,0,235 observer{powered: true, facing: west}
+101,0,233 redstone_wire{east: up, power: 0, south: side, north: none, west: side}
+106,0,234 moving_piston{type: normal, facing: down}
+106,0,237 redstone_wire{east: side, power: 15, south: none, north: none, west: side}
+107,0,234 observer{powered: true, facing: east}
+107,0,237 redstone_wire{east: side, power: 14, south: none, north: none, west: side}
+108,0,235 observer{powered: true, facing: north}
+108,0,236 observer{powered: false, facing: east}
+108,0,237 observer{powered: true, facing: down}
+109,0,237 piston{extended: true, facing: down}
+97,1,237 piston{extended: true, facing: down}
+98,1,234 observer{powered: false, facing: north}
+98,1,236 redstone_wire{east: side, power: 15, south: side, north: side, west: side}
+98,1,237 sticky_piston{extended: true, facing: east}
+99,1,234 observer{powered: true, facing: west}
+99,1,236 sticky_piston{extended: true, facing: east}
+99,1,237 moving_piston{type: sticky, facing: east}
+100,1,234 piston{extended: true, facing: down}
+100,1,236 moving_piston{type: sticky, facing: east}
+100,1,237 moving_piston{type: normal, facing: east}
+101,1,234 redstone_wire{east: side, power: 15, south: side, north: side, west: none}
+101,1,236 observer{powered: true, facing: south}
+102,1,233 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+103,1,236 observer{powered: false, facing: south}
+106,1,234 piston{extended: true, facing: down}
+106,1,237 moving_piston{type: sticky, facing: west}
+107,1,234 observer{powered: true, facing: east}
+107,1,237 sticky_piston{extended: true, facing: west}
+109,1,236 moving_piston{type: normal, facing: north}
+109,1,237 piston{extended: true, facing: north}
+T 76
+101,-10,234 observer{powered: true, facing: east}
+102,-10,235 piston_head{type: sticky, short: false, facing: south}
+102,-10,236 observer{powered: false, facing: west}
+103,-10,235 sticky_piston{extended: true, facing: up}
+106,-10,235 piston_head{type: normal, short: false, facing: west}
+107,-10,234 observer{powered: true, facing: south}
+98,-9,236 observer{powered: true, facing: up}
+103,-9,234 observer{powered: true, facing: north}
+103,-9,235 moving_piston{type: sticky, facing: up}
+104,-9,236 observer{powered: false, facing: down}
+104,-9,237 sticky_piston{extended: false, facing: north}
+106,-9,236 piston_head{type: normal, short: false, facing: up}
+106,-9,237 piston{extended: false, facing: west}
+107,-9,235 observer{powered: true, facing: down}
+109,-9,237 piston{extended: false, facing: up}
+103,-8,235 sticky_piston{extended: false, facing: up}
+104,-8,236 piston{extended: false, facing: west}
+106,-8,236 observer{powered: false, facing: down}
+106,-8,237 piston{extended: false, facing: up}
+107,-8,234 piston{extended: true, facing: up}
+107,-8,235 sticky_piston{extended: true, facing: east}
+108,-8,235 moving_piston{type: sticky, facing: east}
+109,-8,235 moving_piston{type: normal, facing: east}
+103,-7,235 polished_blackstone_bricks{}
+104,-7,235 polished_blackstone_bricks{}
+105,-7,235 sticky_piston{extended: false, facing: west}
+106,-7,236 polished_blackstone_bricks{}
+107,-7,234 moving_piston{type: normal, facing: up}
+106,-6,236 observer{powered: false, facing: down}
+106,-5,236 polished_blackstone_bricks{}
+106,-4,236 polished_blackstone_bricks{}
+103,-3,235 polished_blackstone_bricks{}
+106,-3,236 polished_blackstone_bricks{}
+103,-2,235 sticky_piston{extended: false, facing: down}
+106,-2,236 polished_blackstone_bricks{}
+101,-1,235 piston_head{type: sticky, short: false, facing: down}
+102,-1,235 piston_head{type: sticky, short: false, facing: down}
+106,-1,236 polished_blackstone_bricks{}
+106,0,236 tinted_glass{}
+108,1,235 observer{powered: true, facing: east}
+109,1,235 observer{powered: false, facing: down}
+T 77
+106,-10,236 moving_piston{type: normal, facing: up}
+109,-10,236 piston{extended: false, facing: south}
+97,-9,237 piston{extended: false, facing: up}
+99,-9,235 repeater{powered: false, facing: west, delay: 1, locked: false}
+100,-9,236 piston_head{type: normal, short: false, facing: up}
+102,-9,234 observer{powered: false, facing: north}
+102,-9,235 moving_piston{type: sticky, facing: up}
+106,-9,236 air{}
+97,-8,235 moving_piston{type: normal, facing: west}
+97,-8,237 composter{level: 6}
+98,-8,234 observer{powered: false, facing: down}
+98,-8,235 moving_piston{type: sticky, facing: west}
+99,-8,235 sticky_piston{extended: true, facing: west}
+99,-8,237 redstone_wire{east: side, power: 14, south: none, north: none, west: up}
+100,-8,236 observer{powered: false, facing: west}
+100,-8,237 observer{powered: false, facing: down}
+101,-8,235 repeater{powered: false, facing: north, delay: 1, locked: false}
+101,-8,236 moving_piston{type: sticky, facing: east}
+102,-8,235 air{}
+102,-8,236 air{}
+103,-8,236 observer{powered: false, facing: down}
+108,-8,234 observer{powered: false, facing: down}
+109,-8,237 composter{level: 6}
+97,-7,235 piston{extended: false, facing: south}
+97,-7,237 redstone_block{}
+98,-7,237 redstone_wire{east: side, power: 15, south: none, north: none, west: side}
+99,-7,233 observer{powered: false, facing: west}
+99,-7,235 piston{extended: true, facing: east}
+99,-7,236 observer{powered: true, facing: south}
+99,-7,237 air{}
+100,-7,234 polished_blackstone_bricks{}
+100,-7,235 moving_piston{type: normal, facing: east}
+100,-7,236 glass{}
+100,-7,237 moving_piston{type: normal, facing: west}
+101,-7,235 moving_piston{type: normal, facing: east}
+102,-7,235 moving_piston{type: normal, facing: east}
+103,-7,235 moving_piston{type: normal, facing: east}
+104,-7,235 moving_piston{type: normal, facing: east}
+105,-7,235 moving_piston{type: normal, facing: east}
+106,-7,234 polished_blackstone_bricks{}
+106,-7,235 moving_piston{type: normal, facing: east}
+107,-7,233 observer{powered: false, facing: east}
+107,-7,235 moving_piston{type: normal, facing: east}
+108,-7,235 moving_piston{type: normal, facing: west}
+108,-7,236 piston{extended: false, facing: up}
+108,-7,237 piston{extended: false, facing: west}
+109,-7,235 piston{extended: false, facing: south}
+109,-7,237 redstone_block{}
+97,-6,237 redstone_block{}
+98,-6,235 sticky_piston{extended: false, facing: east}
+98,-6,236 cherry_log{axis: y}
+99,-6,235 polished_blackstone_bricks{}
+99,-6,236 sticky_piston{extended: false, facing: east}
+99,-6,237 sticky_piston{extended: false, facing: north}
+100,-6,234 polished_blackstone_bricks{}
+100,-6,236 observer{powered: false, facing: down}
+102,-6,235 polished_blackstone_bricks{}
+106,-6,234 polished_blackstone_bricks{}
+107,-6,235 polished_blackstone_bricks{}
+107,-6,236 sticky_piston{extended: false, facing: west}
+107,-6,237 sticky_piston{extended: false, facing: north}
+108,-6,235 sticky_piston{extended: false, facing: west}
+108,-6,236 glass{}
+109,-6,237 redstone_block{}
+97,-5,237 glass{}
+98,-5,235 sticky_piston{extended: false, facing: east}
+98,-5,236 polished_blackstone_bricks{}
+98,-5,237 observer{powered: true, facing: west}
+99,-5,235 polished_blackstone_bricks{}
+99,-5,236 sticky_piston{extended: false, facing: east}
+99,-5,237 sticky_piston{extended: false, facing: north}
+100,-5,234 polished_blackstone_bricks{}
+100,-5,236 polished_blackstone_bricks{}
+102,-5,235 polished_blackstone_bricks{}
+106,-5,234 polished_blackstone_bricks{}
+107,-5,235 polished_blackstone_bricks{}
+107,-5,236 sticky_piston{extended: false, facing: west}
+107,-5,237 sticky_piston{extended: false, facing: north}
+108,-5,235 sticky_piston{extended: false, facing: west}
+108,-5,236 polished_blackstone_bricks{}
+108,-5,237 observer{powered: true, facing: east}
+109,-5,237 glass{}
+97,-4,237 redstone_block{}
+98,-4,235 sticky_piston{extended: false, facing: east}
+98,-4,236 observer{powered: false, facing: up}
+99,-4,235 polished_blackstone_bricks{}
+99,-4,236 sticky_piston{extended: false, facing: east}
+99,-4,237 sticky_piston{extended: false, facing: north}
+100,-4,234 polished_blackstone_bricks{}
+100,-4,236 polished_blackstone_bricks{}
+102,-4,235 polished_blackstone_bricks{}
+106,-4,234 polished_blackstone_bricks{}
+107,-4,235 polished_blackstone_bricks{}
+107,-4,236 sticky_piston{extended: false, facing: west}
+107,-4,237 sticky_piston{extended: false, facing: north}
+108,-4,235 sticky_piston{extended: false, facing: west}
+108,-4,236 observer{powered: false, facing: up}
+109,-4,237 redstone_block{}
+97,-3,237 glass{}
+98,-3,235 sticky_piston{extended: false, facing: east}
+98,-3,236 observer{powered: false, facing: south}
+98,-3,237 observer{powered: true, facing: west}
+99,-3,235 polished_blackstone_bricks{}
+99,-3,236 sticky_piston{extended: false, facing: east}
+99,-3,237 sticky_piston{extended: false, facing: north}
+100,-3,234 polished_blackstone_bricks{}
+100,-3,236 polished_blackstone_bricks{}
+102,-3,235 polished_blackstone_bricks{}
+106,-3,234 polished_blackstone_bricks{}
+107,-3,234 air{}
+107,-3,235 polished_blackstone_bricks{}
+107,-3,236 sticky_piston{extended: false, facing: west}
+107,-3,237 sticky_piston{extended: false, facing: north}
+108,-3,235 sticky_piston{extended: false, facing: west}
+108,-3,236 observer{powered: false, facing: south}
+108,-3,237 observer{powered: true, facing: east}
+109,-3,237 glass{}
+97,-2,237 polished_blackstone_brick_stairs{waterlogged: false, half: bottom, shape: straight, facing: east}
+98,-2,236 cherry_log{axis: y}
+99,-2,234 white_concrete{}
+100,-2,234 observer{powered: false, facing: up}
+100,-2,236 polished_blackstone_bricks{}
+101,-2,235 air{}
+102,-2,235 polished_blackstone_bricks{}
+103,-2,235 air{}
+104,-2,235 air{}
+105,-2,235 air{}
+106,-2,234 observer{powered: false, facing: up}
+107,-2,233 moving_piston{type: sticky, facing: up}
+107,-2,234 moving_piston{type: normal, facing: down}
+107,-2,236 piston{extended: false, facing: up}
+108,-2,236 air{}
+109,-2,237 polished_blackstone_brick_stairs{waterlogged: false, half: bottom, shape: straight, facing: north}
+97,-1,237 redstone_block{}
+98,-1,236 air{}
+98,-1,237 redstone_wire{east: side, power: 15, south: none, north: none, west: side}
+99,-1,233 sticky_piston{extended: false, facing: south}
+99,-1,234 sticky_piston{extended: false, facing: down}
+99,-1,235 sticky_piston{extended: true, facing: east}
+100,-1,233 sticky_piston{extended: false, facing: west}
+100,-1,234 glass{}
+100,-1,235 moving_piston{type: sticky, facing: east}
+100,-1,236 polished_blackstone_bricks{}
+101,-1,235 moving_piston{type: normal, facing: down}
+102,-1,235 air{}
+103,-1,235 moving_piston{type: normal, facing: down}
+104,-1,235 moving_piston{type: normal, facing: down}
+105,-1,235 moving_piston{type: normal, facing: down}
+106,-1,234 observer{powered: false, facing: east}
+107,-1,233 moving_piston{type: normal, facing: up}
+107,-1,234 moving_piston{type: sticky, facing: down}
+107,-1,237 observer{powered: false, facing: east}
+108,-1,233 observer{powered: false, facing: east}
+108,-1,234 observer{powered: false, facing: east}
+108,-1,236 moving_piston{type: normal, facing: down}
+109,-1,237 air{}
+97,0,236 observer{powered: false, facing: down}
+97,0,237 air{}
+98,0,236 moving_piston{type: normal, facing: down}
+99,0,235 hopper{enabled: false, facing: down}
+99,0,237 redstone_wire{east: side, power: 14, south: none, north: none, west: side}
+100,0,234 air{}
+100,0,235 observer{powered: false, facing: west}
+100,0,237 redstone_wire{east: side, power: 13, south: none, north: none, west: side}
+101,0,235 moving_piston{type: sticky, facing: down}
+102,0,235 moving_piston{type: sticky, facing: down}
+103,0,235 moving_piston{type: sticky, facing: down}
+104,0,235 moving_piston{type: sticky, facing: down}
+104,0,237 redstone_wire{east: side, power: 0, south: none, north: up, west: none}
+105,0,235 moving_piston{type: sticky, facing: down}
+105,0,237 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+106,0,234 air{}
+106,0,237 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+107,0,233 air{}
+107,0,234 observer{powered: false, facing: east}
+107,0,235 observer{powered: true, facing: east}
+107,0,237 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+108,0,235 observer{powered: false, facing: north}
+108,0,237 observer{powered: false, facing: down}
+109,0,237 moving_piston{type: normal, facing: down}
+97,1,237 moving_piston{type: normal, facing: down}
+98,1,235 repeater{powered: true, facing: west, delay: 2, locked: false}
+98,1,236 redstone_wire{east: side, power: 0, south: side, north: side, west: side}
+98,1,237 moving_piston{type: sticky, facing: east}
+99,1,234 observer{powered: false, facing: west}
+99,1,235 redstone_wire{east: side, power: 15, south: none, north: none, west: side}
+99,1,236 moving_piston{type: sticky, facing: east}
+99,1,237 air{}
+100,1,234 moving_piston{type: normal, facing: down}
+100,1,236 moving_piston{type: normal, facing: east}
+100,1,237 pink_terracotta{}
+101,1,234 redstone_wire{east: side, power: 0, south: side, north: side, west: none}
+101,1,236 air{}
+101,1,237 redstone_wire{east: side, power: 0, south: none, north: side, west: none}
+102,1,235 activator_rail{waterlogged: false, powered: false, shape: east_west}
+104,1,236 redstone_wire{east: side, power: 0, south: side, north: side, west: none}
+105,1,237 air{}
+106,1,234 moving_piston{type: normal, facing: down}
+106,1,237 moving_piston{type: normal, facing: west}
+107,1,234 observer{powered: false, facing: east}
+107,1,237 moving_piston{type: sticky, facing: west}
+108,1,236 observer{powered: true, facing: east}
+109,1,236 air{}
+109,1,237 moving_piston{type: normal, facing: north}
+T 78
+98,-10,237 sticky_piston{extended: true, facing: east}
+99,-10,237 moving_piston{type: sticky, facing: east}
+100,-10,234 observer{powered: true, facing: east}
+100,-10,236 moving_piston{type: normal, facing: up}
+100,-10,237 moving_piston{type: normal, facing: east}
+101,-10,234 observer{powered: false, facing: east}
+102,-10,236 observer{powered: true, facing: west}
+103,-10,235 moving_piston{type: sticky, facing: up}
+106,-10,234 observer{powered: true, facing: east}
+107,-10,234 observer{powered: false, facing: south}
+98,-9,236 observer{powered: false, facing: up}
+100,-9,236 air{}
+103,-9,234 observer{powered: false, facing: north}
+103,-9,235 moving_piston{type: normal, facing: up}
+107,-9,235 observer{powered: false, facing: down}
+107,-9,236 observer{powered: true, facing: north}
+98,-8,236 spruce_leaves{waterlogged: false, distance: 7, persistent: true}
+103,-8,235 air{}
+106,-8,236 observer{powered: true, facing: down}
+107,-8,234 moving_piston{type: normal, facing: up}
+107,-8,235 moving_piston{type: sticky, facing: east}
+108,-8,235 air{}
+109,-8,235 polished_blackstone_bricks{}
+107,-7,234 air{}
+107,-7,237 moving_piston{type: normal, facing: west}
+108,-7,237 piston{extended: true, facing: west}
+98,-6,237 spruce_leaves{waterlogged: false, distance: 1, persistent: true}
+99,-6,234 moving_piston{type: normal, facing: north}
+99,-6,235 moving_piston{type: normal, facing: north}
+99,-6,236 moving_piston{type: sticky, facing: north}
+99,-6,237 sticky_piston{extended: true, facing: north}
+106,-6,236 observer{powered: true, facing: down}
+107,-6,234 moving_piston{type: normal, facing: north}
+107,-6,235 moving_piston{type: normal, facing: north}
+107,-6,236 moving_piston{type: sticky, facing: north}
+107,-6,237 sticky_piston{extended: true, facing: north}
+99,-5,234 moving_piston{type: normal, facing: north}
+99,-5,235 moving_piston{type: normal, facing: north}
+99,-5,236 moving_piston{type: sticky, facing: north}
+99,-5,237 sticky_piston{extended: true, facing: north}
+107,-5,234 moving_piston{type: normal, facing: north}
+107,-5,235 moving_piston{type: normal, facing: north}
+107,-5,236 moving_piston{type: sticky, facing: north}
+107,-5,237 sticky_piston{extended: true, facing: north}
+99,-4,234 moving_piston{type: normal, facing: north}
+99,-4,235 moving_piston{type: normal, facing: north}
+99,-4,236 moving_piston{type: sticky, facing: north}
+99,-4,237 sticky_piston{extended: true, facing: north}
+107,-4,234 moving_piston{type: normal, facing: north}
+107,-4,235 moving_piston{type: normal, facing: north}
+107,-4,236 moving_piston{type: sticky, facing: north}
+107,-4,237 sticky_piston{extended: true, facing: north}
+99,-3,234 moving_piston{type: normal, facing: north}
+99,-3,235 moving_piston{type: normal, facing: north}
+99,-3,236 moving_piston{type: sticky, facing: north}
+99,-3,237 sticky_piston{extended: true, facing: north}
+107,-3,234 moving_piston{type: normal, facing: north}
+107,-3,235 moving_piston{type: normal, facing: north}
+107,-3,236 moving_piston{type: sticky, facing: north}
+107,-3,237 sticky_piston{extended: true, facing: north}
+99,-2,236 spruce_leaves{waterlogged: false, distance: 1, persistent: true}
+107,1,235 repeater{powered: true, facing: east, delay: 1, locked: false}
+108,1,235 observer{powered: false, facing: east}
+T 79
+101,-10,237 note_block{instrument: basedrum, powered: true, note: 0}
+102,-10,237 sticky_piston{extended: true, facing: east}
+103,-10,237 moving_piston{type: sticky, facing: east}
+104,-10,237 moving_piston{type: normal, facing: east}
+105,-10,237 moving_piston{type: normal, facing: east}
+106,-10,236 piston{extended: false, facing: up}
+106,-10,237 moving_piston{type: normal, facing: east}
+107,-10,237 moving_piston{type: normal, facing: east}
+101,-9,236 comparator{mode: compare, powered: true, facing: north}
+102,-9,235 sticky_piston{extended: false, facing: up}
+103,-9,237 dropper{triggered: false, facing: up}
+97,-8,234 redstone_wire{east: none, power: 6, south: side, north: side, west: none}
+97,-8,235 cherry_log{axis: x}
+97,-8,236 comparator{mode: compare, powered: true, facing: south}
+98,-8,235 air{}
+99,-8,235 moving_piston{type: sticky, facing: west}
+100,-8,236 observer{powered: true, facing: west}
+101,-8,236 sticky_piston{extended: false, facing: east}
+101,-8,237 redstone_wire{east: side, power: 1, south: none, north: none, west: side}
+103,-8,236 observer{powered: true, facing: down}
+109,-8,234 redstone_wire{east: none, power: 6, south: side, north: side, west: none}
+109,-8,236 comparator{mode: compare, powered: true, facing: south}
+97,-7,233 redstone_wire{east: side, power: 5, south: side, north: none, west: none}
+97,-7,235 piston{extended: true, facing: south}
+97,-7,236 moving_piston{type: normal, facing: south}
+98,-7,236 piston{extended: true, facing: up}
+99,-7,235 moving_piston{type: normal, facing: east}
+99,-7,236 observer{powered: false, facing: south}
+100,-7,235 air{}
+100,-7,237 piston{extended: false, facing: west}
+101,-7,235 polished_blackstone_bricks{}
+102,-7,235 polished_blackstone_bricks{}
+103,-7,235 sticky_piston{extended: false, facing: up}
+104,-7,235 polished_blackstone_bricks{}
+105,-7,235 polished_blackstone_bricks{}
+106,-7,235 sticky_piston{extended: false, facing: west}
+107,-7,235 white_stained_glass{}
+108,-7,235 piston{extended: false, facing: west}
+108,-7,236 piston{extended: true, facing: up}
+109,-7,233 redstone_wire{east: none, power: 5, south: side, north: none, west: side}
+109,-7,235 piston{extended: true, facing: south}
+109,-7,236 moving_piston{type: normal, facing: south}
+97,-6,234 redstone_wire{east: side, power: 4, south: none, north: side, west: none}
+98,-6,235 moving_piston{type: sticky, facing: east}
+98,-6,236 moving_piston{type: normal, facing: up}
+99,-6,235 air{}
+99,-6,236 air{}
+99,-6,237 moving_piston{type: sticky, facing: north}
+100,-6,235 sticky_piston{extended: true, facing: east}
+100,-6,236 observer{powered: true, facing: down}
+101,-6,235 moving_piston{type: sticky, facing: east}
+105,-6,235 moving_piston{type: sticky, facing: west}
+106,-6,235 sticky_piston{extended: true, facing: west}
+107,-6,235 air{}
+107,-6,236 air{}
+107,-6,237 moving_piston{type: sticky, facing: north}
+108,-6,235 moving_piston{type: sticky, facing: west}
+108,-6,236 moving_piston{type: normal, facing: up}
+109,-6,234 redstone_wire{east: none, power: 4, south: none, north: side, west: side}
+98,-5,234 redstone_wire{east: side, power: 3, south: none, north: none, west: side}
+98,-5,235 moving_piston{type: sticky, facing: east}
+98,-5,236 moving_piston{type: normal, facing: up}
+98,-5,237 observer{powered: false, facing: west}
+99,-5,235 air{}
+99,-5,236 air{}
+99,-5,237 moving_piston{type: sticky, facing: north}
+100,-5,235 sticky_piston{extended: true, facing: east}
+101,-5,235 moving_piston{type: sticky, facing: east}
+105,-5,235 moving_piston{type: sticky, facing: west}
+106,-5,235 sticky_piston{extended: true, facing: west}
+107,-5,235 air{}
+107,-5,236 air{}
+107,-5,237 moving_piston{type: sticky, facing: north}
+108,-5,234 redstone_wire{east: side, power: 3, south: none, north: none, west: side}
+108,-5,235 moving_piston{type: sticky, facing: west}
+108,-5,236 moving_piston{type: normal, facing: up}
+108,-5,237 observer{powered: false, facing: east}
+97,-4,234 redstone_wire{east: side, power: 2, south: none, north: none, west: side}
+98,-4,235 moving_piston{type: sticky, facing: east}
+98,-4,236 moving_piston{type: normal, facing: up}
+99,-4,235 air{}
+99,-4,236 air{}
+99,-4,237 moving_piston{type: sticky, facing: north}
+100,-4,235 sticky_piston{extended: true, facing: east}
+101,-4,235 moving_piston{type: sticky, facing: east}
+105,-4,235 moving_piston{type: sticky, facing: west}
+106,-4,235 sticky_piston{extended: true, facing: west}
+107,-4,235 air{}
+107,-4,236 air{}
+107,-4,237 moving_piston{type: sticky, facing: north}
+108,-4,235 moving_piston{type: sticky, facing: west}
+108,-4,236 moving_piston{type: normal, facing: up}
+109,-4,234 redstone_wire{east: side, power: 2, south: none, north: none, west: side}
+98,-3,234 redstone_wire{east: side, power: 1, south: none, north: none, west: side}
+98,-3,235 moving_piston{type: sticky, facing: east}
+98,-3,236 moving_piston{type: normal, facing: up}
+98,-3,237 observer{powered: false, facing: west}
+99,-3,235 air{}
+99,-3,236 air{}
+99,-3,237 moving_piston{type: sticky, facing: north}
+100,-3,235 sticky_piston{extended: true, facing: east}
+101,-3,235 moving_piston{type: sticky, facing: east}
+105,-3,235 moving_piston{type: sticky, facing: west}
+106,-3,235 sticky_piston{extended: true, facing: west}
+107,-3,235 air{}
+107,-3,236 air{}
+107,-3,237 moving_piston{type: sticky, facing: north}
+108,-3,234 redstone_wire{east: side, power: 1, south: none, north: none, west: side}
+108,-3,235 moving_piston{type: sticky, facing: west}
+108,-3,236 moving_piston{type: normal, facing: up}
+108,-3,237 observer{powered: false, facing: east}
+98,-2,236 moving_piston{type: normal, facing: up}
+100,-2,234 observer{powered: true, facing: up}
+106,-2,234 observer{powered: true, facing: up}
+107,-2,233 sticky_piston{extended: false, facing: up}
+107,-2,234 white_concrete{}
+108,-2,236 moving_piston{type: normal, facing: up}
+97,-1,233 repeater{powered: true, facing: south, delay: 3, locked: false}
+98,-1,236 moving_piston{type: normal, facing: up}
+100,-1,235 piston_head{type: sticky, short: false, facing: east}
+101,-1,235 sticky_piston{extended: false, facing: east}
+103,-1,235 sticky_piston{extended: false, facing: down}
+104,-1,235 polished_blackstone_bricks{}
+105,-1,235 polished_blackstone_bricks{}
+106,-1,234 observer{powered: true, facing: east}
+107,-1,233 sticky_piston{extended: false, facing: west}
+107,-1,234 sticky_piston{extended: false, facing: down}
+108,-1,236 piston{extended: false, facing: down}
+109,-1,233 repeater{powered: true, facing: south, delay: 3, locked: false}
+98,0,236 piston{extended: false, facing: down}
+101,0,235 sticky_piston{extended: false, facing: down}
+102,0,235 sticky_piston{extended: false, facing: down}
+103,0,234 redstone_wire{east: side, power: 13, south: none, north: none, west: side}
+103,0,235 sticky_piston{extended: false, facing: down}
+103,0,236 moving_piston{type: sticky, facing: north}
+103,0,237 sticky_piston{extended: true, facing: north}
+104,0,234 redstone_wire{east: side, power: 14, south: none, north: none, west: side}
+104,0,235 sticky_piston{extended: false, facing: down}
+104,0,236 observer{powered: true, facing: south}
+105,0,234 redstone_wire{east: side, power: 15, south: none, north: none, west: side}
+105,0,235 sticky_piston{extended: false, facing: down}
+105,0,236 observer{powered: true, facing: south}
+106,0,235 observer{powered: true, facing: east}
+107,0,235 observer{powered: false, facing: east}
+109,0,237 piston{extended: false, facing: down}
+97,1,237 piston{extended: false, facing: down}
+98,1,237 sticky_piston{extended: false, facing: east}
+99,1,236 sticky_piston{extended: false, facing: east}
+100,1,234 piston{extended: false, facing: down}
+100,1,236 observer{powered: false, facing: south}
+102,1,234 repeater{powered: true, facing: west, delay: 4, locked: false}
+103,1,237 hopper{enabled: false, facing: down}
+104,1,237 observer{powered: true, facing: east}
+106,1,234 piston{extended: false, facing: down}
+106,1,237 pink_terracotta{}
+107,1,237 sticky_piston{extended: false, facing: west}
+108,1,236 observer{powered: false, facing: east}
+109,1,237 piston{extended: false, facing: north}
+T 80
+99,-10,237 piston_head{type: sticky, short: false, facing: east}
+100,-10,234 observer{powered: false, facing: east}
+100,-10,236 piston{extended: false, facing: up}
+100,-10,237 glass{}
+102,-10,236 observer{powered: false, facing: west}
+103,-10,235 sticky_piston{extended: false, facing: up}
+106,-10,234 observer{powered: false, facing: east}
+98,-9,236 observer{powered: true, facing: up}
+100,-9,234 observer{powered: true, facing: down}
+100,-9,236 moving_piston{type: normal, facing: down}
+100,-9,237 observer{powered: true, facing: down}
+103,-9,235 sticky_piston{extended: false, facing: up}
+106,-9,234 observer{powered: true, facing: down}
+107,-9,236 observer{powered: false, facing: north}
+107,-9,237 observer{powered: true, facing: north}
+100,-8,234 piston{extended: true, facing: up}
+100,-8,236 moving_piston{type: normal, facing: down}
+101,-8,236 moving_piston{type: sticky, facing: east}
+102,-8,236 moving_piston{type: normal, facing: east}
+103,-8,236 air{}
+106,-8,234 piston{extended: true, facing: up}
+106,-8,236 observer{powered: false, facing: down}
+107,-8,234 piston{extended: false, facing: up}
+107,-8,235 sticky_piston{extended: false, facing: east}
+100,-7,234 moving_piston{type: normal, facing: up}
+100,-7,236 moving_piston{type: normal, facing: down}
+103,-7,235 moving_piston{type: sticky, facing: up}
+106,-7,234 moving_piston{type: normal, facing: up}
+107,-7,237 piston_head{type: normal, short: false, facing: west}
+108,-7,236 moving_piston{type: normal, facing: up}
+98,-6,237 spruce_leaves{waterlogged: false, distance: 7, persistent: true}
+99,-6,234 polished_blackstone_bricks{}
+100,-6,234 moving_piston{type: normal, facing: up}
+100,-6,235 moving_piston{type: sticky, facing: east}
+100,-6,236 moving_piston{type: normal, facing: down}
+101,-6,235 moving_piston{type: normal, facing: east}
+102,-6,235 air{}
+103,-6,235 moving_piston{type: normal, facing: up}
+104,-6,235 air{}
+105,-6,235 moving_piston{type: normal, facing: west}
+106,-6,234 moving_piston{type: normal, facing: up}
+106,-6,235 moving_piston{type: sticky, facing: west}
+106,-6,236 observer{powered: false, facing: down}
+107,-6,234 polished_blackstone_bricks{}
+108,-6,236 air{}
+99,-5,234 polished_blackstone_bricks{}
+100,-5,234 moving_piston{type: normal, facing: up}
+100,-5,235 moving_piston{type: sticky, facing: east}
+100,-5,236 moving_piston{type: normal, facing: down}
+101,-5,235 moving_piston{type: normal, facing: east}
+102,-5,235 air{}
+103,-5,235 air{}
+104,-5,235 air{}
+105,-5,235 moving_piston{type: normal, facing: west}
+106,-5,234 moving_piston{type: normal, facing: up}
+106,-5,235 moving_piston{type: sticky, facing: west}
+107,-5,234 polished_blackstone_bricks{}
+99,-4,234 polished_blackstone_bricks{}
+100,-4,234 moving_piston{type: normal, facing: up}
+100,-4,235 moving_piston{type: sticky, facing: east}
+100,-4,236 moving_piston{type: normal, facing: down}
+101,-4,235 moving_piston{type: normal, facing: east}
+102,-4,235 air{}
+104,-4,235 air{}
+105,-4,235 moving_piston{type: normal, facing: west}
+106,-4,234 moving_piston{type: normal, facing: up}
+106,-4,235 moving_piston{type: sticky, facing: west}
+107,-4,234 polished_blackstone_bricks{}
+99,-3,234 polished_blackstone_bricks{}
+100,-3,234 moving_piston{type: normal, facing: up}
+100,-3,235 moving_piston{type: sticky, facing: east}
+100,-3,236 moving_piston{type: normal, facing: down}
+101,-3,235 moving_piston{type: normal, facing: east}
+102,-3,235 air{}
+103,-3,235 air{}
+104,-3,235 air{}
+105,-3,235 moving_piston{type: normal, facing: west}
+106,-3,234 moving_piston{type: normal, facing: up}
+106,-3,235 moving_piston{type: sticky, facing: west}
+107,-3,234 polished_blackstone_bricks{}
+99,-2,236 spruce_leaves{waterlogged: false, distance: 7, persistent: true}
+100,-2,234 moving_piston{type: normal, facing: up}
+100,-2,236 moving_piston{type: normal, facing: down}
+103,-2,235 moving_piston{type: normal, facing: down}
+104,-2,235 moving_piston{type: normal, facing: down}
+105,-2,235 moving_piston{type: normal, facing: down}
+106,-2,234 moving_piston{type: normal, facing: up}
+99,-1,236 observer{powered: true, facing: down}
+100,-1,234 moving_piston{type: normal, facing: up}
+100,-1,236 moving_piston{type: normal, facing: down}
+103,-1,235 moving_piston{type: sticky, facing: down}
+104,-1,235 moving_piston{type: sticky, facing: down}
+105,-1,235 moving_piston{type: sticky, facing: down}
+106,-1,234 moving_piston{type: normal, facing: up}
+99,0,237 redstone_wire{east: side, power: 15, south: none, north: none, west: side}
+100,0,234 moving_piston{type: normal, facing: up}
+100,0,236 piston{extended: true, facing: down}
+100,0,237 redstone_wire{east: side, power: 14, south: none, north: none, west: side}
+103,0,234 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+104,0,234 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+104,0,235 sticky_piston{extended: true, facing: down}
+105,0,234 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+105,0,235 sticky_piston{extended: true, facing: down}
+106,0,234 moving_piston{type: normal, facing: up}
+99,1,236 sticky_piston{extended: true, facing: east}
+100,1,236 moving_piston{type: sticky, facing: east}
+101,1,236 moving_piston{type: normal, facing: east}
+107,1,235 repeater{powered: false, facing: east, delay: 1, locked: false}
+T 81
+103,-10,237 piston_head{type: sticky, short: false, facing: east}
+104,-10,237 redstone_block{}
+105,-10,237 tinted_glass{}
+106,-10,237 tinted_glass{}
+107,-10,237 tinted_glass{}
+103,-9,235 sticky_piston{extended: true, facing: up}
+103,-9,236 observer{powered: true, facing: south}
+99,-8,235 sticky_piston{extended: false, facing: west}
+103,-8,235 moving_piston{type: sticky, facing: up}
+97,-7,236 piston_head{type: normal, short: false, facing: south}
+99,-7,235 piston{extended: false, facing: east}
+109,-7,236 piston_head{type: normal, short: false, facing: south}
+97,-6,235 note_block{instrument: harp, powered: true, note: 0}
+98,-6,235 sticky_piston{extended: false, facing: east}
+98,-6,236 piston_head{type: normal, short: false, facing: up}
+99,-6,237 sticky_piston{extended: false, facing: north}
+107,-6,237 sticky_piston{extended: false, facing: north}
+108,-6,235 sticky_piston{extended: false, facing: west}
+109,-6,235 note_block{instrument: harp, powered: true, note: 0}
+97,-5,233 moving_piston{type: normal, facing: down}
+97,-5,236 redstone_wire{east: none, power: 15, south: side, north: side, west: none}
+98,-5,235 sticky_piston{extended: false, facing: east}
+98,-5,236 cherry_log{axis: y}
+99,-5,237 sticky_piston{extended: false, facing: north}
+107,-5,237 sticky_piston{extended: false, facing: north}
+108,-5,235 sticky_piston{extended: false, facing: west}
+108,-5,236 glass{}
+109,-5,233 moving_piston{type: normal, facing: down}
+109,-5,236 redstone_wire{east: side, power: 15, south: side, north: side, west: side}
+97,-4,233 piston{extended: true, facing: down}
+97,-4,235 observer{powered: true, facing: north}
+98,-4,235 sticky_piston{extended: false, facing: east}
+98,-4,236 polished_blackstone_bricks{}
+99,-4,237 sticky_piston{extended: false, facing: north}
+107,-4,237 sticky_piston{extended: false, facing: north}
+108,-4,235 sticky_piston{extended: false, facing: west}
+108,-4,236 polished_blackstone_bricks{}
+109,-4,233 piston{extended: true, facing: down}
+109,-4,235 observer{powered: true, facing: north}
+97,-3,236 redstone_wire{east: side, power: 15, south: side, north: side, west: side}
+98,-3,235 sticky_piston{extended: false, facing: east}
+98,-3,236 observer{powered: false, facing: up}
+99,-3,237 sticky_piston{extended: false, facing: north}
+107,-3,237 sticky_piston{extended: false, facing: north}
+108,-3,235 sticky_piston{extended: false, facing: west}
+108,-3,236 observer{powered: false, facing: up}
+109,-3,236 redstone_wire{east: side, power: 15, south: side, north: side, west: side}
+97,-2,233 observer{powered: true, facing: up}
+98,-2,236 observer{powered: false, facing: south}
+104,-2,235 polished_blackstone_bricks{}
+105,-2,235 polished_blackstone_bricks{}
+107,-2,233 sticky_piston{extended: true, facing: up}
+108,-2,236 observer{powered: false, facing: south}
+109,-2,233 observer{powered: true, facing: up}
+98,-1,236 cherry_log{axis: y}
+104,-1,235 air{}
+105,-1,235 air{}
+106,-1,235 observer{powered: true, facing: up}
+107,-1,233 moving_piston{type: sticky, facing: up}
+108,-1,233 observer{powered: true, facing: east}
+103,0,235 moving_piston{type: sticky, facing: down}
+103,0,236 moving_piston{type: normal, facing: north}
+103,0,237 moving_piston{type: sticky, facing: north}
+104,0,235 moving_piston{type: sticky, facing: down}
+104,0,236 observer{powered: false, facing: south}
+105,0,235 moving_piston{type: sticky, facing: down}
+105,0,236 observer{powered: false, facing: south}
+106,0,235 observer{powered: false, facing: east}
+107,0,233 moving_piston{type: normal, facing: up}
+98,1,235 repeater{powered: false, facing: west, delay: 2, locked: false}
+99,1,235 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+103,1,235 sticky_piston{extended: true, facing: down}
+103,1,236 observer{powered: true, facing: south}
+103,1,237 hopper{enabled: true, facing: down}
+104,1,237 observer{powered: false, facing: east}
+T 82
+98,-9,236 observer{powered: false, facing: up}
+100,-9,234 observer{powered: false, facing: down}
+100,-9,236 observer{powered: false, facing: west}
+100,-9,237 observer{powered: false, facing: down}
+104,-9,235 moving_piston{type: normal, facing: north}
+104,-9,236 moving_piston{type: sticky, facing: north}
+104,-9,237 sticky_piston{extended: true, facing: north}
+106,-9,234 observer{powered: false, facing: down}
+107,-9,237 observer{powered: false, facing: north}
+100,-8,234 moving_piston{type: normal, facing: up}
+100,-8,236 glass{}
+100,-8,237 observer{powered: true, facing: down}
+101,-8,236 sticky_piston{extended: false, facing: east}
+102,-8,236 observer{powered: false, facing: down}
+106,-8,234 moving_piston{type: normal, facing: up}
+107,-8,237 observer{powered: true, facing: down}
+98,-7,236 moving_piston{type: normal, facing: up}
+99,-7,234 white_concrete_powder{}
+99,-7,237 moving_piston{type: normal, facing: west}
+100,-7,234 air{}
+100,-7,236 observer{powered: false, facing: down}
+100,-7,237 piston{extended: true, facing: west}
+103,-7,235 sticky_piston{extended: false, facing: up}
+106,-7,234 air{}
+107,-7,234 white_concrete_powder{}
+108,-7,236 piston{extended: false, facing: up}
+98,-6,235 sticky_piston{extended: true, facing: east}
+98,-6,236 air{}
+99,-6,235 moving_piston{type: sticky, facing: east}
+100,-6,234 polished_blackstone_bricks{}
+100,-6,235 sticky_piston{extended: false, facing: east}
+100,-6,236 polished_blackstone_bricks{}
+101,-6,235 polished_blackstone_bricks{}
+103,-6,235 polished_blackstone_bricks{}
+105,-6,235 polished_blackstone_bricks{}
+106,-6,234 polished_blackstone_bricks{}
+106,-6,235 sticky_piston{extended: false, facing: west}
+107,-6,235 moving_piston{type: sticky, facing: west}
+108,-6,235 sticky_piston{extended: true, facing: west}
+98,-5,235 sticky_piston{extended: true, facing: east}
+99,-5,235 moving_piston{type: sticky, facing: east}
+100,-5,234 polished_blackstone_bricks{}
+100,-5,235 sticky_piston{extended: false, facing: east}
+100,-5,236 polished_blackstone_bricks{}
+101,-5,235 polished_blackstone_bricks{}
+105,-5,235 polished_blackstone_bricks{}
+106,-5,234 polished_blackstone_bricks{}
+106,-5,235 sticky_piston{extended: false, facing: west}
+107,-5,235 moving_piston{type: sticky, facing: west}
+108,-5,235 sticky_piston{extended: true, facing: west}
+98,-4,235 sticky_piston{extended: true, facing: east}
+99,-4,235 moving_piston{type: sticky, facing: east}
+100,-4,234 polished_blackstone_bricks{}
+100,-4,235 sticky_piston{extended: false, facing: east}
+100,-4,236 polished_blackstone_bricks{}
+101,-4,235 polished_blackstone_bricks{}
+105,-4,235 polished_blackstone_bricks{}
+106,-4,234 polished_blackstone_bricks{}
+106,-4,235 sticky_piston{extended: false, facing: west}
+107,-4,235 moving_piston{type: sticky, facing: west}
+108,-4,235 sticky_piston{extended: true, facing: west}
+98,-3,235 sticky_piston{extended: true, facing: east}
+99,-3,235 moving_piston{type: sticky, facing: east}
+100,-3,234 polished_blackstone_bricks{}
+100,-3,235 sticky_piston{extended: false, facing: east}
+100,-3,236 polished_blackstone_bricks{}
+101,-3,235 polished_blackstone_bricks{}
+105,-3,235 polished_blackstone_bricks{}
+106,-3,234 polished_blackstone_bricks{}
+106,-3,235 sticky_piston{extended: false, facing: west}
+107,-3,235 moving_piston{type: sticky, facing: west}
+108,-3,235 sticky_piston{extended: true, facing: west}
+100,-2,234 polished_blackstone_bricks{}
+100,-2,236 polished_blackstone_bricks{}
+103,-2,235 polished_blackstone_bricks{}
+106,-2,234 polished_blackstone_bricks{}
+99,-1,235 moving_piston{type: sticky, facing: east}
+99,-1,236 observer{powered: false, facing: down}
+100,-1,234 observer{powered: false, facing: up}
+100,-1,235 moving_piston{type: normal, facing: east}
+100,-1,236 air{}
+101,-1,235 air{}
+103,-1,235 sticky_piston{extended: false, facing: down}
+106,-1,234 observer{powered: false, facing: up}
+99,0,235 hopper{enabled: true, facing: down}
+99,0,237 redstone_wire{east: side, power: 14, south: none, north: none, west: side}
+100,0,234 glass{}
+100,0,236 moving_piston{type: normal, facing: down}
+100,0,237 redstone_wire{east: side, power: 13, south: none, north: none, west: side}
+106,0,234 observer{powered: false, facing: east}
+99,1,236 moving_piston{type: sticky, facing: east}
+100,1,236 air{}
+101,1,236 observer{powered: false, facing: south}
+103,1,234 moving_piston{type: normal, facing: west}
+104,1,234 moving_piston{type: sticky, facing: west}
+105,1,234 sticky_piston{extended: true, facing: west}
+106,1,235 repeater{powered: true, facing: east, delay: 2, locked: false}
+T 83
+103,-9,235 moving_piston{type: sticky, facing: up}
+103,-9,236 observer{powered: false, facing: south}
+103,-9,237 dropper{triggered: true, facing: up}
+106,-9,236 moving_piston{type: normal, facing: down}
+102,-8,237 repeater{powered: true, facing: west, delay: 2, locked: false}
+103,-8,235 moving_piston{type: normal, facing: up}
+106,-8,236 moving_piston{type: normal, facing: down}
+103,-7,235 air{}
+106,-7,236 moving_piston{type: normal, facing: down}
+97,-6,235 note_block{instrument: harp, powered: false, note: 0}
+98,-6,235 moving_piston{type: sticky, facing: east}
+99,-6,235 moving_piston{type: normal, facing: east}
+100,-6,235 air{}
+106,-6,235 air{}
+106,-6,236 moving_piston{type: normal, facing: down}
+107,-6,235 moving_piston{type: normal, facing: west}
+108,-6,235 moving_piston{type: sticky, facing: west}
+109,-6,235 note_block{instrument: harp, powered: false, note: 0}
+97,-5,233 air{}
+97,-5,236 redstone_wire{east: none, power: 0, south: side, north: side, west: none}
+98,-5,233 observer{powered: true, facing: west}
+98,-5,235 moving_piston{type: sticky, facing: east}
+99,-5,235 moving_piston{type: normal, facing: east}
+100,-5,235 air{}
+106,-5,235 air{}
+106,-5,236 moving_piston{type: normal, facing: down}
+107,-5,235 moving_piston{type: normal, facing: west}
+108,-5,233 observer{powered: true, facing: east}
+108,-5,235 moving_piston{type: sticky, facing: west}
+109,-5,233 air{}
+109,-5,236 redstone_wire{east: side, power: 0, south: side, north: side, west: side}
+97,-4,233 moving_piston{type: normal, facing: down}
+97,-4,235 observer{powered: false, facing: north}
+98,-4,235 moving_piston{type: sticky, facing: east}
+99,-4,235 moving_piston{type: normal, facing: east}
+100,-4,235 air{}
+106,-4,235 air{}
+106,-4,236 moving_piston{type: normal, facing: down}
+107,-4,235 moving_piston{type: normal, facing: west}
+108,-4,235 moving_piston{type: sticky, facing: west}
+109,-4,233 moving_piston{type: normal, facing: down}
+109,-4,235 observer{powered: false, facing: north}
+97,-3,236 redstone_wire{east: side, power: 0, south: side, north: side, west: side}
+98,-3,233 repeater{powered: true, facing: west, delay: 1, locked: false}
+98,-3,235 moving_piston{type: sticky, facing: east}
+99,-3,235 moving_piston{type: normal, facing: east}
+100,-3,235 air{}
+106,-3,235 air{}
+106,-3,236 moving_piston{type: normal, facing: down}
+107,-3,235 moving_piston{type: normal, facing: west}
+108,-3,233 repeater{powered: true, facing: east, delay: 1, locked: false}
+108,-3,235 moving_piston{type: sticky, facing: west}
+109,-3,236 redstone_wire{east: side, power: 0, south: side, north: side, west: side}
+97,-2,233 observer{powered: false, facing: up}
+101,-2,235 moving_piston{type: normal, facing: west}
+102,-2,235 moving_piston{type: normal, facing: west}
+103,-2,235 moving_piston{type: normal, facing: west}
+104,-2,235 moving_piston{type: normal, facing: west}
+105,-2,235 moving_piston{type: normal, facing: west}
+106,-2,235 moving_piston{type: normal, facing: west}
+106,-2,236 moving_piston{type: normal, facing: down}
+107,-2,233 moving_piston{type: sticky, facing: up}
+107,-2,235 moving_piston{type: normal, facing: west}
+108,-2,235 piston{extended: true, facing: west}
+109,-2,233 observer{powered: false, facing: up}
+103,-1,235 air{}
+106,-1,235 observer{powered: false, facing: up}
+106,-1,236 moving_piston{type: normal, facing: down}
+107,-1,233 air{}
+107,-1,235 observer{powered: true, facing: west}
+108,-1,233 observer{powered: false, facing: east}
+103,0,235 moving_piston{type: normal, facing: down}
+103,0,236 sticky_piston{extended: false, facing: down}
+103,0,237 sticky_piston{extended: false, facing: north}
+104,0,235 sticky_piston{extended: false, facing: down}
+105,0,235 sticky_piston{extended: false, facing: down}
+106,0,236 moving_piston{type: normal, facing: down}
+107,0,233 sticky_piston{extended: false, facing: west}
+103,1,235 moving_piston{type: sticky, facing: down}
+103,1,236 observer{powered: false, facing: south}
+106,1,236 piston{extended: true, facing: down}
+107,1,236 repeater{powered: true, facing: east, delay: 3, locked: false}
+T 84
+104,-9,235 observer{powered: false, facing: down}
+104,-9,236 piston_head{type: sticky, short: false, facing: north}
+98,-8,235 moving_piston{type: sticky, facing: west}
+99,-8,235 sticky_piston{extended: true, facing: west}
+100,-8,234 piston{extended: false, facing: up}
+100,-8,237 observer{powered: false, facing: down}
+106,-8,234 piston{extended: false, facing: up}
+107,-8,235 sticky_piston{extended: true, facing: east}
+107,-8,236 observer{powered: true, facing: south}
+107,-8,237 observer{powered: false, facing: down}
+108,-8,235 moving_piston{type: sticky, facing: east}
+98,-7,236 piston{extended: false, facing: up}
+99,-7,235 piston{extended: true, facing: east}
+99,-7,236 observer{powered: true, facing: south}
+99,-7,237 air{}
+100,-7,235 moving_piston{type: normal, facing: east}
+100,-7,237 moving_piston{type: normal, facing: west}
+99,-1,235 sticky_piston{extended: false, facing: east}
+100,-1,235 sticky_piston{extended: false, facing: east}
+101,-1,235 moving_piston{type: sticky, facing: down}
+102,-1,235 moving_piston{type: sticky, facing: down}
+104,-1,235 moving_piston{type: sticky, facing: down}
+105,-1,235 moving_piston{type: sticky, facing: down}
+100,0,235 observer{powered: true, facing: west}
+100,0,236 piston{extended: false, facing: down}
+101,0,235 sticky_piston{extended: true, facing: down}
+102,0,235 sticky_piston{extended: true, facing: down}
+103,0,234 redstone_wire{east: side, power: 15, south: none, north: none, west: side}
+104,0,234 redstone_wire{east: side, power: 14, south: none, north: none, west: side}
+104,0,235 sticky_piston{extended: true, facing: down}
+105,0,234 redstone_wire{east: side, power: 13, south: none, north: none, west: side}
+105,0,235 sticky_piston{extended: true, facing: down}
+99,1,236 sticky_piston{extended: false, facing: east}
+101,1,234 redstone_wire{east: side, power: 15, south: side, north: side, west: none}
+101,1,236 observer{powered: true, facing: south}
+102,1,235 activator_rail{waterlogged: false, powered: true, shape: east_west}
+103,1,234 pink_terracotta{}
+104,1,234 piston_head{type: sticky, short: false, facing: west}
+T 85
+103,-9,235 sticky_piston{extended: false, facing: up}
+106,-9,236 observer{powered: false, facing: down}
+103,-8,235 sticky_piston{extended: false, facing: up}
+106,-8,236 polished_blackstone_bricks{}
+106,-7,236 observer{powered: false, facing: down}
+98,-6,235 sticky_piston{extended: false, facing: east}
+99,-6,235 sticky_piston{extended: false, facing: east}
+106,-6,236 polished_blackstone_bricks{}
+107,-6,235 sticky_piston{extended: false, facing: west}
+108,-6,235 sticky_piston{extended: false, facing: west}
+98,-5,233 observer{powered: false, facing: west}
+98,-5,235 sticky_piston{extended: false, facing: east}
+99,-5,235 sticky_piston{extended: false, facing: east}
+106,-5,236 polished_blackstone_bricks{}
+107,-5,235 sticky_piston{extended: false, facing: west}
+108,-5,233 observer{powered: false, facing: east}
+108,-5,235 sticky_piston{extended: false, facing: west}
+97,-4,233 piston{extended: false, facing: down}
+98,-4,235 sticky_piston{extended: false, facing: east}
+99,-4,235 sticky_piston{extended: false, facing: east}
+106,-4,236 polished_blackstone_bricks{}
+107,-4,235 sticky_piston{extended: false, facing: west}
+108,-4,235 sticky_piston{extended: false, facing: west}
+109,-4,233 piston{extended: false, facing: down}
+98,-3,233 repeater{powered: false, facing: west, delay: 1, locked: false}
+98,-3,235 sticky_piston{extended: false, facing: east}
+99,-3,235 sticky_piston{extended: false, facing: east}
+106,-3,236 polished_blackstone_bricks{}
+107,-3,235 sticky_piston{extended: false, facing: west}
+108,-3,233 repeater{powered: false, facing: east, delay: 1, locked: false}
+108,-3,235 sticky_piston{extended: false, facing: west}
+101,-2,235 polished_blackstone_bricks{}
+102,-2,235 polished_blackstone_bricks{}
+103,-2,235 polished_blackstone_bricks{}
+104,-2,235 polished_blackstone_bricks{}
+105,-2,235 polished_blackstone_bricks{}
+106,-2,235 polished_blackstone_bricks{}
+106,-2,236 polished_blackstone_bricks{}
+107,-2,233 sticky_piston{extended: false, facing: up}
+107,-2,235 air{}
+108,-2,235 moving_piston{type: normal, facing: west}
+97,-1,233 repeater{powered: false, facing: south, delay: 3, locked: false}
+106,-1,236 tinted_glass{}
+107,-1,235 observer{powered: false, facing: west}
+109,-1,233 repeater{powered: false, facing: south, delay: 3, locked: false}
+103,0,235 sticky_piston{extended: false, facing: down}
+106,0,236 piston_head{type: normal, short: false, facing: down}
+103,1,235 sticky_piston{extended: false, facing: down}
+T 86
+101,-10,237 note_block{instrument: basedrum, powered: false, note: 0}
+102,-10,237 moving_piston{type: sticky, facing: east}
+103,-10,237 moving_piston{type: normal, facing: east}
+104,-10,237 air{}
+101,-9,236 comparator{mode: compare, powered: false, facing: north}
+104,-9,235 air{}
+104,-9,236 moving_piston{type: normal, facing: north}
+104,-9,237 moving_piston{type: sticky, facing: north}
+97,-8,234 redstone_wire{east: none, power: 0, south: side, north: side, west: none}
+97,-8,235 air{}
+98,-8,235 moving_piston{type: normal, facing: west}
+99,-8,235 moving_piston{type: sticky, facing: west}
+101,-8,237 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+103,-8,235 moving_piston{type: sticky, facing: up}
+104,-8,236 moving_piston{type: normal, facing: west}
+107,-8,235 moving_piston{type: sticky, facing: east}
+107,-8,236 observer{powered: false, facing: south}
+108,-8,235 moving_piston{type: normal, facing: east}
+109,-8,234 redstone_wire{east: none, power: 0, south: side, north: side, west: none}
+109,-8,235 air{}
+97,-7,233 redstone_wire{east: side, power: 0, south: side, north: none, west: none}
+97,-7,235 moving_piston{type: normal, facing: south}
+97,-7,236 air{}
+99,-7,235 moving_piston{type: normal, facing: east}
+99,-7,236 observer{powered: false, facing: south}
+100,-7,235 air{}
+100,-7,237 piston{extended: false, facing: west}
+103,-7,235 moving_piston{type: normal, facing: up}
+109,-7,233 redstone_wire{east: none, power: 0, south: side, north: none, west: side}
+109,-7,235 moving_piston{type: normal, facing: south}
+109,-7,236 air{}
+97,-6,234 redstone_wire{east: side, power: 0, south: none, north: side, west: none}
+99,-6,235 moving_piston{type: sticky, facing: east}
+100,-6,235 moving_piston{type: normal, facing: east}
+101,-6,235 air{}
+103,-6,235 air{}
+105,-6,235 air{}
+106,-6,235 moving_piston{type: normal, facing: west}
+107,-6,235 moving_piston{type: sticky, facing: west}
+109,-6,234 redstone_wire{east: none, power: 0, south: none, north: side, west: side}
+98,-5,234 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+99,-5,235 moving_piston{type: sticky, facing: east}
+100,-5,235 moving_piston{type: normal, facing: east}
+101,-5,235 air{}
+105,-5,235 air{}
+106,-5,235 moving_piston{type: normal, facing: west}
+107,-5,235 moving_piston{type: sticky, facing: west}
+108,-5,234 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+97,-4,234 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+99,-4,235 moving_piston{type: sticky, facing: east}
+100,-4,235 moving_piston{type: normal, facing: east}
+101,-4,235 air{}
+105,-4,235 air{}
+106,-4,235 moving_piston{type: normal, facing: west}
+107,-4,235 moving_piston{type: sticky, facing: west}
+109,-4,234 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+98,-3,234 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+99,-3,235 moving_piston{type: sticky, facing: east}
+100,-3,235 moving_piston{type: normal, facing: east}
+101,-3,235 air{}
+105,-3,235 air{}
+106,-3,235 moving_piston{type: normal, facing: west}
+107,-3,235 moving_piston{type: sticky, facing: west}
+108,-3,234 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+101,-2,235 air{}
+102,-2,235 air{}
+103,-2,235 air{}
+104,-2,235 air{}
+105,-2,235 air{}
+101,-1,235 moving_piston{type: normal, facing: down}
+102,-1,235 moving_piston{type: normal, facing: down}
+103,-1,235 moving_piston{type: normal, facing: down}
+104,-1,235 moving_piston{type: normal, facing: down}
+105,-1,235 moving_piston{type: normal, facing: down}
+100,0,235 observer{powered: false, facing: west}
+101,0,235 moving_piston{type: sticky, facing: down}
+102,0,235 moving_piston{type: sticky, facing: down}
+103,0,234 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+103,0,235 moving_piston{type: sticky, facing: down}
+104,0,234 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+104,0,235 moving_piston{type: sticky, facing: down}
+105,0,234 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+105,0,235 moving_piston{type: sticky, facing: down}
+101,1,234 redstone_wire{east: side, power: 0, south: side, north: side, west: none}
+101,1,236 observer{powered: false, facing: south}
+102,1,235 activator_rail{waterlogged: false, powered: false, shape: east_west}
+103,1,234 air{}
+104,1,234 moving_piston{type: normal, facing: west}
+105,1,234 moving_piston{type: sticky, facing: west}
+106,1,235 repeater{powered: false, facing: east, delay: 2, locked: false}
+T 87
+105,-9,237 moving_piston{type: normal, facing: west}
+106,-9,236 observer{powered: true, facing: down}
+106,-9,237 piston{extended: true, facing: west}
+105,-8,236 redstone_wire{east: none, power: 15, south: side, north: side, west: none}
+106,-8,237 piston{extended: true, facing: up}
+106,-7,236 observer{powered: true, facing: down}
+106,-7,237 moving_piston{type: normal, facing: up}
+97,-5,233 moving_piston{type: normal, facing: down}
+109,-5,233 moving_piston{type: normal, facing: down}
+97,-4,233 piston{extended: true, facing: down}
+109,-4,233 piston{extended: true, facing: down}
+97,-2,233 observer{powered: true, facing: up}
+107,-2,233 sticky_piston{extended: true, facing: up}
+108,-2,235 piston{extended: false, facing: west}
+109,-2,233 observer{powered: true, facing: up}
+107,-1,233 moving_piston{type: sticky, facing: up}
+108,-1,233 observer{powered: true, facing: east}
+102,1,234 repeater{powered: false, facing: west, delay: 4, locked: false}
+T 88
+102,-10,237 sticky_piston{extended: false, facing: east}
+103,-10,237 redstone_block{}
+104,-9,236 observer{powered: false, facing: down}
+104,-9,237 sticky_piston{extended: false, facing: north}
+98,-8,235 cherry_log{axis: x}
+99,-8,235 sticky_piston{extended: false, facing: west}
+103,-8,235 sticky_piston{extended: false, facing: up}
+104,-8,236 piston{extended: false, facing: west}
+107,-8,235 sticky_piston{extended: false, facing: east}
+108,-8,235 polished_blackstone_bricks{}
+97,-7,235 piston{extended: false, facing: south}
+99,-7,235 piston{extended: false, facing: east}
+103,-7,235 polished_blackstone_bricks{}
+109,-7,235 piston{extended: false, facing: south}
+97,-6,235 note_block{instrument: harp, powered: true, note: 0}
+99,-6,235 sticky_piston{extended: false, facing: east}
+100,-6,235 polished_blackstone_bricks{}
+106,-6,235 polished_blackstone_bricks{}
+107,-6,235 sticky_piston{extended: false, facing: west}
+109,-6,235 note_block{instrument: harp, powered: true, note: 0}
+97,-5,236 redstone_wire{east: none, power: 15, south: side, north: side, west: none}
+99,-5,235 sticky_piston{extended: false, facing: east}
+100,-5,235 polished_blackstone_bricks{}
+106,-5,235 polished_blackstone_bricks{}
+107,-5,235 sticky_piston{extended: false, facing: west}
+109,-5,236 redstone_wire{east: side, power: 15, south: side, north: side, west: side}
+97,-4,235 observer{powered: true, facing: north}
+99,-4,235 sticky_piston{extended: false, facing: east}
+100,-4,235 polished_blackstone_bricks{}
+106,-4,235 polished_blackstone_bricks{}
+107,-4,235 sticky_piston{extended: false, facing: west}
+109,-4,235 observer{powered: true, facing: north}
+97,-3,236 redstone_wire{east: side, power: 15, south: side, north: side, west: side}
+99,-3,235 sticky_piston{extended: false, facing: east}
+100,-3,235 polished_blackstone_bricks{}
+106,-3,235 polished_blackstone_bricks{}
+107,-3,235 sticky_piston{extended: false, facing: west}
+109,-3,236 redstone_wire{east: side, power: 15, south: side, north: side, west: side}
+101,-1,235 polished_blackstone_bricks{}
+102,-1,235 polished_blackstone_bricks{}
+103,-1,235 polished_blackstone_bricks{}
+104,-1,235 polished_blackstone_bricks{}
+105,-1,235 polished_blackstone_bricks{}
+101,0,235 sticky_piston{extended: false, facing: down}
+102,0,235 sticky_piston{extended: false, facing: down}
+103,0,235 sticky_piston{extended: false, facing: down}
+104,0,235 sticky_piston{extended: false, facing: down}
+105,0,235 sticky_piston{extended: false, facing: down}
+104,1,234 pink_terracotta{}
+105,1,234 sticky_piston{extended: false, facing: west}
+T 89
+105,-9,237 air{}
+106,-9,236 observer{powered: false, facing: down}
+106,-9,237 moving_piston{type: normal, facing: west}
+98,-8,236 spruce_leaves{waterlogged: false, distance: 1, persistent: true}
+105,-8,236 redstone_wire{east: none, power: 0, south: side, north: side, west: none}
+106,-8,237 moving_piston{type: normal, facing: up}
+97,-7,235 piston{extended: true, facing: south}
+97,-7,236 moving_piston{type: normal, facing: south}
+106,-7,236 observer{powered: false, facing: down}
+106,-7,237 air{}
+109,-7,235 piston{extended: true, facing: south}
+109,-7,236 moving_piston{type: normal, facing: south}
+99,-6,233 piston{extended: true, facing: south}
+99,-6,234 moving_piston{type: normal, facing: south}
+99,-6,235 moving_piston{type: normal, facing: south}
+99,-6,236 moving_piston{type: normal, facing: south}
+107,-6,233 piston{extended: true, facing: south}
+107,-6,234 moving_piston{type: normal, facing: south}
+107,-6,235 moving_piston{type: normal, facing: south}
+107,-6,236 moving_piston{type: normal, facing: south}
+97,-5,233 air{}
+98,-5,233 observer{powered: true, facing: west}
+99,-5,233 piston{extended: true, facing: south}
+99,-5,234 moving_piston{type: normal, facing: south}
+99,-5,235 moving_piston{type: normal, facing: south}
+99,-5,236 moving_piston{type: normal, facing: south}
+107,-5,233 piston{extended: true, facing: south}
+107,-5,234 moving_piston{type: normal, facing: south}
+107,-5,235 moving_piston{type: normal, facing: south}
+107,-5,236 moving_piston{type: normal, facing: south}
+108,-5,233 observer{powered: true, facing: east}
+109,-5,233 air{}
+97,-4,233 moving_piston{type: normal, facing: down}
+99,-4,233 piston{extended: true, facing: south}
+99,-4,234 moving_piston{type: normal, facing: south}
+99,-4,235 moving_piston{type: normal, facing: south}
+99,-4,236 moving_piston{type: normal, facing: south}
+107,-4,233 piston{extended: true, facing: south}
+107,-4,234 moving_piston{type: normal, facing: south}
+107,-4,235 moving_piston{type: normal, facing: south}
+107,-4,236 moving_piston{type: normal, facing: south}
+109,-4,233 moving_piston{type: normal, facing: down}
+98,-3,233 repeater{powered: true, facing: west, delay: 1, locked: false}
+99,-3,233 piston{extended: true, facing: south}
+99,-3,234 moving_piston{type: normal, facing: south}
+99,-3,235 moving_piston{type: normal, facing: south}
+99,-3,236 moving_piston{type: normal, facing: south}
+107,-3,233 piston{extended: true, facing: south}
+107,-3,234 moving_piston{type: normal, facing: south}
+107,-3,235 moving_piston{type: normal, facing: south}
+107,-3,236 moving_piston{type: normal, facing: south}
+108,-3,233 repeater{powered: true, facing: east, delay: 1, locked: false}
+97,-2,233 observer{powered: false, facing: up}
+107,-2,233 moving_piston{type: sticky, facing: up}
+109,-2,233 observer{powered: false, facing: up}
+107,-1,233 moving_piston{type: normal, facing: up}
+108,-1,233 observer{powered: false, facing: east}
+106,0,236 air{}
+107,0,233 air{}
+106,1,236 moving_piston{type: normal, facing: down}
+107,1,236 repeater{powered: false, facing: east, delay: 3, locked: false}
+T 90
+102,-8,237 repeater{powered: false, facing: west, delay: 2, locked: false}
+97,-7,235 moving_piston{type: normal, facing: south}
+97,-7,236 air{}
+109,-7,235 moving_piston{type: normal, facing: south}
+109,-7,236 air{}
+97,-6,235 note_block{instrument: harp, powered: false, note: 0}
+109,-6,235 note_block{instrument: harp, powered: false, note: 0}
+97,-5,236 redstone_wire{east: none, power: 0, south: side, north: side, west: none}
+109,-5,236 redstone_wire{east: side, power: 0, south: side, north: side, west: side}
+97,-4,235 observer{powered: false, facing: north}
+109,-4,235 observer{powered: false, facing: north}
+97,-3,236 redstone_wire{east: side, power: 0, south: side, north: side, west: side}
+109,-3,236 redstone_wire{east: side, power: 0, south: side, north: side, west: side}
+T 91
+98,-9,236 observer{powered: true, facing: up}
+106,-9,237 piston{extended: false, facing: west}
+106,-8,237 piston{extended: false, facing: up}
+99,-6,233 moving_piston{type: normal, facing: south}
+99,-6,234 air{}
+99,-6,235 polished_blackstone_bricks{}
+99,-6,236 sticky_piston{extended: false, facing: east}
+107,-6,233 moving_piston{type: normal, facing: south}
+107,-6,234 air{}
+107,-6,235 polished_blackstone_bricks{}
+107,-6,236 sticky_piston{extended: false, facing: west}
+98,-5,233 observer{powered: false, facing: west}
+99,-5,233 moving_piston{type: normal, facing: south}
+99,-5,234 air{}
+99,-5,235 polished_blackstone_bricks{}
+99,-5,236 sticky_piston{extended: false, facing: east}
+107,-5,233 moving_piston{type: normal, facing: south}
+107,-5,234 air{}
+107,-5,235 polished_blackstone_bricks{}
+107,-5,236 sticky_piston{extended: false, facing: west}
+108,-5,233 observer{powered: false, facing: east}
+97,-4,233 piston{extended: false, facing: down}
+99,-4,233 moving_piston{type: normal, facing: south}
+99,-4,234 air{}
+99,-4,235 polished_blackstone_bricks{}
+99,-4,236 sticky_piston{extended: false, facing: east}
+107,-4,233 moving_piston{type: normal, facing: south}
+107,-4,234 air{}
+107,-4,235 polished_blackstone_bricks{}
+107,-4,236 sticky_piston{extended: false, facing: west}
+109,-4,233 piston{extended: false, facing: down}
+98,-3,233 repeater{powered: false, facing: west, delay: 1, locked: false}
+99,-3,233 moving_piston{type: normal, facing: south}
+99,-3,234 air{}
+99,-3,235 polished_blackstone_bricks{}
+99,-3,236 sticky_piston{extended: false, facing: east}
+107,-3,233 moving_piston{type: normal, facing: south}
+107,-3,234 air{}
+107,-3,235 polished_blackstone_bricks{}
+107,-3,236 sticky_piston{extended: false, facing: west}
+108,-3,233 repeater{powered: false, facing: east, delay: 1, locked: false}
+107,-2,233 sticky_piston{extended: false, facing: up}
+107,-1,233 sticky_piston{extended: false, facing: west}
+106,1,236 piston{extended: false, facing: down}
+T 92
+97,-7,235 piston{extended: false, facing: south}
+109,-7,235 piston{extended: false, facing: south}
+T 93
+98,-9,236 observer{powered: false, facing: up}
+99,-6,233 piston{extended: false, facing: south}
+107,-6,233 piston{extended: false, facing: south}
+99,-5,233 piston{extended: false, facing: south}
+107,-5,233 piston{extended: false, facing: south}
+99,-4,233 piston{extended: false, facing: south}
+107,-4,233 piston{extended: false, facing: south}
+99,-3,233 piston{extended: false, facing: south}
+107,-3,233 piston{extended: false, facing: south}
+T 94
+T 95
+T 96
+T 97
+T 98
+T 99
+T 100
+T 101
+T 102
+T 103
+T 104
+T 105
+T 106
+T 107
+T 108
+T 109
+T 110
+T 111
+T 112
+T 113
+T 114
+T 115
+T 116
+T 117
+T 118
+T 119
+T 120
+T 121
+T 122
+T 123
+T 124
+T 125
+T 126
+T 127
+T 128
+T 129
+T 130
+T 131
+T 132
+T 133
+T 134
+T 135
+T 136
+T 137
+T 138
+T 139
+T 140
+T 141
+T 142
+T 143
+T 144
+T 145
+T 146
+T 147
+T 148
+T 149
+T 150
+T 151
+T 152
+T 153
+T 154
+T 155
+T 156
+T 157
+T 158
+T 159
+T 160
+T 161
+T 162
+T 163
+T 164
+T 165
+T 166
+T 167
+T 168
+T 169
+T 170
+T 171
+T 172
+T 173
+T 174
+T 175
+T 176
+T 177
+T 178
+T 179
+T 180
+CLICK 180 lever [103, -8, 232]
+T 181
+101,-9,233 dropper{triggered: false, facing: south}
+103,-9,233 redstone_lamp{lit: true}
+100,-8,233 moving_piston{type: normal, facing: west}
+101,-8,233 moving_piston{type: sticky, facing: west}
+102,-8,233 sticky_piston{extended: true, facing: west}
+103,-8,232 lever{face: wall, powered: true, facing: north}
+104,-8,233 sticky_piston{extended: true, facing: east}
+105,-8,233 moving_piston{type: sticky, facing: east}
+106,-8,233 moving_piston{type: normal, facing: east}
+T 182
+103,-9,234 observer{powered: true, facing: north}
+103,-9,235 sticky_piston{extended: true, facing: up}
+103,-8,235 moving_piston{type: sticky, facing: up}
+103,-7,235 moving_piston{type: normal, facing: up}
+103,-6,235 moving_piston{type: normal, facing: up}
+T 183
+101,-10,233 moving_piston{type: normal, facing: west}
+102,-10,233 moving_piston{type: sticky, facing: west}
+102,-10,234 moving_piston{type: sticky, facing: south}
+102,-10,235 moving_piston{type: normal, facing: south}
+102,-10,236 air{}
+103,-10,233 sticky_piston{extended: true, facing: west}
+97,-9,233 note_block{instrument: harp, powered: true, note: 0}
+98,-9,233 note_block{instrument: harp, powered: true, note: 0}
+101,-9,233 dropper{triggered: true, facing: south}
+102,-9,233 observer{powered: true, facing: up}
+108,-9,233 note_block{instrument: harp, powered: true, note: 0}
+98,-8,233 redstone_wire{east: side, power: 14, south: none, north: none, west: side}
+99,-8,233 redstone_wire{east: side, power: 15, south: none, north: none, west: side}
+100,-8,233 redstone_block{}
+101,-8,233 piston_head{type: sticky, short: false, facing: west}
+101,-8,234 observer{powered: true, facing: north}
+105,-8,233 piston_head{type: sticky, short: false, facing: east}
+106,-8,233 redstone_block{}
+107,-8,233 redstone_wire{east: side, power: 15, south: none, north: none, west: side}
+108,-8,233 redstone_wire{east: side, power: 14, south: none, north: none, west: side}
+97,-7,233 redstone_wire{east: side, power: 13, south: side, north: none, west: none}
+109,-7,233 redstone_wire{east: none, power: 13, south: side, north: none, west: side}
+97,-6,234 redstone_wire{east: side, power: 12, south: none, north: side, west: none}
+109,-6,234 redstone_wire{east: none, power: 12, south: none, north: side, west: side}
+98,-5,234 redstone_wire{east: side, power: 11, south: none, north: none, west: side}
+108,-5,234 redstone_wire{east: side, power: 11, south: none, north: none, west: side}
+97,-4,234 redstone_wire{east: side, power: 10, south: none, north: none, west: side}
+109,-4,234 redstone_wire{east: side, power: 10, south: none, north: none, west: side}
+98,-3,234 redstone_wire{east: side, power: 9, south: none, north: none, west: side}
+108,-3,234 redstone_wire{east: side, power: 9, south: none, north: none, west: side}
+97,-2,234 redstone_wire{east: side, power: 8, south: side, north: none, west: none}
+109,-2,234 redstone_wire{east: none, power: 8, south: side, north: none, west: side}
+97,-1,235 redstone_wire{east: none, power: 7, south: side, north: up, west: none}
+109,-1,235 redstone_wire{east: none, power: 7, south: side, north: up, west: none}
+97,0,234 redstone_wire{east: none, power: 6, south: side, north: up, west: none}
+98,0,233 dropper{triggered: true, facing: east}
+99,0,233 hopper{enabled: false, facing: west}
+109,0,234 redstone_wire{east: none, power: 6, south: side, north: up, west: none}
+97,1,233 redstone_wire{east: side, power: 5, south: side, north: none, west: none}
+98,1,233 redstone_wire{east: side, power: 4, south: none, north: none, west: side}
+109,1,233 redstone_wire{east: none, power: 5, south: side, north: none, west: side}
+T 184
+97,-10,233 sticky_piston{extended: true, facing: south}
+97,-10,234 moving_piston{type: sticky, facing: south}
+97,-10,235 moving_piston{type: normal, facing: south}
+98,-10,234 sticky_piston{extended: true, facing: south}
+98,-10,235 moving_piston{type: sticky, facing: south}
+98,-10,236 moving_piston{type: normal, facing: south}
+104,-10,233 moving_piston{type: normal, facing: west}
+105,-10,233 moving_piston{type: sticky, facing: west}
+106,-10,233 sticky_piston{extended: true, facing: west}
+106,-10,235 air{}
+107,-10,233 moving_piston{type: normal, facing: west}
+107,-10,235 moving_piston{type: normal, facing: west}
+108,-10,233 piston{extended: true, facing: west}
+108,-10,234 sticky_piston{extended: true, facing: south}
+108,-10,235 moving_piston{type: sticky, facing: south}
+108,-10,236 moving_piston{type: normal, facing: south}
+109,-10,233 piston{extended: true, facing: south}
+109,-10,234 moving_piston{type: normal, facing: south}
+99,-9,234 sticky_piston{extended: true, facing: up}
+103,-9,234 observer{powered: false, facing: north}
+103,-9,235 moving_piston{type: sticky, facing: up}
+107,-9,234 sticky_piston{extended: true, facing: up}
+99,-8,234 moving_piston{type: sticky, facing: up}
+100,-8,234 piston{extended: true, facing: up}
+103,-8,235 air{}
+106,-8,234 piston{extended: true, facing: up}
+107,-8,234 moving_piston{type: sticky, facing: up}
+98,-7,233 moving_piston{type: normal, facing: west}
+99,-7,233 moving_piston{type: sticky, facing: west}
+99,-7,234 moving_piston{type: normal, facing: up}
+100,-7,233 sticky_piston{extended: true, facing: west}
+100,-7,234 moving_piston{type: normal, facing: up}
+103,-7,235 sticky_piston{extended: false, facing: up}
+106,-7,233 sticky_piston{extended: true, facing: east}
+106,-7,234 moving_piston{type: normal, facing: up}
+107,-7,233 moving_piston{type: sticky, facing: east}
+107,-7,234 moving_piston{type: normal, facing: up}
+108,-7,233 moving_piston{type: normal, facing: east}
+99,-6,234 moving_piston{type: normal, facing: up}
+103,-6,235 polished_blackstone_bricks{}
+107,-6,234 moving_piston{type: normal, facing: up}
+108,-2,233 moving_piston{type: normal, facing: down}
+109,-2,236 sticky_piston{extended: true, facing: up}
+108,-1,233 moving_piston{type: sticky, facing: down}
+109,-1,236 moving_piston{type: sticky, facing: up}
+108,0,233 sticky_piston{extended: true, facing: down}
+108,0,234 white_stained_glass_pane{waterlogged: false, east: false, south: true, north: false, west: true}
+109,0,236 moving_piston{type: normal, facing: up}
+99,1,233 sticky_piston{extended: true, facing: east}
+100,1,233 moving_piston{type: sticky, facing: east}
+101,1,233 moving_piston{type: normal, facing: east}
+T 185
+98,-10,233 moving_piston{type: normal, facing: west}
+99,-10,233 moving_piston{type: sticky, facing: west}
+100,-10,233 sticky_piston{extended: true, facing: west}
+101,-10,233 redstone_block{}
+101,-10,234 observer{powered: true, facing: east}
+102,-10,233 piston_head{type: sticky, short: false, facing: west}
+102,-10,234 sticky_piston{extended: false, facing: south}
+102,-10,235 observer{powered: false, facing: west}
+98,-9,234 observer{powered: true, facing: north}
+102,-9,233 observer{powered: false, facing: up}
+102,-9,234 observer{powered: true, facing: north}
+102,-9,235 sticky_piston{extended: true, facing: up}
+108,-9,234 observer{powered: true, facing: north}
+101,-8,234 observer{powered: false, facing: north}
+101,-8,235 repeater{powered: true, facing: north, delay: 1, locked: false}
+101,-8,236 sticky_piston{extended: true, facing: east}
+102,-8,235 moving_piston{type: sticky, facing: up}
+102,-8,236 moving_piston{type: sticky, facing: east}
+103,-8,236 moving_piston{type: normal, facing: east}
+97,-7,235 piston{extended: true, facing: south}
+97,-7,236 moving_piston{type: normal, facing: south}
+109,-7,235 piston{extended: true, facing: south}
+109,-7,236 moving_piston{type: normal, facing: south}
+97,-6,235 note_block{instrument: harp, powered: true, note: 0}
+98,-6,235 sticky_piston{extended: true, facing: east}
+99,-6,235 moving_piston{type: sticky, facing: east}
+100,-6,235 moving_piston{type: normal, facing: east}
+101,-6,235 moving_piston{type: normal, facing: east}
+105,-6,235 moving_piston{type: normal, facing: west}
+106,-6,235 moving_piston{type: normal, facing: west}
+107,-6,235 moving_piston{type: sticky, facing: west}
+108,-6,235 sticky_piston{extended: true, facing: west}
+109,-6,235 note_block{instrument: harp, powered: true, note: 0}
+97,-5,236 redstone_wire{east: none, power: 15, south: side, north: side, west: none}
+98,-5,235 sticky_piston{extended: true, facing: east}
+99,-5,235 moving_piston{type: sticky, facing: east}
+100,-5,235 moving_piston{type: normal, facing: east}
+101,-5,235 moving_piston{type: normal, facing: east}
+105,-5,235 moving_piston{type: normal, facing: west}
+106,-5,235 moving_piston{type: normal, facing: west}
+107,-5,235 moving_piston{type: sticky, facing: west}
+108,-5,235 sticky_piston{extended: true, facing: west}
+109,-5,236 redstone_wire{east: side, power: 15, south: side, north: side, west: side}
+97,-4,235 observer{powered: true, facing: north}
+98,-4,235 sticky_piston{extended: true, facing: east}
+99,-4,235 moving_piston{type: sticky, facing: east}
+100,-4,235 moving_piston{type: normal, facing: east}
+101,-4,235 moving_piston{type: normal, facing: east}
+105,-4,235 moving_piston{type: normal, facing: west}
+106,-4,235 moving_piston{type: normal, facing: west}
+107,-4,235 moving_piston{type: sticky, facing: west}
+108,-4,235 sticky_piston{extended: true, facing: west}
+109,-4,235 observer{powered: true, facing: north}
+97,-3,236 redstone_wire{east: side, power: 15, south: side, north: side, west: side}
+98,-3,235 sticky_piston{extended: true, facing: east}
+99,-3,234 moving_piston{type: normal, facing: down}
+99,-3,235 moving_piston{type: sticky, facing: east}
+100,-3,235 moving_piston{type: normal, facing: east}
+101,-3,235 moving_piston{type: normal, facing: east}
+105,-3,235 moving_piston{type: normal, facing: west}
+106,-3,235 moving_piston{type: normal, facing: west}
+107,-3,235 moving_piston{type: sticky, facing: west}
+108,-3,235 sticky_piston{extended: true, facing: west}
+109,-3,236 redstone_wire{east: side, power: 15, south: side, north: side, west: side}
+99,-2,234 moving_piston{type: sticky, facing: down}
+101,-2,235 moving_piston{type: normal, facing: down}
+102,-2,235 moving_piston{type: normal, facing: down}
+97,-1,234 observer{powered: true, facing: south}
+98,-1,233 moving_piston{type: normal, facing: west}
+99,-1,233 moving_piston{type: sticky, facing: west}
+99,-1,234 sticky_piston{extended: true, facing: down}
+100,-1,233 sticky_piston{extended: true, facing: west}
+101,-1,235 moving_piston{type: sticky, facing: down}
+102,-1,235 moving_piston{type: sticky, facing: down}
+109,-1,234 observer{powered: true, facing: south}
+97,0,235 observer{powered: true, facing: down}
+98,0,234 observer{powered: true, facing: west}
+100,0,233 observer{powered: true, facing: west}
+101,0,233 redstone_wire{east: up, power: 15, south: side, north: none, west: side}
+101,0,235 sticky_piston{extended: true, facing: down}
+102,0,235 sticky_piston{extended: true, facing: down}
+98,1,234 observer{powered: true, facing: north}
+101,1,234 redstone_wire{east: side, power: 14, south: side, north: side, west: none}
+102,1,233 redstone_wire{east: side, power: 14, south: none, north: none, west: side}
+102,1,235 activator_rail{waterlogged: false, powered: true, shape: east_west}
+108,1,234 redstone_wall_torch{lit: false, facing: south}
+T 186
+97,-10,234 piston_head{type: sticky, short: false, facing: south}
+97,-10,235 hay_block{axis: z}
+98,-10,235 piston_head{type: sticky, short: false, facing: south}
+98,-10,236 redstone_block{}
+99,-10,235 observer{powered: true, facing: west}
+104,-10,233 redstone_block{}
+105,-10,233 piston_head{type: sticky, short: false, facing: west}
+107,-10,233 piston_head{type: normal, short: false, facing: west}
+107,-10,234 observer{powered: true, facing: south}
+107,-10,235 piston{extended: false, facing: west}
+108,-10,235 piston_head{type: sticky, short: false, facing: south}
+108,-10,236 redstone_block{}
+109,-10,234 piston_head{type: normal, short: false, facing: south}
+109,-10,235 observer{powered: true, facing: north}
+109,-10,236 piston{extended: true, facing: south}
+109,-10,237 moving_piston{type: normal, facing: south}
+97,-9,235 campfire{lit: false, waterlogged: false, facing: east, signal_fire: true}
+103,-9,235 sticky_piston{extended: false, facing: up}
+107,-9,235 observer{powered: true, facing: down}
+108,-9,235 observer{powered: true, facing: down}
+108,-9,236 observer{powered: true, facing: down}
+109,-9,237 piston{extended: true, facing: up}
+99,-8,234 piston_head{type: sticky, short: false, facing: up}
+107,-8,234 piston_head{type: sticky, short: false, facing: up}
+107,-8,235 sticky_piston{extended: true, facing: east}
+108,-8,235 moving_piston{type: sticky, facing: east}
+109,-8,235 moving_piston{type: normal, facing: east}
+109,-8,237 moving_piston{type: normal, facing: up}
+98,-7,233 observer{powered: false, facing: west}
+99,-7,233 piston_head{type: sticky, short: false, facing: west}
+99,-7,234 piston{extended: false, facing: up}
+100,-7,234 piston_head{type: normal, short: false, facing: up}
+100,-7,235 moving_piston{type: normal, facing: west}
+101,-7,235 moving_piston{type: normal, facing: west}
+102,-7,235 moving_piston{type: normal, facing: west}
+103,-7,235 moving_piston{type: normal, facing: west}
+104,-7,235 moving_piston{type: normal, facing: west}
+105,-7,235 moving_piston{type: normal, facing: west}
+106,-7,234 piston_head{type: normal, short: false, facing: up}
+106,-7,235 moving_piston{type: normal, facing: west}
+107,-7,233 piston_head{type: sticky, short: false, facing: east}
+107,-7,234 piston{extended: false, facing: up}
+107,-7,235 air{}
+107,-7,237 air{}
+108,-7,233 observer{powered: false, facing: east}
+108,-7,235 moving_piston{type: normal, facing: west}
+108,-7,237 moving_piston{type: normal, facing: west}
+109,-7,237 moving_piston{type: normal, facing: up}
+99,-6,234 white_concrete_powder{}
+107,-6,234 white_concrete_powder{}
+108,-6,236 moving_piston{type: normal, facing: down}
+109,-6,237 moving_piston{type: normal, facing: up}
+108,-5,236 moving_piston{type: normal, facing: down}
+109,-5,237 moving_piston{type: normal, facing: up}
+108,-4,236 moving_piston{type: normal, facing: down}
+109,-4,237 moving_piston{type: normal, facing: up}
+108,-3,236 moving_piston{type: normal, facing: down}
+109,-3,237 moving_piston{type: normal, facing: up}
+103,-2,235 moving_piston{type: normal, facing: down}
+104,-2,235 moving_piston{type: normal, facing: down}
+105,-2,235 moving_piston{type: normal, facing: down}
+107,-2,236 piston{extended: true, facing: up}
+108,-2,233 observer{powered: false, facing: east}
+108,-2,236 moving_piston{type: normal, facing: down}
+109,-2,237 moving_piston{type: normal, facing: up}
+103,-1,235 moving_piston{type: normal, facing: down}
+104,-1,235 moving_piston{type: sticky, facing: down}
+105,-1,235 moving_piston{type: sticky, facing: down}
+107,-1,236 moving_piston{type: normal, facing: up}
+108,-1,233 piston_head{type: sticky, short: false, facing: down}
+108,-1,236 piston{extended: true, facing: down}
+109,-1,236 piston_head{type: sticky, short: false, facing: up}
+109,-1,237 moving_piston{type: normal, facing: up}
+101,0,233 redstone_wire{east: side, power: 15, south: none, north: none, west: side}
+103,0,235 moving_piston{type: sticky, facing: down}
+104,0,235 sticky_piston{extended: true, facing: down}
+104,0,237 redstone_wire{east: side, power: 12, south: none, north: up, west: none}
+105,0,235 sticky_piston{extended: true, facing: down}
+105,0,237 redstone_wire{east: side, power: 13, south: none, north: none, west: side}
+106,0,237 redstone_wire{east: side, power: 14, south: none, north: none, west: side}
+107,0,234 observer{powered: true, facing: east}
+107,0,237 redstone_wire{east: side, power: 15, south: none, north: none, west: side}
+108,0,235 observer{powered: true, facing: north}
+108,0,236 observer{powered: true, facing: east}
+109,0,236 cherry_log{axis: y}
+100,1,233 piston_head{type: sticky, short: false, facing: east}
+101,1,233 pink_terracotta{}
+101,1,234 redstone_wire{east: side, power: 0, south: side, north: none, west: none}
+102,1,233 redstone_wire{east: side, power: 0, south: side, north: side, west: side}
+102,1,235 activator_rail{waterlogged: false, powered: false, shape: east_west}
+103,1,235 sticky_piston{extended: true, facing: down}
+104,1,236 redstone_wire{east: side, power: 11, south: side, north: side, west: none}
+T 187
+97,-10,236 piston{extended: true, facing: south}
+97,-10,237 moving_piston{type: normal, facing: south}
+98,-10,233 redstone_block{}
+99,-10,233 piston_head{type: sticky, short: false, facing: west}
+99,-10,236 sticky_piston{extended: true, facing: up}
+100,-10,234 observer{powered: true, facing: east}
+101,-10,234 observer{powered: false, facing: east}
+102,-10,235 observer{powered: true, facing: west}
+103,-10,235 sticky_piston{extended: true, facing: up}
+104,-10,234 piston{extended: true, facing: south}
+104,-10,235 moving_piston{type: normal, facing: south}
+104,-10,237 moving_piston{type: normal, facing: west}
+105,-10,236 moving_piston{type: normal, facing: west}
+105,-10,237 moving_piston{type: normal, facing: west}
+106,-10,236 moving_piston{type: sticky, facing: west}
+106,-10,237 moving_piston{type: normal, facing: west}
+107,-10,236 sticky_piston{extended: true, facing: west}
+107,-10,237 moving_piston{type: normal, facing: west}
+108,-10,237 piston{extended: true, facing: west}
+97,-9,237 piston{extended: true, facing: up}
+98,-9,234 observer{powered: false, facing: north}
+99,-9,236 moving_piston{type: sticky, facing: up}
+102,-9,234 observer{powered: false, facing: north}
+102,-9,235 moving_piston{type: sticky, facing: up}
+103,-9,235 moving_piston{type: sticky, facing: up}
+108,-9,234 observer{powered: false, facing: north}
+97,-8,237 moving_piston{type: normal, facing: up}
+98,-8,234 observer{powered: true, facing: down}
+99,-8,236 moving_piston{type: normal, facing: up}
+99,-8,237 redstone_wire{east: side, power: 0, south: none, north: none, west: up}
+101,-8,235 repeater{powered: false, facing: north, delay: 1, locked: false}
+101,-8,236 moving_piston{type: sticky, facing: east}
+102,-8,235 air{}
+102,-8,236 air{}
+103,-8,235 moving_piston{type: normal, facing: up}
+103,-8,236 observer{powered: false, facing: down}
+108,-8,234 observer{powered: true, facing: down}
+97,-7,235 moving_piston{type: normal, facing: south}
+97,-7,236 air{}
+97,-7,237 moving_piston{type: normal, facing: up}
+98,-7,237 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+99,-7,234 piston{extended: true, facing: up}
+107,-7,234 piston{extended: true, facing: up}
+109,-7,235 moving_piston{type: normal, facing: south}
+109,-7,236 air{}
+97,-6,235 note_block{instrument: harp, powered: false, note: 0}
+97,-6,237 moving_piston{type: normal, facing: up}
+98,-6,235 moving_piston{type: sticky, facing: east}
+99,-6,234 moving_piston{type: normal, facing: up}
+99,-6,235 air{}
+100,-6,235 polished_blackstone_bricks{}
+101,-6,235 polished_blackstone_bricks{}
+105,-6,235 polished_blackstone_bricks{}
+106,-6,235 polished_blackstone_bricks{}
+107,-6,234 moving_piston{type: normal, facing: up}
+107,-6,235 air{}
+108,-6,235 moving_piston{type: sticky, facing: west}
+109,-6,235 note_block{instrument: harp, powered: false, note: 0}
+97,-5,236 redstone_wire{east: none, power: 0, south: side, north: side, west: none}
+97,-5,237 moving_piston{type: normal, facing: up}
+98,-5,235 moving_piston{type: sticky, facing: east}
+99,-5,234 moving_piston{type: normal, facing: up}
+99,-5,235 air{}
+100,-5,235 polished_blackstone_bricks{}
+101,-5,235 polished_blackstone_bricks{}
+105,-5,235 polished_blackstone_bricks{}
+106,-5,235 polished_blackstone_bricks{}
+107,-5,234 moving_piston{type: normal, facing: up}
+107,-5,235 air{}
+108,-5,235 moving_piston{type: sticky, facing: west}
+109,-5,236 redstone_wire{east: side, power: 0, south: side, north: side, west: side}
+97,-4,235 observer{powered: false, facing: north}
+97,-4,237 moving_piston{type: normal, facing: up}
+98,-4,235 moving_piston{type: sticky, facing: east}
+99,-4,235 air{}
+100,-4,235 polished_blackstone_bricks{}
+101,-4,235 polished_blackstone_bricks{}
+105,-4,235 polished_blackstone_bricks{}
+106,-4,235 polished_blackstone_bricks{}
+107,-4,235 air{}
+108,-4,235 moving_piston{type: sticky, facing: west}
+109,-4,235 observer{powered: false, facing: north}
+97,-3,236 redstone_wire{east: side, power: 0, south: side, north: side, west: side}
+97,-3,237 moving_piston{type: normal, facing: up}
+98,-3,235 moving_piston{type: sticky, facing: east}
+99,-3,234 white_concrete{}
+99,-3,235 air{}
+100,-3,235 polished_blackstone_bricks{}
+101,-3,235 polished_blackstone_bricks{}
+105,-3,235 polished_blackstone_bricks{}
+106,-3,235 polished_blackstone_bricks{}
+107,-3,234 moving_piston{type: normal, facing: down}
+107,-3,235 air{}
+108,-3,235 moving_piston{type: sticky, facing: west}
+109,-3,236 redstone_wire{east: side, power: 0, south: side, north: side, west: side}
+97,-2,237 moving_piston{type: normal, facing: up}
+99,-2,234 air{}
+101,-2,235 polished_blackstone_bricks{}
+102,-2,235 polished_blackstone_bricks{}
+107,-2,234 moving_piston{type: sticky, facing: down}
+97,-1,234 observer{powered: false, facing: south}
+97,-1,237 moving_piston{type: normal, facing: up}
+98,-1,233 sticky_piston{extended: true, facing: south}
+98,-1,234 moving_piston{type: sticky, facing: south}
+98,-1,235 moving_piston{type: normal, facing: south}
+98,-1,237 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+99,-1,233 air{}
+99,-1,234 moving_piston{type: sticky, facing: down}
+100,-1,233 moving_piston{type: sticky, facing: west}
+101,-1,235 air{}
+102,-1,235 air{}
+107,-1,234 sticky_piston{extended: true, facing: down}
+108,-1,234 observer{powered: true, facing: east}
+109,-1,234 observer{powered: false, facing: south}
+97,0,235 observer{powered: false, facing: down}
+97,0,237 moving_piston{type: normal, facing: up}
+98,0,234 observer{powered: false, facing: west}
+99,0,237 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+100,0,233 observer{powered: false, facing: west}
+100,0,237 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+101,0,233 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+101,0,235 moving_piston{type: sticky, facing: down}
+102,0,235 moving_piston{type: sticky, facing: down}
+109,0,235 spruce_leaves{waterlogged: false, distance: 1, persistent: true}
+98,1,234 observer{powered: false, facing: north}
+99,1,234 observer{powered: true, facing: west}
+107,1,234 observer{powered: true, facing: east}
+T 188
+99,-10,235 observer{powered: false, facing: west}
+106,-10,234 observer{powered: true, facing: east}
+107,-10,234 observer{powered: false, facing: south}
+109,-10,235 observer{powered: false, facing: north}
+109,-10,237 piston_head{type: normal, short: false, facing: south}
+97,-9,236 observer{powered: true, facing: north}
+98,-9,235 observer{powered: true, facing: west}
+107,-9,235 observer{powered: false, facing: down}
+107,-9,236 observer{powered: true, facing: north}
+108,-9,235 observer{powered: false, facing: down}
+108,-9,236 observer{powered: false, facing: down}
+107,-8,235 moving_piston{type: sticky, facing: east}
+108,-8,235 air{}
+109,-8,235 polished_blackstone_bricks{}
+109,-8,236 comparator{mode: compare, powered: false, facing: south}
+109,-8,237 piston_head{type: normal, short: false, facing: up}
+98,-7,233 observer{powered: true, facing: west}
+100,-7,235 polished_blackstone_bricks{}
+101,-7,235 polished_blackstone_bricks{}
+102,-7,235 sticky_piston{extended: false, facing: up}
+103,-7,235 polished_blackstone_bricks{}
+104,-7,235 polished_blackstone_bricks{}
+105,-7,235 sticky_piston{extended: false, facing: west}
+106,-7,235 white_stained_glass{}
+108,-7,233 observer{powered: true, facing: east}
+108,-7,235 piston{extended: false, facing: west}
+108,-7,237 piston{extended: false, facing: west}
+109,-7,237 composter{level: 6}
+107,-6,235 moving_piston{type: normal, facing: north}
+107,-6,236 moving_piston{type: sticky, facing: north}
+107,-6,237 sticky_piston{extended: true, facing: north}
+108,-6,236 glass{}
+109,-6,235 note_block{instrument: harp, powered: true, note: 0}
+109,-6,237 redstone_block{}
+107,-5,235 moving_piston{type: normal, facing: north}
+107,-5,236 moving_piston{type: sticky, facing: north}
+107,-5,237 sticky_piston{extended: true, facing: north}
+108,-5,236 polished_blackstone_bricks{}
+108,-5,237 observer{powered: true, facing: east}
+109,-5,236 redstone_wire{east: none, power: 15, south: side, north: side, west: none}
+109,-5,237 redstone_block{}
+107,-4,235 moving_piston{type: normal, facing: north}
+107,-4,236 moving_piston{type: sticky, facing: north}
+107,-4,237 sticky_piston{extended: true, facing: north}
+108,-4,236 observer{powered: false, facing: up}
+109,-4,237 glass{}
+107,-3,235 moving_piston{type: normal, facing: north}
+107,-3,236 moving_piston{type: sticky, facing: north}
+107,-3,237 sticky_piston{extended: true, facing: north}
+108,-3,236 observer{powered: false, facing: south}
+108,-3,237 observer{powered: true, facing: east}
+109,-3,236 redstone_wire{east: none, power: 15, south: side, north: side, west: none}
+109,-3,237 redstone_block{}
+103,-2,235 polished_blackstone_bricks{}
+104,-2,235 polished_blackstone_bricks{}
+105,-2,235 polished_blackstone_bricks{}
+107,-2,233 sticky_piston{extended: true, facing: up}
+107,-2,236 moving_piston{type: normal, facing: up}
+108,-2,233 observer{powered: true, facing: east}
+108,-2,236 air{}
+109,-2,237 glass{}
+103,-1,235 sticky_piston{extended: false, facing: down}
+104,-1,235 piston_head{type: sticky, short: false, facing: down}
+105,-1,235 piston_head{type: sticky, short: false, facing: down}
+107,-1,233 moving_piston{type: sticky, facing: up}
+107,-1,236 air{}
+108,-1,236 moving_piston{type: normal, facing: down}
+108,-1,237 polished_blackstone_brick_stairs{waterlogged: false, half: bottom, shape: inner_right, facing: west}
+109,-1,237 polished_blackstone_brick_stairs{waterlogged: false, half: bottom, shape: straight, facing: north}
+103,0,234 redstone_wire{east: side, power: 13, south: none, north: none, west: side}
+103,0,235 air{}
+104,0,234 redstone_wire{east: side, power: 14, south: none, north: none, west: side}
+104,0,236 observer{powered: true, facing: south}
+104,0,237 redstone_wire{east: side, power: 0, south: none, north: up, west: none}
+105,0,234 redstone_wire{east: side, power: 15, south: none, north: none, west: side}
+105,0,236 observer{powered: true, facing: south}
+105,0,237 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+106,0,234 observer{powered: true, facing: east}
+106,0,237 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+107,0,233 moving_piston{type: normal, facing: up}
+107,0,234 observer{powered: false, facing: east}
+107,0,235 observer{powered: true, facing: east}
+107,0,237 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+108,0,235 observer{powered: false, facing: north}
+108,0,236 observer{powered: false, facing: east}
+103,1,235 moving_piston{type: sticky, facing: down}
+104,1,236 redstone_wire{east: side, power: 0, south: side, north: side, west: none}
+T 189
+97,-10,237 piston_head{type: normal, short: false, facing: south}
+100,-10,234 observer{powered: false, facing: east}
+101,-10,237 note_block{instrument: basedrum, powered: true, note: 0}
+102,-10,235 observer{powered: false, facing: west}
+103,-10,235 moving_piston{type: sticky, facing: up}
+104,-10,235 piston_head{type: normal, short: false, facing: south}
+104,-10,237 tinted_glass{}
+105,-10,236 piston{extended: false, facing: up}
+105,-10,237 tinted_glass{}
+106,-10,236 piston_head{type: sticky, short: false, facing: west}
+106,-10,237 tinted_glass{}
+107,-10,237 piston_head{type: normal, short: false, facing: west}
+99,-9,236 piston_head{type: sticky, short: false, facing: up}
+100,-9,234 observer{powered: true, facing: down}
+100,-9,236 observer{powered: true, facing: west}
+101,-9,236 comparator{mode: compare, powered: true, facing: north}
+102,-9,235 sticky_piston{extended: false, facing: up}
+103,-9,235 air{}
+104,-9,235 moving_piston{type: normal, facing: north}
+104,-9,236 moving_piston{type: sticky, facing: north}
+104,-9,237 sticky_piston{extended: true, facing: north}
+105,-9,237 moving_piston{type: normal, facing: west}
+106,-9,236 observer{powered: true, facing: down}
+106,-9,237 piston{extended: true, facing: west}
+109,-9,237 moving_piston{type: normal, facing: up}
+97,-8,236 comparator{mode: compare, powered: false, facing: south}
+97,-8,237 piston_head{type: normal, short: false, facing: up}
+98,-8,234 observer{powered: false, facing: down}
+99,-8,236 target{power: 0}
+99,-8,237 redstone_wire{east: none, power: 0, south: none, north: side, west: up}
+101,-8,236 sticky_piston{extended: false, facing: east}
+101,-8,237 redstone_wire{east: side, power: 1, south: none, north: none, west: side}
+102,-8,236 moving_piston{type: normal, facing: west}
+103,-8,235 moving_piston{type: sticky, facing: up}
+103,-8,236 moving_piston{type: normal, facing: west}
+104,-8,236 piston{extended: true, facing: west}
+105,-8,236 redstone_wire{east: none, power: 15, south: side, north: side, west: none}
+106,-8,237 piston{extended: true, facing: up}
+108,-8,234 observer{powered: false, facing: down}
+109,-8,237 air{}
+97,-7,235 piston{extended: false, facing: south}
+97,-7,237 composter{level: 6}
+99,-7,234 moving_piston{type: normal, facing: up}
+103,-7,235 air{}
+106,-7,237 moving_piston{type: normal, facing: up}
+107,-7,234 moving_piston{type: normal, facing: up}
+107,-7,237 moving_piston{type: normal, facing: west}
+108,-7,237 piston{extended: true, facing: west}
+109,-7,235 piston{extended: false, facing: south}
+97,-6,235 note_block{instrument: harp, powered: true, note: 0}
+97,-6,237 redstone_block{}
+98,-6,235 sticky_piston{extended: false, facing: east}
+99,-6,234 air{}
+99,-6,235 moving_piston{type: normal, facing: north}
+99,-6,236 moving_piston{type: sticky, facing: north}
+99,-6,237 sticky_piston{extended: true, facing: north}
+107,-6,234 air{}
+108,-6,235 sticky_piston{extended: false, facing: west}
+97,-5,236 redstone_wire{east: none, power: 15, south: side, north: side, west: none}
+97,-5,237 redstone_block{}
+98,-5,235 sticky_piston{extended: false, facing: east}
+98,-5,237 observer{powered: true, facing: west}
+99,-5,234 white_concrete_powder{}
+99,-5,235 moving_piston{type: normal, facing: north}
+99,-5,236 moving_piston{type: sticky, facing: north}
+99,-5,237 sticky_piston{extended: true, facing: north}
+103,-5,235 moving_piston{type: normal, facing: up}
+107,-5,234 white_concrete_powder{}
+108,-5,235 sticky_piston{extended: false, facing: west}
+97,-4,237 glass{}
+98,-4,235 sticky_piston{extended: false, facing: east}
+99,-4,235 moving_piston{type: normal, facing: north}
+99,-4,236 moving_piston{type: sticky, facing: north}
+99,-4,237 sticky_piston{extended: true, facing: north}
+108,-4,235 sticky_piston{extended: false, facing: west}
+97,-3,236 redstone_wire{east: none, power: 15, south: side, north: side, west: none}
+97,-3,237 redstone_block{}
+98,-3,235 sticky_piston{extended: false, facing: east}
+98,-3,237 observer{powered: true, facing: west}
+99,-3,235 moving_piston{type: normal, facing: north}
+99,-3,236 moving_piston{type: sticky, facing: north}
+99,-3,237 sticky_piston{extended: true, facing: north}
+103,-3,235 moving_piston{type: normal, facing: down}
+107,-3,234 white_concrete{}
+108,-3,235 sticky_piston{extended: false, facing: west}
+97,-2,237 glass{}
+98,-2,235 note_block{instrument: harp, powered: true, note: 0}
+103,-2,235 moving_piston{type: sticky, facing: down}
+107,-2,234 air{}
+97,-1,235 redstone_wire{east: side, power: 7, south: none, north: up, west: none}
+97,-1,236 polished_blackstone_brick_stairs{waterlogged: false, half: bottom, shape: inner_right, facing: north}
+97,-1,237 polished_blackstone_brick_stairs{waterlogged: false, half: bottom, shape: straight, facing: east}
+98,-1,234 piston_head{type: sticky, short: false, facing: south}
+98,-1,235 target{power: 0}
+99,-1,234 sticky_piston{extended: false, facing: down}
+99,-1,235 sticky_piston{extended: true, facing: east}
+100,-1,233 sticky_piston{extended: false, facing: west}
+100,-1,235 moving_piston{type: sticky, facing: east}
+101,-1,235 moving_piston{type: normal, facing: east}
+103,-1,235 sticky_piston{extended: true, facing: down}
+107,-1,234 moving_piston{type: sticky, facing: down}
+108,-1,234 observer{powered: false, facing: east}
+97,0,237 redstone_block{}
+99,0,234 comparator{mode: compare, powered: true, facing: north}
+99,0,235 hopper{enabled: false, facing: down}
+101,0,235 sticky_piston{extended: false, facing: down}
+102,0,235 sticky_piston{extended: false, facing: down}
+98,1,235 repeater{powered: true, facing: west, delay: 2, locked: false}
+99,1,234 observer{powered: false, facing: west}
+99,1,235 redstone_wire{east: side, power: 15, south: none, north: none, west: side}
+107,1,234 observer{powered: false, facing: east}
+109,1,235 observer{powered: true, facing: down}
+T 190
+106,-10,234 observer{powered: false, facing: east}
+97,-9,236 observer{powered: false, facing: north}
+97,-9,237 moving_piston{type: normal, facing: up}
+98,-9,235 observer{powered: false, facing: west}
+99,-9,235 repeater{powered: true, facing: west, delay: 1, locked: false}
+106,-9,234 observer{powered: true, facing: down}
+107,-9,236 observer{powered: false, facing: north}
+107,-9,237 observer{powered: true, facing: north}
+97,-8,237 air{}
+107,-8,235 sticky_piston{extended: false, facing: east}
+109,-8,237 moving_piston{type: normal, facing: down}
+97,-7,235 piston{extended: true, facing: south}
+97,-7,236 moving_piston{type: normal, facing: south}
+98,-7,233 observer{powered: false, facing: west}
+103,-7,235 moving_piston{type: normal, facing: west}
+104,-7,235 moving_piston{type: sticky, facing: west}
+105,-7,235 sticky_piston{extended: true, facing: west}
+107,-7,237 air{}
+108,-7,233 observer{powered: false, facing: east}
+108,-7,236 moving_piston{type: normal, facing: up}
+108,-7,237 moving_piston{type: normal, facing: west}
+109,-7,235 moving_piston{type: normal, facing: south}
+109,-7,237 moving_piston{type: normal, facing: down}
+99,-6,233 piston{extended: true, facing: south}
+99,-6,234 moving_piston{type: normal, facing: south}
+104,-6,235 moving_piston{type: normal, facing: west}
+105,-6,235 moving_piston{type: normal, facing: west}
+106,-6,235 moving_piston{type: sticky, facing: west}
+107,-6,233 piston{extended: true, facing: south}
+107,-6,234 moving_piston{type: normal, facing: south}
+107,-6,235 sticky_piston{extended: true, facing: west}
+107,-6,236 air{}
+107,-6,237 moving_piston{type: sticky, facing: north}
+108,-6,236 air{}
+109,-6,235 note_block{instrument: harp, powered: false, note: 0}
+109,-6,237 moving_piston{type: normal, facing: down}
+104,-5,235 moving_piston{type: normal, facing: west}
+105,-5,235 moving_piston{type: normal, facing: west}
+106,-5,235 moving_piston{type: sticky, facing: west}
+107,-5,235 sticky_piston{extended: true, facing: west}
+107,-5,236 air{}
+107,-5,237 moving_piston{type: sticky, facing: north}
+108,-5,236 moving_piston{type: normal, facing: up}
+108,-5,237 observer{powered: false, facing: east}
+109,-5,236 redstone_wire{east: side, power: 0, south: side, north: side, west: side}
+109,-5,237 moving_piston{type: normal, facing: down}
+104,-4,235 moving_piston{type: normal, facing: west}
+105,-4,235 moving_piston{type: normal, facing: west}
+106,-4,235 moving_piston{type: sticky, facing: west}
+107,-4,235 sticky_piston{extended: true, facing: west}
+107,-4,236 air{}
+107,-4,237 moving_piston{type: sticky, facing: north}
+108,-4,236 moving_piston{type: normal, facing: up}
+109,-4,237 moving_piston{type: normal, facing: down}
+103,-3,235 polished_blackstone_bricks{}
+104,-3,235 moving_piston{type: normal, facing: west}
+105,-3,235 moving_piston{type: normal, facing: west}
+106,-3,235 moving_piston{type: sticky, facing: west}
+107,-3,235 sticky_piston{extended: true, facing: west}
+107,-3,236 air{}
+107,-3,237 moving_piston{type: sticky, facing: north}
+108,-3,236 moving_piston{type: normal, facing: up}
+108,-3,237 observer{powered: false, facing: east}
+109,-3,236 redstone_wire{east: side, power: 0, south: side, north: side, west: side}
+109,-3,237 moving_piston{type: normal, facing: down}
+103,-2,235 air{}
+107,-2,233 moving_piston{type: sticky, facing: up}
+107,-2,236 piston{extended: false, facing: up}
+108,-2,233 observer{powered: false, facing: east}
+108,-2,236 moving_piston{type: normal, facing: up}
+109,-2,237 moving_piston{type: normal, facing: down}
+103,-1,235 moving_piston{type: sticky, facing: down}
+106,-1,234 observer{powered: true, facing: up}
+107,-1,233 air{}
+107,-1,237 observer{powered: true, facing: east}
+108,-1,236 piston{extended: false, facing: down}
+108,-1,237 polished_blackstone_brick_stairs{waterlogged: false, half: bottom, shape: straight, facing: west}
+109,-1,237 moving_piston{type: normal, facing: down}
+103,0,234 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+104,0,234 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+104,0,236 observer{powered: false, facing: south}
+104,0,237 redstone_wire{east: side, power: 13, south: none, north: up, west: none}
+105,0,233 moving_piston{type: normal, facing: west}
+105,0,234 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+105,0,236 observer{powered: false, facing: south}
+105,0,237 redstone_wire{east: side, power: 14, south: none, north: none, west: side}
+106,0,233 moving_piston{type: sticky, facing: west}
+106,0,234 observer{powered: false, facing: east}
+106,0,235 observer{powered: true, facing: east}
+106,0,237 redstone_wire{east: side, power: 15, south: none, north: none, west: side}
+107,0,233 sticky_piston{extended: true, facing: west}
+107,0,235 observer{powered: false, facing: east}
+107,0,237 redstone_wire{east: side, power: 14, south: none, north: none, west: side}
+108,0,237 observer{powered: true, facing: down}
+109,0,237 piston{extended: true, facing: down}
+103,1,235 sticky_piston{extended: false, facing: down}
+104,1,236 redstone_wire{east: side, power: 12, south: side, north: side, west: none}
+105,1,237 moving_piston{type: normal, facing: west}
+106,1,237 moving_piston{type: sticky, facing: west}
+107,1,237 sticky_piston{extended: true, facing: west}
+109,1,236 moving_piston{type: normal, facing: north}
+109,1,237 piston{extended: true, facing: north}
+T 191
+103,-10,235 sticky_piston{extended: false, facing: up}
+100,-9,234 observer{powered: false, facing: down}
+100,-9,236 observer{powered: false, facing: west}
+104,-9,235 observer{powered: false, facing: down}
+104,-9,236 air{}
+104,-9,237 moving_piston{type: sticky, facing: north}
+105,-9,237 air{}
+106,-9,236 observer{powered: false, facing: down}
+106,-9,237 moving_piston{type: normal, facing: west}
+109,-9,237 piston{extended: false, facing: up}
+97,-8,237 moving_piston{type: normal, facing: down}
+102,-8,236 observer{powered: false, facing: down}
+103,-8,235 sticky_piston{extended: false, facing: up}
+103,-8,236 air{}
+104,-8,236 moving_piston{type: normal, facing: west}
+105,-8,236 redstone_wire{east: none, power: 0, south: side, north: side, west: none}
+106,-8,237 moving_piston{type: normal, facing: up}
+97,-7,235 moving_piston{type: normal, facing: south}
+97,-7,236 air{}
+97,-7,237 moving_piston{type: normal, facing: down}
+99,-7,234 piston{extended: false, facing: up}
+103,-7,235 polished_blackstone_bricks{}
+104,-7,235 air{}
+105,-7,235 moving_piston{type: sticky, facing: west}
+106,-7,237 air{}
+107,-7,234 piston{extended: false, facing: up}
+97,-6,235 note_block{instrument: harp, powered: false, note: 0}
+97,-6,237 moving_piston{type: normal, facing: down}
+98,-6,236 moving_piston{type: normal, facing: down}
+99,-6,235 sticky_piston{extended: true, facing: east}
+99,-6,236 air{}
+99,-6,237 moving_piston{type: sticky, facing: north}
+100,-6,235 moving_piston{type: sticky, facing: east}
+101,-6,235 moving_piston{type: normal, facing: east}
+102,-6,235 moving_piston{type: normal, facing: east}
+97,-5,236 redstone_wire{east: none, power: 0, south: side, north: side, west: none}
+97,-5,237 moving_piston{type: normal, facing: down}
+98,-5,236 moving_piston{type: normal, facing: down}
+98,-5,237 observer{powered: false, facing: west}
+99,-5,235 sticky_piston{extended: true, facing: east}
+99,-5,236 air{}
+99,-5,237 moving_piston{type: sticky, facing: north}
+100,-5,235 moving_piston{type: sticky, facing: east}
+101,-5,235 moving_piston{type: normal, facing: east}
+102,-5,235 moving_piston{type: normal, facing: east}
+103,-5,235 polished_blackstone_bricks{}
+97,-4,237 moving_piston{type: normal, facing: down}
+98,-4,236 moving_piston{type: normal, facing: down}
+99,-4,235 sticky_piston{extended: true, facing: east}
+99,-4,236 air{}
+99,-4,237 moving_piston{type: sticky, facing: north}
+100,-4,235 moving_piston{type: sticky, facing: east}
+101,-4,235 moving_piston{type: normal, facing: east}
+102,-4,235 moving_piston{type: normal, facing: east}
+97,-3,236 redstone_wire{east: side, power: 0, south: side, north: side, west: side}
+97,-3,237 moving_piston{type: normal, facing: down}
+98,-3,236 moving_piston{type: normal, facing: down}
+98,-3,237 observer{powered: false, facing: west}
+99,-3,235 sticky_piston{extended: true, facing: east}
+99,-3,236 air{}
+99,-3,237 moving_piston{type: sticky, facing: north}
+100,-3,235 moving_piston{type: sticky, facing: east}
+101,-3,235 moving_piston{type: normal, facing: east}
+102,-3,235 moving_piston{type: normal, facing: east}
+97,-2,237 moving_piston{type: normal, facing: down}
+98,-2,236 moving_piston{type: normal, facing: down}
+99,-2,235 sticky_piston{extended: true, facing: east}
+100,-2,235 moving_piston{type: sticky, facing: east}
+101,-2,235 moving_piston{type: normal, facing: east}
+102,-2,235 moving_piston{type: normal, facing: east}
+103,-2,235 moving_piston{type: normal, facing: east}
+97,-1,233 repeater{powered: true, facing: south, delay: 3, locked: false}
+97,-1,234 observer{powered: true, facing: south}
+97,-1,236 polished_blackstone_brick_stairs{waterlogged: false, half: bottom, shape: straight, facing: north}
+97,-1,237 moving_piston{type: normal, facing: down}
+98,-1,236 moving_piston{type: normal, facing: down}
+100,-1,235 piston_head{type: sticky, short: false, facing: east}
+101,-1,235 sticky_piston{extended: false, facing: east}
+107,-1,234 sticky_piston{extended: false, facing: down}
+109,-1,233 repeater{powered: true, facing: south, delay: 3, locked: false}
+97,0,235 observer{powered: true, facing: down}
+97,0,236 observer{powered: true, facing: down}
+97,0,237 moving_piston{type: normal, facing: down}
+98,0,236 piston{extended: true, facing: down}
+100,0,235 observer{powered: true, facing: west}
+103,0,235 moving_piston{type: sticky, facing: down}
+97,1,237 piston{extended: true, facing: down}
+98,1,236 redstone_wire{east: side, power: 15, south: side, north: side, west: side}
+98,1,237 sticky_piston{extended: true, facing: east}
+99,1,236 sticky_piston{extended: true, facing: east}
+99,1,237 moving_piston{type: sticky, facing: east}
+100,1,236 moving_piston{type: sticky, facing: east}
+103,1,235 sticky_piston{extended: true, facing: down}
+108,1,235 observer{powered: true, facing: east}
+109,1,235 observer{powered: false, facing: down}
+T 192
+97,-9,237 piston{extended: false, facing: up}
+99,-9,235 repeater{powered: false, facing: west, delay: 1, locked: false}
+106,-9,234 observer{powered: false, facing: down}
+107,-9,237 observer{powered: false, facing: north}
+107,-8,237 observer{powered: true, facing: down}
+109,-8,237 composter{level: 6}
+108,-7,236 piston{extended: false, facing: up}
+108,-7,237 piston{extended: false, facing: west}
+109,-7,235 piston{extended: false, facing: south}
+109,-7,237 redstone_block{}
+99,-6,234 piston_head{type: normal, short: false, facing: south}
+104,-6,235 polished_blackstone_bricks{}
+105,-6,235 polished_blackstone_bricks{}
+106,-6,235 piston_head{type: sticky, short: false, facing: west}
+107,-6,234 piston_head{type: normal, short: false, facing: south}
+107,-6,237 sticky_piston{extended: false, facing: north}
+109,-6,237 redstone_block{}
+104,-5,235 polished_blackstone_bricks{}
+105,-5,235 polished_blackstone_bricks{}
+106,-5,235 piston_head{type: sticky, short: false, facing: west}
+107,-5,237 sticky_piston{extended: false, facing: north}
+108,-5,236 glass{}
+108,-5,237 observer{powered: true, facing: east}
+109,-5,237 glass{}
+104,-4,235 polished_blackstone_bricks{}
+105,-4,235 polished_blackstone_bricks{}
+106,-4,235 piston_head{type: sticky, short: false, facing: west}
+107,-4,237 sticky_piston{extended: false, facing: north}
+108,-4,236 polished_blackstone_bricks{}
+109,-4,237 redstone_block{}
+104,-3,235 polished_blackstone_bricks{}
+105,-3,235 polished_blackstone_bricks{}
+106,-3,235 piston_head{type: sticky, short: false, facing: west}
+107,-3,237 sticky_piston{extended: false, facing: north}
+108,-3,236 observer{powered: false, facing: up}
+108,-3,237 observer{powered: true, facing: east}
+109,-3,237 glass{}
+107,-2,233 sticky_piston{extended: false, facing: up}
+108,-2,236 observer{powered: false, facing: south}
+109,-2,237 polished_blackstone_brick_stairs{waterlogged: false, half: bottom, shape: straight, facing: north}
+101,-1,235 sticky_piston{extended: true, facing: east}
+102,-1,235 moving_piston{type: sticky, facing: east}
+103,-1,235 sticky_piston{extended: false, facing: down}
+106,-1,234 observer{powered: false, facing: up}
+106,-1,235 observer{powered: true, facing: up}
+107,-1,237 observer{powered: false, facing: east}
+109,-1,237 air{}
+103,0,234 redstone_wire{east: side, power: 13, south: none, north: none, west: side}
+103,0,235 moving_piston{type: normal, facing: north}
+103,0,236 moving_piston{type: sticky, facing: north}
+103,0,237 sticky_piston{extended: true, facing: north}
+104,0,234 redstone_wire{east: side, power: 14, south: none, north: none, west: side}
+104,0,236 observer{powered: true, facing: south}
+104,0,237 redstone_wire{east: side, power: 14, south: none, north: up, west: none}
+105,0,233 redstone_block{}
+105,0,234 redstone_wire{east: side, power: 15, south: none, north: side, west: side}
+105,0,236 observer{powered: true, facing: south}
+105,0,237 redstone_wire{east: side, power: 15, south: none, north: none, west: side}
+106,0,233 piston_head{type: sticky, short: false, facing: west}
+106,0,235 observer{powered: false, facing: east}
+106,0,237 redstone_wire{east: side, power: 14, south: none, north: none, west: side}
+107,0,237 redstone_wire{east: side, power: 13, south: none, north: none, west: side}
+108,0,237 observer{powered: false, facing: down}
+109,0,237 moving_piston{type: normal, facing: down}
+103,1,235 moving_piston{type: sticky, facing: down}
+103,1,237 hopper{enabled: false, facing: down}
+104,1,236 redstone_wire{east: side, power: 13, south: side, north: side, west: none}
+104,1,237 observer{powered: true, facing: east}
+105,1,237 pink_terracotta{}
+106,1,237 air{}
+107,1,237 moving_piston{type: sticky, facing: west}
+108,1,236 observer{powered: true, facing: east}
+109,1,236 air{}
+109,1,237 moving_piston{type: normal, facing: north}
+T 193
+104,-9,235 observer{powered: true, facing: down}
+104,-9,237 sticky_piston{extended: false, facing: north}
+106,-9,237 piston{extended: false, facing: west}
+97,-8,237 composter{level: 6}
+99,-8,237 redstone_wire{east: none, power: 14, south: none, north: side, west: up}
+102,-8,237 repeater{powered: true, facing: west, delay: 2, locked: false}
+103,-8,235 sticky_piston{extended: true, facing: up}
+104,-8,236 piston{extended: false, facing: west}
+106,-8,237 piston{extended: false, facing: up}
+97,-7,235 piston{extended: false, facing: south}
+97,-7,237 redstone_block{}
+98,-7,237 redstone_wire{east: side, power: 15, south: none, north: none, west: side}
+103,-7,235 moving_piston{type: sticky, facing: up}
+105,-7,235 sticky_piston{extended: false, facing: west}
+107,-7,237 moving_piston{type: normal, facing: west}
+108,-7,237 piston{extended: true, facing: west}
+97,-6,237 redstone_block{}
+98,-6,236 cherry_log{axis: y}
+99,-6,237 sticky_piston{extended: false, facing: north}
+100,-6,235 piston_head{type: sticky, short: false, facing: east}
+101,-6,235 polished_blackstone_bricks{}
+102,-6,235 polished_blackstone_bricks{}
+103,-6,235 moving_piston{type: normal, facing: up}
+107,-6,236 moving_piston{type: sticky, facing: north}
+107,-6,237 sticky_piston{extended: true, facing: north}
+97,-5,233 moving_piston{type: normal, facing: down}
+97,-5,237 glass{}
+98,-5,236 polished_blackstone_bricks{}
+98,-5,237 observer{powered: true, facing: west}
+99,-5,237 sticky_piston{extended: false, facing: north}
+100,-5,235 piston_head{type: sticky, short: false, facing: east}
+101,-5,235 polished_blackstone_bricks{}
+102,-5,235 polished_blackstone_bricks{}
+103,-5,235 moving_piston{type: normal, facing: up}
+107,-5,236 moving_piston{type: sticky, facing: north}
+107,-5,237 sticky_piston{extended: true, facing: north}
+109,-5,233 moving_piston{type: normal, facing: down}
+97,-4,233 piston{extended: true, facing: down}
+97,-4,237 redstone_block{}
+98,-4,236 observer{powered: false, facing: up}
+99,-4,237 sticky_piston{extended: false, facing: north}
+100,-4,235 piston_head{type: sticky, short: false, facing: east}
+101,-4,235 polished_blackstone_bricks{}
+102,-4,235 polished_blackstone_bricks{}
+103,-4,235 moving_piston{type: normal, facing: up}
+107,-4,236 moving_piston{type: sticky, facing: north}
+107,-4,237 sticky_piston{extended: true, facing: north}
+109,-4,233 piston{extended: true, facing: down}
+97,-3,237 glass{}
+98,-3,236 observer{powered: false, facing: south}
+98,-3,237 observer{powered: true, facing: west}
+99,-3,237 sticky_piston{extended: false, facing: north}
+100,-3,235 piston_head{type: sticky, short: false, facing: east}
+101,-3,235 polished_blackstone_bricks{}
+102,-3,235 polished_blackstone_bricks{}
+107,-3,236 moving_piston{type: sticky, facing: north}
+107,-3,237 sticky_piston{extended: true, facing: north}
+97,-2,233 observer{powered: true, facing: up}
+97,-2,237 polished_blackstone_brick_stairs{waterlogged: false, half: bottom, shape: straight, facing: east}
+98,-2,236 cherry_log{axis: y}
+100,-2,235 piston_head{type: sticky, short: false, facing: east}
+101,-2,235 polished_blackstone_bricks{}
+102,-2,235 polished_blackstone_bricks{}
+103,-2,235 polished_blackstone_bricks{}
+109,-2,233 observer{powered: true, facing: up}
+97,-1,234 observer{powered: false, facing: south}
+97,-1,237 redstone_block{}
+98,-1,236 air{}
+98,-1,237 redstone_wire{east: side, power: 15, south: none, north: none, west: side}
+101,-1,235 moving_piston{type: sticky, facing: east}
+102,-1,235 moving_piston{type: normal, facing: east}
+103,-1,235 air{}
+97,0,235 observer{powered: false, facing: down}
+97,0,236 observer{powered: false, facing: down}
+97,0,237 air{}
+98,0,236 moving_piston{type: normal, facing: down}
+99,0,237 redstone_wire{east: side, power: 14, south: none, north: none, west: side}
+100,0,235 observer{powered: false, facing: west}
+100,0,237 redstone_wire{east: up, power: 13, south: none, north: none, west: side}
+101,0,236 redstone_wire{east: side, power: 11, south: up, north: none, west: none}
+97,1,237 moving_piston{type: normal, facing: down}
+98,1,236 redstone_wire{east: side, power: 0, south: side, north: side, west: side}
+98,1,237 moving_piston{type: sticky, facing: east}
+99,1,236 moving_piston{type: sticky, facing: east}
+99,1,237 moving_piston{type: normal, facing: east}
+100,1,236 moving_piston{type: normal, facing: east}
+100,1,237 air{}
+101,1,236 air{}
+101,1,237 redstone_wire{east: side, power: 12, south: none, north: side, west: side}
+102,1,234 repeater{powered: true, facing: west, delay: 4, locked: false}
+103,1,233 moving_piston{type: normal, facing: west}
+104,1,233 moving_piston{type: sticky, facing: west}
+105,1,233 sticky_piston{extended: true, facing: west}
+107,1,235 repeater{powered: true, facing: east, delay: 1, locked: false}
+108,1,235 observer{powered: false, facing: east}
+T 194
+97,-8,235 moving_piston{type: normal, facing: west}
+98,-8,235 moving_piston{type: sticky, facing: west}
+99,-8,235 sticky_piston{extended: true, facing: west}
+103,-8,236 moving_piston{type: normal, facing: west}
+104,-8,236 piston{extended: true, facing: west}
+107,-8,235 sticky_piston{extended: true, facing: east}
+107,-8,236 observer{powered: true, facing: south}
+107,-8,237 observer{powered: false, facing: down}
+108,-8,235 moving_piston{type: sticky, facing: east}
+109,-8,234 redstone_wire{east: none, power: 6, south: side, north: side, west: none}
+109,-8,236 comparator{mode: compare, powered: true, facing: south}
+109,-7,235 piston{extended: true, facing: south}
+109,-7,236 moving_piston{type: normal, facing: south}
+98,-6,237 spruce_leaves{waterlogged: false, distance: 1, persistent: true}
+99,-6,236 moving_piston{type: sticky, facing: north}
+99,-6,237 sticky_piston{extended: true, facing: north}
+107,-6,236 air{}
+107,-6,237 moving_piston{type: sticky, facing: north}
+99,-5,236 moving_piston{type: sticky, facing: north}
+99,-5,237 sticky_piston{extended: true, facing: north}
+107,-5,236 air{}
+107,-5,237 moving_piston{type: sticky, facing: north}
+108,-5,237 observer{powered: false, facing: east}
+99,-4,236 moving_piston{type: sticky, facing: north}
+99,-4,237 sticky_piston{extended: true, facing: north}
+107,-4,236 air{}
+107,-4,237 moving_piston{type: sticky, facing: north}
+99,-3,236 moving_piston{type: sticky, facing: north}
+99,-3,237 sticky_piston{extended: true, facing: north}
+107,-3,236 air{}
+107,-3,237 moving_piston{type: sticky, facing: north}
+108,-3,237 observer{powered: false, facing: east}
+99,-2,236 spruce_leaves{waterlogged: false, distance: 1, persistent: true}
+107,-2,235 moving_piston{type: normal, facing: west}
+108,-2,235 piston{extended: true, facing: west}
+106,-1,235 observer{powered: false, facing: up}
+107,-1,235 observer{powered: true, facing: west}
+103,0,234 redstone_wire{east: side, power: 15, south: none, north: none, west: side}
+103,0,235 sticky_piston{extended: false, facing: down}
+103,0,236 piston_head{type: sticky, short: false, facing: north}
+104,0,233 repeater{powered: true, facing: east, delay: 1, locked: false}
+104,0,236 observer{powered: false, facing: south}
+105,0,236 observer{powered: false, facing: south}
+109,0,237 piston{extended: false, facing: down}
+101,1,236 moving_piston{type: sticky, facing: west}
+102,1,236 sticky_piston{extended: true, facing: west}
+103,1,235 sticky_piston{extended: false, facing: down}
+103,1,236 observer{powered: true, facing: south}
+104,1,237 observer{powered: false, facing: east}
+107,1,237 sticky_piston{extended: false, facing: west}
+108,1,236 observer{powered: false, facing: east}
+109,1,237 piston{extended: false, facing: north}
+T 195
+104,-9,235 observer{powered: false, facing: down}
+97,-8,236 comparator{mode: compare, powered: true, facing: south}
+98,-8,236 spruce_leaves{waterlogged: false, distance: 7, persistent: true}
+103,-8,235 moving_piston{type: sticky, facing: up}
+103,-8,236 air{}
+104,-8,236 moving_piston{type: normal, facing: west}
+97,-7,235 moving_piston{type: normal, facing: south}
+98,-7,236 moving_piston{type: normal, facing: up}
+103,-7,235 air{}
+107,-7,237 piston_head{type: normal, short: false, facing: west}
+98,-6,236 air{}
+99,-6,236 air{}
+99,-6,237 moving_piston{type: sticky, facing: north}
+103,-6,235 polished_blackstone_bricks{}
+97,-5,233 air{}
+98,-5,233 observer{powered: true, facing: west}
+98,-5,236 moving_piston{type: normal, facing: up}
+98,-5,237 observer{powered: false, facing: west}
+99,-5,236 air{}
+99,-5,237 moving_piston{type: sticky, facing: north}
+103,-5,235 polished_blackstone_bricks{}
+108,-5,233 observer{powered: true, facing: east}
+109,-5,233 air{}
+97,-4,233 moving_piston{type: normal, facing: down}
+98,-4,236 moving_piston{type: normal, facing: up}
+99,-4,233 piston{extended: true, facing: south}
+99,-4,234 moving_piston{type: normal, facing: south}
+99,-4,236 air{}
+99,-4,237 moving_piston{type: sticky, facing: north}
+103,-4,235 polished_blackstone_bricks{}
+107,-4,233 piston{extended: true, facing: south}
+107,-4,234 moving_piston{type: normal, facing: south}
+109,-4,233 moving_piston{type: normal, facing: down}
+98,-3,233 repeater{powered: true, facing: west, delay: 1, locked: false}
+98,-3,236 moving_piston{type: normal, facing: up}
+98,-3,237 observer{powered: false, facing: west}
+99,-3,236 air{}
+99,-3,237 moving_piston{type: sticky, facing: north}
+108,-3,233 repeater{powered: true, facing: east, delay: 1, locked: false}
+97,-2,233 observer{powered: false, facing: up}
+98,-2,236 moving_piston{type: normal, facing: up}
+107,-2,233 sticky_piston{extended: true, facing: up}
+108,-2,233 observer{powered: true, facing: east}
+109,-2,233 observer{powered: false, facing: up}
+98,-1,236 moving_piston{type: normal, facing: up}
+101,-1,235 sticky_piston{extended: false, facing: east}
+102,-1,235 sticky_piston{extended: false, facing: down}
+103,-1,235 moving_piston{type: sticky, facing: down}
+107,-1,233 moving_piston{type: sticky, facing: up}
+98,0,236 piston{extended: false, facing: down}
+103,0,235 sticky_piston{extended: true, facing: down}
+97,1,237 piston{extended: false, facing: down}
+98,1,237 sticky_piston{extended: false, facing: east}
+99,1,236 sticky_piston{extended: false, facing: east}
+99,1,237 pink_terracotta{}
+100,1,236 observer{powered: false, facing: south}
+102,1,233 redstone_wire{east: side, power: 15, south: none, north: none, west: side}
+103,1,233 redstone_block{}
+104,1,233 piston_head{type: sticky, short: false, facing: west}
+107,1,235 repeater{powered: false, facing: east, delay: 1, locked: false}
+T 196
+101,-10,237 note_block{instrument: basedrum, powered: false, note: 0}
+101,-9,236 comparator{mode: compare, powered: false, facing: north}
+97,-8,234 redstone_wire{east: none, power: 6, south: side, north: side, west: none}
+97,-8,235 cherry_log{axis: x}
+98,-8,235 piston_head{type: sticky, short: false, facing: west}
+101,-8,237 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+107,-8,235 moving_piston{type: sticky, facing: east}
+107,-8,236 observer{powered: false, facing: south}
+108,-8,235 moving_piston{type: normal, facing: east}
+109,-8,234 redstone_wire{east: none, power: 0, south: side, north: side, west: none}
+109,-8,235 air{}
+109,-7,235 moving_piston{type: normal, facing: south}
+109,-7,236 air{}
+98,-6,237 spruce_leaves{waterlogged: false, distance: 7, persistent: true}
+107,-6,237 sticky_piston{extended: false, facing: north}
+107,-5,237 sticky_piston{extended: false, facing: north}
+107,-4,237 sticky_piston{extended: false, facing: north}
+107,-3,237 sticky_piston{extended: false, facing: north}
+99,-2,236 spruce_leaves{waterlogged: false, distance: 7, persistent: true}
+107,-2,235 air{}
+108,-2,235 moving_piston{type: normal, facing: west}
+99,-1,236 observer{powered: true, facing: down}
+100,-1,236 moving_piston{type: normal, facing: down}
+107,-1,235 observer{powered: false, facing: west}
+99,0,237 redstone_wire{east: side, power: 15, south: none, north: none, west: side}
+100,0,236 piston{extended: true, facing: down}
+100,0,237 redstone_wire{east: up, power: 14, south: none, north: none, west: side}
+101,0,236 redstone_wire{east: side, power: 12, south: up, north: none, west: none}
+101,1,236 piston_head{type: sticky, short: false, facing: west}
+101,1,237 redstone_wire{east: side, power: 13, south: none, north: side, west: side}
+103,1,236 observer{powered: false, facing: south}
+T 197
+98,-9,236 observer{powered: true, facing: up}
+103,-8,235 sticky_piston{extended: false, facing: up}
+104,-8,236 piston{extended: false, facing: west}
+97,-7,235 piston{extended: false, facing: south}
+98,-7,236 piston{extended: false, facing: up}
+99,-6,237 sticky_piston{extended: false, facing: north}
+98,-5,233 observer{powered: false, facing: west}
+98,-5,236 cherry_log{axis: y}
+99,-5,237 sticky_piston{extended: false, facing: north}
+108,-5,233 observer{powered: false, facing: east}
+97,-4,233 piston{extended: false, facing: down}
+98,-4,236 polished_blackstone_bricks{}
+99,-4,234 piston_head{type: normal, short: false, facing: south}
+99,-4,237 sticky_piston{extended: false, facing: north}
+107,-4,234 piston_head{type: normal, short: false, facing: south}
+109,-4,233 piston{extended: false, facing: down}
+98,-3,233 repeater{powered: false, facing: west, delay: 1, locked: false}
+98,-3,236 observer{powered: false, facing: up}
+99,-3,237 sticky_piston{extended: false, facing: north}
+108,-3,233 repeater{powered: false, facing: east, delay: 1, locked: false}
+98,-2,236 observer{powered: false, facing: south}
+107,-2,233 moving_piston{type: sticky, facing: up}
+108,-2,233 observer{powered: false, facing: east}
+97,-1,233 repeater{powered: false, facing: south, delay: 3, locked: false}
+98,-1,236 cherry_log{axis: y}
+103,-1,235 piston_head{type: sticky, short: false, facing: down}
+107,-1,233 air{}
+109,-1,233 repeater{powered: false, facing: south, delay: 3, locked: false}
+98,1,235 repeater{powered: false, facing: west, delay: 2, locked: false}
+99,1,235 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+100,1,236 observer{powered: true, facing: south}
+103,1,234 moving_piston{type: normal, facing: west}
+104,1,234 moving_piston{type: sticky, facing: west}
+105,1,234 sticky_piston{extended: true, facing: west}
+106,1,235 repeater{powered: true, facing: east, delay: 2, locked: false}
+T 198
+107,-8,235 sticky_piston{extended: false, facing: east}
+108,-8,235 polished_blackstone_bricks{}
+97,-7,235 piston{extended: true, facing: south}
+97,-7,236 moving_piston{type: normal, facing: south}
+109,-7,235 piston{extended: false, facing: south}
+108,-2,235 piston{extended: false, facing: west}
+99,-1,236 observer{powered: false, facing: down}
+100,-1,236 air{}
+99,0,237 redstone_wire{east: side, power: 14, south: none, north: none, west: side}
+100,0,236 moving_piston{type: normal, facing: down}
+100,0,237 redstone_wire{east: up, power: 13, south: none, north: none, west: side}
+101,0,236 redstone_wire{east: side, power: 11, south: up, north: none, west: none}
+106,0,236 moving_piston{type: normal, facing: down}
+101,1,237 redstone_wire{east: side, power: 12, south: none, north: side, west: side}
+106,1,236 piston{extended: true, facing: down}
+107,1,236 repeater{powered: true, facing: east, delay: 3, locked: false}
+T 199
+98,-9,236 observer{powered: false, facing: up}
+97,-5,233 moving_piston{type: normal, facing: down}
+109,-5,233 moving_piston{type: normal, facing: down}
+97,-4,233 piston{extended: true, facing: down}
+109,-4,233 piston{extended: true, facing: down}
+97,-2,233 observer{powered: true, facing: up}
+107,-2,233 sticky_piston{extended: false, facing: up}
+109,-2,233 observer{powered: true, facing: up}
+100,1,236 observer{powered: false, facing: south}
+103,1,234 pink_terracotta{}
+104,1,234 piston_head{type: sticky, short: false, facing: west}
+T 200
+102,-8,237 repeater{powered: false, facing: west, delay: 2, locked: false}
+97,-7,236 piston_head{type: normal, short: false, facing: south}
+100,0,236 piston{extended: false, facing: down}
+106,0,236 piston_head{type: normal, short: false, facing: down}
+T 201
+97,-5,233 air{}
+98,-5,233 observer{powered: true, facing: west}
+108,-5,233 observer{powered: true, facing: east}
+109,-5,233 air{}
+97,-4,233 moving_piston{type: normal, facing: down}
+109,-4,233 moving_piston{type: normal, facing: down}
+98,-3,233 repeater{powered: true, facing: west, delay: 1, locked: false}
+108,-3,233 repeater{powered: true, facing: east, delay: 1, locked: false}
+97,-2,233 observer{powered: false, facing: up}
+107,-2,233 sticky_piston{extended: true, facing: up}
+108,-2,233 observer{powered: true, facing: east}
+109,-2,233 observer{powered: false, facing: up}
+107,-1,233 moving_piston{type: sticky, facing: up}
+102,1,234 repeater{powered: false, facing: west, delay: 4, locked: false}
+103,1,234 air{}
+104,1,234 moving_piston{type: normal, facing: west}
+105,1,234 moving_piston{type: sticky, facing: west}
+106,1,235 repeater{powered: false, facing: east, delay: 2, locked: false}
+T 202
+T 203
+98,-5,233 observer{powered: false, facing: west}
+108,-5,233 observer{powered: false, facing: east}
+97,-4,233 piston{extended: false, facing: down}
+109,-4,233 piston{extended: false, facing: down}
+98,-3,233 repeater{powered: false, facing: west, delay: 1, locked: false}
+108,-3,233 repeater{powered: false, facing: east, delay: 1, locked: false}
+107,-2,233 moving_piston{type: sticky, facing: up}
+108,-2,233 observer{powered: false, facing: east}
+107,-1,233 air{}
+104,1,234 pink_terracotta{}
+105,1,234 sticky_piston{extended: false, facing: west}
+T 204
+106,0,236 air{}
+106,1,236 moving_piston{type: normal, facing: down}
+107,1,236 repeater{powered: false, facing: east, delay: 3, locked: false}
+T 205
+107,-2,233 sticky_piston{extended: false, facing: up}
+T 206
+106,1,236 piston{extended: false, facing: down}
+T 207
+T 208
+T 209
+T 210
+T 211
+T 212
+T 213
+T 214
+T 215
+T 216
+T 217
+T 218
+T 219
+T 220
+T 221
+T 222
+T 223
+T 224
+T 225
+T 226
+T 227
+T 228
+T 229
+T 230
+T 231
+T 232
+T 233
+T 234
+T 235
+T 236
+T 237
+T 238
+T 239
+T 240
+T 241
+T 242
+T 243
+T 244
+T 245
+T 246
+T 247
+T 248
+T 249
+T 250
+T 251
+T 252
+T 253
+T 254
+T 255
+T 256
+T 257
+T 258
+T 259
+T 260
+T 261
+T 262
+T 263
+T 264
+T 265
+T 266
+T 267
+T 268
+T 269
+T 270
+T 271
+T 272
+T 273
+T 274
+T 275
+T 276
+T 277
+T 278
+T 279
+T 280
+T 281
+T 282
+T 283
+T 284
+T 285
+T 286
+T 287
+T 288
+T 289
+T 290
+T 291
+T 292
+T 293
+T 294
+T 295
+T 296
+T 297
+T 298
+T 299
+T 300
+T 301
+T 302
+T 303
+T 304
+T 305
+T 306
+T 307
+T 308
+T 309
+T 310
+T 311
+T 312
+T 313
+T 314
+T 315
+T 316
+T 317
