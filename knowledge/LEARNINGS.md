@@ -210,3 +210,6 @@ Method that worked: replay the trace, find the first tick where cells differ, lo
 
 ## 3x3 door real trace (26.2)
 `knowledge/refs/door3x3-real-trace.txt` (lever 66,-50,143, 4 flips). Sim replay with `NOITEMS=1 npx tsx tools/tracecmp.ts <trace> 66,-50,143 1` (PHASE 0-3) matches the real game with 0 differing cells for 70 ticks in all 4 phases. So the current rules are right for this simpler door; the lum3ndo 5x5 mismatch is specific to its dust-decay/quasi-power ordering.
+
+## Quasi-connectivity real trace (26.2)
+`knowledge/refs/quasi-auto-real-trace.txt` (examples/microtests/quasi-auto.schem, lever 75,-46,174). Real game: all 5 pistons (control, dust-QC, dust-QC+kick, stone-above QC, +kick) extend as soon as the dust powers up (no kick needed, dust update reaches the piston), retract on OFF. Sim replay (`NOITEMS=1 tracecmp.ts <trace> 75,-46,174 1`, PHASE 0 and 1) matches with 0 differing cells. QC via dust is correct in the sim.
