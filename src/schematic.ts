@@ -41,7 +41,7 @@ export function convertState(full: string, warn: (m: string) => void): { type: s
     case 'redstone_lamp': return { type: name, props: keep('lit') };
     case 'piston': case 'sticky_piston': return { type: name, props: keep('facing', 'extended') };
     case 'hopper': return { type: name, props: keep('facing', 'enabled') };
-    case 'dropper': case 'dispenser': return { type: name, props: keep('facing') };
+    case 'dropper': case 'dispenser': return { type: name, props: keep('facing', 'triggered') };
     default:
       if (/_button$/.test(name)) {
         if (name !== 'stone_button' && name !== 'polished_blackstone_button') warn(`${name} treated as stone_button (20-tick press)`);
