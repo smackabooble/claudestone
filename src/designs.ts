@@ -15,6 +15,7 @@ import { buildDoor4 } from '../examples/piston-door-4x4.ts';
 import { buildLampDisplay } from '../examples/lamp-display.ts';
 import { buildWaveArm } from '../examples/wave-arm.ts';
 import { buildWaveArmFast } from '../examples/wave-arm-fast.ts';
+import { buildElevator } from '../examples/elevator.ts';
 import { FAST, makeArmSpec } from '../examples/extender-long.ts';
 
 export interface Design {
@@ -155,6 +156,13 @@ export const DESIGNS: Design[] = [
     realGameVerified: false, settle: 400,
     usage: 'lever ON = extend, OFF = retract. Pistons x=0..11, y=1, z=0 facing +x, tip stone x=12 moving to x=24. Keep the arm row clear to x=26.',
     build: (w) => ({ lever: buildWaveArmFast(w, 12).lever }),
+  },
+  {
+    name: 'piston-elevator-6',
+    description: 'Piston elevator: 6 sticky pistons stacked in a shaft push a one-block platform 6 blocks up (1.3 s) and bring it back down (6.4 s). Wave controller made of diagonal repeater lines (a repeater cannot run vertically). 43x14x33, about 980 blocks. Platform is ONE block (the stub faces around the shaft leave no room). Simulated only.',
+    realGameVerified: false, settle: 500,
+    usage: 'lever ON = platform up, OFF = down. Shaft at x=0,z=0 (pistons y=1..6, platform stone at y=7 rising to y=13). Lever 8 blocks east of the shaft at the base. Keep the shaft column clear above the platform.',
+    build: (w) => ({ lever: buildElevator(w, 6).lever }),
   },
   {
     name: 'piston-door-5x5',
