@@ -1,4 +1,11 @@
-# Accuracy ledger (target: Java 1.20, non-experimental redstone)
+# Accuracy ledger (rules: Java 1.20 core, validated against the user's real game: Minecraft Java 26.2)
+
+**Target versions: current Java Edition (1.21.x, 26.x) and older.** The sim started as 1.20 rules; real per-tick traces from
+26.2 (`knowledge/refs/lum3ndo-real-trace*.txt`, recorded with `tools/doortrace.sc`, replayed with `tools/tracecmp.ts`) are
+the ground truth. Where a trace disagrees with the 1.20 rules the sim follows the trace. Status of the lum3ndo 5x5 replay
+(2 opens, 2 closes): closing matches the real game exactly for 12 ticks (was 4), opening is still off from the first tick
+(12 cells; event order inside the first tick). `World.knobs` and `dirs.rules` are the hooks for version-specific rules.
+
 
 Nothing here is verified against a real game. "Golden" = a recorded real-Minecraft timeline in `golden/*.json`
 (same format as `examples/`); `npm test` fails if the sim disagrees. Add one per rule you can confirm.
@@ -24,7 +31,9 @@ Nothing here is verified against a real game. "Golden" = a recorded real-Minecra
 Folk-knowledge tests (`test/known.test.ts`) and a 300-seed fuzz (`test/fuzz.test.ts`) pass; they are not real recordings.
 
 Not simulated: item entities, double chests, wooden doors/trapdoors/gates, note blocks, rails, TNT blast, tripwire,
-TNT, dispenser special behaviors, chunk loading, 1.21 changes.
+TNT, dispenser special behaviors, chunk loading, 1.21+/26.x changes (unknown, learn them from traces).
+Modelled since the lum3ndo traces: stairs shape, panes, target block (dust connects), hay+campfire, leaves distance, composter level,
+moved observers pulse on arrival, CollectingNeighborUpdater ordering, stale hopper/dropper flags kept on import.
 
 ## Cross-check against MCHPRS (github.com/MCHPR/MCHPRS, Rust, targets 1.20.4)
 MCHPRS is a *simplified* redstone engine (redstone-tick scheduling, no vanilla update order, no pistons here),

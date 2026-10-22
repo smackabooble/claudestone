@@ -31,7 +31,9 @@ export const key = (p: Pos): string => `${p[0]},${p[1]},${p[2]}`;
 export const isHorizontal = (d: Dir): boolean => d !== 'up' && d !== 'down';
 
 /** Iteration order of a java.util.HashSet<BlockPos> with <=12 entries (table size 16). */
+export const rules: { setOrder: 'java' | 'insertion' } = { setOrder: 'java' };
 export function javaSetOrder(ps: Pos[]): Pos[] {
+  if (rules.setOrder === 'insertion') { const s0 = new Set<string>(); return ps.filter((p) => !s0.has(key(p)) && s0.add(key(p))); }
   const seen = new Set<string>();
   const uniq: Pos[] = [];
   for (const p of ps) if (!seen.has(key(p))) { seen.add(key(p)); uniq.push(p); }
