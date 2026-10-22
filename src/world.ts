@@ -170,14 +170,14 @@ export class World {
       if (this.get(side).type === 'redstone_wire') continue;
       for (const q of [rel(side, 'down'), rel(side, 'up')]) {
         const qb = this.get(q);
-        if (qb.type === 'redstone_wire') this.wireShapeUpdate(q, qb, opposite(d), sf);
+        if (qb.type === 'redstone_wire') this.defer(() => this.wireShapeUpdate(q, qb, opposite(d), sf));
       }
     }
   }
 
   /** neighbor.updateShape(dirTowardP, ...) for each neighbor, in vanilla shape order. */
   private updateNeighbourShapes(p: Pos, sf = 0): void {
-    for (const d of SHAPE_ORDER) this.shapeUpdate(rel(p, d), opposite(d), sf);
+    for (const d of SHAPE_ORDER) this.defer(() => this.shapeUpdate(rel(p, d), opposite(d), sf));
   }
 
   private shapeUpdate(q: Pos, dirToChanged: Dir, sf: number): void {
@@ -431,11 +431,39 @@ export class World {
   }
 
   // ---------- neighbor updates ----------
+  /**
+   * CollectingNeighborUpdater (vanilla since 1.19): updates requested while another update is running are not run
+   * recursively. They are collected, and run (depth first, in request order) after the update that requested them has
+   * finished its current step.
+   */
+  private nbStack: { run: () => boolean }[] = [];
+  private nbAdded: { run: () => boolean }[] = [];
+  private nbCount = 0;
+  private addAndRun(u: { run: () => boolean }): void {
+    const nested = this.nbCount > 0;
+    this.nbCount++;
+    if (nested) this.nbAdded.push(u); else this.nbStack.push(u);
+    if (nested) return;
+    try {
+      while (this.nbStack.length || this.nbAdded.length) {
+        for (let i = this.nbAdded.length - 1; i >= 0; i--) this.nbStack.push(this.nbAdded[i]);
+        this.nbAdded.length = 0;
+        const cur = this.nbStack[this.nbStack.length - 1];
+        while (!this.nbAdded.length) { if (!cur.run()) { this.nbStack.pop(); break; } }
+      }
+    } finally { this.nbStack.length = 0; this.nbAdded.length = 0; this.nbCount = 0; }
+  }
+  private defer(fn: () => void): void { this.addAndRun({ run: () => { fn(); return false; } }); }
+
   updateNeighborsAt(p: Pos, except?: Dir): void {
-    for (const d of UPDATE_ORDER) if (d !== except) this.neighborChanged(rel(p, d), p);
+    const dirs = UPDATE_ORDER.filter((d) => d !== except);
+    let idx = 0;
+    this.addAndRun({ run: () => { this.neighborChangedNow(rel(p, dirs[idx++]), p); return idx < dirs.length; } });
   }
 
-  private neighborChanged(p: Pos, from: Pos): void {
+  private neighborChanged(q: Pos, from: Pos): void { this.defer(() => this.neighborChangedNow(q, from)); }
+
+  private neighborChangedNow(p: Pos, from: Pos): void {
     const b = this.get(p);
     switch (b.type) {
       case 'redstone_wire':
