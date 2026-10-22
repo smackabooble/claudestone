@@ -14,6 +14,7 @@ import { buildDoor3 } from '../examples/piston-door-3x3.ts';
 import { buildDoor4 } from '../examples/piston-door-4x4.ts';
 import { buildLampDisplay } from '../examples/lamp-display.ts';
 import { buildWaveArm } from '../examples/wave-arm.ts';
+import { buildWaveArmFast } from '../examples/wave-arm-fast.ts';
 import { FAST, makeArmSpec } from '../examples/extender-long.ts';
 
 export interface Design {
@@ -140,6 +141,20 @@ export const DESIGNS: Design[] = [
     realGameVerified: false, settle: 400,
     usage: 'lever ON = extend, OFF = retract. Pistons x=0..11, y=1, z=0 facing +x, tip stone x=12 moving to x=24. Keep x=0..26 clear on the arm row z=0.',
     build: (w) => ({ lever: buildWaveArm(w, 12).lever }),
+  },
+  {
+    name: 'extender-10-wave-fast',
+    description: 'FASTEST 10-long extender: wave controller with a separate hold line (2 rt per stage) and a bridge for the odd taps. Sim: extends in 2.1 s, home after about 8.2 s (the plain wave version needs 3.9 s and 9.3 s). About 30x4x24, 500-600 blocks. Simulated only.',
+    realGameVerified: false, settle: 400,
+    usage: 'lever ON = extend, OFF = retract. Pistons x=0..9, y=1, z=0 facing +x, tip stone x=10 moving to x=20. Lever 6 blocks west of the first piston. Keep the arm row clear to x=22.',
+    build: (w) => ({ lever: buildWaveArmFast(w, 10).lever }),
+  },
+  {
+    name: 'extender-12-wave-fast',
+    description: 'FASTEST 12-long extender (the longest possible): wave controller with a separate hold line. Sim: extends in about 2.5 s, home after about 10 s. Simulated only.',
+    realGameVerified: false, settle: 400,
+    usage: 'lever ON = extend, OFF = retract. Pistons x=0..11, y=1, z=0 facing +x, tip stone x=12 moving to x=24. Keep the arm row clear to x=26.',
+    build: (w) => ({ lever: buildWaveArmFast(w, 12).lever }),
   },
   {
     name: 'piston-door-5x5',
