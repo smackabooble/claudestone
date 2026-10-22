@@ -4,7 +4,7 @@
  * The real state at tick T (start of tick) is the initial state plus all changes up to and including T.
  */
 import { readFileSync } from 'node:fs';
-import { convertState } from '../src/schematic.ts';
+import { convertState, loadSchematic } from '../src/schematic.ts';
 import { World } from '../src/world.ts';
 
 type Cell = { name: string; props: Record<string, string> };
@@ -33,6 +33,20 @@ export const toBlock = (c: Cell) => {
   const full = `minecraft:${c.name}` + (Object.keys(c.props).length ? `[${Object.entries(c.props).map(([k, v]) => `${k}=${v}`).join(',')}]` : '');
   return convertState(full, (m) => warns.push(m));
 };
+
+/** world from a map of trace cells; items (container contents, not in the trace) come from a litematic of the same build
+ *  whose coordinates are offset by (ox,oy,oz) (the trace is in world coordinates). */
+export function buildWorld(all: Map<string, Cell>, itemsFile?: string, off: [number, number, number] = [97, -10, 232]): World {
+  const w = new World();
+  for (const [k, c] of all) { const b = toBlock(c); if (b && b.type !== 'moving_piston') { const [x, y, z] = k.split(',').map(Number); w.setRaw([x, y, z], b.type, b.props); } }
+  if (itemsFile) {
+    const s = loadSchematic(readFileSync(itemsFile));
+    for (const it of s.items ?? []) for (const i of it.items) { try { w.setItem([it.pos[0] + off[0], it.pos[1] + off[1], it.pos[2] + off[2]], i.slot, { id: i.id, count: i.count }); } catch { /* container not at this position */ } }
+  }
+  return w;
+}
+export const itemsFor = (phase: number): string | undefined => process.env.NOITEMS ? undefined : `knowledge/refs/door-10x10-abfielder-real-${phase % 2 === 0 ? 'closed' : 'open'}.litematic`;
+
 /** one comparable token per cell */
 export const sigOf = (type: string, p: Record<string, any>): string => {
   if (type === 'air') return '';
@@ -62,11 +76,9 @@ if (process.argv[1]?.endsWith('tracecmp.ts')) {
   // replay real up to the tick before the chosen flip
   for (const t of tr.ticks) { if (t.t >= start) break; for (const [k, c] of t.ch) apply(k, c); }
   // re-sync the simulator to the real state just before the flip
-  const w2 = new World();
-  for (const [k, s] of real) void s;
   const all = new Map<string, Cell>(); for (const [k, c] of tr.init) all.set(k, c);
   for (const t of tr.ticks) { if (t.t >= start) break; for (const [k, c] of t.ch) all.set(k, c); }
-  for (const [k, c] of all) { const b = toBlock(c); if (b && b.type !== 'moving_piston') { const [x, y, z] = k.split(',').map(Number); w2.setRaw([x, y, z], b.type, b.props); } }
+  const w2 = buildWorld(all, itemsFor(phase));
   w2.run(2);
   w2.use(lever);
   const off = Number(offArg ?? 0);

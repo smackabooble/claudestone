@@ -9,7 +9,7 @@ type C = { [k: string]: Tag };
 const num = (v: Tag): number => Number(v as number | bigint);
 
 const DIRECT = new Set([
-  'stone', 'log', 'leafblock', 'hay_block', 'target', 'pane', 'glass', 'obsidian', 'furnace', 'leaves', 'partial', 'campfire', 'stairs', 'slime_block', 'redstone_wire', 'redstone_block', 'lever', 'repeater',
+  'stone', 'composter', 'log', 'leafblock', 'hay_block', 'target', 'pane', 'glass', 'obsidian', 'furnace', 'leaves', 'partial', 'campfire', 'stairs', 'slime_block', 'redstone_wire', 'redstone_block', 'lever', 'repeater',
   'comparator', 'observer', 'redstone_torch', 'redstone_wall_torch', 'redstone_lamp', 'piston',
   'sticky_piston', 'hopper', 'dropper', 'dispenser', 'chest', 'barrel', 'stone_button', 'honey_block', 'tnt', 'stone_pressure_plate',
 ]);
@@ -47,6 +47,7 @@ export function convertState(full: string, warn: (m: string) => void): { type: s
         if (name !== 'stone_button' && name !== 'polished_blackstone_button') warn(`${name} treated as stone_button (20-tick press)`);
         return { type: 'stone_button', props: keep('face', 'facing', 'powered') };
       }
+      if (name === 'composter') return { type: 'composter', props: { level: Number(raw.level ?? 0) }, orig: name };
       if (name === 'hay_block') return { type: 'hay_block', props: {}, orig: name };
       if (DIRECT.has(name)) return { type: name, props: {} };
       if (/glass_pane$|^iron_bars$/.test(name)) return { type: 'pane', props: { north: raw.north === true, east: raw.east === true, south: raw.south === true, west: raw.west === true }, orig: name };
@@ -63,7 +64,7 @@ export function convertState(full: string, warn: (m: string) => void): { type: s
         return { type: 'leaves', props: {}, orig: name };
       }
       if (/_stairs$/.test(name)) { warn(`${name} imported as a bottom stair (shape follows neighbouring stairs, observers see shape changes)`); return { type: 'stairs', props: { facing: raw.facing ?? 'north', half: 'bottom', shape: raw.shape ?? 'straight' }, orig: name }; }
-      if (/_(slab|carpet|trapdoor|wall|fence|fence_gate|button|pressure_plate)$|(^|_)rail$|^(composter|tripwire_hook|cauldron|lectern|flower_pot|snow)$/.test(name)) {
+      if (/_(slab|carpet|trapdoor|wall|fence|fence_gate|button|pressure_plate)$|(^|_)rail$|^(tripwire_hook|cauldron|lectern|flower_pot|snow)$/.test(name)) {
         warn(`${name} treated as a partial block (no dust support, no conduction)`);
         return { type: 'partial', props: {}, orig: name };
       }

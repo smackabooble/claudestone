@@ -51,6 +51,7 @@ const DEFS: Record<string, Def> = {
   pane: { solid: false, conductor: false, source: false }, // glass panes / iron bars: only their connection flags matter (observers see them change)
   log: { solid: true, conductor: true, source: false }, // BlockTags.LOGS: leaf distance 0
   leafblock: { solid: true, conductor: false, source: false }, // real leaves with a distance (1..7) that follows nearby logs
+  composter: { solid: false, conductor: false, source: false }, // analog output = level (comparators read it)
   hay_block: { solid: true, conductor: true, source: false }, // like stone, but a campfire above it gets signal_fire=true
   target: { solid: true, conductor: true, source: true }, // solid conductor like stone, but isSignalSource: dust connects to it (output power 0 without projectiles)
   glass: { solid: true, conductor: false, source: false },
@@ -850,9 +851,10 @@ export class World {
   }
 
   // ---------- comparator ----------
-  private hasAnalog(b: Block): boolean { return b.type in CONTAINER_SIZE; }
+  private hasAnalog(b: Block): boolean { return b.type in CONTAINER_SIZE || b.type === 'composter'; }
   private analog(b: Block, p: Pos): number {
     if (b.p.signal !== undefined) return b.p.signal; // manual override
+    if (b.type === 'composter') return b.p.level ?? 0;
     const be = this.bes.get(key(p));
     if (!be) return 0;
     let f = 0, used = 0;
