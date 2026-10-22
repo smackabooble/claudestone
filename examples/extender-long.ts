@@ -37,13 +37,40 @@ export function pulseOrder(n: number): number[] {
   return path.reverse();
 }
 
-export function makeArmSpec(n: number, opt: { K?: number; xw?: number; xe?: number } = {}): ArmSpec {
+/** Faster return: pulses whose cells do not touch run at the same time. Each pulse waits `gap` rt after the last pulse
+ *  (or retraction) that touched one of its cells x..x+2. */
+export interface ArmTiming { gap?: number; width?: number; retract?: number; ext?: number; settle?: number; start?: number }
+export function schedulePulses(n: number, order: number[], t: ArmTiming = {}): { x: number; at: number }[] {
+  const gap = t.gap ?? 4, R = t.retract ?? 3, E = t.ext ?? 3, settle = t.settle ?? 2;
+  const off = (k: number) => (k === 0 ? E * (n - 1) + R * (n - 1) + 1 : E * (n - 1) + R * (n - 1 - k)); // k = piston index 0..n-1
+  const touch = new Map<number, number>();
+  const mark = (c: number, v: number) => touch.set(c, Math.max(touch.get(c) ?? 0, v));
+  for (let k = 0; k < n; k++) { mark(k === 0 ? 0 : 2 * k - 1, off(k) + settle); if (k > 0) mark(2 * k - 1, off(k - 1) + settle); }
+  mark(2 * n - 1, off(n - 1) + settle);
+  const out: { x: number; at: number }[] = [];
+  for (const x of order) {
+    let at = t.start ?? 0;
+    for (let c = x; c <= x + 2; c++) at = Math.max(at, (touch.get(c) ?? 0) + (touch.has(c) ? 0 : 0));
+    for (let c = x; c <= x + 2; c++) if (touch.has(c) && (touch.get(c)! > 0)) at = Math.max(at, touch.get(c)!);
+    out.push({ x, at });
+    for (let c = x; c <= x + 2; c++) mark(c, at + gap);
+  }
+  return out;
+}
+
+/** Faster preset (sim: 10-long extends in ~2.3 s and is home after ~9 s instead of ~25 s): independent pulses run in parallel,
+ *  extension stages 2 rt apart. Less margin than the default; the sim tolerates gap 2 / width 2 as well. */
+export const FAST: ArmTiming = { gap: 3, width: 3, retract: 3, ext: 2 };
+
+export function makeArmSpec(n: number, opt: { K?: number; xw?: number; xe?: number; timing?: ArmTiming } = {}): ArmSpec {
   const order = pulseOrder(n);
-  const holds = Array.from({ length: n }, (_, i) => ({ x: 2 * i, on: 3 * i, off: i === 0 ? 6 * (n - 1) + 1 : 3 * (n - 1) + 3 * (n - 1 - i) }));
-  const start = 3 * n + 4;
-  const pulses = order.map((x, i) => ({ x, side: start + 4 * i, rear: start + 3 + 4 * i }));
-  const maxAbs = pulses.length ? pulses[pulses.length - 1].rear : 6 * n;
-  const K = opt.K ?? Math.max(16, Math.ceil(maxAbs / 6));
+  const tm = opt.timing; const E = tm?.ext ?? 3, R = tm?.retract ?? 3;
+  const holds = Array.from({ length: n }, (_, i) => ({ x: 2 * i, on: E * i, off: i === 0 ? E * (n - 1) + R * (n - 1) + 1 : E * (n - 1) + R * (n - 1 - i) }));
+  const width = tm?.width ?? 3;
+  const sched = tm ? schedulePulses(n, order, tm) : order.map((x, i) => ({ x, at: 3 * n + 4 + 4 * i }));
+  const pulses = sched.map(({ x, at }) => ({ x, side: at, rear: at + width }));
+  const maxAbs = Math.max(...pulses.map((p) => p.rear), 6 * n);
+  const K = opt.K ?? Math.max(16, Math.ceil(maxAbs / 6), 4 * n);
   const xw = opt.xw ?? -Math.ceil((K + maxAbs) / 4) - 8;
   const xe = opt.xe ?? Math.ceil((K + maxAbs) / 4) + 2 * n + 8;
   return { n, K, xw, xe, holds, pulses };
@@ -51,7 +78,8 @@ export function makeArmSpec(n: number, opt: { K?: number; xw?: number; xe?: numb
 
 if (process.argv[1]?.endsWith('extender-long.ts')) {
   const n = Number(process.argv[2] ?? 10);
-  const spec = makeArmSpec(n);
+  const fast = process.argv[3] === 'fast';
+  const spec = makeArmSpec(n, fast ? { timing: FAST } : {});
   console.log(`N=${n} pulses=${spec.pulses.length} order=${pulseOrder(n).join(' ')} K=${spec.K} xw=${spec.xw} xe=${spec.xe}`);
   const w = new World();
   const { lever } = buildFlatArm(w, spec);
@@ -64,6 +92,6 @@ if (process.argv[1]?.endsWith('extender-long.ts')) {
   w.use(lever); w.run(spec.pulses.at(-1)!.rear * 2 + 400);
   console.log('lever OFF: tip at', tipXN(w, n), 'home', homeN(w, n));
   const f = new World(); buildFlatArm(f, spec); f.run(400);
-  writeFileSync(`examples/extender-${n}.schem`, exportSchem(f).buffer);
-  console.log(`wrote examples/extender-${n}.schem`);
+  writeFileSync(`examples/extender-${n}${fast ? '-fast' : ''}.schem`, exportSchem(f).buffer);
+  console.log(`wrote examples/extender-${n}${fast ? '-fast' : ''}.schem`);
 }

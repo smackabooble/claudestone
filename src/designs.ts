@@ -13,7 +13,7 @@ import { buildDoor } from '../examples/piston-door-2x2.ts';
 import { buildDoor3 } from '../examples/piston-door-3x3.ts';
 import { buildDoor4 } from '../examples/piston-door-4x4.ts';
 import { buildLampDisplay } from '../examples/lamp-display.ts';
-import { makeArmSpec } from '../examples/extender-long.ts';
+import { FAST, makeArmSpec } from '../examples/extender-long.ts';
 
 export interface Design {
   name: string;
@@ -111,6 +111,13 @@ export const DESIGNS: Design[] = [
     realGameVerified: false, settle: 400,
     usage: 'lever ON = extend (tip moves from x=10 to x=20 along +x at y=0), OFF = retract. Keep x=0..20 clear east of the arm. Allow about 25 s to extend and 40 s to come home.',
     build: (w) => ({ lever: buildFlatArm(w, makeArmSpec(10)).lever }),
+  },
+  {
+    name: 'extender-10-fast',
+    description: 'Same 10-long extender but faster: independent gap-closing pulses run in parallel and the extension stages are 2 rt apart. Sim: extends in about 2.3 s, home after about 9 s (the slow one needs about 25 s). About 95x2x128. Simulated only, less timing margin than the slow one.',
+    realGameVerified: false, settle: 400,
+    usage: 'lever ON = extend (tip moves from x=10 to x=20 along +x at y=0), OFF = retract. Keep x=0..20 clear east of the arm.',
+    build: (w) => ({ lever: buildFlatArm(w, makeArmSpec(10, { timing: FAST })).lever }),
   },
   {
     name: 'piston-door-5x5',
