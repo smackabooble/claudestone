@@ -113,7 +113,7 @@ function foreignNear(b: Board, c: Pos, net: string, allow?: Set<string>, own?: S
 /** Route dust from the dust cell `from` to the dust cell `to` (both already placed, net `net`). Returns the full cell list. */
 export function route(b: Board, from: Pos, to: Pos, net: string, o: RouteOpts = {}): Pos[] {
   // the search box (start/goal bounding box plus a margin) keeps an impossible route from flooding the unbounded 3D space
-  const margins = o.margin ? [o.margin] : [25, 60, 150];
+  const margins = o.margin ? [o.margin] : [40, 150];
   let lastErr: unknown;
   for (const margin of margins) {
     const avoid = new Set<string>();
@@ -152,7 +152,7 @@ function routeOnce(b: Board, from: Pos, to: Pos, net: string, o: RouteOpts, avoi
   type N = { c: Pos; g: number; f: number; prev?: N; k: string; d: number; ck: string; vr: number; hr: number };
   const open = new Heap<N>(); const best = new Map<string, number>();
   const h = (c: Pos) => Math.abs(c[0] - to[0]) + Math.abs(c[1] - to[1]) + Math.abs(c[2] - to[2]);
-  const HW = Number(process.env.ROUTE_W ?? 2);                 // weighted A*: a slightly longer lane is fine, a failed search is not
+  const HW = Number(process.env.ROUTE_W ?? 3);                 // weighted A*: a slightly longer lane is fine, a failed search is not
   const start: N = { c: from, g: 0, f: HW * h(from), k: keyOf(from) + '|-1|3|0', d: -1, ck: keyOf(from), vr: 0, hr: 3 };
   open.push(start); best.set(start.k, 0);
   let nodes = 0; const bb = [1e9, -1e9, 1e9, -1e9, 1e9, -1e9];
