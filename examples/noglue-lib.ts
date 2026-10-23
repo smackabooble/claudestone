@@ -284,7 +284,7 @@ export function conveyor(b: Board, from: Pos, to: Pos, net: string, o: { own?: s
     if (!b.isFree(c)) return why(1, c);
     // not directly under a foreign container (the hopper would pull from it)
     const up = b.tag([c[0], c[1] + 1, c[2]]);
-    if (up && isContainer(up) && keyOf([c[0], c[1] + 1, c[2]]) !== keyOf(prev)) return why(2, c);
+    if (up && up.kind === 'piston' && up.net === '__s' && keyOf([c[0], c[1] + 1, c[2]]) !== keyOf(prev)) return why(2, c);
     // a hopper directly below would suck the items out of this one (only the final target may sit below)
     { const dn: Pos = [c[0], c[1] - 1, c[2]]; const td = b.tag(dn); if (td && td.kind === 'piston' && td.net === '__s' && keyOf(dn) !== goal) return why(3, c); }   // only hoppers suck from above; droppers/crafters below do not
     // dust powers its floor block, and a powered block next to a hopper locks it
@@ -315,6 +315,15 @@ export function conveyor(b: Board, from: Pos, to: Pos, net: string, o: { own?: s
       if (keyOf(nx) === goal) {
         const path: Pos[] = []; for (let n: N | undefined = cur; n; n = n.prev) path.push(n.c);
         path.reverse();
+        // a hopper directly under a dropper/crafter would suck it empty: step down one cell earlier instead (L-shape: p -> c -> below  becomes  p -> p.below -> below)
+        for (let i = 1; i + 1 < path.length; i++) {
+          const c = path[i], p = path[i - 1], nx = path[i + 1];
+          const above = b.tag([c[0], c[1] + 1, c[2]]);
+          if (above && above.kind === 'piston' && above.net === '__q' && p[1] === c[1] && nx[0] === c[0] && nx[2] === c[2] && nx[1] === c[1] - 1) {
+            const q: Pos = [p[0], p[1] - 1, p[2]];
+            if (ok(q, p) || b.isFree(q)) path.splice(i, 1, q);
+          }
+        }
         // place hoppers: facing = direction to the next cell; last faces into `to`
         for (let i = 0; i < path.length; i++) {
           const nextC = i + 1 < path.length ? path[i + 1] : to;
