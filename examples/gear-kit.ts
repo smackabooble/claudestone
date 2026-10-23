@@ -152,9 +152,20 @@ export function buildTimeline(b: Board, O: Pos, name: string, d: number, s: numb
   const startPin = pre > 0 ? P(0, v0pre + 1) : P(0, -1);
   if (noPC) return { start: startPin, PD: out.PD ?? null, PS: out.PS ?? null, PC: P(0, -1) };
   const pc = snake(nodeV[nodeV.length - 1], (gap + 1) * SLOT_RT, `${net}.PC`, false);
-  // two outputs for the PC pulse (the end cell has two free sides): east/west repeater + dust pin, and south repeater + dust pin
-  const dx = pc.x > 0 ? 1 : -1;
-  b.rep(P(pc.x + dx, pc.z), dx > 0 ? 'east' : 'west', 1, `${net}.PC`, 'orange'); b.dust(P(pc.x + 2 * dx, pc.z), `${net}.PCa`, 'orange');
-  b.rep(P(pc.x, pc.z + 1), 'south', 1, `${net}.PC`, 'orange'); b.dust(P(pc.x, pc.z + 2), `${net}.PCb`, 'orange');
-  return { start: startPin, PD: out.PD ?? null, PS: out.PS ?? null, PC: P(pc.x + 2 * dx, pc.z), PCalt: [P(pc.x, pc.z + 2)] };
+  // four full-strength copies of the PC pulse: repeater -> dust hub -> repeaters east/west, north, south -> dust stems -> pins, plus one repeater south of the end cell
+  // (the stems keep every pin a few cells away from the other pins, so a lane can leave each of them)
+  const dx = pc.x > 0 ? 1 : -1, pnet = `${net}.PC`, STEM = 3;
+  const stem = (x0: number, z0: number, ux: number, uz: number, flow: 'east' | 'west' | 'north' | 'south'): Pos => {
+    b.rep(P(x0 + ux, z0 + uz), flow, 1, pnet, 'orange');
+    for (let k = 2; k <= STEM + 1; k++) b.dust(P(x0 + ux * k, z0 + uz * k), pnet, 'orange');
+    return P(x0 + ux * (STEM + 1), z0 + uz * (STEM + 1));
+  };
+  b.rep(P(pc.x + dx, pc.z), dx > 0 ? 'east' : 'west', 1, pnet, 'orange'); b.dust(P(pc.x + 2 * dx, pc.z), pnet, 'orange');
+  const pcs = [
+    stem(pc.x + 2 * dx, pc.z, dx, 0, dx > 0 ? 'east' : 'west'),
+    stem(pc.x + 2 * dx, pc.z, 0, -1, 'north'),
+    stem(pc.x + 2 * dx, pc.z, 0, 1, 'south'),
+    stem(pc.x, pc.z, 0, 1, 'south'),
+  ];
+  return { start: startPin, PD: out.PD ?? null, PS: out.PS ?? null, PC: pcs[0], PCalt: pcs.slice(1) };
 }

@@ -79,7 +79,7 @@ class Heap<T extends { f: number }> {
 
 const connective = (t: Tag | undefined, net: string, own?: Set<string>): boolean => !!t && CONNECTIVE.includes(t.kind) && t.net !== net && !(own && t.net && own.has(t.net));
 
-export interface RouteOpts { floor?: string; allow?: Set<string>; maxNodes?: number; own?: string[]; strict?: boolean; margin?: number }
+export interface RouteOpts { floor?: string; allow?: Set<string>; maxNodes?: number; own?: string[]; strict?: boolean; margin?: number; /** the first and last cells of the lane run level (room for boosters next to the pins) */ levelEnds?: boolean }
 
 /** keep-out test: is there a foreign connective part within the 3x3x3 neighbourhood of c? */
 const dbgSeen = new Set<string>();
@@ -154,7 +154,7 @@ function routeOnce(b: Board, from: Pos, to: Pos, net: string, o: RouteOpts, avoi
   const open = new Heap<N>(); const best = new Map<string, number>();
   const h = (c: Pos) => Math.abs(c[0] - to[0]) + Math.abs(c[1] - to[1]) + Math.abs(c[2] - to[2]);
   const HW = Number(process.env.ROUTE_W ?? 3);                 // weighted A*: a slightly longer lane is fine, a failed search is not
-  const start: N = { c: from, g: 0, f: HW * h(from), k: keyOf(from) + '|-1|3|0', d: -1, ck: keyOf(from), vr: 0, hr: 3 };
+  const start: N = { c: from, g: 0, f: HW * h(from), k: keyOf(from) + '|-1|' + (o.levelEnds ? 0 : 3) + '|0', d: -1, ck: keyOf(from), vr: 0, hr: o.levelEnds ? 0 : 3 };
   open.push(start); best.set(start.k, 0);
   let nodes = 0; const bb = [1e9, -1e9, 1e9, -1e9, 1e9, -1e9];
   while (open.length) {
@@ -214,6 +214,7 @@ function routeOnce(b: Board, from: Pos, to: Pos, net: string, o: RouteOpts, avoi
         const vr = vertical ? cur.vr + 1 : 0, hr = vertical ? 0 : Math.min(3, cur.hr + 1);
         if (vertical && (vr > 4 || (cur.vr === 0 && cur.hr < 3))) return;
         const ck = keyOf(c); const k = ck + '|' + di + '|' + (vr > 0 ? 'v' + vr : 'h' + hr); const isGoal = ck === goal;
+        if (isGoal && o.levelEnds && (vertical || cur.hr < 3)) return;           // arrive level, after at least 3 level cells
         if (!isGoal) { if (!blocked(c)) { /* free */ } else return; }
         if (needClear && !free(needClear) && b.tag(needClear)?.kind !== 'clear') return;
         if (!isGoal && conflictsWithRecent(cur, c, needClear)) return;
@@ -385,4 +386,22 @@ export function conveyor(b: Board, from: Pos, to: Pos, net: string, o: { own?: s
   if (process.env.DEBUG_ROUTE === '4') for (const [dx, dy, dz] of [[1,0,0],[-1,0,0],[0,0,1],[0,0,-1],[0,1,0],[1,1,0],[0,1,1],[0,1,-1],[-1,1,0]]) { const c: Pos = [to[0] + dx, to[1] + dy, to[2] + dz]; console.log(' goalnb', c.join(','), JSON.stringify(b.tag(c)), 'ok?', ok(c, c), 'rule', lastWhy); }
   if (process.env.DEBUG_ROUTE === '1') for (let x = bb[0] - 1; x <= bb[1] + 1; x++) for (let z = bb[4] - 1; z <= bb[5] + 1; z++) { const c: Pos = [x, 4, z]; if (!best.has(keyOf(c))) console.log(' blocked', c.join(','), JSON.stringify(b.tag(c)), 'reserveNear', [-1,0,1].some(dx=>[-1,0,1].some(dy=>[-1,0,1].some(dz=>b.tag([x+dx,4+dy,z+dz])?.kind==='reserve'))), 'above', JSON.stringify(b.tag([x,5,z]))); }
   throw new Error(`conveyor ${net}: no path from ${from.join(',')} to ${to.join(',')} (explored ${nodes} nodes, x ${bb[0]}..${bb[1]} y ${bb[2]}..${bb[3]} z ${bb[4]}..${bb[5]})`);
+}
+
+/** Make sure a repeater sits within `win` cells of the end (or the start) of a routed path, so the pin it feeds (or leaves from) sees nearly full strength. */
+export function boostEnd(b: Board, path: Pos[], net: string, win = 5, atStart = false): boolean {
+  const n = path.length;
+  const idx: number[] = []; for (let k = 1; k <= win; k++) idx.push(atStart ? k : n - 1 - k);
+  for (const i of idx) if (i >= 1 && i <= n - 2 && b.tag(path[i])?.kind === 'rep') return true;
+  for (const i of idx) {
+    if (i < 1 || i > n - 2) continue;
+    const p = path[i - 1], c = path[i], q = path[i + 1];
+    if (!(p[1] === c[1] && q[1] === c[1] && c[0] - p[0] === q[0] - c[0] && c[2] - p[2] === q[2] - c[2])) continue;
+    const flow: Dir = q[0] > c[0] ? 'east' : q[0] < c[0] ? 'west' : q[2] > c[2] ? 'south' : 'north';
+    b.w.remove(c); b.occ.delete(keyOf(c));
+    b.w.place(c, 'repeater', { facing: OPP[flow], delay: 1 });
+    b.occ.set(keyOf(c), { kind: 'rep', net });
+    return true;
+  }
+  return false;
 }
