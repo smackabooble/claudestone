@@ -40,7 +40,7 @@ export function toBlockState(b: Block): string {
     case 'copper_bulb': return st({ lit: !!p.lit, powered: !!p.powered });
     case 'iron_door': return st({ facing: p.facing, half: p.half, hinge: 'left', open: !!p.open, powered: !!p.powered });
     case 'stone_pressure_plate': return st({ powered: !!p.powered });
-    case 'chest': return st({ facing: 'north', type: 'single', waterlogged: false });
+    case 'chest': return st({ facing: p.facing ?? 'north', type: p.type ?? 'single', waterlogged: false });
     case 'barrel': return st({ facing: 'up', open: false });
     case 'moving_piston': return 'minecraft:air';
     default: return `minecraft:${b.type}`;

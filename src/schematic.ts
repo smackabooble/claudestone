@@ -44,6 +44,7 @@ export function convertState(full: string, warn: (m: string) => void): { type: s
     case 'piston': case 'sticky_piston': return { type: name, props: keep('facing', 'extended') };
     case 'hopper': return { type: name, props: keep('facing', 'enabled') };
     case 'dropper': case 'dispenser': return { type: name, props: keep('facing', 'triggered') };
+    case 'chest': return { type: name, props: keep('facing', 'type') };
     case 'crafter': return { type: name, props: { facing: String(raw.orientation ?? 'north_up').split('_')[0], triggered: !!raw.triggered } };
     default:
       if (/_button$/.test(name)) {

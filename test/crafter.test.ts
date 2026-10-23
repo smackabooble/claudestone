@@ -81,3 +81,17 @@ test('crafter survives export -> import', () => {
   const b = s.blocks.find((x) => x.type === 'crafter')!;
   assert.equal(b.props.facing, 'east');
 });
+
+test('double chest: both halves share one 54-slot inventory; a hopper under each half pulls from it', () => {
+  const w = new World();
+  w.place([0, 1, 0], 'chest', { facing: 'north', type: 'left' });   // left half; partner = facing.clockwise = east
+  w.place([1, 1, 0], 'chest', { facing: 'north', type: 'right' });
+  w.place([0, 0, 0], 'hopper', { facing: 'west' }); w.place([1, 0, 0], 'hopper', { facing: 'east' });
+  w.place([-1, 0, 0], 'chest'); w.place([2, 0, 0], 'chest');
+  w.setItem([1, 1, 0], 0, { id: 'diamond', count: 4 });                // set through the right half
+  assert.equal(w.items([0, 1, 0])![0]!.count, 4, 'same inventory');
+  w.run(80);
+  const got = (p: [number, number, number]) => w.items(p)!.reduce((a, i) => a + (i?.count ?? 0), 0);
+  assert.equal(got([-1, 0, 0]) + got([2, 0, 0]), 4);
+  assert.ok(got([-1, 0, 0]) > 0 && got([2, 0, 0]) > 0, 'both hoppers served');
+});

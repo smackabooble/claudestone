@@ -148,7 +148,7 @@ export class World {
     this.store(p, nb);
     if (old.type !== nb.type) {
       this.bes.delete(key(p));
-      const size = CONTAINER_SIZE[nb.type];
+      const size = this.beSize(nb);
       if (size) this.bes.set(key(p), this.newBE(nb.type, size, nb.p.inv));
       delete nb.p.inv;
       this.onRemove(p, old, nb, (flags & 64) !== 0);
@@ -301,6 +301,7 @@ export class World {
       case 'hopper': b.p.facing ??= 'down'; b.p.enabled ??= true; break;
       case 'dropper': case 'dispenser': b.p.facing ??= 'north'; b.p.triggered = false; break;
       case 'crafter': b.p.facing ??= 'north'; b.p.triggered = false; break;
+      case 'chest': b.p.facing ??= 'north'; b.p.type ??= 'single'; break;
       case 'iron_door': {
         b.p.half = 'lower'; b.p.facing ??= 'north';
         const on = this.hasNeighborSignal(p) || this.hasNeighborSignal(rel(p, 'up'));
@@ -330,7 +331,7 @@ export class World {
     if (type === 'redstone_wire') { b.p.power ??= 0; for (const d of HORIZONTAL) b.p[d] ??= 'none'; }
     if (type === 'comparator') b.p.output ??= 0;
     this.store(p, b);
-    const size = CONTAINER_SIZE[type];
+    const size = this.beSize(b);
     this.bes.delete(key(p));
     if (size) this.bes.set(key(p), this.newBE(type, size, b.p.inv));
     delete b.p.inv;
@@ -912,7 +913,7 @@ export class World {
     if (b.p.signal !== undefined) return b.p.signal; // manual override
     if (b.type === 'composter') return b.p.level ?? 0;
     if (b.type === 'copper_bulb') return b.p.lit ? 15 : 0;
-    const be = this.bes.get(key(p));
+    const be = this.beAt(p);
     if (!be) return 0;
     if (b.type === 'crafter') return be.inv.filter((it, i) => it || be.disabled?.[i]).length;
     let f = 0, used = 0;
@@ -1228,6 +1229,16 @@ export class World {
   }
 
   // ---------- containers ----------
+  /** chest halves: 'left' owns a 54-slot inventory, 'right' has none and resolves to its partner (facing.clockwise of the left half) */
+  private beSize(b: Block): number {
+    if (b.type === 'chest') { if (b.p.type === 'right') return 0; if (b.p.type === 'left') return 54; }
+    return CONTAINER_SIZE[b.type] ?? 0;
+  }
+  private beAt(p: Pos): BE | undefined {
+    const b = this.get(p);
+    if (b.type === 'chest' && b.p.type === 'right') return this.bes.get(key(rel(p, counterClockwise(b.p.facing))));
+    return this.bes.get(key(p));
+  }
   private newBE(type: string, size: number, inv?: (Item | null | [string, number])[]): BE {
     const items: (Item | null)[] = Array(size).fill(null);
     (inv ?? []).slice(0, size).forEach((it, i) => {
@@ -1239,9 +1250,9 @@ export class World {
   }
 
   /** Items in a container (null for empty slots). */
-  items(p: Pos): (Item | null)[] | undefined { return this.bes.get(key(p))?.inv.map((i) => (i ? { ...i } : null)); }
+  items(p: Pos): (Item | null)[] | undefined { return this.beAt(p)?.inv.map((i) => (i ? { ...i } : null)); }
   setItem(p: Pos, slot: number, item: Item | null): void {
-    const be = this.bes.get(key(p));
+    const be = this.beAt(p);
     if (!be) throw new Error(`no container at ${p.join(',')}`);
     be.inv[slot] = item ? { id: norm(item.id), count: item.count } : null;
     this.updateComparatorsAround(p);
@@ -1299,21 +1310,21 @@ export class World {
   }
   /** click an empty crafter slot to disable/enable it (disabled slots hold nothing and count as empty in the recipe) */
   setSlotDisabled(p: Pos, slot: number, disabled: boolean): void {
-    const be = this.bes.get(key(p));
+    const be = this.beAt(p);
     if (!be || be.type !== 'crafter') throw new Error(`no crafter at ${p.join(',')}`);
     (be.disabled ??= Array(be.inv.length).fill(false))[slot] = disabled;
     if (disabled) be.inv[slot] = null;
     this.updateComparatorsAround(p);
   }
   private crafterTick(p: Pos, b: Block): void {
-    const be = this.bes.get(key(p));
+    const be = this.beAt(p);
     if (!be) return;
     const grid = be.inv.map((it, i) => (be.disabled?.[i] ? null : it ? it.id : null));
     const out = craft(grid);
     if (!out) return;
     for (let i = 0; i < be.inv.length; i++) if (grid[i]) this.takeOne(be, i, p);
     const fp = rel(p, b.p.facing);
-    const dest = this.bes.get(key(fp));
+    const dest = this.beAt(fp);
     let left = out.count;
     while (dest && left > 0 && this.insertOne(be, fp, dest, { id: out.id, count: 1 })) left--;
     if (left > 0) this.drops.push({ tick: this.time, pos: fp, item: { id: out.id, count: left } });
@@ -1350,7 +1361,7 @@ export class World {
 
   private hopperEject(p: Pos, b: Block, be: BE): boolean {
     const dp = rel(p, b.p.facing);
-    const dest = this.bes.get(key(dp));
+    const dest = this.beAt(dp);
     if (!dest || this.isFullBE(dest)) return false;
     for (let i = 0; i < be.inv.length; i++) {
       if (!be.inv[i]) continue;
@@ -1362,7 +1373,7 @@ export class World {
 
   private hopperSuck(p: Pos, be: BE): boolean {
     const sp = rel(p, 'up');
-    const src = this.bes.get(key(sp));
+    const src = this.beAt(sp);
     if (!src || this.isEmptyBE(src)) return false;
     for (let i = 0; i < src.inv.length; i++) {
       if (!src.inv[i]) continue;
@@ -1373,14 +1384,14 @@ export class World {
   }
 
   private dispenseFrom(p: Pos, b: Block): void {
-    const be = this.bes.get(key(p));
+    const be = this.beAt(p);
     if (!be) return;
     let slot = -1, j = 1;
     for (let k = 0; k < be.inv.length; k++) if (be.inv[k] && this.rng.nextInt(j++) === 0) slot = k;
     if (slot < 0) return;
     const d: Dir = b.p.facing;
     const fp = rel(p, d);
-    const dest = this.bes.get(key(fp));
+    const dest = this.beAt(fp);
     const one = { id: be.inv[slot]!.id, count: 1 };
     if (b.type === 'dropper' && dest) {
       if (this.insertOne(be, fp, dest, one)) this.takeOne(be, slot, p);
