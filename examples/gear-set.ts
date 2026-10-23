@@ -218,7 +218,8 @@ export function buildGearSet(w: World): Machine {
   const tSS = tPl + (gapFor('cvpAB') + 2) * SLOT_RT + 100;                         // after the stick crafter c3AB has crafted
   const tSD = tC1 + 60;                                                              // after block crafter D has crafted
   const tUnits = Math.max(Math.max(tC1, tPl + 200) + 120, tSD + 9 * SLOT_RT + Math.ceil(((hops.cvS0Dy ?? 0) * HOP_GT) / 2) + 120, tSS + 4 * SLOT_RT + Math.ceil(((hops.cvS0Sy ?? 0) * HOP_GT) / 2) + 120);
-  const delayOf = (n: string) => (n.startsWith('tP_') ? tPl : n === 'tS0S' ? tSS : n === 'tS0D' ? tSD : n.startsWith('tc1') ? tC1 : n.startsWith('t_') ? tUnits : 0);
+  const SC = Number(process.env.DELAY_SCALE ?? 1);                                    // experiment: shrink the safety margins of the group delays
+  const delayOf = (n: string) => Math.round(SC * ((n: string) => (n.startsWith('tP_') ? tPl : n === 'tS0S' ? tSS : n === 'tS0D' ? tSD : n.startsWith('tc1') ? tC1 : n.startsWith('t_') ? tUnits : 0)(n));
   for (const t of timelines) t.delayRt = delayOf(t.name);
   console.log('start delays rt: c1', tC1, 'units', tUnits, 'splitters', tSS, tSD, 'hops blocks', hopsBlocks);
   const Y = 6, ZB = 80, ZT = 104;
@@ -326,7 +327,7 @@ if (process.argv[1]?.endsWith('gear-set.ts')) {
  */
 export function loadGearSet(w: World): Machine {
   const files = ['gear-set.ts', 'gear-parts.ts', 'gear-kit.ts', 'noglue-lib.ts', '../src/designs.ts'].map((f) => new URL(f, import.meta.url));
-  const key = createHash('sha1').update(files.map((f) => (existsSync(f) ? readFileSync(f, 'utf8') : '')).join('\n')).digest('hex');
+  const key = createHash('sha1').update(files.map((f) => (existsSync(f) ? readFileSync(f, 'utf8') : '')).join('\n') + (process.env.DELAY_SCALE ?? '')).digest('hex');
   const path = new URL('../.cache/gear-set.json', import.meta.url);
   if (existsSync(path)) {
     const c = JSON.parse(readFileSync(path, 'utf8'));
