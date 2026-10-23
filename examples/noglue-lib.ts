@@ -141,6 +141,14 @@ function routeOnce(b: Board, from: Pos, to: Pos, net: string, o: RouteOpts, avoi
   const nearEnd = (k: string) => { const [x, y, z] = k.split(',').map(Number); return [from, to].some((e) => Math.abs(e[0] - x) <= 1 && Math.abs(e[1] - y) <= 1 && Math.abs(e[2] - z) <= 1); };
   const floorOk = (c: Pos) => { const t = b.tag([c[0], c[1] - 1, c[2]]); return !t || t.kind === 'wool'; };
   const free = (c: Pos) => { if (avoid.has(keyOf(c))) return false; const t = b.tag(c); return !t || (t.kind === 'reserve' && (t.net === net || ownSet.has(t.net ?? '') || net.startsWith(t.net ?? '\0'))); };
+  // the board does not change while one route is searched, so whether a cell can hold this route's dust is decided once per cell
+  const blockedMemo = new Map<number, boolean>();
+  const blocked = (c: Pos): boolean => {
+    const id = ((c[0] + 5000) * 20000 + (c[2] + 5000)) * 256 + (c[1] + 64);
+    let r = blockedMemo.get(id);
+    if (r === undefined) { r = !free(c) || !floorOk(c) || foreignNear(b, c, net, o.allow, ownSet, o.strict ? nearEnd : undefined); blockedMemo.set(id, r); }
+    return r;
+  };
   type N = { c: Pos; g: number; f: number; prev?: N; k: string; d: number; ck: string; vr: number; hr: number };
   const open = new Heap<N>(); const best = new Map<string, number>();
   const h = (c: Pos) => Math.abs(c[0] - to[0]) + Math.abs(c[1] - to[1]) + Math.abs(c[2] - to[2]);
@@ -200,7 +208,7 @@ function routeOnce(b: Board, from: Pos, to: Pos, net: string, o: RouteOpts, avoi
         const vr = vertical ? cur.vr + 1 : 0, hr = vertical ? 0 : Math.min(3, cur.hr + 1);
         if (vertical && (vr > 4 || (cur.vr === 0 && cur.hr < 3))) return;
         const ck = keyOf(c); const k = ck + '|' + di + '|' + hr + '|' + vr; const isGoal = ck === goal;
-        if (!isGoal) { if (!free(c) || !floorOk(c) || foreignNear(b, c, net, o.allow, ownSet, o.strict ? nearEnd : undefined)) return; }
+        if (!isGoal) { if (!blocked(c)) { /* free */ } else return; }
         if (needClear && !free(needClear) && b.tag(needClear)?.kind !== 'clear') return;
         if (!isGoal && conflictsWithRecent(cur, c, needClear)) return;
         if (needClear && connective(b.tag(needClear), net, ownSet)) return;
@@ -341,6 +349,11 @@ export function conveyor(b: Board, from: Pos, to: Pos, net: string, o: { own?: s
       const d = HDIR[dn]; const nx: Pos = [cur.c[0] + d[0], cur.c[1] + d[1], cur.c[2] + d[2]];
       const k = keyOf(nx);
       if (!ok(nx, cur.c)) continue;
+      // under a dropper/crafter a hopper would suck it empty: such a cell may only be a one-cell L-step (enter sideways, leave downwards),
+      // which the post-fix below turns into "step down first"
+      const underQ = (c: Pos) => { const t = b.tag([c[0], c[1] + 1, c[2]]); return !!t && t.kind === 'piston' && t.net === '__q'; };
+      if (underQ(cur.c) && dn !== 'down') continue;
+      if (underQ(nx) && !b.isFree([cur.c[0], cur.c[1] - 1, cur.c[2]])) continue;
       const g = cur.g + 1 + (dn === 'down' ? 0.1 : 0);
       if ((best.get(k) ?? Infinity) <= g) continue;
       best.set(k, g); open.push({ c: nx, g, f: g + h(nx), prev: cur, k });
