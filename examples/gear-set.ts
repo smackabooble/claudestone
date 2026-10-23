@@ -14,6 +14,7 @@ import { exportSchem } from '../src/export.ts';
 import { Board, route, assignRepeaters, conveyor } from './noglue-lib.ts';
 import { buildFeedPair, buildCrafterMod, buildDirectKit } from './gear-parts.ts';
 import { buildTimeline, KITS, SLOT_RT } from './gear-kit.ts';
+import { buildLift, liftFree, type Lift } from './gear-lift.ts';
 import type { Pos } from '../src/dirs.ts';
 
 const PITCH = 48;
@@ -43,6 +44,7 @@ export interface Machine {
   leftover: Pos[];           // the ONE double chest that collects the spare diamonds and the spare stick (left half first)
   planksStash: Pos;
   pins: { net: string; pin: Pos }[];   // destination pin of every pulse lane (diagnostics)
+  lifts: Lift[];
   platform: { diamonds: Pos[]; logs: Pos[]; output: Pos[]; leftover: Pos[]; button: Pos };
   outputs: Pos[];            // collector hoppers of the 8 gear crafters (facing east)
   timelines: { name: string; start: Pos; delayRt: number; PD: Pos | null; PS: Pos | null; PC: Pos }[];
@@ -129,7 +131,7 @@ export function buildGearSet(w: World): Machine {
   const logChest = c2.busA;                                                           // the log chest sits on the C2 tap bus cell
 
   // ---- platform: one deck with every chest the user touches, in the layout of knowledge/refs/diamond-maker-example.litematic ----
-  // START block + button at the left, then four double chests in a row (DIAMONDS, LOGS, OUTPUT, LEFTOVER); a hopper under each half,
+  // START block + button at the left, then four double chests in a row (DIAMONDS, LOGS, OUTPUT, LEFTOVER); a hopper under each half of the two input chests,
   // a sign on the front of each. Input chests drain straight down (or along a hopper line) into the hub chests.
   const PY = 11, CY = PY + 1;                                                          // deck / hopper level, chest level
   const CX = (i: number) => HX + 3 * i, ROWZ = HZ;
@@ -140,7 +142,7 @@ export function buildGearSet(w: World): Machine {
     return [[CX(i), CY, ROWZ], [CX(i) + 1, CY, ROWZ]] as Pos[];
   };
   const diamondsChest = dchest(0), logsChest = dchest(1), outputChest = dchest(2), leftoverChest = dchest(3);
-  for (const i of [0, 1, 2, 3]) for (const dx of [0, 1]) b.raw([CX(i) + dx, PY, ROWZ], 'hopper', { facing: 'down' }, 'piston', '__s');
+  for (const i of [0, 1]) for (const dx of [0, 1]) b.raw([CX(i) + dx, PY, ROWZ], 'hopper', { facing: 'down' }, 'piston', '__s');
   // DIAMONDS sits right above the hub block chest; LOGS sends its items along a hopper line to the log chest
   b.raw([CX(1), PY - 1, ROWZ], 'hopper', { facing: 'east' }, 'piston', '__s');
   b.raw([CX(1) + 1, PY - 1, ROWZ], 'hopper', { facing: 'west' }, 'piston', '__s');
@@ -283,11 +285,28 @@ export function buildGearSet(w: World): Machine {
     try { assignRepeaters(b, l.path, l.net, undefined, 4); } catch { /* too few straight cells: the staircase is short enough */ }     // START taps: a booster where the path has a straight cell
   }
 
+  // ---- lifts: the output chest and the leftover chest stand at the bottom of the machine; a dropper + water column carries their items up ----
+  // (not provable in the sim: liftShim() in gear-lift.ts stands in for the water). Each lift column stands behind the platform.
+  const lifts: Lift[] = [];
+  const lift = (anchor: Pos, by: number, name: string): Lift => {
+    for (let r = 0; r < 80; r += 1) for (let dx = -r; dx <= r; dx++) for (const dz of (Math.abs(dx) === r ? Array.from({ length: 2 * r + 1 }, (_, i) => i - r) : [-r, r])) {
+      const o: Pos = [anchor[0] + dx, by, anchor[2] + dz];
+      if (liftFree(b, o, by, CY)) { const l = buildLift(b, o, by, CY, name); lifts.push(l); return l; }
+    }
+    throw new Error('no room for the ' + name + ' lift');
+  };
+  const outLift = lift([CX(2) + 2, 0, ROWZ + 8], outChest[1] - 1, 'liftOut');
+  conveyor(b, [outChest[0], outChest[1] - 1, outChest[2]], outLift.dropper, 'cvLiftOutIn');
+  conveyor(b, outLift.exit, outputChest[1], 'cvLiftOutTop');
+  const leftLift = lift([CX(3) + 2, 0, ROWZ + 8], lbL[1] - 1, 'liftLeft');
+  conveyor(b, [lbL[0], lbL[1] - 1, lbL[2]], leftLift.dropper, 'cvLiftLeftIn');
+  conveyor(b, leftLift.exit, leftoverChest[1], 'cvLiftLeftTop');
+
   return {
     b, button, blockChest: [fpB.chestL, fpB.chestR], logChest,
     leftover: [lbL, lbR], planksStash: fpP.chestL, pins,
     outputs: [outChest], timelines,
-    platform: { diamonds: diamondsChest, logs: logsChest, output: outputChest, leftover: leftoverChest, button },
+    lifts, platform: { diamonds: diamondsChest, logs: logsChest, output: outputChest, leftover: leftoverChest, button },
   };
 }
 
