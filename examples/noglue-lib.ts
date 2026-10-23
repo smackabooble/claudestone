@@ -168,6 +168,9 @@ function routeOnce(b: Board, from: Pos, to: Pos, net: string, o: RouteOpts, avoi
       for (let i = 1; i < path.length - 1; i++) { const c = path[i]; const p = path[i - 1]; dusts.add(keyOf(c)); floors.add(key(c[0], c[1] - 1, c[2])); if (c[1] > p[1]) clears.add(key(p[0], p[1] + 1, p[2])); if (c[1] < p[1]) clears.add(key(c[0], p[1], c[2])); }
       for (const f of floors) if (clears.has(f) || dusts.has(f)) { if (process.env.DEBUG_ROUTE) console.log('  bad floor', f, 'path', path.slice(0, 12).map((q) => q.join(',')).join(' ')); return { bad: f }; }
       for (const d of dusts) if (clears.has(d)) { if (process.env.DEBUG_ROUTE) console.log('  bad dust', d, 'path', path.slice(0, 12).map((q) => q.join(',')).join(' ')); return { bad: d }; }
+      // a lane must not wrap around its own end points (cells next to the pin that are not its last neighbours would close a ring through the pin)
+      for (let i = 0; i < path.length - 2; i++) { const c = path[i]; if (Math.abs(c[0] - to[0]) <= 1 && Math.abs(c[1] - to[1]) <= 1 && Math.abs(c[2] - to[2]) <= 1) return { bad: keyOf(c) }; }
+      for (let i = 2; i < path.length; i++) { const c = path[i]; if (Math.abs(c[0] - from[0]) <= 1 && Math.abs(c[1] - from[1]) <= 1 && Math.abs(c[2] - from[2]) <= 1) return { bad: keyOf(c) }; }
       // place the new interior cells
       for (let i = 1; i < path.length - 1; i++) {
         const c = path[i]; const p = path[i - 1];

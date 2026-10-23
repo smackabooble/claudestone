@@ -48,10 +48,10 @@ export function buildFast(w: World, cfg: Cfg = loadCfg()): Machine {
   const spec = (name: string, d: number, s: number, parent: string, opts: Spec['opts'] = {}, gap = 0, gapS = 0, noPC = false): Spec => {
     const sp: Spec = { name, d, s, gap, gapS, noPC, opts, parent }; specs.push(sp); return sp;
   };
-  const gapFor = (...nets: string[]) => Math.max(0, Math.ceil((Math.max(...nets.map((n) => hops[n] ?? 0)) * HOP_GT + 60) / SLOT_GT) - 1);
+  const gapFor = (...nets: string[]) => Math.max(0, Math.ceil((Math.max(...nets.map((n) => hops[n] ?? 0)) * HOP_GT + 40) / SLOT_GT) - 1);
   // stage 0 (START): block release, log
   const cvbD = hops.cvb0 ?? 0;
-  const gapDM = Math.max(0, Math.ceil((8 * cvbD - 10) / SLOT_GT) - 1);                // PC of tDM ~ when the first block (pair D) has arrived (counted from the last release pulse)
+  const gapDM = Math.max(0, Math.round((8 * cvbD + 16 - 8 + 14 - 32) / SLOT_GT) - 1);                // PC of tDM ~ when the first block (pair D) has arrived (counted from the last release pulse)
   spec('tDM', 4, 0, 'START', {}, gapDM);
   spec('tC2', 1, 0, 'START');
   spec('tP_AB', 2, 0, 'tC2', { preRt: 12 }, gapFor('cvpAB'));
@@ -69,7 +69,7 @@ export function buildFast(w: World, cfg: Cfg = loadCfg()): Machine {
     const k = KITS[name];
     const gapS = k.sticks > 0 ? Math.max(0, Math.ceil((((hops[`cv${name}`] ?? 0) - (hops[stickNet[name]] ?? 0)) * HOP_GT + 100) / SLOT_GT) - 1) : 0;
     const gap = gapFor(`cv${name}`, ...(k.sticks > 0 ? [stickNet[name]] : []));
-    spec(`t_${name}`, k.diamonds, k.sticks, pr.id === 'D' ? 'tS0D' : `tc1${pr.id}`, { preRt: pr.id === 'D' ? 12 : 48 }, gap, gapS);
+    spec(`t_${name}`, k.diamonds, k.sticks, pr.id === 'D' ? 'tS0D' : `tc1${pr.id}`, { preRt: pr.id === 'D' ? 12 : 22 }, gap, gapS);
   }
   // height of every timeline = height of the pins it drives (lanes stay nearly flat)
   const ty: Record<string, number> = {
