@@ -10,6 +10,7 @@ import { buildDoor6 } from '../examples/piston-door-6x6.ts';
 import { buildDoor8 } from '../examples/piston-door-8x8.ts';
 import { buildDoor10 } from '../examples/piston-door-10x10.ts';
 import { buildDoor } from '../examples/piston-door-2x2.ts';
+import { buildDoor4NoGlue } from '../examples/piston-door-4x4-noglue.ts';
 import { buildDoor3 } from '../examples/piston-door-3x3.ts';
 import { buildDoor4 } from '../examples/piston-door-4x4.ts';
 import { buildLampDisplay } from '../examples/lamp-display.ts';
@@ -72,6 +73,13 @@ export const DESIGNS: Design[] = [
     realGameVerified: false, settle: 120,
     usage: 'lever ON = open (about 26 ticks), OFF = closed (about 16). Everything touching slime must stay obsidian.',
     build: (w) => ({ lever: buildDoor3(w).lever }),
+  },
+  {
+    name: 'piston-door-4x4-noglue',
+    description: '4x4 piston door with NO slime/honey: observer-chain ring of nooks (abfielder mechanism), 16 white wool door blocks, light gray fillers, obsidian stops. About 10x9x3.',
+    realGameVerified: false, settle: 40,
+    usage: 'lever at (5,1,0): ON = closed, OFF = open. Doorway x=3..6, y=3..6 at z=2. Simulated only.',
+    build: (w) => ({ lever: buildDoor4NoGlue(w).lever }),
   },
   {
     name: 'piston-door-4x4',
