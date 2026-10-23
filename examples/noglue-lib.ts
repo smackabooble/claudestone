@@ -57,7 +57,7 @@ export class Board {
       const c: Pos = [pin[0] + dir[0] * k + (dir[1] !== 0 ? l : 0), pin[1], pin[2] + dir[1] * k + (dir[0] !== 0 ? l : 0)];
       for (const dy of [0, 1]) { const q: Pos = [c[0], c[1] + dy, c[2]]; if (this.isFree(q)) this.occ.set(keyOf(q), { kind: 'reserve', net }); }
       const f: Pos = [c[0], c[1] - 1, c[2]];
-      if (this.isFree(f)) { this.occ.set(keyOf(f), { kind: 'wool' }); this.w.place(f, 'light_gray_wool'); }
+      if (this.isFree(f)) { this.occ.set(keyOf(f), { kind: 'wool', net: '__floor' }); this.w.place(f, 'light_gray_wool'); }   // the lane that ends here will put dust on this wool
     }
   }
   /** reserve a cell that has to stay empty (air) */
@@ -309,6 +309,8 @@ export function conveyor(b: Board, from: Pos, to: Pos, net: string, o: { own?: s
       const n: Pos = [c[0] + dx, c[1] + dy, c[2] + dz];
       if (b.tag(n)?.kind === 'wool' && b.tag([n[0], n[1] + 1, n[2]])?.kind === 'dust' && !(dy === 1 && false)) return why(4, c);
     }
+    // the floor wool of a reserved lane corridor will carry dust: a hopper next to it would be locked
+    for (const [dx, dy, dz] of [[1, 0, 0], [-1, 0, 0], [0, 0, 1], [0, 0, -1], [0, 1, 0], [0, -1, 0]]) if (b.tag([c[0] + dx, c[1] + dy, c[2] + dz])?.net === '__floor') return why(7, c);
     // keep clear of the corridors reserved for pulse lanes
     for (let dx = -1; dx <= 1; dx++) for (let dy = -1; dy <= 1; dy++) for (let dz = -1; dz <= 1; dz++) { const t = b.tag([c[0] + dx, c[1] + dy, c[2] + dz]); if (t?.kind === 'reserve' && !(t.net && ownSet.has(t.net))) return why(5, c); }
     // no foreign signal parts next to it
