@@ -79,7 +79,7 @@ class Heap<T extends { f: number }> {
 
 const connective = (t: Tag | undefined, net: string, own?: Set<string>): boolean => !!t && CONNECTIVE.includes(t.kind) && t.net !== net && !(own && t.net && own.has(t.net));
 
-export interface RouteOpts { floor?: string; allow?: Set<string>; maxNodes?: number; own?: string[]; strict?: boolean }
+export interface RouteOpts { floor?: string; allow?: Set<string>; maxNodes?: number; own?: string[]; strict?: boolean; margin?: number }
 
 /** keep-out test: is there a foreign connective part within the 3x3x3 neighbourhood of c? */
 function foreignNear(b: Board, c: Pos, net: string, allow?: Set<string>, own?: Set<string>, nearEnd?: (k: string) => boolean): boolean {
@@ -112,18 +112,29 @@ function foreignNear(b: Board, c: Pos, net: string, allow?: Set<string>, own?: S
 
 /** Route dust from the dust cell `from` to the dust cell `to` (both already placed, net `net`). Returns the full cell list. */
 export function route(b: Board, from: Pos, to: Pos, net: string, o: RouteOpts = {}): Pos[] {
-  const avoid = new Set<string>();
-  for (let attempt = 0; attempt < 8; attempt++) {
-    const r = routeOnce(b, from, to, net, o, avoid);
-    if (Array.isArray(r)) return r;
-    avoid.add(r.bad);
-    if (process.env.DEBUG_ROUTE) console.log('route retry', net, 'bad cell', r.bad);
+  // the search box (start/goal bounding box plus a margin) keeps an impossible route from flooding the unbounded 3D space
+  const margins = o.margin ? [o.margin] : [25, 60, 150];
+  let lastErr: unknown;
+  for (const margin of margins) {
+    const avoid = new Set<string>();
+    try {
+      for (let attempt = 0; attempt < 8; attempt++) {
+        const r = routeOnce(b, from, to, net, { ...o, margin }, avoid);
+        if (Array.isArray(r)) return r;
+        avoid.add(r.bad);
+        if (process.env.DEBUG_ROUTE) console.log('route retry', net, 'bad cell', r.bad);
+      }
+      throw new Error(`route ${net}: no consistent path from ${from.join(',')} to ${to.join(',')}`);
+    } catch (e) { lastErr = e; if (process.env.DEBUG_ROUTE) console.log('route', net, 'margin', margin, 'failed'); }
   }
-  throw new Error(`route ${net}: no consistent path from ${from.join(',')} to ${to.join(',')}`);
+  throw lastErr;
 }
 
 function routeOnce(b: Board, from: Pos, to: Pos, net: string, o: RouteOpts, avoid: Set<string>): Pos[] | { bad: string } {
   const goal = keyOf(to);
+  const M = o.margin ?? 40;
+  const lox = Math.min(from[0], to[0]) - M, hix = Math.max(from[0], to[0]) + M, loz = Math.min(from[2], to[2]) - M, hiz = Math.max(from[2], to[2]) + M;
+  const loy = Math.min(from[1], to[1]) - 6, hiy = Math.max(from[1], to[1]) + 14;
   const ownSet = new Set(o.own ?? []);
   // strict: pre-existing parts of the route's own nets only count as friendly right next to the two end points (a route that runs alongside its own
   // lane would close a repeater ring, which latches)
@@ -183,6 +194,7 @@ function routeOnce(b: Board, from: Pos, to: Pos, net: string, o: RouteOpts, avoi
         return false;
       };
       const tryMove = (c: Pos, extra: number, needClear?: Pos, needFloor?: Pos, vertical = false) => {
+        if (c[0] < lox || c[0] > hix || c[1] < loy || c[1] > hiy || c[2] < loz || c[2] > hiz) return;
         if (vertical && cur.d !== -1 && cur.d !== di) return;               // straight staircases only: a spiral would need a floor where the lower dust needs air
         // a staircase has no straight cell for a booster repeater: climb at most 4 steps in a row, then run level for >= 3 cells
         const vr = vertical ? cur.vr + 1 : 0, hr = vertical ? 0 : Math.min(3, cur.hr + 1);
@@ -274,7 +286,7 @@ export function conveyor(b: Board, from: Pos, to: Pos, net: string, o: { own?: s
     const up = b.tag([c[0], c[1] + 1, c[2]]);
     if (up && isContainer(up) && keyOf([c[0], c[1] + 1, c[2]]) !== keyOf(prev)) return why(2, c);
     // a hopper directly below would suck the items out of this one (only the final target may sit below)
-    { const dn: Pos = [c[0], c[1] - 1, c[2]]; if (isContainer(b.tag(dn)) && keyOf(dn) !== goal) return why(3, c); }
+    { const dn: Pos = [c[0], c[1] - 1, c[2]]; const td = b.tag(dn); if (td && td.kind === 'piston' && td.net === '__s' && keyOf(dn) !== goal) return why(3, c); }   // only hoppers suck from above; droppers/crafters below do not
     // dust powers its floor block, and a powered block next to a hopper locks it
     for (const [dx, dy, dz] of [[1, 0, 0], [-1, 0, 0], [0, 0, 1], [0, 0, -1], [0, 1, 0], [0, -1, 0]]) {
       const n: Pos = [c[0] + dx, c[1] + dy, c[2] + dz];

@@ -254,7 +254,7 @@ export function loadGearSet(w: World): Machine {
   const path = new URL('../.cache/gear-set.json', import.meta.url);
   if (existsSync(path)) {
     const c = JSON.parse(readFileSync(path, 'utf8'));
-    if (c.key === key) {
+    if (c.key === key || process.env.GEAR_CACHE_ANY) {
       for (const b of c.blocks) w.setRaw(b.pos, b.type, b.props);
       for (const [pos, off] of c.disabled as [Pos, number[]][]) for (const i of off) w.setSlotDisabled(pos, i, true);
       for (const [pos, inv] of c.items as [Pos, ({ id: string; count: number } | null)[]][]) inv.forEach((it, i) => { if (it) w.setItem(pos, i, it); });
