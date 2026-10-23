@@ -7,7 +7,9 @@
  * items each crafter gets. Shared stashes are double chests with two such ports. The leftover is what stays in the stashes.
  * Hoppers can hold a couple of stray items per port, so the first presses after building "prime" the machine.
  */
+import { writeFileSync } from 'node:fs';
 import { World } from '../src/world.ts';
+import { exportSchem } from '../src/export.ts';
 import { Board, route, assignRepeaters, conveyor } from './noglue-lib.ts';
 import { buildFeedPair, buildCrafterMod, buildDirectKit } from './gear-parts.ts';
 import { buildTimeline, KITS, SLOT_RT } from './gear-kit.ts';
@@ -207,5 +209,8 @@ export function buildGearSet(w: World): Machine {
 
 if (process.argv[1]?.endsWith('gear-set.ts')) {
   const w = new World();
-  try { const m = buildGearSet(w); console.log('built', w.listBlocks().length, 'blocks;', m.timelines.length, 'timelines'); } catch (e: any) { console.log('FAIL', e.message); }
+  try {
+    const m = buildGearSet(w); console.log('built', w.listBlocks().length, 'blocks;', m.timelines.length, 'timelines');
+    if (process.argv.includes('--export')) { writeFileSync('examples/diamond-gear-set.schem', exportSchem(w).buffer); console.log('wrote examples/diamond-gear-set.schem'); }
+  } catch (e: any) { console.log('FAIL', e.message); }
 }

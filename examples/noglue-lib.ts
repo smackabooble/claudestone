@@ -268,6 +268,8 @@ export function conveyor(b: Board, from: Pos, to: Pos, net: string, o: { own?: s
     // not directly under a foreign container (the hopper would pull from it)
     const up = b.tag([c[0], c[1] + 1, c[2]]);
     if (up && isContainer(up) && keyOf([c[0], c[1] + 1, c[2]]) !== keyOf(prev)) return false;
+    // a hopper directly below would suck the items out of this one (only the final target may sit below)
+    { const dn: Pos = [c[0], c[1] - 1, c[2]]; if (isContainer(b.tag(dn)) && keyOf(dn) !== goal) return false; }
     // dust powers its floor block, and a powered block next to a hopper locks it
     for (const [dx, dy, dz] of [[1, 0, 0], [-1, 0, 0], [0, 0, 1], [0, 0, -1], [0, 1, 0], [0, -1, 0]]) {
       const n: Pos = [c[0] + dx, c[1] + dy, c[2] + dz];

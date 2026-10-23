@@ -1,17 +1,23 @@
+/**
+ * Slow end-to-end run of the diamond gear set machine (sim only, ~4 min per press).
+ * usage: npx tsx examples/gear-set-run.ts [presses=4] [gt per press=5000]
+ * Press 1 primes the hoppers and makes 6 of the 8 items; every later press makes the full set (4 blocks + 1 log each).
+ */
 import { World } from '../src/world.ts';
 import { buildGearSet } from './gear-set.ts';
 
 const w = new World();
 const m = buildGearSet(w);
-w.setItem(m.blockChest[0], 0, { id: 'diamond_block', count: 16 });
-w.setItem(m.logChest, 0, { id: 'oak_log', count: 8 });
-const tally = () => {
-  const t: Record<string, number> = {};
-  for (let s = 0; s < 27; s++) { const it = w.items(m.outputs[0])?.[s]; if (it) t[it.id] = (t[it.id] ?? 0) + it.count; }
-  return t;
-};
-for (let press = 1; press <= Number(process.argv[2] ?? 3); press++) {
+w.setItem(m.blockChest[0], 0, { id: 'diamond_block', count: 64 });
+w.setItem(m.logChest, 0, { id: 'oak_log', count: 16 });
+const count = (p: any) => { const t: Record<string, number> = {}; for (const x of (w.items(p) ?? []) as any[]) if (x) t[x.id] = (t[x.id] ?? 0) + x.count; return t; };
+const presses = Number(process.argv[2] ?? 4), gt = Number(process.argv[3] ?? 5000);
+let prev: Record<string, number> = {};
+for (let press = 1; press <= presses; press++) {
   w.use(m.button);
-  w.run(Number(process.argv[3] ?? 1800));
-  console.log('press', press, JSON.stringify(tally()));
+  w.run(gt);
+  const out = count(m.outputs[0]);
+  const delta = Object.fromEntries(Object.keys(out).map((k) => [k, out[k] - (prev[k] ?? 0)]));
+  console.log(`press ${press}: +${JSON.stringify(delta)}  blocks left ${count(m.blockChest[0]).diamond_block ?? 0}, logs left ${count(m.logChest).oak_log ?? 0}, leftover diamonds ${count(m.leftoverDiamonds[0]).diamond ?? 0}`);
+  prev = out;
 }

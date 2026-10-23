@@ -17,6 +17,7 @@ import { buildLampDisplay } from '../examples/lamp-display.ts';
 import { buildWaveArm } from '../examples/wave-arm.ts';
 import { buildWaveArmFast } from '../examples/wave-arm-fast.ts';
 import { buildElevator } from '../examples/elevator.ts';
+import { buildGearSet } from '../examples/gear-set.ts';
 import { FAST, makeArmSpec } from '../examples/extender-long.ts';
 
 export interface Design {
@@ -178,6 +179,13 @@ export const DESIGNS: Design[] = [
     realGameVerified: false, settle: 800,
     usage: 'lever OFF = closed, ON = open (torch inverter at the far north end of the left side). Keep the doorway x=0..4, y=1..5 and 4 blocks either side clear.',
     build: (w) => ({ lever: buildDoor5(w).lever }),
+  },
+  {
+    name: 'diamond-gear-set',
+    description: 'Press one button: 4 diamond blocks + 1 oak log become a full diamond set (helmet, chestplate, leggings, boots, sword, pickaxe, axe, shovel). Crafters, hoppers, one-item droppers, pulse timelines, dust lanes. About 17k blocks, 200x30x200. Simulated only.',
+    realGameVerified: false, settle: 20,
+    usage: 'Fill the double chest of diamond blocks at (-30,6,-6) and the log chest at (19,7,68), press the stone button at (-27,7,80). Output chest at the east end of z=23 (y=-2). First press primes the hoppers (6 of 8 items), every later press gives the full set; wait ~2100 gt (105 s) between presses. Leftovers collect in the stash chests: 3 diamonds per press in the double chest at (0,2,0), 1 stick per press in the stick stash east of the shovel/sword modules.',
+    build: (w) => ({ lever: buildGearSet(w).button }),
   },
 ];
 
