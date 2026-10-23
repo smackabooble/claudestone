@@ -117,8 +117,8 @@ export function buildGearSet(w: World): Machine {
   const logChest = c2.busA;                                                           // the log chest sits on the C2 tap bus cell
 
   // ---- timelines ----
-  const tl = (name: string, o: Pos, d: number, s: number, delayRt: number, gap = 0) => {
-    const t = buildTimeline(b, o, name, d, s, gap);
+  const tl = (name: string, o: Pos, d: number, s: number, delayRt: number, gap = 0, gapS = 0) => {
+    const t = buildTimeline(b, o, name, d, s, gap, gapS);
     timelines.push({ name, start: t.start, delayRt, PD: t.PD, PS: t.PS, PC: t.PC });
     return t;
   };
@@ -149,7 +149,8 @@ export function buildGearSet(w: World): Machine {
     for (const [role, name] of [['Y', pr.y], ['X', pr.x]] as const) {
       const k = KITS[name];
       const stickNet: Record<string, string> = { diamond_shovel: 'cvsShovel', diamond_sword: 'cvsSword', diamond_pickaxe: 'cvsPick', diamond_axe: 'cvsAxe' };
-      const t = tl(`t_${name}`, place(), k.diamonds, k.sticks, 250, gapFor(`cv${name}`, ...(k.sticks > 0 ? [stickNet[name]] : [])));
+      const gapS = k.sticks > 0 ? Math.max(0, Math.ceil((((hops[`cv${name}`] ?? 0) - (hops[stickNet[name]] ?? 0)) * HOP_GT + 100) / (SLOT_RT * 2)) - 1) : 0;
+      const t = tl(`t_${name}`, place(), k.diamonds, k.sticks, 250, gapFor(`cv${name}`, ...(k.sticks > 0 ? [stickNet[name]] : []), ...(gapS > 0 ? [] : [])), gapS);
       const dPin = role === 'Y' ? feed[pr.id].pulseY : feed[pr.id].pulseX;
       link(t.PD!, dPin, `t_${name}.tl.PD`, [`p${pr.id}.${role === 'Y' ? 'py' : 'px'}`]);
       if (k.sticks > 0) link(t.PS!, stickPort[name].pin, `t_${name}.tl.PS`, [stickPort[name].own]);

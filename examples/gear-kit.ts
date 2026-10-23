@@ -67,7 +67,7 @@ export interface TimelinePins { start: Pos; PD: Pos | null; PS: Pos | null; PC: 
  * Node k (time k * SLOT_RT) fires through a diode stub into a lane (dust line along +z at x+2). Nodes 0..d-1 -> PD lane,
  * d..d+s-1 -> PS lane, d+s -> PC lane. Returns the lane end cells (the pulse pins).
  */
-export function buildTimeline(b: Board, O: Pos, name: string, d: number, s: number, gap = 0): TimelinePins {
+export function buildTimeline(b: Board, O: Pos, name: string, d: number, s: number, gap = 0, gapS = 0): TimelinePins {
   const P = (u: number, v: number): Pos => [O[0] + u, O[1], O[2] + v];
   const net = `${name}.tl`;
   b.floorColor = 'magenta';
@@ -77,11 +77,11 @@ export function buildTimeline(b: Board, O: Pos, name: string, d: number, s: numb
   b.rep(P(1, 2), 'west', 2, `${net}.in`);                              // side branch: delayed copy (flows -x)
   b.cmp(P(0, 2), 'south', `${net}.in`, 'magenta', 'subtract');         // input north (rear = start), output south
   b.dust(P(0, 3), net); b.dust(P(0, 4), net); b.dust(P(0, 5), net);   // node 0 at v=5
-  const nodes = d + s + gap + 1;                                          // `gap` idle nodes before the craft pulse: lets the items travel to the crafter
+  const nodes = d + gapS + s + gap + 1;                                   // gapS idle nodes between the diamond and the stick pulses: the longer diamond line must deliver first (crafter slots fill in order)                                          // `gap` idle nodes before the craft pulse: lets the items travel to the crafter
   const lanes: { name: 'PD' | 'PS' | 'PC'; from: number; to: number }[] = [];
   if (d > 0) lanes.push({ name: 'PD', from: 0, to: d - 1 });
-  if (s > 0) lanes.push({ name: 'PS', from: d, to: d + s - 1 });
-  lanes.push({ name: 'PC', from: d + s + gap, to: d + s + gap });
+  if (s > 0) lanes.push({ name: 'PS', from: d + gapS, to: d + gapS + s - 1 });
+  lanes.push({ name: 'PC', from: d + gapS + s + gap, to: d + gapS + s + gap });
   let v = 5;
   const nodeV: number[] = [5];
   for (let k = 1; k < nodes; k++) {
