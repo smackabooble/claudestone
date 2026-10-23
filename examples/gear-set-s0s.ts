@@ -5,7 +5,7 @@ const w = new World();
 const m = loadGearSet(w);
 w.setItem(m.blockChest[0], 0, { id: 'diamond_block', count: 64 });
 w.setItem(m.logChest, 0, { id: 'oak_log', count: 16 });
-w.use(m.button);
+w.use(m.button); w.run(9000); w.use(m.button);
 const snap = () => {
   const o: string[] = [];
   for (const b of w.listBlocks() as any[]) {

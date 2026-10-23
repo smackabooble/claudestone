@@ -15,7 +15,9 @@ const empty = (p: any) => { for (let i = 0; i < 54; i++) w.setItem(p, i, null); 
 const count = (p: any) => { const t: Record<string, number> = {}; for (const x of (w.items(p) ?? []) as any[]) if (x) t[x.id] = (t[x.id] ?? 0) + x.count; return t; };
 fill();
 const PRESS_GT = 9000;
-for (let i = 1; i <= 2; i++) { w.use(m.button); w.run(PRESS_GT); console.log('priming press', i, JSON.stringify(count(m.outputs[0]))); }
+// a cold first press can leave a half-filled crafter (a short stick delivery); clear those so the primed press starts clean
+const clearCrafters = () => { for (const b of w.listBlocks() as any[]) if (b.type === 'crafter') for (let i = 0; i < 9; i++) w.setItem(b.pos, i, null); };
+for (let i = 1; i <= 2; i++) { w.use(m.button); w.run(PRESS_GT); console.log('priming press', i, JSON.stringify(count(m.outputs[0]))); clearCrafters(); }
 w.run(3000);                                              // let the output conveyor finish
 empty(m.outputs[0]); empty(m.blockChest[0]); empty(m.logChest); fill();
 writeFileSync('examples/diamond-gear-set.schem', exportSchem(w).buffer);
