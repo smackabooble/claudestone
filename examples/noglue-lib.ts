@@ -83,7 +83,7 @@ export interface RouteOpts { floor?: string; allow?: Set<string>; maxNodes?: num
 
 /** keep-out test: is there a foreign connective part within the 3x3x3 neighbourhood of c? */
 const dbgSeen = new Set<string>();
-function foreignNear(b: Board, c: Pos, net: string, allow?: Set<string>, own?: Set<string>, nearEnd?: (k: string) => boolean): boolean {
+export function foreignNear(b: Board, c: Pos, net: string, allow?: Set<string>, own?: Set<string>, nearEnd?: (k: string) => boolean): boolean {
   for (let dx = -1; dx <= 1; dx++) for (let dy = -1; dy <= 1; dy++) for (let dz = -1; dz <= 1; dz++) {
     if (!dx && !dy && !dz) continue;
     const k = key(c[0] + dx, c[1] + dy, c[2] + dz);

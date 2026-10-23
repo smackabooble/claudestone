@@ -50,21 +50,26 @@ export function buildFast(w: World, cfg: Cfg = loadCfg()): Machine {
   };
   const gapFor = (...nets: string[]) => Math.max(0, Math.ceil((Math.max(...nets.map((n) => hops[n] ?? 0)) * HOP_GT + 60) / SLOT_GT) - 1);
   // stage 0 (START): block release, log
-  const trunk = (hops.cvb0 ?? 0) + (hops.cvb1 ?? 0) + (hops.cvb2 ?? 0) + (hops.cvb3 ?? 0);
-  const gapDM = Math.max(0, Math.ceil((60 + trunk * HOP_GT + 60) / SLOT_GT) - 1);
-  spec('tDM', 4, 0, 'START', {}, gapDM);                       // its PC (when the 4th block has arrived) starts the block crafter timelines
+  const cvbD = hops.cvb0 ?? 0;
+  const gapDM = Math.max(0, Math.ceil((8 * cvbD - 10) / SLOT_GT) - 1);                // PC of tDM ~ when the first block (pair D) has arrived (counted from the last release pulse)
+  spec('tDM', 4, 0, 'START', {}, gapDM);
   spec('tC2', 1, 0, 'START');
   spec('tP_AB', 2, 0, 'tC2', { preRt: 12 }, gapFor('cvpAB'));
   spec('tP_D', 2, 0, 'tC2', { preRt: 12 }, gapFor('cvpD'));
-  spec('tS0S', 3, 1, 'tP_AB', { preRt: 14, parallelS: true }, 0, 0, true);
-  for (const pr of PAIRS) spec(`tc1${pr.id}`, 1, 0, 'tDM');
-  spec('tS0D', 6, 3, 'tc1D', { preRt: 16, parallelS: true }, 0, 0, true);
+  spec('tS0S', 3, 1, 'tP_AB', { preRt: 14 }, 0, 0, true);
+  // block crafters: staggered, each starts when its own block has arrived (blocks are released 20 gt apart: D, A, B, C)
+  const stag = (i: number) => Math.max(0, Math.ceil((SLOT_GT + (hops[`cvb${i}`] ?? 0) * HOP_GT - 52) / 2));
+  spec('tc1D', 1, 0, 'tDM');
+  spec('tc1A', 1, 0, 'tc1D', { preRt: stag(1) });
+  spec('tc1B', 1, 0, 'tc1A', { preRt: stag(2) });
+  spec('tc1C', 1, 0, 'tc1B', { preRt: stag(3) });
+  spec('tS0D', 6, 3, 'tc1D', { preRt: 16 }, 0, 0, true);
   const stickNet: Record<string, string> = { diamond_shovel: 'cvsShovel', diamond_sword: 'cvsSword', diamond_pickaxe: 'cvsPick', diamond_axe: 'cvsAxe' };
   for (const pr of PAIRS) for (const name of [pr.y, pr.x]) {
     const k = KITS[name];
     const gapS = k.sticks > 0 ? Math.max(0, Math.ceil((((hops[`cv${name}`] ?? 0) - (hops[stickNet[name]] ?? 0)) * HOP_GT + 100) / SLOT_GT) - 1) : 0;
     const gap = gapFor(`cv${name}`, ...(k.sticks > 0 ? [stickNet[name]] : []));
-    spec(`t_${name}`, k.diamonds, k.sticks, `tc1${pr.id}`, { preRt: pr.id === 'D' ? 40 : 18 }, gap, gapS);
+    spec(`t_${name}`, k.diamonds, k.sticks, `tc1${pr.id}`, { preRt: pr.id === 'D' ? 85 : 48 }, gap, gapS);
   }
   // height of every timeline = height of the pins it drives (lanes stay nearly flat)
   const ty: Record<string, number> = {
@@ -74,7 +79,7 @@ export function buildFast(w: World, cfg: Cfg = loadCfg()): Machine {
     ty[`tc1${pr.id}`] = it.c1[pr.id].PD[1];
     ty[`t_${pr.y}`] = it.mod[pr.y].pulseC[1]; ty[`t_${pr.x}`] = it.mod[pr.x].pulseC[1];
   }
-  for (const sp of specs) sp.ty = Math.round(ty[sp.name] / 5) * 5;
+  for (const sp of specs) sp.ty = process.env.TLLAYERS === '0' ? 0 : Math.round(ty[sp.name] / 8) * 8;
   // footprint of every timeline (scratch board), then shelf packing per height layer behind the item side
   const foot = (sp: Spec) => {
     const sw = new World(); const sb = new Board(sw);
@@ -85,14 +90,19 @@ export function buildFast(w: World, cfg: Cfg = loadCfg()): Machine {
   };
   const bb = [1e9, 1e9, 1e9, -1e9, -1e9, -1e9];
   for (const k of b.occ.keys()) { const p = k.split(',').map(Number); for (let i = 0; i < 3; i++) { bb[i] = Math.min(bb[i], p[i]); bb[i + 3] = Math.max(bb[i + 3], p[i]); } }
-  const ROWW = Number(process.env.TLW ?? 90), GAP = 4;
-  const shelves = new Map<number, { cx0: number; rowZ: number; rowH: number }>();
-  for (const sp of specs) {
-    const f = foot(sp); const wdt = f.x1 - f.x0 + 1 + GAP, len = f.z1 - f.z0 + 1;
-    const sh = shelves.get(sp.ty!) ?? { cx0: bb[0], rowZ: bb[5] + 10, rowH: 0 };
-    if (sh.cx0 + wdt > bb[0] + ROWW) { sh.cx0 = bb[0]; sh.rowZ += sh.rowH + GAP; sh.rowH = 0; }
-    sp.place = [sh.cx0 - f.x0, sp.ty!, sh.rowZ - f.z0];
-    sh.cx0 += wdt; sh.rowH = Math.max(sh.rowH, len); shelves.set(sp.ty!, sh);
+  const ROWW = Number(process.env.TLW ?? 90), GAP = Number(process.env.TLGAP ?? 8);
+  // bands: every height layer gets its own strip behind the item side (strips follow each other along z), timelines of a band side by side
+  const bands = [...new Set(specs.map((sp) => sp.ty!))].sort((p, q) => q - p);
+  let zNext = bb[5] + 10;
+  for (const band of bands) {
+    let cx0 = bb[0], rowZ = zNext, rowH = 0;
+    for (const sp of specs.filter((o) => o.ty === band)) {
+      const f = foot(sp); const wdt = f.x1 - f.x0 + 1 + GAP, len = f.z1 - f.z0 + 1;
+      if (cx0 + wdt > bb[0] + ROWW) { cx0 = bb[0]; rowZ += rowH + GAP; rowH = 0; }
+      sp.place = [cx0 - f.x0, band, rowZ - f.z0];
+      cx0 += wdt; rowH = Math.max(rowH, len);
+    }
+    zNext = rowZ + rowH + GAP;
   }
   for (const sp of specs) {
     const t = buildTimeline(b, sp.place!, sp.name, sp.d, sp.s, sp.gap, sp.gapS, sp.noPC, sp.opts);
@@ -104,22 +114,23 @@ export function buildFast(w: World, cfg: Cfg = loadCfg()): Machine {
   // ---- START button -> the two first timelines; chain links from parent PC lanes ----
   link(plat.btnDust, T('tDM').start, 'startbtn', ['startbtn', 'tDM.tl.in']);
   link(T('tDM').start, T('tC2').start, 'startbtn', ['startbtn', 'tDM.tl.in', 'tC2.tl.in']);
-  // fan-out: the first child is fed from the parent's PC lane, every further sibling from the start pin of the previous sibling (same moment)
+  // fan-out: the first two children are fed from the two extra copies of the parent's PC pulse, further siblings from the start pin of the previous sibling
   for (const parent of new Set(specs.filter((o) => o.parent !== 'START').map((o) => o.parent))) {
     const kids = specs.filter((o) => o.parent === parent);
+    const P_ = T(parent);
     kids.forEach((sp, i) => {
-      const from = i === 0 ? T(parent).PC : kids[i - 1].pins!.start;
-      link(from, sp.pins!.start, `ev_${sp.name}`, [`${parent}.tl.PC`, `${sp.name}.tl.in`, ...(i > 0 ? [`${kids[i - 1].name}.tl.in`] : []), ...kids.map((o) => `ev_${o.name}`)]);
+      const from = i < 1 ? P_.PCalt![0] : kids[i - 1].pins!.start;
+      link(from, sp.pins!.start, `ev_${sp.name}`, [`${parent}.tl.PC`, `${parent}.tl.PCa`, `${parent}.tl.PCb`, `${sp.name}.tl.in`, ...(i >= 1 ? [`${kids[i - 1].name}.tl.in`] : []), ...kids.map((o) => `ev_${o.name}`)]);
     });
   }
   // ---- pulse lanes to the units ----
   link(T('tDM').PD!, it.fpB.pulseY, 'tDM.tl.PD', ['bk.py']);
-  link(T('tC2').PD!, it.c2.PD, 'tC2.tl.PD', ['c2.pd']); link(T('tC2').PC, it.c2.PC, 'tC2.tl.PC', ['c2.pc']);
-  link(T('tP_AB').PD!, it.fpP.pulseX, 'tP_AB.tl.PD', ['pl.px']); link(T('tP_AB').PC, it.c3AB.pulseC, 'tP_AB.tl.PC', ['c3AB.pc']);
-  link(T('tP_D').PD!, it.fpP.pulseY, 'tP_D.tl.PD', ['pl.py']); link(T('tP_D').PC, it.c3D.pulseC, 'tP_D.tl.PC', ['c3D.pc']);
+  link(T('tC2').PD!, it.c2.PD, 'tC2.tl.PD', ['c2.pd']); link(T('tC2').PC, it.c2.PC, 'tC2.tl.PCa', ['c2.pc', 'tC2.tl.PC', 'tC2.tl.PCb']);
+  link(T('tP_AB').PD!, it.fpP.pulseX, 'tP_AB.tl.PD', ['pl.px']); link(T('tP_AB').PC, it.c3AB.pulseC, 'tP_AB.tl.PCa', ['c3AB.pc', 'tP_AB.tl.PC', 'tP_AB.tl.PCb']);
+  link(T('tP_D').PD!, it.fpP.pulseY, 'tP_D.tl.PD', ['pl.py']); link(T('tP_D').PC, it.c3D.pulseC, 'tP_D.tl.PCa', ['c3D.pc', 'tP_D.tl.PC', 'tP_D.tl.PCb']);
   link(T('tS0S').PD!, it.fpS0S.pulseY, 'tS0S.tl.PD', ['x1.py']); link(T('tS0S').PS!, it.fpS0S.pulseX, 'tS0S.tl.PS', ['x1.px']);
   for (const pr of PAIRS) {
-    link(T(`tc1${pr.id}`).PD!, it.c1[pr.id].PD, `tc1${pr.id}.tl.PD`, [`c1${pr.id}.pd`]); link(T(`tc1${pr.id}`).PC, it.c1[pr.id].PC, `tc1${pr.id}.tl.PC`, [`c1${pr.id}.pc`]);
+    link(T(`tc1${pr.id}`).PD!, it.c1[pr.id].PD, `tc1${pr.id}.tl.PD`, [`c1${pr.id}.pd`]); link(T(`tc1${pr.id}`).PC, it.c1[pr.id].PC, `tc1${pr.id}.tl.PCa`, [`c1${pr.id}.pc`, `tc1${pr.id}.tl.PC`, `tc1${pr.id}.tl.PCb`]);
   }
   link(T('tS0D').PD!, it.fpS0D.pulseY, 'tS0D.tl.PD', ['x0.py']); link(T('tS0D').PS!, it.fpS0D.pulseX, 'tS0D.tl.PS', ['x0.px']);
   const stickPort: Record<string, { pin: Pos; own: string }> = {
@@ -130,7 +141,7 @@ export function buildFast(w: World, cfg: Cfg = loadCfg()): Machine {
     const t = T(`t_${name}`), k = KITS[name];
     link(t.PD!, role === 'Y' ? it.feed[pr.id].pulseY : it.feed[pr.id].pulseX, `t_${name}.tl.PD`, [`p${pr.id}.${role === 'Y' ? 'py' : 'px'}`]);
     if (k.sticks > 0) link(t.PS!, stickPort[name].pin, `t_${name}.tl.PS`, [stickPort[name].own]);
-    link(t.PC, it.mod[name].pulseC, `t_${name}.tl.PC`, [`${name}.pc`]);
+    link(t.PC, it.mod[name].pulseC, `t_${name}.tl.PCa`, [`${name}.pc`, `t_${name}.tl.PC`, `t_${name}.tl.PCb`]);
   }
   for (const j of jobs) j();
   for (const l of links) {

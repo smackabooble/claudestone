@@ -8,7 +8,7 @@ let cfg: Cfg = existsSync(FILE) ? { ...DEFAULT_CFG, ...JSON.parse(readFileSync(F
 const budget = Number(process.argv[2] ?? 30) * 60_000, t0 = Date.now();
 let best = score(tryCfg(cfg));
 console.log('start score', best.toFixed(1));
-const clusters: (keyof Cfg)[] = ['fpB', 'fpP', 'fpSD', 'fpS0S', 'fpSAB', 'leftover'];
+const clusters: (keyof Cfg)[] = ['fpB', 'fpP', 'fpSD', 'fpS0S', 'fpSAB', 'leftover', 'liftOut', 'liftLeft'];
 const steps = [16, 8, 4, 2, 1];
 const save = () => { mkdirSync(new URL('../.cache/', import.meta.url), { recursive: true }); writeFileSync(FILE, JSON.stringify(cfg)); };
 let improved = true;

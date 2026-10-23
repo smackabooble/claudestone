@@ -60,7 +60,7 @@ export function buildKit(b: Board, O: Pos, name: string, spec: KitSpec): KitPins
 /** timeline slot length in redstone ticks (item pulses must be >= 16 gt apart; 10 rt = 20 gt) */
 export const SLOT_RT = 10;
 
-export interface TimelinePins { start: Pos; PD: Pos | null; PS: Pos | null; PC: Pos }
+export interface TimelinePins { start: Pos; PD: Pos | null; PS: Pos | null; PC: Pos; /** extra copies of the PC pulse (one repeater later) for fan-out */ PCalt?: Pos[] }
 
 /**
  * Pulse timeline: a rising edge on `start` (via a comparator edge former -> 4 gt pulse) runs down a repeater chain along +z.
@@ -152,5 +152,9 @@ export function buildTimeline(b: Board, O: Pos, name: string, d: number, s: numb
   const startPin = pre > 0 ? P(0, v0pre + 1) : P(0, -1);
   if (noPC) return { start: startPin, PD: out.PD ?? null, PS: out.PS ?? null, PC: P(0, -1) };
   const pc = snake(nodeV[nodeV.length - 1], (gap + 1) * SLOT_RT, `${net}.PC`, false);
-  return { start: startPin, PD: out.PD ?? null, PS: out.PS ?? null, PC: P(pc.x, pc.z) };
+  // two outputs for the PC pulse (the end cell has two free sides): east/west repeater + dust pin, and south repeater + dust pin
+  const dx = pc.x > 0 ? 1 : -1;
+  b.rep(P(pc.x + dx, pc.z), dx > 0 ? 'east' : 'west', 1, `${net}.PC`, 'orange'); b.dust(P(pc.x + 2 * dx, pc.z), `${net}.PCa`, 'orange');
+  b.rep(P(pc.x, pc.z + 1), 'south', 1, `${net}.PC`, 'orange'); b.dust(P(pc.x, pc.z + 2), `${net}.PCb`, 'orange');
+  return { start: startPin, PD: out.PD ?? null, PS: out.PS ?? null, PC: P(pc.x + 2 * dx, pc.z), PCalt: [P(pc.x, pc.z + 2)] };
 }

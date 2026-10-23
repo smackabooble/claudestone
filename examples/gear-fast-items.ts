@@ -30,6 +30,8 @@ export interface Cfg {
   fpS0S: Pos;      // stick splitter (c3AB crafts into it from above)
   fpSAB: Pos;      // stick stash for shovel + sword
   leftover: Pos;   // left half of the leftover double chest
+  liftOut: Pos;    // search anchor for the output lift column
+  liftLeft: Pos;   // search anchor for the leftover lift column
 }
 
 export const DEFAULT_CFG: Cfg = {
@@ -42,6 +44,8 @@ export const DEFAULT_CFG: Cfg = {
   fpS0S: [-40, 10, 40],
   fpSAB: [-40, 7, 60],
   leftover: [-30, 0, 50],
+  liftOut: [10, 0, 14],
+  liftLeft: [-20, 0, 14],
 };
 
 export interface Items {
@@ -124,7 +128,7 @@ export interface Platform {
 }
 
 /** Put the deck over the block feed pair: DIAMONDS right above it, LOGS down a hopper line to the log chest, OUTPUT/LEFTOVER fed by the lifts. */
-export function buildPlatform(b: Board, it: Items, cfg: Cfg, liftAnchor: { out: Pos; left: Pos } = { out: [10, 0, 14], left: [-20, 0, 14] }): Platform {
+export function buildPlatform(b: Board, it: Items, cfg: Cfg, liftAnchor: { out: Pos; left: Pos } = { out: cfg.liftOut, left: cfg.liftLeft }): Platform {
   const hops = it.hops;
   const PY = cfg.fpB[1] + 2, CY = PY + 1, rowZ = cfg.fpB[2];
   const cx = (i: number) => cfg.fpB[0] + 3 * i;
