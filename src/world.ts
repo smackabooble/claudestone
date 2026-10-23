@@ -25,6 +25,7 @@ const AIR: Block = { type: 'air', p: {} };
 interface Def { solid: boolean; conductor: boolean; source: boolean }
 const DEFS: Record<string, Def> = {
   obsidian: { solid: true, conductor: true, source: false },
+  oak_wall_sign: { solid: false, conductor: false, source: false },
   emerald_block: { solid: true, conductor: true, source: false },
   coal_block: { solid: true, conductor: true, source: false },
   lapis_block: { solid: true, conductor: true, source: false },

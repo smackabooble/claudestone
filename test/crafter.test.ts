@@ -104,3 +104,10 @@ test('export writes chest contents and crafter slot toggles as block entities', 
   assert.ok(raw.includes(Buffer.from('BlockEntities')) && raw.includes(Buffer.from('minecraft:diamond_block')) && raw.includes(Buffer.from('disabled_slots')));
   loadSchematic(exportSchem(w).buffer);   // still readable
 });
+
+test('export writes sign text as a block entity (waxed, 4 lines)', async () => {
+  const { gunzipSync } = await import('node:zlib');
+  const w = new World(); w.place([0, 0, 0], 'obsidian'); w.place([0, 0, 1], 'oak_wall_sign', { facing: 'south', text: ['DIAMOND', 'BLOCKS IN'] });
+  const raw = gunzipSync(exportSchem(w).buffer);
+  assert.ok(raw.includes(Buffer.from('minecraft:sign')) && raw.includes(Buffer.from('DIAMOND')) && raw.includes(Buffer.from('oak_wall_sign[facing=south')));
+});

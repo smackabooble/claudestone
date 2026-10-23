@@ -42,6 +42,7 @@ export function toBlockState(b: Block): string {
     case 'stone_pressure_plate': return st({ powered: !!p.powered });
     case 'chest': return st({ facing: p.facing ?? 'north', type: p.type ?? 'single', waterlogged: false });
     case 'barrel': return st({ facing: 'up', open: false });
+    case 'oak_wall_sign': return st({ facing: p.facing ?? 'north', waterlogged: false });
     case 'moving_piston': return 'minecraft:air';
     default: return `minecraft:${b.type}`;
   }
@@ -84,6 +85,14 @@ export function exportSchem(w: World): { buffer: Buffer; size: Pos; origin: Pos 
     if (b.type === 'chest') inv = inv.slice(0, 27);
     const it = inv.flatMap((x, i) => (x ? [comp({ Slot: byte(i), id: str('minecraft:' + x.id), Count: byte(x.count) })] : []));
     if (it.length) bes.push(comp({ Id: str('minecraft:' + b.type), Pos: pos, Items: list('comp', it) }));
+  }
+  // signs: text in the 1.20 format (front_text.messages = four JSON strings)
+  for (const b of bl) {
+    if (b.type !== 'oak_wall_sign') continue;
+    const lines: string[] = (b.props?.text as string[] | undefined) ?? [];
+    const msg = (i: number) => str(JSON.stringify({ text: lines[i] ?? '' }));
+    const side = (): W => comp({ messages: list('str', [0, 1, 2, 3].map(msg)), color: str('black'), has_glowing_text: byte(0) });
+    bes.push(comp({ Id: str('minecraft:sign'), Pos: ints([b.pos[0] - min[0], b.pos[1] - min[1], b.pos[2] - min[2]]), is_waxed: byte(1), front_text: side(), back_text: side() }));
   }
   const out: number[] = [];
   for (let v of data) { while (v >= 0x80) { out.push((v & 0x7f) | 0x80); v >>>= 7; } out.push(v); }
