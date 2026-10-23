@@ -17,6 +17,9 @@ import { buildTimeline, KITS, SLOT_RT } from './gear-kit.ts';
 import type { Pos } from '../src/dirs.ts';
 
 const PITCH = 48;
+/** vertical stack: pairs A, B, C (stash + block crafter + their two gear crafters) sit above each other in one column; pair D's gear crafters are at the bottom */
+const PX = 0;
+const LY: Record<string, number> = { A: 0, B: -8, C: -16, D: -24 };
 /** the hub: everything the user touches (inputs, output, button, the leftover sticks) sits in a column at x=HUBX, next to pair D (the leftover diamonds) */
 const HX = -36, HZ = -6;        // corner of the hub tower
 /*  hub tower: items only ever move DOWN, so the chests the user touches form tiers
@@ -74,20 +77,19 @@ export function buildGearSet(w: World): Machine {
   c1.D = buildDirectKit(b, [HX, 7, HZ + 20], 'c1D', [4], 'down');
 
   // ---- diamond pairs A, B, C: stash (double chest) + block crafter above it + two gear crafters south of it; modules of pair D too ----
-  PAIRS.forEach((pr, i) => {
+  PAIRS.forEach((pr) => {
+    const ly = LY[pr.id];
     if (pr.id !== 'D') {
-      const x0 = i * PITCH;
-      feed[pr.id] = buildFeedPair(b, [x0, 1, 0], `p${pr.id}`);
+      feed[pr.id] = buildFeedPair(b, [PX, 1 + ly, 0], `p${pr.id}`);
       stash[pr.id] = [feed[pr.id].chestL, feed[pr.id].chestR];
-      c1[pr.id] = buildDirectKit(b, [x0, 3, 0], `c1${pr.id}`, [4], 'down');
+      c1[pr.id] = buildDirectKit(b, [PX, 3 + ly, 0], `c1${pr.id}`, [4], 'down');
     }
-    const mx = i * PITCH;
-    mod[pr.y] = buildCrafterMod(b, [mx - 12, 0, 22], pr.y, KITS[pr.y]);
-    mod[pr.x] = buildCrafterMod(b, [mx + 12, 0, 22], pr.x, KITS[pr.x]);
+    mod[pr.y] = buildCrafterMod(b, [PX - 12, ly, 22], pr.y, KITS[pr.y]);
+    mod[pr.x] = buildCrafterMod(b, [PX + 12, ly, 22], pr.x, KITS[pr.x]);
   });
   // ---- stick side: SD stash (sticks for pickaxe + axe) ----
-  const fpSD = buildFeedPair(b, [0, 1, 50], 'sD');
-  const c3D = buildCrafterMod(b, [0, 3, 50], 'c3D', { enabled: [1, 4], diamonds: 2, sticks: 0 }, 'down');
+  const fpSD = buildFeedPair(b, [PX, LY.D + 2, 50], 'sD');
+  const c3D = buildCrafterMod(b, [PX, LY.D + 4, 50], 'c3D', { enabled: [1, 4], diamonds: 2, sticks: 0 }, 'down');
   // conveyors: inner (short, near the modules) lines first, the long ones from the hub afterwards
   for (const pr of PAIRS) { if (pr.id === 'D') continue; cv(feed[pr.id].outY, mod[pr.y].inD, `cv${pr.y}`); cv(feed[pr.id].outX, mod[pr.x].inD, `cv${pr.x}`); }
   cv(fpSD.outY, mod.diamond_pickaxe.inS!, 'cvsPick');
@@ -99,12 +101,13 @@ export function buildGearSet(w: World): Machine {
   cv(feed.D.outY, mod.diamond_pickaxe.inD, `cv${PAIRS[0].y}`);
   cv(feed.D.outX, mod.diamond_axe.inD, `cv${PAIRS[0].x}`);
 
-  // ---- output collector: the 8 crafter outputs run west along z=23 into the output chest in the hub ----
-  const outs = PAIRS.flatMap((pr) => [mod[pr.y].out, mod[pr.x].out]).sort((p, q) => q[0] - p[0]);
-  for (let i = 0; i + 1 < outs.length; i++) cv(outs[i], outs[i + 1], `cvo${i}`);
-  const outChest: Pos = [HX + 8, -2, HZ + 10];
+  // ---- output collector: every layer's two crafter outputs run to the shaft at x=PX, z=23; the shaft (hoppers facing down) ends in the output chest ----
+  const shaftTop = LY.A - 2, shaftBottom = LY.D - 2;
+  const shaft = (y: number): Pos => [PX, y, 23];
+  for (let y = shaftTop; y >= shaftBottom; y--) b.raw(shaft(y), 'hopper', { facing: 'down' }, 'piston', '__s');
+  const outChest: Pos = [PX, shaftBottom - 1, 23];
   b.raw(outChest, 'chest', { facing: 'south', type: 'single' }, 'piston', '__s');
-  cv(outs[outs.length - 1], outChest, 'cvoEnd');
+  for (const pr of PAIRS) { cv(mod[pr.y].out, shaft(LY[pr.id] - 2), `cvo_${pr.y}`); cv(mod[pr.x].out, shaft(LY[pr.id] - 2), `cvo_${pr.x}`); }
 
   // ---- block metered port (user's double chest of diamond blocks) -> line -> the four block crafters ----
   const busCells = PAIRS.map((pr) => c1[pr.id].busA);
@@ -232,10 +235,11 @@ export function buildGearSet(w: World): Machine {
 
   // landmark pillars next to the chests the user touches: diamonds = lapis, logs = gold, output = iron, button = emerald, both leftover chests = coal
   const pillar = (near: Pos, type: string) => {
+    const y0 = near[1] - 4, y1 = near[1] + 12;                                   // 17 tall, around the height of the chest
     for (let r = 3; r < 40; r++) for (const [dx, dz] of [[r, 0], [-r, 0], [0, r], [0, -r], [r, r], [-r, -r], [r, -r], [-r, r]]) {
       const x = near[0] + dx, z = near[2] + dz;
-      let ok = true; for (let py = 0; py <= 16; py++) if (!b.isFree([x, py, z]) || !b.isFree([x + 1, py, z]) || !b.isFree([x - 1, py, z]) || !b.isFree([x, py, z + 1]) || !b.isFree([x, py, z - 1])) { ok = false; break; }
-      if (ok) { for (let py = 0; py <= 16; py++) b.raw([x, py, z], type, {}, 'other'); return [x, z]; }
+      let ok = true; for (let py = y0; py <= y1; py++) if (!b.isFree([x, py, z]) || !b.isFree([x + 1, py, z]) || !b.isFree([x - 1, py, z]) || !b.isFree([x, py, z + 1]) || !b.isFree([x, py, z - 1])) { ok = false; break; }
+      if (ok) { for (let py = y0; py <= y1; py++) b.raw([x, py, z], type, {}, 'other'); return [x, z]; }
     }
     throw new Error('no room for the ' + type + ' pillar');
   };
