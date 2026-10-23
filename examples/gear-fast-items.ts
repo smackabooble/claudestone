@@ -101,11 +101,12 @@ export function buildItems(b: Board, cfg: Cfg = DEFAULT_CFG): Items {
   const outChest: Pos = [cfg.shaft[0], shaftBottom - 1, cfg.shaft[1]];
   b.raw(outChest, 'chest', { facing: 'south', type: 'single' }, 'piston', '__s');
 
-  // block trunk: metered port -> the four block crafters (the idle tap sucks the first block, a locked tap lets the next ones pass)
+  // block trunks: two metered ports, each feeding two block crafters in a row (the idle tap sucks the first block that arrives, a locked tap
+  // lets the next one pass; the last cell of a trunk faces a plain block): Y -> D, A    X -> B, C
   const busCells = PAIRS.map((pr) => c1[pr.id].busA);
-  busCells.forEach((c, i) => b.raw(c, 'hopper', { facing: i === busCells.length - 1 ? 'east' : 'down' }, 'piston', '__s'));
-  cv(fpB.outY, busCells[0], 'cvb0');
-  for (let i = 1; i < busCells.length; i++) cv(busCells[i - 1], busCells[i], `cvb${i}`);
+  busCells.forEach((c, i) => b.raw(c, 'hopper', { facing: i === 1 || i === busCells.length - 1 ? 'east' : 'down' }, 'piston', '__s'));
+  cv(fpB.outY, busCells[0], 'cvb0'); cv(busCells[0], busCells[1], 'cvb1');
+  cv(fpB.outX, busCells[2], 'cvb2'); cv(busCells[2], busCells[3], 'cvb3');
   // conveyors: short local ones first
   for (const pr of PAIRS) { cv(feed[pr.id].outY, mod[pr.y].inD, `cv${pr.y}`); cv(feed[pr.id].outX, mod[pr.x].inD, `cv${pr.x}`); }
   cv(fpSD.outY, mod.diamond_pickaxe.inS!, 'cvsPick'); cv(fpSD.outX, mod.diamond_axe.inS!, 'cvsAxe');
@@ -130,7 +131,7 @@ export interface Platform {
 /** Put the deck over the block feed pair: DIAMONDS right above it, LOGS down a hopper line to the log chest, OUTPUT/LEFTOVER fed by the lifts. */
 export function buildPlatform(b: Board, it: Items, cfg: Cfg, liftAnchor: { out: Pos; left: Pos } = { out: cfg.liftOut, left: cfg.liftLeft }): Platform {
   const hops = it.hops;
-  const PY = cfg.fpB[1] + 2, CY = PY + 1, rowZ = cfg.fpB[2];
+  const PY = cfg.fpB[1] + 3, CY = PY + 1, rowZ = cfg.fpB[2];      // two hoppers under each input half (the lower one of DIAMONDS drops into the block chest)
   const cx = (i: number) => cfg.fpB[0] + 3 * i;
   const sign = (at: Pos, facing: string, lines: string[]) => b.raw(at, 'oak_wall_sign', { facing, text: lines }, 'other');
   const dchest = (i: number): Pos[] => {
@@ -140,6 +141,7 @@ export function buildPlatform(b: Board, it: Items, cfg: Cfg, liftAnchor: { out: 
   };
   const diamonds = dchest(0), logs = dchest(1), output = dchest(2), leftover = dchest(3);
   for (const i of [0, 1]) for (const dx of [0, 1]) b.raw([cx(i) + dx, PY, rowZ], 'hopper', { facing: 'down' }, 'piston', '__s');
+  for (const dx of [0, 1]) b.raw([cx(0) + dx, PY - 1, rowZ], 'hopper', { facing: 'down' }, 'piston', '__s');
   b.raw([cx(1), PY - 1, rowZ], 'hopper', { facing: 'east' }, 'piston', '__s');
   b.raw([cx(1) + 1, PY - 1, rowZ], 'hopper', { facing: 'west' }, 'piston', '__s');
   hops.cvLogs = conveyor(b, [cx(1), PY - 1, rowZ], it.logChest, 'cvLogs').length;

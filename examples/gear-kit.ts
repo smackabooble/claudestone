@@ -72,6 +72,8 @@ export interface TimelineOpts {
   preRt?: number;
   /** the PS lane taps the first `s` nodes (same moments as the first PD pulses) instead of getting its own nodes after the PD ones */
   parallelS?: boolean;
+  /** the PC snake gets an odd number of rows so that it ends on the east side */
+  oddPC?: boolean;
 }
 /** rows of the folded snake for a delay (same rule as the snake helper inside buildTimeline) */
 export function snakeRows(delayRt: number, evenRows: boolean): number {
@@ -104,7 +106,7 @@ export function buildTimeline(b: Board, O: Pos, name: string, d: number, s: numb
     let z = v0 + 3;
     b.dust(P(0, z), snet, 'orange');
     const nRep = Math.max(1, Math.ceil(delayRt / 4));
-    let rows = Math.ceil(nRep / 5); if (evenRows && rows % 2 === 1) rows++;
+    let rows = Math.ceil(nRep / 5); if (evenRows && rows % 2 === 1) rows++; if (!evenRows && opts.oddPC && rows % 2 === 0) rows++;     // the PC snake has an odd number of rows: it ends on the east side, away from the mirrored PS lane if (!evenRows && opts.oddPC && rows % 2 === 0) rows++;     // the PC snake has an odd number of rows: it ends on the east side, away from the mirrored PS lane
     const L = Math.max(1, Math.ceil(nRep / rows));
     const nTot = rows * L, base = Math.floor(delayRt / nTot);
     if (base < 1) throw new Error(`snake: ${delayRt} rt is too short for ${nTot} repeaters`);

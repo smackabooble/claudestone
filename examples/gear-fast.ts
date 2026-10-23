@@ -50,19 +50,29 @@ export function buildFast(w: World, cfg: Cfg = loadCfg()): Machine {
   };
   const gapFor = (...nets: string[]) => Math.max(0, Math.ceil((Math.max(...nets.map((n) => hops[n] ?? 0)) * HOP_GT + 40) / SLOT_GT) - 1);
   // stage 0 (START): block release, log
-  const cvbD = hops.cvb0 ?? 0;
-  const gapDM = Math.max(0, Math.round((8 * cvbD + 16 - 8 + 14 - 32) / SLOT_GT) - 1);                // PC of tDM ~ when the first block (pair D) has arrived (counted from the last release pulse)
-  spec('tDM', 4, 0, 'START', {}, gapDM);
+  // blocks: both ports of the block chest release two blocks (nodes 0 and 1); trunk Y feeds crafters D, A and trunk X feeds B, C.
+  // arrival times (gt after START) of the blocks at their crafters decide when the block crafter timelines start.
+  const N0 = 44, LOAD = 16, TO_PD = 42, KID = 50;                 // first release pulse, hopper->tap->dropper loading, start->PD, parent start -> child start
+  const arr = { D: N0 + 8 * (hops.cvb0 ?? 0) + LOAD, A: N0 + SLOT_GT + 8 * ((hops.cvb0 ?? 0) + (hops.cvb1 ?? 0)) + LOAD, B: N0 + 8 * (hops.cvb2 ?? 0) + LOAD, C: N0 + SLOT_GT + 8 * ((hops.cvb2 ?? 0) + (hops.cvb3 ?? 0)) + LOAD };
+  const sOf = (k: keyof typeof arr) => arr[k] - TO_PD + 8;       // start of tc1k so that its PD fires 8 gt after the block arrived
+  const sMin = Math.min(sOf('D'), sOf('B'));
+  const lastPD = N0 + SLOT_GT;                                    // two release nodes
+  const nSlots = Math.max(1, Math.floor((sMin - (lastPD - 14)) / SLOT_GT));
+  const gapDM = nSlots - 1;
+  const pcKid = lastPD - 14 + nSlots * SLOT_GT;                   // moment the kid pins of tDM fire
+  spec('tDM', 2, 2, 'START', { parallelS: true }, gapDM);
   spec('tC2', 1, 0, 'START');
   spec('tP_AB', 2, 0, 'tC2', { preRt: 12 }, gapFor('cvpAB'));
   spec('tP_D', 2, 0, 'tC2', { preRt: 12 }, gapFor('cvpD'));
   spec('tS0S', 3, 1, 'tP_AB', { preRt: 14 }, 0, 0, true);
-  // block crafters: staggered, each starts when its own block has arrived (blocks are released 20 gt apart: D, A, B, C)
-  const stag = (i: number) => Math.max(0, Math.ceil((SLOT_GT + (hops[`cvb${i}`] ?? 0) * HOP_GT - 52) / 2));
-  spec('tc1D', 1, 0, 'tDM');
-  spec('tc1A', 1, 0, 'tc1D', { preRt: stag(1) });
-  spec('tc1B', 1, 0, 'tc1A', { preRt: stag(2) });
-  spec('tc1C', 1, 0, 'tc1B', { preRt: stag(3) });
+  const pre = (want: number, base: number) => Math.max(0, Math.ceil((want - base) / 2));
+  const preD = pre(sOf('D'), pcKid), preB = pre(sOf('B'), pcKid);
+  spec('tc1D', 1, 0, 'tDM', preD > 0 ? { preRt: preD } : {});
+  spec('tc1B', 1, 0, 'tDM', preB > 0 ? { preRt: preB } : {});
+  const sD = pcKid + 2 * preD, sB = pcKid + 2 * preB;
+  const preA = pre(sOf('A'), sD + KID), preC = pre(sOf('C'), sB + KID);
+  spec('tc1A', 1, 0, 'tc1D', preA > 0 ? { preRt: preA } : {});
+  spec('tc1C', 1, 0, 'tc1B', preC > 0 ? { preRt: preC } : {});
   spec('tS0D', 6, 3, 'tc1D', { preRt: 16 }, 0, 0, false).noCrafter = true;
   const stickNet: Record<string, string> = { diamond_shovel: 'cvsShovel', diamond_sword: 'cvsSword', diamond_pickaxe: 'cvsPick', diamond_axe: 'cvsAxe' };
   for (const pr of PAIRS) for (const name of [pr.y, pr.x]) {
@@ -83,7 +93,8 @@ export function buildFast(w: World, cfg: Cfg = loadCfg()): Machine {
   // footprint of every timeline (scratch board), then shelf packing per height layer behind the item side
   const foot = (sp: Spec) => {
     const sw = new World(); const sb = new Board(sw);
-    buildTimeline(sb, [0, 0, 0], 'f', sp.d, sp.s, sp.gap, sp.gapS, sp.noPC, sp.opts);
+    if (process.env.DEBUG_LINKS) console.log('foot', sp.name, JSON.stringify(sp.opts), sp.gap, sp.gapS);
+    buildTimeline(sb, [0, 0, 0], 'f', sp.d, sp.s, sp.gap, sp.gapS, sp.noPC, { ...sp.opts, oddPC: true });
     const lo = [1e9, 1e9], hi = [-1e9, -1e9];
     for (const k of sb.occ.keys()) { const p = k.split(',').map(Number); lo[0] = Math.min(lo[0], p[0]); hi[0] = Math.max(hi[0], p[0]); lo[1] = Math.min(lo[1], p[2]); hi[1] = Math.max(hi[1], p[2]); }
     return { x0: lo[0], x1: hi[0], z0: lo[1], z1: hi[1] };
@@ -105,7 +116,7 @@ export function buildFast(w: World, cfg: Cfg = loadCfg()): Machine {
     if (process.env.TLSTACK === '0') zNext = rowZ + rowH + GAP;
   }
   for (const sp of specs) {
-    const t = buildTimeline(b, sp.place!, sp.name, sp.d, sp.s, sp.gap, sp.gapS, sp.noPC, sp.opts);
+    const t = buildTimeline(b, sp.place!, sp.name, sp.d, sp.s, sp.gap, sp.gapS, sp.noPC, { ...sp.opts, oddPC: true });
     sp.pins = t;
     timelines.push({ name: sp.name, start: t.start, delayRt: sp.opts.preRt ?? 0, PD: t.PD, PS: t.PS, PC: t.PC });
   }
@@ -123,7 +134,7 @@ export function buildFast(w: World, cfg: Cfg = loadCfg()): Machine {
   link(plat.btnDust, T('tDM').start, 'startbtn', ['startbtn', 'tDM.tl.in']);
   link(T('tDM').start, T('tC2').start, 'startbtn', ['startbtn', 'tDM.tl.in', 'tC2.tl.in']);
   // ---- pulse lanes to the units ----
-  link(T('tDM').PD!, it.fpB.pulseY, 'tDM.tl.PD', ['bk.py']);
+  link(T('tDM').PD!, it.fpB.pulseY, 'tDM.tl.PD', ['bk.py']); link(T('tDM').PS!, it.fpB.pulseX, 'tDM.tl.PS', ['bk.px']);
   link(T('tC2').PD!, it.c2.PD, 'tC2.tl.PD', ['c2.pd']); link(takePin('tC2', it.c2.PC), it.c2.PC, 'tC2.tl.PCa', ['c2.pc', 'tC2.tl.PC']);
   link(T('tP_AB').PD!, it.fpP.pulseX, 'tP_AB.tl.PD', ['pl.px']); link(takePin('tP_AB', it.c3AB.pulseC), it.c3AB.pulseC, 'tP_AB.tl.PCa', ['c3AB.pc', 'tP_AB.tl.PC']);
   link(T('tP_D').PD!, it.fpP.pulseY, 'tP_D.tl.PD', ['pl.py']); link(takePin('tP_D', it.c3D.pulseC), it.c3D.pulseC, 'tP_D.tl.PCa', ['c3D.pc', 'tP_D.tl.PC']);
