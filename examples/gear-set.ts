@@ -154,6 +154,7 @@ export function buildGearSet(w: World): Machine {
   b.floorColor = 'red';
   const BX0 = -26, BX1 = 70;
   b.wool([BX0 - 1, Y, ZB], 'red');
+  for (let py = 0; py <= 16; py++) b.raw([BX0 - 3, py, ZB], 'emerald_block', {}, 'other');     // landmark pillar two blocks west of the button
   b.raw([BX0 - 1, Y + 1, ZB], 'stone_button', { face: 'floor', facing: 'east' }, 'lever');
   const nearBranch = (x: number) => GROUPS.some((g) => Math.abs(g.sx - x) <= 1);
   for (let x = BX0; x <= BX1; x++) {

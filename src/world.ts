@@ -25,6 +25,7 @@ const AIR: Block = { type: 'air', p: {} };
 interface Def { solid: boolean; conductor: boolean; source: boolean }
 const DEFS: Record<string, Def> = {
   obsidian: { solid: true, conductor: true, source: false },
+  emerald_block: { solid: true, conductor: true, source: false },
   furnace: { solid: true, conductor: true, source: false }, // block entity: pistons cannot push it
   note_block: { solid: true, conductor: true, source: false }, // right-click changes `note` (a state change observers see); powered state follows redstone
   leaves: { solid: true, conductor: false, source: false }, // full support for dust, but not a redstone conductor
