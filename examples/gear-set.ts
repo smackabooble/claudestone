@@ -201,6 +201,17 @@ export function buildGearSet(w: World): Machine {
   for (const j of jobs) j();
   for (const l of links) if (l.net !== ST) assignRepeaters(b, l.path, l.net, undefined, 5);
 
+  // landmark pillars next to the chests the user touches: diamonds = lapis, logs = gold, output = iron (button = emerald)
+  const pillar = (near: Pos, type: string) => {
+    for (let r = 3; r < 40; r++) for (const [dx, dz] of [[r, 0], [-r, 0], [0, r], [0, -r], [r, r], [-r, -r], [r, -r], [-r, r]]) {
+      const x = near[0] + dx, z = near[2] + dz;
+      let ok = true; for (let py = 0; py <= 16; py++) if (!b.isFree([x, py, z]) || !b.isFree([x + 1, py, z]) || !b.isFree([x - 1, py, z]) || !b.isFree([x, py, z + 1]) || !b.isFree([x, py, z - 1])) { ok = false; break; }
+      if (ok) { for (let py = 0; py <= 16; py++) b.raw([x, py, z], type, {}, 'other'); return [x, z]; }
+    }
+    throw new Error('no room for the ' + type + ' pillar');
+  };
+  const pillars = { diamonds: pillar(fpB.chestL, 'lapis_block'), logs: pillar(logChest, 'gold_block'), output: pillar(outChest, 'iron_block') };
+  console.log('pillars (x,z):', JSON.stringify(pillars));
   return {
     b, button: [BX0 - 1, Y + 1, ZB] as Pos, blockChest: [fpB.chestL, fpB.chestR], logChest,
     leftoverDiamonds: stash.D, leftoverSticks: [fpSAB.chestL, fpSAB.chestR],
