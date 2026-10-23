@@ -265,7 +265,8 @@ const dirName = (d: [number, number, number]): Dir => (d[0] > 0 ? 'east' : d[0] 
 export function conveyor(b: Board, from: Pos, to: Pos, net: string, o: { own?: string[]; maxNodes?: number } = {}): Pos[] {
   const ownSet = new Set([net, ...(o.own ?? [])]);
   const goal = keyOf(to);
-  const isContainer = (t: Tag | undefined) => !!t && t.kind === 'piston' && t.net === '__s';
+  // chests/hoppers ('__s') and droppers/crafters ('__q') all hold items: a hopper directly under one of them sucks it empty
+  const isContainer = (t: Tag | undefined) => !!t && t.kind === 'piston' && (t.net === '__s' || t.net === '__q');
   let lastWhy = 0; const why = (i: number, _c: Pos): false => { lastWhy = i; return false; };
   const ok = (c: Pos, prev: Pos): boolean => {
     if (!b.isFree(c)) return why(1, c);
