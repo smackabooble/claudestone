@@ -55,7 +55,9 @@ export class Board {
   reserveCorridor(pin: Pos, dir: [number, number], len: number, net: string): void {
     for (let k = 1; k <= len; k++) for (let l = -1; l <= 1; l++) {
       const c: Pos = [pin[0] + dir[0] * k + (dir[1] !== 0 ? l : 0), pin[1], pin[2] + dir[1] * k + (dir[0] !== 0 ? l : 0)];
-      if (this.isFree(c)) this.occ.set(keyOf(c), { kind: 'reserve', net });
+      for (const dy of [0, 1]) { const q: Pos = [c[0], c[1] + dy, c[2]]; if (this.isFree(q)) this.occ.set(keyOf(q), { kind: 'reserve', net }); }
+      const f: Pos = [c[0], c[1] - 1, c[2]];
+      if (this.isFree(f)) { this.occ.set(keyOf(f), { kind: 'wool' }); this.w.place(f, 'light_gray_wool'); }
     }
   }
   /** reserve a cell that has to stay empty (air) */
@@ -86,14 +88,17 @@ function foreignNear(b: Board, c: Pos, net: string, allow?: Set<string>, own?: S
     const k = key(c[0] + dx, c[1] + dy, c[2] + dz);
     if (allow?.has(k)) continue;
     const tg = b.occ.get(k);
-    if (connective(tg, net, own)) { if (process.env.DEBUG_ROUTE === '2' && c[0] === -5 && c[1] === 3 && c[2] === 0) console.log('C hit', c[0]+dx, c[1]+dy, c[2]+dz, tg); return true; }
+    if (connective(tg, net, own)) { if (process.env.DEBUG_ROUTE === '2' && c[0] === 4 && c[1] === 3 && c[2] === -2) console.log('C hit', c[0]+dx, c[1]+dy, c[2]+dz, tg); return true; }
     if (nearEnd && tg && CONNECTIVE.includes(tg.kind) && tg.net && (tg.net === net || (own && own.has(tg.net))) && !nearEnd(k)) return true;
   }
-  // quasi-connectivity: droppers / crafters / pistons ('__q') also react to power around the cell ABOVE them -> keep a wider berth
-  for (let dx = -2; dx <= 2; dx++) for (let dz = -2; dz <= 2; dz++) for (let dy = -3; dy <= 0; dy++) {
-    if (allow?.has(key(c[0] + dx, c[1] + dy, c[2] + dz))) continue;
-    const t = b.occ.get(key(c[0] + dx, c[1] + dy, c[2] + dz));
-    if (t && t.net === '__q' && net !== '__q') { if (process.env.DEBUG_ROUTE === '2' && c[0] === -5 && c[1] === 3 && c[2] === 0) console.log('Q hit', c[0]+dx, c[1]+dy, c[2]+dz, t); return true; }
+  // quasi-connectivity: droppers / crafters / pistons ('__q') also react to power at the cell ABOVE them (A) or next to it: keep every
+  // signal part further than 3 steps (Manhattan) from A. A powered neighbour block of A is fed by wiring up to 2 steps away.
+  for (let ex = -3; ex <= 3; ex++) for (let ey = -3; ey <= 3; ey++) for (let ez = -3; ez <= 3; ez++) {
+    if (Math.abs(ex) + Math.abs(ey) + Math.abs(ez) > 3) continue;
+    const pk = key(c[0] + ex, c[1] + ey - 1, c[2] + ez);
+    if (allow?.has(pk)) continue;
+    const t = b.occ.get(pk);
+    if (t && t.net === '__q' && net !== '__q') return true;
   }
   return false;
 }
@@ -169,6 +174,8 @@ function routeOnce(b: Board, from: Pos, to: Pos, net: string, o: RouteOpts, avoi
   }
   if (process.env.DEBUG_ROUTE) {
     const why = (c: Pos) => `${c.join(',')}: ${!b.isFree(c) ? 'occupied ' + JSON.stringify(b.tag(c)) : !floorOk(c) ? 'floor ' + JSON.stringify(b.tag([c[0], c[1] - 1, c[2]])) : foreignNear(b, c, net, o.allow, ownSet, o.strict ? nearEnd : undefined) ? 'foreign-near' : 'ok'}`;
+    if (process.env.DEBUG_ROUTE === '2') { const c: Pos = [to[0], to[1], to[2] + 3]; for (let dx = -2; dx <= 2; dx++) for (let dy = -3; dy <= 3; dy++) for (let dz = -2; dz <= 2; dz++) { const t = b.tag([c[0] + dx, c[1] + dy, c[2] + dz]); if (t && t.kind !== 'reserve' && t.kind !== 'wool') console.log(' nb', c[0] + dx, c[1] + dy, c[2] + dz, JSON.stringify(t)); } }
+    if (process.env.DEBUG_ROUTE === '2') for (let zz = 4; zz <= 14; zz++) { const c: Pos = [to[0] + (zz - 3), to[1], to[2]]; console.log(' col', c.join(','), 'fn', foreignNear(b, c, net, o.allow, ownSet, o.strict ? nearEnd : undefined), 'floor', floorOk(c), 'free', free(c), HDIRS.some((_, di) => best.has(keyOf(c) + '|' + di)) ? 'VISITED' : ''); }
     if (process.env.DEBUG_ROUTE === '2') console.log(' bbox x', bb[0], bb[1], 'y', bb[2], bb[3], 'z', bb[4], bb[5]);
     for (const dx of [1,2,3,4,5,6,7,8,10,14]) for (const sx of [-1,1]) { const c: Pos = [to[0] + sx*dx, to[1], to[2]]; if (process.env.DEBUG_ROUTE === '2') console.log(' ray', why(c), 'fn', foreignNear(b, c, net, o.allow, ownSet, o.strict ? nearEnd : undefined), 'floor', floorOk(c), 'free', free(c), HDIRS.some((_, di) => best.has(keyOf(c) + '|' + di)) ? 'VISITED' : ''); }
     console.log('route fail; expanded', nodes, '\nstart nbrs:\n ' + HDIRS.map(([dx, dz]) => why([from[0] + dx, from[1], from[2] + dz])).join('\n '), '\ngoal nbrs:\n ' + HDIRS.map(([dx, dz]) => why([to[0] + dx, to[1], to[2] + dz])).join('\n '));
@@ -239,6 +246,7 @@ export function conveyor(b: Board, from: Pos, to: Pos, net: string, o: { own?: s
     // no foreign signal parts next to it
     for (const [dx, dy, dz] of [[1, 0, 0], [-1, 0, 0], [0, 0, 1], [0, 0, -1], [0, 1, 0], [0, -1, 0]]) {
       const t = b.tag([c[0] + dx, c[1] + dy, c[2] + dz]);
+      if (dy === -1 && t && ['dust', 'rep', 'cmp'].includes(t.kind)) continue;      // wiring directly under a hopper cannot power it
       if (t && CONNECTIVE.includes(t.kind) && t.kind !== 'piston' && !(t.net && ownSet.has(t.net))) return false;
     }
     return true;
