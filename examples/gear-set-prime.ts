@@ -6,10 +6,10 @@
 import { writeFileSync } from 'node:fs';
 import { World } from '../src/world.ts';
 import { exportSchem } from '../src/export.ts';
-import { buildGearSet } from './gear-set.ts';
+import { loadGearSet } from './gear-set.ts';
 
 const w = new World();
-const m = buildGearSet(w);
+const m = loadGearSet(w);
 const fill = () => { w.setItem(m.blockChest[0], 0, { id: 'diamond_block', count: 64 }); w.setItem(m.logChest, 0, { id: 'oak_log', count: 16 }); };
 const empty = (p: any) => { for (let i = 0; i < 54; i++) w.setItem(p, i, null); };
 const count = (p: any) => { const t: Record<string, number> = {}; for (const x of (w.items(p) ?? []) as any[]) if (x) t[x.id] = (t[x.id] ?? 0) + x.count; return t; };

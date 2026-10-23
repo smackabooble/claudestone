@@ -26,6 +26,7 @@ interface Def { solid: boolean; conductor: boolean; source: boolean }
 const DEFS: Record<string, Def> = {
   obsidian: { solid: true, conductor: true, source: false },
   emerald_block: { solid: true, conductor: true, source: false },
+  coal_block: { solid: true, conductor: true, source: false },
   lapis_block: { solid: true, conductor: true, source: false },
   gold_block: { solid: true, conductor: true, source: false },
   iron_block: { solid: true, conductor: true, source: false },

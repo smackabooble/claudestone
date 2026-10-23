@@ -7,7 +7,8 @@
  * items each crafter gets. Shared stashes are double chests with two such ports. The leftover is what stays in the stashes.
  * Hoppers can hold a couple of stray items per port, so the first presses after building "prime" the machine.
  */
-import { writeFileSync } from 'node:fs';
+import { writeFileSync, readFileSync, existsSync, mkdirSync } from 'node:fs';
+import { createHash } from 'node:crypto';
 import { World } from '../src/world.ts';
 import { exportSchem } from '../src/export.ts';
 import { Board, route, assignRepeaters, conveyor } from './noglue-lib.ts';
@@ -16,6 +17,8 @@ import { buildTimeline, KITS, SLOT_RT } from './gear-kit.ts';
 import type { Pos } from '../src/dirs.ts';
 
 const PITCH = 48;
+/** the hub: everything the user touches (inputs, output, button, the leftover sticks) sits in a column at x=HUBX, next to pair D (the leftover diamonds) */
+const HUBX = -36;        // west edge of the machine: block chest, log chest, leftover sticks, output chest and button sit in a column here; pair D (leftover diamonds) is next to it
 export interface Pair { id: string; y: string; x: string }
 export const PAIRS: Pair[] = [
   { id: 'D', y: 'diamond_pickaxe', x: 'diamond_axe' },       // 3 + 3 (+3 spare = leftover diamonds)
@@ -30,6 +33,8 @@ export interface Machine {
   blockChest: Pos[];         // double chest of diamond blocks (two halves)
   logChest: Pos;             // chest of logs
   leftoverDiamonds: Pos[]; leftoverSticks: Pos[];
+  planksStash: Pos;
+  pins: { net: string; pin: Pos }[];   // destination pin of every pulse lane (diagnostics)
   outputs: Pos[];            // collector hoppers of the 8 gear crafters (facing east)
   timelines: { name: string; start: Pos; delayRt: number; PD: Pos | null; PS: Pos | null; PC: Pos }[];
 }
@@ -38,14 +43,16 @@ export function buildGearSet(w: World): Machine {
   const b = new Board(w);
   const links: { path: Pos[]; net: string }[] = [];
   const jobs: (() => void)[] = [];
+  const pins: { net: string; pin: Pos }[] = [];
   const link = (from: Pos, to: Pos, net: string, own: string[]) => {
+    pins.push({ net, pin: to });
     jobs.push(() => { b.floorColor = 'orange'; links.push({ path: route(b, from, to, net, { own, strict: true }), net }); });
   };
   const timelines: Machine['timelines'] = [];
   const later: (() => void)[] = [];
   const hops: Record<string, number> = {};
   const cv = (from: Pos, to: Pos, net: string) => { hops[net] = conveyor(b, from, to, net).length; };
-  const HOP_GT = 8;
+  const HOP_GT = 8;    // gt per hopper hop (item latency of a conveyor); GAP_MARGIN covers the pulse-to-craft slack
   const mod: Record<string, ReturnType<typeof buildCrafterMod>> = {};
   const stash: Record<string, Pos[]> = {};
 
@@ -53,23 +60,24 @@ export function buildGearSet(w: World): Machine {
   const feed: Record<string, ReturnType<typeof buildFeedPair>> = {};
   const c1: Record<string, ReturnType<typeof buildDirectKit>> = {};
   PAIRS.forEach((pr, i) => {
-    const x0 = i * PITCH;
-    feed[pr.id] = buildFeedPair(b, [x0, 1, 0], `p${pr.id}`);
+    const x0 = i * PITCH, z0 = 0;
+    feed[pr.id] = buildFeedPair(b, [x0, 1, z0], `p${pr.id}`);
     stash[pr.id] = [feed[pr.id].chestL, feed[pr.id].chestR];
-    c1[pr.id] = buildDirectKit(b, [x0, 3, 0], `c1${pr.id}`, [4], 'down');
-    mod[pr.y] = buildCrafterMod(b, [x0 - 12, 0, 22], pr.y, KITS[pr.y]);
-    mod[pr.x] = buildCrafterMod(b, [x0 + 12, 0, 22], pr.x, KITS[pr.x]);
+    c1[pr.id] = buildDirectKit(b, [x0, 3, z0], `c1${pr.id}`, [4], 'down');
+    const mx = i * PITCH;
+    mod[pr.y] = buildCrafterMod(b, [mx - 12, 0, 22], pr.y, KITS[pr.y]);
+    mod[pr.x] = buildCrafterMod(b, [mx + 12, 0, 22], pr.x, KITS[pr.x]);
     cv(feed[pr.id].outY, mod[pr.y].inD, `cv${pr.y}`);
     cv(feed[pr.id].outX, mod[pr.x].inD, `cv${pr.x}`);
   });
 
   // ---- stick side: planks stash (C2 above), two stick stashes (C3 above) ----
-  const fpP = buildFeedPair(b, [20, 4, 70], 'pl');                                   // planks stash + 2 ports (outputs at y=4)
-  const c2 = buildDirectKit(b, [20, 6, 70], 'c2', [4], 'down');                     // log -> 4 planks, facing down into the stash
+  const fpP = buildFeedPair(b, [HUBX, 8, 14], 'pl');                                   // planks stash + 2 ports (outputs at y=4)
+  const c2 = buildDirectKit(b, [HUBX, 10, 14], 'c2', [4], 'down');                     // log -> 4 planks, facing down into the stash
   const fpSD = buildFeedPair(b, [0, 1, 50], 'sD');                                   // sticks for pickaxe + axe
   const c3D = buildCrafterMod(b, [0, 3, 50], 'c3D', { enabled: [1, 4], diamonds: 2, sticks: 0 }, 'down');
-  const fpSAB = buildFeedPair(b, [PITCH + 6, 1, 50], 'sAB');                         // sticks for shovel + sword
-  const c3AB = buildCrafterMod(b, [PITCH + 6, 3, 50], 'c3AB', { enabled: [1, 4], diamonds: 2, sticks: 0 }, 'down');
+  const fpSAB = buildFeedPair(b, [HUBX, 5, 36], 'sAB');                         // sticks for shovel + sword
+  const c3AB = buildCrafterMod(b, [HUBX, 7, 36], 'c3AB', { enabled: [1, 4], diamonds: 2, sticks: 0 }, 'down');
   cv(fpP.outY, c3D.inD, 'cvpD');
   cv(fpP.outX, c3AB.inD, 'cvpAB');
   cv(fpSAB.outY, mod.diamond_shovel.inS!, 'cvsShovel');
@@ -77,15 +85,15 @@ export function buildGearSet(w: World): Machine {
   cv(fpSD.outY, mod.diamond_pickaxe.inS!, 'cvsPick');
   cv(fpSD.outX, mod.diamond_axe.inS!, 'cvsAxe');
 
-  // ---- output collector: the 8 crafter outputs chain east along z=23 into one chest ----
-  const outs = PAIRS.flatMap((pr) => [mod[pr.y].out, mod[pr.x].out]).sort((p, q) => p[0] - q[0]);
+  // ---- output collector: the 8 crafter outputs run west along z=23 into the output chest in the hub ----
+  const outs = PAIRS.flatMap((pr) => [mod[pr.y].out, mod[pr.x].out]).sort((p, q) => q[0] - p[0]);
   for (let i = 0; i + 1 < outs.length; i++) cv(outs[i], outs[i + 1], `cvo${i}`);
-  const lastOut = outs[outs.length - 1];
-  const outChest: Pos = [lastOut[0] + 1, lastOut[1], lastOut[2]];
+  const outChest: Pos = [HUBX + 14, -2, 23];
   b.raw(outChest, 'chest', { facing: 'south', type: 'single' }, 'piston', '__s');
+  cv(outs[outs.length - 1], outChest, 'cvoEnd');
 
   // ---- block metered port (user's double chest of diamond blocks) -> line -> the four block crafters ----
-  const fpB = buildFeedPair(b, [-30, 5, -6], 'bk');
+  const fpB = buildFeedPair(b, [HUBX, 5, -6], 'bk');
   const busCells = PAIRS.map((pr) => c1[pr.id].busA);
   // the trunk hoppers sit directly above each block crafter's tap hopper: the (idle) tap sucks the first block that arrives, the
   // locked tap leaves the next ones to flow on. The last cell faces a plain block, so it never pushes into its tap.
@@ -111,7 +119,7 @@ export function buildGearSet(w: World): Machine {
   const tC2 = tl('tC2', place(), 1, 0, 0);
   link(tDM.PD!, fpB.pulseY, 'tDM.tl.PD', ['bk.py']);
   link(tC2.PD!, c2.PD, 'tC2.tl.PD', ['c2.pd']); link(tC2.PC, c2.PC, 'tC2.tl.PC', ['c2.pc']);
-  const gapFor = (...nets: string[]) => Math.max(0, Math.ceil((Math.max(...nets.map((n) => hops[n] ?? 0)) * HOP_GT + 24) / (SLOT_RT * 2)) - 1);
+  const gapFor = (...nets: string[]) => Math.max(0, Math.ceil((Math.max(...nets.map((n) => hops[n] ?? 0)) * HOP_GT + 60) / (SLOT_RT * 2)) - 1);
   const tP_AB = tl('tP_AB', place(), 2, 0, 50, gapFor('cvpAB'));
   link(tP_AB.PD!, fpP.pulseX, 'tP_AB.tl.PD', ['pl.px']); link(tP_AB.PC, c3AB.pulseC, 'tP_AB.tl.PC', ['c3AB.pc']);
   const tP_D = tl('tP_D', place(), 2, 0, 50, gapFor('cvpD'));
@@ -147,15 +155,18 @@ export function buildGearSet(w: World): Machine {
   const Y = 6, ZB = 80, ZT = 92;
   const GROUPS = [
     { slots: [0, 1], rt: 0, sx: -24, L: 0 }, { slots: [2, 3], rt: tPl, sx: -12, L: 40 },
-    { slots: [4, 5, 6, 7], rt: tC1, sx: 6, L: 56 }, { slots: [8, 9, 10, 11, 12, 13, 14, 15], rt: tUnits, sx: 70, L: 100 },
+    { slots: [4, 5, 6, 7], rt: tC1, sx: 10, L: 90 }, { slots: [8, 9, 10, 11, 12, 13, 14, 15], rt: tUnits, sx: 100, L: 120 },
   ];
   const slotX = (k: number) => -20 + 8 * k;
   const ST = 'start';
   b.floorColor = 'red';
-  const BX0 = -26, BX1 = 70;
-  b.wool([BX0 - 1, Y, ZB], 'red');
-  for (let py = 0; py <= 16; py++) b.raw([BX0 - 3, py, ZB], 'emerald_block', {}, 'other');     // landmark pillar two blocks west of the button
-  b.raw([BX0 - 1, Y + 1, ZB], 'stone_button', { face: 'floor', facing: 'east' }, 'lever');
+  const BX0 = -26, BX1 = 100;
+  // the button sits in the hub next to the output chest; a long boosted dust lane carries its signal to the start of the bus
+  const btnWool: Pos = [HUBX + 14, -3, 29];
+  b.wool(btnWool, 'red');
+  const button: Pos = [HUBX + 14, -2, 29];
+  b.raw(button, 'stone_button', { face: 'floor', facing: 'east' }, 'lever');
+  b.dust([HUBX + 15, -3, 29], 'startbtn', 'red');
   const nearBranch = (x: number) => GROUPS.some((g) => Math.abs(g.sx - x) <= 1);
   for (let x = BX0; x <= BX1; x++) {
     if ((x - BX0) % 8 === 6 && !nearBranch(x)) b.rep([x, Y, ZB], 'east', 1, ST); else b.dust([x, Y, ZB], ST);
@@ -171,9 +182,10 @@ export function buildGearSet(w: World): Machine {
       const n = Math.ceil(g.rt / 4);
       const delays = Array.from({ length: n }, (_, i) => (i < n - 1 ? 4 : g.rt - 4 * (n - 1)));
       let di = 0; let z = ZB + 2; let dirE = true; let x = g.sx;
-      const rows = Math.ceil(n / g.L);
+      let rows = Math.ceil(n / g.L); if (rows % 2 === 1 && rows > 1) rows++;           // even number of rows: the snake ends next to where it started
+      const L = Math.ceil(n / rows);
       for (let r = 0; r < rows; r++) {
-        const cnt = Math.min(g.L, n - r * g.L);
+        const cnt = Math.min(L, n - r * L);
         for (let i = 0; i < cnt; i++) { const cx = dirE ? x + 1 + i : x - 1 - i; b.rep([cx, Y, z], dirE ? 'east' : 'west', delays[di++], ST); }
         const lastX = dirE ? x + cnt : x - cnt;
         const outX = dirE ? lastX + 1 : lastX - 1;
@@ -190,7 +202,9 @@ export function buildGearSet(w: World): Machine {
     const east = ex <= Math.min(...xs) + 1;                       // join at the west end: flow east
     for (let tx = lo; tx <= hi; tx++) {
       if (tx === ex) { b.dust([tx, Y, ZT], ST); continue; }
-      const flowRep = ((tx % 8) + 8) % 8 === 0 && Math.abs(tx - ex) >= 2;                  // taps sit at x = 4 (mod 8): boosters midway between them
+      // a repeater right before every tap restores full strength for the long staircase down to the timeline start pin
+      const preTap = xs.some((q) => q !== ex && tx === (q > ex ? q - 1 : q + 1));
+      const flowRep = tx !== ex && (preTap || (((tx % 8) + 8) % 8 === 0 && Math.abs(tx - ex) >= 2));
       if (flowRep) b.rep([tx, Y, ZT], tx > ex ? 'east' : 'west', 1, ST); else b.dust([tx, Y, ZT], ST);
     }
     void east;
@@ -198,10 +212,11 @@ export function buildGearSet(w: World): Machine {
   }
   const startJobs = taps.map((t) => () => { b.floorColor = 'red'; links.push({ path: route(b, t.cell, timelines[t.k].start, ST, { own: [`${timelines[t.k].name}.tl.in`], strict: true }), net: ST }); });
   jobs.unshift(...startJobs);
+  jobs.unshift(() => { b.floorColor = 'red'; const path = route(b, [HUBX + 15, -3, 29], [BX0, Y, ZB], 'startbtn', { own: [ST], strict: true }); assignRepeaters(b, path, 'startbtn', undefined, 8); });
   for (const j of jobs) j();
   for (const l of links) if (l.net !== ST) assignRepeaters(b, l.path, l.net, undefined, 5);
 
-  // landmark pillars next to the chests the user touches: diamonds = lapis, logs = gold, output = iron (button = emerald)
+  // landmark pillars next to the chests the user touches: diamonds = lapis, logs = gold, output = iron, button = emerald, both leftover chests = coal
   const pillar = (near: Pos, type: string) => {
     for (let r = 3; r < 40; r++) for (const [dx, dz] of [[r, 0], [-r, 0], [0, r], [0, -r], [r, r], [-r, -r], [r, -r], [-r, r]]) {
       const x = near[0] + dx, z = near[2] + dz;
@@ -210,11 +225,11 @@ export function buildGearSet(w: World): Machine {
     }
     throw new Error('no room for the ' + type + ' pillar');
   };
-  const pillars = { diamonds: pillar(fpB.chestL, 'lapis_block'), logs: pillar(logChest, 'gold_block'), output: pillar(outChest, 'iron_block') };
+  const pillars = { diamonds: pillar(fpB.chestL, 'lapis_block'), logs: pillar(logChest, 'gold_block'), output: pillar(outChest, 'iron_block'), button: pillar(button, 'emerald_block'), leftoverDiamonds: pillar(stash.D[0], 'coal_block'), leftoverSticks: pillar(fpSAB.chestL, 'coal_block') };
   console.log('pillars (x,z):', JSON.stringify(pillars));
   return {
-    b, button: [BX0 - 1, Y + 1, ZB] as Pos, blockChest: [fpB.chestL, fpB.chestR], logChest,
-    leftoverDiamonds: stash.D, leftoverSticks: [fpSAB.chestL, fpSAB.chestR],
+    b, button, blockChest: [fpB.chestL, fpB.chestR], logChest,
+    leftoverDiamonds: stash.D, leftoverSticks: [fpSAB.chestL, fpSAB.chestR], planksStash: fpP.chestL, pins,
     outputs: [outChest], timelines,
   };
 }
@@ -227,4 +242,34 @@ if (process.argv[1]?.endsWith('gear-set.ts')) {
       w.setItem(m.blockChest[0], 0, { id: 'diamond_block', count: 64 }); w.setItem(m.logChest, 0, { id: 'oak_log', count: 16 });
       writeFileSync('examples/diamond-gear-set.schem', exportSchem(w).buffer); console.log('wrote examples/diamond-gear-set.schem'); }
   } catch (e: any) { console.log('FAIL', e.message); }
+}
+
+/**
+ * Building takes minutes (the router), so the finished world is cached in .cache/gear-set.json and reloaded in seconds. The cache key is a
+ * hash of the generator sources. Used by the diagnostics and run scripts.
+ */
+export function loadGearSet(w: World): Machine {
+  const files = ['gear-set.ts', 'gear-parts.ts', 'gear-kit.ts', 'noglue-lib.ts', '../src/designs.ts'].map((f) => new URL(f, import.meta.url));
+  const key = createHash('sha1').update(files.map((f) => (existsSync(f) ? readFileSync(f, 'utf8') : '')).join('\n')).digest('hex');
+  const path = new URL('../.cache/gear-set.json', import.meta.url);
+  if (existsSync(path)) {
+    const c = JSON.parse(readFileSync(path, 'utf8'));
+    if (c.key === key) {
+      for (const b of c.blocks) w.setRaw(b.pos, b.type, b.props);
+      for (const [pos, off] of c.disabled as [Pos, number[]][]) for (const i of off) w.setSlotDisabled(pos, i, true);
+      for (const [pos, inv] of c.items as [Pos, ({ id: string; count: number } | null)[]][]) inv.forEach((it, i) => { if (it) w.setItem(pos, i, it); });
+      w.run(40);
+      const occ = new Map<string, any>(c.occ);
+      return { ...c.machine, b: { occ } as any };
+    }
+  }
+  const m = buildGearSet(w);
+  const blocks = w.listBlocks().filter((b) => b.type !== 'moving_piston');
+  const disabled = blocks.filter((b) => b.type === 'crafter').map((b) => [b.pos, w.disabledSlots(b.pos)] as [Pos, number[]]);
+  const items = blocks.filter((b) => ['chest', 'hopper', 'dropper', 'crafter'].includes(b.type)).flatMap((b) => { const inv = w.items(b.pos); return inv && inv.some(Boolean) && !(b.type === 'chest' && b.props?.type === 'right') ? [[b.pos, inv] as [Pos, any]] : []; });
+  const { b: _b, ...machine } = m;
+  const occ = [...(m.b as any).occ.entries()].filter(([, t]: any) => t.net).map(([k, t]: any) => [k, { kind: t.kind, net: t.net }]);
+  mkdirSync(new URL('../.cache/', import.meta.url), { recursive: true });
+  writeFileSync(path, JSON.stringify({ key, blocks, disabled, items, occ, machine }));
+  return m;
 }

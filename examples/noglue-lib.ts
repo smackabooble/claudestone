@@ -88,7 +88,7 @@ function foreignNear(b: Board, c: Pos, net: string, allow?: Set<string>, own?: S
     const k = key(c[0] + dx, c[1] + dy, c[2] + dz);
     if (allow?.has(k)) continue;
     const tg = b.occ.get(k);
-    if (connective(tg, net, own)) { if (process.env.DEBUG_ROUTE === '2' && c[0] === 4 && c[1] === 0 && c[2] === 22) console.log('C hit', c[0]+dx, c[1]+dy, c[2]+dz, tg); return true; }
+    if (connective(tg, net, own)) { if (process.env.DEBUG_ROUTE === '2' && c[0] === 108 && c[1] === 3 && c[2] === -30) console.log('C hit', c[0]+dx, c[1]+dy, c[2]+dz, tg); return true; }
     if (nearEnd && tg && CONNECTIVE.includes(tg.kind) && tg.net && (tg.net === net || (own && own.has(tg.net))) && !nearEnd(k)) return true;
   }
   // dust powers the block it sits on, and a powered block locks the hoppers (and triggers the droppers) next to it
@@ -130,10 +130,10 @@ function routeOnce(b: Board, from: Pos, to: Pos, net: string, o: RouteOpts, avoi
   const nearEnd = (k: string) => { const [x, y, z] = k.split(',').map(Number); return [from, to].some((e) => Math.abs(e[0] - x) <= 1 && Math.abs(e[1] - y) <= 1 && Math.abs(e[2] - z) <= 1); };
   const floorOk = (c: Pos) => { const t = b.tag([c[0], c[1] - 1, c[2]]); return !t || t.kind === 'wool'; };
   const free = (c: Pos) => { if (avoid.has(keyOf(c))) return false; const t = b.tag(c); return !t || (t.kind === 'reserve' && (t.net === net || ownSet.has(t.net ?? '') || net.startsWith(t.net ?? '\0'))); };
-  type N = { c: Pos; g: number; f: number; prev?: N; k: string; d: number; ck: string };
+  type N = { c: Pos; g: number; f: number; prev?: N; k: string; d: number; ck: string; vr: number; hr: number };
   const open = new Heap<N>(); const best = new Map<string, number>();
   const h = (c: Pos) => Math.abs(c[0] - to[0]) + Math.abs(c[1] - to[1]) + Math.abs(c[2] - to[2]);
-  const start: N = { c: from, g: 0, f: h(from), k: keyOf(from) + '|-1', d: -1, ck: keyOf(from) };
+  const start: N = { c: from, g: 0, f: h(from), k: keyOf(from) + '|-1|3|0', d: -1, ck: keyOf(from), vr: 0, hr: 3 };
   open.push(start); best.set(start.k, 0);
   let nodes = 0; const bb = [1e9, -1e9, 1e9, -1e9, 1e9, -1e9];
   while (open.length) {
@@ -158,7 +158,7 @@ function routeOnce(b: Board, from: Pos, to: Pos, net: string, o: RouteOpts, avoi
       if (pen) { if (last[1] > pen[1]) b.clear([pen[0], pen[1] + 1, pen[2]]); if (last[1] < pen[1]) b.clear([last[0], pen[1], last[2]]); }
       return path;
     }
-    if (++nodes > (o.maxNodes ?? 400000)) break;
+    if (++nodes > (o.maxNodes ?? Number(process.env.ROUTE_NODES ?? 1500000))) break;
     if (process.env.DEBUG_ROUTE === '2') { bb[0] = Math.min(bb[0], cur.c[0]); bb[1] = Math.max(bb[1], cur.c[0]); bb[2] = Math.min(bb[2], cur.c[1]); bb[3] = Math.max(bb[3], cur.c[1]); bb[4] = Math.min(bb[4], cur.c[2]); bb[5] = Math.max(bb[5], cur.c[2]); }
     const [x, y, z] = cur.c;
     for (let di = 0; di < HDIRS.length; di++) {
@@ -184,7 +184,10 @@ function routeOnce(b: Board, from: Pos, to: Pos, net: string, o: RouteOpts, avoi
       };
       const tryMove = (c: Pos, extra: number, needClear?: Pos, needFloor?: Pos, vertical = false) => {
         if (vertical && cur.d !== -1 && cur.d !== di) return;               // straight staircases only: a spiral would need a floor where the lower dust needs air
-        const ck = keyOf(c); const k = ck + '|' + di; const isGoal = ck === goal;
+        // a staircase has no straight cell for a booster repeater: climb at most 4 steps in a row, then run level for >= 3 cells
+        const vr = vertical ? cur.vr + 1 : 0, hr = vertical ? 0 : Math.min(3, cur.hr + 1);
+        if (vertical && (vr > 4 || (cur.vr === 0 && cur.hr < 3))) return;
+        const ck = keyOf(c); const k = ck + '|' + di + '|' + hr + '|' + vr; const isGoal = ck === goal;
         if (!isGoal) { if (!free(c) || !floorOk(c) || foreignNear(b, c, net, o.allow, ownSet, o.strict ? nearEnd : undefined)) return; }
         if (needClear && !free(needClear) && b.tag(needClear)?.kind !== 'clear') return;
         if (!isGoal && conflictsWithRecent(cur, c, needClear)) return;
@@ -192,7 +195,7 @@ function routeOnce(b: Board, from: Pos, to: Pos, net: string, o: RouteOpts, avoi
         if (needFloor) { const t = b.tag(needFloor); if (t && t.kind !== 'wool') return; }
         const g = cur.g + 1 + extra;
         if ((best.get(k) ?? Infinity) <= g) return;
-        best.set(k, g); open.push({ c, g, f: g + h(c), prev: cur, k, d: di, ck });
+        best.set(k, g); open.push({ c, g, f: g + h(c), prev: cur, k, d: di, ck, vr, hr });
       };
       tryMove([x + dx, y, z + dz], 0);
       tryMove([x + dx, y + 1, z + dz], 1, [x, y + 1, z], [x + dx, y, z + dz], true);
@@ -263,25 +266,26 @@ export function conveyor(b: Board, from: Pos, to: Pos, net: string, o: { own?: s
   const ownSet = new Set([net, ...(o.own ?? [])]);
   const goal = keyOf(to);
   const isContainer = (t: Tag | undefined) => !!t && t.kind === 'piston' && t.net === '__s';
+  let lastWhy = 0; const why = (i: number, _c: Pos): false => { lastWhy = i; return false; };
   const ok = (c: Pos, prev: Pos): boolean => {
-    if (!b.isFree(c)) return false;
+    if (!b.isFree(c)) return why(1, c);
     // not directly under a foreign container (the hopper would pull from it)
     const up = b.tag([c[0], c[1] + 1, c[2]]);
-    if (up && isContainer(up) && keyOf([c[0], c[1] + 1, c[2]]) !== keyOf(prev)) return false;
+    if (up && isContainer(up) && keyOf([c[0], c[1] + 1, c[2]]) !== keyOf(prev)) return why(2, c);
     // a hopper directly below would suck the items out of this one (only the final target may sit below)
-    { const dn: Pos = [c[0], c[1] - 1, c[2]]; if (isContainer(b.tag(dn)) && keyOf(dn) !== goal) return false; }
+    { const dn: Pos = [c[0], c[1] - 1, c[2]]; if (isContainer(b.tag(dn)) && keyOf(dn) !== goal) return why(3, c); }
     // dust powers its floor block, and a powered block next to a hopper locks it
     for (const [dx, dy, dz] of [[1, 0, 0], [-1, 0, 0], [0, 0, 1], [0, 0, -1], [0, 1, 0], [0, -1, 0]]) {
       const n: Pos = [c[0] + dx, c[1] + dy, c[2] + dz];
-      if (b.tag(n)?.kind === 'wool' && b.tag([n[0], n[1] + 1, n[2]])?.kind === 'dust' && !(dy === 1 && false)) return false;
+      if (b.tag(n)?.kind === 'wool' && b.tag([n[0], n[1] + 1, n[2]])?.kind === 'dust' && !(dy === 1 && false)) return why(4, c);
     }
     // keep clear of the corridors reserved for pulse lanes
-    for (let dx = -1; dx <= 1; dx++) for (let dy = -1; dy <= 1; dy++) for (let dz = -1; dz <= 1; dz++) { const t = b.tag([c[0] + dx, c[1] + dy, c[2] + dz]); if (t?.kind === 'reserve' && !(t.net && ownSet.has(t.net))) return false; }
+    for (let dx = -1; dx <= 1; dx++) for (let dy = -1; dy <= 1; dy++) for (let dz = -1; dz <= 1; dz++) { const t = b.tag([c[0] + dx, c[1] + dy, c[2] + dz]); if (t?.kind === 'reserve' && !(t.net && ownSet.has(t.net))) return why(5, c); }
     // no foreign signal parts next to it
     for (const [dx, dy, dz] of [[1, 0, 0], [-1, 0, 0], [0, 0, 1], [0, 0, -1], [0, 1, 0], [0, -1, 0]]) {
       const t = b.tag([c[0] + dx, c[1] + dy, c[2] + dz]);
       if (dy === -1 && t && ['dust', 'rep', 'cmp'].includes(t.kind)) continue;      // wiring directly under a hopper cannot power it
-      if (t && CONNECTIVE.includes(t.kind) && t.kind !== 'piston' && !(t.net && ownSet.has(t.net))) return false;
+      if (t && CONNECTIVE.includes(t.kind) && t.kind !== 'piston' && !(t.net && ownSet.has(t.net))) return why(6, c);
     }
     return true;
   };
@@ -320,6 +324,19 @@ export function conveyor(b: Board, from: Pos, to: Pos, net: string, o: { own?: s
       best.set(k, g); open.push({ c: nx, g, f: g + h(nx), prev: cur, k });
     }
   }
-  if (process.env.DEBUG_ROUTE) for (let x = bb[0] - 1; x <= bb[1] + 1; x++) for (let z = bb[4] - 1; z <= bb[5] + 1; z++) { const c: Pos = [x, 4, z]; if (!best.has(keyOf(c))) console.log(' blocked', c.join(','), JSON.stringify(b.tag(c)), 'reserveNear', [-1,0,1].some(dx=>[-1,0,1].some(dy=>[-1,0,1].some(dz=>b.tag([x+dx,4+dy,z+dz])?.kind==='reserve'))), 'above', JSON.stringify(b.tag([x,5,z]))); }
+  if (process.env.DEBUG_ROUTE === '5') {
+    const seen = new Set<string>([keyOf(from)]); const q: Pos[] = [from]; const bb2 = [1e9, -1e9, 1e9, -1e9, 1e9, -1e9];
+    while (q.length && seen.size < 600000) {
+      const c = q.shift()!; for (let i = 0; i < 3; i++) { bb2[2 * i] = Math.min(bb2[2 * i], c[i]); bb2[2 * i + 1] = Math.max(bb2[2 * i + 1], c[i]); }
+      for (const [dx, dy, dz] of [[1, 0, 0], [-1, 0, 0], [0, 0, 1], [0, 0, -1], [0, -1, 0]]) { const nx: Pos = [c[0] + dx, c[1] + dy, c[2] + dz]; if (nx[1] < to[1] - 3) continue; const k = keyOf(nx); if (!seen.has(k) && ok(nx, c)) { seen.add(k); q.push(nx); } }
+    }
+    const near = [[1, 0, 0], [-1, 0, 0], [0, 0, 1], [0, 0, -1], [0, 1, 0]].filter(([dx, dy, dz]) => seen.has(keyOf([to[0] + dx, to[1] + dy, to[2] + dz])));
+    for (const yy of [0, 1]) { console.log(' map y=' + yy); for (let z = 18; z <= 50; z++) { let row = String(z).padStart(3) + ' '; for (let x = 30; x <= 125; x++) { const c: Pos = [x, yy, z]; row += seen.has(keyOf(c)) ? '+' : b.tag(c) ? (b.tag(c)!.kind === 'reserve' ? 'r' : '#') : '.'; } console.log(row); } }
+    console.log(' forward flood from start:', seen.size, 'cells bbox', bb2.join(','), 'goal-adjacent reached', near.length);
+  }
+  if (process.env.DEBUG_ROUTE === '5') for (const [dx, dy, dz] of [[1, 0, 0], [-1, 0, 0], [0, 0, 1], [0, 0, -1], [0, -1, 0]]) { const nx: Pos = [from[0] + dx, from[1] + dy, from[2] + dz]; const r = ok(nx, from); console.log(' startnb', nx.join(','), JSON.stringify(b.tag(nx)), r, 'rule', lastWhy); }
+  if (process.env.DEBUG_ROUTE === '5') for (const y of [0, -1, -2, -5, -20]) for (const [dx, dz] of [[1, 0], [-1, 0], [0, 1], [0, -1]]) { const nx: Pos = [from[0] + dx, y, from[2] + dz]; const r = ok(nx, [from[0], y, from[2]]); console.log(' deep', nx.join(','), JSON.stringify(b.tag(nx)), r, 'rule', lastWhy); }
+  if (process.env.DEBUG_ROUTE === '4') for (const [dx, dy, dz] of [[1,0,0],[-1,0,0],[0,0,1],[0,0,-1],[0,1,0],[1,1,0],[0,1,1],[0,1,-1],[-1,1,0]]) { const c: Pos = [to[0] + dx, to[1] + dy, to[2] + dz]; console.log(' goalnb', c.join(','), JSON.stringify(b.tag(c)), 'ok?', ok(c, c), 'rule', lastWhy); }
+  if (process.env.DEBUG_ROUTE === '1') for (let x = bb[0] - 1; x <= bb[1] + 1; x++) for (let z = bb[4] - 1; z <= bb[5] + 1; z++) { const c: Pos = [x, 4, z]; if (!best.has(keyOf(c))) console.log(' blocked', c.join(','), JSON.stringify(b.tag(c)), 'reserveNear', [-1,0,1].some(dx=>[-1,0,1].some(dy=>[-1,0,1].some(dz=>b.tag([x+dx,4+dy,z+dz])?.kind==='reserve'))), 'above', JSON.stringify(b.tag([x,5,z]))); }
   throw new Error(`conveyor ${net}: no path from ${from.join(',')} to ${to.join(',')} (explored ${nodes} nodes, x ${bb[0]}..${bb[1]} y ${bb[2]}..${bb[3]} z ${bb[4]}..${bb[5]})`);
 }

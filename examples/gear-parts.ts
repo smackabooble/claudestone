@@ -58,7 +58,8 @@ export function buildCrafterMod(b: Board, O: Pos, name: string, spec: KitSpec, f
   S(p(0, 0, -1), 'hopper', 'south');                                     // diamond input hopper
   if (spec.sticks > 0) S(p(1, 0, 0), 'hopper', 'west');                  // stick input hopper
   b.floorColor = 'red';
-  b.rep(p(-1, 0, 0), 'east', 1, `${name}.pc`, 'red'); b.dust(p(-2, 0, 0), `${name}.pc`, 'red'); b.dust(p(-3, 0, 0), `${name}.pc`, 'red');
+  b.rep(p(-1, 0, 0), 'east', 1, `${name}.pc`, 'red'); b.rep(p(-2, 0, 0), 'east', 1, `${name}.pc`, 'red');   // repeaters, not dust: dust would power its floor block next to the droppers' cell above and trigger them (QC)
+   b.dust(p(-3, 0, 0), `${name}.pc`, 'red');
   b.reserveCorridor(p(-3, 0, 0), [-1, 0], 6, `${name}.pc`);
   return { crafter: p(0, 0, 0), inD: p(0, 0, -1), inS: spec.sticks > 0 ? p(1, 0, 0) : null, pulseC: p(-3, 0, 0), out: facing === 'south' ? p(0, -2, 1) : p(0, -1, 0) };
 }
@@ -76,7 +77,8 @@ export function buildDirectKit(b: Board, O: Pos, name: string, enabled: number[]
   S(p(0, 0, 0), 'crafter', facing);
   for (let s = 0; s < 9; s++) if (!enabled.includes(s)) w.setSlotDisabled(p(0, 0, 0), s, true);
   b.floorColor = 'red';
-  b.rep(p(-1, 0, 0), 'east', 1, `${name}.pc`, 'red'); b.dust(p(-2, 0, 0), `${name}.pc`, 'red'); b.dust(p(-3, 0, 0), `${name}.pc`, 'red');
+  b.rep(p(-1, 0, 0), 'east', 1, `${name}.pc`, 'red'); b.rep(p(-2, 0, 0), 'east', 1, `${name}.pc`, 'red');   // repeaters, not dust: dust would power its floor block next to the droppers' cell above and trigger them (QC)
+   b.dust(p(-3, 0, 0), `${name}.pc`, 'red');
   S(p(0, 0, -1), 'hopper', 'south');
   S(p(0, 0, -2), 'dropper', 'south');
   S(p(-1, 0, -2), 'hopper', 'east');                                    // tap; the item bus / chest goes above at (-1,1,-2)

@@ -4,10 +4,10 @@
  * Press 1 primes the hoppers and makes 6 of the 8 items; every later press makes the full set (4 blocks + 1 log each).
  */
 import { World } from '../src/world.ts';
-import { buildGearSet } from './gear-set.ts';
+import { loadGearSet } from './gear-set.ts';
 
 const w = new World();
-const m = buildGearSet(w);
+const m = loadGearSet(w);
 w.setItem(m.blockChest[0], 0, { id: 'diamond_block', count: 64 });
 w.setItem(m.logChest, 0, { id: 'oak_log', count: 16 });
 const count = (p: any) => { const t: Record<string, number> = {}; for (const x of (w.items(p) ?? []) as any[]) if (x) t[x.id] = (t[x.id] ?? 0) + x.count; return t; };

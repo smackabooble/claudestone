@@ -36,8 +36,9 @@ test('gear set: START reaches all timelines in order, the log becomes 4 planks (
   let planks = 0;
   for (const b of w.listBlocks()) {
     if (!['chest', 'hopper', 'dropper', 'crafter'].includes(b.type)) continue;
-    if (b.pos[0] < 10 || b.pos[0] > 24 || b.pos[2] < 62 || b.pos[2] > 74 || b.pos[1] < 3 || b.pos[1] > 6) continue;
-    if (b.type === 'chest' && b.pos[1] === 5 && b.pos[0] === 21) continue;       // right half shares the inventory with the left half
+    const ps = m.planksStash;
+    if (Math.abs(b.pos[0] - ps[0]) > 6 || Math.abs(b.pos[2] - ps[2]) > 6 || b.pos[1] < ps[1] - 3 || b.pos[1] > ps[1] + 1) continue;
+    if (b.type === 'chest' && b.pos[0] === ps[0] + 1) continue;       // right half shares the inventory with the left half
     for (const it of (w.items(b.pos) ?? []) as any[]) if (it && it.id === 'oak_planks') planks += it.count;
   }
   assert.equal(planks, 4, 'one log -> 4 planks');

@@ -1,8 +1,8 @@
 import { World } from '../src/world.ts';
-import { buildGearSet } from './gear-set.ts';
+import { loadGearSet } from './gear-set.ts';
 // diagnostic: run N presses and list every non-empty container after each one. usage: tsx examples/gear-set-diag.ts <presses> <gt per press>
 const w = new World();
-const m = buildGearSet(w);
+const m = loadGearSet(w);
 w.setItem(m.blockChest[0], 0, { id: 'diamond_block', count: 64 });
 w.setItem(m.logChest, 0, { id: 'oak_log', count: 16 });
 const short = (id: string) => id.replace('diamond_', 'd_').replace('oak_', '');
