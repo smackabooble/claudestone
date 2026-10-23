@@ -231,7 +231,10 @@ export function buildGearSet(w: World): Machine {
   jobs.unshift(...startJobs);
   jobs.unshift(() => { b.floorColor = 'red'; const path = route(b, [HX + 9, 9, HZ + 2], [BX0, Y, ZB], 'startbtn', { own: [ST], strict: true }); assignRepeaters(b, path, 'startbtn', undefined, 8); });
   for (const j of jobs) j();
-  for (const l of links) if (l.net !== ST) assignRepeaters(b, l.path, l.net, undefined, 5);
+  for (const l of links) {
+    if (l.net !== ST) { assignRepeaters(b, l.path, l.net, undefined, 5); continue; }
+    try { assignRepeaters(b, l.path, l.net, undefined, 4); } catch { /* too few straight cells: the staircase is short enough */ }     // START taps: a booster where the path has a straight cell
+  }
 
   // landmark pillars next to the chests the user touches: diamonds = lapis, logs = gold, output = iron, button = emerald, both leftover chests = coal
   const pillar = (near: Pos, type: string) => {
