@@ -23,6 +23,9 @@ Nothing here is verified against a real game. "Golden" = a recorded real-Minecra
 | Piston extend/retract animation (block lands 2gt after event, in block-entity phase) | medium-high | matches wiki + techmcdocs: start same tick if powered in tick/event phase else next tick; arrival 2gt later; chained pistons 3gt apart (tested) |
 | Conductivity: lamp, slime = conductor; observer, piston, redstone block, glass, honey = not | medium | lamp (wiki list), slime (Bedrock wiki + default full-collision rule), observer (wiki) corroborated; piston/honey/redstone-block from memory |
 | Wire shape (lone dust = cross, right-click = dot, line extension) | medium-high | ported from MCHPRS wire logic |
+| Sticky piston short pulse (<=2 gt) drops the block, >=4 gt pulls it | medium-high | matches the real trapdoor/observer-chain references; 3 gt boundary only from the sim, test/mechanics-learned.test.ts |
+| Quasi-connectivity needs an update that reaches the piston (repeater yes, bare redstone block no) | high | real quasi-auto trace |
+| Comparator side input only from signal sources (not powered wool); repeater into comparator side ticks first | medium | from vanilla source memory, sim agrees; not traced |
 | Hopper 8gt cooldown, transfer-cooldown rule | medium | |
 | Dropper 4gt, seeded slot choice | high / n/a | RNG can't match a real world |
 | Update order (west,east,down,up,north,south) | medium-high | |
