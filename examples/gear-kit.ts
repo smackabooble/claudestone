@@ -25,34 +25,80 @@ export function buildKit(b: Board, O: Pos, name: string, spec: KitSpec): KitPins
   const p = (x: number, y: number, z: number): Pos => [O[0] + x, O[1] + y, O[2] + z];
   const w = b.w;
   const tool = spec.sticks > 0;
-  const routed: { path: Pos[]; net: string }[] = [];
-  b.raw(p(0, 0, 0), 'crafter', { facing: 'south' }, 'piston', '__q');
+  const Q = (pos: Pos, type: string, facing: string) => b.raw(pos, type, { facing }, 'piston', type === 'hopper' ? '__s' : '__q');
+  Q(p(0, 0, 0), 'crafter', 'south');
   for (let s = 0; s < 9; s++) if (!spec.enabled.includes(s)) w.setSlotDisabled(p(0, 0, 0), s, true);
   // output: hopper south of the crafter (never under it), then down to the collector level
-  b.raw(p(0, 0, 1), 'hopper', { facing: 'down' }, 'piston', '__s'); b.raw(p(0, -1, 1), 'hopper', { facing: 'down' }, 'piston', '__s'); b.raw(p(0, -2, 1), 'hopper', { facing: 'east' }, 'piston', '__s');
-  // craft pulse
+  Q(p(0, 0, 1), 'hopper', 'down'); Q(p(0, -1, 1), 'hopper', 'down'); Q(p(0, -2, 1), 'hopper', 'east');
+  // craft pulse (west)
   b.floorColor = 'red';
-  b.rep(p(-1, 0, 0), 'east', 1, `${name}.pc`, 'red'); b.dust(p(-2, 0, 0), `${name}.pc`, 'red');
+  b.rep(p(-1, 0, 0), 'east', 1, `${name}.pc`, 'red'); b.dust(p(-2, 0, 0), `${name}.pc`, 'red'); b.dust(p(-3, 0, 0), `${name}.pc`, 'red');
   // ---- diamonds (north) ----
-  b.raw(p(0, 0, -1), 'hopper', { facing: 'south' }, 'piston', '__s');          // decoupling hopper
-  b.raw(p(0, 0, -2), 'dropper', { facing: 'south' }, 'piston', '__q');         // holds exactly one diamond
-  b.raw(p(-1, 0, -2), 'hopper', { facing: 'east' }, 'piston', '__s');          // tap hopper (bus above)
-  b.rep(p(0, 0, -3), 'south', 1, `${name}.pd`, 'orange'); b.dust(p(0, 0, -4), `${name}.pd`, 'orange');
-  b.cmp(p(1, 0, -2), 'east', `${name}.ld`, 'cyan', 'compare');        // reads the dropper (west of it)
-  b.rep(p(2, 0, -2), 'east', 1, `${name}.ld`, 'cyan'); b.dust(p(3, 0, -2), `${name}.ld`, 'cyan');
-  b.rep(p(-2, 0, -2), 'east', 1, `${name}.ld`, 'cyan'); b.dust(p(-3, 0, -2), `${name}.ld`, 'cyan');
-  routed.push({ path: route(b, p(3, 0, -2), p(-3, 0, -2), `${name}.ld`, { floor: 'cyan' }), net: `${name}.ld` });
+  Q(p(0, 0, -1), 'hopper', 'south');                                    // decoupling hopper
+  Q(p(0, 0, -2), 'dropper', 'south');                                   // holds exactly one diamond
+  Q(p(-1, 0, -2), 'hopper', 'east');                                    // tap hopper (bus above)
+  b.rep(p(1, 0, -2), 'west', 1, `${name}.pd`, 'orange'); b.dust(p(2, 0, -2), `${name}.pd`, 'orange'); b.dust(p(3, 0, -2), `${name}.pd`, 'orange');
+  // lock: comparator north of the dropper reads it, repeater restores 15, short dust loop to a repeater that powers the tap hopper
+  b.cmp(p(0, 0, -3), 'north', `${name}.ld`, 'cyan', 'compare');
+  b.rep(p(0, 0, -4), 'north', 1, `${name}.ld`, 'cyan');
+  for (const [x, z] of [[0, -5], [-1, -5], [-2, -5], [-3, -5], [-3, -4], [-3, -3], [-3, -2]]) b.dust(p(x, 0, z), `${name}.ld`, 'cyan');
+  b.rep(p(-2, 0, -2), 'east', 1, `${name}.ld`, 'cyan');
   // ---- sticks (east) ----
   if (tool) {
-    b.raw(p(1, 0, 0), 'hopper', { facing: 'west' }, 'piston', '__s');
-    b.raw(p(2, 0, 0), 'dropper', { facing: 'west' }, 'piston', '__q');
-    b.raw(p(2, 0, -1), 'hopper', { facing: 'south' }, 'piston', '__s');        // tap (bus above at y+1)
-    b.rep(p(2, 0, 1), 'north', 1, `${name}.ps`, 'orange'); b.dust(p(2, 0, 2), `${name}.ps`, 'orange');
-    b.cmp(p(3, 0, 0), 'east', `${name}.ls`, 'cyan', 'compare');       // reads the dropper (west of it)
-    b.rep(p(4, 0, 0), 'east', 1, `${name}.ls`, 'cyan'); b.dust(p(5, 0, 0), `${name}.ls`, 'cyan');
-    b.rep(p(3, 0, -1), 'west', 1, `${name}.ls`, 'cyan'); b.dust(p(4, 0, -1), `${name}.ls`, 'cyan');
-    routed.push({ path: route(b, p(5, 0, 0), p(4, 0, -1), `${name}.ls`, { floor: 'cyan' }), net: `${name}.ls` });
+    Q(p(1, 0, 0), 'hopper', 'west');
+    Q(p(2, 0, 0), 'dropper', 'west');
+    Q(p(2, 0, -1), 'hopper', 'south');                                  // tap (bus above at y+1)
+    b.rep(p(2, 0, 1), 'north', 1, `${name}.ps`, 'orange'); b.dust(p(2, 0, 2), `${name}.ps`, 'orange'); b.dust(p(2, 0, 3), `${name}.ps`, 'orange');
+    b.cmp(p(3, 0, 0), 'east', `${name}.ls`, 'cyan', 'compare');
+    b.rep(p(4, 0, 0), 'east', 1, `${name}.ls`, 'cyan');
+    for (const [x, z] of [[5, 0], [5, -1], [4, -1]]) b.dust(p(x, 0, z), `${name}.ls`, 'cyan');
+    b.rep(p(3, 0, -1), 'west', 1, `${name}.ls`, 'cyan');
   }
-  for (const r of routed) assignRepeaters(b, r.path, r.net);
-  return { PD: p(0, 0, -4), PS: tool ? p(2, 0, 2) : null, PC: p(-2, 0, 0), busD: p(-1, 1, -2), busS: tool ? p(2, 1, -1) : null, crafter: p(0, 0, 0), out: p(0, -2, 1) };
+  return { PD: p(3, 0, -2), PS: tool ? p(2, 0, 3) : null, PC: p(-3, 0, 0), busD: p(-1, 1, -2), busS: tool ? p(2, 1, -1) : null, crafter: p(0, 0, 0), out: p(0, -2, 1) };
+}
+
+/** timeline slot length in redstone ticks (item pulses must be >= 16 gt apart; 10 rt = 20 gt) */
+export const SLOT_RT = 10;
+
+export interface TimelinePins { start: Pos; PD: Pos | null; PS: Pos | null; PC: Pos }
+
+/**
+ * Pulse timeline: a rising edge on `start` (via a comparator edge former -> 4 gt pulse) runs down a repeater chain along +z.
+ * Node k (time k * SLOT_RT) fires through a diode stub into a lane (dust line along +z at x+2). Nodes 0..d-1 -> PD lane,
+ * d..d+s-1 -> PS lane, d+s -> PC lane. Returns the lane end cells (the pulse pins).
+ */
+export function buildTimeline(b: Board, O: Pos, name: string, d: number, s: number): TimelinePins {
+  const P = (u: number, v: number): Pos => [O[0] + u, O[1], O[2] + v];
+  const net = `${name}.tl`;
+  b.floorColor = 'magenta';
+  b.dust(P(0, 0), `${net}.in`);                                         // start pin
+  b.dust(P(0, 1), `${net}.in`); b.dust(P(1, 1), `${net}.in`); b.dust(P(2, 1), `${net}.in`); b.dust(P(2, 2), `${net}.in`);
+  b.rep(P(1, 2), 'west', 2, `${net}.in`);                              // side branch: delayed copy (flows -x)
+  b.cmp(P(0, 2), 'south', `${net}.in`, 'magenta', 'subtract');         // input north (rear = start), output south
+  b.dust(P(0, 3), net); b.dust(P(0, 4), net); b.dust(P(0, 5), net);   // node 0 at v=5
+  const nodes = d + s + 1;
+  const lanes: { name: 'PD' | 'PS' | 'PC'; from: number; to: number }[] = [];
+  if (d > 0) lanes.push({ name: 'PD', from: 0, to: d - 1 });
+  if (s > 0) lanes.push({ name: 'PS', from: d, to: d + s - 1 });
+  lanes.push({ name: 'PC', from: d + s, to: d + s });
+  let v = 5;
+  const nodeV: number[] = [5];
+  for (let k = 1; k < nodes; k++) {
+    const delays = [4, 4, 2];
+    for (let i = 0; i < 3; i++) b.rep(P(0, v + 1 + i), 'south', delays[i], net);
+    v += 4; b.dust(P(0, v), net); nodeV.push(v);
+  }
+  const out: Record<string, Pos> = {};
+  for (const ln of lanes) {
+    const lnet = `${net}.${ln.name}`;
+    for (let k = ln.from; k <= ln.to; k++) {
+      b.rep(P(1, nodeV[k]), 'east', 1, lnet, 'orange');                 // stub: input west (node), flows east into the lane
+    }
+    const boost = new Set<number>();
+    for (let k = ln.from; k < ln.to; k++) if ((k - ln.from) % 2 === 1) boost.add(nodeV[k] + 2);   // dust only carries 15 cells: boost the lane
+    for (let vv = nodeV[ln.from]; vv <= nodeV[ln.to]; vv++) { if (boost.has(vv)) b.rep(P(2, vv), 'south', 1, lnet, 'orange'); else b.dust(P(2, vv), lnet, 'orange'); }
+    out[ln.name] = P(2, nodeV[ln.to] + 1);
+    b.dust(out[ln.name], lnet, 'orange');
+  }
+  return { start: P(0, 0), PD: out.PD ?? null, PS: out.PS ?? null, PC: out.PC };
 }

@@ -55,17 +55,17 @@ export class Board {
   clear(p: Pos): void { if (this.isFree(p)) this.occ.set(keyOf(p), { kind: 'clear' }); }
 }
 
-const connective = (t: Tag | undefined, net: string): boolean => !!t && CONNECTIVE.includes(t.kind) && t.net !== net;
+const connective = (t: Tag | undefined, net: string, own?: Set<string>): boolean => !!t && CONNECTIVE.includes(t.kind) && t.net !== net && !(own && t.net && own.has(t.net));
 
-export interface RouteOpts { floor?: string; allow?: Set<string>; maxNodes?: number }
+export interface RouteOpts { floor?: string; allow?: Set<string>; maxNodes?: number; own?: string[] }
 
 /** keep-out test: is there a foreign connective part within the 3x3x3 neighbourhood of c? */
-function foreignNear(b: Board, c: Pos, net: string, allow?: Set<string>): boolean {
+function foreignNear(b: Board, c: Pos, net: string, allow?: Set<string>, own?: Set<string>): boolean {
   for (let dx = -1; dx <= 1; dx++) for (let dy = -1; dy <= 1; dy++) for (let dz = -1; dz <= 1; dz++) {
     if (!dx && !dy && !dz) continue;
     const k = key(c[0] + dx, c[1] + dy, c[2] + dz);
     if (allow?.has(k)) continue;
-    if (connective(b.occ.get(k), net)) return true;
+    if (connective(b.occ.get(k), net, own)) return true;
   }
   // quasi-connectivity: droppers / crafters / pistons ('__q') also react to power around the cell ABOVE them -> keep a wider berth
   for (let dx = -2; dx <= 2; dx++) for (let dz = -2; dz <= 2; dz++) for (let dy = -3; dy <= 0; dy++) {
@@ -79,6 +79,7 @@ function foreignNear(b: Board, c: Pos, net: string, allow?: Set<string>): boolea
 /** Route dust from the dust cell `from` to the dust cell `to` (both already placed, net `net`). Returns the full cell list. */
 export function route(b: Board, from: Pos, to: Pos, net: string, o: RouteOpts = {}): Pos[] {
   const goal = keyOf(to);
+  const ownSet = new Set(o.own ?? []);
   const floorOk = (c: Pos) => { const t = b.tag([c[0], c[1] - 1, c[2]]); return !t || t.kind === 'wool'; };
   const free = (c: Pos) => b.isFree(c);
   type N = { c: Pos; g: number; f: number; prev?: N; k: string };
@@ -109,9 +110,9 @@ export function route(b: Board, from: Pos, to: Pos, net: string, o: RouteOpts = 
     for (const [dx, dz] of HDIRS) {
       const tryMove = (c: Pos, extra: number, needClear?: Pos, needFloor?: Pos) => {
         const k = keyOf(c); const isGoal = k === goal;
-        if (!isGoal) { if (!free(c) || !floorOk(c) || foreignNear(b, c, net, o.allow)) return; }
+        if (!isGoal) { if (!free(c) || !floorOk(c) || foreignNear(b, c, net, o.allow, ownSet)) return; }
         if (needClear && !free(needClear) && b.tag(needClear)?.kind !== 'clear') return;
-        if (needClear && connective(b.tag(needClear), net)) return;
+        if (needClear && connective(b.tag(needClear), net, ownSet)) return;
         if (needFloor) { const t = b.tag(needFloor); if (t && t.kind !== 'wool') return; }
         const g = cur.g + 1 + extra;
         if ((best.get(k) ?? Infinity) <= g) return;
