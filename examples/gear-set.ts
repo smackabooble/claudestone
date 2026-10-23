@@ -228,8 +228,8 @@ export function buildGearSet(w: World): Machine {
   timelines.forEach((t, k) => { const g = GROUPS[GROUPS.length - 1]; if (g && g.rt === t.delayRt) g.slots.push(k); else GROUPS.push({ slots: [k], rt: t.delayRt, sx: 0, L: 0 }); });
   const snakeWidth = (rt: number) => { const n = Math.ceil(rt / 4); const Lmax = Math.max(10, Math.ceil(n / 8)); let rows = Math.ceil(n / Lmax); if (rows % 2 === 1 && rows > 1) rows++; return Math.ceil(n / rows); };
   let sxNext = -24;
+  for (const g of GROUPS) { g.sx = sxNext; sxNext += g.rt === 0 ? 12 : snakeWidth(g.rt) + 8; }
   const slotX = (k: number) => -20 + 8 * k;
-  for (const g of GROUPS) { g.sx = Math.max(sxNext, slotX(g.slots[0]) - 2); sxNext = g.sx + (g.rt === 0 ? 12 : snakeWidth(g.rt) + 8); }
   const ST = 'start';
   b.floorColor = 'red';
   const BX0 = -26, BX1 = GROUPS[GROUPS.length - 1].sx;
