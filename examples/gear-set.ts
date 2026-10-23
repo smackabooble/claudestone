@@ -219,7 +219,7 @@ export function buildGearSet(w: World): Machine {
   const tSD = tC1 + 60;                                                              // after block crafter D has crafted
   const tUnits = Math.max(Math.max(tC1, tPl + 200) + 120, tSD + 9 * SLOT_RT + Math.ceil(((hops.cvS0Dy ?? 0) * HOP_GT) / 2) + 120, tSS + 4 * SLOT_RT + Math.ceil(((hops.cvS0Sy ?? 0) * HOP_GT) / 2) + 120);
   const SC = Number(process.env.DELAY_SCALE ?? 1);                                    // experiment: shrink the safety margins of the group delays
-  const delayOf = (n: string) => Math.round(SC * ((n: string) => (n.startsWith('tP_') ? tPl : n === 'tS0S' ? tSS : n === 'tS0D' ? tSD : n.startsWith('tc1') ? tC1 : n.startsWith('t_') ? tUnits : 0)(n));
+  const delayOf = (n: string) => Math.round(SC * (n.startsWith('tP_') ? tPl : n === 'tS0S' ? tSS : n === 'tS0D' ? tSD : n.startsWith('tc1') ? tC1 : n.startsWith('t_') ? tUnits : 0));
   for (const t of timelines) t.delayRt = delayOf(t.name);
   console.log('start delays rt: c1', tC1, 'units', tUnits, 'splitters', tSS, tSD, 'hops blocks', hopsBlocks);
   const Y = 6, ZB = 80, ZT = 104;
@@ -228,8 +228,8 @@ export function buildGearSet(w: World): Machine {
   timelines.forEach((t, k) => { const g = GROUPS[GROUPS.length - 1]; if (g && g.rt === t.delayRt) g.slots.push(k); else GROUPS.push({ slots: [k], rt: t.delayRt, sx: 0, L: 0 }); });
   const snakeWidth = (rt: number) => { const n = Math.ceil(rt / 4); const Lmax = Math.max(10, Math.ceil(n / 8)); let rows = Math.ceil(n / Lmax); if (rows % 2 === 1 && rows > 1) rows++; return Math.ceil(n / rows); };
   let sxNext = -24;
-  for (const g of GROUPS) { g.sx = sxNext; sxNext += g.rt === 0 ? 12 : snakeWidth(g.rt) + 8; }
   const slotX = (k: number) => -20 + 8 * k;
+  for (const g of GROUPS) { g.sx = Math.max(sxNext, slotX(g.slots[0]) - 2); sxNext = g.sx + (g.rt === 0 ? 12 : snakeWidth(g.rt) + 8); }
   const ST = 'start';
   b.floorColor = 'red';
   const BX0 = -26, BX1 = GROUPS[GROUPS.length - 1].sx;

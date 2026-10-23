@@ -15,15 +15,19 @@ const fill = () => { w.setItem(m.platform.diamonds[0], 0, { id: 'diamond_block',
 const empty = (p: any) => { for (let i = 0; i < 54; i++) w.setItem(p, i, null); };
 const count = (p: any) => { const t: Record<string, number> = {}; for (const x of (w.items(p) ?? []) as any[]) if (x) t[x.id] = (t[x.id] ?? 0) + x.count; return t; };
 fill(); runWithLifts(w, m.lifts, 1500);
-const PRESS_GT = 9000;
+const PRESS_GT = Number(process.env.PRESS_GT ?? 9000);
+const PRIME_GT = 9000;
 // a cold first press can leave a half-filled crafter (a short stick delivery); clear those so the primed press starts clean
 const clearCrafters = () => { for (const b of w.listBlocks() as any[]) if (b.type === 'crafter') for (let i = 0; i < 9; i++) w.setItem(b.pos, i, null); };
-for (let i = 1; i <= 2; i++) { w.use(m.platform.button); runWithLifts(w, m.lifts, PRESS_GT); console.log('priming press', i, JSON.stringify(count(m.platform.output[0]))); clearCrafters(); }
+for (let i = 1; i <= 2; i++) { w.use(m.platform.button); runWithLifts(w, m.lifts, PRIME_GT); console.log('priming press', i, JSON.stringify(count(m.platform.output[0]))); clearCrafters(); }
 runWithLifts(w, m.lifts, 3000);                                              // let the output conveyor finish
 for (const c of [m.outputs[0], ...m.platform.output, ...m.platform.leftover, ...m.leftover]) empty(c); empty(m.blockChest[0]); empty(m.logChest); for (const c of [...m.platform.diamonds, ...m.platform.logs]) empty(c); fill();
-writeFileSync('examples/diamond-gear-set.schem', exportSchem(w).buffer);
-console.log('wrote examples/diamond-gear-set.schem (primed)');
+const OUT = process.env.OUT ?? 'examples/diamond-gear-set.schem';
+writeFileSync(OUT, exportSchem(w).buffer);
+console.log('wrote ' + OUT + ' (primed)');
 // check: the very next press must give one full set
 runWithLifts(w, m.lifts, 1500);
-w.use(m.platform.button); runWithLifts(w, m.lifts, PRESS_GT + 2000);
-console.log('first press after priming:', JSON.stringify(count(m.platform.output[0])));
+w.use(m.platform.button);
+let done = -1;
+for (let t = 0; t < PRESS_GT + 2000; t += 8) { runWithLifts(w, m.lifts, 8); if (done < 0 && Object.keys(count(m.platform.output[0])).length >= 8) done = t + 8; }
+console.log('first press after priming:', JSON.stringify(count(m.platform.output[0])), 'all 8 items after', done, 'gt');
