@@ -12,3 +12,8 @@ extender theory, door theory, tooling lessons, roadmap) and `ACCURACY.md` (how f
 - Keep replies to the user SHORT. Be honest about what is only simulated. When you learn something, record it with the
   `add_learning` tool (or append to `knowledge/LEARNINGS.md`).
 - **Colour convention for builds:** use COLOURED WOOL (all 16 colours exist in the sim as `<colour>_wool`), one colour per part of a build (e.g. trunk yellow, delay rows lime/light blue, comparators magenta, lanes orange, taps red, towers cyan, input purple, remote wire pink, floor light gray), instead of obsidian/stone floors. Use obsidian ONLY where a block must be immovable (e.g. next to slime/honey glue, or pieces a piston must not drag). The 10x10 door keeps obsidian for that reason.
+
+## Working rules (user-approved)
+- **Simplest controller first:** build a small dumb version that works, then optimize. No routers/timers per cluster unless needed.
+- **Reuse proven parts:** start from existing generators/references (extender, wave controller, elevator, tested refs), don't invent new layouts.
+- **Learn as I go:** record each lesson in `knowledge/LEARNINGS.md` and add a small test right away.
