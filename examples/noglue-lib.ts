@@ -90,14 +90,14 @@ function foreignNear(b: Board, c: Pos, net: string, allow?: Set<string>, own?: S
     if (allow?.has(k)) continue;
     const tg = b.occ.get(k);
     if (connective(tg, net, own)) { if (process.env.DEBUG_CELL && process.env.DEBUG_CELL === c.join(',') && !dbgSeen.has(k)) { dbgSeen.add(k); console.log('C hit', c.join(','), 'by', c[0]+dx, c[1]+dy, c[2]+dz, JSON.stringify(tg)); } return true; }
-    if (nearEnd && tg && CONNECTIVE.includes(tg.kind) && tg.net && (tg.net === net || (own && own.has(tg.net))) && !nearEnd(k)) return true;
+    if (nearEnd && tg && CONNECTIVE.includes(tg.kind) && tg.net && (tg.net === net || (own && own.has(tg.net))) && !nearEnd(k)) { if (process.env.DEBUG_CELL === c.join(',') && !dbgSeen.has('s' + k)) { dbgSeen.add('s' + k); console.log('S hit', c.join(','), 'by', k, JSON.stringify(tg)); } return true; }
   }
   // dust powers the block it sits on, and a powered block locks the hoppers (and triggers the droppers) next to it
   for (const [dx, dy, dz] of [[1, 0, 0], [-1, 0, 0], [0, 0, 1], [0, 0, -1], [0, -1, 0]]) {
     const pk = key(c[0] + dx, c[1] - 1 + dy, c[2] + dz);
     if (allow?.has(pk)) continue;
     const t = b.occ.get(pk);
-    if (t && t.net === '__s' && net !== '__s') return true;
+    if (t && t.net === '__s' && net !== '__s') { if (process.env.DEBUG_CELL === c.join(',') && !dbgSeen.has('f' + pk)) { dbgSeen.add('f' + pk); console.log('F hit', c.join(','), 'floor neighbour', pk, JSON.stringify(t)); } return true; }
   }
   // quasi-connectivity: droppers / crafters / pistons ('__q') also react to power at the cell ABOVE them (A) or next to it: keep every
   // signal part further than 3 steps (Manhattan) from A. A powered neighbour block of A is fed by wiring up to 2 steps away.
