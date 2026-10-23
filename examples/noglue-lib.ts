@@ -165,3 +165,66 @@ export function assignRepeaters(b: Board, path: Pos[], net: string, delay?: numb
   });
   return total;
 }
+
+// ---------- hopper conveyors ----------
+const HDIR: Record<string, [number, number, number]> = { east: [1, 0, 0], west: [-1, 0, 0], south: [0, 0, 1], north: [0, 0, -1], down: [0, -1, 0] };
+const dirName = (d: [number, number, number]): Dir => (d[0] > 0 ? 'east' : d[0] < 0 ? 'west' : d[2] > 0 ? 'south' : d[2] < 0 ? 'north' : 'down');
+
+/**
+ * Route a hopper conveyor from `from` (a hopper already placed; its facing is set here) to the container `to`
+ * (the last conveyor hopper faces INTO `to`). Hoppers move horizontally or one block down (never up).
+ * Cells must be free, must not touch foreign dust/repeaters (they would lock the hoppers), and must not sit directly under a container.
+ */
+export function conveyor(b: Board, from: Pos, to: Pos, net: string, o: { own?: string[]; maxNodes?: number } = {}): Pos[] {
+  const ownSet = new Set([net, ...(o.own ?? [])]);
+  const goal = keyOf(to);
+  const isContainer = (t: Tag | undefined) => !!t && t.kind === 'piston' && t.net === '__s';
+  const ok = (c: Pos, prev: Pos): boolean => {
+    if (!b.isFree(c)) return false;
+    // not directly under a foreign container (the hopper would pull from it)
+    const up = b.tag([c[0], c[1] + 1, c[2]]);
+    if (up && isContainer(up) && keyOf([c[0], c[1] + 1, c[2]]) !== keyOf(prev)) return false;
+    // no foreign signal parts next to it
+    for (const [dx, dy, dz] of [[1, 0, 0], [-1, 0, 0], [0, 0, 1], [0, 0, -1], [0, 1, 0], [0, -1, 0]]) {
+      const t = b.tag([c[0] + dx, c[1] + dy, c[2] + dz]);
+      if (t && CONNECTIVE.includes(t.kind) && t.kind !== 'piston' && !(t.net && ownSet.has(t.net))) return false;
+    }
+    return true;
+  };
+  type N = { c: Pos; g: number; f: number; prev?: N; k: string };
+  const h = (c: Pos) => Math.abs(c[0] - to[0]) + Math.abs(c[1] - to[1]) + Math.abs(c[2] - to[2]);
+  const open: N[] = [{ c: from, g: 0, f: h(from), k: keyOf(from) }]; const best = new Map<string, number>([[keyOf(from), 0]]);
+  let nodes = 0;
+  while (open.length) {
+    let bi = 0; for (let i = 1; i < open.length; i++) if (open[i].f < open[bi].f) bi = i;
+    const cur = open.splice(bi, 1)[0];
+    // goal test: cur is adjacent (horizontal or directly above) to `to`
+    const adj = HDIR; void adj;
+    for (const dn of ['east', 'west', 'south', 'north', 'down']) {
+      const d = HDIR[dn]; const nx: Pos = [cur.c[0] + d[0], cur.c[1] + d[1], cur.c[2] + d[2]];
+      if (keyOf(nx) === goal) {
+        const path: Pos[] = []; for (let n: N | undefined = cur; n; n = n.prev) path.push(n.c);
+        path.reverse();
+        // place hoppers: facing = direction to the next cell; last faces into `to`
+        for (let i = 0; i < path.length; i++) {
+          const nextC = i + 1 < path.length ? path[i + 1] : to;
+          const dd: [number, number, number] = [nextC[0] - path[i][0], nextC[1] - path[i][1], nextC[2] - path[i][2]];
+          const f = dirName(dd);
+          if (i === 0) { b.w.remove(path[0]); b.occ.delete(keyOf(path[0])); }
+          b.raw(path[i], 'hopper', { facing: f }, 'piston', '__s');
+        }
+        return path;
+      }
+    }
+    if (++nodes > (o.maxNodes ?? 200000)) break;
+    for (const dn of ['east', 'west', 'south', 'north', 'down']) {
+      const d = HDIR[dn]; const nx: Pos = [cur.c[0] + d[0], cur.c[1] + d[1], cur.c[2] + d[2]];
+      const k = keyOf(nx);
+      if (!ok(nx, cur.c)) continue;
+      const g = cur.g + 1 + (dn === 'down' ? 0.1 : 0);
+      if ((best.get(k) ?? Infinity) <= g) continue;
+      best.set(k, g); open.push({ c: nx, g, f: g + h(nx), prev: cur, k });
+    }
+  }
+  throw new Error(`conveyor ${net}: no path from ${from.join(',')} to ${to.join(',')}`);
+}
