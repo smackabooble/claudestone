@@ -20,6 +20,7 @@ import type { Pos } from '../src/dirs.ts';
 const PITCH = 48;
 /** vertical stack: pairs A, B, C (stash + block crafter + their two gear crafters) sit above each other in one column; pair D's gear crafters are at the bottom */
 const PX = 0;
+const MDX = Number(process.env.MDX ?? 12), MZY = Number(process.env.MZY ?? 22), MZX = Number(process.env.MZX ?? 22), SHZ = Number(process.env.SHZ ?? 23);
 const LY: Record<string, number> = { A: 0, B: -8, C: -16, D: -24 };
 /** the hub: everything the user touches (inputs, output, button, the leftover sticks) sits in a column at x=HUBX, next to pair D (the leftover diamonds) */
 const HX = -36, HZ = -6;        // corner of the hub tower
@@ -93,8 +94,8 @@ export function buildGearSet(w: World): Machine {
       stash[pr.id] = [feed[pr.id].chestL, feed[pr.id].chestR];
       c1[pr.id] = buildDirectKit(b, [PX, 3 + ly, 0], `c1${pr.id}`, [4], 'down');
     }
-    mod[pr.y] = buildCrafterMod(b, [PX - 12, ly, 22], pr.y, KITS[pr.y]);
-    mod[pr.x] = buildCrafterMod(b, [PX + 12, ly, 22], pr.x, KITS[pr.x]);
+    mod[pr.y] = buildCrafterMod(b, [PX - MDX, ly, MZY], pr.y, KITS[pr.y]);
+    mod[pr.x] = buildCrafterMod(b, [PX + MDX, ly, MZX], pr.x, KITS[pr.x]);
   });
   // ---- stick side: SD stash (sticks for pickaxe + axe) ----
   const fpSD = buildFeedPair(b, [PX, LY.D + 2, 50], 'sD');
@@ -114,9 +115,9 @@ export function buildGearSet(w: World): Machine {
 
   // ---- output collector: every layer's two crafter outputs run to the shaft at x=PX, z=23; the shaft (hoppers facing down) ends in the output chest ----
   const shaftTop = LY.A - 2, shaftBottom = LY.D - 2;
-  const shaft = (y: number): Pos => [PX, y, 23];
+  const shaft = (y: number): Pos => [PX, y, SHZ];
   for (let y = shaftTop; y >= shaftBottom; y--) b.raw(shaft(y), 'hopper', { facing: 'down' }, 'piston', '__s');
-  const outChest: Pos = [PX, shaftBottom - 1, 23];
+  const outChest: Pos = [PX, shaftBottom - 1, SHZ];
   b.raw(outChest, 'chest', { facing: 'south', type: 'single' }, 'piston', '__s');
   for (const pr of PAIRS) { cv(mod[pr.y].out, shaft(LY[pr.id] - 2), `cvo_${pr.y}`); cv(mod[pr.x].out, shaft(LY[pr.id] - 2), `cvo_${pr.x}`); }
 
@@ -173,7 +174,8 @@ export function buildGearSet(w: World): Machine {
   // placement of timelines: a column west of everything, one per slot
   const TZ0 = 112;                                                    // timelines start here (the START field with its snake rows lies in front of them)
   let slot = 0;
-  const place = (): Pos => [-20 + 8 * slot++, 0, TZ0];
+  const NCOL = Number(process.env.TLCOLS ?? 99), TLY = Number(process.env.TLY ?? 5);
+  const place = (): Pos => { const k = slot++; return [-20 + 8 * (k % NCOL), TLY * Math.floor(k / NCOL), TZ0]; };
   const tDM = tl('tDM', place(), 4, 0, 0);
   const tC2 = tl('tC2', place(), 1, 0, 0);
   link(tDM.PD!, fpB.pulseY, 'tDM.tl.PD', ['bk.py']);
@@ -230,7 +232,7 @@ export function buildGearSet(w: World): Machine {
   const snakeWidth = (rt: number) => { const n = Math.ceil(rt / 4); const Lmax = Math.max(10, Math.ceil(n / 8)); let rows = Math.ceil(n / Lmax); if (rows % 2 === 1 && rows > 1) rows++; return Math.ceil(n / rows); };
   let sxNext = -24;
   for (const g of GROUPS) { g.sx = sxNext; sxNext += g.rt === 0 ? 12 : snakeWidth(g.rt) + 8; }
-  const slotX = (k: number) => -20 + 8 * k;
+  const slotX = (k: number) => -20 + 8 * (k % NCOL);
   const ST = 'start';
   b.floorColor = 'red';
   const BX0 = -26, BX1 = GROUPS[GROUPS.length - 1].sx;
@@ -265,7 +267,7 @@ export function buildGearSet(w: World): Machine {
       ez = ZT - 1;
     }
     // local trunk
-    const xs = g.slots.map(slotX);
+    const xs = [...new Set(g.slots.map(slotX))];
     const lo = Math.min(...xs, ex) - 1, hi = Math.max(...xs, ex) + 1;
     const east = ex <= Math.min(...xs) + 1;                       // join at the west end: flow east
     for (let tx = lo; tx <= hi; tx++) {
@@ -328,7 +330,7 @@ if (process.argv[1]?.endsWith('gear-set.ts')) {
  */
 export function loadGearSet(w: World): Machine {
   const files = ['gear-set.ts', 'gear-parts.ts', 'gear-kit.ts', 'noglue-lib.ts', '../src/designs.ts'].map((f) => new URL(f, import.meta.url));
-  const key = createHash('sha1').update(files.map((f) => (existsSync(f) ? readFileSync(f, 'utf8') : '')).join('\n') + (process.env.DELAY_SCALE ?? '')).digest('hex');
+  const key = createHash('sha1').update(files.map((f) => (existsSync(f) ? readFileSync(f, 'utf8') : '')).join('\n') + (process.env.DELAY_SCALE ?? '') + [process.env.MDX, process.env.MZY, process.env.MZX, process.env.SHZ, process.env.TLCOLS, process.env.TLY].join()).digest('hex');
   const path = new URL('../.cache/gear-set.json', import.meta.url);
   if (existsSync(path)) {
     const c = JSON.parse(readFileSync(path, 'utf8'));

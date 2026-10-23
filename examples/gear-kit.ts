@@ -67,8 +67,23 @@ export interface TimelinePins { start: Pos; PD: Pos | null; PS: Pos | null; PC: 
  * Node k (time k * SLOT_RT) fires through a diode stub into a lane (dust line along +z at x+2). Nodes 0..d-1 -> PD lane,
  * d..d+s-1 -> PS lane, d+s -> PC lane. Returns the lane end cells (the pulse pins).
  */
-export function buildTimeline(b: Board, O: Pos, name: string, d: number, s: number, gap = 0, gapS = 0, noPC = false): TimelinePins {
-  const P = (u: number, v: number): Pos => [O[0] + u, O[1], O[2] + v];
+export interface TimelineOpts {
+  /** idle time (redstone ticks) between the start signal and node 0: a folded repeater snake in front of the start pin */
+  preRt?: number;
+  /** the PS lane taps the first `s` nodes (same moments as the first PD pulses) instead of getting its own nodes after the PD ones */
+  parallelS?: boolean;
+}
+/** rows of the folded snake for a delay (same rule as the snake helper inside buildTimeline) */
+export function snakeRows(delayRt: number, evenRows: boolean): number {
+  const nRep = Math.max(1, Math.ceil(delayRt / 4)); let rows = Math.ceil(nRep / 5); if (evenRows && rows % 2 === 1) rows++; return rows;
+}
+
+export function buildTimeline(b: Board, O: Pos, name: string, d: number, s: number, gap = 0, gapS = 0, noPC = false, opts: TimelineOpts = {}): TimelinePins {
+  const pre = opts.preRt ?? 0;
+  const preRows = pre > 0 ? snakeRows(pre, true) : 0;
+  const v0pre = -5 - 2 * (preRows - 1);                                      // the pre-delay snake ends at v = -2, its last cell joins the start pin at v = -1
+  const zshift = pre > 0 ? -(v0pre + 1) : 0;
+  const P = (u: number, v: number): Pos => [O[0] + u, O[1], O[2] + v + zshift];
   const net = `${name}.tl`;
   b.floorColor = 'magenta';
   b.dust(P(0, -1), `${net}.in`);                                        // start pin (weak signals are fine: the repeater restores them)
@@ -77,10 +92,10 @@ export function buildTimeline(b: Board, O: Pos, name: string, d: number, s: numb
   b.rep(P(1, 2), 'west', 2, `${net}.in`);                              // side branch: delayed copy (flows -x)
   b.cmp(P(0, 2), 'south', `${net}.in`, 'magenta', 'subtract');         // input north (rear = start), output south
   b.dust(P(0, 3), net); b.dust(P(0, 4), net); b.dust(P(0, 5), net);   // node 0 at v=5
-  const nodes = d + s;                                                    // data nodes (every pulse is one node, SLOT_RT apart)
+  const nodes = opts.parallelS ? Math.max(d, s) : d + s;                  // data nodes (every pulse is one node, SLOT_RT apart)
   const lanes: { name: 'PD' | 'PS'; from: number; to: number }[] = [];
   if (d > 0) lanes.push({ name: 'PD', from: 0, to: d - 1 });
-  if (s > 0) lanes.push({ name: 'PS', from: d, to: d + s - 1 });
+  if (s > 0) lanes.push(opts.parallelS ? { name: 'PS', from: 0, to: s - 1 } : { name: 'PS', from: d, to: d + s - 1 });
   /** a folded repeater snake of `delayRt` redstone ticks starting below the dust cell P(0, v0); rows along x (5 wide), growing along +z.
    *  Waiting time is the same as a run of idle chain nodes, but 2.5x denser and folded. Returns the last cell (x, z). */
   const snake = (v0: number, delayRt: number, snet: string, evenRows: boolean): { x: number; z: number } => {
@@ -105,6 +120,7 @@ export function buildTimeline(b: Board, O: Pos, name: string, d: number, s: numb
     }
     return last;
   };
+  if (pre > 0) snake(v0pre, pre, `${net}.in`, true);                       // pre-delay in front of the start pin
   let v = 5;
   const nodeV: number[] = [5];
   for (let k = 1; k < nodes; k++) {
@@ -121,17 +137,20 @@ export function buildTimeline(b: Board, O: Pos, name: string, d: number, s: numb
   const out: Record<string, Pos> = {};
   for (const ln of lanes) {
     const lnet = `${net}.${ln.name}`;
+    const west = !!opts.parallelS && ln.name === 'PS';                     // a lane that shares its nodes with PD runs on the other side of the node chain
+    const sg = west ? -1 : 1;
     for (let k = ln.from; k <= ln.to; k++) {
-      b.rep(P(1, nodeV[k]), 'east', 1, lnet, 'orange');                 // stub: input west (node), flows east into the lane
+      b.rep(P(sg, nodeV[k]), west ? 'west' : 'east', 1, lnet, 'orange');   // stub: input from the node, flows into the lane
     }
     const boost = new Set<number>();
     for (let k = ln.from; k < ln.to; k++) if ((k - ln.from) % 2 === 1) boost.add(nodeV[k] + 2);   // dust only carries 15 cells: boost the lane
-    for (let vv = nodeV[ln.from]; vv <= nodeV[ln.to]; vv++) { if (boost.has(vv)) b.rep(P(2, vv), 'south', 1, lnet, 'orange'); else b.dust(P(2, vv), lnet, 'orange'); }
-    out[ln.name] = P(2, nodeV[ln.to] + 1);
+    for (let vv = nodeV[ln.from]; vv <= nodeV[ln.to]; vv++) { if (boost.has(vv)) b.rep(P(2 * sg, vv), 'south', 1, lnet, 'orange'); else b.dust(P(2 * sg, vv), lnet, 'orange'); }
+    out[ln.name] = P(2 * sg, nodeV[ln.to] + 1);
     b.dust(out[ln.name], lnet, 'orange');
   }
   // craft pulse: `gap + 1` slots after the last data node
-  if (noPC) return { start: P(0, -1), PD: out.PD ?? null, PS: out.PS ?? null, PC: P(0, -1) };
+  const startPin = pre > 0 ? P(0, v0pre + 1) : P(0, -1);
+  if (noPC) return { start: startPin, PD: out.PD ?? null, PS: out.PS ?? null, PC: P(0, -1) };
   const pc = snake(nodeV[nodeV.length - 1], (gap + 1) * SLOT_RT, `${net}.PC`, false);
-  return { start: P(0, -1), PD: out.PD ?? null, PS: out.PS ?? null, PC: P(pc.x, pc.z) };
+  return { start: startPin, PD: out.PD ?? null, PS: out.PS ?? null, PC: P(pc.x, pc.z) };
 }
