@@ -4,7 +4,8 @@ import { DEFAULT_CFG, type Cfg } from './gear-fast-items.ts';
 import { tryCfg, score } from './gear-fast-search.ts';
 
 const FILE = new URL('../.cache/fast-cfg.json', import.meta.url);
-let cfg: Cfg = existsSync(FILE) ? { ...DEFAULT_CFG, ...JSON.parse(readFileSync(FILE, 'utf8')) } : structuredClone(DEFAULT_CFG);
+const FIXED = new URL('./gear-fast-cfg.json', import.meta.url);
+let cfg: Cfg = existsSync(FIXED) ? { ...DEFAULT_CFG, ...JSON.parse(readFileSync(FIXED, 'utf8')) } : existsSync(FILE) ? { ...DEFAULT_CFG, ...JSON.parse(readFileSync(FILE, 'utf8')) } : structuredClone(DEFAULT_CFG);
 const budget = Number(process.argv[2] ?? 30) * 60_000, t0 = Date.now();
 let best = score(tryCfg(cfg));
 console.log('start score', best.toFixed(1));

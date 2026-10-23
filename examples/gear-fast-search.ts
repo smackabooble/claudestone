@@ -60,7 +60,7 @@ if (process.argv[1]?.endsWith('gear-fast-search.ts')) {
 export function score(r: ReturnType<typeof tryCfg>): number {
   if (!r.ok || !r.hops || !r.bbox) return 1e6;
   const h = r.hops;
-  const trunk = (h.cvb0 ?? 0) + (h.cvb1 ?? 0) + (h.cvb2 ?? 0) + (h.cvb3 ?? 0);
+  const trunk = Math.max((h.cvb0 ?? 0) + (h.cvb1 ?? 0), (h.cvb2 ?? 0) + (h.cvb3 ?? 0)) * 1.5;
   const mods = ['diamond_pickaxe', 'diamond_axe', 'diamond_shovel', 'diamond_chestplate', 'diamond_sword', 'diamond_leggings', 'diamond_boots', 'diamond_helmet'];
   const modMax = Math.max(...mods.map((m) => (h['cv' + m] ?? 0) + (h['cvo_' + m] ?? 0)));
   const sticks = Math.max((h.cvpD ?? 0) + (h.cvsPick ?? 0), (h.cvpD ?? 0) + (h.cvsAxe ?? 0), (h.cvpAB ?? 0) + (h.cvS0Sy ?? 0) + (h.cvsShovel ?? 0), (h.cvpAB ?? 0) + (h.cvS0Sy ?? 0) + (h.cvsSword ?? 0));

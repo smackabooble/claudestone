@@ -89,7 +89,15 @@ export function buildFast(w: World, cfg: Cfg = loadCfg()): Machine {
     ty[`tc1${pr.id}`] = it.c1[pr.id].PD[1];
     ty[`t_${pr.y}`] = it.mod[pr.y].pulseC[1]; ty[`t_${pr.x}`] = it.mod[pr.x].pulseC[1];
   }
-  for (const sp of specs) sp.ty = process.env.TLLAYERS === '0' ? 0 : process.env.TLLAYERS === '8' ? Math.round(ty[sp.name] / 8) * 8 : (ty[sp.name] >= 4 ? 12 : -8);
+  // bands (height layers of the timelines, one strip each): the hub, then one per module level
+  const bandOf = (name: string): number => {
+    if (['tDM', 'tC2', 'tP_AB', 'tP_D', 'tS0S'].includes(name)) return it.fpB.pulseY[1] + 2;
+    const lv = name.endsWith('D') || name === 'tS0D' || name === 't_diamond_pickaxe' || name === 't_diamond_axe' ? 'D'
+      : name === 'tc1A' || name === 't_diamond_shovel' || name === 't_diamond_chestplate' ? 'A'
+      : name === 'tc1B' || name === 't_diamond_sword' || name === 't_diamond_leggings' ? 'B' : 'C';
+    return cfg.ly[lv] + 2;
+  };
+  for (const sp of specs) sp.ty = process.env.TLLAYERS === '0' ? 0 : process.env.TLLAYERS === '2' ? (ty[sp.name] >= 4 ? 12 : -8) : bandOf(sp.name);
   // footprint of every timeline (scratch board), then shelf packing per height layer behind the item side
   const foot = (sp: Spec) => {
     const sw = new World(); const sb = new Board(sw);
@@ -97,11 +105,13 @@ export function buildFast(w: World, cfg: Cfg = loadCfg()): Machine {
     buildTimeline(sb, [0, 0, 0], 'f', sp.d, sp.s, sp.gap, sp.gapS, sp.noPC, { ...sp.opts, oddPC: true });
     const lo = [1e9, 1e9], hi = [-1e9, -1e9];
     for (const k of sb.occ.keys()) { const p = k.split(',').map(Number); lo[0] = Math.min(lo[0], p[0]); hi[0] = Math.max(hi[0], p[0]); lo[1] = Math.min(lo[1], p[2]); hi[1] = Math.max(hi[1], p[2]); }
+    if (process.env.DEBUG_LINKS) console.log('foot', sp.name, 'w', hi[0] - lo[0] + 1, 'len', hi[1] - lo[1] + 1);
     return { x0: lo[0], x1: hi[0], z0: lo[1], z1: hi[1] };
   };
   const bb = [1e9, 1e9, 1e9, -1e9, -1e9, -1e9];
   for (const k of b.occ.keys()) { const p = k.split(',').map(Number); for (let i = 0; i < 3; i++) { bb[i] = Math.min(bb[i], p[i]); bb[i + 3] = Math.max(bb[i + 3], p[i]); } }
-  const ROWW = Number(process.env.TLW ?? 90), GAP = Number(process.env.TLGAP ?? 8);
+  if (process.env.DEBUG_LINKS) console.log('items bbox', bb.join(','));
+  const ROWW = Number(process.env.TLW ?? 130), GAP = Number(process.env.TLGAP ?? 4);
   // bands: every height layer gets its own strip behind the item side (strips follow each other along z), timelines of a band side by side
   const bands = [...new Set(specs.map((sp) => sp.ty!))].sort((p, q) => q - p);
   let zNext = bb[5] + 10;
@@ -133,6 +143,16 @@ export function buildFast(w: World, cfg: Cfg = loadCfg()): Machine {
   // ---- START button -> the two first timelines; chain links from parent PC lanes ----
   link(plat.btnDust, T('tDM').start, 'startbtn', ['startbtn', 'tDM.tl.in']);
   link(T('tDM').start, T('tC2').start, 'startbtn', ['startbtn', 'tDM.tl.in', 'tC2.tl.in']);
+  // fan-out: the PC pulse of a timeline has four full-strength pins; the first goes to its crafter (if any), the others start the child timelines
+  for (const parent of new Set(specs.filter((o) => o.parent !== 'START').map((o) => o.parent))) {
+    const kids = specs.filter((o) => o.parent === parent);
+    const P_ = T(parent);
+    const hasCrafter = !specs.find((o) => o.name === parent)!.noCrafter;
+    kids.forEach((sp, i) => {
+      const from = takePin(parent, sp.pins!.start);
+      link(from, sp.pins!.start, `ev_${sp.name}`, [`${parent}.tl.PC`, `${sp.name}.tl.in`, ...kids.map((o) => `ev_${o.name}`)]);
+    });
+  }
   // ---- pulse lanes to the units ----
   link(T('tDM').PD!, it.fpB.pulseY, 'tDM.tl.PD', ['bk.py']); link(T('tDM').PS!, it.fpB.pulseX, 'tDM.tl.PS', ['bk.px']);
   link(T('tC2').PD!, it.c2.PD, 'tC2.tl.PD', ['c2.pd']); link(takePin('tC2', it.c2.PC), it.c2.PC, 'tC2.tl.PCa', ['c2.pc', 'tC2.tl.PC']);
@@ -152,16 +172,6 @@ export function buildFast(w: World, cfg: Cfg = loadCfg()): Machine {
     link(t.PD!, role === 'Y' ? it.feed[pr.id].pulseY : it.feed[pr.id].pulseX, `t_${name}.tl.PD`, [`p${pr.id}.${role === 'Y' ? 'py' : 'px'}`]);
     if (k.sticks > 0) link(t.PS!, stickPort[name].pin, `t_${name}.tl.PS`, [stickPort[name].own]);
     link(takePin(`t_${name}`, it.mod[name].pulseC), it.mod[name].pulseC, `t_${name}.tl.PCa`, [`${name}.pc`, `t_${name}.tl.PC`]);
-  }
-  // fan-out: the PC pulse of a timeline has four full-strength pins; the first goes to its crafter (if any), the others start the child timelines
-  for (const parent of new Set(specs.filter((o) => o.parent !== 'START').map((o) => o.parent))) {
-    const kids = specs.filter((o) => o.parent === parent);
-    const P_ = T(parent);
-    const hasCrafter = !specs.find((o) => o.name === parent)!.noCrafter;
-    kids.forEach((sp, i) => {
-      const from = takePin(parent, sp.pins!.start);
-      link(from, sp.pins!.start, `ev_${sp.name}`, [`${parent}.tl.PC`, `${sp.name}.tl.in`, ...kids.map((o) => `ev_${o.name}`)]);
-    });
   }
   for (const j of jobs) j();
   for (const l of links) {
@@ -184,7 +194,7 @@ export function buildFast(w: World, cfg: Cfg = loadCfg()): Machine {
 /** the built world is cached (the router takes a while); the key is a hash of the generator sources and the layout config */
 export function loadFast(w: World): Machine {
   const files = ['gear-fast.ts', 'gear-fast-items.ts', 'gear-parts.ts', 'gear-kit.ts', 'gear-lift.ts', 'noglue-lib.ts'].map((f) => new URL(f, import.meta.url));
-  const key = createHash('sha1').update(files.map((f) => (existsSync(f) ? readFileSync(f, 'utf8') : '')).join('\n') + JSON.stringify(loadCfg()) + [process.env.TLSTACK, process.env.TLW, process.env.TLGAP, process.env.TLLAYERS].join()).digest('hex');
+  const key = createHash('sha1').update(files.map((f) => (existsSync(f) ? readFileSync(f, 'utf8') : '')).join('\n') + JSON.stringify(loadCfg()) + [process.env.TLSTACK, process.env.TLW, process.env.TLGAP, process.env.TLLAYERS, process.env.TLPITCH].join()).digest('hex');
   const path = new URL('../.cache/gear-fast.json', import.meta.url);
   if (existsSync(path)) {
     const c = JSON.parse(readFileSync(path, 'utf8'));

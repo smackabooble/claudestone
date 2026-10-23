@@ -152,6 +152,9 @@ export function buildTimeline(b: Board, O: Pos, name: string, d: number, s: numb
   }
   // craft pulse: `gap + 1` slots after the last data node
   const startPin = pre > 0 ? P(0, v0pre + 1) : P(0, -1);
+  if (opts.oddPC) {                                                           // room for lanes to reach the pins (reserved, only the pin's own nets may use it)
+    b.reserveCorridor(startPin, [0, -1], 5, `${net}.in`);
+  }
   if (noPC) return { start: startPin, PD: out.PD ?? null, PS: out.PS ?? null, PC: P(0, -1) };
   const pc = snake(nodeV[nodeV.length - 1], (gap + 1) * SLOT_RT, `${net}.PC`, false);
   // four full-strength copies of the PC pulse: repeater -> dust hub -> repeaters east/west, north, south -> dust stems -> pins, plus one repeater south of the end cell
@@ -169,5 +172,6 @@ export function buildTimeline(b: Board, O: Pos, name: string, d: number, s: numb
     stem(pc.x + 2 * dx, pc.z, 0, 1, 'south'),
     stem(pc.x, pc.z, 0, 1, 'south'),
   ];
+  if (opts.oddPC) { b.reserveCorridor(pcs[0], [dx, 0], 5, pnet); b.reserveCorridor(pcs[1], [0, -1], 5, pnet); b.reserveCorridor(pcs[2], [0, 1], 5, pnet); b.reserveCorridor(pcs[3], [0, 1], 5, pnet); }
   return { start: startPin, PD: out.PD ?? null, PS: out.PS ?? null, PC: pcs[0], PCalt: pcs.slice(1) };
 }
