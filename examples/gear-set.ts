@@ -61,35 +61,43 @@ export function buildGearSet(w: World): Machine {
   const mod: Record<string, ReturnType<typeof buildCrafterMod>> = {};
   const stash: Record<string, Pos[]> = {};
 
-  // ---- diamond pairs: stash (double chest) + block crafter above it + two gear crafters south of it ----
+  // ---- hub tower units first (all conveyors are routed afterwards, so nothing can wall a hub unit in) ----
   const feed: Record<string, ReturnType<typeof buildFeedPair>> = {};
   const c1: Record<string, ReturnType<typeof buildDirectKit>> = {};
+  const fpB = buildFeedPair(b, [HX, 9, HZ], 'bk');                                        // tier A: block chest + metered port
+  const fpP = buildFeedPair(b, [HX + 16, 7, HZ], 'pl');                                   // tier A: planks stash under the log crafter
+  const c2 = buildDirectKit(b, [HX + 16, 9, HZ], 'c2', [4], 'down');                     // log -> 4 planks, facing down into the stash
+  const fpSAB = buildFeedPair(b, [HX + 16, 5, HZ + 20], 'sAB');                           // tier B: sticks for shovel + sword (leftover sticks)
+  const c3AB = buildCrafterMod(b, [HX + 16, 7, HZ + 20], 'c3AB', { enabled: [1, 4], diamonds: 2, sticks: 0 }, 'down');
+  feed.D = buildFeedPair(b, [HX, 5, HZ + 20], 'pD');                                      // tier B: pair D stash (leftover diamonds)
+  stash.D = [feed.D.chestL, feed.D.chestR];
+  c1.D = buildDirectKit(b, [HX, 7, HZ + 20], 'c1D', [4], 'down');
+
+  // ---- diamond pairs A, B, C: stash (double chest) + block crafter above it + two gear crafters south of it; modules of pair D too ----
   PAIRS.forEach((pr, i) => {
-    const hub = pr.id === 'D';                                                   // pair D (the leftover diamonds) sits in the hub, tier B
-    const x0 = hub ? HX : i * PITCH, z0 = hub ? HZ + 20 : 0, y0 = hub ? 5 : 1;
-    feed[pr.id] = buildFeedPair(b, [x0, y0, z0], `p${pr.id}`);
-    stash[pr.id] = [feed[pr.id].chestL, feed[pr.id].chestR];
-    c1[pr.id] = buildDirectKit(b, [x0, y0 + 2, z0], `c1${pr.id}`, [4], 'down');
+    if (pr.id !== 'D') {
+      const x0 = i * PITCH;
+      feed[pr.id] = buildFeedPair(b, [x0, 1, 0], `p${pr.id}`);
+      stash[pr.id] = [feed[pr.id].chestL, feed[pr.id].chestR];
+      c1[pr.id] = buildDirectKit(b, [x0, 3, 0], `c1${pr.id}`, [4], 'down');
+    }
     const mx = i * PITCH;
     mod[pr.y] = buildCrafterMod(b, [mx - 12, 0, 22], pr.y, KITS[pr.y]);
     mod[pr.x] = buildCrafterMod(b, [mx + 12, 0, 22], pr.x, KITS[pr.x]);
-    cv(feed[pr.id].outY, mod[pr.y].inD, `cv${pr.y}`);
-    cv(feed[pr.id].outX, mod[pr.x].inD, `cv${pr.x}`);
   });
-
-  // ---- stick side: planks stash (C2 above), two stick stashes (C3 above) ----
-  const fpP = buildFeedPair(b, [HX + 16, 7, HZ], 'pl');                                   // planks stash + 2 ports (outputs at y=4)
-  const c2 = buildDirectKit(b, [HX + 16, 9, HZ], 'c2', [4], 'down');                     // log -> 4 planks, facing down into the stash
-  const fpSD = buildFeedPair(b, [0, 1, 50], 'sD');                                   // sticks for pickaxe + axe
+  // ---- stick side: SD stash (sticks for pickaxe + axe) ----
+  const fpSD = buildFeedPair(b, [0, 1, 50], 'sD');
   const c3D = buildCrafterMod(b, [0, 3, 50], 'c3D', { enabled: [1, 4], diamonds: 2, sticks: 0 }, 'down');
-  const fpSAB = buildFeedPair(b, [HX + 16, 5, HZ + 20], 'sAB');                         // sticks for shovel + sword
-  const c3AB = buildCrafterMod(b, [HX + 16, 7, HZ + 20], 'c3AB', { enabled: [1, 4], diamonds: 2, sticks: 0 }, 'down');
+  // conveyors: inner (short, near the modules) lines first, the long ones from the hub afterwards
+  for (const pr of PAIRS) { if (pr.id === 'D') continue; cv(feed[pr.id].outY, mod[pr.y].inD, `cv${pr.y}`); cv(feed[pr.id].outX, mod[pr.x].inD, `cv${pr.x}`); }
+  cv(fpSD.outY, mod.diamond_pickaxe.inS!, 'cvsPick');
+  cv(fpSD.outX, mod.diamond_axe.inS!, 'cvsAxe');
   cv(fpP.outY, c3D.inD, 'cvpD');
   cv(fpP.outX, c3AB.inD, 'cvpAB');
   cv(fpSAB.outY, mod.diamond_shovel.inS!, 'cvsShovel');
   cv(fpSAB.outX, mod.diamond_sword.inS!, 'cvsSword');
-  cv(fpSD.outY, mod.diamond_pickaxe.inS!, 'cvsPick');
-  cv(fpSD.outX, mod.diamond_axe.inS!, 'cvsAxe');
+  cv(feed.D.outY, mod.diamond_pickaxe.inD, `cv${PAIRS[0].y}`);
+  cv(feed.D.outX, mod.diamond_axe.inD, `cv${PAIRS[0].x}`);
 
   // ---- output collector: the 8 crafter outputs run west along z=23 into the output chest in the hub ----
   const outs = PAIRS.flatMap((pr) => [mod[pr.y].out, mod[pr.x].out]).sort((p, q) => q[0] - p[0]);
@@ -99,7 +107,6 @@ export function buildGearSet(w: World): Machine {
   cv(outs[outs.length - 1], outChest, 'cvoEnd');
 
   // ---- block metered port (user's double chest of diamond blocks) -> line -> the four block crafters ----
-  const fpB = buildFeedPair(b, [HX, 9, HZ], 'bk');
   const busCells = PAIRS.map((pr) => c1[pr.id].busA);
   // the trunk hoppers sit directly above each block crafter's tap hopper: the (idle) tap sucks the first block that arrives, the
   // locked tap leaves the next ones to flow on. The last cell faces a plain block, so it never pushes into its tap.
