@@ -67,7 +67,7 @@ export interface TimelinePins { start: Pos; PD: Pos | null; PS: Pos | null; PC: 
  * Node k (time k * SLOT_RT) fires through a diode stub into a lane (dust line along +z at x+2). Nodes 0..d-1 -> PD lane,
  * d..d+s-1 -> PS lane, d+s -> PC lane. Returns the lane end cells (the pulse pins).
  */
-export function buildTimeline(b: Board, O: Pos, name: string, d: number, s: number, gap = 0, gapS = 0): TimelinePins {
+export function buildTimeline(b: Board, O: Pos, name: string, d: number, s: number, gap = 0, gapS = 0, noPC = false): TimelinePins {
   const P = (u: number, v: number): Pos => [O[0] + u, O[1], O[2] + v];
   const net = `${name}.tl`;
   b.floorColor = 'magenta';
@@ -131,6 +131,7 @@ export function buildTimeline(b: Board, O: Pos, name: string, d: number, s: numb
     b.dust(out[ln.name], lnet, 'orange');
   }
   // craft pulse: `gap + 1` slots after the last data node
+  if (noPC) return { start: P(0, -1), PD: out.PD ?? null, PS: out.PS ?? null, PC: P(0, -1) };
   const pc = snake(nodeV[nodeV.length - 1], (gap + 1) * SLOT_RT, `${net}.PC`, false);
   return { start: P(0, -1), PD: out.PD ?? null, PS: out.PS ?? null, PC: P(pc.x, pc.z) };
 }

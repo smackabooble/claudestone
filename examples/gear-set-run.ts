@@ -18,6 +18,6 @@ for (let press = 1; press <= presses; press++) {
   w.run(gt);
   const out = count(m.outputs[0]);
   const delta = Object.fromEntries(Object.keys(out).map((k) => [k, out[k] - (prev[k] ?? 0)]));
-  console.log(`press ${press}: +${JSON.stringify(delta)}  blocks left ${count(m.blockChest[0]).diamond_block ?? 0}, logs left ${count(m.logChest).oak_log ?? 0}, leftover diamonds ${count(m.leftoverDiamonds[0]).diamond ?? 0}`);
+  console.log(`press ${press}: +${JSON.stringify(delta)}  blocks left ${count(m.blockChest[0]).diamond_block ?? 0}, logs left ${count(m.logChest).oak_log ?? 0}, leftover ${JSON.stringify(count(m.leftover[0]))}`);
   prev = out;
 }

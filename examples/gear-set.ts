@@ -40,7 +40,7 @@ export interface Machine {
   button: Pos;               // press here (stone button) -> START
   blockChest: Pos[];         // double chest of diamond blocks (two halves)
   logChest: Pos;             // chest of logs
-  leftoverDiamonds: Pos[]; leftoverSticks: Pos[];
+  leftover: Pos[];           // the ONE double chest that collects the spare diamonds and the spare stick (left half first)
   planksStash: Pos;
   pins: { net: string; pin: Pos }[];   // destination pin of every pulse lane (diagnostics)
   outputs: Pos[];            // collector hoppers of the 8 gear crafters (facing east)
@@ -70,11 +70,17 @@ export function buildGearSet(w: World): Machine {
   const fpB = buildFeedPair(b, [HX, 9, HZ], 'bk');                                        // tier A: block chest + metered port
   const fpP = buildFeedPair(b, [HX + 16, 7, HZ], 'pl');                                   // tier A: planks stash under the log crafter
   const c2 = buildDirectKit(b, [HX + 16, 9, HZ], 'c2', [4], 'down');                     // log -> 4 planks, facing down into the stash
-  const fpSAB = buildFeedPair(b, [HX + 16, 5, HZ + 20], 'sAB');                           // tier B: sticks for shovel + sword (leftover sticks)
-  const c3AB = buildCrafterMod(b, [HX + 16, 7, HZ + 20], 'c3AB', { enabled: [1, 4], diamonds: 2, sticks: 0 }, 'down');
-  feed.D = buildFeedPair(b, [HX, 5, HZ + 20], 'pD');                                      // tier B: pair D stash (leftover diamonds)
-  stash.D = [feed.D.chestL, feed.D.chestR];
+  // splitters: a block crafter / stick crafter fills a small feed pair; one port hands the needed items on, the other the spare ones to the leftover chest
+  const fpS0D = buildFeedPair(b, [HX, 5, HZ + 20], 'x0');                                 // tier B: 9 diamonds from block crafter D -> 6 to pair D, 3 spare
   c1.D = buildDirectKit(b, [HX, 7, HZ + 20], 'c1D', [4], 'down');
+  feed.D = buildFeedPair(b, [HX, 1, HZ + 36], 'pD');                                      // pair D stash: pickaxe + axe (exactly 6 diamonds, nothing left over)
+  stash.D = [feed.D.chestL, feed.D.chestR];
+  const fpS0S = buildFeedPair(b, [HX + 16, 5, HZ + 20], 'x1');                            // tier B: 4 sticks from the stick crafter -> 3 to the stick stash, 1 spare
+  const c3AB = buildCrafterMod(b, [HX + 16, 7, HZ + 20], 'c3AB', { enabled: [1, 4], diamonds: 2, sticks: 0 }, 'down');
+  const fpSAB = buildFeedPair(b, [HX + 16, 1, HZ + 36], 'sAB');                           // stick stash: shovel + sword (exactly 3 sticks)
+  const lbL: Pos = [HX + 8, 0, HZ + 28], lbR: Pos = [HX + 9, 0, HZ + 28];                  // the leftover double chest
+  b.raw(lbL, 'chest', { facing: 'north', type: 'left' }, 'piston', '__s');
+  b.raw(lbR, 'chest', { facing: 'north', type: 'right' }, 'piston', '__s');
 
   // ---- diamond pairs A, B, C: stash (double chest) + block crafter above it + two gear crafters south of it; modules of pair D too ----
   PAIRS.forEach((pr) => {
@@ -98,6 +104,8 @@ export function buildGearSet(w: World): Machine {
   cv(fpP.outX, c3AB.inD, 'cvpAB');
   cv(fpSAB.outY, mod.diamond_shovel.inS!, 'cvsShovel');
   cv(fpSAB.outX, mod.diamond_sword.inS!, 'cvsSword');
+  cv(fpS0D.outY, feed.D.chestL, 'cvS0Dy'); cv(fpS0D.outX, lbL, 'cvS0Dx');
+  cv(fpS0S.outY, fpSAB.chestL, 'cvS0Sy'); cv(fpS0S.outX, lbL, 'cvS0Sx');
   cv(feed.D.outY, mod.diamond_pickaxe.inD, `cv${PAIRS[0].y}`);
   cv(feed.D.outX, mod.diamond_axe.inD, `cv${PAIRS[0].x}`);
 
@@ -120,8 +128,8 @@ export function buildGearSet(w: World): Machine {
   const logChest = c2.busA;                                                           // the log chest sits on the C2 tap bus cell
 
   // ---- timelines ----
-  const tl = (name: string, o: Pos, d: number, s: number, delayRt: number, gap = 0, gapS = 0) => {
-    const t = buildTimeline(b, o, name, d, s, gap, gapS);
+  const tl = (name: string, o: Pos, d: number, s: number, delayRt: number, gap = 0, gapS = 0, noPC = false) => {
+    const t = buildTimeline(b, o, name, d, s, gap, gapS, noPC);
     timelines.push({ name, start: t.start, delayRt, PD: t.PD, PS: t.PS, PC: t.PC });
     return t;
   };
@@ -141,10 +149,16 @@ export function buildGearSet(w: World): Machine {
   link(tP_AB.PD!, fpP.pulseX, 'tP_AB.tl.PD', ['pl.px']); link(tP_AB.PC, c3AB.pulseC, 'tP_AB.tl.PC', ['c3AB.pc']);
   const tP_D = tl('tP_D', place(), 2, 0, 50, gapFor('cvpD'));
   link(tP_D.PD!, fpP.pulseY, 'tP_D.tl.PD', ['pl.py']); link(tP_D.PC, c3D.pulseC, 'tP_D.tl.PC', ['c3D.pc']);
+  // stick splitter (after the stick crafter c3AB): 3 sticks to the stick stash (Y port), 1 spare stick to the leftover chest (X port)
+  const tS0S = tl('tS0S', place(), 3, 1, 0, 0, 0, true);
+  link(tS0S.PD!, fpS0S.pulseY, 'tS0S.tl.PD', ['x1.py']); link(tS0S.PS!, fpS0S.pulseX, 'tS0S.tl.PS', ['x1.px']);
   PAIRS.forEach((pr) => {
     const t = tl(`tc1${pr.id}`, place(), 1, 0, 125);
     link(t.PD!, c1[pr.id].PD, `tc1${pr.id}.tl.PD`, [`c1${pr.id}.pd`]); link(t.PC, c1[pr.id].PC, `tc1${pr.id}.tl.PC`, [`c1${pr.id}.pc`]);
   });
+  // diamond splitter (after block crafter D): 6 diamonds to pair D's stash (Y port), 3 spare diamonds to the leftover chest (X port)
+  const tS0D = tl('tS0D', place(), 6, 3, 0, 0, 0, true);
+  link(tS0D.PD!, fpS0D.pulseY, 'tS0D.tl.PD', ['x0.py']); link(tS0D.PS!, fpS0D.pulseX, 'tS0D.tl.PS', ['x0.px']);
   const stickPort: Record<string, { pin: Pos; own: string }> = {
     diamond_shovel: { pin: fpSAB.pulseY, own: 'sAB.py' }, diamond_sword: { pin: fpSAB.pulseX, own: 'sAB.px' },
     diamond_pickaxe: { pin: fpSD.pulseY, own: 'sD.py' }, diamond_axe: { pin: fpSD.pulseX, own: 'sD.px' },
@@ -167,18 +181,23 @@ export function buildGearSet(w: World): Machine {
   const hopsBlocks = ['cvb0', 'cvb1', 'cvb2', 'cvb3'].reduce((a, n) => a + (hops[n] ?? 0), 0);
   const tC1 = Math.ceil((hopsBlocks * HOP_GT + 3 * 20 + 80) / 2);
   const tPl = 40;
-  const tUnits = Math.max(tC1, tPl + 200) + 120;
-  for (const t of timelines) t.delayRt = t.name.startsWith('tP_') ? tPl : t.name.startsWith('tc1') ? tC1 : t.name.startsWith('t_') ? tUnits : 0;
-  console.log('start delays rt: c1', tC1, 'units', tUnits, 'hops blocks', hopsBlocks);
+  const tSS = tPl + (gapFor('cvpAB') + 2) * SLOT_RT + 40;                          // after the stick crafter c3AB has crafted
+  const tSD = tC1 + 60;                                                              // after block crafter D has crafted
+  const tUnits = Math.max(Math.max(tC1, tPl + 200) + 120, tSD + 9 * SLOT_RT + Math.ceil(((hops.cvS0Dy ?? 0) * HOP_GT) / 2) + 120, tSS + 4 * SLOT_RT + Math.ceil(((hops.cvS0Sy ?? 0) * HOP_GT) / 2) + 120);
+  const delayOf = (n: string) => (n.startsWith('tP_') ? tPl : n === 'tS0S' ? tSS : n === 'tS0D' ? tSD : n.startsWith('tc1') ? tC1 : n.startsWith('t_') ? tUnits : 0);
+  for (const t of timelines) t.delayRt = delayOf(t.name);
+  console.log('start delays rt: c1', tC1, 'units', tUnits, 'splitters', tSS, tSD, 'hops blocks', hopsBlocks);
   const Y = 6, ZB = 80, ZT = 104;
-  const GROUPS = [
-    { slots: [0, 1], rt: 0, sx: -24, L: 0 }, { slots: [2, 3], rt: tPl, sx: -12, L: 40 },
-    { slots: [4, 5, 6, 7], rt: tC1, sx: 10, L: 0 }, { slots: [8, 9, 10, 11, 12, 13, 14, 15], rt: tUnits, sx: 44, L: 0 },
-  ];
+  // one START group per delay value (timelines are placed in group order, so the slots of a group are contiguous)
+  const GROUPS: { slots: number[]; rt: number; sx: number; L: number }[] = [];
+  timelines.forEach((t, k) => { const g = GROUPS[GROUPS.length - 1]; if (g && g.rt === t.delayRt) g.slots.push(k); else GROUPS.push({ slots: [k], rt: t.delayRt, sx: 0, L: 0 }); });
+  const snakeWidth = (rt: number) => { const n = Math.ceil(rt / 4); const Lmax = Math.max(10, Math.ceil(n / 8)); let rows = Math.ceil(n / Lmax); if (rows % 2 === 1 && rows > 1) rows++; return Math.ceil(n / rows); };
+  let sxNext = -24;
+  for (const g of GROUPS) { g.sx = sxNext; sxNext += g.rt === 0 ? 12 : snakeWidth(g.rt) + 8; }
   const slotX = (k: number) => -20 + 8 * k;
   const ST = 'start';
   b.floorColor = 'red';
-  const BX0 = -26, BX1 = 44;
+  const BX0 = -26, BX1 = GROUPS[GROUPS.length - 1].sx;
   // the button sits in the hub next to the output chest; a long boosted dust lane carries its signal to the start of the bus
   const btnWool: Pos = [HX + 8, 9, HZ + 2];
   b.wool(btnWool, 'red');
@@ -248,7 +267,7 @@ export function buildGearSet(w: World): Machine {
     }
     throw new Error('no room for the ' + type + ' pillar');
   };
-  const pillars = { diamonds: pillar(fpB.chestL, 'lapis_block'), logs: pillar(logChest, 'gold_block'), output: pillar(outChest, 'iron_block'), button: pillar(button, 'emerald_block'), leftoverDiamonds: pillar(stash.D[0], 'coal_block'), leftoverSticks: pillar(fpSAB.chestL, 'coal_block') };
+  const pillars = { diamonds: pillar(fpB.chestL, 'lapis_block'), logs: pillar(logChest, 'gold_block'), output: pillar(outChest, 'iron_block'), button: pillar(button, 'emerald_block'), leftover: pillar(lbL, 'coal_block') };
   console.log('pillars (x,z):', JSON.stringify(pillars));
   // signs on small wool posts next to every chest and the button: the sign faces the chest, with the direction to it
   const label = (at: Pos, lines: string[]) => {
@@ -269,11 +288,10 @@ export function buildGearSet(w: World): Machine {
   label(logChest, ['OAK LOGS', 'in here']);
   label(button, ['PRESS BUTTON', 'then wait', '2 minutes']);
   label(outChest, ['OUTPUT', 'full set comes', 'out here']);
-  label(stash.D[1], ['LEFTOVER', 'DIAMONDS', '(3 per press)']);
-  label(fpSAB.chestR, ['LEFTOVER', 'STICKS', '(1 per press)']);
+  label(lbR, ['LEFTOVER', 'diamonds and', 'sticks']);
   return {
     b, button, blockChest: [fpB.chestL, fpB.chestR], logChest,
-    leftoverDiamonds: stash.D, leftoverSticks: [fpSAB.chestL, fpSAB.chestR], planksStash: fpP.chestL, pins,
+    leftover: [lbL, lbR], planksStash: fpP.chestL, pins,
     outputs: [outChest], timelines,
   };
 }
