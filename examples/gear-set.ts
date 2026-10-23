@@ -221,6 +221,7 @@ export function buildGearSet(w: World): Machine {
   const SC = Number(process.env.DELAY_SCALE ?? 1);                                    // experiment: shrink the safety margins of the group delays
   const delayOf = (n: string) => Math.round(SC * (n.startsWith('tP_') ? tPl : n === 'tS0S' ? tSS : n === 'tS0D' ? tSD : n.startsWith('tc1') ? tC1 : n.startsWith('t_') ? tUnits : 0));
   for (const t of timelines) t.delayRt = delayOf(t.name);
+  console.log('hops', JSON.stringify(hops));
   console.log('start delays rt: c1', tC1, 'units', tUnits, 'splitters', tSS, tSD, 'hops blocks', hopsBlocks);
   const Y = 6, ZB = 80, ZT = 104;
   // one START group per delay value (timelines are placed in group order, so the slots of a group are contiguous)
