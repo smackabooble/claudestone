@@ -10,18 +10,18 @@ import { loadGearSet } from './gear-set.ts';
 
 const w = new World();
 const m = loadGearSet(w);
-const fill = () => { w.setItem(m.blockChest[0], 0, { id: 'diamond_block', count: 64 }); w.setItem(m.logChest, 0, { id: 'oak_log', count: 16 }); };
+const fill = () => { w.setItem(m.platform.diamonds[0], 0, { id: 'diamond_block', count: 64 }); w.setItem(m.platform.logs[0], 0, { id: 'oak_log', count: 16 }); };
 const empty = (p: any) => { for (let i = 0; i < 54; i++) w.setItem(p, i, null); };
 const count = (p: any) => { const t: Record<string, number> = {}; for (const x of (w.items(p) ?? []) as any[]) if (x) t[x.id] = (t[x.id] ?? 0) + x.count; return t; };
 fill();
 const PRESS_GT = 9000;
 // a cold first press can leave a half-filled crafter (a short stick delivery); clear those so the primed press starts clean
 const clearCrafters = () => { for (const b of w.listBlocks() as any[]) if (b.type === 'crafter') for (let i = 0; i < 9; i++) w.setItem(b.pos, i, null); };
-for (let i = 1; i <= 2; i++) { w.use(m.button); w.run(PRESS_GT); console.log('priming press', i, JSON.stringify(count(m.outputs[0]))); clearCrafters(); }
+for (let i = 1; i <= 2; i++) { w.use(m.platform.button); w.run(PRESS_GT); console.log('priming press', i, JSON.stringify(count(m.outputs[0]))); clearCrafters(); }
 w.run(3000);                                              // let the output conveyor finish
-empty(m.outputs[0]); empty(m.blockChest[0]); empty(m.logChest); fill();
+empty(m.outputs[0]); empty(m.blockChest[0]); empty(m.logChest); for (const c of [...m.platform.diamonds, ...m.platform.logs]) empty(c); fill();
 writeFileSync('examples/diamond-gear-set.schem', exportSchem(w).buffer);
 console.log('wrote examples/diamond-gear-set.schem (primed)');
 // check: the very next press must give one full set
-w.use(m.button); w.run(PRESS_GT + 2000);
+w.use(m.platform.button); w.run(PRESS_GT + 2000);
 console.log('first press after priming:', JSON.stringify(count(m.outputs[0])));

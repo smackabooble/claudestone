@@ -43,6 +43,7 @@ export interface Machine {
   leftover: Pos[];           // the ONE double chest that collects the spare diamonds and the spare stick (left half first)
   planksStash: Pos;
   pins: { net: string; pin: Pos }[];   // destination pin of every pulse lane (diagnostics)
+  platform: { diamonds: Pos[]; logs: Pos[]; output: Pos[]; leftover: Pos[]; button: Pos };
   outputs: Pos[];            // collector hoppers of the 8 gear crafters (facing east)
   timelines: { name: string; start: Pos; delayRt: number; PD: Pos | null; PS: Pos | null; PC: Pos }[];
 }
@@ -127,6 +128,37 @@ export function buildGearSet(w: World): Machine {
   b.raw(c2.busA, 'chest', { facing: 'south', type: 'single' }, 'piston', '__s');
   const logChest = c2.busA;                                                           // the log chest sits on the C2 tap bus cell
 
+  // ---- platform: one deck with every chest the user touches, in the layout of knowledge/refs/diamond-maker-example.litematic ----
+  // START block + button at the left, then four double chests in a row (DIAMONDS, LOGS, OUTPUT, LEFTOVER); a hopper under each half,
+  // a sign on the front of each. Input chests drain straight down (or along a hopper line) into the hub chests.
+  const PY = 11, CY = PY + 1;                                                          // deck / hopper level, chest level
+  const CX = (i: number) => HX + 3 * i, ROWZ = HZ;
+  const sign = (at: Pos, facing: string, lines: string[]) => b.raw(at, 'oak_wall_sign', { facing, text: lines }, 'other');
+  const dchest = (i: number) => {
+    b.raw([CX(i), CY, ROWZ], 'chest', { facing: 'north', type: 'left' }, 'piston', '__s');
+    b.raw([CX(i) + 1, CY, ROWZ], 'chest', { facing: 'north', type: 'right' }, 'piston', '__s');
+    return [[CX(i), CY, ROWZ], [CX(i) + 1, CY, ROWZ]] as Pos[];
+  };
+  const diamondsChest = dchest(0), logsChest = dchest(1), outputChest = dchest(2), leftoverChest = dchest(3);
+  for (const i of [0, 1, 2, 3]) for (const dx of [0, 1]) b.raw([CX(i) + dx, PY, ROWZ], 'hopper', { facing: 'down' }, 'piston', '__s');
+  // DIAMONDS sits right above the hub block chest; LOGS sends its items along a hopper line to the log chest
+  b.raw([CX(1), PY - 1, ROWZ], 'hopper', { facing: 'east' }, 'piston', '__s');
+  b.raw([CX(1) + 1, PY - 1, ROWZ], 'hopper', { facing: 'west' }, 'piston', '__s');
+  hops.cvLogs = conveyor(b, [CX(1), PY - 1, ROWZ], logChest, 'cvLogs').length;
+  const startBlock: Pos = [HX - 3, CY, ROWZ];
+  b.wool(startBlock, 'brown');
+  const button: Pos = [HX - 3, CY, ROWZ - 1];
+  b.raw(button, 'stone_button', { face: 'wall', facing: 'north' }, 'lever');
+  const btnDust: Pos = [HX - 4, CY, ROWZ];                                            // powered by the START block, start of the lane to the timelines
+  b.floorColor = 'red';
+  for (let x = HX - 6; x <= CX(3) + 3; x++) for (let z = ROWZ - 2; z <= ROWZ + 1; z++) if (b.isFree([x, PY, z])) b.wool([x, PY, z], 'light_gray');
+  b.dust(btnDust, 'startbtn', 'red');
+  sign([CX(0), CY, ROWZ - 1], 'north', ['', 'DIAMONDS', 'blocks in here', '']);
+  sign([CX(1), CY, ROWZ - 1], 'north', ['', 'OAK LOGS', 'in here', '']);
+  sign([CX(2), CY, ROWZ - 1], 'north', ['', 'OUTPUT', 'full set', 'comes here']);
+  sign([CX(3), CY, ROWZ - 1], 'north', ['', 'LEFTOVER', 'diamonds', 'and sticks']);
+  sign([HX - 2, CY, ROWZ], 'east', ['', 'START', '(press)', '']);
+
   // ---- timelines ----
   const tl = (name: string, o: Pos, d: number, s: number, delayRt: number, gap = 0, gapS = 0, noPC = false) => {
     const t = buildTimeline(b, o, name, d, s, gap, gapS, noPC);
@@ -198,12 +230,6 @@ export function buildGearSet(w: World): Machine {
   const ST = 'start';
   b.floorColor = 'red';
   const BX0 = -26, BX1 = GROUPS[GROUPS.length - 1].sx;
-  // the button sits in the hub next to the output chest; a long boosted dust lane carries its signal to the start of the bus
-  const btnWool: Pos = [HX + 8, 9, HZ + 2];
-  b.wool(btnWool, 'red');
-  const button: Pos = [HX + 8, 10, HZ + 2];
-  b.raw(button, 'stone_button', { face: 'floor', facing: 'east' }, 'lever');
-  b.dust([HX + 9, 9, HZ + 2], 'startbtn', 'red');
   const nearBranch = (x: number) => GROUPS.some((g) => Math.abs(g.sx - x) <= 1);
   for (let x = BX0; x <= BX1; x++) {
     if ((x - BX0) % 8 === 6 && !nearBranch(x)) b.rep([x, Y, ZB], 'east', 1, ST); else b.dust([x, Y, ZB], ST);
@@ -250,49 +276,18 @@ export function buildGearSet(w: World): Machine {
   }
   const startJobs = taps.map((t) => () => { b.floorColor = 'red'; links.push({ path: route(b, t.cell, timelines[t.k].start, ST, { own: [`${timelines[t.k].name}.tl.in`], strict: true }), net: ST }); });
   jobs.unshift(...startJobs);
-  jobs.unshift(() => { b.floorColor = 'red'; const path = route(b, [HX + 9, 9, HZ + 2], [BX0, Y, ZB], 'startbtn', { own: [ST], strict: true }); assignRepeaters(b, path, 'startbtn', undefined, 8); });
+  jobs.unshift(() => { b.floorColor = 'red'; const path = route(b, btnDust, [BX0, Y, ZB], 'startbtn', { own: [ST], strict: true }); assignRepeaters(b, path, 'startbtn', undefined, 8); });
   for (const j of jobs) j();
   for (const l of links) {
     if (l.net !== ST) { assignRepeaters(b, l.path, l.net, undefined, 5); continue; }
     try { assignRepeaters(b, l.path, l.net, undefined, 4); } catch { /* too few straight cells: the staircase is short enough */ }     // START taps: a booster where the path has a straight cell
   }
 
-  // landmark pillars next to the chests the user touches: diamonds = lapis, logs = gold, output = iron, button = emerald, both leftover chests = coal
-  const pillar = (near: Pos, type: string) => {
-    const y0 = near[1] - 4, y1 = near[1] + 12;                                   // 17 tall, around the height of the chest
-    for (let r = 3; r < 40; r++) for (const [dx, dz] of [[r, 0], [-r, 0], [0, r], [0, -r], [r, r], [-r, -r], [r, -r], [-r, r]]) {
-      const x = near[0] + dx, z = near[2] + dz;
-      let ok = true; for (let py = y0; py <= y1; py++) if (!b.isFree([x, py, z]) || !b.isFree([x + 1, py, z]) || !b.isFree([x - 1, py, z]) || !b.isFree([x, py, z + 1]) || !b.isFree([x, py, z - 1])) { ok = false; break; }
-      if (ok) { for (let py = y0; py <= y1; py++) b.raw([x, py, z], type, {}, 'other'); return [x, z]; }
-    }
-    throw new Error('no room for the ' + type + ' pillar');
-  };
-  const pillars = { diamonds: pillar(fpB.chestL, 'lapis_block'), logs: pillar(logChest, 'gold_block'), output: pillar(outChest, 'iron_block'), button: pillar(button, 'emerald_block'), leftover: pillar(lbL, 'coal_block') };
-  console.log('pillars (x,z):', JSON.stringify(pillars));
-  // signs on small wool posts next to every chest and the button: the sign faces the chest, with the direction to it
-  const label = (at: Pos, lines: string[]) => {
-    const DIRS: [string, number, number][] = [['east', 1, 0], ['west', -1, 0], ['south', 0, 1], ['north', 0, -1]];
-    for (let r = 2; r <= 5; r++) for (const [name, dx, dz] of DIRS) {
-      // post at distance r on side (dx,dz); the sign sits one cell closer to the chest and faces the chest... facing = direction the text faces
-      const w: Pos = [at[0] + dx * r, at[1], at[2] + dz * r];                  // support block (wool)
-      const sg: Pos = [at[0] + dx * (r - 1), at[1], at[2] + dz * (r - 1)];     // sign cell, between post and chest
-      if (![w, [w[0], w[1] - 1, w[2]], sg].every((c) => b.isFree(c as Pos))) continue;
-      const faceChest = name === 'east' ? 'west' : name === 'west' ? 'east' : name === 'south' ? 'north' : 'south';
-      b.wool(w, 'white');
-      b.raw(sg, 'oak_wall_sign', { facing: faceChest, text: lines }, 'other');
-      return;
-    }
-    console.log('no room for sign', lines[0]);
-  };
-  label(fpB.chestL, ['DIAMOND BLOCKS', 'in here', '(left half)', 'put 64 max']);
-  label(logChest, ['OAK LOGS', 'in here']);
-  label(button, ['PRESS BUTTON', 'then wait', '2 minutes']);
-  label(outChest, ['OUTPUT', 'full set comes', 'out here']);
-  label(lbR, ['LEFTOVER', 'diamonds and', 'sticks']);
   return {
     b, button, blockChest: [fpB.chestL, fpB.chestR], logChest,
     leftover: [lbL, lbR], planksStash: fpP.chestL, pins,
     outputs: [outChest], timelines,
+    platform: { diamonds: diamondsChest, logs: logsChest, output: outputChest, leftover: leftoverChest, button },
   };
 }
 
