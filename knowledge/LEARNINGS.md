@@ -258,3 +258,11 @@ Found with the abstract model (extender-long.ts pulseOrder style) + scripted pul
 - Feeders: pitch-1 pistons cannot each get a repeater (no floor). Quasi-connectivity: a feeder repeater next to cell (x,y) also powers the piston at (x,y-1). Feed rows 4,2,0 only; a bare redstone block does NOT trigger the QC update, a repeater does.
 - Comparator edge former: repeater (delay 1) into the comparator side is swallowed (repeater ticks first, priority); use delay >= 2 -> 4 gt pulse. Comparator SIDE input only accepts signal sources (dust, repeater, redstone block), not a powered wool block. Analog: dust side input of power 9 leaves output 6; feed comparators from repeaters (15). Observer on the pulse gives one clean 2 gt push pulse.
 - Process lesson: I built a huge router + per-cluster timer controller (hundreds of blocks) when the user wanted something simple. Do the simplest controller first and check scope with the user before multi-hour designs.
+
+## Containers, hoppers, droppers, crafters (from game knowledge, NOT verified in the sim)
+- Hopper: 1 item per transfer, 8 gt cooldown (2.5 items/s). Each cycle pushes first (into the container it faces), then pulls from the one above. Chained hopper cooldown may be 7 gt in some orders (unsure). Powered hopper = locked. Also picks up item entities above it.
+- Pull order: first non-empty slot (slot 0 up); double chest = one inventory; furnace-like blocks only expose output slots. Push: top up matching stacks first, then first empty slot.
+- Comparator on a container: 0 if empty else floor(1 + sum(fill fraction)/slots * 14).
+- Dropper/dispenser facing a container puts 1 item in per activation (stack first, then first empty slot). If full or refused the item STAYS in the dropper (no drop). Facing a non-container block or air it drops an item entity.
+- Crafter (1.21): 3x3 grid, empty slots can be toggled disabled, crafts on a redstone rising edge if the grid matches a recipe, outputs from its front face like a dropper; comparator reads filled+disabled slots. Not modelled in the sim.
+- Sim models: hopper 8 gt cooldown + lock, dropper slot choice. Not modelled: item entities, crafters, 7 gt chaining.
