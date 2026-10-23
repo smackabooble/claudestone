@@ -190,6 +190,10 @@ function routeOnce(b: Board, from: Pos, to: Pos, net: string, o: RouteOpts, avoi
         for (let n: N | undefined = from, i = 0; n && i < 24; n = n.prev, i++) {
           const nk = keyOf(n.c);
           if (nk === C) return true;                                                       // no cell twice
+          if (i >= 2) {                                                                    // the lane must not touch itself: a loop of repeaters/dust latches or oscillates
+            const dx = n.c[0] - c[0], dz = n.c[2] - c[2], dy = Math.abs(n.c[1] - c[1]);
+            if (dy <= 1 && Math.abs(dx) + Math.abs(dz) === 1) return true;
+          }
           if (nk === F || (Z && nk === Z)) return true;                                    // our floor / clearance would be an existing dust cell
           if (keyOf([n.c[0], n.c[1] - 1, n.c[2]]) === C || (Z && keyOf([n.c[0], n.c[1] - 1, n.c[2]]) === Z)) return true;   // their floor is our dust/clearance
           if (n.prev) {
