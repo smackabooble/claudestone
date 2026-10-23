@@ -8,6 +8,7 @@
  *  - redstone_wall_torch `facing` = direction the torch points away from the wall
  */
 import { JavaRandom } from './jrandom.ts';
+import { craft } from './recipes.ts';
 import {
   DIRS, UPDATE_ORDER, HORIZONTAL, clockwise, counterClockwise, isHorizontal,
   javaSetOrder, key, opposite, rel,
@@ -40,6 +41,7 @@ const DEFS: Record<string, Def> = {
   comparator: { solid: false, conductor: false, source: true },
   hopper: { solid: false, conductor: false, source: false },
   dropper: { solid: true, conductor: true, source: false },
+  crafter: { solid: true, conductor: true, source: false },
   dispenser: { solid: true, conductor: true, source: false },
   barrel: { solid: true, conductor: true, source: false },
   piston: { solid: true, conductor: false, source: false },
@@ -83,11 +85,11 @@ const SHAPE_ORDER: Dir[] = ['west', 'east', 'north', 'south', 'down', 'up'];
 const isPistonType = (b: Block): boolean => b.type === 'piston' || b.type === 'sticky_piston';
 const DESTROY = new Set(['iron_door', 'stone_pressure_plate', 'redstone_wire', 'lever', 'stone_button', 'redstone_torch', 'redstone_wall_torch', 'repeater', 'comparator']);
 const BLOCKING = new Set(['moving_piston', 'piston_head', 'obsidian']);
-const CONTAINER_SIZE: Record<string, number> = { chest: 27, barrel: 27, hopper: 5, dropper: 9, dispenser: 9 };
+const CONTAINER_SIZE: Record<string, number> = { chest: 27, barrel: 27, hopper: 5, dropper: 9, dispenser: 9, crafter: 9 };
 const BLOCK_ENTITY = new Set(['comparator', 'furnace', 'campfire', ...Object.keys(CONTAINER_SIZE)]);
 
 export interface Item { id: string; count: number }
-interface BE { type: string; inv: (Item | null)[]; cooldown: number; ticked: number; seq: number }
+interface BE { type: string; inv: (Item | null)[]; cooldown: number; ticked: number; seq: number; disabled?: boolean[] }
 const STACK16 = new Set(['ender_pearl', 'snowball', 'egg', 'bucket', 'oak_sign', 'honey_bottle']);
 const STACK1 = /(_sword|_pickaxe|_axe|_shovel|_hoe|_helmet|_chestplate|_leggings|_boots|_boat|_bed|_bucket)$|^(bow|shield|minecart|saddle|potion|cake|elytra|shears|fishing_rod|flint_and_steel)$/;
 export const maxStack = (id: string): number =>
@@ -298,6 +300,7 @@ export class World {
       case 'piston': case 'sticky_piston': b.p.facing ??= 'north'; b.p.extended = false; break;
       case 'hopper': b.p.facing ??= 'down'; b.p.enabled ??= true; break;
       case 'dropper': case 'dispenser': b.p.facing ??= 'north'; b.p.triggered = false; break;
+      case 'crafter': b.p.facing ??= 'north'; b.p.triggered = false; break;
       case 'iron_door': {
         b.p.half = 'lower'; b.p.facing ??= 'north';
         const on = this.hasNeighborSignal(p) || this.hasNeighborSignal(rel(p, 'up'));
@@ -418,6 +421,7 @@ export class World {
       }
       case 'comparator': this.cmpTick(p, b); break;
       case 'dropper': case 'dispenser': this.dispenseFrom(p, b); break;
+      case 'crafter': this.crafterTick(p, b); break;
       case 'stone_pressure_plate': if (b.p.powered) this.plateCheck(p); break;
       case 'observer':
         if (b.p.powered) {
@@ -507,7 +511,7 @@ export class World {
       case 'stone_pressure_plate':
         if (!this.canSurvive(p, b)) this.setBlock(p, AIR, 3);
         break;
-      case 'dropper': case 'dispenser': {
+      case 'dropper': case 'dispenser': case 'crafter': {
         const sig = this.hasNeighborSignal(p) || this.hasNeighborSignal(rel(p, 'up'));
         if (sig && !b.p.triggered) {
           this.scheduleTick(p, 4, 0);
@@ -910,6 +914,7 @@ export class World {
     if (b.type === 'copper_bulb') return b.p.lit ? 15 : 0;
     const be = this.bes.get(key(p));
     if (!be) return 0;
+    if (b.type === 'crafter') return be.inv.filter((it, i) => it || be.disabled?.[i]).length;
     let f = 0, used = 0;
     for (const it of be.inv) {
       if (!it) continue;
@@ -1262,6 +1267,7 @@ export class World {
   private insertOne(srcBE: BE | null, destP: Pos, dest: BE, item: Item): boolean {
     for (let slot = 0; slot < dest.inv.length; slot++) {
       const cur = dest.inv[slot];
+      if (dest.type === 'crafter' && !this.crafterCanPlace(dest, slot)) continue;
       const wasEmpty = this.isEmptyBE(dest);
       let moved = false;
       if (!cur) { dest.inv[slot] = { id: item.id, count: 1 }; moved = true; }
@@ -1276,6 +1282,41 @@ export class World {
       }
     }
     return false;
+  }
+
+  /** CrafterBlockEntity.canPlaceItem: items spread over the enabled slots (never onto a slot while a later enabled slot is emptier) */
+  private crafterCanPlace(be: BE, slot: number): boolean {
+    if (be.disabled?.[slot]) return false;
+    const cur = be.inv[slot];
+    if (!cur) return true;
+    if (cur.count >= maxStack(cur.id)) return false;
+    for (let i = slot + 1; i < be.inv.length; i++) {
+      if (be.disabled?.[i]) continue;
+      const o = be.inv[i];
+      if (!o || (o.id === cur.id && o.count < cur.count)) return false;
+    }
+    return true;
+  }
+  /** click an empty crafter slot to disable/enable it (disabled slots hold nothing and count as empty in the recipe) */
+  setSlotDisabled(p: Pos, slot: number, disabled: boolean): void {
+    const be = this.bes.get(key(p));
+    if (!be || be.type !== 'crafter') throw new Error(`no crafter at ${p.join(',')}`);
+    (be.disabled ??= Array(be.inv.length).fill(false))[slot] = disabled;
+    if (disabled) be.inv[slot] = null;
+    this.updateComparatorsAround(p);
+  }
+  private crafterTick(p: Pos, b: Block): void {
+    const be = this.bes.get(key(p));
+    if (!be) return;
+    const grid = be.inv.map((it, i) => (be.disabled?.[i] ? null : it ? it.id : null));
+    const out = craft(grid);
+    if (!out) return;
+    for (let i = 0; i < be.inv.length; i++) if (grid[i]) this.takeOne(be, i, p);
+    const fp = rel(p, b.p.facing);
+    const dest = this.bes.get(key(fp));
+    let left = out.count;
+    while (dest && left > 0 && this.insertOne(be, fp, dest, { id: out.id, count: 1 })) left--;
+    if (left > 0) this.drops.push({ tick: this.time, pos: fp, item: { id: out.id, count: left } });
   }
 
   private takeOne(be: BE, slot: number, p: Pos): Item {

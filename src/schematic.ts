@@ -11,7 +11,7 @@ const num = (v: Tag): number => Number(v as number | bigint);
 const DIRECT = new Set([
   'stone', 'tripwire_hook', 'composter', 'log', 'leafblock', 'hay_block', 'target', 'pane', 'glass', 'obsidian', 'furnace', 'leaves', 'partial', 'campfire', 'stairs', 'slime_block', 'redstone_wire', 'redstone_block', 'lever', 'repeater',
   'comparator', 'observer', 'redstone_torch', 'redstone_wall_torch', 'redstone_lamp', 'piston',
-  'sticky_piston', 'hopper', 'dropper', 'dispenser', 'chest', 'barrel', 'stone_button', 'honey_block', 'tnt', 'stone_pressure_plate',
+  'sticky_piston', 'hopper', 'dropper', 'dispenser', 'crafter', 'chest', 'barrel', 'stone_button', 'honey_block', 'tnt', 'stone_pressure_plate',
 ]);
 const AIR = new Set(['air', 'cave_air', 'void_air']);
 const SKIP = new Set(['moving_piston']);
@@ -44,6 +44,7 @@ export function convertState(full: string, warn: (m: string) => void): { type: s
     case 'piston': case 'sticky_piston': return { type: name, props: keep('facing', 'extended') };
     case 'hopper': return { type: name, props: keep('facing', 'enabled') };
     case 'dropper': case 'dispenser': return { type: name, props: keep('facing', 'triggered') };
+    case 'crafter': return { type: name, props: { facing: String(raw.orientation ?? 'north_up').split('_')[0], triggered: !!raw.triggered } };
     default:
       if (/_button$/.test(name)) {
         if (name !== 'stone_button' && name !== 'polished_blackstone_button') warn(`${name} treated as stone_button (20-tick press)`);
