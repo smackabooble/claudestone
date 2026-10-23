@@ -71,7 +71,8 @@ export function buildTimeline(b: Board, O: Pos, name: string, d: number, s: numb
   const P = (u: number, v: number): Pos => [O[0] + u, O[1], O[2] + v];
   const net = `${name}.tl`;
   b.floorColor = 'magenta';
-  b.dust(P(0, 0), `${net}.in`);                                         // start pin
+  b.dust(P(0, -1), `${net}.in`);                                        // start pin (weak signals are fine: the repeater restores them)
+  b.rep(P(0, 0), 'south', 1, `${net}.in`);
   b.dust(P(0, 1), `${net}.in`); b.dust(P(1, 1), `${net}.in`); b.dust(P(2, 1), `${net}.in`); b.dust(P(2, 2), `${net}.in`);
   b.rep(P(1, 2), 'west', 2, `${net}.in`);                              // side branch: delayed copy (flows -x)
   b.cmp(P(0, 2), 'south', `${net}.in`, 'magenta', 'subtract');         // input north (rear = start), output south
@@ -100,5 +101,5 @@ export function buildTimeline(b: Board, O: Pos, name: string, d: number, s: numb
     out[ln.name] = P(2, nodeV[ln.to] + 1);
     b.dust(out[ln.name], lnet, 'orange');
   }
-  return { start: P(0, 0), PD: out.PD ?? null, PS: out.PS ?? null, PC: out.PC };
+  return { start: P(0, -1), PD: out.PD ?? null, PS: out.PS ?? null, PC: out.PC };
 }

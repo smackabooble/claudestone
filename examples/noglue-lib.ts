@@ -88,8 +88,15 @@ function foreignNear(b: Board, c: Pos, net: string, allow?: Set<string>, own?: S
     const k = key(c[0] + dx, c[1] + dy, c[2] + dz);
     if (allow?.has(k)) continue;
     const tg = b.occ.get(k);
-    if (connective(tg, net, own)) { if (process.env.DEBUG_ROUTE === '2' && c[0] === 4 && c[1] === 3 && c[2] === -2) console.log('C hit', c[0]+dx, c[1]+dy, c[2]+dz, tg); return true; }
+    if (connective(tg, net, own)) { if (process.env.DEBUG_ROUTE === '2' && c[0] === 4 && c[1] === 0 && c[2] === 22) console.log('C hit', c[0]+dx, c[1]+dy, c[2]+dz, tg); return true; }
     if (nearEnd && tg && CONNECTIVE.includes(tg.kind) && tg.net && (tg.net === net || (own && own.has(tg.net))) && !nearEnd(k)) return true;
+  }
+  // dust powers the block it sits on, and a powered block locks the hoppers (and triggers the droppers) next to it
+  for (const [dx, dy, dz] of [[1, 0, 0], [-1, 0, 0], [0, 0, 1], [0, 0, -1], [0, -1, 0]]) {
+    const pk = key(c[0] + dx, c[1] - 1 + dy, c[2] + dz);
+    if (allow?.has(pk)) continue;
+    const t = b.occ.get(pk);
+    if (t && t.net === '__s' && net !== '__s') return true;
   }
   // quasi-connectivity: droppers / crafters / pistons ('__q') also react to power at the cell ABOVE them (A) or next to it: keep every
   // signal part further than 3 steps (Manhattan) from A. A powered neighbour block of A is fed by wiring up to 2 steps away.
@@ -138,8 +145,8 @@ function routeOnce(b: Board, from: Pos, to: Pos, net: string, o: RouteOpts, avoi
       const clears = new Set<string>(); const dusts = new Set<string>(); const floors = new Set<string>();
       const seen = new Set<string>(); for (const c of path) { const kk = keyOf(c); if (seen.has(kk)) return { bad: kk }; seen.add(kk); }
       for (let i = 1; i < path.length - 1; i++) { const c = path[i]; const p = path[i - 1]; dusts.add(keyOf(c)); floors.add(key(c[0], c[1] - 1, c[2])); if (c[1] > p[1]) clears.add(key(p[0], p[1] + 1, p[2])); if (c[1] < p[1]) clears.add(key(c[0], p[1], c[2])); }
-      for (const f of floors) if (clears.has(f) || dusts.has(f)) return { bad: f };
-      for (const d of dusts) if (clears.has(d)) return { bad: d };
+      for (const f of floors) if (clears.has(f) || dusts.has(f)) { if (process.env.DEBUG_ROUTE) console.log('  bad floor', f, 'path', path.slice(0, 12).map((q) => q.join(',')).join(' ')); return { bad: f }; }
+      for (const d of dusts) if (clears.has(d)) { if (process.env.DEBUG_ROUTE) console.log('  bad dust', d, 'path', path.slice(0, 12).map((q) => q.join(',')).join(' ')); return { bad: d }; }
       // place the new interior cells
       for (let i = 1; i < path.length - 1; i++) {
         const c = path[i]; const p = path[i - 1];
@@ -156,11 +163,31 @@ function routeOnce(b: Board, from: Pos, to: Pos, net: string, o: RouteOpts, avoi
     const [x, y, z] = cur.c;
     for (let di = 0; di < HDIRS.length; di++) {
       const [dx, dz] = HDIRS[di];
+      // local self-consistency: the last cells of this very path must not need a cell both as wool/dust and as air
+      const conflictsWithRecent = (from: N, c: Pos, needClear?: Pos): boolean => {
+        const F = keyOf([c[0], c[1] - 1, c[2]]), C = keyOf(c), Z = needClear ? keyOf(needClear) : '';
+        let prev: N | undefined = from;
+        for (let n: N | undefined = from, i = 0; n && i < 24; n = n.prev, i++) {
+          const nk = keyOf(n.c);
+          if (nk === C) return true;                                                       // no cell twice
+          if (nk === F || (Z && nk === Z)) return true;                                    // our floor / clearance would be an existing dust cell
+          if (keyOf([n.c[0], n.c[1] - 1, n.c[2]]) === C || (Z && keyOf([n.c[0], n.c[1] - 1, n.c[2]]) === Z)) return true;   // their floor is our dust/clearance
+          if (n.prev) {
+            const p0 = n.prev.c, q0 = n.c; let clr: string | undefined;
+            if (q0[1] > p0[1]) clr = keyOf([p0[0], p0[1] + 1, p0[2]]); else if (q0[1] < p0[1]) clr = keyOf([q0[0], p0[1], q0[2]]);
+            if (clr && (clr === C || clr === F)) return true;                            // their clearance is our dust / floor
+          }
+          prev = n;
+        }
+        void prev;
+        return false;
+      };
       const tryMove = (c: Pos, extra: number, needClear?: Pos, needFloor?: Pos, vertical = false) => {
         if (vertical && cur.d !== -1 && cur.d !== di) return;               // straight staircases only: a spiral would need a floor where the lower dust needs air
         const ck = keyOf(c); const k = ck + '|' + di; const isGoal = ck === goal;
         if (!isGoal) { if (!free(c) || !floorOk(c) || foreignNear(b, c, net, o.allow, ownSet, o.strict ? nearEnd : undefined)) return; }
         if (needClear && !free(needClear) && b.tag(needClear)?.kind !== 'clear') return;
+        if (!isGoal && conflictsWithRecent(cur, c, needClear)) return;
         if (needClear && connective(b.tag(needClear), net, ownSet)) return;
         if (needFloor) { const t = b.tag(needFloor); if (t && t.kind !== 'wool') return; }
         const g = cur.g + 1 + extra;
@@ -175,7 +202,7 @@ function routeOnce(b: Board, from: Pos, to: Pos, net: string, o: RouteOpts, avoi
   if (process.env.DEBUG_ROUTE) {
     const why = (c: Pos) => `${c.join(',')}: ${!b.isFree(c) ? 'occupied ' + JSON.stringify(b.tag(c)) : !floorOk(c) ? 'floor ' + JSON.stringify(b.tag([c[0], c[1] - 1, c[2]])) : foreignNear(b, c, net, o.allow, ownSet, o.strict ? nearEnd : undefined) ? 'foreign-near' : 'ok'}`;
     if (process.env.DEBUG_ROUTE === '2') { const c: Pos = [to[0], to[1], to[2] + 3]; for (let dx = -2; dx <= 2; dx++) for (let dy = -3; dy <= 3; dy++) for (let dz = -2; dz <= 2; dz++) { const t = b.tag([c[0] + dx, c[1] + dy, c[2] + dz]); if (t && t.kind !== 'reserve' && t.kind !== 'wool') console.log(' nb', c[0] + dx, c[1] + dy, c[2] + dz, JSON.stringify(t)); } }
-    if (process.env.DEBUG_ROUTE === '2') for (let zz = 4; zz <= 14; zz++) { const c: Pos = [to[0] + (zz - 3), to[1], to[2]]; console.log(' col', c.join(','), 'fn', foreignNear(b, c, net, o.allow, ownSet, o.strict ? nearEnd : undefined), 'floor', floorOk(c), 'free', free(c), HDIRS.some((_, di) => best.has(keyOf(c) + '|' + di)) ? 'VISITED' : ''); }
+    if (process.env.DEBUG_ROUTE === '2') for (let zz = 4; zz <= 14; zz++) { const c: Pos = [to[0] - (zz - 3), to[1], to[2]]; console.log(' col', c.join(','), 'fn', foreignNear(b, c, net, o.allow, ownSet, o.strict ? nearEnd : undefined), 'floor', floorOk(c), 'free', free(c), HDIRS.some((_, di) => best.has(keyOf(c) + '|' + di)) ? 'VISITED' : ''); }
     if (process.env.DEBUG_ROUTE === '2') console.log(' bbox x', bb[0], bb[1], 'y', bb[2], bb[3], 'z', bb[4], bb[5]);
     for (const dx of [1,2,3,4,5,6,7,8,10,14]) for (const sx of [-1,1]) { const c: Pos = [to[0] + sx*dx, to[1], to[2]]; if (process.env.DEBUG_ROUTE === '2') console.log(' ray', why(c), 'fn', foreignNear(b, c, net, o.allow, ownSet, o.strict ? nearEnd : undefined), 'floor', floorOk(c), 'free', free(c), HDIRS.some((_, di) => best.has(keyOf(c) + '|' + di)) ? 'VISITED' : ''); }
     console.log('route fail; expanded', nodes, '\nstart nbrs:\n ' + HDIRS.map(([dx, dz]) => why([from[0] + dx, from[1], from[2] + dz])).join('\n '), '\ngoal nbrs:\n ' + HDIRS.map(([dx, dz]) => why([to[0] + dx, to[1], to[2] + dz])).join('\n '));
@@ -241,6 +268,11 @@ export function conveyor(b: Board, from: Pos, to: Pos, net: string, o: { own?: s
     // not directly under a foreign container (the hopper would pull from it)
     const up = b.tag([c[0], c[1] + 1, c[2]]);
     if (up && isContainer(up) && keyOf([c[0], c[1] + 1, c[2]]) !== keyOf(prev)) return false;
+    // dust powers its floor block, and a powered block next to a hopper locks it
+    for (const [dx, dy, dz] of [[1, 0, 0], [-1, 0, 0], [0, 0, 1], [0, 0, -1], [0, 1, 0], [0, -1, 0]]) {
+      const n: Pos = [c[0] + dx, c[1] + dy, c[2] + dz];
+      if (b.tag(n)?.kind === 'wool' && b.tag([n[0], n[1] + 1, n[2]])?.kind === 'dust' && !(dy === 1 && false)) return false;
+    }
     // keep clear of the corridors reserved for pulse lanes
     for (let dx = -1; dx <= 1; dx++) for (let dy = -1; dy <= 1; dy++) for (let dz = -1; dz <= 1; dz++) { const t = b.tag([c[0] + dx, c[1] + dy, c[2] + dz]); if (t?.kind === 'reserve' && !(t.net && ownSet.has(t.net))) return false; }
     // no foreign signal parts next to it

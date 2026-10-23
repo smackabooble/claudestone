@@ -13,7 +13,7 @@ import { buildFeedPair, buildCrafterMod, buildDirectKit } from './gear-parts.ts'
 import { buildTimeline, KITS, SLOT_RT } from './gear-kit.ts';
 import type { Pos } from '../src/dirs.ts';
 
-const PITCH = 36;
+const PITCH = 48;
 export interface Pair { id: string; y: string; x: string }
 export const PAIRS: Pair[] = [
   { id: 'D', y: 'diamond_pickaxe', x: 'diamond_axe' },       // 3 + 3 (+3 spare = leftover diamonds)
@@ -111,9 +111,9 @@ export function buildGearSet(w: World): Machine {
   link(tC2.PD!, c2.PD, 'tC2.tl.PD', ['c2.pd']); link(tC2.PC, c2.PC, 'tC2.tl.PC', ['c2.pc']);
   const gapFor = (...nets: string[]) => Math.max(0, Math.ceil((Math.max(...nets.map((n) => hops[n] ?? 0)) * HOP_GT + 24) / (SLOT_RT * 2)) - 1);
   const tP_AB = tl('tP_AB', place(), 2, 0, 50, gapFor('cvpAB'));
-  link(tP_AB.PD!, fpP.pulseY, 'tP_AB.tl.PD', ['pl.py']); link(tP_AB.PC, c3AB.pulseC, 'tP_AB.tl.PC', ['c3AB.pc']);
+  link(tP_AB.PD!, fpP.pulseX, 'tP_AB.tl.PD', ['pl.px']); link(tP_AB.PC, c3AB.pulseC, 'tP_AB.tl.PC', ['c3AB.pc']);
   const tP_D = tl('tP_D', place(), 2, 0, 50, gapFor('cvpD'));
-  link(tP_D.PD!, fpP.pulseX, 'tP_D.tl.PD', ['pl.px']); link(tP_D.PC, c3D.pulseC, 'tP_D.tl.PC', ['c3D.pc']);
+  link(tP_D.PD!, fpP.pulseY, 'tP_D.tl.PD', ['pl.py']); link(tP_D.PC, c3D.pulseC, 'tP_D.tl.PC', ['c3D.pc']);
   PAIRS.forEach((pr) => {
     const t = tl(`tc1${pr.id}`, place(), 1, 0, 125);
     link(t.PD!, c1[pr.id].PD, `tc1${pr.id}.tl.PD`, [`c1${pr.id}.pd`]); link(t.PC, c1[pr.id].PC, `tc1${pr.id}.tl.PC`, [`c1${pr.id}.pc`]);
@@ -141,10 +141,11 @@ export function buildGearSet(w: World): Machine {
   const tPl = 40;
   const tUnits = Math.max(tC1, tPl + 200) + 120;
   for (const t of timelines) t.delayRt = t.name.startsWith('tP_') ? tPl : t.name.startsWith('tc1') ? tC1 : t.name.startsWith('t_') ? tUnits : 0;
-  const Y = 3, ZB = 80, ZT = 96;
+  console.log('start delays rt: c1', tC1, 'units', tUnits, 'hops blocks', hopsBlocks);
+  const Y = 6, ZB = 80, ZT = 92;
   const GROUPS = [
     { slots: [0, 1], rt: 0, sx: -24, L: 0 }, { slots: [2, 3], rt: tPl, sx: -12, L: 40 },
-    { slots: [4, 5, 6, 7], rt: tC1, sx: 6, L: 56 }, { slots: [8, 9, 10, 11, 12, 13, 14, 15], rt: tUnits, sx: 70, L: 50 },
+    { slots: [4, 5, 6, 7], rt: tC1, sx: 6, L: 56 }, { slots: [8, 9, 10, 11, 12, 13, 14, 15], rt: tUnits, sx: 70, L: 100 },
   ];
   const slotX = (k: number) => -20 + 8 * k;
   const ST = 'start';
@@ -195,7 +196,7 @@ export function buildGearSet(w: World): Machine {
   const startJobs = taps.map((t) => () => { b.floorColor = 'red'; links.push({ path: route(b, t.cell, timelines[t.k].start, ST, { own: [`${timelines[t.k].name}.tl.in`], strict: true }), net: ST }); });
   jobs.unshift(...startJobs);
   for (const j of jobs) j();
-  for (const l of links) assignRepeaters(b, l.path, l.net, undefined, 5);
+  for (const l of links) if (l.net !== ST) assignRepeaters(b, l.path, l.net, undefined, 5);
 
   return {
     b, button: [BX0 - 1, Y + 1, ZB] as Pos, blockChest: [fpB.chestL, fpB.chestR], logChest,
