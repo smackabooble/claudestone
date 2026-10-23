@@ -129,8 +129,9 @@ export function buildGearSet(w: World): Machine {
   const nextO = (): Pos => { tz += 0; return [-90, 0, tz += 0]; };
   void nextO;
   // placement of timelines: a column west of everything, one per slot
+  const TZ0 = 112;                                                    // timelines start here (the START field with its snake rows lies in front of them)
   let slot = 0;
-  const place = (): Pos => [-20 + 8 * slot++, 0, 100];
+  const place = (): Pos => [-20 + 8 * slot++, 0, TZ0];
   const tDM = tl('tDM', place(), 4, 0, 0);
   const tC2 = tl('tC2', place(), 1, 0, 0);
   link(tDM.PD!, fpB.pulseY, 'tDM.tl.PD', ['bk.py']);
@@ -169,15 +170,15 @@ export function buildGearSet(w: World): Machine {
   const tUnits = Math.max(tC1, tPl + 200) + 120;
   for (const t of timelines) t.delayRt = t.name.startsWith('tP_') ? tPl : t.name.startsWith('tc1') ? tC1 : t.name.startsWith('t_') ? tUnits : 0;
   console.log('start delays rt: c1', tC1, 'units', tUnits, 'hops blocks', hopsBlocks);
-  const Y = 6, ZB = 80, ZT = 92;
+  const Y = 6, ZB = 80, ZT = 104;
   const GROUPS = [
     { slots: [0, 1], rt: 0, sx: -24, L: 0 }, { slots: [2, 3], rt: tPl, sx: -12, L: 40 },
-    { slots: [4, 5, 6, 7], rt: tC1, sx: 10, L: 90 }, { slots: [8, 9, 10, 11, 12, 13, 14, 15], rt: tUnits, sx: 100, L: 120 },
+    { slots: [4, 5, 6, 7], rt: tC1, sx: 10, L: 0 }, { slots: [8, 9, 10, 11, 12, 13, 14, 15], rt: tUnits, sx: 44, L: 0 },
   ];
   const slotX = (k: number) => -20 + 8 * k;
   const ST = 'start';
   b.floorColor = 'red';
-  const BX0 = -26, BX1 = 100;
+  const BX0 = -26, BX1 = 44;
   // the button sits in the hub next to the output chest; a long boosted dust lane carries its signal to the start of the bus
   const btnWool: Pos = [HX + 8, 9, HZ + 2];
   b.wool(btnWool, 'red');
@@ -199,7 +200,8 @@ export function buildGearSet(w: World): Machine {
       const n = Math.ceil(g.rt / 4);
       const delays = Array.from({ length: n }, (_, i) => (i < n - 1 ? 4 : g.rt - 4 * (n - 1)));
       let di = 0; let z = ZB + 2; let dirE = true; let x = g.sx;
-      let rows = Math.ceil(n / g.L); if (rows % 2 === 1 && rows > 1) rows++;           // even number of rows: the snake ends next to where it started
+      const Lmax = g.L || Math.max(10, Math.ceil(n / 8));                           // at most 8 rows: the snake is folded to a block, not stretched along x
+      let rows = Math.ceil(n / Lmax); if (rows % 2 === 1 && rows > 1) rows++;           // even number of rows: the snake ends next to where it started
       const L = Math.ceil(n / rows);
       for (let r = 0; r < rows; r++) {
         const cnt = Math.min(L, n - r * L);
