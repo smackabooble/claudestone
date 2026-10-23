@@ -57,15 +57,17 @@ export class Board {
 
 const connective = (t: Tag | undefined, net: string, own?: Set<string>): boolean => !!t && CONNECTIVE.includes(t.kind) && t.net !== net && !(own && t.net && own.has(t.net));
 
-export interface RouteOpts { floor?: string; allow?: Set<string>; maxNodes?: number; own?: string[] }
+export interface RouteOpts { floor?: string; allow?: Set<string>; maxNodes?: number; own?: string[]; strict?: boolean }
 
 /** keep-out test: is there a foreign connective part within the 3x3x3 neighbourhood of c? */
-function foreignNear(b: Board, c: Pos, net: string, allow?: Set<string>, own?: Set<string>): boolean {
+function foreignNear(b: Board, c: Pos, net: string, allow?: Set<string>, own?: Set<string>, nearEnd?: (k: string) => boolean): boolean {
   for (let dx = -1; dx <= 1; dx++) for (let dy = -1; dy <= 1; dy++) for (let dz = -1; dz <= 1; dz++) {
     if (!dx && !dy && !dz) continue;
     const k = key(c[0] + dx, c[1] + dy, c[2] + dz);
     if (allow?.has(k)) continue;
-    if (connective(b.occ.get(k), net, own)) return true;
+    const tg = b.occ.get(k);
+    if (connective(tg, net, own)) return true;
+    if (nearEnd && tg && CONNECTIVE.includes(tg.kind) && tg.net && (tg.net === net || (own && own.has(tg.net))) && !nearEnd(k)) return true;
   }
   // quasi-connectivity: droppers / crafters / pistons ('__q') also react to power around the cell ABOVE them -> keep a wider berth
   for (let dx = -2; dx <= 2; dx++) for (let dz = -2; dz <= 2; dz++) for (let dy = -3; dy <= 0; dy++) {
@@ -78,10 +80,23 @@ function foreignNear(b: Board, c: Pos, net: string, allow?: Set<string>, own?: S
 
 /** Route dust from the dust cell `from` to the dust cell `to` (both already placed, net `net`). Returns the full cell list. */
 export function route(b: Board, from: Pos, to: Pos, net: string, o: RouteOpts = {}): Pos[] {
+  const avoid = new Set<string>();
+  for (let attempt = 0; attempt < 8; attempt++) {
+    const r = routeOnce(b, from, to, net, o, avoid);
+    if (Array.isArray(r)) return r;
+    avoid.add(r.bad);
+  }
+  throw new Error(`route ${net}: no consistent path from ${from.join(',')} to ${to.join(',')}`);
+}
+
+function routeOnce(b: Board, from: Pos, to: Pos, net: string, o: RouteOpts, avoid: Set<string>): Pos[] | { bad: string } {
   const goal = keyOf(to);
   const ownSet = new Set(o.own ?? []);
+  // strict: pre-existing parts of the route's own nets only count as friendly right next to the two end points (a route that runs alongside its own
+  // lane would close a repeater ring, which latches)
+  const nearEnd = (k: string) => { const [x, y, z] = k.split(',').map(Number); return [from, to].some((e) => Math.abs(e[0] - x) <= 1 && Math.abs(e[1] - y) <= 1 && Math.abs(e[2] - z) <= 1); };
   const floorOk = (c: Pos) => { const t = b.tag([c[0], c[1] - 1, c[2]]); return !t || t.kind === 'wool'; };
-  const free = (c: Pos) => b.isFree(c);
+  const free = (c: Pos) => b.isFree(c) && !avoid.has(keyOf(c));
   type N = { c: Pos; g: number; f: number; prev?: N; k: string };
   const open: N[] = []; const best = new Map<string, number>();
   const h = (c: Pos) => Math.abs(c[0] - to[0]) + Math.abs(c[1] - to[1]) + Math.abs(c[2] - to[2]);
@@ -94,6 +109,11 @@ export function route(b: Board, from: Pos, to: Pos, net: string, o: RouteOpts = 
     if (cur.k === goal) {
       const path: Pos[] = []; for (let n: N | undefined = cur; n; n = n.prev) path.push(n.c);
       path.reverse();
+      // self-consistency: no cell's wool floor may be a cell the same path needs to keep clear or occupy
+      const clears = new Set<string>(); const dusts = new Set<string>(); const floors = new Set<string>();
+      for (let i = 1; i < path.length - 1; i++) { const c = path[i]; const p = path[i - 1]; dusts.add(keyOf(c)); floors.add(key(c[0], c[1] - 1, c[2])); if (c[1] > p[1]) clears.add(key(p[0], p[1] + 1, p[2])); if (c[1] < p[1]) clears.add(key(c[0], p[1], c[2])); }
+      for (const f of floors) if (clears.has(f) || dusts.has(f)) return { bad: f };
+      for (const d of dusts) if (clears.has(d)) return { bad: d };
       // place the new interior cells
       for (let i = 1; i < path.length - 1; i++) {
         const c = path[i]; const p = path[i - 1];
@@ -110,7 +130,7 @@ export function route(b: Board, from: Pos, to: Pos, net: string, o: RouteOpts = 
     for (const [dx, dz] of HDIRS) {
       const tryMove = (c: Pos, extra: number, needClear?: Pos, needFloor?: Pos) => {
         const k = keyOf(c); const isGoal = k === goal;
-        if (!isGoal) { if (!free(c) || !floorOk(c) || foreignNear(b, c, net, o.allow, ownSet)) return; }
+        if (!isGoal) { if (!free(c) || !floorOk(c) || foreignNear(b, c, net, o.allow, ownSet, o.strict ? nearEnd : undefined)) return; }
         if (needClear && !free(needClear) && b.tag(needClear)?.kind !== 'clear') return;
         if (needClear && connective(b.tag(needClear), net, ownSet)) return;
         if (needFloor) { const t = b.tag(needFloor); if (t && t.kind !== 'wool') return; }

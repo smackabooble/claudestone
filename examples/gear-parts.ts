@@ -60,3 +60,28 @@ export function buildCrafterMod(b: Board, O: Pos, name: string, spec: KitSpec): 
   b.rep(p(-1, 0, 0), 'east', 1, `${name}.pc`, 'red'); b.dust(p(-2, 0, 0), `${name}.pc`, 'red'); b.dust(p(-3, 0, 0), `${name}.pc`, 'red');
   return { crafter: p(0, 0, 0), inD: p(0, 0, -1), inS: spec.sticks > 0 ? p(1, 0, 0) : null, pulseC: p(-3, 0, 0), out: p(0, -2, 1) };
 }
+
+import { route, assignRepeaters, conveyor } from './noglue-lib.ts';
+import { buildTimeline } from './gear-kit.ts';
+
+/** a crafter that crafts `a` pulses' worth of one item type delivered through its own metered dropper (used for the block / log / plank crafters);
+ *  output goes straight into the container in front (south of the crafter). */
+export interface DirectKit { crafter: Pos; busA: Pos; PD: Pos; PC: Pos }
+export function buildDirectKit(b: Board, O: Pos, name: string, enabled: number[], facing = 'south'): DirectKit {
+  const p = (x: number, y: number, z: number): Pos => [O[0] + x, O[1] + y, O[2] + z];
+  const S = (pos: Pos, type: string, facing: string) => b.raw(pos, type, { facing }, 'piston', type === 'hopper' ? '__s' : '__q');
+  const w = b.w;
+  S(p(0, 0, 0), 'crafter', facing);
+  for (let s = 0; s < 9; s++) if (!enabled.includes(s)) w.setSlotDisabled(p(0, 0, 0), s, true);
+  b.floorColor = 'red';
+  b.rep(p(-1, 0, 0), 'east', 1, `${name}.pc`, 'red'); b.dust(p(-2, 0, 0), `${name}.pc`, 'red'); b.dust(p(-3, 0, 0), `${name}.pc`, 'red');
+  S(p(0, 0, -1), 'hopper', 'south');
+  S(p(0, 0, -2), 'dropper', 'south');
+  S(p(-1, 0, -2), 'hopper', 'east');                                    // tap; the item bus / chest goes above at (-1,1,-2)
+  b.rep(p(1, 0, -2), 'west', 1, `${name}.pd`, 'orange'); b.dust(p(2, 0, -2), `${name}.pd`, 'orange'); b.dust(p(3, 0, -2), `${name}.pd`, 'orange');
+  b.cmp(p(0, 0, -3), 'north', `${name}.ld`, 'cyan', 'compare');
+  b.rep(p(0, 0, -4), 'north', 1, `${name}.ld`, 'cyan');
+  for (const [x, z] of [[0, -5], [-1, -5], [-2, -5], [-3, -5], [-3, -4], [-3, -3], [-3, -2]]) b.dust(p(x, 0, z), `${name}.ld`, 'cyan');
+  b.rep(p(-2, 0, -2), 'east', 1, `${name}.ld`, 'cyan');
+  return { crafter: p(0, 0, 0), busA: p(-1, 1, -2), PD: p(3, 0, -2), PC: p(-3, 0, 0) };
+}
