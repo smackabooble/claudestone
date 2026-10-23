@@ -69,7 +69,9 @@ export function exportSchem(w: World): { buffer: Buffer; size: Pos; origin: Pos 
     const pos = ints([b.pos[0] - min[0], b.pos[1] - min[1], b.pos[2] - min[2]]);
     if (b.type === 'crafter') {
       const off = w.disabledSlots(b.pos);
-      if (off.length) bes.push(comp({ Id: str('minecraft:crafter'), Pos: pos, disabled_slots: ints(off) }));
+      // crafters did not exist in the 1.20.1 data version, so their items are written in the new format (count is an int)
+      const ci = (w.items(b.pos) ?? []).flatMap((x, i) => (x ? [comp({ Slot: byte(i), id: str('minecraft:' + x.id), count: int(x.count) })] : []));
+      if (off.length || ci.length) bes.push(comp({ Id: str('minecraft:crafter'), Pos: pos, disabled_slots: ints(off), Items: list('comp', ci) }));
       continue;
     }
     if (b.type === 'chest' && b.props?.type === 'right') {
