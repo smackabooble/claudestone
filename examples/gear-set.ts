@@ -1,0 +1,138 @@
+/**
+ * Diamond gear set machine (sim only). Run: npx tsx examples/gear-set.ts
+ * Diamond blocks + oak logs -> diamond helmet, chestplate, leggings, boots, sword, pickaxe, axe, shovel.
+ * Numbers: 33 diamonds (4 blocks = 36, 3 spare) and 7 sticks (1 log = 8 sticks, 1 spare).
+ *
+ * Every crafter is fed by droppers that hold exactly one item (comparator-locked taps), so a pulse timeline decides how many
+ * items each crafter gets. Shared stashes are double chests with two such ports. The leftover is what stays in the stashes.
+ * Hoppers can hold a couple of stray items per port, so the first presses after building "prime" the machine.
+ */
+import { World } from '../src/world.ts';
+import { Board, route, assignRepeaters, conveyor } from './noglue-lib.ts';
+import { buildFeedPair, buildCrafterMod, buildDirectKit } from './gear-parts.ts';
+import { buildTimeline, KITS } from './gear-kit.ts';
+import type { Pos } from '../src/dirs.ts';
+
+const PITCH = 36;
+export interface Pair { id: string; y: string; x: string }
+export const PAIRS: Pair[] = [
+  { id: 'D', y: 'diamond_pickaxe', x: 'diamond_axe' },       // 3 + 3 (+3 spare = leftover diamonds)
+  { id: 'A', y: 'diamond_shovel', x: 'diamond_chestplate' }, // 1 + 8
+  { id: 'B', y: 'diamond_sword', x: 'diamond_leggings' },    // 2 + 7
+  { id: 'C', y: 'diamond_boots', x: 'diamond_helmet' },      // 4 + 5
+];
+
+export interface Machine {
+  b: Board;
+  button: Pos;               // press here (stone button) -> START
+  blockChest: Pos[];         // double chest of diamond blocks (two halves)
+  logChest: Pos;             // chest of logs
+  leftoverDiamonds: Pos[]; leftoverSticks: Pos[];
+  outputs: Pos[];            // collector hoppers of the 8 gear crafters (facing east)
+  timelines: { name: string; start: Pos; delayRt: number }[];
+}
+
+export function buildGearSet(w: World): Machine {
+  const b = new Board(w);
+  const links: { path: Pos[]; net: string }[] = [];
+  const jobs: (() => void)[] = [];
+  const link = (from: Pos, to: Pos, net: string, own: string[]) => {
+    jobs.push(() => { b.floorColor = 'orange'; links.push({ path: route(b, from, to, net, { own, strict: true }), net }); });
+  };
+  const timelines: Machine['timelines'] = [];
+  const later: (() => void)[] = [];
+  const cv = (from: Pos, to: Pos, net: string) => { conveyor(b, from, to, net); };
+  const mod: Record<string, ReturnType<typeof buildCrafterMod>> = {};
+  const stash: Record<string, Pos[]> = {};
+
+  // ---- diamond pairs: stash (double chest) + block crafter above it + two gear crafters south of it ----
+  const feed: Record<string, ReturnType<typeof buildFeedPair>> = {};
+  const c1: Record<string, ReturnType<typeof buildDirectKit>> = {};
+  PAIRS.forEach((pr, i) => {
+    const x0 = i * PITCH;
+    feed[pr.id] = buildFeedPair(b, [x0, 1, 0], `p${pr.id}`);
+    stash[pr.id] = [feed[pr.id].chestL, feed[pr.id].chestR];
+    c1[pr.id] = buildDirectKit(b, [x0, 3, 0], `c1${pr.id}`, [4], 'down');
+    mod[pr.y] = buildCrafterMod(b, [x0 - 12, 0, 22], pr.y, KITS[pr.y]);
+    mod[pr.x] = buildCrafterMod(b, [x0 + 12, 0, 22], pr.x, KITS[pr.x]);
+    cv(feed[pr.id].outY, mod[pr.y].inD, `cv${pr.y}`);
+    cv(feed[pr.id].outX, mod[pr.x].inD, `cv${pr.x}`);
+  });
+
+  // ---- stick side: planks stash (C2 above), two stick stashes (C3 above) ----
+  const fpP = buildFeedPair(b, [20, 4, 70], 'pl');                                   // planks stash + 2 ports (outputs at y=4)
+  const c2 = buildDirectKit(b, [20, 6, 70], 'c2', [4], 'down');                     // log -> 4 planks, facing down into the stash
+  const fpSD = buildFeedPair(b, [0, 1, 50], 'sD');                                   // sticks for pickaxe + axe
+  const c3D = buildCrafterMod(b, [0, 3, 50], 'c3D', { enabled: [1, 4], diamonds: 2, sticks: 0 }, 'down');
+  const fpSAB = buildFeedPair(b, [PITCH + 6, 1, 50], 'sAB');                         // sticks for shovel + sword
+  const c3AB = buildCrafterMod(b, [PITCH + 6, 3, 50], 'c3AB', { enabled: [1, 4], diamonds: 2, sticks: 0 }, 'down');
+  cv(fpP.outY, c3D.inD, 'cvpD');
+  cv(fpP.outX, c3AB.inD, 'cvpAB');
+  cv(fpSAB.outY, mod.diamond_shovel.inS!, 'cvsShovel');
+  cv(fpSAB.outX, mod.diamond_sword.inS!, 'cvsSword');
+  cv(fpSD.outY, mod.diamond_pickaxe.inS!, 'cvsPick');
+  cv(fpSD.outX, mod.diamond_axe.inS!, 'cvsAxe');
+
+  // ---- block metered port (user's double chest of diamond blocks) -> line -> the four block crafters ----
+  const fpB = buildFeedPair(b, [-30, 5, -6], 'bk');
+  const busCells = PAIRS.map((pr) => c1[pr.id].busA);
+  const up = (c: Pos): Pos => [c[0], c[1] + 1, c[2]];
+  for (const c of busCells) b.raw(c, 'hopper', { facing: 'down' }, 'piston', '__s');           // tap bus cell: pulls from the trunk cell above it
+  const trunk = busCells.map(up);
+  for (const t of trunk) b.raw(t, 'hopper', { facing: 'down' }, 'piston', '__s');              // trunk cells (the last one keeps facing down)
+  cv(fpB.outY, trunk[0], 'cvb0');
+  for (let i = 1; i < trunk.length; i++) cv(trunk[i - 1], trunk[i], `cvb${i}`);
+  const logChest = c2.busA;                                                           // the log chest sits on the C2 tap bus cell
+
+  // ---- timelines ----
+  const tl = (name: string, o: Pos, d: number, s: number, delayRt: number) => {
+    const t = buildTimeline(b, o, name, d, s);
+    timelines.push({ name, start: t.start, delayRt });
+    return t;
+  };
+  let tz = -40;
+  const nextO = (): Pos => { tz += 0; return [-90, 0, tz += 0]; };
+  void nextO;
+  // placement of timelines: a column west of everything, one per slot
+  let slot = 0;
+  const place = (): Pos => [-20 + 8 * slot++, 0, 100];
+  const tDM = tl('tDM', place(), 4, 0, 0);
+  const tC2 = tl('tC2', place(), 1, 0, 0);
+  link(tDM.PD!, fpB.pulseY, 'tDM.tl.PD', ['bk.py']);
+  link(tC2.PD!, c2.PD, 'tC2.tl.PD', ['c2.pd']); link(tC2.PC, c2.PC, 'tC2.tl.PC', ['c2.pc']);
+  const tP_AB = tl('tP_AB', place(), 2, 0, 50);
+  link(tP_AB.PD!, fpP.pulseY, 'tP_AB.tl.PD', ['pl.py']); link(tP_AB.PC, c3AB.pulseC, 'tP_AB.tl.PC', ['c3AB.pc']);
+  const tP_D = tl('tP_D', place(), 2, 0, 50);
+  link(tP_D.PD!, fpP.pulseX, 'tP_D.tl.PD', ['pl.px']); link(tP_D.PC, c3D.pulseC, 'tP_D.tl.PC', ['c3D.pc']);
+  PAIRS.forEach((pr) => {
+    const t = tl(`tc1${pr.id}`, place(), 1, 0, 125);
+    link(t.PD!, c1[pr.id].PD, `tc1${pr.id}.tl.PD`, [`c1${pr.id}.pd`]); link(t.PC, c1[pr.id].PC, `tc1${pr.id}.tl.PC`, [`c1${pr.id}.pc`]);
+  });
+  const stickPort: Record<string, { pin: Pos; own: string }> = {
+    diamond_shovel: { pin: fpSAB.pulseY, own: 'sAB.py' }, diamond_sword: { pin: fpSAB.pulseX, own: 'sAB.px' },
+    diamond_pickaxe: { pin: fpSD.pulseY, own: 'sD.py' }, diamond_axe: { pin: fpSD.pulseX, own: 'sD.px' },
+  };
+  PAIRS.forEach((pr) => {
+    for (const [role, name] of [['Y', pr.y], ['X', pr.x]] as const) {
+      const k = KITS[name];
+      const t = tl(`t_${name}`, place(), k.diamonds, k.sticks, 250);
+      const dPin = role === 'Y' ? feed[pr.id].pulseY : feed[pr.id].pulseX;
+      link(t.PD!, dPin, `t_${name}.tl.PD`, [`p${pr.id}.${role === 'Y' ? 'py' : 'px'}`]);
+      if (k.sticks > 0) link(t.PS!, stickPort[name].pin, `t_${name}.tl.PS`, [stickPort[name].own]);
+      link(t.PC, mod[name].pulseC, `t_${name}.tl.PC`, [`${name}.pc`]);
+    }
+  });
+  for (const j of jobs) j();
+  for (const l of links) assignRepeaters(b, l.path, l.net, undefined, 5);
+
+  return {
+    b, button: [0, 0, 0], blockChest: [fpB.chestL, fpB.chestR], logChest,
+    leftoverDiamonds: stash.D, leftoverSticks: [fpSAB.chestL, fpSAB.chestR],
+    outputs: PAIRS.flatMap((pr) => [mod[pr.y].out, mod[pr.x].out]), timelines,
+  };
+}
+
+if (process.argv[1]?.endsWith('gear-set.ts')) {
+  const w = new World();
+  try { const m = buildGearSet(w); console.log('built', w.listBlocks().length, 'blocks;', m.timelines.length, 'timelines'); } catch (e: any) { console.log('FAIL', e.message); }
+}

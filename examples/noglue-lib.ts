@@ -10,7 +10,7 @@ const HDIRS: [number, number, Dir][] = [[1, 0, 'east'], [-1, 0, 'west'], [0, 1, 
 const key = (x: number, y: number, z: number) => `${x},${y},${z}`;
 const keyOf = (p: Pos) => key(p[0], p[1], p[2]);
 
-export type Kind = 'wool' | 'dust' | 'rep' | 'cmp' | 'obs' | 'piston' | 'other' | 'clear' | 'lever';
+export type Kind = 'wool' | 'dust' | 'rep' | 'cmp' | 'obs' | 'piston' | 'other' | 'clear' | 'lever' | 'reserve';
 export interface Tag { kind: Kind; net?: string }
 const CONNECTIVE: Kind[] = ['dust', 'rep', 'cmp', 'obs', 'piston', 'lever'];
 
@@ -30,7 +30,7 @@ export class Board {
   }
   private put(p: Pos, kind: Kind, net: string | undefined, type: string, props: Record<string, any>): void {
     const t = this.tag(p);
-    if (t && !(t.kind === 'clear')) throw new Error(`${type} at ${p.join(',')}: cell occupied by ${t.kind}${t.net ? ' (' + t.net + ')' : ''}`);
+    if (t && !(t.kind === 'clear') && t.kind !== 'reserve') throw new Error(`${type} at ${p.join(',')}: cell occupied by ${t.kind}${t.net ? ' (' + t.net + ')' : ''}`);
     this.occ.set(keyOf(p), { kind, net });
     this.w.place(p, type, props);
   }
@@ -51,8 +51,28 @@ export class Board {
   }
   /** observer watching the cell in direction `watch`; it outputs on the opposite side */
   obs(p: Pos, watch: Dir, net: string): void { this.put(p, 'obs', net, 'observer', { facing: watch }); }
+  /** keep a corridor of free cells (and one cell either side) open in front of a pin so that later conveyors do not wall the pin in */
+  reserveCorridor(pin: Pos, dir: [number, number], len: number, net: string): void {
+    for (let k = 1; k <= len; k++) for (let l = -1; l <= 1; l++) {
+      const c: Pos = [pin[0] + dir[0] * k + (dir[1] !== 0 ? l : 0), pin[1], pin[2] + dir[1] * k + (dir[0] !== 0 ? l : 0)];
+      if (this.isFree(c)) this.occ.set(keyOf(c), { kind: 'reserve', net });
+    }
+  }
   /** reserve a cell that has to stay empty (air) */
   clear(p: Pos): void { if (this.isFree(p)) this.occ.set(keyOf(p), { kind: 'clear' }); }
+}
+
+
+/** minimal binary min-heap on `f` (A* open list; the linear scan was O(n^2) on long routes) */
+class Heap<T extends { f: number }> {
+  private a: T[] = [];
+  get length(): number { return this.a.length; }
+  push(x: T): void { const a = this.a; a.push(x); let i = a.length - 1; while (i > 0) { const p = (i - 1) >> 1; if (a[p].f <= a[i].f) break; [a[p], a[i]] = [a[i], a[p]]; i = p; } }
+  pop(): T {
+    const a = this.a; const top = a[0]; const last = a.pop()!;
+    if (a.length) { a[0] = last; let i = 0; for (;;) { const l = 2 * i + 1, r = l + 1; let m = i; if (l < a.length && a[l].f < a[m].f) m = l; if (r < a.length && a[r].f < a[m].f) m = r; if (m === i) break; [a[m], a[i]] = [a[i], a[m]]; i = m; } }
+    return top;
+  }
 }
 
 const connective = (t: Tag | undefined, net: string, own?: Set<string>): boolean => !!t && CONNECTIVE.includes(t.kind) && t.net !== net && !(own && t.net && own.has(t.net));
@@ -66,14 +86,14 @@ function foreignNear(b: Board, c: Pos, net: string, allow?: Set<string>, own?: S
     const k = key(c[0] + dx, c[1] + dy, c[2] + dz);
     if (allow?.has(k)) continue;
     const tg = b.occ.get(k);
-    if (connective(tg, net, own)) return true;
+    if (connective(tg, net, own)) { if (process.env.DEBUG_ROUTE === '2' && c[0] === -5 && c[1] === 3 && c[2] === 0) console.log('C hit', c[0]+dx, c[1]+dy, c[2]+dz, tg); return true; }
     if (nearEnd && tg && CONNECTIVE.includes(tg.kind) && tg.net && (tg.net === net || (own && own.has(tg.net))) && !nearEnd(k)) return true;
   }
   // quasi-connectivity: droppers / crafters / pistons ('__q') also react to power around the cell ABOVE them -> keep a wider berth
   for (let dx = -2; dx <= 2; dx++) for (let dz = -2; dz <= 2; dz++) for (let dy = -3; dy <= 0; dy++) {
     if (allow?.has(key(c[0] + dx, c[1] + dy, c[2] + dz))) continue;
     const t = b.occ.get(key(c[0] + dx, c[1] + dy, c[2] + dz));
-    if (t && t.net === '__q' && net !== '__q') return true;
+    if (t && t.net === '__q' && net !== '__q') { if (process.env.DEBUG_ROUTE === '2' && c[0] === -5 && c[1] === 3 && c[2] === 0) console.log('Q hit', c[0]+dx, c[1]+dy, c[2]+dz, t); return true; }
   }
   return false;
 }
@@ -85,6 +105,7 @@ export function route(b: Board, from: Pos, to: Pos, net: string, o: RouteOpts = 
     const r = routeOnce(b, from, to, net, o, avoid);
     if (Array.isArray(r)) return r;
     avoid.add(r.bad);
+    if (process.env.DEBUG_ROUTE) console.log('route retry', net, 'bad cell', r.bad);
   }
   throw new Error(`route ${net}: no consistent path from ${from.join(',')} to ${to.join(',')}`);
 }
@@ -96,21 +117,21 @@ function routeOnce(b: Board, from: Pos, to: Pos, net: string, o: RouteOpts, avoi
   // lane would close a repeater ring, which latches)
   const nearEnd = (k: string) => { const [x, y, z] = k.split(',').map(Number); return [from, to].some((e) => Math.abs(e[0] - x) <= 1 && Math.abs(e[1] - y) <= 1 && Math.abs(e[2] - z) <= 1); };
   const floorOk = (c: Pos) => { const t = b.tag([c[0], c[1] - 1, c[2]]); return !t || t.kind === 'wool'; };
-  const free = (c: Pos) => b.isFree(c) && !avoid.has(keyOf(c));
-  type N = { c: Pos; g: number; f: number; prev?: N; k: string };
-  const open: N[] = []; const best = new Map<string, number>();
+  const free = (c: Pos) => { if (avoid.has(keyOf(c))) return false; const t = b.tag(c); return !t || (t.kind === 'reserve' && (t.net === net || ownSet.has(t.net ?? '') || net.startsWith(t.net ?? '\0'))); };
+  type N = { c: Pos; g: number; f: number; prev?: N; k: string; d: number; ck: string };
+  const open = new Heap<N>(); const best = new Map<string, number>();
   const h = (c: Pos) => Math.abs(c[0] - to[0]) + Math.abs(c[1] - to[1]) + Math.abs(c[2] - to[2]);
-  const start: N = { c: from, g: 0, f: h(from), k: keyOf(from) };
+  const start: N = { c: from, g: 0, f: h(from), k: keyOf(from) + '|-1', d: -1, ck: keyOf(from) };
   open.push(start); best.set(start.k, 0);
-  let nodes = 0;
+  let nodes = 0; const bb = [1e9, -1e9, 1e9, -1e9, 1e9, -1e9];
   while (open.length) {
-    let bi = 0; for (let i = 1; i < open.length; i++) if (open[i].f < open[bi].f) bi = i;
-    const cur = open.splice(bi, 1)[0];
-    if (cur.k === goal) {
+    const cur = open.pop();
+    if (cur.ck === goal) {
       const path: Pos[] = []; for (let n: N | undefined = cur; n; n = n.prev) path.push(n.c);
       path.reverse();
       // self-consistency: no cell's wool floor may be a cell the same path needs to keep clear or occupy
       const clears = new Set<string>(); const dusts = new Set<string>(); const floors = new Set<string>();
+      const seen = new Set<string>(); for (const c of path) { const kk = keyOf(c); if (seen.has(kk)) return { bad: kk }; seen.add(kk); }
       for (let i = 1; i < path.length - 1; i++) { const c = path[i]; const p = path[i - 1]; dusts.add(keyOf(c)); floors.add(key(c[0], c[1] - 1, c[2])); if (c[1] > p[1]) clears.add(key(p[0], p[1] + 1, p[2])); if (c[1] < p[1]) clears.add(key(c[0], p[1], c[2])); }
       for (const f of floors) if (clears.has(f) || dusts.has(f)) return { bad: f };
       for (const d of dusts) if (clears.has(d)) return { bad: d };
@@ -126,22 +147,31 @@ function routeOnce(b: Board, from: Pos, to: Pos, net: string, o: RouteOpts, avoi
       return path;
     }
     if (++nodes > (o.maxNodes ?? 400000)) break;
+    if (process.env.DEBUG_ROUTE === '2') { bb[0] = Math.min(bb[0], cur.c[0]); bb[1] = Math.max(bb[1], cur.c[0]); bb[2] = Math.min(bb[2], cur.c[1]); bb[3] = Math.max(bb[3], cur.c[1]); bb[4] = Math.min(bb[4], cur.c[2]); bb[5] = Math.max(bb[5], cur.c[2]); }
     const [x, y, z] = cur.c;
-    for (const [dx, dz] of HDIRS) {
-      const tryMove = (c: Pos, extra: number, needClear?: Pos, needFloor?: Pos) => {
-        const k = keyOf(c); const isGoal = k === goal;
+    for (let di = 0; di < HDIRS.length; di++) {
+      const [dx, dz] = HDIRS[di];
+      const tryMove = (c: Pos, extra: number, needClear?: Pos, needFloor?: Pos, vertical = false) => {
+        if (vertical && cur.d !== -1 && cur.d !== di) return;               // straight staircases only: a spiral would need a floor where the lower dust needs air
+        const ck = keyOf(c); const k = ck + '|' + di; const isGoal = ck === goal;
         if (!isGoal) { if (!free(c) || !floorOk(c) || foreignNear(b, c, net, o.allow, ownSet, o.strict ? nearEnd : undefined)) return; }
         if (needClear && !free(needClear) && b.tag(needClear)?.kind !== 'clear') return;
         if (needClear && connective(b.tag(needClear), net, ownSet)) return;
         if (needFloor) { const t = b.tag(needFloor); if (t && t.kind !== 'wool') return; }
         const g = cur.g + 1 + extra;
         if ((best.get(k) ?? Infinity) <= g) return;
-        best.set(k, g); open.push({ c, g, f: g + h(c), prev: cur, k });
+        best.set(k, g); open.push({ c, g, f: g + h(c), prev: cur, k, d: di, ck });
       };
       tryMove([x + dx, y, z + dz], 0);
-      tryMove([x + dx, y + 1, z + dz], 1, [x, y + 1, z], [x + dx, y, z + dz]);
-      tryMove([x + dx, y - 1, z + dz], 1, [x + dx, y, z + dz]);
+      tryMove([x + dx, y + 1, z + dz], 1, [x, y + 1, z], [x + dx, y, z + dz], true);
+      tryMove([x + dx, y - 1, z + dz], 1, [x + dx, y, z + dz], undefined, true);
     }
+  }
+  if (process.env.DEBUG_ROUTE) {
+    const why = (c: Pos) => `${c.join(',')}: ${!b.isFree(c) ? 'occupied ' + JSON.stringify(b.tag(c)) : !floorOk(c) ? 'floor ' + JSON.stringify(b.tag([c[0], c[1] - 1, c[2]])) : foreignNear(b, c, net, o.allow, ownSet, o.strict ? nearEnd : undefined) ? 'foreign-near' : 'ok'}`;
+    if (process.env.DEBUG_ROUTE === '2') console.log(' bbox x', bb[0], bb[1], 'y', bb[2], bb[3], 'z', bb[4], bb[5]);
+    for (const dx of [1,2,3,4,5,6,7,8,10,14]) for (const sx of [-1,1]) { const c: Pos = [to[0] + sx*dx, to[1], to[2]]; if (process.env.DEBUG_ROUTE === '2') console.log(' ray', why(c), 'fn', foreignNear(b, c, net, o.allow, ownSet, o.strict ? nearEnd : undefined), 'floor', floorOk(c), 'free', free(c), HDIRS.some((_, di) => best.has(keyOf(c) + '|' + di)) ? 'VISITED' : ''); }
+    console.log('route fail; expanded', nodes, '\nstart nbrs:\n ' + HDIRS.map(([dx, dz]) => why([from[0] + dx, from[1], from[2] + dz])).join('\n '), '\ngoal nbrs:\n ' + HDIRS.map(([dx, dz]) => why([to[0] + dx, to[1], to[2] + dz])).join('\n '));
   }
   throw new Error(`route ${net}: no path from ${from.join(',')} to ${to.join(',')}`);
 }
@@ -204,6 +234,8 @@ export function conveyor(b: Board, from: Pos, to: Pos, net: string, o: { own?: s
     // not directly under a foreign container (the hopper would pull from it)
     const up = b.tag([c[0], c[1] + 1, c[2]]);
     if (up && isContainer(up) && keyOf([c[0], c[1] + 1, c[2]]) !== keyOf(prev)) return false;
+    // keep clear of the corridors reserved for pulse lanes
+    for (let dx = -1; dx <= 1; dx++) for (let dy = -1; dy <= 1; dy++) for (let dz = -1; dz <= 1; dz++) { const t = b.tag([c[0] + dx, c[1] + dy, c[2] + dz]); if (t?.kind === 'reserve' && !(t.net && ownSet.has(t.net))) return false; }
     // no foreign signal parts next to it
     for (const [dx, dy, dz] of [[1, 0, 0], [-1, 0, 0], [0, 0, 1], [0, 0, -1], [0, 1, 0], [0, -1, 0]]) {
       const t = b.tag([c[0] + dx, c[1] + dy, c[2] + dz]);
@@ -213,11 +245,10 @@ export function conveyor(b: Board, from: Pos, to: Pos, net: string, o: { own?: s
   };
   type N = { c: Pos; g: number; f: number; prev?: N; k: string };
   const h = (c: Pos) => Math.abs(c[0] - to[0]) + Math.abs(c[1] - to[1]) + Math.abs(c[2] - to[2]);
-  const open: N[] = [{ c: from, g: 0, f: h(from), k: keyOf(from) }]; const best = new Map<string, number>([[keyOf(from), 0]]);
-  let nodes = 0;
+  const open = new Heap<N>(); open.push({ c: from, g: 0, f: h(from), k: keyOf(from) }); const best = new Map<string, number>([[keyOf(from), 0]]);
+  let nodes = 0; const bb = [1e9, -1e9, 1e9, -1e9, 1e9, -1e9];
   while (open.length) {
-    let bi = 0; for (let i = 1; i < open.length; i++) if (open[i].f < open[bi].f) bi = i;
-    const cur = open.splice(bi, 1)[0];
+    const cur = open.pop();
     // goal test: cur is adjacent (horizontal or directly above) to `to`
     const adj = HDIR; void adj;
     for (const dn of ['east', 'west', 'south', 'north', 'down']) {
@@ -237,6 +268,7 @@ export function conveyor(b: Board, from: Pos, to: Pos, net: string, o: { own?: s
       }
     }
     if (++nodes > (o.maxNodes ?? 200000)) break;
+    for (let q = 0; q < 3; q++) { bb[2 * q] = Math.min(bb[2 * q], cur.c[q]); bb[2 * q + 1] = Math.max(bb[2 * q + 1], cur.c[q]); }
     for (const dn of ['east', 'west', 'south', 'north', 'down']) {
       const d = HDIR[dn]; const nx: Pos = [cur.c[0] + d[0], cur.c[1] + d[1], cur.c[2] + d[2]];
       const k = keyOf(nx);
@@ -246,5 +278,6 @@ export function conveyor(b: Board, from: Pos, to: Pos, net: string, o: { own?: s
       best.set(k, g); open.push({ c: nx, g, f: g + h(nx), prev: cur, k });
     }
   }
-  throw new Error(`conveyor ${net}: no path from ${from.join(',')} to ${to.join(',')}`);
+  if (process.env.DEBUG_ROUTE) for (let x = bb[0] - 1; x <= bb[1] + 1; x++) for (let z = bb[4] - 1; z <= bb[5] + 1; z++) { const c: Pos = [x, 4, z]; if (!best.has(keyOf(c))) console.log(' blocked', c.join(','), JSON.stringify(b.tag(c)), 'reserveNear', [-1,0,1].some(dx=>[-1,0,1].some(dy=>[-1,0,1].some(dz=>b.tag([x+dx,4+dy,z+dz])?.kind==='reserve'))), 'above', JSON.stringify(b.tag([x,5,z]))); }
+  throw new Error(`conveyor ${net}: no path from ${from.join(',')} to ${to.join(',')} (explored ${nodes} nodes, x ${bb[0]}..${bb[1]} y ${bb[2]}..${bb[3]} z ${bb[4]}..${bb[5]})`);
 }

@@ -42,23 +42,25 @@ export function buildFeedPair(b: Board, O: Pos, name: string): FeedPair {
   b.rep(p(1, 0, 1), 'north', 1, `${name}.lx`, 'cyan');
   b.floorColor = 'orange';
   b.rep(p(2, 0, -1), 'south', 1, `${name}.px`, 'orange'); b.dust(p(2, 0, -2), `${name}.px`, 'orange'); b.dust(p(2, 0, -3), `${name}.px`, 'orange');
+  b.reserveCorridor(p(-1, 0, 3), [0, 1], 6, `${name}.py`); b.reserveCorridor(p(2, 0, -3), [0, -1], 6, `${name}.px`);
   return { chestL: p(0, 1, 0), chestR: p(1, 1, 0), outY: p(-2, 0, 0), outX: p(3, 0, 0), pulseY: p(-1, 0, 3), pulseX: p(2, 0, -3) };
 }
 
 export interface CrafterMod { crafter: Pos; inD: Pos; inS: Pos | null; pulseC: Pos; out: Pos }
 
-export function buildCrafterMod(b: Board, O: Pos, name: string, spec: KitSpec): CrafterMod {
+export function buildCrafterMod(b: Board, O: Pos, name: string, spec: KitSpec, facing = 'south'): CrafterMod {
   const p = (x: number, y: number, z: number): Pos => [O[0] + x, O[1] + y, O[2] + z];
   const S = (pos: Pos, type: string, facing: string) => b.raw(pos, type, { facing }, 'piston', type === 'hopper' ? '__s' : '__q');
   const w = b.w;
-  S(p(0, 0, 0), 'crafter', 'south');
+  S(p(0, 0, 0), 'crafter', facing);
   for (let s = 0; s < 9; s++) if (!spec.enabled.includes(s)) w.setSlotDisabled(p(0, 0, 0), s, true);
-  S(p(0, 0, 1), 'hopper', 'down'); S(p(0, -1, 1), 'hopper', 'down'); S(p(0, -2, 1), 'hopper', 'east');
+  if (facing === 'south') { S(p(0, 0, 1), 'hopper', 'down'); S(p(0, -1, 1), 'hopper', 'down'); S(p(0, -2, 1), 'hopper', 'east'); }
   S(p(0, 0, -1), 'hopper', 'south');                                     // diamond input hopper
   if (spec.sticks > 0) S(p(1, 0, 0), 'hopper', 'west');                  // stick input hopper
   b.floorColor = 'red';
   b.rep(p(-1, 0, 0), 'east', 1, `${name}.pc`, 'red'); b.dust(p(-2, 0, 0), `${name}.pc`, 'red'); b.dust(p(-3, 0, 0), `${name}.pc`, 'red');
-  return { crafter: p(0, 0, 0), inD: p(0, 0, -1), inS: spec.sticks > 0 ? p(1, 0, 0) : null, pulseC: p(-3, 0, 0), out: p(0, -2, 1) };
+  b.reserveCorridor(p(-3, 0, 0), [-1, 0], 6, `${name}.pc`);
+  return { crafter: p(0, 0, 0), inD: p(0, 0, -1), inS: spec.sticks > 0 ? p(1, 0, 0) : null, pulseC: p(-3, 0, 0), out: facing === 'south' ? p(0, -2, 1) : p(0, -1, 0) };
 }
 
 import { route, assignRepeaters, conveyor } from './noglue-lib.ts';
@@ -83,5 +85,6 @@ export function buildDirectKit(b: Board, O: Pos, name: string, enabled: number[]
   b.rep(p(0, 0, -4), 'north', 1, `${name}.ld`, 'cyan');
   for (const [x, z] of [[0, -5], [-1, -5], [-2, -5], [-3, -5], [-3, -4], [-3, -3], [-3, -2]]) b.dust(p(x, 0, z), `${name}.ld`, 'cyan');
   b.rep(p(-2, 0, -2), 'east', 1, `${name}.ld`, 'cyan');
+  b.reserveCorridor(p(3, 0, -2), [1, 0], 6, `${name}.pd`); b.reserveCorridor(p(-3, 0, 0), [-1, 0], 6, `${name}.pc`);
   return { crafter: p(0, 0, 0), busA: p(-1, 1, -2), PD: p(3, 0, -2), PC: p(-3, 0, 0) };
 }
