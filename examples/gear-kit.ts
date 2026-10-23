@@ -77,13 +77,43 @@ export function buildTimeline(b: Board, O: Pos, name: string, d: number, s: numb
   b.rep(P(1, 2), 'west', 2, `${net}.in`);                              // side branch: delayed copy (flows -x)
   b.cmp(P(0, 2), 'south', `${net}.in`, 'magenta', 'subtract');         // input north (rear = start), output south
   b.dust(P(0, 3), net); b.dust(P(0, 4), net); b.dust(P(0, 5), net);   // node 0 at v=5
-  const nodes = d + gapS + s;                                             // data nodes; gapS idle nodes between the diamond and the stick pulses (the longer diamond line must deliver first: a crafter fills its slots in arrival order)
-  const lanes: { name: 'PD' | 'PS' | 'PC'; from: number; to: number }[] = [];
+  const nodes = d + s;                                                    // data nodes (every pulse is one node, SLOT_RT apart)
+  const lanes: { name: 'PD' | 'PS'; from: number; to: number }[] = [];
   if (d > 0) lanes.push({ name: 'PD', from: 0, to: d - 1 });
-  if (s > 0) lanes.push({ name: 'PS', from: d + gapS, to: d + gapS + s - 1 });
+  if (s > 0) lanes.push({ name: 'PS', from: d, to: d + s - 1 });
+  /** a folded repeater snake of `delayRt` redstone ticks starting below the dust cell P(0, v0); rows along x (5 wide), growing along +z.
+   *  Waiting time is the same as a run of idle chain nodes, but 2.5x denser and folded. Returns the last cell (x, z). */
+  const snake = (v0: number, delayRt: number, snet: string, evenRows: boolean): { x: number; z: number } => {
+    b.floorColor = 'orange';
+    b.dust(P(0, v0 + 1), snet, 'orange'); b.dust(P(0, v0 + 2), snet, 'orange');
+    let z = v0 + 3;
+    b.dust(P(0, z), snet, 'orange');
+    const nRep = Math.max(1, Math.ceil(delayRt / 4));
+    let rows = Math.ceil(nRep / 5); if (evenRows && rows % 2 === 1) rows++;
+    const L = Math.max(1, Math.ceil(nRep / rows));
+    const nTot = rows * L, base = Math.floor(delayRt / nTot);
+    if (base < 1) throw new Error(`snake: ${delayRt} rt is too short for ${nTot} repeaters`);
+    let rem = delayRt - base * nTot, east = true, last = { x: 0, z };
+    for (let r = 0; r < rows; r++) {
+      for (let i = 0; i < L; i++) {
+        let dly = base; if (rem > 0 && dly < 4) { dly++; rem--; }
+        b.rep(P(east ? 1 + i : L - i, z), east ? 'east' : 'west', Math.min(4, dly), snet, 'orange');
+      }
+      const ex = east ? L + 1 : 0;
+      b.dust(P(ex, z), snet, 'orange'); last = { x: ex, z };
+      if (r < rows - 1) { b.dust(P(ex, z + 1), snet, 'orange'); b.dust(P(ex, z + 2), snet, 'orange'); z += 2; last = { x: ex, z }; east = !east; }
+    }
+    return last;
+  };
   let v = 5;
   const nodeV: number[] = [5];
   for (let k = 1; k < nodes; k++) {
+    if (k === d && gapS > 0) {                                           // idle time between the diamond and the stick pulses
+      const e = snake(v, (gapS + 1) * SLOT_RT, net, true);
+      b.dust(P(0, e.z + 1), net, 'orange'); b.dust(P(0, e.z + 2), net, 'orange');
+      v = e.z + 3; b.dust(P(0, v), net, 'orange'); nodeV.push(v);
+      continue;
+    }
     const delays = [4, 4, 2];
     for (let i = 0; i < 3; i++) b.rep(P(0, v + 1 + i), 'south', delays[i], net);
     v += 4; b.dust(P(0, v), net); nodeV.push(v);
@@ -100,29 +130,7 @@ export function buildTimeline(b: Board, O: Pos, name: string, d: number, s: numb
     out[ln.name] = P(2, nodeV[ln.to] + 1);
     b.dust(out[ln.name], lnet, 'orange');
   }
-  // craft pulse: `gap + 1` slots after the last data node, made by a folded repeater snake (4 rt per repeater, about 2.5x denser than idle
-  // chain nodes) instead of a long run of idle nodes. Rows run along x (width 5), the snake grows along +z.
-  const vEnd = nodeV[nodeV.length - 1];
-  const pcNet = `${net}.PC`;
-  b.floorColor = 'orange';
-  let z = vEnd + 3;
-  b.dust(P(0, vEnd + 1), pcNet, 'orange'); b.dust(P(0, vEnd + 2), pcNet, 'orange'); b.dust(P(0, z), pcNet, 'orange');
-  const delayRt = (gap + 1) * SLOT_RT;
-  const nRep = Math.max(1, Math.ceil(delayRt / 4));
-  const L = 5;
-  let left = delayRt, east = true, last: Pos = P(0, z);
-  for (let placed = 0; placed < nRep;) {
-    const cnt = Math.min(L, nRep - placed);
-    for (let i = 0; i < cnt; i++) {
-      const dly = placed + i === nRep - 1 ? Math.max(1, Math.min(4, left)) : 4;
-      left -= dly;
-      b.rep(P(east ? 1 + i : L - i, z), east ? 'east' : 'west', dly, pcNet, 'orange');
-    }
-    placed += cnt;
-    const ex = east ? cnt + 1 : L - cnt;                      // dust cell after the row: east rows end at x=cnt+1, west rows at x=L-cnt (>= 0)
-    b.dust(P(east ? ex : Math.max(0, ex), z), pcNet, 'orange');
-    last = P(east ? ex : Math.max(0, ex), z);
-    if (placed < nRep) { b.dust(P(last[0] - O[0], z + 1), pcNet, 'orange'); b.dust(P(last[0] - O[0], z + 2), pcNet, 'orange'); z += 2; last = P(last[0] - O[0], z); east = !east; }
-  }
-  return { start: P(0, -1), PD: out.PD ?? null, PS: out.PS ?? null, PC: last };
+  // craft pulse: `gap + 1` slots after the last data node
+  const pc = snake(nodeV[nodeV.length - 1], (gap + 1) * SLOT_RT, `${net}.PC`, false);
+  return { start: P(0, -1), PD: out.PD ?? null, PS: out.PS ?? null, PC: P(pc.x, pc.z) };
 }
