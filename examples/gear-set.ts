@@ -181,7 +181,7 @@ export function buildGearSet(w: World): Machine {
   const hopsBlocks = ['cvb0', 'cvb1', 'cvb2', 'cvb3'].reduce((a, n) => a + (hops[n] ?? 0), 0);
   const tC1 = Math.ceil((hopsBlocks * HOP_GT + 3 * 20 + 80) / 2);
   const tPl = 40;
-  const tSS = tPl + (gapFor('cvpAB') + 2) * SLOT_RT + 40;                          // after the stick crafter c3AB has crafted
+  const tSS = tPl + (gapFor('cvpAB') + 2) * SLOT_RT + 100;                         // after the stick crafter c3AB has crafted
   const tSD = tC1 + 60;                                                              // after block crafter D has crafted
   const tUnits = Math.max(Math.max(tC1, tPl + 200) + 120, tSD + 9 * SLOT_RT + Math.ceil(((hops.cvS0Dy ?? 0) * HOP_GT) / 2) + 120, tSS + 4 * SLOT_RT + Math.ceil(((hops.cvS0Sy ?? 0) * HOP_GT) / 2) + 120);
   const delayOf = (n: string) => (n.startsWith('tP_') ? tPl : n === 'tS0S' ? tSS : n === 'tS0D' ? tSD : n.startsWith('tc1') ? tC1 : n.startsWith('t_') ? tUnits : 0);
