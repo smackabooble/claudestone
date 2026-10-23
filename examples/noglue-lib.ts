@@ -82,13 +82,14 @@ const connective = (t: Tag | undefined, net: string, own?: Set<string>): boolean
 export interface RouteOpts { floor?: string; allow?: Set<string>; maxNodes?: number; own?: string[]; strict?: boolean; margin?: number }
 
 /** keep-out test: is there a foreign connective part within the 3x3x3 neighbourhood of c? */
+const dbgSeen = new Set<string>();
 function foreignNear(b: Board, c: Pos, net: string, allow?: Set<string>, own?: Set<string>, nearEnd?: (k: string) => boolean): boolean {
   for (let dx = -1; dx <= 1; dx++) for (let dy = -1; dy <= 1; dy++) for (let dz = -1; dz <= 1; dz++) {
     if (!dx && !dy && !dz) continue;
     const k = key(c[0] + dx, c[1] + dy, c[2] + dz);
     if (allow?.has(k)) continue;
     const tg = b.occ.get(k);
-    if (connective(tg, net, own)) { if (process.env.DEBUG_ROUTE === '2' && c[0] === 108 && c[1] === 3 && c[2] === -30) console.log('C hit', c[0]+dx, c[1]+dy, c[2]+dz, tg); return true; }
+    if (connective(tg, net, own)) { if (process.env.DEBUG_CELL && process.env.DEBUG_CELL === c.join(',') && !dbgSeen.has(k)) { dbgSeen.add(k); console.log('C hit', c.join(','), 'by', c[0]+dx, c[1]+dy, c[2]+dz, JSON.stringify(tg)); } return true; }
     if (nearEnd && tg && CONNECTIVE.includes(tg.kind) && tg.net && (tg.net === net || (own && own.has(tg.net))) && !nearEnd(k)) return true;
   }
   // dust powers the block it sits on, and a powered block locks the hoppers (and triggers the droppers) next to it
@@ -105,7 +106,7 @@ function foreignNear(b: Board, c: Pos, net: string, allow?: Set<string>, own?: S
     const pk = key(c[0] + ex, c[1] + ey - 1, c[2] + ez);
     if (allow?.has(pk)) continue;
     const t = b.occ.get(pk);
-    if (t && t.net === '__q' && net !== '__q') return true;
+    if (t && t.net === '__q' && net !== '__q') { if (process.env.DEBUG_CELL && process.env.DEBUG_CELL === c.join(',') && !dbgSeen.has('q' + pk)) { dbgSeen.add('q' + pk); console.log('Q hit', c.join(','), 'by', pk); } return true; }
   }
   return false;
 }
