@@ -152,7 +152,8 @@ function routeOnce(b: Board, from: Pos, to: Pos, net: string, o: RouteOpts, avoi
   type N = { c: Pos; g: number; f: number; prev?: N; k: string; d: number; ck: string; vr: number; hr: number };
   const open = new Heap<N>(); const best = new Map<string, number>();
   const h = (c: Pos) => Math.abs(c[0] - to[0]) + Math.abs(c[1] - to[1]) + Math.abs(c[2] - to[2]);
-  const start: N = { c: from, g: 0, f: h(from), k: keyOf(from) + '|-1|3|0', d: -1, ck: keyOf(from), vr: 0, hr: 3 };
+  const HW = Number(process.env.ROUTE_W ?? 2);                 // weighted A*: a slightly longer lane is fine, a failed search is not
+  const start: N = { c: from, g: 0, f: HW * h(from), k: keyOf(from) + '|-1|3|0', d: -1, ck: keyOf(from), vr: 0, hr: 3 };
   open.push(start); best.set(start.k, 0);
   let nodes = 0; const bb = [1e9, -1e9, 1e9, -1e9, 1e9, -1e9];
   while (open.length) {
@@ -207,7 +208,7 @@ function routeOnce(b: Board, from: Pos, to: Pos, net: string, o: RouteOpts, avoi
         // a staircase has no straight cell for a booster repeater: climb at most 4 steps in a row, then run level for >= 3 cells
         const vr = vertical ? cur.vr + 1 : 0, hr = vertical ? 0 : Math.min(3, cur.hr + 1);
         if (vertical && (vr > 4 || (cur.vr === 0 && cur.hr < 3))) return;
-        const ck = keyOf(c); const k = ck + '|' + di + '|' + hr + '|' + vr; const isGoal = ck === goal;
+        const ck = keyOf(c); const k = ck + '|' + di + '|' + (vr > 0 ? 'v' + vr : 'h' + hr); const isGoal = ck === goal;
         if (!isGoal) { if (!blocked(c)) { /* free */ } else return; }
         if (needClear && !free(needClear) && b.tag(needClear)?.kind !== 'clear') return;
         if (!isGoal && conflictsWithRecent(cur, c, needClear)) return;
@@ -215,7 +216,7 @@ function routeOnce(b: Board, from: Pos, to: Pos, net: string, o: RouteOpts, avoi
         if (needFloor) { const t = b.tag(needFloor); if (t && t.kind !== 'wool') return; }
         const g = cur.g + 1 + extra;
         if ((best.get(k) ?? Infinity) <= g) return;
-        best.set(k, g); open.push({ c, g, f: g + h(c), prev: cur, k, d: di, ck, vr, hr });
+        best.set(k, g); open.push({ c, g, f: g + HW * h(c), prev: cur, k, d: di, ck, vr, hr });
       };
       tryMove([x + dx, y, z + dz], 0);
       tryMove([x + dx, y + 1, z + dz], 1, [x, y + 1, z], [x + dx, y, z + dz], true);
