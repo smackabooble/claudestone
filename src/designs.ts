@@ -182,7 +182,7 @@ export const DESIGNS: Design[] = [
   },
   {
     name: 'diamond-gear-set',
-    description: 'Press one button: 4 diamond blocks + 1 oak log become a full diamond set (helmet, chestplate, leggings, boots, sword, pickaxe, axe, shovel). Crafters, hoppers, one-item droppers, pulse timelines, dust lanes. About 17k blocks, 200x30x200. Simulated only.',
+    description: 'Press one button: 4 diamond blocks + 1 oak log become a full diamond set (helmet, chestplate, leggings, boots, sword, pickaxe, axe, shovel). Crafters, hoppers, one-item droppers, pulse timelines, dust lanes. About 17k blocks, 200x30x200. Simulated only; crafter slot toggles are not in the schematic (see knowledge/gear-set-crafter-slots.md).',
     realGameVerified: false, settle: 20,
     usage: 'Fill the double chest of diamond blocks at (-30,6,-6) and the log chest at (19,7,68), press the stone button at (-27,7,80). Output chest at the east end of z=23 (y=-2). First press primes the hoppers (6 of 8 items), every later press gives the full set; wait ~2100 gt (105 s) between presses. Leftovers collect in the stash chests: 3 diamonds per press in the double chest at (0,2,0), 1 stick per press in the stick stash east of the shovel/sword modules.',
     build: (w) => ({ lever: buildGearSet(w).button }),

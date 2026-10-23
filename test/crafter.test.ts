@@ -79,7 +79,7 @@ test('crafter survives export -> import', () => {
   const w = new World(); w.place([0, 0, 0], 'crafter', { facing: 'east' });
   const s = loadSchematic(exportSchem(w).buffer);
   const b = s.blocks.find((x) => x.type === 'crafter')!;
-  assert.equal(b.props.facing, 'east');
+  assert.equal(b.props?.facing, 'east');
 });
 
 test('double chest: both halves share one 54-slot inventory; a hopper under each half pulls from it', () => {

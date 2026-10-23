@@ -1308,6 +1308,8 @@ export class World {
     }
     return true;
   }
+  /** indices of the disabled slots of a crafter */
+  disabledSlots(p: Pos): number[] { const be = this.beAt(p); return (be?.disabled ?? []).flatMap((d, i) => (d ? [i] : [])); }
   /** click an empty crafter slot to disable/enable it (disabled slots hold nothing and count as empty in the recipe) */
   setSlotDisabled(p: Pos, slot: number, disabled: boolean): void {
     const be = this.beAt(p);

@@ -161,7 +161,7 @@ export function buildGearSet(w: World): Machine {
   }
   const taps: { k: number; cell: Pos }[] = [];
   for (const g of GROUPS) {
-    let ex = g.sx, ez: number;
+    let ex = g.sx, ez = ZB;
     if (g.rt === 0) {
       for (let z = ZB + 1; z < ZT; z++) { if ((z - ZB) % 5 === 3) b.rep([g.sx, Y, z], 'south', 1, ST); else b.dust([g.sx, Y, z], ST); }
       ez = ZT - 1;
