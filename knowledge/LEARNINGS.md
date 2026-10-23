@@ -269,3 +269,12 @@ Found with the abstract model (extender-long.ts pulseOrder style) + scripted pul
 
 ## Crafter in the sim (added; modelled from vanilla source memory, not traced)
 - `crafter` block: 9 slots, rising-edge trigger like a dropper (tick 4), crafts via `src/recipes.ts` (diamond/iron/gold/stone/wooden tools, diamond/iron/gold armour, block<->9 items, log->4 planks, planks->4 sticks, chest, crafting table), consumes 1 per filled slot, outputs the result into the container in front, leftover drops as an item. Disabled slots: `world.setSlotDisabled(p, slot, true)` (hold nothing, count as empty). Hoppers/droppers fill enabled slots round-robin (slot only takes an item if no LATER enabled slot is emptier). Comparator reads filled+disabled slot count. Exported as `crafter[orientation=facing_up]`.
+
+## Gear set machine (diamond armour + tools from diamond blocks + oak logs), sim only
+- CORRECTED NUMBERS: helmet 5, chestplate 8, leggings 7, boots 4 = 24; sword 2, pickaxe 3, axe 3, shovel 1 = 9 -> 33 diamonds = 4 blocks (36), 3 diamonds left over. Sticks: sword 1, pickaxe 2, axe 2, shovel 2 = 7 -> 1 log = 4 planks = 8 sticks, 1 left over. (Earlier chat claimed 35 diamonds / shovel 3: wrong.)
+- Exact metering = ONE-ITEM DROPPERS: a comparator reading the dropper locks the tap hopper while it holds an item, so each pulse hands the crafter exactly one item and the tap refills. Beats analog thresholds (too slow vs 8 gt hopper cooldown, needs constants/rulers). Pulses >= 16 gt apart work; use 20 gt.
+- A hopper UNDER a crafter drains its slots: put output hoppers on a side. Hoppers DO pull from crafters in the sim (unverified in the game).
+- Droppers and crafters are quasi-connected like pistons: a strongly powered block next to the cell above them triggers them (dust running over a dropper triggered it). Router keep-out for '__q' parts is radius 2 horizontally, 3 above.
+- Pulses through a delay-4 repeater widen to 8 gt; dust carries 15 cells so long pulse lanes need boosters (the FIRST pulse of a lane travels farthest and dies first).
+- Comparator + repeater loop is a working latch (set into the loop, reset into the comparator side).
+- Files: examples/gear-kit.ts (kit unit + pulse timeline), examples/gear-lib.ts (older threshold approach, abandoned), examples/noglue-lib.ts (Board + router).
