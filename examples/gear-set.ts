@@ -211,6 +211,8 @@ if (process.argv[1]?.endsWith('gear-set.ts')) {
   const w = new World();
   try {
     const m = buildGearSet(w); console.log('built', w.listBlocks().length, 'blocks;', m.timelines.length, 'timelines');
-    if (process.argv.includes('--export')) { writeFileSync('examples/diamond-gear-set.schem', exportSchem(w).buffer); console.log('wrote examples/diamond-gear-set.schem'); }
+    if (process.argv.includes('--export')) {
+      w.setItem(m.blockChest[0], 0, { id: 'diamond_block', count: 64 }); w.setItem(m.logChest, 0, { id: 'oak_log', count: 16 });
+      writeFileSync('examples/diamond-gear-set.schem', exportSchem(w).buffer); console.log('wrote examples/diamond-gear-set.schem'); }
   } catch (e: any) { console.log('FAIL', e.message); }
 }

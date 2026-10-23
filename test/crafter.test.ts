@@ -95,3 +95,12 @@ test('double chest: both halves share one 54-slot inventory; a hopper under each
   assert.equal(got([-1, 0, 0]) + got([2, 0, 0]), 4);
   assert.ok(got([-1, 0, 0]) > 0 && got([2, 0, 0]) > 0, 'both hoppers served');
 });
+
+test('export writes chest contents and crafter slot toggles as block entities', async () => {
+  const { gunzipSync } = await import('node:zlib');
+  const w = new World(); w.place([0, 0, 0], 'chest'); w.setItem([0, 0, 0], 0, { id: 'diamond_block', count: 64 });
+  w.place([2, 0, 0], 'crafter', { facing: 'east' }); w.setSlotDisabled([2, 0, 0], 3, true);
+  const raw = gunzipSync(exportSchem(w).buffer);
+  assert.ok(raw.includes(Buffer.from('BlockEntities')) && raw.includes(Buffer.from('minecraft:diamond_block')) && raw.includes(Buffer.from('disabled_slots')));
+  loadSchematic(exportSchem(w).buffer);   // still readable
+});

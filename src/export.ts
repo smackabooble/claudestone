@@ -1,5 +1,5 @@
 import { World, type Block } from './world.ts';
-import { bytes, comp, int, ints, short, writeNbt } from './nbtwrite.ts';
+import { byte, bytes, comp, int, ints, list, short, str, writeNbt, type W } from './nbtwrite.ts';
 import type { Pos } from './dirs.ts';
 
 const DATA_VERSION = 3465; // Minecraft 1.20.1
@@ -62,6 +62,27 @@ export function exportSchem(w: World): { buffer: Buffer; size: Pos; origin: Pos 
     const [x, y, z] = [b.pos[0] - min[0], b.pos[1] - min[1], b.pos[2] - min[2]];
     data[(y * L + z) * W + x] = palette.get(s)!;
   }
+  // block entities: container contents (old item format, 1.20.1 data version; the game upgrades it) and crafter slot toggles
+  const bes: W[] = [];
+  for (const b of bl) {
+    if (!['chest', 'hopper', 'dropper', 'crafter'].includes(b.type)) continue;
+    const pos = ints([b.pos[0] - min[0], b.pos[1] - min[1], b.pos[2] - min[2]]);
+    if (b.type === 'crafter') {
+      const off = w.disabledSlots(b.pos);
+      if (off.length) bes.push(comp({ Id: str('minecraft:crafter'), Pos: pos, disabled_slots: ints(off) }));
+      continue;
+    }
+    if (b.type === 'chest' && b.props?.type === 'right') {
+      const left = w.items(b.pos)?.slice(27) ?? [];
+      const it = left.flatMap((x, i) => (x ? [comp({ Slot: byte(i), id: str('minecraft:' + x.id), Count: byte(x.count) })] : []));
+      if (it.length) bes.push(comp({ Id: str('minecraft:chest'), Pos: pos, Items: list('comp', it) }));
+      continue;
+    }
+    let inv = w.items(b.pos) ?? [];
+    if (b.type === 'chest') inv = inv.slice(0, 27);
+    const it = inv.flatMap((x, i) => (x ? [comp({ Slot: byte(i), id: str('minecraft:' + x.id), Count: byte(x.count) })] : []));
+    if (it.length) bes.push(comp({ Id: str('minecraft:' + b.type), Pos: pos, Items: list('comp', it) }));
+  }
   const out: number[] = [];
   for (let v of data) { while (v >= 0x80) { out.push((v & 0x7f) | 0x80); v >>>= 7; } out.push(v); }
   const pal: Record<string, ReturnType<typeof int>> = {};
@@ -70,7 +91,7 @@ export function exportSchem(w: World): { buffer: Buffer; size: Pos; origin: Pos 
     Version: int(2), DataVersion: int(DATA_VERSION),
     Width: short(W), Height: short(H), Length: short(L),
     Offset: ints([0, 0, 0]), PaletteMax: int(palette.size),
-    Palette: comp(pal), BlockData: bytes(out),
+    Palette: comp(pal), BlockData: bytes(out), BlockEntities: list('comp', bes),
     Metadata: comp({ Name: { t: 'str', v: 'claudestone export' } }),
   });
   return { buffer, size: [W, H, L], origin: min };
