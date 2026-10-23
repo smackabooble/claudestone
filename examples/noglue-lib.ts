@@ -67,6 +67,12 @@ function foreignNear(b: Board, c: Pos, net: string, allow?: Set<string>): boolea
     if (allow?.has(k)) continue;
     if (connective(b.occ.get(k), net)) return true;
   }
+  // quasi-connectivity: droppers / crafters / pistons ('__q') also react to power around the cell ABOVE them -> keep a wider berth
+  for (let dx = -2; dx <= 2; dx++) for (let dz = -2; dz <= 2; dz++) for (let dy = -3; dy <= 0; dy++) {
+    if (allow?.has(key(c[0] + dx, c[1] + dy, c[2] + dz))) continue;
+    const t = b.occ.get(key(c[0] + dx, c[1] + dy, c[2] + dz));
+    if (t && t.net === '__q' && net !== '__q') return true;
+  }
   return false;
 }
 
@@ -130,7 +136,7 @@ export function assignRepeaters(b: Board, path: Pos[], net: string, delay?: numb
     const p = path[i - 1], c = path[i], q = path[i + 1];
     if (p[1] === c[1] && q[1] === c[1] && c[0] - p[0] === q[0] - c[0] && c[2] - p[2] === q[2] - c[2]) eligible.push(i);
   }
-  const minR = Math.max(0, Math.ceil((n - 1) / (maxRun + 1)));
+  const minR = Math.max(0, Math.floor((n - 2) / (maxRun + 1)));
   let r = minR; if (delay !== undefined) r = Math.max(minR, Math.ceil(delay / 4));
   if (delay !== undefined && r > delay) throw new Error(`route ${net}: delay ${delay} too small for ${r} boosters`);
   if (r > eligible.length) throw new Error(`route ${net}: ${r} repeaters needed but only ${eligible.length} straight cells`);
