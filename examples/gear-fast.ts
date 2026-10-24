@@ -64,7 +64,7 @@ function buildFastOnce(w: World, cfg: Cfg, adj: Adj, variant: { gap: number; row
   const pinNames: { net: string; pin: Pos; label: string }[] = [];
   const link = (from: Pos, to: Pos, net: string, own: string[], label = net) => {
     pins.push({ net, pin: to }); pinNames.push({ net, pin: to, label });
-    jobs.push(() => { b.floorColor = 'orange'; const path = route(b, from, to, net, { own, strict: true, levelEnds: net.startsWith('ev_') || net === 'startbtn' }); if (process.env.DEBUG_LINKS) console.log('link', net, from.join(','), '->', to.join(','), path.length, 'cells'); links.push({ path, net }); });
+    jobs.push(() => { b.floorColor = 'orange'; const path = route(b, from, to, net, { own, strict: true, maxNodes: Number(process.env.ROUTE_MAX ?? 400000), levelEnds: net.startsWith('ev_') || net === 'startbtn' }); if (process.env.DEBUG_LINKS) console.log('link', net, from.join(','), '->', to.join(','), path.length, 'cells'); links.push({ path, net }); });
   };
 
   // ---- timeline specs ----
@@ -88,8 +88,8 @@ function buildFastOnce(w: World, cfg: Cfg, adj: Adj, variant: { gap: number; row
   spec('tc1A', 1, 0, 'tc1D'); spec('tc1C', 1, 0, 'tc1B');
   spec('tS0D', 6, 3, 'tc1D', { noCrafter: true });
   for (const pr of PAIRS) for (const name of [pr.y, pr.x]) spec(`t_${name}`, KITS[name].diamonds, 0, 'HUB');      // started by the START hubs, not by the prepare chain
-  spec('tSD', 2, 2, 'tDM', { parallelS: true, noCrafter: true, noPC: true });       // sticks for pickaxe (Y) and axe (X)
-  spec('tSAB', 2, 1, 'tDM', { parallelS: true, noCrafter: true, noPC: true });      // sticks for shovel (Y) and sword (X)
+  spec('tSD', 2, 2, 'HUB', { parallelS: true, noCrafter: true, noPC: true });       // sticks for pickaxe (Y) and axe (X)
+  spec('tSAB', 2, 1, 'HUB', { parallelS: true, noCrafter: true, noPC: true });      // sticks for shovel (Y) and sword (X)
   // height of every timeline: bands (hub, then one per module level)
   const bandOf = (name: string): number => {
     if (['tDM', 'tC2', 'tP_AB', 'tP_D', 'tS0S'].includes(name)) return it.fpB.pulseY[1] + 2;
@@ -151,6 +151,7 @@ function buildFastOnce(w: World, cfg: Cfg, adj: Adj, variant: { gap: number; row
   };
   const hubOf: Record<string, string> = {};
   for (const pr of PAIRS) for (const name of [pr.y, pr.x]) hubOf[`t_${name}`] = pr.id === 'D' ? 'HD' : `H${pr.id}`;
+  hubOf.tSD = 'HD'; hubOf.tSAB = 'HC';
   const hubLink = (from: string, to: Pos, net: string, ownTo: string[], label: string) => link(takeHub(from, to), to, net, [`${from}.h`, ...ownTo], label);
   link(plat.btnDust, hubs.H0.input, 'startbtn', ['startbtn', 'H0.h'], 'hub_H0');
   hubLink('H0', T('tDM').start, 'startbtn', ['startbtn', ...tn('tDM')], 'start_tDM');
