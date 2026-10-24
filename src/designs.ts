@@ -17,7 +17,7 @@ import { buildLampDisplay } from '../examples/lamp-display.ts';
 import { buildWaveArm } from '../examples/wave-arm.ts';
 import { buildWaveArmFast } from '../examples/wave-arm-fast.ts';
 import { buildElevator } from '../examples/elevator.ts';
-import { buildGearSet } from '../examples/gear-set.ts';
+import { buildFast } from '../examples/gear-fast.ts';
 import { FAST, makeArmSpec } from '../examples/extender-long.ts';
 
 export interface Design {
@@ -182,10 +182,10 @@ export const DESIGNS: Design[] = [
   },
   {
     name: 'diamond-gear-set',
-    description: 'Press one button: 4 diamond blocks + 1 oak log become a full diamond set (helmet, chestplate, leggings, boots, sword, pickaxe, axe, shovel). Crafters, hoppers, one-item droppers, pulse timelines, dust lanes. About 17k blocks, 200x30x200. Simulated only; crafter slot toggles are not in the schematic (see knowledge/gear-set-crafter-slots.md).',
+    description: 'Press one button: 4 diamond blocks + 1 oak log become a full diamond set (helmet, chestplate, leggings, boots, sword, pickaxe, axe, shovel); 3 diamonds + 1 stick per press go to a leftover chest. Compact version: crafters, hoppers, one-item droppers, chained pulse timelines, platform with the chests you touch, two water lifts. About 16k blocks, 97x43x116. Simulated only; crafter slot toggles are not in the schematic (see knowledge/gear-set-crafter-slots.md).',
     realGameVerified: false, settle: 20,
-    usage: 'Schematic 168x44x210, coordinates relative to the schematic corner. PLATFORM on top (deck at y=40): stone button on the brown START block (6,41,8), then four double chests in a row at y=41, z=9, each with a sign on its front: DIAMONDS (9,41,9) blocks in, OAK LOGS (12,41,9) logs in, OUTPUT (15,41,9) the finished set, LEFTOVER (18,41,9) 3 diamonds + 1 stick per press. The two input chests drain down into the machine. OUTPUT and LEFTOVER are fed by two water lifts (dropper + hopper clock + soul sand/water column + glass, columns at (16,1,16) and (5,28,2)): the lifts are NOT proven, the sim only checks everything up to the dropper and uses a stand-in for the water. Paste the primed schematic, fill the two input chests, wait ~1 minute for the items to drain down, press: press 1 gives the full set. Wait about 2 minutes between presses. Crafter slots (knowledge/gear-set-crafter-slots.md) and chest contents are in the schematic; the water source blocks may need checking after pasting. Simulated only.',
-    build: (w) => ({ lever: buildGearSet(w).button }),
+    usage: 'Compact version 97x43x116, coordinates relative to the schematic corner. PLATFORM on top (deck y=39): stone button on a brown START block (19,40,16), then four double chests in a row at y=40, z=17, each with a sign on its front: DIAMONDS (22,40,17) blocks in, OAK LOGS (25,40,17) logs in, OUTPUT (28,40,17) the finished set, LEFTOVER (31,40,17) 3 diamonds + 1 stick per press. The two input chests drain down into the machine. OUTPUT and LEFTOVER are fed by two water lifts (hopper line -> dropper with a hopper clock -> soul sand/water column with glass walls -> hopper at the top; columns at about (29,1,22) and (30,27,25)): the lifts are NOT proven in the real game, the sim only checks everything up to the dropper and uses a stand-in for the water. Paste the primed schematic (5 priming presses are in it), fill the two input chests, wait ~1 minute for the items to drain down, press: the first press gives the full set (about 55 s in the sim, plus the lift). Wait about a minute between presses. Crafter slots and chest contents are in the schematic; the water source blocks may need checking after pasting. Simulated only.',
+    build: (w) => ({ lever: buildFast(w).platform.button }),
   },
 ];
 

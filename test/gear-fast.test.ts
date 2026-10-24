@@ -40,7 +40,7 @@ test('compact gear set: a primed press gives one full set (8 items) + 3 diamonds
   const empty = (p: any) => { for (let i = 0; i < 54; i++) w.setItem(p, i, null); };
   const clearCrafters = () => { for (const b of w.listBlocks() as any[]) if (b.type === 'crafter') for (let i = 0; i < 9; i++) w.setItem(b.pos, i, null); };
   fill(); runWithLifts(w, m.lifts, 1500);
-  for (let i = 0; i < 2; i++) { w.use(m.platform.button); runWithLifts(w, m.lifts, 4000); clearCrafters(); }
+  for (let i = 0; i < 5; i++) { w.use(m.platform.button); runWithLifts(w, m.lifts, 4000); clearCrafters(); }
   runWithLifts(w, m.lifts, 3000);
   for (const c of [m.outputs[0], ...m.platform.output, ...m.platform.leftover, ...m.leftover, m.blockChest[0], m.logChest, ...m.platform.diamonds, ...m.platform.logs]) empty(c);
   fill(); runWithLifts(w, m.lifts, 1500);
