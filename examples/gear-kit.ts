@@ -74,6 +74,8 @@ export interface TimelineOpts {
   parallelS?: boolean;
   /** the PC snake gets an odd number of rows so that it ends on the east side */
   oddPC?: boolean;
+  /** how many PC pins (1..4) the fan-out hub makes (default 4) */
+  pcPins?: number;
 }
 /** rows of the folded snake for a delay (same rule as the snake helper inside buildTimeline) */
 export function snakeRows(delayRt: number, evenRows: boolean): number {
@@ -169,13 +171,17 @@ export function buildTimeline(b: Board, O: Pos, name: string, d: number, s: numb
     return P(x0 + ux * (STEM + 1), z0 + uz * (STEM + 1));
   };
   b.rep(P(pc.x + dx, pc.z), dx > 0 ? 'east' : 'west', 1, pnet, 'orange'); b.dust(P(pc.x + 2 * dx, pc.z), pnet, 'orange');
-  const pcs = [
-    stem(pc.x + 2 * dx, pc.z, dx, 0, dx > 0 ? 'east' : 'west'),
-    stem(pc.x + 2 * dx, pc.z, 0, -1, 'north'),
-    stem(pc.x + 2 * dx, pc.z, 0, 1, 'south'),
-    stem(pc.x, pc.z, 0, 1, 'south'),
+  const nPins = Math.max(1, Math.min(4, opts.pcPins ?? 4));
+  const all = [
+    () => stem(pc.x + 2 * dx, pc.z, dx, 0, dx > 0 ? 'east' : 'west'),
+    () => stem(pc.x + 2 * dx, pc.z, 0, -1, 'north'),
+    () => stem(pc.x + 2 * dx, pc.z, 0, 1, 'south'),
+    () => stem(pc.x, pc.z, 0, 1, 'south'),
   ];
-  if (opts.oddPC) { b.reserveCorridor(pcs[0], [dx, 0], 5, pnet); b.reserveCorridor(pcs[1], [0, -1], 5, pnet); b.reserveCorridor(pcs[2], [0, 1], 5, pnet); b.reserveCorridor(pcs[3], [0, 1], 5, pnet); }
+  const order = nPins === 1 ? [0] : nPins === 2 ? [0, 2] : nPins === 3 ? [0, 1, 2] : [0, 1, 2, 3];
+  const dirs: [number, number][] = [[dx, 0], [0, -1], [0, 1], [0, 1]];
+  const pcs = order.map((i) => all[i]());
+  order.forEach((i, k) => b.reserveCorridor(pcs[k], dirs[i], 5, pnet));
   return { start: startPin, PD: out.PD ?? null, PS: out.PS ?? null, PC: pcs[0], PCalt: pcs.slice(1) };
 }
 

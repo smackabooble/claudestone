@@ -38,7 +38,7 @@ function nominal(name: string): { pre: number; gap: number } {
 }
 
 /** layout variants tried in turn when the router cannot reach a pin (gap between the timelines, width of a shelf row) */
-const VARIANTS: { gap: number; roww: number }[] = [{ gap: 4, roww: 130 }, { gap: 6, roww: 130 }, { gap: 8, roww: 130 }, { gap: 5, roww: 100 }, { gap: 8, roww: 100 }, { gap: 12, roww: 150 }, { gap: 6, roww: 80 }];
+const VARIANTS: { gap: number; roww: number; side?: 'east' }[] = [{ gap: 4, roww: 130 }, { gap: 6, roww: 130 }, { gap: 8, roww: 130 }, { gap: 5, roww: 100 }, { gap: 8, roww: 100 }, { gap: 12, roww: 150 }, { gap: 6, roww: 80 }];
 
 export function buildFast(w: World, cfg: Cfg = loadCfg(), adj: Adj = {}): FastMachine {
   let lastErr: unknown;
@@ -53,7 +53,7 @@ export function buildFast(w: World, cfg: Cfg = loadCfg(), adj: Adj = {}): FastMa
   throw lastErr;
 }
 
-function buildFastOnce(w: World, cfg: Cfg, adj: Adj, variant: { gap: number; roww: number }): FastMachine {
+function buildFastOnce(w: World, cfg: Cfg, adj: Adj, variant: { gap: number; roww: number; side?: 'east' }): FastMachine {
   const b = new Board(w);
   const it = buildItems(b, cfg);
   const plat = buildPlatform(b, it, cfg);
@@ -98,7 +98,13 @@ function buildFastOnce(w: World, cfg: Cfg, adj: Adj, variant: { gap: number; row
       : name === 'tc1B' || name === 't_diamond_sword' || name === 't_diamond_leggings' ? 'B' : 'C';
     return cfg.ly[lv] + 2;
   };
-  for (const sp of specs) sp.ty = bandOf(sp.name);
+  for (const sp of specs) {
+    sp.ty = bandOf(sp.name);
+    const kids = specs.filter((o) => o.parent === sp.name).length + (sp.name === 'tDM' ? 0 : 0);
+    const pins = (sp.noCrafter ? 0 : 1) + kids;
+    if (pins === 0) sp.noPC = true;
+    (sp.opts as any).pcPins = Math.max(1, Math.min(4, pins));
+  }
   // footprint of every timeline (scratch board), then shelf packing per band behind the item side
   const foot = (sp: Spec) => {
     const sw = new World(); const sb = new Board(sw);
@@ -111,12 +117,13 @@ function buildFastOnce(w: World, cfg: Cfg, adj: Adj, variant: { gap: number; row
   for (const k of b.occ.keys()) { const p = k.split(',').map(Number); for (let i = 0; i < 3; i++) { bb[i] = Math.min(bb[i], p[i]); bb[i + 3] = Math.max(bb[i + 3], p[i]); } }
   const ROWW = Number(process.env.TLW ?? variant.roww), GAP = Number(process.env.TLGAP ?? variant.gap);
   const bands = [...new Set(specs.map((sp) => sp.ty!))].sort((p, q) => q - p);
-  const zStart = bb[5] + 10;
+  const east = variant.side === 'east';
+  const zStart = east ? bb[2] - 4 : bb[5] + 10, xStart = east ? bb[3] + 30 : bb[0];
   for (const band of bands) {
-    let cx0 = bb[0], rowZ = zStart, rowH = 0;
+    let cx0 = xStart, rowZ = zStart, rowH = 0;
     for (const sp of specs.filter((o) => o.ty === band)) {
       const f = foot(sp); const wdt = f.x1 - f.x0 + 1 + GAP, len = f.z1 - f.z0 + 1;
-      if (cx0 + wdt > bb[0] + ROWW) { cx0 = bb[0]; rowZ += rowH + GAP; rowH = 0; }
+      if (cx0 + wdt > xStart + ROWW) { cx0 = xStart; rowZ += rowH + GAP; rowH = 0; }
       sp.place = [cx0 - f.x0, band, rowZ - f.z0];
       cx0 += wdt; rowH = Math.max(rowH, len);
     }
@@ -141,7 +148,7 @@ function buildFastOnce(w: World, cfg: Cfg, adj: Adj, variant: { gap: number; row
   // ---- START hubs: button -> H0 -> (tDM + H_D + H_A); H_A -> H_B -> H_C; every hub starts the unit timelines of its band ----
   const hubBands: Record<string, number> = { H0: it.fpB.pulseY[1] + 2, HD: cfg.ly.D + 2, HA: cfg.ly.A + 2, HB: cfg.ly.B + 2, HC: cfg.ly.C + 2 };
   const hubs: Record<string, ReturnType<typeof buildHub>> = {};
-  for (const [hn, hy] of Object.entries(hubBands)) hubs[hn] = buildHub(b, [bb[0] - 14, hy, zStart + 6], hn);
+  for (const [hn, hy] of Object.entries(hubBands)) hubs[hn] = buildHub(b, [xStart - 14, hy, zStart + 6], hn);
   const hubUsed = new Map<string, Set<number>>();
   const takeHub = (hn: string, dest: Pos): Pos => {
     const u = hubUsed.get(hn) ?? new Set<number>(); hubUsed.set(hn, u);
