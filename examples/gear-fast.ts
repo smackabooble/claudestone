@@ -22,7 +22,7 @@ const SLOT_GT = SLOT_RT * 2;
 
 export function loadCfg(): Cfg {
   const f = new URL('../.cache/fast-cfg.json', import.meta.url);
-  const fixed = new URL('./gear-fast-cfg.json', import.meta.url);
+  const fixed = new URL('./gear-fast-layout.txt', import.meta.url);
   if (existsSync(fixed)) return { ...DEFAULT_CFG, ...JSON.parse(readFileSync(fixed, 'utf8')) };
   if (existsSync(f)) return { ...DEFAULT_CFG, ...JSON.parse(readFileSync(f, 'utf8')) };
   return DEFAULT_CFG;
