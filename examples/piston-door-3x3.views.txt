@@ -1,0 +1,27 @@
+CLOSED (front, z=0)
+  7 XXXXXXXXXXXXXXX
+  6 XXXXXXXXXXXXXXX
+  5 XXXXXXXPXXXXXXX
+  4 XXXXXXX=XXXXXXX
+  3 XXX..s###s..XXX
+  2 XXX..s###s..XXX
+  1 XXXP=s###s=PXXX
+  0 XXXXXXX.XXXXXXX
+ -1 ...............
+ -2 .....0.........
+ -3 .....X.o.......
+ -4 ...............
+
+OPEN (front, z=0)
+  7 XXXXXXXXXXXXXXX
+  6 XXXXXXXXXXXXXXX
+  5 XXXXXXXPXXXXXXX
+  4 XXXXXXX#XXXXXXX
+  3 XXX.s#...#s.XXX
+  2 XXX.s#...#s.XXX
+  1 XXXPs#...#sPXXX
+  0 XXXXXXX#XXXXXXX
+ -1 .......#.......
+ -2 .....0.........
+ -3 .....X.o.......
+ -4 ...............

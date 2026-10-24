@@ -1,0 +1,111 @@
+import { World, type Block } from './world.ts';
+import { byte, bytes, comp, int, ints, list, short, str, writeNbt, type W } from './nbtwrite.ts';
+import type { Pos } from './dirs.ts';
+
+const DATA_VERSION = 3465; // Minecraft 1.20.1
+
+const kv = (o: Record<string, any>): string =>
+  Object.keys(o).sort().map((k) => `${k}=${o[k]}`).join(',');
+
+/** Engine block -> vanilla block state string. */
+export function toBlockState(b: Block): string {
+  const p = b.p;
+  const st = (props: Record<string, any>) => `minecraft:${b.type}[${kv(props)}]`;
+  switch (b.type) {
+    case 'redstone_wire': return st({ east: p.east, north: p.north, power: p.power, south: p.south, west: p.west });
+    case 'lever': case 'stone_button': return st({ face: p.face, facing: p.facing, powered: !!p.powered });
+    case 'redstone_torch': return st({ lit: !!p.lit });
+    case 'redstone_wall_torch': return st({ facing: p.facing, lit: !!p.lit });
+    case 'repeater': return st({ delay: p.delay, facing: p.facing, locked: false, powered: !!p.powered });
+    case 'comparator': return st({ facing: p.facing, mode: p.mode === 'subtract' ? 'subtract' : 'compare', powered: !!p.powered });
+    case 'observer': return st({ facing: p.facing, powered: !!p.powered });
+    case 'note_block': return st({ instrument: p.instrument ?? 'harp', note: p.note ?? 0, powered: !!p.powered });
+    case 'leaves': return 'minecraft:oak_leaves[distance=1,persistent=true,waterlogged=false]';
+    case 'pane': return `minecraft:glass_pane[east=${!!p.east},north=${!!p.north},south=${!!p.south},waterlogged=false,west=${!!p.west}]`;
+    case 'target': return 'minecraft:target[power=0]';
+    case 'stairs': return `minecraft:stone_brick_stairs[facing=${p.facing ?? 'north'},half=bottom,shape=${p.shape ?? 'straight'},waterlogged=false]`;
+    case 'partial': return 'minecraft:stone_slab[type=bottom,waterlogged=false]';
+    case 'campfire': return `minecraft:campfire[facing=${p.facing ?? 'north'},lit=false,signal_fire=${!!p.signal_fire},waterlogged=false]`;
+    case 'leafblock': return `minecraft:spruce_leaves[distance=${p.distance ?? 7},persistent=true,waterlogged=false]`;
+    case 'log': return 'minecraft:oak_log[axis=y]';
+    case 'tripwire_hook': return `minecraft:tripwire_hook[attached=${!!p.attached},facing=${p.facing ?? 'north'},powered=${!!p.powered}]`;
+    case 'composter': return `minecraft:composter[level=${p.level ?? 0}]`;
+    case 'hay_block': return 'minecraft:hay_block[axis=y]';
+    case 'piston': case 'sticky_piston': return st({ extended: !!p.extended, facing: p.facing });
+    case 'piston_head': return st({ facing: p.facing, short: false, type: p.type === 'sticky' ? 'sticky' : 'normal' });
+    case 'hopper': return st({ enabled: p.enabled !== false, facing: p.facing });
+    case 'dropper': case 'dispenser': return st({ facing: p.facing, triggered: !!p.triggered });
+    case 'crafter': return st({ crafting: false, orientation: p.facing === 'up' ? 'up_north' : p.facing === 'down' ? 'down_north' : `${p.facing}_up`, triggered: !!p.triggered });
+    case 'redstone_lamp': return st({ lit: !!p.lit });
+    case 'copper_bulb': return st({ lit: !!p.lit, powered: !!p.powered });
+    case 'iron_door': return st({ facing: p.facing, half: p.half, hinge: 'left', open: !!p.open, powered: !!p.powered });
+    case 'stone_pressure_plate': return st({ powered: !!p.powered });
+    case 'chest': return st({ facing: p.facing ?? 'north', type: p.type ?? 'single', waterlogged: false });
+    case 'barrel': return st({ facing: 'up', open: false });
+    case 'oak_wall_sign': return st({ facing: p.facing ?? 'north', waterlogged: false });
+    case 'water': return `minecraft:water[level=${p.level ?? 0}]`;
+    case 'bubble_column': return 'minecraft:bubble_column[drag=false]';
+    case 'moving_piston': return 'minecraft:air';
+    default: return `minecraft:${b.type}`;
+  }
+}
+
+/** Sponge Schematic v2 (.schem) of everything in the world, normalised to the min corner. */
+export function exportSchem(w: World): { buffer: Buffer; size: Pos; origin: Pos } {
+  const bl = w.listBlocks().filter((b) => b.type !== 'moving_piston');
+  if (!bl.length) throw new Error('world is empty');
+  const min: Pos = [Infinity, Infinity, Infinity], max: Pos = [-Infinity, -Infinity, -Infinity];
+  for (const b of bl) for (let i = 0; i < 3; i++) { min[i] = Math.min(min[i], b.pos[i]); max[i] = Math.max(max[i], b.pos[i]); }
+  const [W, H, L] = [max[0] - min[0] + 1, max[1] - min[1] + 1, max[2] - min[2] + 1];
+  const palette = new Map<string, number>([['minecraft:air', 0]]);
+  const data = new Array<number>(W * H * L).fill(0);
+  for (const b of bl) {
+    const s = toBlockState({ type: b.type, p: b.props });
+    if (!palette.has(s)) palette.set(s, palette.size);
+    const [x, y, z] = [b.pos[0] - min[0], b.pos[1] - min[1], b.pos[2] - min[2]];
+    data[(y * L + z) * W + x] = palette.get(s)!;
+  }
+  // block entities: container contents (old item format, 1.20.1 data version; the game upgrades it) and crafter slot toggles
+  const bes: W[] = [];
+  for (const b of bl) {
+    if (!['chest', 'hopper', 'dropper', 'crafter'].includes(b.type)) continue;
+    const pos = ints([b.pos[0] - min[0], b.pos[1] - min[1], b.pos[2] - min[2]]);
+    if (b.type === 'crafter') {
+      const off = w.disabledSlots(b.pos);
+      // crafters did not exist in the 1.20.1 data version, so their items are written in the new format (count is an int)
+      const ci = (w.items(b.pos) ?? []).flatMap((x, i) => (x ? [comp({ Slot: byte(i), id: str('minecraft:' + x.id), count: int(x.count) })] : []));
+      if (off.length || ci.length) bes.push(comp({ Id: str('minecraft:crafter'), Pos: pos, disabled_slots: ints(off), Items: list('comp', ci) }));
+      continue;
+    }
+    if (b.type === 'chest' && b.props?.type === 'right') {
+      const left = w.items(b.pos)?.slice(27) ?? [];
+      const it = left.flatMap((x, i) => (x ? [comp({ Slot: byte(i), id: str('minecraft:' + x.id), Count: byte(x.count) })] : []));
+      if (it.length) bes.push(comp({ Id: str('minecraft:chest'), Pos: pos, Items: list('comp', it) }));
+      continue;
+    }
+    let inv = w.items(b.pos) ?? [];
+    if (b.type === 'chest') inv = inv.slice(0, 27);
+    const it = inv.flatMap((x, i) => (x ? [comp({ Slot: byte(i), id: str('minecraft:' + x.id), Count: byte(x.count) })] : []));
+    if (it.length) bes.push(comp({ Id: str('minecraft:' + b.type), Pos: pos, Items: list('comp', it) }));
+  }
+  // signs: text in the 1.20 format (front_text.messages = four JSON strings)
+  for (const b of bl) {
+    if (b.type !== 'oak_wall_sign') continue;
+    const lines: string[] = (b.props?.text as string[] | undefined) ?? [];
+    const msg = (i: number) => str(JSON.stringify({ text: lines[i] ?? '' }));
+    const side = (): W => comp({ messages: list('str', [0, 1, 2, 3].map(msg)), color: str('black'), has_glowing_text: byte(0) });
+    bes.push(comp({ Id: str('minecraft:sign'), Pos: ints([b.pos[0] - min[0], b.pos[1] - min[1], b.pos[2] - min[2]]), is_waxed: byte(1), front_text: side(), back_text: side() }));
+  }
+  const out: number[] = [];
+  for (let v of data) { while (v >= 0x80) { out.push((v & 0x7f) | 0x80); v >>>= 7; } out.push(v); }
+  const pal: Record<string, ReturnType<typeof int>> = {};
+  for (const [k, v] of palette) pal[k] = int(v);
+  const buffer = writeNbt({
+    Version: int(2), DataVersion: int(DATA_VERSION),
+    Width: short(W), Height: short(H), Length: short(L),
+    Offset: ints([0, 0, 0]), PaletteMax: int(palette.size),
+    Palette: comp(pal), BlockData: bytes(out), BlockEntities: list('comp', bes),
+    Metadata: comp({ Name: { t: 'str', v: 'claudestone export' } }),
+  });
+  return { buffer, size: [W, H, L], origin: min };
+}

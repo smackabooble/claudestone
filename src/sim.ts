@@ -1,9 +1,16 @@
+import { readFileSync } from 'node:fs';
+import { dirname, resolve } from 'node:path';
 import { World } from './world.ts';
 import type { Pos } from './dirs.ts';
+import { loadSchematic } from './schematic.ts';
 
 export interface Spec {
+  /** Optional .schem/.litematic file, pasted first (relative to `baseDir`). Blocks that cannot exist are skipped with a warning. */
+  schematic?: string;
+  /** Offset added to schematic coordinates. */
+  origin?: Pos;
   /** Blocks are placed in order, like a player building. */
-  blocks: { pos: Pos; type: string; props?: Record<string, any> }[];
+  blocks?: { pos: Pos; type: string; props?: Record<string, any> }[];
   /** Player actions: right-click a block at the given game tick. */
   script?: { tick: number; use: Pos }[];
   /** Values to watch. `prop` defaults to the block's natural output (lit/powered/power). */
@@ -15,17 +22,31 @@ export interface Spec {
 export interface Result {
   timeline: string[];
   failures: string[];
+  warnings: string[];
   world: World;
 }
 
 const defaultProp = (w: World, p: Pos): string => {
   const t = w.get(p).type;
-  return t === 'redstone_wire' ? 'power' : t === 'redstone_lamp' || t.includes('torch') ? 'lit' : 'powered';
+  if (t === 'redstone_wire') return 'power';
+  if (t === 'comparator') return 'output';
+  if (t.endsWith('piston')) return 'extended';
+  return t === 'redstone_lamp' || t.includes('torch') ? 'lit' : 'powered';
 };
 
-export function simulate(spec: Spec): Result {
+export function simulate(spec: Spec, baseDir = '.'): Result {
   const w = new World();
-  for (const b of spec.blocks) w.place(b.pos, b.type, b.props);
+  const warnings: string[] = [];
+  if (spec.schematic) {
+    const sch = loadSchematic(readFileSync(resolve(baseDir, spec.schematic)));
+    warnings.push(...sch.warnings);
+    const [ox, oy, oz] = spec.origin ?? [0, 0, 0];
+    for (const b of sch.blocks) {
+      try { w.setRaw([b.pos[0] + ox, b.pos[1] + oy, b.pos[2] + oz], b.type, b.props); }
+      catch (e) { warnings.push(`skipped ${b.type} at ${b.pos.join(',')}: ${(e as Error).message}`); }
+    }
+  }
+  for (const b of spec.blocks ?? []) w.place(b.pos, b.type, b.props);
   const probes = spec.probes ?? [];
   const last = new Map<string, any>();
   const history = new Map<string, any>(); // `${tick}:${probe}` -> value
@@ -52,5 +73,5 @@ export function simulate(spec: Spec): Result {
     const got = history.get(`${e.tick}:${e.probe}`);
     if (got !== e.equals) failures.push(`t=${e.tick} ${e.probe}: expected ${e.equals}, got ${got}`);
   }
-  return { timeline, failures, world: w };
+  return { timeline, failures, warnings, world: w };
 }
