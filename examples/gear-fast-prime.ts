@@ -19,7 +19,7 @@ const PRESS_GT = Number(process.env.PRESS_GT ?? 4000);
 const PRIME_GT = Number(process.env.PRIME_GT ?? 4000);
 // a cold first press can leave a half-filled crafter (a short stick delivery); clear those so the primed press starts clean
 const clearCrafters = () => { for (const b of w.listBlocks() as any[]) if (b.type === 'crafter') for (let i = 0; i < 9; i++) w.setItem(b.pos, i, null); };
-for (let i = 1; i <= Number(process.env.PRIME_N ?? 5); i++) { w.use(m.platform.button); runWithLifts(w, m.lifts, PRIME_GT); console.log('priming press', i, JSON.stringify(count(m.platform.output[0]))); clearCrafters(); }
+for (let i = 1; i <= Number(process.env.PRIME_N ?? 7); i++) { w.use(m.platform.button); runWithLifts(w, m.lifts, PRIME_GT); console.log('priming press', i, JSON.stringify(count(m.platform.output[0]))); clearCrafters(); }
 runWithLifts(w, m.lifts, 3000);                                              // let the output conveyor finish
 for (const c of [m.outputs[0], ...m.platform.output, ...m.platform.leftover, ...m.leftover]) empty(c); empty(m.blockChest[0]); empty(m.logChest); for (const c of [...m.platform.diamonds, ...m.platform.logs]) empty(c); fill();
 const OUT = process.env.OUT ?? 'examples/diamond-gear-set-fast.schem';

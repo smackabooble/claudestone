@@ -49,14 +49,14 @@ export function plan(specs: SpecInfo[], adj: Adj, meas: Meas, hops: Record<strin
     D: tdm.pd[0] + HOP * h('cvb0') + ARRIVE, A: tdm.pd[1] + HOP * (h('cvb0') + h('cvb1')) + ARRIVE,
     B: tdm.ps[0] + HOP * h('cvb2') + ARRIVE, C: tdm.ps[1] + HOP * (h('cvb2') + h('cvb3')) + ARRIVE,
   };
-  const dFirstC1 = (k: 'D' | 'A' | 'B' | 'C') => arr[k] + 16;
+  const dFirstC1 = (k: 'D' | 'A' | 'B' | 'C') => { void arr; return 0; };
   // tDM gap: its kid pins (tc1D, tc1B) should fire just early enough (pre >= 0)
   {
     const s = sp('tDM');
     const need = (k: 'D' | 'B') => { const x = 'tc1' + k; const first = pdM(x)[0]; const st = startM(x); if (first === undefined || st === undefined) return undefined; const delta0 = first - st - 2 * sp(x).pre; return dFirstC1(k) - delta0 - st; };
     const nd = [need('D'), need('B')].filter((v): v is number => v !== undefined);
-    const dgap = nd.length ? Math.floor(Math.min(...nd) / SL) : 0;
-    out.tDM = { pre: 0, gap: Math.max(0, s.gap + dgap) };
+    void nd;
+    out.tDM = { pre: 0, gap: 0 };                          // the machine works one press ahead: the early timelines start as soon as possible
     A.tDM = { pd: tdm.pd, ps: tdm.ps }; shiftKid.tDM = SL * (out.tDM.gap - s.gap);
   }
   proc('tC2'); shiftKid.tC2 = 0;
@@ -72,15 +72,14 @@ export function plan(specs: SpecInfo[], adj: Adj, meas: Meas, hops: Record<strin
     { name: 'diamond_sword', pair: 'B' }, { name: 'diamond_leggings', pair: 'B' }, { name: 'diamond_boots', pair: 'C' }, { name: 'diamond_helmet', pair: 'C' },
   ];
   for (const u of units) {
-    const first = u.pair === 'D' ? last(A.tS0D.pd) + HOP * h('cvS0Dy') + 8 + 28 : (A['tc1' + u.pair].pca ?? 0) + 40;
-    proc('t_' + u.name, first);
+    proc('t_' + u.name, 0);                                  // the stash was filled during the last press: start at once
   }
   const diamLast = (name: string) => last(A['t_' + name].pd) + HOP * h('cv' + name) + 8;
   // ---- sticks: after the diamonds of the tool they serve, and not before they exist ----
   const stickNet: Record<string, string> = { diamond_shovel: 'cvsShovel', diamond_sword: 'cvsSword', diamond_pickaxe: 'cvsPick', diamond_axe: 'cvsAxe' };
   const firstStick = (tools: string[], ready: number) => Math.max(ready, ...tools.map((t) => diamLast(t) + 16 - HOP * h(stickNet[t])));
-  proc('tSD', firstStick(['diamond_pickaxe', 'diamond_axe'], (A.tP_D.pca ?? 0) + 32));
-  proc('tSAB', firstStick(['diamond_shovel', 'diamond_sword'], last(A.tS0S.pd) + HOP * h('cvS0Sy') + 8 + 32));
+  proc('tSD', firstStick(['diamond_pickaxe', 'diamond_axe'], 0));
+  proc('tSAB', firstStick(['diamond_shovel', 'diamond_sword'], 0));
   // ---- unit PC: when the last diamond and the last stick are in the crafter ----
   const stickLane: Record<string, () => number> = {
     diamond_pickaxe: () => last(A.tSD.pd), diamond_axe: () => last(A.tSD.ps), diamond_shovel: () => last(A.tSAB.pd), diamond_sword: () => last(A.tSAB.ps),

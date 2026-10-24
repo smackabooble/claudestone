@@ -37,7 +37,23 @@ function nominal(name: string): { pre: number; gap: number } {
   return { pre: 16, gap: 0 };
 }
 
+/** layout variants tried in turn when the router cannot reach a pin (gap between the timelines, width of a shelf row) */
+const VARIANTS: { gap: number; roww: number }[] = [{ gap: 4, roww: 130 }, { gap: 6, roww: 130 }, { gap: 8, roww: 130 }, { gap: 5, roww: 100 }, { gap: 8, roww: 100 }, { gap: 12, roww: 150 }, { gap: 6, roww: 80 }];
+
 export function buildFast(w: World, cfg: Cfg = loadCfg(), adj: Adj = {}): FastMachine {
+  let lastErr: unknown;
+  for (const v of VARIANTS) {
+    try {
+      const sw = new World(); const sm = buildFastOnce(sw, cfg, adj, v);
+      const stuck = stuckPins(sw, sm);
+      if (stuck.length) throw new Error('a lane stays powered after the press (latch): ' + stuck.slice(0, 3).join(', '));
+      return buildFastOnce(w, cfg, adj, v);
+    } catch (e) { lastErr = e; if (process.env.DEBUG_PLAN) console.log('variant', JSON.stringify(v), 'failed:', String((e as Error).message).slice(0, 100)); }
+  }
+  throw lastErr;
+}
+
+function buildFastOnce(w: World, cfg: Cfg, adj: Adj, variant: { gap: number; roww: number }): FastMachine {
   const b = new Board(w);
   const it = buildItems(b, cfg);
   const plat = buildPlatform(b, it, cfg);
@@ -61,16 +77,20 @@ export function buildFast(w: World, cfg: Cfg = loadCfg(), adj: Adj = {}): FastMa
     const sp: Spec = { name, d, s, parent, parallelS: !!o.parallelS, noCrafter: !!o.noCrafter, pre, gap, noPC: !!o.noPC, gapS: 0, opts: { preRt: pre > 0 && parent !== 'START' ? pre : undefined, parallelS: o.parallelS } };
     specs.push(sp); return sp;
   };
-  spec('tDM', 2, 2, 'START', { parallelS: true });              // block release: port Y (D, A) and port X (B, C), two blocks each
+  // The machine works one press ahead: the stashes, the sticks and the block crafters' droppers are already loaded when the button is pressed
+  // (priming), so the unit timelines start at once. Everything else (blocks -> diamonds, logs -> planks -> sticks, the splitters) prepares the NEXT press.
+  spec('tDM', 2, 2, 'START', { parallelS: true, noCrafter: true });   // block release (refills the block crafters); its PC starts the early timelines
   spec('tC2', 1, 0, 'START');
   spec('tP_AB', 2, 0, 'tC2');
   spec('tP_D', 2, 0, 'tC2');
   spec('tS0S', 3, 1, 'tP_AB', { noCrafter: true });
-  spec('tc1D', 1, 0, 'tDM'); spec('tc1B', 1, 0, 'tDM'); spec('tc1A', 1, 0, 'tc1D'); spec('tc1C', 1, 0, 'tc1B');
+  spec('tc1D', 1, 0, 'tDM'); spec('tc1B', 1, 0, 'tDM');
+  spec('tc1A', 1, 0, 'tc1D'); spec('tc1C', 1, 0, 'tc1B');
   spec('tS0D', 6, 3, 'tc1D', { noCrafter: true });
-  for (const pr of PAIRS) for (const name of [pr.y, pr.x]) spec(`t_${name}`, KITS[name].diamonds, 0, pr.id === 'D' ? 'tS0D' : `tc1${pr.id}`);
-  spec('tSD', 2, 2, 'tP_D', { parallelS: true, noCrafter: true, noPC: true });       // sticks for pickaxe (Y) and axe (X)
-  spec('tSAB', 2, 1, 'tS0S', { parallelS: true, noCrafter: true, noPC: true });      // sticks for shovel (Y) and sword (X)
+  const unitParent = (id: string, name: string) => (name === 'diamond_axe' ? 'tDM' : id === 'D' ? 'tc1D' : `tc1${id}`);
+  for (const pr of PAIRS) for (const name of [pr.y, pr.x]) spec(`t_${name}`, KITS[name].diamonds, 0, unitParent(pr.id, name));
+  spec('tSD', 2, 2, 'tDM', { parallelS: true, noCrafter: true, noPC: true });       // sticks for pickaxe (Y) and axe (X)
+  spec('tSAB', 2, 1, 'tc1A', { parallelS: true, noCrafter: true, noPC: true });      // sticks for shovel (Y) and sword (X)
   // height of every timeline: bands (hub, then one per module level)
   const bandOf = (name: string): number => {
     if (['tDM', 'tC2', 'tP_AB', 'tP_D', 'tS0S'].includes(name)) return it.fpB.pulseY[1] + 2;
@@ -90,7 +110,7 @@ export function buildFast(w: World, cfg: Cfg = loadCfg(), adj: Adj = {}): FastMa
   };
   const bb = [1e9, 1e9, 1e9, -1e9, -1e9, -1e9];
   for (const k of b.occ.keys()) { const p = k.split(',').map(Number); for (let i = 0; i < 3; i++) { bb[i] = Math.min(bb[i], p[i]); bb[i + 3] = Math.max(bb[i + 3], p[i]); } }
-  const ROWW = Number(process.env.TLW ?? 130), GAP = Number(process.env.TLGAP ?? 4);
+  const ROWW = Number(process.env.TLW ?? variant.roww), GAP = Number(process.env.TLGAP ?? variant.gap);
   const bands = [...new Set(specs.map((sp) => sp.ty!))].sort((p, q) => q - p);
   const zStart = bb[5] + 10;
   for (const band of bands) {
@@ -129,7 +149,12 @@ export function buildFast(w: World, cfg: Cfg = loadCfg(), adj: Adj = {}): FastMa
       link(from, sp.pins!.start, `ev_${sp.name}`, [...tn(parent), ...tn(sp.name), ...kids.map((o) => `ev_${o.name}`)]);
     });
   }
-  // ---- pulse lanes to the units ----
+  // ---- pulse lanes to the units (the congested module area first) ----
+  for (const pr of PAIRS) for (const [role, name] of [['Y', pr.y], ['X', pr.x]] as const) {
+    const t = T(`t_${name}`);
+    link(t.PD!, role === 'Y' ? it.feed[pr.id].pulseY : it.feed[pr.id].pulseX, `t_${name}.tl.PD`, [`p${pr.id}.${role === 'Y' ? 'py' : 'px'}`, ...tn(`t_${name}`)]);
+    link(takePin(`t_${name}`, it.mod[name].pulseC), it.mod[name].pulseC, `t_${name}.tl.PCa`, [`${name}.pc`, ...tn(`t_${name}`)]);
+  }
   link(T('tDM').PD!, it.fpB.pulseY, 'tDM.tl.PD', ['bk.py', ...tn('tDM')]); link(T('tDM').PS!, it.fpB.pulseX, 'tDM.tl.PS', ['bk.px', ...tn('tDM')]);
   link(T('tC2').PD!, it.c2.PD, 'tC2.tl.PD', ['c2.pd', ...tn('tC2')]); link(takePin('tC2', it.c2.PC), it.c2.PC, 'tC2.tl.PCa', ['c2.pc', ...tn('tC2')]);
   link(T('tP_AB').PD!, it.fpP.pulseX, 'tP_AB.tl.PD', ['pl.px', ...tn('tP_AB')]); link(takePin('tP_AB', it.c3AB.pulseC), it.c3AB.pulseC, 'tP_AB.tl.PCa', ['c3AB.pc', ...tn('tP_AB')]);
@@ -141,11 +166,6 @@ export function buildFast(w: World, cfg: Cfg = loadCfg(), adj: Adj = {}): FastMa
   link(T('tS0D').PD!, it.fpS0D.pulseY, 'tS0D.tl.PD', ['x0.py', ...tn('tS0D')]); link(T('tS0D').PS!, it.fpS0D.pulseX, 'tS0D.tl.PS', ['x0.px', ...tn('tS0D')]);
   link(T('tSD').PD!, it.fpSD.pulseY, 'tSD.tl.PD', ['sD.py', ...tn('tSD')]); link(T('tSD').PS!, it.fpSD.pulseX, 'tSD.tl.PS', ['sD.px', ...tn('tSD')]);
   link(T('tSAB').PD!, it.fpSAB.pulseY, 'tSAB.tl.PD', ['sAB.py', ...tn('tSAB')]); link(T('tSAB').PS!, it.fpSAB.pulseX, 'tSAB.tl.PS', ['sAB.px', ...tn('tSAB')]);
-  for (const pr of PAIRS) for (const [role, name] of [['Y', pr.y], ['X', pr.x]] as const) {
-    const t = T(`t_${name}`);
-    link(t.PD!, role === 'Y' ? it.feed[pr.id].pulseY : it.feed[pr.id].pulseX, `t_${name}.tl.PD`, [`p${pr.id}.${role === 'Y' ? 'py' : 'px'}`, ...tn(`t_${name}`)]);
-    link(takePin(`t_${name}`, it.mod[name].pulseC), it.mod[name].pulseC, `t_${name}.tl.PCa`, [`${name}.pc`, ...tn(`t_${name}`)]);
-  }
   for (const j of jobs) j();
   for (const l of links) {
     if (l.net.startsWith('start') || l.net.startsWith('ev_')) {
@@ -165,6 +185,12 @@ export function buildFast(w: World, cfg: Cfg = loadCfg(), adj: Adj = {}): FastMa
     specs: specs.map(({ name, d, s, parent, parallelS, noCrafter, pre, gap }) => ({ name, d, s, parent, parallelS, noCrafter, pre, gap })), hops, pinNames,
   };
   return mach;
+}
+
+/** run START without items and report the pins that are still powered 2600 gt later (a lane that closed a ring latches) */
+export function stuckPins(w: World, m: FastMachine, gt = 2600): string[] {
+  w.run(40); w.use(m.platform.button); w.run(gt);
+  return m.pinNames.filter((p) => (((w.get(p.pin) as any).p?.power ?? 0) as number) > 0).map((p) => p.label);
 }
 
 /** simulate START without items and record the rising edges at every pin (gt after the button press) */

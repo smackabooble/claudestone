@@ -8,7 +8,7 @@ w.setItem(m.platform.diamonds[0], 0, { id: 'diamond_block', count: 64 });
 w.setItem(m.platform.logs[0], 0, { id: 'oak_log', count: 16 });
 runWithLifts(w, m.lifts, 1500);
 const clear = () => { for (const b of w.listBlocks() as any[]) if (b.type === 'crafter') for (let i = 0; i < 9; i++) w.setItem(b.pos, i, null); };
-w.use(m.platform.button); runWithLifts(w, m.lifts, 4000); clear();
+for (let k = 0; k < Number(process.env.PRE ?? 1); k++) { w.use(m.platform.button); runWithLifts(w, m.lifts, 4000); clear(); }
 const O = JSON.parse(process.argv[2]) as number[];   // feed pair origin
 const cells: Record<string, number[]> = { chestL: [0, 1, 0], tapY: [0, 0, 0], dropY: [-1, 0, 0], outY: [-2, 0, 0], tapX: [1, 0, 0], dropX: [2, 0, 0], outX: [3, 0, 0] };
 const tot = (p: any) => ((w.items(p) ?? []) as any[]).reduce((a, x) => a + (x ? x.count : 0), 0);
