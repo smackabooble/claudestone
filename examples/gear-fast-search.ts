@@ -63,8 +63,8 @@ export function score(r: ReturnType<typeof tryCfg>): number {
   const trunk = Math.max((h.cvb0 ?? 0) + (h.cvb1 ?? 0), (h.cvb2 ?? 0) + (h.cvb3 ?? 0)) * 1.5;
   const mods = ['diamond_pickaxe', 'diamond_axe', 'diamond_shovel', 'diamond_chestplate', 'diamond_sword', 'diamond_leggings', 'diamond_boots', 'diamond_helmet'];
   const modMax = Math.max(...mods.map((m) => (h['cv' + m] ?? 0) + (h['cvo_' + m] ?? 0)));
-  const sticks = Math.max((h.cvpD ?? 0) + (h.cvsPick ?? 0), (h.cvpD ?? 0) + (h.cvsAxe ?? 0), (h.cvpAB ?? 0) + (h.cvS0Sy ?? 0) + (h.cvsShovel ?? 0), (h.cvpAB ?? 0) + (h.cvS0Sy ?? 0) + (h.cvsSword ?? 0));
+  const sticks = Math.max(h.cvsPick ?? 0, h.cvsAxe ?? 0, h.cvsShovel ?? 0, h.cvsSword ?? 0);     // the machine works one press ahead: only the stick transit is on the critical path
   const sum = Object.values(h).reduce((a, v) => a + v, 0);
   const vol = (r.bbox[3] - r.bbox[0] + 1) * (r.bbox[4] - r.bbox[1] + 1) * (r.bbox[5] - r.bbox[2] + 1);
-  return 400 * (r.unreachable ?? 0) + trunk * 0.3 + modMax * 1.5 + sticks * 1.5 + (h.cvLiftOutTop ?? 0) * 1.5 + 0.3 * sum + 0.5 * Math.cbrt(vol) + 0.3 * ((h.cvS0Dx ?? 0) + (h.cvS0Sx ?? 0));
+  return 400 * (r.unreachable ?? 0) + trunk * 0.1 + modMax * 1.5 + sticks * 2.0 + (h.cvLiftOutTop ?? 0) * 1.5 + 0.3 * sum + 0.5 * Math.cbrt(vol) + 0.3 * ((h.cvS0Dx ?? 0) + (h.cvS0Sx ?? 0));
 }
