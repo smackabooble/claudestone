@@ -12,8 +12,8 @@ import { writeFileSync, readFileSync, existsSync, mkdirSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import { World } from '../src/world.ts';
 import { exportSchem } from '../src/export.ts';
-import { Board, route, assignRepeaters, boostEnd } from './noglue-lib.ts';
-import { buildTimeline, KITS } from './gear-kit.ts';
+import { Board, route, assignRepeaters, boostEnd, ensureStrength } from './noglue-lib.ts';
+import { buildTimeline, buildHub, KITS } from './gear-kit.ts';
 import { buildItems, buildPlatform, DEFAULT_CFG, PAIRS, type Cfg } from './gear-fast-items.ts';
 import { plan, type Adj, type SpecInfo, type Meas } from './gear-fast-plan.ts';
 import type { Machine } from './gear-set.ts';
@@ -87,10 +87,9 @@ function buildFastOnce(w: World, cfg: Cfg, adj: Adj, variant: { gap: number; row
   spec('tc1D', 1, 0, 'tDM'); spec('tc1B', 1, 0, 'tDM');
   spec('tc1A', 1, 0, 'tc1D'); spec('tc1C', 1, 0, 'tc1B');
   spec('tS0D', 6, 3, 'tc1D', { noCrafter: true });
-  const unitParent = (id: string, name: string) => (name === 'diamond_axe' ? 'tDM' : id === 'D' ? 'tc1D' : `tc1${id}`);
-  for (const pr of PAIRS) for (const name of [pr.y, pr.x]) spec(`t_${name}`, KITS[name].diamonds, 0, unitParent(pr.id, name));
+  for (const pr of PAIRS) for (const name of [pr.y, pr.x]) spec(`t_${name}`, KITS[name].diamonds, 0, 'HUB');      // started by the START hubs, not by the prepare chain
   spec('tSD', 2, 2, 'tDM', { parallelS: true, noCrafter: true, noPC: true });       // sticks for pickaxe (Y) and axe (X)
-  spec('tSAB', 2, 1, 'tc1A', { parallelS: true, noCrafter: true, noPC: true });      // sticks for shovel (Y) and sword (X)
+  spec('tSAB', 2, 1, 'tDM', { parallelS: true, noCrafter: true, noPC: true });      // sticks for shovel (Y) and sword (X)
   // height of every timeline: bands (hub, then one per module level)
   const bandOf = (name: string): number => {
     if (['tDM', 'tC2', 'tP_AB', 'tP_D', 'tS0S'].includes(name)) return it.fpB.pulseY[1] + 2;
@@ -139,10 +138,29 @@ function buildFastOnce(w: World, cfg: Cfg, adj: Adj, variant: { gap: number; row
     u.add(bi); return all[bi];
   };
 
-  // ---- START button -> the two first timelines; chain links from parent PC pins ----
-  link(plat.btnDust, T('tDM').start, 'startbtn', ['startbtn', 'tDM.tl.in'], 'start_tDM');
+  // ---- START hubs: button -> H0 -> (tDM + H_D + H_A); H_A -> H_B -> H_C; every hub starts the unit timelines of its band ----
+  const hubBands: Record<string, number> = { H0: it.fpB.pulseY[1] + 2, HD: cfg.ly.D + 2, HA: cfg.ly.A + 2, HB: cfg.ly.B + 2, HC: cfg.ly.C + 2 };
+  const hubs: Record<string, ReturnType<typeof buildHub>> = {};
+  for (const [hn, hy] of Object.entries(hubBands)) hubs[hn] = buildHub(b, [bb[0] - 14, hy, zStart + 6], hn);
+  const hubUsed = new Map<string, Set<number>>();
+  const takeHub = (hn: string, dest: Pos): Pos => {
+    const u = hubUsed.get(hn) ?? new Set<number>(); hubUsed.set(hn, u);
+    let bi = -1, bd = 1e9;
+    hubs[hn].pins.forEach((p, i) => { if (u.has(i)) return; const d = Math.abs(p[0] - dest[0]) + Math.abs(p[1] - dest[1]) + Math.abs(p[2] - dest[2]); if (d < bd) { bd = d; bi = i; } });
+    u.add(bi); return hubs[hn].pins[bi];
+  };
+  const hubOf: Record<string, string> = {};
+  for (const pr of PAIRS) for (const name of [pr.y, pr.x]) hubOf[`t_${name}`] = pr.id === 'D' ? 'HD' : `H${pr.id}`;
+  const hubLink = (from: string, to: Pos, net: string, ownTo: string[], label: string) => link(takeHub(from, to), to, net, [`${from}.h`, ...ownTo], label);
+  link(plat.btnDust, hubs.H0.input, 'startbtn', ['startbtn', 'H0.h'], 'hub_H0');
+  hubLink('H0', T('tDM').start, 'startbtn', ['startbtn', ...tn('tDM')], 'start_tDM');
   link(T('tDM').start, T('tC2').start, 'startbtn', ['startbtn', 'tDM.tl.in', 'tC2.tl.in'], 'start_tC2');
-  for (const parent of new Set(specs.filter((o) => o.parent !== 'START').map((o) => o.parent))) {
+  hubLink('H0', hubs.HD.input, 'hubD', ['HD.h'], 'hub_HD');
+  hubLink('H0', hubs.HA.input, 'hubA', ['HA.h'], 'hub_HA');
+  hubLink('HA', hubs.HB.input, 'hubB', ['HB.h'], 'hub_HB');
+  hubLink('HB', hubs.HC.input, 'hubC', ['HC.h'], 'hub_HC');
+  for (const sp of specs) if (hubOf[sp.name]) hubLink(hubOf[sp.name], sp.pins!.start, `ev_${sp.name}`, tn(sp.name), `ev_${sp.name}`);
+  for (const parent of new Set(specs.filter((o) => o.parent !== 'START' && o.parent !== 'HUB').map((o) => o.parent))) {
     const kids = specs.filter((o) => o.parent === parent);
     kids.forEach((sp) => {
       const from = takePin(parent, sp.pins!.start);
@@ -168,20 +186,23 @@ function buildFastOnce(w: World, cfg: Cfg, adj: Adj, variant: { gap: number; row
   link(T('tSAB').PD!, it.fpSAB.pulseY, 'tSAB.tl.PD', ['sAB.py', ...tn('tSAB')]); link(T('tSAB').PS!, it.fpSAB.pulseX, 'tSAB.tl.PS', ['sAB.px', ...tn('tSAB')]);
   for (const j of jobs) j();
   for (const l of links) {
-    if (l.net.startsWith('start') || l.net.startsWith('ev_')) {
+    const fixStrength = () => { if (!ensureStrength(b, l.path, l.net)) throw new Error(`lane ${l.net} has a stretch of dust that is too long and cannot take a repeater`); };
+    if (l.net.startsWith('start') || l.net.startsWith('ev_') || l.net.startsWith('hub')) {
       try { assignRepeaters(b, l.path, l.net, undefined, 6); } catch (e: any) { console.log('WARN no repeaters on', l.net, 'path', l.path.length, String(e.message).slice(0, 80)); }
       if (!boostEnd(b, l.path, l.net, 5)) console.log('WARN no end booster on', l.net);
       if (!boostEnd(b, l.path, l.net, 4, true)) console.log('WARN no start booster on', l.net);
+      fixStrength();
       continue;
     }
     assignRepeaters(b, l.path, l.net, undefined, 5);
+    fixStrength();
   }
 
   const mach: FastMachine = {
     b, button: plat.button, blockChest: [it.fpB.chestL, it.fpB.chestR], logChest: it.logChest,
     leftover: [it.lbL, it.lbR], planksStash: it.fpP.chestL, pins,
     lifts: plat.lifts, platform: { diamonds: plat.diamonds, logs: plat.logs, output: plat.output, leftover: plat.leftover, button: plat.button },
-    outputs: [it.outChest], timelines,
+    outputs: [plat.output[0]], timelines,
     specs: specs.map(({ name, d, s, parent, parallelS, noCrafter, pre, gap }) => ({ name, d, s, parent, parallelS, noCrafter, pre, gap })), hops, pinNames,
   };
   return mach;

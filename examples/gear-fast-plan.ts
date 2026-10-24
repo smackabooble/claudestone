@@ -28,7 +28,7 @@ export function plan(specs: SpecInfo[], adj: Adj, meas: Meas, hops: Record<strin
   /** one timeline: move its first pulse to dFirst (pre-delay), optionally its PC to dPC(adjusted events) (gap) */
   const proc = (x: string, dFirst?: number, dPC?: (a: typeof A[string]) => number | undefined) => {
     const s = sp(x);
-    const parentShift = s.parent === 'START' ? 0 : (shiftKid[s.parent] ?? 0);
+    const parentShift = s.parent === 'START' || s.parent === 'HUB' ? 0 : (shiftKid[s.parent] ?? 0);
     const firstM = pdM(x)[0] ?? psM(x)[0];
     if (firstM === undefined) { console.log('plan: no pulses measured for', x); out[x] = { pre: s.pre, gap: s.gap }; shiftKid[x] = parentShift; A[x] = { pd: [], ps: [] }; return; }
     let preNew = s.pre;
@@ -91,7 +91,8 @@ export function plan(specs: SpecInfo[], adj: Adj, meas: Meas, hops: Record<strin
     const st = stickLane[u.name] ? stickLane[u.name]() + HOP * h(stickNet[u.name]) + 8 : 0;
     const want = Math.max(dl, st) + 32;
     const gapNew = Math.max(0, s.gap + Math.round((want - a.pca) / SL));
-    out[x].gap = gapNew;
+    out[x].gap = Number.isFinite(gapNew) ? gapNew : s.gap;
+    if (!Number.isFinite(gapNew)) console.log('plan: no gap for', x, 'diamonds', dl, 'sticks', st);
   }
   return out;
 }

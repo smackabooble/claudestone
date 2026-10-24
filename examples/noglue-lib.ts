@@ -408,3 +408,39 @@ export function boostEnd(b: Board, path: Pos[], net: string, win = 5, atStart = 
   }
   return false;
 }
+
+/**
+ * Make sure no stretch of dust between two repeaters (or a path end) is longer than `maxRun` cells (dust loses 1 per cell, a repeater restores 15):
+ * adds repeaters on straight level cells where a stretch is too long. Returns false when a stretch has no straight cell to hold one.
+ */
+export function ensureStrength(b: Board, path: Pos[], net: string, maxRun = 13): boolean {
+  const n = path.length;
+  const isRep = (i: number) => b.tag(path[i])?.kind === 'rep';
+  const straight = (i: number) => {
+    if (i < 1 || i > n - 2) return false;
+    const p = path[i - 1], c = path[i], q = path[i + 1];
+    return p[1] === c[1] && q[1] === c[1] && c[0] - p[0] === q[0] - c[0] && c[2] - p[2] === q[2] - c[2];
+  };
+  let guard = 0;
+  for (;;) {
+    if (++guard > 200) return false;
+    let run = 0, start = 0, bad = -1;
+    for (let i = 0; i < n; i++) {
+      if (isRep(i)) { run = 0; start = i + 1; continue; }
+      run++;
+      if (run > maxRun) { bad = start; break; }
+    }
+    if (bad < 0) return true;
+    // stretch [bad, bad + maxRun]: put a repeater on the straight cell nearest to its middle (never on the first/last cells of the whole path)
+    const mid = bad + Math.floor(maxRun / 2);
+    let best = -1, bd = 1e9;
+    for (let i = bad; i <= Math.min(n - 2, bad + maxRun); i++) if (straight(i) && !isRep(i) && Math.abs(i - mid) < bd) { bd = Math.abs(i - mid); best = i; }
+    if (best < 0) return false;
+    const p = path[best - 1], c = path[best], q = path[best + 1];
+    const flow: Dir = q[0] > c[0] ? 'east' : q[0] < c[0] ? 'west' : q[2] > c[2] ? 'south' : 'north';
+    void p;
+    b.w.remove(c); b.occ.delete(keyOf(c));
+    b.w.place(c, 'repeater', { facing: OPP[flow], delay: 1 });
+    b.occ.set(keyOf(c), { kind: 'rep', net });
+  }
+}

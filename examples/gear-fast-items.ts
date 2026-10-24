@@ -7,6 +7,7 @@ import { Board, conveyor } from './noglue-lib.ts';
 import { buildFeedPair, buildCrafterMod, buildDirectKit } from './gear-parts.ts';
 import { KITS } from './gear-kit.ts';
 import type { Pos } from '../src/dirs.ts';
+import { buildLift, liftFree, type Lift } from './gear-lift.ts';
 
 export interface Pair { id: string; y: string; x: string }
 export const PAIRS: Pair[] = [
@@ -57,7 +58,7 @@ export interface Items {
   fpB: ReturnType<typeof buildFeedPair>; fpP: ReturnType<typeof buildFeedPair>; c2: ReturnType<typeof buildDirectKit>;
   fpS0D: ReturnType<typeof buildFeedPair>; fpS0S: ReturnType<typeof buildFeedPair>; c3AB: ReturnType<typeof buildCrafterMod>;
   fpSAB: ReturnType<typeof buildFeedPair>; fpSD: ReturnType<typeof buildFeedPair>; c3D: ReturnType<typeof buildCrafterMod>;
-  lbL: Pos; lbR: Pos; logChest: Pos; outChest: Pos; shaftTop: number; shaftBottom: number;
+  lbL: Pos; lbR: Pos; logChest: Pos; outLift: Lift;
 }
 
 export function buildItems(b: Board, cfg: Cfg = DEFAULT_CFG): Items {
@@ -94,12 +95,19 @@ export function buildItems(b: Board, cfg: Cfg = DEFAULT_CFG): Items {
   }
   const logChest = c2.busA;
   b.raw(logChest, 'chest', { facing: 'south', type: 'single' }, 'piston', '__s');
-  // output shaft
-  const shaftTop = ly.D - 2, shaftBottom = ly.C - 2;
-  const shaft = (y: number): Pos => [cfg.shaft[0], y, cfg.shaft[1]];
-  for (let y = shaftTop; y >= shaftBottom; y--) b.raw(shaft(y), 'hopper', { facing: 'down' }, 'piston', '__s');
-  const outChest: Pos = [cfg.shaft[0], shaftBottom - 1, cfg.shaft[1]];
-  b.raw(outChest, 'chest', { facing: 'south', type: 'single' }, 'piston', '__s');
+  // output lift: one tall water column with a dropper (and its clock) at the height of every module level; the module outputs go straight to it
+  const topY = cfg.fpB[1] + 4;                                                    // platform chest level (see buildPlatform)
+  const levelsY = PAIRS.map((pr) => ly[pr.id] - 2);                                // out hoppers of the modules sit two cells below the crafters
+  const lowY = Math.min(...levelsY);
+  const lift = (anchor: Pos): Lift => {
+    for (let r = 0; r < 80; r++) for (let dx = -r; dx <= r; dx++) for (const dz of (Math.abs(dx) === r ? Array.from({ length: 2 * r + 1 }, (_, i) => i - r) : [-r, r])) {
+      const o: Pos = [anchor[0] + dx, lowY, anchor[2] + dz];
+      if (liftFree(b, o, lowY, topY)) return buildLift(b, o, lowY, topY, 'liftOut', [...levelsY].sort((p, q) => p - q));
+    }
+    throw new Error('no room for the output lift');
+  };
+  const outLift = lift(cfg.liftOut);
+  const dropperAt = (y: number): Pos => outLift.droppers[outLift.droppers.findIndex((d) => d[1] === y)];
 
   // block trunks: two metered ports, each feeding two block crafters in a row (the idle tap sucks the first block that arrives, a locked tap
   // lets the next one pass; the last cell of a trunk faces a plain block): Y -> D, A    X -> B, C
@@ -114,14 +122,12 @@ export function buildItems(b: Board, cfg: Cfg = DEFAULT_CFG): Items {
   cv(fpS0D.outY, feed.D.chestL, 'cvS0Dy'); cv(fpS0S.outY, fpSAB.chestL, 'cvS0Sy');
   cv(fpP.outY, c3D.inD, 'cvpD'); cv(fpP.outX, c3AB.inD, 'cvpAB');
   cv(fpS0D.outX, lbL, 'cvS0Dx'); cv(fpS0S.outX, lbL, 'cvS0Sx');
-  for (const pr of PAIRS) { cv(mod[pr.y].out, shaft(ly[pr.id] - 2), `cvo_${pr.y}`); cv(mod[pr.x].out, shaft(ly[pr.id] - 2), `cvo_${pr.x}`); }
-  return { b, hops, feed, c1, mod, fpB, fpP, c2, fpS0D, fpS0S, c3AB, fpSAB, fpSD, c3D, lbL, lbR, logChest, outChest, shaftTop, shaftBottom };
+  for (const pr of PAIRS) { cv(mod[pr.y].out, dropperAt(ly[pr.id] - 2), `cvo_${pr.y}`); cv(mod[pr.x].out, dropperAt(ly[pr.id] - 2), `cvo_${pr.x}`); }
+  return { b, hops, feed, c1, mod, fpB, fpP, c2, fpS0D, fpS0S, c3AB, fpSAB, fpSD, c3D, lbL, lbR, logChest, outLift };
 }
 
 // ---------------------------------------------------------------------------------------------------------------------------------
 // platform (deck with the chests the user touches) and the two lifts
-import { buildLift, liftFree, type Lift } from './gear-lift.ts';
-
 export interface Platform {
   PY: number; CY: number; rowZ: number; cx: (i: number) => number;
   diamonds: Pos[]; logs: Pos[]; output: Pos[]; leftover: Pos[]; button: Pos; btnDust: Pos;
@@ -167,8 +173,7 @@ export function buildPlatform(b: Board, it: Items, cfg: Cfg, liftAnchor: { out: 
     }
     throw new Error('no room for the ' + name + ' lift');
   };
-  const outLift = lift(liftAnchor.out, it.outChest[1] - 1, 'liftOut');
-  hops.cvLiftOutIn = conveyor(b, [it.outChest[0], it.outChest[1] - 1, it.outChest[2]], outLift.dropper, 'cvLiftOutIn').length;
+  const outLift = it.outLift; lifts.push(outLift);
   hops.cvLiftOutTop = conveyor(b, outLift.exit, output[1], 'cvLiftOutTop').length;
   const leftLift = lift(liftAnchor.left, it.lbL[1] - 1, 'liftLeft');
   hops.cvLiftLeftIn = conveyor(b, [it.lbL[0], it.lbL[1] - 1, it.lbL[2]], leftLift.dropper, 'cvLiftLeftIn').length;

@@ -66,5 +66,5 @@ export function score(r: ReturnType<typeof tryCfg>): number {
   const sticks = Math.max((h.cvpD ?? 0) + (h.cvsPick ?? 0), (h.cvpD ?? 0) + (h.cvsAxe ?? 0), (h.cvpAB ?? 0) + (h.cvS0Sy ?? 0) + (h.cvsShovel ?? 0), (h.cvpAB ?? 0) + (h.cvS0Sy ?? 0) + (h.cvsSword ?? 0));
   const sum = Object.values(h).reduce((a, v) => a + v, 0);
   const vol = (r.bbox[3] - r.bbox[0] + 1) * (r.bbox[4] - r.bbox[1] + 1) * (r.bbox[5] - r.bbox[2] + 1);
-  return 400 * (r.unreachable ?? 0) + trunk + modMax + sticks + 0.3 * sum + 0.5 * Math.cbrt(vol) + 0.3 * ((h.cvS0Dx ?? 0) + (h.cvS0Sx ?? 0));
+  return 400 * (r.unreachable ?? 0) + trunk * 0.3 + modMax * 1.5 + sticks * 1.5 + (h.cvLiftOutTop ?? 0) * 1.5 + 0.3 * sum + 0.5 * Math.cbrt(vol) + 0.3 * ((h.cvS0Dx ?? 0) + (h.cvS0Sx ?? 0));
 }

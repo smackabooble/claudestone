@@ -178,3 +178,25 @@ export function buildTimeline(b: Board, O: Pos, name: string, d: number, s: numb
   if (opts.oddPC) { b.reserveCorridor(pcs[0], [dx, 0], 5, pnet); b.reserveCorridor(pcs[1], [0, -1], 5, pnet); b.reserveCorridor(pcs[2], [0, 1], 5, pnet); b.reserveCorridor(pcs[3], [0, 1], 5, pnet); }
   return { start: startPin, PD: out.PD ?? null, PS: out.PS ?? null, PC: pcs[0], PCalt: pcs.slice(1) };
 }
+
+/**
+ * Pulse fan-out hub (no logic): one input pin, three full-strength output pins, each on a dust stem behind its own repeater.
+ * Local frame: input at (0,0) (feed it from the north), pins at (STEM+2, 2) east, (-(STEM+2), 2) west and (0, 2+STEM+2) south.
+ */
+export interface HubPins { input: Pos; pins: Pos[] }
+export function buildHub(b: Board, O: Pos, name: string): HubPins {
+  const P = (u: number, v: number): Pos => [O[0] + u, O[1], O[2] + v];
+  const net = `${name}.h`, STEM = 3;
+  b.floorColor = 'orange';
+  b.dust(P(0, 0), net);
+  b.rep(P(0, 1), 'south', 1, net); b.dust(P(0, 2), net);
+  const stem = (ux: number, uz: number, flow: 'east' | 'west' | 'south'): Pos => {
+    b.rep(P(ux, 2 + uz), flow, 1, net);
+    for (let k = 2; k <= STEM + 1; k++) b.dust(P(ux * k, 2 + uz * k), net);
+    return P(ux * (STEM + 1), 2 + uz * (STEM + 1));
+  };
+  const pins = [stem(1, 0, 'east'), stem(-1, 0, 'west'), stem(0, 1, 'south')];
+  b.reserveCorridor(P(0, 0), [0, -1], 5, net);
+  b.reserveCorridor(pins[0], [1, 0], 5, net); b.reserveCorridor(pins[1], [-1, 0], 5, net); b.reserveCorridor(pins[2], [0, 1], 5, net);
+  return { input: P(0, 0), pins };
+}
