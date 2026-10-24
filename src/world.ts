@@ -32,6 +32,7 @@ const DEFS: Record<string, Def> = {
   ice: { solid: true, conductor: false, source: false },
   soul_sand: { solid: true, conductor: true, source: false },
   water: { solid: false, conductor: false, source: false },
+  bubble_column: { solid: false, conductor: false, source: false },
   coal_block: { solid: true, conductor: true, source: false },
   lapis_block: { solid: true, conductor: true, source: false },
   gold_block: { solid: true, conductor: true, source: false },
@@ -1442,7 +1443,7 @@ export class World {
   waterLeaks(): Pos[] {
     const out: Pos[] = [];
     for (const [k, b] of this.blocks) {
-      if (b.type !== 'water') continue;
+      if (b.type !== 'water' && b.type !== 'bubble_column') continue;
       const p = k.split(',').map(Number) as Pos;
       const air = (q: Pos) => this.get(q).type === 'air';
       if (air([p[0], p[1] - 1, p[2]]) || ((b.p.level ?? 0) < 7 && [[1, 0], [-1, 0], [0, 1], [0, -1]].some(([dx, dz]) => air([p[0] + dx, p[1], p[2] + dz])))) out.push(p);

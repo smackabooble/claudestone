@@ -44,6 +44,7 @@ export function toBlockState(b: Block): string {
     case 'barrel': return st({ facing: 'up', open: false });
     case 'oak_wall_sign': return st({ facing: p.facing ?? 'north', waterlogged: false });
     case 'water': return `minecraft:water[level=${p.level ?? 0}]`;
+    case 'bubble_column': return 'minecraft:bubble_column[drag=false]';
     case 'moving_piston': return 'minecraft:air';
     default: return `minecraft:${b.type}`;
   }

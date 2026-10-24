@@ -18,19 +18,16 @@ export interface WorldLike {
 
 function waterH(w: WorldLike, p: Pos): number {
   const b = w.get(p);
+  if (b.type === 'bubble_column') return SRC;
   if (b.type !== 'water') return 0;
   const l = b.p.level ?? 0;
   return l >= 8 ? SRC : (8 - l) / 9;
 }
-const isWater = (w: WorldLike, p: Pos) => w.get(p).type === 'water';
+const isWater = (w: WorldLike, p: Pos) => { const t = w.get(p).type; return t === 'water' || t === 'bubble_column'; };
 
 /** a source water cell over soul sand (or over another column cell) is a bubble column */
 export function isColumn(w: WorldLike, p: Pos): boolean {
-  for (let y = p[1]; ; y--) {
-    const b = w.get([p[0], y, p[2]]);
-    if (b.type === 'water' && (b.p.level ?? 0) === 0) { if (w.get([p[0], y - 1, p[2]]).type === 'soul_sand') return true; continue; }
-    return false;
-  }
+  return w.get(p).type === 'bubble_column';     // only real bubble_column blocks lift items: a pasted water column over soul sand does NOT turn into one by itself
 }
 
 /** vanilla FlowingFluid.getFlow (horizontal part) */

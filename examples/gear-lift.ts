@@ -73,7 +73,7 @@ export function buildLift(b: Board, o: Pos, by: number, topY: number, name: stri
   const glass = (p: Pos) => b.raw(p, 'glass', {}, 'other');
   b.raw(P(0, by - 1, 0), 'soul_sand', {}, 'other');
   for (let y = by; y <= top; y++) {
-    b.raw(P(0, y, 0), 'water', { level: 0 }, 'other');
+    b.raw(P(0, y, 0), 'bubble_column', {}, 'other');   // placed as real bubble-column blocks: a pasted water column over soul sand stays plain water (checked in the real game)
     glass(P(0, y, -1)); glass(P(0, y, 1));
     if (!levels.includes(y)) glass(P(-1, y, 0));
     if (y < topY) glass(P(1, y, 0));
