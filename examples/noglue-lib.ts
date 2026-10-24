@@ -374,6 +374,11 @@ export function conveyor(b: Board, from: Pos, to: Pos, net: string, o: { own?: s
       best.set(k, g); open.push({ c: nx, g, f: g + h(nx), prev: cur, k });
     }
   }
+  if (process.env.DEBUG_ROUTE === '6') {
+    for (const [nm, c0] of [['from', from], ['to', to]] as [string, Pos][]) for (const [dx, dy, dz] of [[1, 0, 0], [-1, 0, 0], [0, 0, 1], [0, 0, -1], [0, 1, 0], [0, -1, 0]]) {
+      const c: Pos = [c0[0] + dx, c0[1] + dy, c0[2] + dz]; lastWhy = 0; const r = ok(c, c0); console.log(' probe', nm, c.join(','), r ? 'ok' : 'why ' + lastWhy, b.tag(c)?.kind ?? '-', b.tag(c)?.net ?? '');
+    }
+  }
   if (process.env.DEBUG_ROUTE === '5') {
     const seen = new Set<string>([keyOf(from)]); const q: Pos[] = [from]; const bb2 = [1e9, -1e9, 1e9, -1e9, 1e9, -1e9];
     while (q.length && seen.size < 600000) {

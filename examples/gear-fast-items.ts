@@ -96,13 +96,13 @@ export function buildItems(b: Board, cfg: Cfg = DEFAULT_CFG): Items {
   const logChest = c2.busA;
   b.raw(logChest, 'chest', { facing: 'south', type: 'single' }, 'piston', '__s');
   // output lift: one tall water column with a dropper (and its clock) at the height of every module level; the module outputs go straight to it
-  const topY = cfg.fpB[1] + 4;                                                    // platform chest level (see buildPlatform)
+  const topY = cfg.fpB[1] + 2;                                                    // exit hopper level: one below the deck, next to the dropper under the chest (see buildPlatform)
   const levelsY = PAIRS.map((pr) => ly[pr.id] - 2);                                // out hoppers of the modules sit two cells below the crafters
   const lowY = Math.min(...levelsY);
   const lift = (anchor: Pos): Lift => {
     for (let r = 0; r < 80; r++) for (let dx = -r; dx <= r; dx++) for (const dz of (Math.abs(dx) === r ? Array.from({ length: 2 * r + 1 }, (_, i) => i - r) : [-r, r])) {
       const o: Pos = [anchor[0] + dx, lowY, anchor[2] + dz];
-      if (liftFree(b, o, lowY, topY)) return buildLift(b, o, lowY, topY, 'liftOut', [...levelsY].sort((p, q) => p - q));
+      if (clearOfStages(cfg, o) && liftFree(b, o, lowY, topY)) return buildLift(b, o, lowY, topY, 'liftOut', [...levelsY].sort((p, q) => p - q));
     }
     throw new Error('no room for the output lift');
   };
@@ -135,6 +135,12 @@ export interface Platform {
 }
 
 /** Put the deck over the block feed pair: DIAMONDS right above it, LOGS down a hopper line to the log chest, OUTPUT/LEFTOVER fed by the lifts. */
+/** the lift box (5 x 5 around the column) must keep away from the droppers under the OUTPUT / LEFTOVER chests, so their feed hoppers can reach them */
+function clearOfStages(cfg: Cfg, o: Pos): boolean {
+  const x0 = cfg.fpB[0] + 6 - 3, x1 = cfg.fpB[0] + 9 + 5, z0 = cfg.fpB[2] - 3, z1 = cfg.fpB[2] + 2;     // keep-out strip: the stage row and the cells its feed hoppers use
+  return o[0] + 2 < x0 || o[0] - 2 > x1 || o[2] + 3 < z0 || o[2] - 1 > z1;
+}
+
 export function buildPlatform(b: Board, it: Items, cfg: Cfg, liftAnchor: { out: Pos; left: Pos } = { out: cfg.liftOut, left: cfg.liftLeft }): Platform {
   const hops = it.hops;
   const PY = cfg.fpB[1] + 3, CY = PY + 1, rowZ = cfg.fpB[2];      // two hoppers under each input half (the lower one of DIAMONDS drops into the block chest)
@@ -158,6 +164,22 @@ export function buildPlatform(b: Board, it: Items, cfg: Cfg, liftAnchor: { out: 
   const button: Pos = [sx, CY, sz];
   b.raw(button, 'stone_button', { face: 'floor', facing: 'north' }, 'lever');
   const btnDust: Pos = [sx, PY - 1, sz];
+  // under OUTPUT and LEFTOVER: dropper D_a (hopper in from the lift) -> hopper G (deck gap) -> dropper D_b -> chest. One hopper clock + comparator under the deck fires both.
+  const stage = (i: number, dir: number, name: string): Pos => {
+    const x = cx(i) + (dir > 0 ? 1 : 0);                                          // dir -1: under the left half, hopper G in the gap to its left; +1: mirrored
+    const da: Pos = [x + dir, PY - 1, rowZ], g: Pos = [x + dir, PY, rowZ], db: Pos = [x, PY, rowZ], bk: Pos = [x, PY - 1, rowZ];
+    b.raw(da, 'dropper', { facing: 'up' }, 'piston', '__q');
+    b.raw(g, 'hopper', { facing: dir > 0 ? 'west' : 'east' }, 'piston', '__s');
+    b.raw(db, 'dropper', { facing: 'up' }, 'piston', '__q');
+    b.wool(bk, 'cyan');
+    b.cmp([x - dir, PY - 1, rowZ], dir > 0 ? 'east' : 'west', name + '.clk', 'cyan', 'compare');   // reads the shared clock hopper in the gap, powers B -> both droppers
+    // a hopper next to or under the powered block B would be locked: fill those cells
+    for (const c of [[x, PY - 1, rowZ - 1], [x, PY - 1, rowZ + 1], [x, PY - 2, rowZ]] as Pos[]) if (b.isFree(c)) b.wool(c, 'cyan');
+    return da;
+  };
+  const daOut = stage(2, -1, 'stageOut'), daLeft = stage(3, 1, 'stageLeft');
+  { const h1: Pos = [cx(2) + 2, PY - 1, rowZ], h2: Pos = [cx(2) + 2, PY - 1, rowZ + 1];   // shared clock: one item bounces between two hoppers in the gap between the chests
+    b.raw(h1, 'hopper', { facing: 'south' }, 'piston', '__s'); b.raw(h2, 'hopper', { facing: 'north' }, 'piston', '__s'); b.w.setItem(h1, 0, { id: 'stick', count: 1 }); }
   b.floorColor = 'light_gray';
   for (let x = cfg.fpB[0] - 14; x <= cx(3) + 10; x++) for (let z = rowZ - 8; z <= rowZ + 3; z++) if (b.isFree([x, PY, z])) b.wool([x, PY, z], 'light_gray');
   b.dust(btnDust, 'startbtn', 'red');
@@ -172,15 +194,16 @@ export function buildPlatform(b: Board, it: Items, cfg: Cfg, liftAnchor: { out: 
   const lift = (anchor: Pos, by: number, name: string): Lift => {
     for (let r = 0; r < 80; r++) for (let dx = -r; dx <= r; dx++) for (const dz of (Math.abs(dx) === r ? Array.from({ length: 2 * r + 1 }, (_, i) => i - r) : [-r, r])) {
       const o: Pos = [anchor[0] + dx, by, anchor[2] + dz];
-      if (liftFree(b, o, by, CY)) { const l = buildLift(b, o, by, CY, name); lifts.push(l); return l; }
+      if (clearOfStages(cfg, o) && liftFree(b, o, by, PY - 1)) { const l = buildLift(b, o, by, PY - 1, name); lifts.push(l); return l; }
     }
     throw new Error('no room for the ' + name + ' lift');
   };
   const outLift = it.outLift; lifts.push(outLift);
-  hops.cvLiftOutTop = conveyor(b, outLift.exit, output[1], 'cvLiftOutTop').length;
+  hops.cvLiftOutTop = conveyor(b, outLift.exit, daOut, 'cvLiftOutTop').length;
+  if (process.env.DEBUG_ROUTE === '6') for (let z = 5; z <= 16; z++) { let r = String(z).padStart(3) + ' '; for (let x = 0; x <= 16; x++) { const t = b.tag([x, PY - 1, z]); r += t ? (t.net === '__s' ? 'H' : t.net === '__q' ? 'Q' : t.kind[0]) : '.'; } console.log(r); }
   const leftLift = lift(liftAnchor.left, it.lbL[1] - 1, 'liftLeft');
   hops.cvLiftLeftIn = conveyor(b, [it.lbL[0], it.lbL[1] - 1, it.lbL[2]], leftLift.dropper, 'cvLiftLeftIn').length;
-  hops.cvLiftLeftTop = conveyor(b, leftLift.exit, leftover[1], 'cvLiftLeftTop').length;
+  hops.cvLiftLeftTop = conveyor(b, leftLift.exit, daLeft, 'cvLiftLeftTop').length;
   // keep the space above the deck free of lanes: nothing red may run over the platform
   for (let x = cfg.fpB[0] - 14; x <= cx(3) + 10; x++) for (let z = rowZ - 8; z <= rowZ + 3; z++) for (let y = PY + 1; y <= CY + 6; y++) if (b.isFree([x, y, z])) b.occ.set([x, y, z].join(','), { kind: 'reserve', net: '__deck' });
   return { PY, CY, rowZ, cx, diamonds, logs, output, leftover, button, btnDust, lifts };
