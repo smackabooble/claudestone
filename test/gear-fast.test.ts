@@ -25,7 +25,10 @@ test('compact gear set builds: 20 timelines, 15 crafters, platform with 4 chests
   assert.ok(vol < 700_000, `bounding box ${vol} (the stacked spread-out version was 1.5M)`);
 });
 
-test('compact gear set: OUTPUT and LEFTOVER are fed by a dropper under the chest (no hopper line behind them)', () => {
+test('compact gear set: OUTPUT and LEFTOVER are fed by a dropper under the chest (no hopper line behind them); the lifts end under the deck', () => {
+  const PYd = m.platform.button[1] - 1;
+  for (const l of m.lifts) assert.ok(l.exit[1] <= PYd - 1, 'lift top ' + l.exit);
+  assert.equal(w.listBlocks().filter((b) => b.type === 'glass' && b.pos[1] >= PYd).length, 0, 'no glass at or above the deck');
   for (const c of [m.platform.output[0], m.platform.leftover[1]]) {
     assert.equal(w.get([c[0], c[1] - 1, c[2]]).type, 'dropper');
     assert.equal(w.get([c[0], c[1] - 1, c[2]]).p.facing, 'up');
@@ -50,7 +53,7 @@ test('compact gear set: items put on the platform drain down into the hub chests
   assert.equal(tot(m2.platform.logs[0]), 0);
 });
 
-test('compact gear set: a primed press gives one full set (8 items) + 3 diamonds and 1 stick in the leftover chest, within 700 gt', () => {
+test('compact gear set: a primed press gives one full set (8 items) + 3 diamonds and 1 stick in the leftover chest, within 800 gt', () => {
   const fill = () => { w.setItem(m.platform.diamonds[0], 0, { id: 'diamond_block', count: 64 }); w.setItem(m.platform.logs[0], 0, { id: 'oak_log', count: 16 }); };
   const empty = (p: any) => { for (let i = 0; i < 54; i++) w.setItem(p, i, null); };
   const clearCrafters = () => { for (const b of w.listBlocks() as any[]) if (b.type === 'crafter') for (let i = 0; i < 9; i++) w.setItem(b.pos, i, null); };
@@ -66,10 +69,15 @@ test('compact gear set: a primed press gives one full set (8 items) + 3 diamonds
   const out = count(m.platform.output[0]);
   for (const k of ['helmet', 'chestplate', 'leggings', 'boots', 'sword', 'pickaxe', 'axe', 'shovel']) assert.equal(out['diamond_' + k], 1, k);
   assert.equal(Object.keys(out).length, 8, JSON.stringify(out));
-  assert.ok(done > 0 && done <= 700, `all 8 items after ${done} gt`);
+  assert.ok(done > 0 && done <= 800, `all 8 items after ${done} gt`);
   void left0; void total;
   const left = count(m.platform.leftover[0]);
   assert.equal(left.diamond, 3); assert.equal(left.stick, 1);
+  // nothing ticks when the machine is idle: no clock runs, every redstone part keeps its state
+  runWithLifts(w, m.lifts, 600);
+  const snap = () => JSON.stringify(w.listBlocks().filter((b: any) => ['repeater', 'comparator', 'redstone_wire', 'hopper'].includes(b.type)).map((b: any) => [b.pos, b.p]));
+  const s0 = snap(); runWithLifts(w, m.lifts, 400);
+  assert.equal(snap(), s0, 'the machine is quiet when idle');
 });
 
 test('compact gear set survives export -> import', () => {

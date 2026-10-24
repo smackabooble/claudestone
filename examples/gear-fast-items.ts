@@ -96,7 +96,7 @@ export function buildItems(b: Board, cfg: Cfg = DEFAULT_CFG): Items {
   const logChest = c2.busA;
   b.raw(logChest, 'chest', { facing: 'south', type: 'single' }, 'piston', '__s');
   // output lift: one tall water column with a dropper (and its clock) at the height of every module level; the module outputs go straight to it
-  const topY = cfg.fpB[1] + 2;                                                    // exit hopper level: one below the deck, next to the dropper under the chest (see buildPlatform)
+  const topY = cfg.fpB[1] + 1;                                                    // exit hopper level: one below the deck, next to the dropper under the chest (see buildPlatform)
   const levelsY = PAIRS.map((pr) => ly[pr.id] - 2);                                // out hoppers of the modules sit two cells below the crafters
   const lowY = Math.min(...levelsY);
   const lift = (anchor: Pos): Lift => {
@@ -122,7 +122,15 @@ export function buildItems(b: Board, cfg: Cfg = DEFAULT_CFG): Items {
   cv(fpS0D.outY, feed.D.chestL, 'cvS0Dy'); cv(fpS0S.outY, fpSAB.chestL, 'cvS0Sy');
   cv(fpP.outY, c3D.inD, 'cvpD'); cv(fpP.outX, c3AB.inD, 'cvpAB');
   cv(fpS0D.outX, lbL, 'cvS0Dx'); cv(fpS0S.outX, lbL, 'cvS0Sx');
-  for (const pr of PAIRS) { cv(mod[pr.y].out, dropperAt(ly[pr.id] - 2), `cvo_${pr.y}`); cv(mod[pr.x].out, dropperAt(ly[pr.id] - 2), `cvo_${pr.x}`); }
+  // the dropper has one free side: the second module of a level feeds into the last hopper of the first one's conveyor
+  for (const pr of PAIRS) {
+    const p1 = conveyor(b, mod[pr.y].out, dropperAt(ly[pr.id] - 2), `cvo_${pr.y}`); hops[`cvo_${pr.y}`] = p1.length;
+    let done = false;
+    for (let i = p1.length - 1; i >= 1 && !done; i--) {                               // merge into the first conveyor at the nearest cell that can be reached
+      try { hops[`cvo_${pr.x}`] = conveyor(b, mod[pr.x].out, p1[i], `cvo_${pr.x}`, { maxNodes: 40000 }).length; done = true; } catch { /* try the next cell */ }
+    }
+    if (!done) throw new Error('no conveyor for ' + pr.x);
+  }
   return { b, hops, feed, c1, mod, fpB, fpP, c2, fpS0D, fpS0S, c3AB, fpSAB, fpSD, c3D, lbL, lbR, logChest, outLift };
 }
 
@@ -137,8 +145,8 @@ export interface Platform {
 /** Put the deck over the block feed pair: DIAMONDS right above it, LOGS down a hopper line to the log chest, OUTPUT/LEFTOVER fed by the lifts. */
 /** the lift box (5 x 5 around the column) must keep away from the droppers under the OUTPUT / LEFTOVER chests, so their feed hoppers can reach them */
 function clearOfStages(cfg: Cfg, o: Pos): boolean {
-  const x0 = cfg.fpB[0] + 6 - 3, x1 = cfg.fpB[0] + 9 + 5, z0 = cfg.fpB[2] - 3, z1 = cfg.fpB[2] + 2;     // keep-out strip: the stage row and the cells its feed hoppers use
-  return o[0] + 2 < x0 || o[0] - 2 > x1 || o[2] + 3 < z0 || o[2] - 1 > z1;
+  const x0 = cfg.fpB[0] + 6 - 5, x1 = cfg.fpB[0] + 9 + 6, z0 = cfg.fpB[2] - 12, z1 = cfg.fpB[2] + 3;     // keep-out strip: the stage row and its oscillators
+  return o[0] + 4 < x0 || o[0] - 3 > x1 || o[2] + 3 < z0 || o[2] - 3 > z1;
 }
 
 export function buildPlatform(b: Board, it: Items, cfg: Cfg, liftAnchor: { out: Pos; left: Pos } = { out: cfg.liftOut, left: cfg.liftLeft }): Platform {
@@ -164,22 +172,40 @@ export function buildPlatform(b: Board, it: Items, cfg: Cfg, liftAnchor: { out: 
   const button: Pos = [sx, CY, sz];
   b.raw(button, 'stone_button', { face: 'floor', facing: 'north' }, 'lever');
   const btnDust: Pos = [sx, PY - 1, sz];
-  // under OUTPUT and LEFTOVER: dropper D_a (hopper in from the lift) -> hopper G (deck gap) -> dropper D_b -> chest. One hopper clock + comparator under the deck fires both.
-  const stage = (i: number, dir: number, name: string): Pos => {
-    const x = cx(i) + (dir > 0 ? 1 : 0);                                          // dir -1: under the left half, hopper G in the gap to its left; +1: mirrored
-    const da: Pos = [x + dir, PY - 1, rowZ], g: Pos = [x + dir, PY, rowZ], db: Pos = [x, PY, rowZ], bk: Pos = [x, PY - 1, rowZ];
-    b.raw(da, 'dropper', { facing: 'up' }, 'piston', '__q');
-    b.raw(g, 'hopper', { facing: dir > 0 ? 'west' : 'east' }, 'piston', '__s');
-    b.raw(db, 'dropper', { facing: 'up' }, 'piston', '__q');
-    b.wool(bk, 'cyan');
-    b.cmp([x - dir, PY - 1, rowZ], dir > 0 ? 'east' : 'west', name + '.clk', 'cyan', 'compare');   // reads the shared clock hopper in the gap, powers B -> both droppers
-    // a hopper next to or under the powered block B would be locked: fill those cells
-    for (const c of [[x, PY - 1, rowZ - 1], [x, PY - 1, rowZ + 1], [x, PY - 2, rowZ]] as Pos[]) if (b.isFree(c)) b.wool(c, 'cyan');
-    return da;
-  };
-  const daOut = stage(2, -1, 'stageOut'), daLeft = stage(3, 1, 'stageLeft');
-  { const h1: Pos = [cx(2) + 2, PY - 1, rowZ], h2: Pos = [cx(2) + 2, PY - 1, rowZ + 1];   // shared clock: one item bounces between two hoppers in the gap between the chests
-    b.raw(h1, 'hopper', { facing: 'south' }, 'piston', '__s'); b.raw(h2, 'hopper', { facing: 'north' }, 'piston', '__s'); b.w.setItem(h1, 0, { id: 'stick', count: 1 }); }
+  // under OUTPUT and LEFTOVER: hopper line -> dropper D_a -> hopper G (deck gap) -> dropper D_b -> chest. Per stage a small self-gated oscillator (north of the row, below
+  // the deck) pulses the block B under D_b (it touches D_a too) only while D_a holds an item, plus a short tail so that the last item can still pass G and D_b.
+  const L = PY - 1, rz = rowZ, xm = cx(2) + 2;                                   // xm: the gap between the two chests (mirror axis of the two stages)
+  const das: Pos[] = [];
+  for (let st = 0; st < 2; st++) {
+    const mx = (x: number) => (st === 0 ? x : 2 * xm - x);                     // stage 0 is drawn for the west chest; stage 1 is its mirror image
+    const at = (x: number, dz: number, y = L): Pos => [mx(x), y, rz + dz];
+    const nm = `stage${st}`;
+    const west = (st === 0 ? 'west' : 'east') as 'west' | 'east', east = (st === 0 ? 'east' : 'west') as 'west' | 'east';
+    const xa = cx(2) - 1, xb = cx(2);                                              // D_a column, B column (stage 0)
+    b.raw(at(xa, 0), 'dropper', { facing: 'up' }, 'piston', '__q');
+    b.raw(at(xa, 0, PY), 'hopper', { facing: east }, 'piston', '__s');
+    b.raw(at(xb, 0, PY), 'dropper', { facing: 'up' }, 'piston', '__q');
+    b.wool(at(xb, 0), 'cyan');
+    das.push(at(xa, 0));
+    b.cmp(at(xa, -1), 'north', nm + '.ka', 'cyan', 'compare');                    // reads D_a
+    b.rep(at(xa, -2), 'north', 1, nm + '.kr', 'cyan');
+    b.dust(at(xa, -3), nm + '.e', 'cyan');
+    for (const dz of [-4, -5, -6]) b.dust(at(xa, dz), nm + '.e', 'cyan');           // direct branch -> junction Z at (xa,-6)
+    b.dust(at(xa - 1, -3), nm + '.e', 'cyan');                                     // delayed branch (tail): two slow repeaters
+    b.rep(at(xa - 1, -4), 'north', 4, nm + '.w1', 'cyan'); b.rep(at(xa - 1, -5), 'north', 4, nm + '.w2', 'cyan');
+    b.dust(at(xa - 1, -6), nm + '.e', 'cyan');
+    b.rep(at(xa, -7), 'north', 1, nm + '.re', 'cyan');
+    b.cmp(at(xa, -8), 'north', nm + '.c2', 'cyan', 'subtract');
+    b.rep(at(xa, -9), 'north', 1, nm + '.ry', 'cyan');
+    b.dust(at(xa, -10), nm + '.y', 'cyan');
+    b.rep(at(xb, -8), west, 1, nm + '.rf', 'cyan');                                // feedback into the side of C2
+    for (const [x, dz] of [[xb, -10], [xb + 1, -10], [xb + 1, -9], [xb + 1, -8], [xb + 1, -7], [xb + 1, -6], [xb + 1, -5], [xb + 1, -4], [xb + 1, -3], [xb + 1, -2], [xb, -2]] as [number, number][]) b.dust(at(x, dz), nm + '.y', 'cyan');
+    b.rep(at(xb, -1), 'south', 1, nm + '.rd', 'cyan');                             // into B from the north
+    // hoppers next to or under the powered block B would be locked: fill those cells
+    if (b.isFree(at(xb, 1))) b.wool(at(xb, 1), 'cyan');
+    if (b.isFree(at(xb, 0, L - 1))) b.wool(at(xb, 0, L - 1), 'cyan');
+  }
+  const daOut = das[0], daLeft = das[1];
   b.floorColor = 'light_gray';
   for (let x = cfg.fpB[0] - 14; x <= cx(3) + 10; x++) for (let z = rowZ - 8; z <= rowZ + 3; z++) if (b.isFree([x, PY, z])) b.wool([x, PY, z], 'light_gray');
   b.dust(btnDust, 'startbtn', 'red');
@@ -194,7 +220,7 @@ export function buildPlatform(b: Board, it: Items, cfg: Cfg, liftAnchor: { out: 
   const lift = (anchor: Pos, by: number, name: string): Lift => {
     for (let r = 0; r < 80; r++) for (let dx = -r; dx <= r; dx++) for (const dz of (Math.abs(dx) === r ? Array.from({ length: 2 * r + 1 }, (_, i) => i - r) : [-r, r])) {
       const o: Pos = [anchor[0] + dx, by, anchor[2] + dz];
-      if (clearOfStages(cfg, o) && liftFree(b, o, by, PY - 1)) { const l = buildLift(b, o, by, PY - 1, name); lifts.push(l); return l; }
+      if (clearOfStages(cfg, o) && liftFree(b, o, by, PY - 2)) { const l = buildLift(b, o, by, PY - 2, name); lifts.push(l); return l; }
     }
     throw new Error('no room for the ' + name + ' lift');
   };
