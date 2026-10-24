@@ -27,7 +27,7 @@ release(pos) -> (
   if(block(pos) != 'stone_button', return());
   st = block_state(pos);
   put(st, 'powered', 'false');
-  set_block(pos, block(pos), st);
+  set(pos, block(pos), st);
   update(pos);
   update(pos + [0, -1, 0])
 );
@@ -37,7 +37,7 @@ press(pos, presses, gap, run, n) -> (
   if(block(pos) != 'stone_button', print('gearpress: button is gone'); return());
   st = block_state(pos);
   put(st, 'powered', 'true');
-  set_block(pos, block(pos), st);
+  set(pos, block(pos), st);
   update(pos);
   update(pos + [0, -1, 0]);
   print('gearpress: press ' + n + ' of ' + presses);
