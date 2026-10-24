@@ -117,7 +117,8 @@ export function liftShim(w: any, lifts: Lift[]): void {
   }
 }
 
-/** run the world in small steps with the lift stand-in (use instead of w.run when a machine has lifts) */
-export function runWithLifts(w: any, lifts: Lift[], gt: number): void {
-  for (let t = 0; t < gt; t += 8) { w.run(Math.min(8, gt - t)); liftShim(w, lifts); }
+/** run the world with item physics (droppers throw real items, water and bubble columns carry them, hoppers pick them up) */
+export function runWithLifts(w: any, _lifts: Lift[], gt: number): void {
+  w.itemPhysics = true;
+  w.run(gt);
 }

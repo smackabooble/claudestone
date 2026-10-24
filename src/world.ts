@@ -7,6 +7,7 @@
  *  - lever/button `face` = floor|wall|ceiling, `facing` = direction the lever points away from its support
  *  - redstone_wall_torch `facing` = direction the torch points away from the wall
  */
+import { stepEntity, itemsAtHopper, type ItemEnt } from './items3d.ts';
 import { JavaRandom } from './jrandom.ts';
 import { craft } from './recipes.ts';
 import {
@@ -130,6 +131,11 @@ export class World {
   /** Items dropped into the world by droppers/dispensers (no item entities are simulated). */
   drops: { tick: number; pos: Pos; item: Item }[] = [];
   rng = new JavaRandom(0);
+  /** item entities (only simulated when `itemPhysics` is on: droppers throw real items, water/bubble columns move them, hoppers pick them up) */
+  ents3: ItemEnt[] = [];
+  itemPhysics = false;
+  private entSeq = 0;
+  solidForItems(p: Pos): boolean { const t = this.get(p).type; return def(this.get(p)).solid || t === 'hopper' || t === 'chest'; }
 
   // ---------- basic access ----------
   get(p: Pos): Block { return this.blocks.get(key(p)) ?? AIR; }
@@ -416,6 +422,7 @@ export class World {
     }
     if (!this.knobs.entitiesFirst) this.tickBlockEntities();
     this.handlingTick = false;
+    if (this.itemPhysics) { for (const e of this.ents3) stepEntity(this, e); }
     actions?.();
   }
   run(n: number): void { for (let i = 0; i < n; i++) this.step(); }
@@ -1386,6 +1393,11 @@ export class World {
   private hopperSuck(p: Pos, be: BE): boolean {
     const sp = rel(p, 'up');
     const src = this.beAt(sp);
+    if (!src && this.itemPhysics) {
+      for (const e of itemsAtHopper(this, p)) {
+        if (this.insertOne(null, p, be, { id: e.item.id, count: 1 })) { e.item.count--; if (e.item.count <= 0) this.ents3.splice(this.ents3.indexOf(e), 1); return true; }
+      }
+    }
     if (!src || this.isEmptyBE(src)) return false;
     for (let i = 0; i < src.inv.length; i++) {
       if (!src.inv[i]) continue;
@@ -1410,6 +1422,11 @@ export class World {
     } else {
       this.takeOne(be, slot, p);
       this.drops.push({ tick: this.time, pos: fp, item: one });
+      if (this.itemPhysics) {
+        const q = rel(p, d), st = [q[0] - p[0], q[1] - p[1], q[2] - p[2]]; const r = () => (this.rng.nextInt(1000) - this.rng.nextInt(1000)) / 1000 * 0.0172275 * 6, sp = this.rng.nextInt(1000) / 10000 + 0.2;
+        this.ents3.push({ id: this.entSeq++, x: p[0] + 0.5 + 0.7 * st[0], y: p[1] + 0.5 + 0.7 * st[1] - (d === 'up' || d === 'down' ? 0.125 : 0.15625), z: p[2] + 0.5 + 0.7 * st[2], vx: r() + st[0] * sp, vy: r() + 0.2, vz: r() + st[2] * sp, item: one, age: 0, onGround: false });
+        this.drops.pop();
+      }
     }
   }
 
@@ -1419,6 +1436,18 @@ export class World {
     const b = this.get(p);
     if (prop === 'type') return b.type;
     return b.p[prop];
+  }
+
+  /** Water that would spread in the real game: a water block with air beside it (level < 7) or below it. */
+  waterLeaks(): Pos[] {
+    const out: Pos[] = [];
+    for (const [k, b] of this.blocks) {
+      if (b.type !== 'water') continue;
+      const p = k.split(',').map(Number) as Pos;
+      const air = (q: Pos) => this.get(q).type === 'air';
+      if (air([p[0], p[1] - 1, p[2]]) || ((b.p.level ?? 0) < 7 && [[1, 0], [-1, 0], [0, 1], [0, -1]].some(([dx, dz]) => air([p[0] + dx, p[1], p[2] + dz])))) out.push(p);
+    }
+    return out;
   }
 
   /** All non-air blocks, sorted by y, z, x (for debugging). */
