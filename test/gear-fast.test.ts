@@ -1,19 +1,19 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { World } from '../src/world.ts';
-import { buildFast } from '../examples/gear-fast.ts';
+import { loadFast } from '../examples/gear-fast.ts';
 import { runWithLifts } from '../examples/gear-lift.ts';
 import { exportSchem } from '../src/export.ts';
 import { loadSchematic } from '../src/schematic.ts';
 
-// The compact gear set builds in seconds and one full press (after priming) takes about a minute of simulation.
+// The compact gear set is built and calibrated once (cached in .cache/gear-fast.json, about a minute); one full press after priming takes seconds of simulation.
 const w = new World();
-const m = buildFast(w);
+const m = loadFast(w);
 const total = (p: any) => ((w.items(p) ?? []) as any[]).reduce((a, x) => a + (x ? x.count : 0), 0);
 const count = (p: any) => { const t: Record<string, number> = {}; for (const x of (w.items(p) ?? []) as any[]) if (x) t[x.id] = (t[x.id] ?? 0) + x.count; return t; };
 
-test('compact gear set builds: 18 timelines, 15 crafters, platform with 4 chests + 5 signs, 2 lifts, small box', () => {
-  assert.equal(m.timelines.length, 18);
+test('compact gear set builds: 20 timelines, 15 crafters, platform with 4 chests + 5 signs, 2 lifts, small box', () => {
+  assert.equal(m.timelines.length, 20);
   assert.equal(w.listBlocks().filter((b) => b.type === 'crafter').length, 15);
   assert.equal(w.get(m.platform.button).type, 'stone_button');
   assert.equal(w.listBlocks().filter((b) => b.type === 'oak_wall_sign').length, 5);
@@ -26,7 +26,7 @@ test('compact gear set builds: 18 timelines, 15 crafters, platform with 4 chests
 });
 
 test('compact gear set: items put on the platform drain down into the hub chests', () => {
-  const w2 = new World(); const m2 = buildFast(w2);
+  const w2 = new World(); const m2 = loadFast(w2);
   w2.setItem(m2.platform.diamonds[0], 0, { id: 'diamond_block', count: 8 });
   w2.setItem(m2.platform.logs[0], 0, { id: 'oak_log', count: 3 });
   runWithLifts(w2, m2.lifts, 1200);
