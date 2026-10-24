@@ -7,7 +7,7 @@ import { Board, conveyor } from './noglue-lib.ts';
 import { buildFeedPair, buildCrafterMod, buildDirectKit } from './gear-parts.ts';
 import { KITS } from './gear-kit.ts';
 import type { Pos } from '../src/dirs.ts';
-import { buildLift, liftFree, type Lift } from './gear-lift.ts';
+import { buildLift, gatedRing, liftFree, type Lift } from './gear-lift.ts';
 
 export interface Pair { id: string; y: string; x: string }
 export const PAIRS: Pair[] = [
@@ -146,7 +146,7 @@ export interface Platform {
 /** the lift box (5 x 5 around the column) must keep away from the droppers under the OUTPUT / LEFTOVER chests, so their feed hoppers can reach them */
 function clearOfStages(cfg: Cfg, o: Pos): boolean {
   const x0 = cfg.fpB[0] + 6 - 5, x1 = cfg.fpB[0] + 9 + 6, z0 = cfg.fpB[2] - 12, z1 = cfg.fpB[2] + 3;     // keep-out strip: the stage row and its oscillators
-  return o[0] + 4 < x0 || o[0] - 3 > x1 || o[2] + 3 < z0 || o[2] - 3 > z1;
+  return o[0] + 4 < x0 || o[0] - 3 > x1 || o[2] + 3 < z0 || o[2] - 10 > z1;
 }
 
 export function buildPlatform(b: Board, it: Items, cfg: Cfg, liftAnchor: { out: Pos; left: Pos } = { out: cfg.liftOut, left: cfg.liftLeft }): Platform {
@@ -185,25 +185,8 @@ export function buildPlatform(b: Board, it: Items, cfg: Cfg, liftAnchor: { out: 
     b.raw(at(xa, 0), 'dropper', { facing: 'up' }, 'piston', '__q');
     b.raw(at(xa, 0, PY), 'hopper', { facing: east }, 'piston', '__s');
     b.raw(at(xb, 0, PY), 'dropper', { facing: 'up' }, 'piston', '__q');
-    b.wool(at(xb, 0), 'cyan');
     das.push(at(xa, 0));
-    b.cmp(at(xa, -1), 'north', nm + '.ka', 'cyan', 'compare');                    // reads D_a
-    b.rep(at(xa, -2), 'north', 1, nm + '.kr', 'cyan');
-    b.dust(at(xa, -3), nm + '.e', 'cyan');
-    for (const dz of [-4, -5, -6]) b.dust(at(xa, dz), nm + '.e', 'cyan');           // direct branch -> junction Z at (xa,-6)
-    b.dust(at(xa - 1, -3), nm + '.e', 'cyan');                                     // delayed branch (tail): two slow repeaters
-    b.rep(at(xa - 1, -4), 'north', 4, nm + '.w1', 'cyan'); b.rep(at(xa - 1, -5), 'north', 4, nm + '.w2', 'cyan');
-    b.dust(at(xa - 1, -6), nm + '.e', 'cyan');
-    b.rep(at(xa, -7), 'north', 1, nm + '.re', 'cyan');
-    b.cmp(at(xa, -8), 'north', nm + '.c2', 'cyan', 'subtract');
-    b.rep(at(xa, -9), 'north', 1, nm + '.ry', 'cyan');
-    b.dust(at(xa, -10), nm + '.y', 'cyan');
-    b.rep(at(xb, -8), west, 1, nm + '.rf', 'cyan');                                // feedback into the side of C2
-    for (const [x, dz] of [[xb, -10], [xb + 1, -10], [xb + 1, -9], [xb + 1, -8], [xb + 1, -7], [xb + 1, -6], [xb + 1, -5], [xb + 1, -4], [xb + 1, -3], [xb + 1, -2], [xb, -2]] as [number, number][]) b.dust(at(x, dz), nm + '.y', 'cyan');
-    b.rep(at(xb, -1), 'south', 1, nm + '.rd', 'cyan');                             // into B from the north
-    // hoppers next to or under the powered block B would be locked: fill those cells
-    if (b.isFree(at(xb, 1))) b.wool(at(xb, 1), 'cyan');
-    if (b.isFree(at(xb, 0, L - 1))) b.wool(at(xb, 0, L - 1), 'cyan');
+    gatedRing(b, at(xa, 0), st === 0 ? -1 : 1, nm);                                // B, K_a (reads D_a), delay branch, oscillator, driver
   }
   const daOut = das[0], daLeft = das[1];
   b.floorColor = 'light_gray';

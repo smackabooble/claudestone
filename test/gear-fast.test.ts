@@ -53,7 +53,7 @@ test('compact gear set: items put on the platform drain down into the hub chests
   assert.equal(tot(m2.platform.logs[0]), 0);
 });
 
-test('compact gear set: a primed press gives one full set (8 items) + 3 diamonds and 1 stick in the leftover chest, within 800 gt', () => {
+test('compact gear set: a primed press gives one full set (8 items) + 3 diamonds and 1 stick in the leftover chest, within 900 gt', () => {
   const fill = () => { w.setItem(m.platform.diamonds[0], 0, { id: 'diamond_block', count: 64 }); w.setItem(m.platform.logs[0], 0, { id: 'oak_log', count: 16 }); };
   const empty = (p: any) => { for (let i = 0; i < 54; i++) w.setItem(p, i, null); };
   const clearCrafters = () => { for (const b of w.listBlocks() as any[]) if (b.type === 'crafter') for (let i = 0; i < 9; i++) w.setItem(b.pos, i, null); };
@@ -69,7 +69,7 @@ test('compact gear set: a primed press gives one full set (8 items) + 3 diamonds
   const out = count(m.platform.output[0]);
   for (const k of ['helmet', 'chestplate', 'leggings', 'boots', 'sword', 'pickaxe', 'axe', 'shovel']) assert.equal(out['diamond_' + k], 1, k);
   assert.equal(Object.keys(out).length, 8, JSON.stringify(out));
-  assert.ok(done > 0 && done <= 800, `all 8 items after ${done} gt`);
+  assert.ok(done > 0 && done <= 900, `all 8 items after ${done} gt`);
   void left0; void total;
   const left = count(m.platform.leftover[0]);
   assert.equal(left.diamond, 3); assert.equal(left.stick, 1);

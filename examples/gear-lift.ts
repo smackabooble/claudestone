@@ -31,23 +31,34 @@ export interface Lift {
   bases: Pos[];
 }
 
-/** Self-gated dropper: a comparator reads the dropper, and while the dropper holds items it pulses itself (comparator in subtract mode, a repeater
- *  feedback into its side switches it off again), so nothing ticks while the dropper is empty. `sg` = -1: ring on the west side of the dropper, +1: east.
- *  Cells (relative to the dropper, v = north is -1): K (0,-1)  R0 (0,-2)  dust (0,-3) (sg,-3) (2sg,-3) (2sg,-2) (2sg,-1) (2sg,0)  Rf (sg,-1)  Rd (sg,0). */
-export function selfRing(b: Board, d: Pos, sg: number, net: string): void {
-  const P = (du: number, dv: number): Pos => [d[0] + du, d[1], d[2] + dv];
-  const toD = sg < 0 ? 'east' : 'west';
-  b.cmp(P(0, -1), 'north', net + '.k', 'cyan', 'subtract');
-  b.rep(P(0, -2), 'north', 1, net + '.r0', 'cyan');
-  for (const [du, dv] of [[0, -3], [sg, -3], [2 * sg, -3], [2 * sg, -2], [2 * sg, -1], [2 * sg, 0]]) b.dust(P(du, dv), net + '.d', 'cyan');
-  b.rep(P(sg, -1), toD as any, 1, net + '.rf', 'cyan');
-  b.rep(P(sg, 0), toD as any, 1, net + '.rd', 'cyan');
+/** Gated pulse circuit for a dropper (the version that was checked in the real game, from the user's litematic): comparator K (compare) reads the dropper, a repeater
+ *  boosts it, a pair of slow repeaters delays it by 16 gt (this also keeps the pulses going a moment after the last item left), the delayed signal enables a
+ *  comparator oscillator C2 (subtract; its own output, boosted, is fed back repeater -> side of C2 so that it pulses), and every pulse powers the block B beside the dropper.
+ *  Nothing runs while the dropper is empty. Cells relative to the dropper (dx, dz), `m` = 1: B on the west side, -1: mirrored (B east):
+ *  B (-1,0)  K (0,-1)  Rk (0,-2)  dust (0,-3)  (1,-3)  Rw1 (1,-4)  Rw2 (1,-5)  dust (1,-6) (0,-6)  Rre (0,-7)  C2 (0,-8)  Ry (0,-9)  dust (0,-10) (-1,-10) (-2,-10)
+ *  Y column (-2,-9..-2) (-1,-2)  Rf (-1,-8) into the east side of C2  Rd (-1,-1) into B. */
+export function gatedRing(b: Board, d: Pos, m: number, net: string): void {
+  const P = (dx: number, dz: number): Pos => [d[0] + m * dx, d[1], d[2] + dz];
+  const E = m > 0 ? 'east' : 'west';
+  b.wool(P(-1, 0), 'cyan');
+  if (b.isFree([d[0] + m * -1, d[1] - 1, d[2]])) b.wool([d[0] + m * -1, d[1] - 1, d[2]], 'cyan');
+  if (b.isFree(P(-1, 1))) b.wool(P(-1, 1), 'cyan');                                  // no hopper may sit next to or under the powered block B
+  b.cmp(P(0, -1), 'north', net + '.k', 'cyan', 'compare');
+  b.rep(P(0, -2), 'north', 1, net + '.kr', 'cyan');
+  for (const [dx, dz] of [[0, -3], [1, -3], [1, -6], [0, -6]]) b.dust(P(dx, dz), net + '.e', 'cyan');
+  b.rep(P(1, -4), 'north', 4, net + '.w1', 'cyan'); b.rep(P(1, -5), 'north', 4, net + '.w2', 'cyan');
+  b.rep(P(0, -7), 'north', 1, net + '.re', 'cyan');
+  b.cmp(P(0, -8), 'north', net + '.c2', 'cyan', 'subtract');
+  b.rep(P(0, -9), 'north', 1, net + '.ry', 'cyan');
+  b.rep(P(-1, -8), E as any, 1, net + '.rf', 'cyan');
+  for (const [dx, dz] of [[0, -10], [-1, -10], [-2, -10], [-2, -9], [-2, -8], [-2, -7], [-2, -6], [-2, -5], [-2, -4], [-2, -3], [-2, -2], [-1, -2]]) b.dust(P(dx, dz), net + '.y', 'cyan');
+  b.rep(P(-1, -1), 'south', 1, net + '.rd', 'cyan');
 }
 
 /** cells the lift needs, relative to the bottom water cell */
 export function liftCells(by: number, topY: number): Pos[] {
   const cells: Pos[] = [];
-  for (let y = by - 1; y <= topY + 2; y++) for (let du = -3; du <= 4; du++) for (let dv = -3; dv <= 3; dv++) cells.push([du, y, dv]);
+  for (let y = by - 1; y <= topY + 2; y++) for (let du = -3; du <= 4; du++) for (let dv = -10; dv <= 3; dv++) cells.push([du, y, dv]);
   return cells;
 }
 
@@ -76,7 +87,7 @@ export function buildLift(b: Board, o: Pos, by: number, topY: number, name: stri
   // the exit hopper feeds a dropper (facing up, self-gated ring on its east side) that lifts the items one more level into the hopper that starts the conveyor
   const dc = P(2, topY, 0);
   b.raw(dc, 'dropper', { facing: 'up' }, 'piston', '__q');
-  selfRing(b, dc, 1, name + '.top');
+  gatedRing(b, dc, -1, name + '.top');
   const exit = P(2, top, 0);
   b.raw(exit, 'hopper', { facing: 'east' }, 'piston', '__s');
   // droppers into the water, each with its own self-gated ring
@@ -84,7 +95,7 @@ export function buildLift(b: Board, o: Pos, by: number, topY: number, name: stri
   levels.forEach((L, i) => {
     const dropper = P(-1, L, 0);
     b.raw(dropper, 'dropper', { facing: 'east' }, 'piston', '__q');
-    selfRing(b, dropper, -1, `${name}.clk${i}`);
+    gatedRing(b, dropper, 1, `${name}.clk${i}`);
     droppers.push(dropper); bases.push(P(0, L, 0));
   });
   return { dropper: droppers[0], base: bases[0], exit, inner, clock: [], droppers, bases };
