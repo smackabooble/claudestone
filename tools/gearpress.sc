@@ -21,20 +21,15 @@ __config() -> {
 };
 
 global_run = 0;
+// (scarpet needs a function to be defined above the place that names it, so release/press come before start)
 
-start(pos, presses, gap) -> (
-  if(block(pos) != 'stone_button',
-    print(player(), 'gearpress: no stone button at ' + pos);
-    return()
-  );
-  global_run += 1;
-  print(player(), 'gearpress: ' + presses + ' presses, ' + gap + ' ticks apart');
-  press(pos, presses, gap, global_run, 1)
-);
-
-stop() -> (
-  global_run += 1;
-  print(player(), 'gearpress: stopped')
+release(pos) -> (
+  if(block(pos) != 'stone_button', return());
+  st = block_state(pos);
+  put(st, 'powered', 'false');
+  set_block(pos, block(pos), st);
+  update(pos);
+  update(pos + [0, -1, 0])
 );
 
 press(pos, presses, gap, run, n) -> (
@@ -50,11 +45,17 @@ press(pos, presses, gap, run, n) -> (
   if(n < presses, schedule(gap, 'press', pos, presses, gap, run, n + 1))
 );
 
-release(pos) -> (
-  if(block(pos) != 'stone_button', return());
-  st = block_state(pos);
-  put(st, 'powered', 'false');
-  set_block(pos, block(pos), st);
-  update(pos);
-  update(pos + [0, -1, 0])
+start(pos, presses, gap) -> (
+  if(block(pos) != 'stone_button',
+    print(player(), 'gearpress: no stone button at ' + pos);
+    return()
+  );
+  global_run += 1;
+  print(player(), 'gearpress: ' + presses + ' presses, ' + gap + ' ticks apart');
+  press(pos, presses, gap, global_run, 1)
+);
+
+stop() -> (
+  global_run += 1;
+  print(player(), 'gearpress: stopped')
 );
