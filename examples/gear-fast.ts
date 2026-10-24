@@ -206,6 +206,16 @@ function buildFastOnce(w: World, cfg: Cfg, adj: Adj, variant: { gap: number; row
     fixStrength();
   }
 
+  // floors laid for lanes that never used them (keep-clear zones in front of pins): remove every floor wool with nothing on top
+  for (const [k, t] of [...b.occ.entries()]) {
+    if (t.kind !== 'wool' || t.net !== '__floor') continue;
+    const [x, y, z] = k.split(',').map(Number);
+    const above = b.occ.get([x, y + 1, z].join(','));
+    if (above && above.kind !== 'reserve' && above.kind !== 'clear') continue;
+    const wb = w.get([x, y, z] as Pos);
+    if (wb.type.endsWith('_wool')) { w.remove([x, y, z] as Pos); b.occ.delete(k); }
+  }
+
   const mach: FastMachine = {
     b, button: plat.button, blockChest: [it.fpB.chestL, it.fpB.chestR], logChest: it.logChest,
     leftover: [it.lbL, it.lbR], planksStash: it.fpP.chestL, pins,
