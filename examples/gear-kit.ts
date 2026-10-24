@@ -156,7 +156,9 @@ export function buildTimeline(b: Board, O: Pos, name: string, d: number, s: numb
     b.reserveCorridor(startPin, [0, -1], 5, `${net}.in`);
   }
   if (noPC) return { start: startPin, PD: out.PD ?? null, PS: out.PS ?? null, PC: P(0, -1) };
-  const pc = snake(nodeV[nodeV.length - 1], (gap + 1) * SLOT_RT, `${net}.PC`, false);
+  let pcV0 = nodeV[nodeV.length - 1];
+  if (opts.oddPC) { for (let k = 1; k <= 3; k++) b.dust(P(0, pcV0 + k), net, 'orange'); pcV0 += 3; }     // keep the PC snake away from the lane pins
+  const pc = snake(pcV0, (gap + 1) * SLOT_RT, `${net}.PC`, false);
   if (!opts.oddPC) return { start: startPin, PD: out.PD ?? null, PS: out.PS ?? null, PC: P(pc.x, pc.z) };
   // four full-strength copies of the PC pulse: repeater -> dust hub -> repeaters east/west, north, south -> dust stems -> pins, plus one repeater south of the end cell
   // (the stems keep every pin a few cells away from the other pins, so a lane can leave each of them)
