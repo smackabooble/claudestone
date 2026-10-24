@@ -151,19 +151,22 @@ export function buildPlatform(b: Board, it: Items, cfg: Cfg, liftAnchor: { out: 
   b.raw([cx(1), PY - 1, rowZ], 'hopper', { facing: 'east' }, 'piston', '__s');
   b.raw([cx(1) + 1, PY - 1, rowZ], 'hopper', { facing: 'west' }, 'piston', '__s');
   hops.cvLogs = conveyor(b, [cx(1), PY - 1, rowZ], it.logChest, 'cvLogs').length;
-  const startBlock: Pos = [cfg.fpB[0] - 3, CY, rowZ];
+  // START: a brown block IN the deck with the button on top; the wire that carries the signal runs under the deck (nothing red on the platform)
+  const sx = cfg.fpB[0] - 3, sz = rowZ - 4;
+  const startBlock: Pos = [sx, PY, sz];
   b.wool(startBlock, 'brown');
-  const button: Pos = [startBlock[0], CY, rowZ - 1];
-  b.raw(button, 'stone_button', { face: 'wall', facing: 'north' }, 'lever');
-  const btnDust: Pos = [startBlock[0] - 1, CY, rowZ];
+  const button: Pos = [sx, CY, sz];
+  b.raw(button, 'stone_button', { face: 'floor', facing: 'north' }, 'lever');
+  const btnDust: Pos = [sx, PY - 1, sz];
   b.floorColor = 'light_gray';
-  for (let x = cfg.fpB[0] - 6; x <= cx(3) + 3; x++) for (let z = rowZ - 2; z <= rowZ + 1; z++) if (b.isFree([x, PY, z])) b.wool([x, PY, z], 'light_gray');
+  for (let x = cfg.fpB[0] - 14; x <= cx(3) + 10; x++) for (let z = rowZ - 8; z <= rowZ + 3; z++) if (b.isFree([x, PY, z])) b.wool([x, PY, z], 'light_gray');
   b.dust(btnDust, 'startbtn', 'red');
   sign([cx(0), CY, rowZ - 1], 'north', ['', 'DIAMONDS', 'blocks in here', '']);
   sign([cx(1), CY, rowZ - 1], 'north', ['', 'OAK LOGS', 'in here', '']);
   sign([cx(2), CY, rowZ - 1], 'north', ['', 'OUTPUT', 'full set', 'comes here']);
   sign([cx(3), CY, rowZ - 1], 'north', ['', 'LEFTOVER', 'diamonds', 'and sticks']);
-  sign([startBlock[0] + 1, CY, rowZ], 'east', ['', 'START', '(press)', '']);
+  b.wool([sx + 1, CY, sz], 'brown');
+  sign([sx + 2, CY, sz], 'east', ['', 'START', '(press)', '']);
   // lifts
   const lifts: Lift[] = [];
   const lift = (anchor: Pos, by: number, name: string): Lift => {
@@ -178,5 +181,7 @@ export function buildPlatform(b: Board, it: Items, cfg: Cfg, liftAnchor: { out: 
   const leftLift = lift(liftAnchor.left, it.lbL[1] - 1, 'liftLeft');
   hops.cvLiftLeftIn = conveyor(b, [it.lbL[0], it.lbL[1] - 1, it.lbL[2]], leftLift.dropper, 'cvLiftLeftIn').length;
   hops.cvLiftLeftTop = conveyor(b, leftLift.exit, leftover[1], 'cvLiftLeftTop').length;
+  // keep the space above the deck free of lanes: nothing red may run over the platform
+  for (let x = cfg.fpB[0] - 14; x <= cx(3) + 10; x++) for (let z = rowZ - 8; z <= rowZ + 3; z++) for (let y = PY + 1; y <= CY + 6; y++) if (b.isFree([x, y, z])) b.occ.set([x, y, z].join(','), { kind: 'reserve', net: '__deck' });
   return { PY, CY, rowZ, cx, diamonds, logs, output, leftover, button, btnDust, lifts };
 }

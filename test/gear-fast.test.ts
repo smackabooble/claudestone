@@ -25,6 +25,14 @@ test('compact gear set builds: 20 timelines, 15 crafters, platform with 4 chests
   assert.ok(vol < 700_000, `bounding box ${vol} (the stacked spread-out version was 1.5M)`);
 });
 
+test('compact gear set: no redstone on the platform (the START wire runs under the deck)', () => {
+  const PY = m.platform.button[1] - 1;
+  const zr = m.platform.diamonds[0][2];
+  const red = w.listBlocks().filter((b) => ['redstone_wire', 'repeater', 'comparator'].includes(b.type) && b.pos[1] >= PY && b.pos[2] >= zr - 8 && b.pos[2] <= zr + 3 && b.pos[0] >= m.platform.diamonds[0][0] - 14 && b.pos[0] <= m.platform.leftover[1][0] + 10);
+  assert.equal(red.length, 0, JSON.stringify(red.slice(0, 3)));
+  assert.equal(w.get(m.platform.button).type, 'stone_button');
+});
+
 test('compact gear set: items put on the platform drain down into the hub chests', () => {
   const w2 = new World(); const m2 = loadFast(w2);
   w2.setItem(m2.platform.diamonds[0], 0, { id: 'diamond_block', count: 8 });
