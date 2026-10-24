@@ -144,7 +144,7 @@ __on_tick() -> (
     t = tick_time() - global_t0;
     if (t % 20 == 0, rec_scan_all(false), for (global_dyn, rec_cell(_:0, _:1, _:2, false)));
     rec_items();
-    if (length(global_buf) > 0, write_file('rec', 'text', ['T ' + t] + global_buf));
+    if (length(global_buf) > 0, (lines = ['T ' + t]; for (global_buf, lines += _); write_file('rec', 'text', lines)));
   ));
 );
 
