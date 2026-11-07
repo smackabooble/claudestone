@@ -17,12 +17,12 @@ export const probe = (name: string, pos: Pos, ...obs: string[]): Probe => ({ nam
 /** probe of a container's inventory (slot:item x count) */
 export const inv = (name: string, pos: Pos): Probe => ({ name, pos, obs: [], inv: true });
 
-export function buildGrid(w: World, defs: Def[], PER_ROW = 17): { lever: Pos; cells: Cell[]; box: [Pos, Pos] } {
+export function buildGrid(w: World, defs: Def[], PER_ROW = 17, rowDz = ROW_DZ): { lever: Pos; cells: Cell[]; box: [Pos, Pos] } {
   // place cells in rows of PER_ROW columns; a wide cell takes `span` columns
   const slots: { row: number; col: number }[] = [];
   { let row = 0, col = 0; for (const d of defs) { const sp = d.span ?? 1; if (col + sp > PER_ROW) { row++; col = 0; } slots.push({ row, col }); col += sp; } }
   const rows = (slots.length ? slots[slots.length - 1].row : 0) + 1;
-  const xMax = 6 + STEP * PER_ROW + 6, zMax = (rows - 1) * ROW_DZ + 8;
+  const xMax = 6 + STEP * PER_ROW + 6, zMax = (rows - 1) * rowDz + 8;
   const rowHasCells = (r: number) => slots.some((q) => q.row === r);
   void rowHasCells;
   for (let x = -4; x <= xMax; x++) for (let z = -4; z <= zMax; z++) w.setRaw([x, FLOOR_Y, z], 'obsidian');
@@ -32,14 +32,14 @@ export function buildGrid(w: World, defs: Def[], PER_ROW = 17): { lever: Pos; ce
   const supportDust = (p: Pos) => { w.setRaw([p[0], 0, p[2]], 'obsidian'); w.setRaw(p, 'redstone_wire'); };
   // spine along +z at x=0 (the lever feeds its start)
   let srun = 0;                                                      // a repeater every 7 cells, never at a row bus (z % ROW_DZ == 0: the bus starts next to the spine)
-  for (let z = 0; z <= (rows - 1) * ROW_DZ; z++) {
+  for (let z = 0; z <= (rows - 1) * rowDz; z++) {
     srun++;
-    if (srun >= 7 && z % ROW_DZ !== 0) { w.setRaw([0, 0, z], 'obsidian'); w.setRaw([0, 1, z], 'repeater', { facing: 'north', delay: 1 }); srun = 0; } else supportDust([0, 1, z]);
+    if (srun >= 7 && z % rowDz !== 0) { w.setRaw([0, 0, z], 'obsidian'); w.setRaw([0, 1, z], 'repeater', { facing: 'north', delay: 1 }); srun = 0; } else supportDust([0, 1, z]);
   }
   const cells: Cell[] = [];
   defs.forEach((d, k) => {
     const { row, col } = slots[k];
-    const z0 = row * ROW_DZ, x = 6 + STEP * col;
+    const z0 = row * rowDz, x = 6 + STEP * col;
     if (k === 0 || slots[k - 1].row !== row) {
       let run = 0;                                                    // a repeater every 7 cells, never in a stub column (the stub reads the dust above it)
       for (let bx = 1; bx <= 6 + STEP * PER_ROW; bx++) {
@@ -86,9 +86,9 @@ export function observe(w: World, p: Probe): string {
 
 
 /** Build a timing lab, run it in the simulator (lever ON, 100 ticks, lever OFF, 100 ticks) and write examples/<name>.schem + examples/<name>-cells.txt (probes + the per-tick events). */
-export function exportTimingLab(name: string, defs: Def[], perRow: number): void {
+export function exportTimingLab(name: string, defs: Def[], perRow: number, rowDz = ROW_DZ): void {
   const w = new World();
-  const lab = buildGrid(w, defs, perRow);
+  const lab = buildGrid(w, defs, perRow, rowDz);
   w.run(40);
   const flat = lab.cells.flatMap((c) => c.probes.map((p) => ({ cell: c.id, p })));
   const PH = 100;
@@ -110,7 +110,7 @@ export function exportTimingLab(name: string, defs: Def[], perRow: number): void
   w.use(lab.lever); run('off');
   const cells = lab.cells.map((c) => ({ id: c.id, group: c.group, desc: c.desc, origin: c.origin, probes: c.probes.map((p) => ({ name: p.name, pos: p.pos, obs: p.obs, inv: !!p.inv })) }));
   const probeEvents = flat.map((f, i) => ({ cell: f.cell, name: f.p.name, init: init[i], on: trace.filter((t) => t.i === i && t.phase === 'on').map((t) => [t.t, t.v]), off: trace.filter((t) => t.i === i && t.phase === 'off').map((t) => [t.t, t.v]) }));
-  const w2 = new World(); buildGrid(w2, defs, perRow);               // the schematic is the FRESH lab (the world above is after both flicks)
+  const w2 = new World(); buildGrid(w2, defs, perRow, rowDz);               // the schematic is the FRESH lab (the world above is after both flicks)
   const fresh = exportSchem(w2);
   writeFileSync(`examples/${name}.schem`, fresh.buffer);
   writeFileSync(`examples/${name}-cells.txt`, JSON.stringify({ lever: lab.lever, box: lab.box, schemOrigin: fresh.origin, cells, events: probeEvents, falling }, null, 0));
