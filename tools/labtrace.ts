@@ -11,7 +11,7 @@ interface PrP { name: string; pos: number[]; obs: string[]; inv: boolean }
 interface Fall { phase: string; t: number; pos: number[][] }
 interface Ev { cell: string; name: string; init: string; on: [number, string][]; off: [number, string][] }
 const LAB = process.env.LAB ?? 'lab2';
-const lab = JSON.parse(readFileSync(`examples/${LAB}-cells.txt`, 'utf8')) as { lever: number[]; cells: { id: string; probes: PrP[] }[]; events: Ev[]; falling?: Fall[] };
+const lab = JSON.parse(readFileSync(`examples/${LAB}-cells.txt`, 'utf8')) as { lever: number[]; cells: { id: string; probes: PrP[] }[]; events: Ev[]; falling?: Fall[]; items?: Fall[] };
 const mode = process.argv[2];
 
 const WIN = { on: Number(process.env.ON_WINDOW ?? 1e9), off: Number(process.env.OFF_WINDOW ?? 1e9) };   // compare only the first N ticks of a phase (when the real phase was stepped for fewer than 100 ticks)
@@ -65,6 +65,7 @@ if (mode === 'sim') {
   const last: string[] = []; let started = false; let leverOn = -1, leverOff = -1;
   const touched = new Set<number>();
   const fall = new Map<number, number[][]>();
+  const itemsReal = new Map<number, number[][]>();
   const flush = () => { for (const i of touched) { const v = read(probes[i].p); if (started && v !== last[i]) real.push({ t: tNow, i, v }); last[i] = v; } touched.clear(); };
   for (const l of lines) {
     if (l.startsWith('T ')) { flush(); if (!started) { probes.forEach((q, i) => { last[i] = read(q.p); initReal[i] = last[i]; }); started = true; } tNow = Number(l.slice(2)); continue; }
@@ -74,6 +75,7 @@ if (mode === 'sim') {
       if (k === leverKey && started) { const pw = /powered: (true|false)/.exec(l); if (pw?.[1] === 'true' && leverOn < 0) leverOn = tNow; if (pw?.[1] === 'false' && leverOn >= 0 && leverOff < 0) leverOff = tNow; }
       continue;
     }
+    if (l.startsWith('I ') && started) { const q = l.split(' '); const arr = itemsReal.get(tNow) ?? []; itemsReal.set(tNow, arr); arr.push([Number(q[2]) - off[0], Number(q[3]) - off[1], Number(q[4]) - off[2], Number(q[7]), Number(q[6]), Number(q[8])]); continue; }
     if (l.startsWith('F ') && started) { const q = l.split(' '); const arr = fall.get(tNow) ?? []; fall.set(tNow, arr); arr.push([Number(q[2]) - off[0], Number(q[3]) - off[1], Number(q[4]) - off[2], Number(q[7])]); continue; }
     if (l.startsWith('V ')) { const m = /^V (\S+) (\S+) (\[.*\])\s*$/.exec(l); if (m) { V.set(m[1], m[3]); for (const pi of probesByKey.get(m[1]) ?? []) touched.add(pi); } }
   }
@@ -117,6 +119,23 @@ if (mode === 'sim') {
         const s2 = simF.find((f) => f.phase === ph && f.t + delta === t)?.pos ?? []; const r2 = fall.get(base + t) ?? [];
         const f3 = (a: number[][]) => a.map((q) => `y=${q[1].toFixed(2)} vy=${q[3]?.toFixed?.(3) ?? '?'}`).join('; ') || '-';
         console.log(`  ${ph.toUpperCase()} t=${String(t).padStart(3)}  sim: ${f3(s2).padEnd(34)} real: ${f3(r2)}`);
+      }
+    }
+  }
+  // item entities (water labs): per cell, the height / x of the items over time, sim vs real (positions relative to the lab; the cell is found by its x range)
+  const simI = lab.items ?? [];
+  if (simI.length || itemsReal.size) {
+    console.log('\nITEM ENTITIES per cell: t:y (x) every 4 ticks; sim vs real');
+    const cellOf = (x: number, z: number) => { let best = ''; for (const c of lab.cells) { const [ox, , oz] = c.origin; if (x >= ox - 2 && x < ox + 5 && z >= oz - 3 && z <= oz + 12) best = c.id; } return best || '?'; };
+    for (const ph of ['on', 'off'] as const) {
+      const base = ph === 'on' ? leverOn : leverOff; if (base < 0) continue;
+      const simBy = new Map<string, Map<number, number[][]>>(), realBy = new Map<string, Map<number, number[][]>>();
+      const put = (m: Map<string, Map<number, number[][]>>, cell: string, t: number, e: number[]) => { const mm = m.get(cell) ?? new Map(); m.set(cell, mm); const a = mm.get(t) ?? []; mm.set(t, a); a.push(e); };
+      for (const f of simI.filter((q) => q.phase === ph)) for (const e of f.pos) put(simBy, cellOf(e[0], e[2]), f.t + delta, e);
+      for (const [T, list] of itemsReal) if (T >= base && (ph === 'off' || leverOff < 0 || T < leverOff)) for (const e of list) put(realBy, cellOf(e[0], e[2]), T - base, e);
+      for (const cid of new Set([...simBy.keys(), ...realBy.keys()])) {
+        const row = (m?: Map<number, number[][]>) => { if (!m) return '-'; return [...m.keys()].sort((a, b) => a - b).filter((t, i) => i % 4 === 0).map((t) => `${t}:` + m.get(t)!.map((e) => `${e[1].toFixed(2)}(${e[0].toFixed(2)})`).join('/')).join('  ') || '-'; };
+        console.log(`  ${ph.toUpperCase()} ${cid}\n     sim : ${row(simBy.get(cid))}\n     real: ${row(realBy.get(cid))}`);
       }
     }
   }
