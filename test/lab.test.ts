@@ -74,3 +74,9 @@ test('lab 3: the simulator matches the real recording (knowledge/refs/lab3-real-
   const cells = out.split('\n').filter((l) => /^[A-Z]\.\S+$/.test(l.trim())).map((l) => l.trim()).sort();
   assert.deepEqual(cells, ['C.levels', 'H.chain']);          // only their OFF phase differs: the transfers that were still running when the lever was flicked again
 });
+
+test('lab 4: the simulator matches the real recording of all 6 cells (knowledge/refs/lab4-real-1-rec.txt, 54 probe phases)', async () => {
+  const { execSync } = await import('node:child_process');
+  const out = execSync('npx tsx tools/labtrace.ts compare knowledge/refs/lab4-real-1-rec.txt -532,19,783', { encoding: 'utf8', env: { ...process.env, LAB: 'lab4' } });
+  assert.match(out, /probe phases that differ: 0 of 54 \(incl\. initial states\); cells with a difference: 0 of 6/);
+});
