@@ -60,11 +60,8 @@ test('lab builds: no dust, repeater, comparator or floor torch floats in the air
   }
 });
 
-test('lab 2: the simulator matches the real tick-by-tick recording (knowledge/refs/lab2-real-1-rec.txt) except 3 cells with known reasons', async () => {
+test('lab 2: the simulator matches the real tick-by-tick recording of all 24 cells (knowledge/refs/lab2-real-2-rec.txt, 164 probe phases)', async () => {
   const { execSync } = await import('node:child_process');
-  const out = execSync('npx tsx tools/labtrace.ts compare knowledge/refs/lab2-real-1-rec.txt -263,-2,809', { encoding: 'utf8' });
-  // T.hopper.lock: the real run used the OLD cell (hopper without torch); T.sand.up / T.sand.sticky: the recording box was too low for the pushed sand
-  const cells = out.split('\n').filter((l) => /^[LT]\.\S+$/.test(l.trim())).map((l) => l.trim()).sort();
-  assert.deepEqual(cells, ['T.hopper.lock', 'T.sand.sticky', 'T.sand.up']);
-  assert.match(out, /real = sim \+ -1/);
+  const out = execSync('npx tsx tools/labtrace.ts compare knowledge/refs/lab2-real-2-rec.txt -327,4,679', { encoding: 'utf8' });
+  assert.match(out, /probe phases that differ: 0 of 164; cells with a difference: 0 of 24/);
 });
