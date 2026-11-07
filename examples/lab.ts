@@ -1,6 +1,6 @@
 /**
  * THE LAB: one lever, many small independent cells, each testing one rule of the real game (conduction, dust support, quasi-connectivity,
- * what a piston pushes / pulls / glues). Build it with `npx tsx examples/lab.ts` (writes examples/lab.schem + examples/lab.json).
+ * what a piston pushes / pulls / glues). Build it with `npx tsx examples/lab.ts` (writes examples/lab.schem + examples/lab-cells.txt).
  * Record it in the real game with tools/doortrace.sc (box around the whole lab, flick the lever ON, wait 150 ticks, flick OFF, wait 150 ticks)
  * and compare with `npx tsx tools/labcheck.ts compare <trace.txt>`.
  *
@@ -172,6 +172,6 @@ if (import.meta.url === `file://${process.argv[1]}`) {
   const out = exportSchem(w);
   writeFileSync('examples/lab.schem', out.buffer);
   const cells = lab.cells.map((c, i) => ({ id: c.id, group: c.group, desc: c.desc, origin: c.origin, probes: c.probes.map((p, j) => ({ name: p.name, pos: p.pos, obs: p.obs, sim: { before: before[i][j], on: on[i][j], off: off[i][j] } })) }));
-  writeFileSync('examples/lab.json', JSON.stringify({ lever: lab.lever, box: lab.box, schemOrigin: out.origin, cells }, null, 1));
+  writeFileSync('examples/lab-cells.txt', JSON.stringify({ lever: lab.lever, box: lab.box, schemOrigin: out.origin, cells }, null, 1));
   console.log(`cells ${cells.length}, blocks ${w.listBlocks().length}, schematic ${out.size.join('x')} origin ${out.origin.join(',')}, lever ${lab.lever.join(',')}, box ${lab.box.map((b) => b.join(',')).join(' .. ')}`);
 }

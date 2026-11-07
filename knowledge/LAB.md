@@ -1,7 +1,7 @@
 # The lab: testing the simulator against the real game
 
 `examples/lab.ts` builds 208 small independent cells (conduction, dust support, piston push/pull, slime glue, quasi-connectivity), all fed by ONE lever.
-Files: `examples/lab.schem` (paste with Litematica), `examples/lab.json` (cells, probes, the simulator's answers), `tools/labsnap.sc` (Carpet app that writes block snapshots),
+Files: `examples/lab.schem` (paste with Litematica), `examples/lab-cells.txt` (cells, probes, the simulator's answers), `tools/labsnap.sc` (Carpet app that writes block snapshots),
 `tools/labcheck.ts` (prints / compares). Size 129 x 7 x 241. In schematic coordinates the lever is at (3,5,4).
 
 ## Procedure (real game)

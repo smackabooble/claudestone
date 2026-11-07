@@ -2,14 +2,14 @@
  * The lab (examples/lab.ts): print the simulator's answers, or compare them with a real-game trace.
  *   npx tsx tools/labcheck.ts sim [group-substring]
  *   npx tsx tools/labcheck.ts compare <before.txt> <on.txt> <off.txt> <lever world x,y,z>
- * The three snapshots come from tools/labsnap.sc over the whole lab box (lab.json "box", relative to the pasted lab): before the flick,
+ * The three snapshots come from tools/labsnap.sc over the whole lab box (lab-cells.txt "box", relative to the pasted lab): before the flick,
  * after the lever is ON (10 s), after it is OFF again (10 s).
  */
 import { readFileSync } from 'node:fs';
 
 interface P { name: string; pos: [number, number, number]; obs: string[]; sim: { before: string; on: string; off: string } }
 interface C { id: string; group: string; desc: string; origin: number[]; probes: P[] }
-const lab = JSON.parse(readFileSync('examples/lab.json', 'utf8')) as { lever: number[]; cells: C[] };
+const lab = JSON.parse(readFileSync('examples/lab-cells.txt', 'utf8')) as { lever: number[]; cells: C[] };
 
 const mode = process.argv[2];
 if (mode === 'sim') {
