@@ -1,0 +1,9866 @@
+{
+ "lever": [
+  -1,
+  1,
+  0
+ ],
+ "box": [
+  [
+   -5,
+   -4,
+   -5
+  ],
+  [
+   125,
+   8,
+   237
+  ]
+ ],
+ "schemOrigin": [
+  -4,
+  -4,
+  -4
+ ],
+ "cells": [
+  {
+   "id": "A.cond.stone",
+   "group": "conduction",
+   "desc": "does stone conduct strong power? (lamps east, west, south of it)",
+   "origin": [
+    6,
+    1,
+    2
+   ],
+   "probes": [
+    {
+     "name": "lamp east",
+     "pos": [
+      7,
+      1,
+      2
+     ],
+     "obs": [
+      "lit"
+     ],
+     "sim": {
+      "before": "redstone_lamp lit=false",
+      "on": "redstone_lamp lit=true",
+      "off": "redstone_lamp lit=false"
+     }
+    },
+    {
+     "name": "lamp west",
+     "pos": [
+      5,
+      1,
+      2
+     ],
+     "obs": [
+      "lit"
+     ],
+     "sim": {
+      "before": "redstone_lamp lit=false",
+      "on": "redstone_lamp lit=true",
+      "off": "redstone_lamp lit=false"
+     }
+    },
+    {
+     "name": "lamp south",
+     "pos": [
+      6,
+      1,
+      3
+     ],
+     "obs": [
+      "lit"
+     ],
+     "sim": {
+      "before": "redstone_lamp lit=false",
+      "on": "redstone_lamp lit=true",
+      "off": "redstone_lamp lit=false"
+     }
+    },
+    {
+     "name": "block",
+     "pos": [
+      6,
+      1,
+      2
+     ],
+     "obs": [],
+     "sim": {
+      "before": "stone",
+      "on": "stone",
+      "off": "stone"
+     }
+    }
+   ]
+  },
+  {
+   "id": "A.cond.obsidian",
+   "group": "conduction",
+   "desc": "does obsidian conduct strong power? (lamps east, west, south of it)",
+   "origin": [
+    14,
+    1,
+    2
+   ],
+   "probes": [
+    {
+     "name": "lamp east",
+     "pos": [
+      15,
+      1,
+      2
+     ],
+     "obs": [
+      "lit"
+     ],
+     "sim": {
+      "before": "redstone_lamp lit=false",
+      "on": "redstone_lamp lit=true",
+      "off": "redstone_lamp lit=false"
+     }
+    },
+    {
+     "name": "lamp west",
+     "pos": [
+      13,
+      1,
+      2
+     ],
+     "obs": [
+      "lit"
+     ],
+     "sim": {
+      "before": "redstone_lamp lit=false",
+      "on": "redstone_lamp lit=true",
+      "off": "redstone_lamp lit=false"
+     }
+    },
+    {
+     "name": "lamp south",
+     "pos": [
+      14,
+      1,
+      3
+     ],
+     "obs": [
+      "lit"
+     ],
+     "sim": {
+      "before": "redstone_lamp lit=false",
+      "on": "redstone_lamp lit=true",
+      "off": "redstone_lamp lit=false"
+     }
+    },
+    {
+     "name": "block",
+     "pos": [
+      14,
+      1,
+      2
+     ],
+     "obs": [],
+     "sim": {
+      "before": "obsidian",
+      "on": "obsidian",
+      "off": "obsidian"
+     }
+    }
+   ]
+  },
+  {
+   "id": "A.cond.glass",
+   "group": "conduction",
+   "desc": "does glass conduct strong power? (lamps east, west, south of it)",
+   "origin": [
+    22,
+    1,
+    2
+   ],
+   "probes": [
+    {
+     "name": "lamp east",
+     "pos": [
+      23,
+      1,
+      2
+     ],
+     "obs": [
+      "lit"
+     ],
+     "sim": {
+      "before": "redstone_lamp lit=false",
+      "on": "redstone_lamp lit=false",
+      "off": "redstone_lamp lit=false"
+     }
+    },
+    {
+     "name": "lamp west",
+     "pos": [
+      21,
+      1,
+      2
+     ],
+     "obs": [
+      "lit"
+     ],
+     "sim": {
+      "before": "redstone_lamp lit=false",
+      "on": "redstone_lamp lit=false",
+      "off": "redstone_lamp lit=false"
+     }
+    },
+    {
+     "name": "lamp south",
+     "pos": [
+      22,
+      1,
+      3
+     ],
+     "obs": [
+      "lit"
+     ],
+     "sim": {
+      "before": "redstone_lamp lit=false",
+      "on": "redstone_lamp lit=false",
+      "off": "redstone_lamp lit=false"
+     }
+    },
+    {
+     "name": "block",
+     "pos": [
+      22,
+      1,
+      2
+     ],
+     "obs": [],
+     "sim": {
+      "before": "glass",
+      "on": "glass",
+      "off": "glass"
+     }
+    }
+   ]
+  },
+  {
+   "id": "A.cond.sand",
+   "group": "conduction",
+   "desc": "does sand conduct strong power? (lamps east, west, south of it)",
+   "origin": [
+    30,
+    1,
+    2
+   ],
+   "probes": [
+    {
+     "name": "lamp east",
+     "pos": [
+      31,
+      1,
+      2
+     ],
+     "obs": [
+      "lit"
+     ],
+     "sim": {
+      "before": "redstone_lamp lit=false",
+      "on": "redstone_lamp lit=true",
+      "off": "redstone_lamp lit=false"
+     }
+    },
+    {
+     "name": "lamp west",
+     "pos": [
+      29,
+      1,
+      2
+     ],
+     "obs": [
+      "lit"
+     ],
+     "sim": {
+      "before": "redstone_lamp lit=false",
+      "on": "redstone_lamp lit=true",
+      "off": "redstone_lamp lit=false"
+     }
+    },
+    {
+     "name": "lamp south",
+     "pos": [
+      30,
+      1,
+      3
+     ],
+     "obs": [
+      "lit"
+     ],
+     "sim": {
+      "before": "redstone_lamp lit=false",
+      "on": "redstone_lamp lit=true",
+      "off": "redstone_lamp lit=false"
+     }
+    },
+    {
+     "name": "block",
+     "pos": [
+      30,
+      1,
+      2
+     ],
+     "obs": [],
+     "sim": {
+      "before": "sand",
+      "on": "sand",
+      "off": "sand"
+     }
+    }
+   ]
+  },
+  {
+   "id": "A.cond.slime_block",
+   "group": "conduction",
+   "desc": "does slime_block conduct strong power? (lamps east, west, south of it)",
+   "origin": [
+    38,
+    1,
+    2
+   ],
+   "probes": [
+    {
+     "name": "lamp east",
+     "pos": [
+      39,
+      1,
+      2
+     ],
+     "obs": [
+      "lit"
+     ],
+     "sim": {
+      "before": "redstone_lamp lit=false",
+      "on": "redstone_lamp lit=true",
+      "off": "redstone_lamp lit=false"
+     }
+    },
+    {
+     "name": "lamp west",
+     "pos": [
+      37,
+      1,
+      2
+     ],
+     "obs": [
+      "lit"
+     ],
+     "sim": {
+      "before": "redstone_lamp lit=false",
+      "on": "redstone_lamp lit=true",
+      "off": "redstone_lamp lit=false"
+     }
+    },
+    {
+     "name": "lamp south",
+     "pos": [
+      38,
+      1,
+      3
+     ],
+     "obs": [
+      "lit"
+     ],
+     "sim": {
+      "before": "redstone_lamp lit=false",
+      "on": "redstone_lamp lit=true",
+      "off": "redstone_lamp lit=false"
+     }
+    },
+    {
+     "name": "block",
+     "pos": [
+      38,
+      1,
+      2
+     ],
+     "obs": [],
+     "sim": {
+      "before": "slime_block",
+      "on": "slime_block",
+      "off": "slime_block"
+     }
+    }
+   ]
+  },
+  {
+   "id": "A.cond.honey_block",
+   "group": "conduction",
+   "desc": "does honey_block conduct strong power? (lamps east, west, south of it)",
+   "origin": [
+    46,
+    1,
+    2
+   ],
+   "probes": [
+    {
+     "name": "lamp east",
+     "pos": [
+      47,
+      1,
+      2
+     ],
+     "obs": [
+      "lit"
+     ],
+     "sim": {
+      "before": "redstone_lamp lit=false",
+      "on": "redstone_lamp lit=false",
+      "off": "redstone_lamp lit=false"
+     }
+    },
+    {
+     "name": "lamp west",
+     "pos": [
+      45,
+      1,
+      2
+     ],
+     "obs": [
+      "lit"
+     ],
+     "sim": {
+      "before": "redstone_lamp lit=false",
+      "on": "redstone_lamp lit=false",
+      "off": "redstone_lamp lit=false"
+     }
+    },
+    {
+     "name": "lamp south",
+     "pos": [
+      46,
+      1,
+      3
+     ],
+     "obs": [
+      "lit"
+     ],
+     "sim": {
+      "before": "redstone_lamp lit=false",
+      "on": "redstone_lamp lit=false",
+      "off": "redstone_lamp lit=false"
+     }
+    },
+    {
+     "name": "block",
+     "pos": [
+      46,
+      1,
+      2
+     ],
+     "obs": [],
+     "sim": {
+      "before": "honey_block",
+      "on": "honey_block",
+      "off": "honey_block"
+     }
+    }
+   ]
+  },
+  {
+   "id": "A.cond.soul_sand",
+   "group": "conduction",
+   "desc": "does soul_sand conduct strong power? (lamps east, west, south of it)",
+   "origin": [
+    54,
+    1,
+    2
+   ],
+   "probes": [
+    {
+     "name": "lamp east",
+     "pos": [
+      55,
+      1,
+      2
+     ],
+     "obs": [
+      "lit"
+     ],
+     "sim": {
+      "before": "redstone_lamp lit=false",
+      "on": "redstone_lamp lit=true",
+      "off": "redstone_lamp lit=false"
+     }
+    },
+    {
+     "name": "lamp west",
+     "pos": [
+      53,
+      1,
+      2
+     ],
+     "obs": [
+      "lit"
+     ],
+     "sim": {
+      "before": "redstone_lamp lit=false",
+      "on": "redstone_lamp lit=true",
+      "off": "redstone_lamp lit=false"
+     }
+    },
+    {
+     "name": "lamp south",
+     "pos": [
+      54,
+      1,
+      3
+     ],
+     "obs": [
+      "lit"
+     ],
+     "sim": {
+      "before": "redstone_lamp lit=false",
+      "on": "redstone_lamp lit=true",
+      "off": "redstone_lamp lit=false"
+     }
+    },
+    {
+     "name": "block",
+     "pos": [
+      54,
+      1,
+      2
+     ],
+     "obs": [],
+     "sim": {
+      "before": "soul_sand",
+      "on": "soul_sand",
+      "off": "soul_sand"
+     }
+    }
+   ]
+  },
+  {
+   "id": "A.cond.iron_block",
+   "group": "conduction",
+   "desc": "does iron_block conduct strong power? (lamps east, west, south of it)",
+   "origin": [
+    62,
+    1,
+    2
+   ],
+   "probes": [
+    {
+     "name": "lamp east",
+     "pos": [
+      63,
+      1,
+      2
+     ],
+     "obs": [
+      "lit"
+     ],
+     "sim": {
+      "before": "redstone_lamp lit=false",
+      "on": "redstone_lamp lit=true",
+      "off": "redstone_lamp lit=false"
+     }
+    },
+    {
+     "name": "lamp west",
+     "pos": [
+      61,
+      1,
+      2
+     ],
+     "obs": [
+      "lit"
+     ],
+     "sim": {
+      "before": "redstone_lamp lit=false",
+      "on": "redstone_lamp lit=true",
+      "off": "redstone_lamp lit=false"
+     }
+    },
+    {
+     "name": "lamp south",
+     "pos": [
+      62,
+      1,
+      3
+     ],
+     "obs": [
+      "lit"
+     ],
+     "sim": {
+      "before": "redstone_lamp lit=false",
+      "on": "redstone_lamp lit=true",
+      "off": "redstone_lamp lit=false"
+     }
+    },
+    {
+     "name": "block",
+     "pos": [
+      62,
+      1,
+      2
+     ],
+     "obs": [],
+     "sim": {
+      "before": "iron_block",
+      "on": "iron_block",
+      "off": "iron_block"
+     }
+    }
+   ]
+  },
+  {
+   "id": "A.cond.coal_block",
+   "group": "conduction",
+   "desc": "does coal_block conduct strong power? (lamps east, west, south of it)",
+   "origin": [
+    70,
+    1,
+    2
+   ],
+   "probes": [
+    {
+     "name": "lamp east",
+     "pos": [
+      71,
+      1,
+      2
+     ],
+     "obs": [
+      "lit"
+     ],
+     "sim": {
+      "before": "redstone_lamp lit=false",
+      "on": "redstone_lamp lit=true",
+      "off": "redstone_lamp lit=false"
+     }
+    },
+    {
+     "name": "lamp west",
+     "pos": [
+      69,
+      1,
+      2
+     ],
+     "obs": [
+      "lit"
+     ],
+     "sim": {
+      "before": "redstone_lamp lit=false",
+      "on": "redstone_lamp lit=true",
+      "off": "redstone_lamp lit=false"
+     }
+    },
+    {
+     "name": "lamp south",
+     "pos": [
+      70,
+      1,
+      3
+     ],
+     "obs": [
+      "lit"
+     ],
+     "sim": {
+      "before": "redstone_lamp lit=false",
+      "on": "redstone_lamp lit=true",
+      "off": "redstone_lamp lit=false"
+     }
+    },
+    {
+     "name": "block",
+     "pos": [
+      70,
+      1,
+      2
+     ],
+     "obs": [],
+     "sim": {
+      "before": "coal_block",
+      "on": "coal_block",
+      "off": "coal_block"
+     }
+    }
+   ]
+  },
+  {
+   "id": "A.cond.hay_block",
+   "group": "conduction",
+   "desc": "does hay_block conduct strong power? (lamps east, west, south of it)",
+   "origin": [
+    78,
+    1,
+    2
+   ],
+   "probes": [
+    {
+     "name": "lamp east",
+     "pos": [
+      79,
+      1,
+      2
+     ],
+     "obs": [
+      "lit"
+     ],
+     "sim": {
+      "before": "redstone_lamp lit=false",
+      "on": "redstone_lamp lit=true",
+      "off": "redstone_lamp lit=false"
+     }
+    },
+    {
+     "name": "lamp west",
+     "pos": [
+      77,
+      1,
+      2
+     ],
+     "obs": [
+      "lit"
+     ],
+     "sim": {
+      "before": "redstone_lamp lit=false",
+      "on": "redstone_lamp lit=true",
+      "off": "redstone_lamp lit=false"
+     }
+    },
+    {
+     "name": "lamp south",
+     "pos": [
+      78,
+      1,
+      3
+     ],
+     "obs": [
+      "lit"
+     ],
+     "sim": {
+      "before": "redstone_lamp lit=false",
+      "on": "redstone_lamp lit=true",
+      "off": "redstone_lamp lit=false"
+     }
+    },
+    {
+     "name": "block",
+     "pos": [
+      78,
+      1,
+      2
+     ],
+     "obs": [],
+     "sim": {
+      "before": "hay_block",
+      "on": "hay_block",
+      "off": "hay_block"
+     }
+    }
+   ]
+  },
+  {
+   "id": "A.cond.furnace",
+   "group": "conduction",
+   "desc": "does furnace conduct strong power? (lamps east, west, south of it)",
+   "origin": [
+    86,
+    1,
+    2
+   ],
+   "probes": [
+    {
+     "name": "lamp east",
+     "pos": [
+      87,
+      1,
+      2
+     ],
+     "obs": [
+      "lit"
+     ],
+     "sim": {
+      "before": "redstone_lamp lit=false",
+      "on": "redstone_lamp lit=true",
+      "off": "redstone_lamp lit=false"
+     }
+    },
+    {
+     "name": "lamp west",
+     "pos": [
+      85,
+      1,
+      2
+     ],
+     "obs": [
+      "lit"
+     ],
+     "sim": {
+      "before": "redstone_lamp lit=false",
+      "on": "redstone_lamp lit=true",
+      "off": "redstone_lamp lit=false"
+     }
+    },
+    {
+     "name": "lamp south",
+     "pos": [
+      86,
+      1,
+      3
+     ],
+     "obs": [
+      "lit"
+     ],
+     "sim": {
+      "before": "redstone_lamp lit=false",
+      "on": "redstone_lamp lit=true",
+      "off": "redstone_lamp lit=false"
+     }
+    },
+    {
+     "name": "block",
+     "pos": [
+      86,
+      1,
+      2
+     ],
+     "obs": [],
+     "sim": {
+      "before": "furnace",
+      "on": "furnace",
+      "off": "furnace"
+     }
+    }
+   ]
+  },
+  {
+   "id": "A.cond.hopper",
+   "group": "conduction",
+   "desc": "does hopper conduct strong power? (lamps east, west, south of it)",
+   "origin": [
+    94,
+    1,
+    2
+   ],
+   "probes": [
+    {
+     "name": "lamp east",
+     "pos": [
+      95,
+      1,
+      2
+     ],
+     "obs": [
+      "lit"
+     ],
+     "sim": {
+      "before": "redstone_lamp lit=false",
+      "on": "redstone_lamp lit=false",
+      "off": "redstone_lamp lit=false"
+     }
+    },
+    {
+     "name": "lamp west",
+     "pos": [
+      93,
+      1,
+      2
+     ],
+     "obs": [
+      "lit"
+     ],
+     "sim": {
+      "before": "redstone_lamp lit=false",
+      "on": "redstone_lamp lit=false",
+      "off": "redstone_lamp lit=false"
+     }
+    },
+    {
+     "name": "lamp south",
+     "pos": [
+      94,
+      1,
+      3
+     ],
+     "obs": [
+      "lit"
+     ],
+     "sim": {
+      "before": "redstone_lamp lit=false",
+      "on": "redstone_lamp lit=false",
+      "off": "redstone_lamp lit=false"
+     }
+    },
+    {
+     "name": "block",
+     "pos": [
+      94,
+      1,
+      2
+     ],
+     "obs": [],
+     "sim": {
+      "before": "hopper",
+      "on": "hopper",
+      "off": "hopper"
+     }
+    }
+   ]
+  },
+  {
+   "id": "A.cond.dropper",
+   "group": "conduction",
+   "desc": "does dropper conduct strong power? (lamps east, west, south of it)",
+   "origin": [
+    102,
+    1,
+    2
+   ],
+   "probes": [
+    {
+     "name": "lamp east",
+     "pos": [
+      103,
+      1,
+      2
+     ],
+     "obs": [
+      "lit"
+     ],
+     "sim": {
+      "before": "redstone_lamp lit=false",
+      "on": "redstone_lamp lit=true",
+      "off": "redstone_lamp lit=false"
+     }
+    },
+    {
+     "name": "lamp west",
+     "pos": [
+      101,
+      1,
+      2
+     ],
+     "obs": [
+      "lit"
+     ],
+     "sim": {
+      "before": "redstone_lamp lit=false",
+      "on": "redstone_lamp lit=true",
+      "off": "redstone_lamp lit=false"
+     }
+    },
+    {
+     "name": "lamp south",
+     "pos": [
+      102,
+      1,
+      3
+     ],
+     "obs": [
+      "lit"
+     ],
+     "sim": {
+      "before": "redstone_lamp lit=false",
+      "on": "redstone_lamp lit=true",
+      "off": "redstone_lamp lit=false"
+     }
+    },
+    {
+     "name": "block",
+     "pos": [
+      102,
+      1,
+      2
+     ],
+     "obs": [],
+     "sim": {
+      "before": "dropper",
+      "on": "dropper",
+      "off": "dropper"
+     }
+    }
+   ]
+  },
+  {
+   "id": "A.cond.observer",
+   "group": "conduction",
+   "desc": "does observer conduct strong power? (lamps east, west, south of it)",
+   "origin": [
+    110,
+    1,
+    2
+   ],
+   "probes": [
+    {
+     "name": "lamp east",
+     "pos": [
+      111,
+      1,
+      2
+     ],
+     "obs": [
+      "lit"
+     ],
+     "sim": {
+      "before": "redstone_lamp lit=false",
+      "on": "redstone_lamp lit=false",
+      "off": "redstone_lamp lit=false"
+     }
+    },
+    {
+     "name": "lamp west",
+     "pos": [
+      109,
+      1,
+      2
+     ],
+     "obs": [
+      "lit"
+     ],
+     "sim": {
+      "before": "redstone_lamp lit=false",
+      "on": "redstone_lamp lit=false",
+      "off": "redstone_lamp lit=false"
+     }
+    },
+    {
+     "name": "lamp south",
+     "pos": [
+      110,
+      1,
+      3
+     ],
+     "obs": [
+      "lit"
+     ],
+     "sim": {
+      "before": "redstone_lamp lit=false",
+      "on": "redstone_lamp lit=false",
+      "off": "redstone_lamp lit=false"
+     }
+    },
+    {
+     "name": "block",
+     "pos": [
+      110,
+      1,
+      2
+     ],
+     "obs": [],
+     "sim": {
+      "before": "observer",
+      "on": "observer",
+      "off": "observer"
+     }
+    }
+   ]
+  },
+  {
+   "id": "A.cond.leaves",
+   "group": "conduction",
+   "desc": "does leaves conduct strong power? (lamps east, west, south of it)",
+   "origin": [
+    6,
+    1,
+    18
+   ],
+   "probes": [
+    {
+     "name": "lamp east",
+     "pos": [
+      7,
+      1,
+      18
+     ],
+     "obs": [
+      "lit"
+     ],
+     "sim": {
+      "before": "redstone_lamp lit=false",
+      "on": "redstone_lamp lit=false",
+      "off": "redstone_lamp lit=false"
+     }
+    },
+    {
+     "name": "lamp west",
+     "pos": [
+      5,
+      1,
+      18
+     ],
+     "obs": [
+      "lit"
+     ],
+     "sim": {
+      "before": "redstone_lamp lit=false",
+      "on": "redstone_lamp lit=false",
+      "off": "redstone_lamp lit=false"
+     }
+    },
+    {
+     "name": "lamp south",
+     "pos": [
+      6,
+      1,
+      19
+     ],
+     "obs": [
+      "lit"
+     ],
+     "sim": {
+      "before": "redstone_lamp lit=false",
+      "on": "redstone_lamp lit=false",
+      "off": "redstone_lamp lit=false"
+     }
+    },
+    {
+     "name": "block",
+     "pos": [
+      6,
+      1,
+      18
+     ],
+     "obs": [],
+     "sim": {
+      "before": "oak_leaves",
+      "on": "oak_leaves",
+      "off": "oak_leaves"
+     }
+    }
+   ]
+  },
+  {
+   "id": "A.cond.partial",
+   "group": "conduction",
+   "desc": "does partial conduct strong power? (lamps east, west, south of it)",
+   "origin": [
+    14,
+    1,
+    18
+   ],
+   "probes": [
+    {
+     "name": "lamp east",
+     "pos": [
+      15,
+      1,
+      18
+     ],
+     "obs": [
+      "lit"
+     ],
+     "sim": {
+      "before": "redstone_lamp lit=false",
+      "on": "redstone_lamp lit=false",
+      "off": "redstone_lamp lit=false"
+     }
+    },
+    {
+     "name": "lamp west",
+     "pos": [
+      13,
+      1,
+      18
+     ],
+     "obs": [
+      "lit"
+     ],
+     "sim": {
+      "before": "redstone_lamp lit=false",
+      "on": "redstone_lamp lit=false",
+      "off": "redstone_lamp lit=false"
+     }
+    },
+    {
+     "name": "lamp south",
+     "pos": [
+      14,
+      1,
+      19
+     ],
+     "obs": [
+      "lit"
+     ],
+     "sim": {
+      "before": "redstone_lamp lit=false",
+      "on": "redstone_lamp lit=false",
+      "off": "redstone_lamp lit=false"
+     }
+    },
+    {
+     "name": "block",
+     "pos": [
+      14,
+      1,
+      18
+     ],
+     "obs": [],
+     "sim": {
+      "before": "stone_slab",
+      "on": "stone_slab",
+      "off": "stone_slab"
+     }
+    }
+   ]
+  },
+  {
+   "id": "A.cond.stairs",
+   "group": "conduction",
+   "desc": "does stairs conduct strong power? (lamps east, west, south of it)",
+   "origin": [
+    22,
+    1,
+    18
+   ],
+   "probes": [
+    {
+     "name": "lamp east",
+     "pos": [
+      23,
+      1,
+      18
+     ],
+     "obs": [
+      "lit"
+     ],
+     "sim": {
+      "before": "redstone_lamp lit=false",
+      "on": "redstone_lamp lit=false",
+      "off": "redstone_lamp lit=false"
+     }
+    },
+    {
+     "name": "lamp west",
+     "pos": [
+      21,
+      1,
+      18
+     ],
+     "obs": [
+      "lit"
+     ],
+     "sim": {
+      "before": "redstone_lamp lit=false",
+      "on": "redstone_lamp lit=false",
+      "off": "redstone_lamp lit=false"
+     }
+    },
+    {
+     "name": "lamp south",
+     "pos": [
+      22,
+      1,
+      19
+     ],
+     "obs": [
+      "lit"
+     ],
+     "sim": {
+      "before": "redstone_lamp lit=false",
+      "on": "redstone_lamp lit=false",
+      "off": "redstone_lamp lit=false"
+     }
+    },
+    {
+     "name": "block",
+     "pos": [
+      22,
+      1,
+      18
+     ],
+     "obs": [],
+     "sim": {
+      "before": "stone_brick_stairs",
+      "on": "stone_brick_stairs",
+      "off": "stone_brick_stairs"
+     }
+    }
+   ]
+  },
+  {
+   "id": "A.cond.pane",
+   "group": "conduction",
+   "desc": "does pane conduct strong power? (lamps east, west, south of it)",
+   "origin": [
+    30,
+    1,
+    18
+   ],
+   "probes": [
+    {
+     "name": "lamp east",
+     "pos": [
+      31,
+      1,
+      18
+     ],
+     "obs": [
+      "lit"
+     ],
+     "sim": {
+      "before": "redstone_lamp lit=false",
+      "on": "redstone_lamp lit=false",
+      "off": "redstone_lamp lit=false"
+     }
+    },
+    {
+     "name": "lamp west",
+     "pos": [
+      29,
+      1,
+      18
+     ],
+     "obs": [
+      "lit"
+     ],
+     "sim": {
+      "before": "redstone_lamp lit=false",
+      "on": "redstone_lamp lit=false",
+      "off": "redstone_lamp lit=false"
+     }
+    },
+    {
+     "name": "lamp south",
+     "pos": [
+      30,
+      1,
+      19
+     ],
+     "obs": [
+      "lit"
+     ],
+     "sim": {
+      "before": "redstone_lamp lit=false",
+      "on": "redstone_lamp lit=false",
+      "off": "redstone_lamp lit=false"
+     }
+    },
+    {
+     "name": "block",
+     "pos": [
+      30,
+      1,
+      18
+     ],
+     "obs": [],
+     "sim": {
+      "before": "glass_pane",
+      "on": "glass_pane",
+      "off": "glass_pane"
+     }
+    }
+   ]
+  },
+  {
+   "id": "A.cond.chest",
+   "group": "conduction",
+   "desc": "does chest conduct strong power? (lamps east, west, south of it)",
+   "origin": [
+    38,
+    1,
+    18
+   ],
+   "probes": [
+    {
+     "name": "lamp east",
+     "pos": [
+      39,
+      1,
+      18
+     ],
+     "obs": [
+      "lit"
+     ],
+     "sim": {
+      "before": "redstone_lamp lit=false",
+      "on": "redstone_lamp lit=false",
+      "off": "redstone_lamp lit=false"
+     }
+    },
+    {
+     "name": "lamp west",
+     "pos": [
+      37,
+      1,
+      18
+     ],
+     "obs": [
+      "lit"
+     ],
+     "sim": {
+      "before": "redstone_lamp lit=false",
+      "on": "redstone_lamp lit=false",
+      "off": "redstone_lamp lit=false"
+     }
+    },
+    {
+     "name": "lamp south",
+     "pos": [
+      38,
+      1,
+      19
+     ],
+     "obs": [
+      "lit"
+     ],
+     "sim": {
+      "before": "redstone_lamp lit=false",
+      "on": "redstone_lamp lit=false",
+      "off": "redstone_lamp lit=false"
+     }
+    },
+    {
+     "name": "block",
+     "pos": [
+      38,
+      1,
+      18
+     ],
+     "obs": [],
+     "sim": {
+      "before": "chest",
+      "on": "chest",
+      "off": "chest"
+     }
+    }
+   ]
+  },
+  {
+   "id": "A.cond.barrel",
+   "group": "conduction",
+   "desc": "does barrel conduct strong power? (lamps east, west, south of it)",
+   "origin": [
+    46,
+    1,
+    18
+   ],
+   "probes": [
+    {
+     "name": "lamp east",
+     "pos": [
+      47,
+      1,
+      18
+     ],
+     "obs": [
+      "lit"
+     ],
+     "sim": {
+      "before": "redstone_lamp lit=false",
+      "on": "redstone_lamp lit=true",
+      "off": "redstone_lamp lit=false"
+     }
+    },
+    {
+     "name": "lamp west",
+     "pos": [
+      45,
+      1,
+      18
+     ],
+     "obs": [
+      "lit"
+     ],
+     "sim": {
+      "before": "redstone_lamp lit=false",
+      "on": "redstone_lamp lit=true",
+      "off": "redstone_lamp lit=false"
+     }
+    },
+    {
+     "name": "lamp south",
+     "pos": [
+      46,
+      1,
+      19
+     ],
+     "obs": [
+      "lit"
+     ],
+     "sim": {
+      "before": "redstone_lamp lit=false",
+      "on": "redstone_lamp lit=true",
+      "off": "redstone_lamp lit=false"
+     }
+    },
+    {
+     "name": "block",
+     "pos": [
+      46,
+      1,
+      18
+     ],
+     "obs": [],
+     "sim": {
+      "before": "barrel",
+      "on": "barrel",
+      "off": "barrel"
+     }
+    }
+   ]
+  },
+  {
+   "id": "A.cond.composter",
+   "group": "conduction",
+   "desc": "does composter conduct strong power? (lamps east, west, south of it)",
+   "origin": [
+    54,
+    1,
+    18
+   ],
+   "probes": [
+    {
+     "name": "lamp east",
+     "pos": [
+      55,
+      1,
+      18
+     ],
+     "obs": [
+      "lit"
+     ],
+     "sim": {
+      "before": "redstone_lamp lit=false",
+      "on": "redstone_lamp lit=false",
+      "off": "redstone_lamp lit=false"
+     }
+    },
+    {
+     "name": "lamp west",
+     "pos": [
+      53,
+      1,
+      18
+     ],
+     "obs": [
+      "lit"
+     ],
+     "sim": {
+      "before": "redstone_lamp lit=false",
+      "on": "redstone_lamp lit=false",
+      "off": "redstone_lamp lit=false"
+     }
+    },
+    {
+     "name": "lamp south",
+     "pos": [
+      54,
+      1,
+      19
+     ],
+     "obs": [
+      "lit"
+     ],
+     "sim": {
+      "before": "redstone_lamp lit=false",
+      "on": "redstone_lamp lit=false",
+      "off": "redstone_lamp lit=false"
+     }
+    },
+    {
+     "name": "block",
+     "pos": [
+      54,
+      1,
+      18
+     ],
+     "obs": [],
+     "sim": {
+      "before": "composter",
+      "on": "composter",
+      "off": "composter"
+     }
+    }
+   ]
+  },
+  {
+   "id": "A.cond.target",
+   "group": "conduction",
+   "desc": "does target conduct strong power? (lamps east, west, south of it)",
+   "origin": [
+    62,
+    1,
+    18
+   ],
+   "probes": [
+    {
+     "name": "lamp east",
+     "pos": [
+      63,
+      1,
+      18
+     ],
+     "obs": [
+      "lit"
+     ],
+     "sim": {
+      "before": "redstone_lamp lit=false",
+      "on": "redstone_lamp lit=true",
+      "off": "redstone_lamp lit=false"
+     }
+    },
+    {
+     "name": "lamp west",
+     "pos": [
+      61,
+      1,
+      18
+     ],
+     "obs": [
+      "lit"
+     ],
+     "sim": {
+      "before": "redstone_lamp lit=false",
+      "on": "redstone_lamp lit=true",
+      "off": "redstone_lamp lit=false"
+     }
+    },
+    {
+     "name": "lamp south",
+     "pos": [
+      62,
+      1,
+      19
+     ],
+     "obs": [
+      "lit"
+     ],
+     "sim": {
+      "before": "redstone_lamp lit=false",
+      "on": "redstone_lamp lit=true",
+      "off": "redstone_lamp lit=false"
+     }
+    },
+    {
+     "name": "block",
+     "pos": [
+      62,
+      1,
+      18
+     ],
+     "obs": [],
+     "sim": {
+      "before": "target",
+      "on": "target",
+      "off": "target"
+     }
+    }
+   ]
+  },
+  {
+   "id": "A.cond.note_block",
+   "group": "conduction",
+   "desc": "does note_block conduct strong power? (lamps east, west, south of it)",
+   "origin": [
+    70,
+    1,
+    18
+   ],
+   "probes": [
+    {
+     "name": "lamp east",
+     "pos": [
+      71,
+      1,
+      18
+     ],
+     "obs": [
+      "lit"
+     ],
+     "sim": {
+      "before": "redstone_lamp lit=false",
+      "on": "redstone_lamp lit=true",
+      "off": "redstone_lamp lit=false"
+     }
+    },
+    {
+     "name": "lamp west",
+     "pos": [
+      69,
+      1,
+      18
+     ],
+     "obs": [
+      "lit"
+     ],
+     "sim": {
+      "before": "redstone_lamp lit=false",
+      "on": "redstone_lamp lit=true",
+      "off": "redstone_lamp lit=false"
+     }
+    },
+    {
+     "name": "lamp south",
+     "pos": [
+      70,
+      1,
+      19
+     ],
+     "obs": [
+      "lit"
+     ],
+     "sim": {
+      "before": "redstone_lamp lit=false",
+      "on": "redstone_lamp lit=true",
+      "off": "redstone_lamp lit=false"
+     }
+    },
+    {
+     "name": "block",
+     "pos": [
+      70,
+      1,
+      18
+     ],
+     "obs": [],
+     "sim": {
+      "before": "note_block",
+      "on": "note_block",
+      "off": "note_block"
+     }
+    }
+   ]
+  },
+  {
+   "id": "A.cond.log",
+   "group": "conduction",
+   "desc": "does log conduct strong power? (lamps east, west, south of it)",
+   "origin": [
+    78,
+    1,
+    18
+   ],
+   "probes": [
+    {
+     "name": "lamp east",
+     "pos": [
+      79,
+      1,
+      18
+     ],
+     "obs": [
+      "lit"
+     ],
+     "sim": {
+      "before": "redstone_lamp lit=false",
+      "on": "redstone_lamp lit=true",
+      "off": "redstone_lamp lit=false"
+     }
+    },
+    {
+     "name": "lamp west",
+     "pos": [
+      77,
+      1,
+      18
+     ],
+     "obs": [
+      "lit"
+     ],
+     "sim": {
+      "before": "redstone_lamp lit=false",
+      "on": "redstone_lamp lit=true",
+      "off": "redstone_lamp lit=false"
+     }
+    },
+    {
+     "name": "lamp south",
+     "pos": [
+      78,
+      1,
+      19
+     ],
+     "obs": [
+      "lit"
+     ],
+     "sim": {
+      "before": "redstone_lamp lit=false",
+      "on": "redstone_lamp lit=true",
+      "off": "redstone_lamp lit=false"
+     }
+    },
+    {
+     "name": "block",
+     "pos": [
+      78,
+      1,
+      18
+     ],
+     "obs": [],
+     "sim": {
+      "before": "oak_log",
+      "on": "oak_log",
+      "off": "oak_log"
+     }
+    }
+   ]
+  },
+  {
+   "id": "A.cond.ice",
+   "group": "conduction",
+   "desc": "does ice conduct strong power? (lamps east, west, south of it)",
+   "origin": [
+    86,
+    1,
+    18
+   ],
+   "probes": [
+    {
+     "name": "lamp east",
+     "pos": [
+      87,
+      1,
+      18
+     ],
+     "obs": [
+      "lit"
+     ],
+     "sim": {
+      "before": "redstone_lamp lit=false",
+      "on": "redstone_lamp lit=false",
+      "off": "redstone_lamp lit=false"
+     }
+    },
+    {
+     "name": "lamp west",
+     "pos": [
+      85,
+      1,
+      18
+     ],
+     "obs": [
+      "lit"
+     ],
+     "sim": {
+      "before": "redstone_lamp lit=false",
+      "on": "redstone_lamp lit=false",
+      "off": "redstone_lamp lit=false"
+     }
+    },
+    {
+     "name": "lamp south",
+     "pos": [
+      86,
+      1,
+      19
+     ],
+     "obs": [
+      "lit"
+     ],
+     "sim": {
+      "before": "redstone_lamp lit=false",
+      "on": "redstone_lamp lit=false",
+      "off": "redstone_lamp lit=false"
+     }
+    },
+    {
+     "name": "block",
+     "pos": [
+      86,
+      1,
+      18
+     ],
+     "obs": [],
+     "sim": {
+      "before": "ice",
+      "on": "ice",
+      "off": "ice"
+     }
+    }
+   ]
+  },
+  {
+   "id": "A.cond.gravel",
+   "group": "conduction",
+   "desc": "does gravel conduct strong power? (lamps east, west, south of it)",
+   "origin": [
+    94,
+    1,
+    18
+   ],
+   "probes": [
+    {
+     "name": "lamp east",
+     "pos": [
+      95,
+      1,
+      18
+     ],
+     "obs": [
+      "lit"
+     ],
+     "sim": {
+      "before": "redstone_lamp lit=false",
+      "on": "redstone_lamp lit=true",
+      "off": "redstone_lamp lit=false"
+     }
+    },
+    {
+     "name": "lamp west",
+     "pos": [
+      93,
+      1,
+      18
+     ],
+     "obs": [
+      "lit"
+     ],
+     "sim": {
+      "before": "redstone_lamp lit=false",
+      "on": "redstone_lamp lit=true",
+      "off": "redstone_lamp lit=false"
+     }
+    },
+    {
+     "name": "lamp south",
+     "pos": [
+      94,
+      1,
+      19
+     ],
+     "obs": [
+      "lit"
+     ],
+     "sim": {
+      "before": "redstone_lamp lit=false",
+      "on": "redstone_lamp lit=true",
+      "off": "redstone_lamp lit=false"
+     }
+    },
+    {
+     "name": "block",
+     "pos": [
+      94,
+      1,
+      18
+     ],
+     "obs": [],
+     "sim": {
+      "before": "gravel",
+      "on": "gravel",
+      "off": "gravel"
+     }
+    }
+   ]
+  },
+  {
+   "id": "A.cond.white_wool",
+   "group": "conduction",
+   "desc": "does white_wool conduct strong power? (lamps east, west, south of it)",
+   "origin": [
+    102,
+    1,
+    18
+   ],
+   "probes": [
+    {
+     "name": "lamp east",
+     "pos": [
+      103,
+      1,
+      18
+     ],
+     "obs": [
+      "lit"
+     ],
+     "sim": {
+      "before": "redstone_lamp lit=false",
+      "on": "redstone_lamp lit=true",
+      "off": "redstone_lamp lit=false"
+     }
+    },
+    {
+     "name": "lamp west",
+     "pos": [
+      101,
+      1,
+      18
+     ],
+     "obs": [
+      "lit"
+     ],
+     "sim": {
+      "before": "redstone_lamp lit=false",
+      "on": "redstone_lamp lit=true",
+      "off": "redstone_lamp lit=false"
+     }
+    },
+    {
+     "name": "lamp south",
+     "pos": [
+      102,
+      1,
+      19
+     ],
+     "obs": [
+      "lit"
+     ],
+     "sim": {
+      "before": "redstone_lamp lit=false",
+      "on": "redstone_lamp lit=true",
+      "off": "redstone_lamp lit=false"
+     }
+    },
+    {
+     "name": "block",
+     "pos": [
+      102,
+      1,
+      18
+     ],
+     "obs": [],
+     "sim": {
+      "before": "white_wool",
+      "on": "white_wool",
+      "off": "white_wool"
+     }
+    }
+   ]
+  },
+  {
+   "id": "B.dust.stone",
+   "group": "dust support",
+   "desc": "dust on top of a powered stone: survives? power level",
+   "origin": [
+    110,
+    1,
+    18
+   ],
+   "probes": [
+    {
+     "name": "dust",
+     "pos": [
+      110,
+      2,
+      18
+     ],
+     "obs": [
+      "power"
+     ],
+     "sim": {
+      "before": "redstone_wire power=0",
+      "on": "redstone_wire power=15",
+      "off": "redstone_wire power=0"
+     }
+    },
+    {
+     "name": "block",
+     "pos": [
+      110,
+      1,
+      18
+     ],
+     "obs": [],
+     "sim": {
+      "before": "stone",
+      "on": "stone",
+      "off": "stone"
+     }
+    }
+   ]
+  },
+  {
+   "id": "B.dust.obsidian",
+   "group": "dust support",
+   "desc": "dust on top of a powered obsidian: survives? power level",
+   "origin": [
+    6,
+    1,
+    34
+   ],
+   "probes": [
+    {
+     "name": "dust",
+     "pos": [
+      6,
+      2,
+      34
+     ],
+     "obs": [
+      "power"
+     ],
+     "sim": {
+      "before": "redstone_wire power=0",
+      "on": "redstone_wire power=15",
+      "off": "redstone_wire power=0"
+     }
+    },
+    {
+     "name": "block",
+     "pos": [
+      6,
+      1,
+      34
+     ],
+     "obs": [],
+     "sim": {
+      "before": "obsidian",
+      "on": "obsidian",
+      "off": "obsidian"
+     }
+    }
+   ]
+  },
+  {
+   "id": "B.dust.glass",
+   "group": "dust support",
+   "desc": "dust on top of a powered glass: survives? power level",
+   "origin": [
+    14,
+    1,
+    34
+   ],
+   "probes": [
+    {
+     "name": "dust",
+     "pos": [
+      14,
+      2,
+      34
+     ],
+     "obs": [
+      "power"
+     ],
+     "sim": {
+      "before": "redstone_wire power=0",
+      "on": "redstone_wire power=0",
+      "off": "redstone_wire power=0"
+     }
+    },
+    {
+     "name": "block",
+     "pos": [
+      14,
+      1,
+      34
+     ],
+     "obs": [],
+     "sim": {
+      "before": "glass",
+      "on": "glass",
+      "off": "glass"
+     }
+    }
+   ]
+  },
+  {
+   "id": "B.dust.sand",
+   "group": "dust support",
+   "desc": "dust on top of a powered sand: survives? power level",
+   "origin": [
+    22,
+    1,
+    34
+   ],
+   "probes": [
+    {
+     "name": "dust",
+     "pos": [
+      22,
+      2,
+      34
+     ],
+     "obs": [
+      "power"
+     ],
+     "sim": {
+      "before": "redstone_wire power=0",
+      "on": "redstone_wire power=15",
+      "off": "redstone_wire power=0"
+     }
+    },
+    {
+     "name": "block",
+     "pos": [
+      22,
+      1,
+      34
+     ],
+     "obs": [],
+     "sim": {
+      "before": "sand",
+      "on": "sand",
+      "off": "sand"
+     }
+    }
+   ]
+  },
+  {
+   "id": "B.dust.slime_block",
+   "group": "dust support",
+   "desc": "dust on top of a powered slime_block: survives? power level",
+   "origin": [
+    30,
+    1,
+    34
+   ],
+   "probes": [
+    {
+     "name": "dust",
+     "pos": [
+      30,
+      2,
+      34
+     ],
+     "obs": [
+      "power"
+     ],
+     "sim": {
+      "before": "redstone_wire power=0",
+      "on": "redstone_wire power=15",
+      "off": "redstone_wire power=0"
+     }
+    },
+    {
+     "name": "block",
+     "pos": [
+      30,
+      1,
+      34
+     ],
+     "obs": [],
+     "sim": {
+      "before": "slime_block",
+      "on": "slime_block",
+      "off": "slime_block"
+     }
+    }
+   ]
+  },
+  {
+   "id": "B.dust.honey_block",
+   "group": "dust support",
+   "desc": "dust on top of a powered honey_block: survives? power level",
+   "origin": [
+    38,
+    1,
+    34
+   ],
+   "probes": [
+    {
+     "name": "dust",
+     "pos": [
+      38,
+      2,
+      34
+     ],
+     "obs": [
+      "power"
+     ],
+     "sim": {
+      "before": "redstone_wire power=0",
+      "on": "redstone_wire power=0",
+      "off": "redstone_wire power=0"
+     }
+    },
+    {
+     "name": "block",
+     "pos": [
+      38,
+      1,
+      34
+     ],
+     "obs": [],
+     "sim": {
+      "before": "honey_block",
+      "on": "honey_block",
+      "off": "honey_block"
+     }
+    }
+   ]
+  },
+  {
+   "id": "B.dust.soul_sand",
+   "group": "dust support",
+   "desc": "dust on top of a powered soul_sand: survives? power level",
+   "origin": [
+    46,
+    1,
+    34
+   ],
+   "probes": [
+    {
+     "name": "dust",
+     "pos": [
+      46,
+      2,
+      34
+     ],
+     "obs": [
+      "power"
+     ],
+     "sim": {
+      "before": "redstone_wire power=0",
+      "on": "redstone_wire power=15",
+      "off": "redstone_wire power=0"
+     }
+    },
+    {
+     "name": "block",
+     "pos": [
+      46,
+      1,
+      34
+     ],
+     "obs": [],
+     "sim": {
+      "before": "soul_sand",
+      "on": "soul_sand",
+      "off": "soul_sand"
+     }
+    }
+   ]
+  },
+  {
+   "id": "B.dust.iron_block",
+   "group": "dust support",
+   "desc": "dust on top of a powered iron_block: survives? power level",
+   "origin": [
+    54,
+    1,
+    34
+   ],
+   "probes": [
+    {
+     "name": "dust",
+     "pos": [
+      54,
+      2,
+      34
+     ],
+     "obs": [
+      "power"
+     ],
+     "sim": {
+      "before": "redstone_wire power=0",
+      "on": "redstone_wire power=15",
+      "off": "redstone_wire power=0"
+     }
+    },
+    {
+     "name": "block",
+     "pos": [
+      54,
+      1,
+      34
+     ],
+     "obs": [],
+     "sim": {
+      "before": "iron_block",
+      "on": "iron_block",
+      "off": "iron_block"
+     }
+    }
+   ]
+  },
+  {
+   "id": "B.dust.coal_block",
+   "group": "dust support",
+   "desc": "dust on top of a powered coal_block: survives? power level",
+   "origin": [
+    62,
+    1,
+    34
+   ],
+   "probes": [
+    {
+     "name": "dust",
+     "pos": [
+      62,
+      2,
+      34
+     ],
+     "obs": [
+      "power"
+     ],
+     "sim": {
+      "before": "redstone_wire power=0",
+      "on": "redstone_wire power=15",
+      "off": "redstone_wire power=0"
+     }
+    },
+    {
+     "name": "block",
+     "pos": [
+      62,
+      1,
+      34
+     ],
+     "obs": [],
+     "sim": {
+      "before": "coal_block",
+      "on": "coal_block",
+      "off": "coal_block"
+     }
+    }
+   ]
+  },
+  {
+   "id": "B.dust.hay_block",
+   "group": "dust support",
+   "desc": "dust on top of a powered hay_block: survives? power level",
+   "origin": [
+    70,
+    1,
+    34
+   ],
+   "probes": [
+    {
+     "name": "dust",
+     "pos": [
+      70,
+      2,
+      34
+     ],
+     "obs": [
+      "power"
+     ],
+     "sim": {
+      "before": "redstone_wire power=0",
+      "on": "redstone_wire power=15",
+      "off": "redstone_wire power=0"
+     }
+    },
+    {
+     "name": "block",
+     "pos": [
+      70,
+      1,
+      34
+     ],
+     "obs": [],
+     "sim": {
+      "before": "hay_block",
+      "on": "hay_block",
+      "off": "hay_block"
+     }
+    }
+   ]
+  },
+  {
+   "id": "B.dust.furnace",
+   "group": "dust support",
+   "desc": "dust on top of a powered furnace: survives? power level",
+   "origin": [
+    78,
+    1,
+    34
+   ],
+   "probes": [
+    {
+     "name": "dust",
+     "pos": [
+      78,
+      2,
+      34
+     ],
+     "obs": [
+      "power"
+     ],
+     "sim": {
+      "before": "redstone_wire power=0",
+      "on": "redstone_wire power=15",
+      "off": "redstone_wire power=0"
+     }
+    },
+    {
+     "name": "block",
+     "pos": [
+      78,
+      1,
+      34
+     ],
+     "obs": [],
+     "sim": {
+      "before": "furnace",
+      "on": "furnace",
+      "off": "furnace"
+     }
+    }
+   ]
+  },
+  {
+   "id": "B.dust.hopper",
+   "group": "dust support",
+   "desc": "dust on top of a powered hopper: survives? power level",
+   "origin": [
+    86,
+    1,
+    34
+   ],
+   "probes": [
+    {
+     "name": "dust",
+     "pos": [
+      86,
+      2,
+      34
+     ],
+     "obs": [
+      "power"
+     ],
+     "sim": {
+      "before": "redstone_wire power=0",
+      "on": "redstone_wire power=0",
+      "off": "redstone_wire power=0"
+     }
+    },
+    {
+     "name": "block",
+     "pos": [
+      86,
+      1,
+      34
+     ],
+     "obs": [],
+     "sim": {
+      "before": "hopper",
+      "on": "hopper",
+      "off": "hopper"
+     }
+    }
+   ]
+  },
+  {
+   "id": "B.dust.dropper",
+   "group": "dust support",
+   "desc": "dust on top of a powered dropper: survives? power level",
+   "origin": [
+    94,
+    1,
+    34
+   ],
+   "probes": [
+    {
+     "name": "dust",
+     "pos": [
+      94,
+      2,
+      34
+     ],
+     "obs": [
+      "power"
+     ],
+     "sim": {
+      "before": "redstone_wire power=0",
+      "on": "redstone_wire power=15",
+      "off": "redstone_wire power=0"
+     }
+    },
+    {
+     "name": "block",
+     "pos": [
+      94,
+      1,
+      34
+     ],
+     "obs": [],
+     "sim": {
+      "before": "dropper",
+      "on": "dropper",
+      "off": "dropper"
+     }
+    }
+   ]
+  },
+  {
+   "id": "B.dust.observer",
+   "group": "dust support",
+   "desc": "dust on top of a powered observer: survives? power level",
+   "origin": [
+    102,
+    1,
+    34
+   ],
+   "probes": [
+    {
+     "name": "dust",
+     "pos": [
+      102,
+      2,
+      34
+     ],
+     "obs": [
+      "power"
+     ],
+     "sim": {
+      "before": "redstone_wire power=0",
+      "on": "redstone_wire power=0",
+      "off": "redstone_wire power=0"
+     }
+    },
+    {
+     "name": "block",
+     "pos": [
+      102,
+      1,
+      34
+     ],
+     "obs": [],
+     "sim": {
+      "before": "observer",
+      "on": "observer",
+      "off": "observer"
+     }
+    }
+   ]
+  },
+  {
+   "id": "B.dust.leaves",
+   "group": "dust support",
+   "desc": "dust on top of a powered leaves: survives? power level",
+   "origin": [
+    110,
+    1,
+    34
+   ],
+   "probes": [
+    {
+     "name": "dust",
+     "pos": [
+      110,
+      2,
+      34
+     ],
+     "obs": [
+      "power"
+     ],
+     "sim": {
+      "before": "redstone_wire power=0",
+      "on": "redstone_wire power=0",
+      "off": "redstone_wire power=0"
+     }
+    },
+    {
+     "name": "block",
+     "pos": [
+      110,
+      1,
+      34
+     ],
+     "obs": [],
+     "sim": {
+      "before": "oak_leaves",
+      "on": "oak_leaves",
+      "off": "oak_leaves"
+     }
+    }
+   ]
+  },
+  {
+   "id": "B.dust.partial",
+   "group": "dust support",
+   "desc": "dust on top of a powered partial: survives? power level",
+   "origin": [
+    6,
+    1,
+    50
+   ],
+   "probes": [
+    {
+     "name": "dust",
+     "pos": [
+      6,
+      2,
+      50
+     ],
+     "obs": [
+      "power"
+     ],
+     "sim": {
+      "before": "redstone_wire power=0",
+      "on": "air",
+      "off": "air"
+     }
+    },
+    {
+     "name": "block",
+     "pos": [
+      6,
+      1,
+      50
+     ],
+     "obs": [],
+     "sim": {
+      "before": "stone_slab",
+      "on": "stone_slab",
+      "off": "stone_slab"
+     }
+    }
+   ]
+  },
+  {
+   "id": "B.dust.stairs",
+   "group": "dust support",
+   "desc": "dust on top of a powered stairs: survives? power level",
+   "origin": [
+    14,
+    1,
+    50
+   ],
+   "probes": [
+    {
+     "name": "dust",
+     "pos": [
+      14,
+      2,
+      50
+     ],
+     "obs": [
+      "power"
+     ],
+     "sim": {
+      "before": "redstone_wire power=0",
+      "on": "air",
+      "off": "air"
+     }
+    },
+    {
+     "name": "block",
+     "pos": [
+      14,
+      1,
+      50
+     ],
+     "obs": [],
+     "sim": {
+      "before": "stone_brick_stairs",
+      "on": "stone_brick_stairs",
+      "off": "stone_brick_stairs"
+     }
+    }
+   ]
+  },
+  {
+   "id": "B.dust.pane",
+   "group": "dust support",
+   "desc": "dust on top of a powered pane: survives? power level",
+   "origin": [
+    22,
+    1,
+    50
+   ],
+   "probes": [
+    {
+     "name": "dust",
+     "pos": [
+      22,
+      2,
+      50
+     ],
+     "obs": [
+      "power"
+     ],
+     "sim": {
+      "before": "redstone_wire power=0",
+      "on": "air",
+      "off": "air"
+     }
+    },
+    {
+     "name": "block",
+     "pos": [
+      22,
+      1,
+      50
+     ],
+     "obs": [],
+     "sim": {
+      "before": "glass_pane",
+      "on": "glass_pane",
+      "off": "glass_pane"
+     }
+    }
+   ]
+  },
+  {
+   "id": "B.dust.chest",
+   "group": "dust support",
+   "desc": "dust on top of a powered chest: survives? power level",
+   "origin": [
+    30,
+    1,
+    50
+   ],
+   "probes": [
+    {
+     "name": "dust",
+     "pos": [
+      30,
+      2,
+      50
+     ],
+     "obs": [
+      "power"
+     ],
+     "sim": {
+      "before": "redstone_wire power=0",
+      "on": "air",
+      "off": "air"
+     }
+    },
+    {
+     "name": "block",
+     "pos": [
+      30,
+      1,
+      50
+     ],
+     "obs": [],
+     "sim": {
+      "before": "chest",
+      "on": "chest",
+      "off": "chest"
+     }
+    }
+   ]
+  },
+  {
+   "id": "B.dust.barrel",
+   "group": "dust support",
+   "desc": "dust on top of a powered barrel: survives? power level",
+   "origin": [
+    38,
+    1,
+    50
+   ],
+   "probes": [
+    {
+     "name": "dust",
+     "pos": [
+      38,
+      2,
+      50
+     ],
+     "obs": [
+      "power"
+     ],
+     "sim": {
+      "before": "redstone_wire power=0",
+      "on": "redstone_wire power=15",
+      "off": "redstone_wire power=0"
+     }
+    },
+    {
+     "name": "block",
+     "pos": [
+      38,
+      1,
+      50
+     ],
+     "obs": [],
+     "sim": {
+      "before": "barrel",
+      "on": "barrel",
+      "off": "barrel"
+     }
+    }
+   ]
+  },
+  {
+   "id": "B.dust.composter",
+   "group": "dust support",
+   "desc": "dust on top of a powered composter: survives? power level",
+   "origin": [
+    46,
+    1,
+    50
+   ],
+   "probes": [
+    {
+     "name": "dust",
+     "pos": [
+      46,
+      2,
+      50
+     ],
+     "obs": [
+      "power"
+     ],
+     "sim": {
+      "before": "redstone_wire power=0",
+      "on": "air",
+      "off": "air"
+     }
+    },
+    {
+     "name": "block",
+     "pos": [
+      46,
+      1,
+      50
+     ],
+     "obs": [],
+     "sim": {
+      "before": "composter",
+      "on": "composter",
+      "off": "composter"
+     }
+    }
+   ]
+  },
+  {
+   "id": "B.dust.target",
+   "group": "dust support",
+   "desc": "dust on top of a powered target: survives? power level",
+   "origin": [
+    54,
+    1,
+    50
+   ],
+   "probes": [
+    {
+     "name": "dust",
+     "pos": [
+      54,
+      2,
+      50
+     ],
+     "obs": [
+      "power"
+     ],
+     "sim": {
+      "before": "redstone_wire power=0",
+      "on": "redstone_wire power=15",
+      "off": "redstone_wire power=0"
+     }
+    },
+    {
+     "name": "block",
+     "pos": [
+      54,
+      1,
+      50
+     ],
+     "obs": [],
+     "sim": {
+      "before": "target",
+      "on": "target",
+      "off": "target"
+     }
+    }
+   ]
+  },
+  {
+   "id": "B.dust.note_block",
+   "group": "dust support",
+   "desc": "dust on top of a powered note_block: survives? power level",
+   "origin": [
+    62,
+    1,
+    50
+   ],
+   "probes": [
+    {
+     "name": "dust",
+     "pos": [
+      62,
+      2,
+      50
+     ],
+     "obs": [
+      "power"
+     ],
+     "sim": {
+      "before": "redstone_wire power=0",
+      "on": "redstone_wire power=15",
+      "off": "redstone_wire power=0"
+     }
+    },
+    {
+     "name": "block",
+     "pos": [
+      62,
+      1,
+      50
+     ],
+     "obs": [],
+     "sim": {
+      "before": "note_block",
+      "on": "note_block",
+      "off": "note_block"
+     }
+    }
+   ]
+  },
+  {
+   "id": "B.dust.log",
+   "group": "dust support",
+   "desc": "dust on top of a powered log: survives? power level",
+   "origin": [
+    70,
+    1,
+    50
+   ],
+   "probes": [
+    {
+     "name": "dust",
+     "pos": [
+      70,
+      2,
+      50
+     ],
+     "obs": [
+      "power"
+     ],
+     "sim": {
+      "before": "redstone_wire power=0",
+      "on": "redstone_wire power=15",
+      "off": "redstone_wire power=0"
+     }
+    },
+    {
+     "name": "block",
+     "pos": [
+      70,
+      1,
+      50
+     ],
+     "obs": [],
+     "sim": {
+      "before": "oak_log",
+      "on": "oak_log",
+      "off": "oak_log"
+     }
+    }
+   ]
+  },
+  {
+   "id": "B.dust.ice",
+   "group": "dust support",
+   "desc": "dust on top of a powered ice: survives? power level",
+   "origin": [
+    78,
+    1,
+    50
+   ],
+   "probes": [
+    {
+     "name": "dust",
+     "pos": [
+      78,
+      2,
+      50
+     ],
+     "obs": [
+      "power"
+     ],
+     "sim": {
+      "before": "redstone_wire power=0",
+      "on": "redstone_wire power=0",
+      "off": "redstone_wire power=0"
+     }
+    },
+    {
+     "name": "block",
+     "pos": [
+      78,
+      1,
+      50
+     ],
+     "obs": [],
+     "sim": {
+      "before": "ice",
+      "on": "ice",
+      "off": "ice"
+     }
+    }
+   ]
+  },
+  {
+   "id": "B.dust.gravel",
+   "group": "dust support",
+   "desc": "dust on top of a powered gravel: survives? power level",
+   "origin": [
+    86,
+    1,
+    50
+   ],
+   "probes": [
+    {
+     "name": "dust",
+     "pos": [
+      86,
+      2,
+      50
+     ],
+     "obs": [
+      "power"
+     ],
+     "sim": {
+      "before": "redstone_wire power=0",
+      "on": "redstone_wire power=15",
+      "off": "redstone_wire power=0"
+     }
+    },
+    {
+     "name": "block",
+     "pos": [
+      86,
+      1,
+      50
+     ],
+     "obs": [],
+     "sim": {
+      "before": "gravel",
+      "on": "gravel",
+      "off": "gravel"
+     }
+    }
+   ]
+  },
+  {
+   "id": "B.dust.white_wool",
+   "group": "dust support",
+   "desc": "dust on top of a powered white_wool: survives? power level",
+   "origin": [
+    94,
+    1,
+    50
+   ],
+   "probes": [
+    {
+     "name": "dust",
+     "pos": [
+      94,
+      2,
+      50
+     ],
+     "obs": [
+      "power"
+     ],
+     "sim": {
+      "before": "redstone_wire power=0",
+      "on": "redstone_wire power=15",
+      "off": "redstone_wire power=0"
+     }
+    },
+    {
+     "name": "block",
+     "pos": [
+      94,
+      1,
+      50
+     ],
+     "obs": [],
+     "sim": {
+      "before": "white_wool",
+      "on": "white_wool",
+      "off": "white_wool"
+     }
+    }
+   ]
+  },
+  {
+   "id": "C.push.stone",
+   "group": "piston push/pull",
+   "desc": "sticky piston pushes (lever ON) and pulls (lever OFF) stone",
+   "origin": [
+    102,
+    1,
+    50
+   ],
+   "probes": [
+    {
+     "name": "piston",
+     "pos": [
+      103,
+      1,
+      50
+     ],
+     "obs": [
+      "extended"
+     ],
+     "sim": {
+      "before": "sticky_piston extended=false",
+      "on": "sticky_piston extended=true",
+      "off": "sticky_piston extended=false"
+     }
+    },
+    {
+     "name": "target start",
+     "pos": [
+      104,
+      1,
+      50
+     ],
+     "obs": [],
+     "sim": {
+      "before": "stone",
+      "on": "piston_head",
+      "off": "stone"
+     }
+    },
+    {
+     "name": "target pushed",
+     "pos": [
+      105,
+      1,
+      50
+     ],
+     "obs": [],
+     "sim": {
+      "before": "air",
+      "on": "stone",
+      "off": "air"
+     }
+    }
+   ]
+  },
+  {
+   "id": "C.push.obsidian",
+   "group": "piston push/pull",
+   "desc": "sticky piston pushes (lever ON) and pulls (lever OFF) obsidian",
+   "origin": [
+    110,
+    1,
+    50
+   ],
+   "probes": [
+    {
+     "name": "piston",
+     "pos": [
+      111,
+      1,
+      50
+     ],
+     "obs": [
+      "extended"
+     ],
+     "sim": {
+      "before": "sticky_piston extended=false",
+      "on": "sticky_piston extended=false",
+      "off": "sticky_piston extended=false"
+     }
+    },
+    {
+     "name": "target start",
+     "pos": [
+      112,
+      1,
+      50
+     ],
+     "obs": [],
+     "sim": {
+      "before": "obsidian",
+      "on": "obsidian",
+      "off": "obsidian"
+     }
+    },
+    {
+     "name": "target pushed",
+     "pos": [
+      113,
+      1,
+      50
+     ],
+     "obs": [],
+     "sim": {
+      "before": "air",
+      "on": "air",
+      "off": "air"
+     }
+    }
+   ]
+  },
+  {
+   "id": "C.push.glass",
+   "group": "piston push/pull",
+   "desc": "sticky piston pushes (lever ON) and pulls (lever OFF) glass",
+   "origin": [
+    6,
+    1,
+    66
+   ],
+   "probes": [
+    {
+     "name": "piston",
+     "pos": [
+      7,
+      1,
+      66
+     ],
+     "obs": [
+      "extended"
+     ],
+     "sim": {
+      "before": "sticky_piston extended=false",
+      "on": "sticky_piston extended=true",
+      "off": "sticky_piston extended=false"
+     }
+    },
+    {
+     "name": "target start",
+     "pos": [
+      8,
+      1,
+      66
+     ],
+     "obs": [],
+     "sim": {
+      "before": "glass",
+      "on": "piston_head",
+      "off": "glass"
+     }
+    },
+    {
+     "name": "target pushed",
+     "pos": [
+      9,
+      1,
+      66
+     ],
+     "obs": [],
+     "sim": {
+      "before": "air",
+      "on": "glass",
+      "off": "air"
+     }
+    }
+   ]
+  },
+  {
+   "id": "C.push.sand",
+   "group": "piston push/pull",
+   "desc": "sticky piston pushes (lever ON) and pulls (lever OFF) sand",
+   "origin": [
+    14,
+    1,
+    66
+   ],
+   "probes": [
+    {
+     "name": "piston",
+     "pos": [
+      15,
+      1,
+      66
+     ],
+     "obs": [
+      "extended"
+     ],
+     "sim": {
+      "before": "sticky_piston extended=false",
+      "on": "sticky_piston extended=true",
+      "off": "sticky_piston extended=false"
+     }
+    },
+    {
+     "name": "target start",
+     "pos": [
+      16,
+      1,
+      66
+     ],
+     "obs": [],
+     "sim": {
+      "before": "sand",
+      "on": "piston_head",
+      "off": "sand"
+     }
+    },
+    {
+     "name": "target pushed",
+     "pos": [
+      17,
+      1,
+      66
+     ],
+     "obs": [],
+     "sim": {
+      "before": "air",
+      "on": "sand",
+      "off": "air"
+     }
+    }
+   ]
+  },
+  {
+   "id": "C.push.slime_block",
+   "group": "piston push/pull",
+   "desc": "sticky piston pushes (lever ON) and pulls (lever OFF) slime_block",
+   "origin": [
+    22,
+    1,
+    66
+   ],
+   "probes": [
+    {
+     "name": "piston",
+     "pos": [
+      23,
+      1,
+      66
+     ],
+     "obs": [
+      "extended"
+     ],
+     "sim": {
+      "before": "sticky_piston extended=false",
+      "on": "sticky_piston extended=true",
+      "off": "sticky_piston extended=false"
+     }
+    },
+    {
+     "name": "target start",
+     "pos": [
+      24,
+      1,
+      66
+     ],
+     "obs": [],
+     "sim": {
+      "before": "slime_block",
+      "on": "piston_head",
+      "off": "slime_block"
+     }
+    },
+    {
+     "name": "target pushed",
+     "pos": [
+      25,
+      1,
+      66
+     ],
+     "obs": [],
+     "sim": {
+      "before": "air",
+      "on": "slime_block",
+      "off": "air"
+     }
+    }
+   ]
+  },
+  {
+   "id": "C.push.honey_block",
+   "group": "piston push/pull",
+   "desc": "sticky piston pushes (lever ON) and pulls (lever OFF) honey_block",
+   "origin": [
+    30,
+    1,
+    66
+   ],
+   "probes": [
+    {
+     "name": "piston",
+     "pos": [
+      31,
+      1,
+      66
+     ],
+     "obs": [
+      "extended"
+     ],
+     "sim": {
+      "before": "sticky_piston extended=false",
+      "on": "sticky_piston extended=true",
+      "off": "sticky_piston extended=false"
+     }
+    },
+    {
+     "name": "target start",
+     "pos": [
+      32,
+      1,
+      66
+     ],
+     "obs": [],
+     "sim": {
+      "before": "honey_block",
+      "on": "piston_head",
+      "off": "honey_block"
+     }
+    },
+    {
+     "name": "target pushed",
+     "pos": [
+      33,
+      1,
+      66
+     ],
+     "obs": [],
+     "sim": {
+      "before": "air",
+      "on": "honey_block",
+      "off": "air"
+     }
+    }
+   ]
+  },
+  {
+   "id": "C.push.soul_sand",
+   "group": "piston push/pull",
+   "desc": "sticky piston pushes (lever ON) and pulls (lever OFF) soul_sand",
+   "origin": [
+    38,
+    1,
+    66
+   ],
+   "probes": [
+    {
+     "name": "piston",
+     "pos": [
+      39,
+      1,
+      66
+     ],
+     "obs": [
+      "extended"
+     ],
+     "sim": {
+      "before": "sticky_piston extended=false",
+      "on": "sticky_piston extended=true",
+      "off": "sticky_piston extended=false"
+     }
+    },
+    {
+     "name": "target start",
+     "pos": [
+      40,
+      1,
+      66
+     ],
+     "obs": [],
+     "sim": {
+      "before": "soul_sand",
+      "on": "piston_head",
+      "off": "soul_sand"
+     }
+    },
+    {
+     "name": "target pushed",
+     "pos": [
+      41,
+      1,
+      66
+     ],
+     "obs": [],
+     "sim": {
+      "before": "air",
+      "on": "soul_sand",
+      "off": "air"
+     }
+    }
+   ]
+  },
+  {
+   "id": "C.push.iron_block",
+   "group": "piston push/pull",
+   "desc": "sticky piston pushes (lever ON) and pulls (lever OFF) iron_block",
+   "origin": [
+    46,
+    1,
+    66
+   ],
+   "probes": [
+    {
+     "name": "piston",
+     "pos": [
+      47,
+      1,
+      66
+     ],
+     "obs": [
+      "extended"
+     ],
+     "sim": {
+      "before": "sticky_piston extended=false",
+      "on": "sticky_piston extended=true",
+      "off": "sticky_piston extended=false"
+     }
+    },
+    {
+     "name": "target start",
+     "pos": [
+      48,
+      1,
+      66
+     ],
+     "obs": [],
+     "sim": {
+      "before": "iron_block",
+      "on": "piston_head",
+      "off": "iron_block"
+     }
+    },
+    {
+     "name": "target pushed",
+     "pos": [
+      49,
+      1,
+      66
+     ],
+     "obs": [],
+     "sim": {
+      "before": "air",
+      "on": "iron_block",
+      "off": "air"
+     }
+    }
+   ]
+  },
+  {
+   "id": "C.push.coal_block",
+   "group": "piston push/pull",
+   "desc": "sticky piston pushes (lever ON) and pulls (lever OFF) coal_block",
+   "origin": [
+    54,
+    1,
+    66
+   ],
+   "probes": [
+    {
+     "name": "piston",
+     "pos": [
+      55,
+      1,
+      66
+     ],
+     "obs": [
+      "extended"
+     ],
+     "sim": {
+      "before": "sticky_piston extended=false",
+      "on": "sticky_piston extended=true",
+      "off": "sticky_piston extended=false"
+     }
+    },
+    {
+     "name": "target start",
+     "pos": [
+      56,
+      1,
+      66
+     ],
+     "obs": [],
+     "sim": {
+      "before": "coal_block",
+      "on": "piston_head",
+      "off": "coal_block"
+     }
+    },
+    {
+     "name": "target pushed",
+     "pos": [
+      57,
+      1,
+      66
+     ],
+     "obs": [],
+     "sim": {
+      "before": "air",
+      "on": "coal_block",
+      "off": "air"
+     }
+    }
+   ]
+  },
+  {
+   "id": "C.push.hay_block",
+   "group": "piston push/pull",
+   "desc": "sticky piston pushes (lever ON) and pulls (lever OFF) hay_block",
+   "origin": [
+    62,
+    1,
+    66
+   ],
+   "probes": [
+    {
+     "name": "piston",
+     "pos": [
+      63,
+      1,
+      66
+     ],
+     "obs": [
+      "extended"
+     ],
+     "sim": {
+      "before": "sticky_piston extended=false",
+      "on": "sticky_piston extended=true",
+      "off": "sticky_piston extended=false"
+     }
+    },
+    {
+     "name": "target start",
+     "pos": [
+      64,
+      1,
+      66
+     ],
+     "obs": [],
+     "sim": {
+      "before": "hay_block",
+      "on": "piston_head",
+      "off": "hay_block"
+     }
+    },
+    {
+     "name": "target pushed",
+     "pos": [
+      65,
+      1,
+      66
+     ],
+     "obs": [],
+     "sim": {
+      "before": "air",
+      "on": "hay_block",
+      "off": "air"
+     }
+    }
+   ]
+  },
+  {
+   "id": "C.push.furnace",
+   "group": "piston push/pull",
+   "desc": "sticky piston pushes (lever ON) and pulls (lever OFF) furnace",
+   "origin": [
+    70,
+    1,
+    66
+   ],
+   "probes": [
+    {
+     "name": "piston",
+     "pos": [
+      71,
+      1,
+      66
+     ],
+     "obs": [
+      "extended"
+     ],
+     "sim": {
+      "before": "sticky_piston extended=false",
+      "on": "sticky_piston extended=false",
+      "off": "sticky_piston extended=false"
+     }
+    },
+    {
+     "name": "target start",
+     "pos": [
+      72,
+      1,
+      66
+     ],
+     "obs": [],
+     "sim": {
+      "before": "furnace",
+      "on": "furnace",
+      "off": "furnace"
+     }
+    },
+    {
+     "name": "target pushed",
+     "pos": [
+      73,
+      1,
+      66
+     ],
+     "obs": [],
+     "sim": {
+      "before": "air",
+      "on": "air",
+      "off": "air"
+     }
+    }
+   ]
+  },
+  {
+   "id": "C.push.hopper",
+   "group": "piston push/pull",
+   "desc": "sticky piston pushes (lever ON) and pulls (lever OFF) hopper",
+   "origin": [
+    78,
+    1,
+    66
+   ],
+   "probes": [
+    {
+     "name": "piston",
+     "pos": [
+      79,
+      1,
+      66
+     ],
+     "obs": [
+      "extended"
+     ],
+     "sim": {
+      "before": "sticky_piston extended=false",
+      "on": "sticky_piston extended=false",
+      "off": "sticky_piston extended=false"
+     }
+    },
+    {
+     "name": "target start",
+     "pos": [
+      80,
+      1,
+      66
+     ],
+     "obs": [],
+     "sim": {
+      "before": "hopper",
+      "on": "hopper",
+      "off": "hopper"
+     }
+    },
+    {
+     "name": "target pushed",
+     "pos": [
+      81,
+      1,
+      66
+     ],
+     "obs": [],
+     "sim": {
+      "before": "air",
+      "on": "air",
+      "off": "air"
+     }
+    }
+   ]
+  },
+  {
+   "id": "C.push.dropper",
+   "group": "piston push/pull",
+   "desc": "sticky piston pushes (lever ON) and pulls (lever OFF) dropper",
+   "origin": [
+    86,
+    1,
+    66
+   ],
+   "probes": [
+    {
+     "name": "piston",
+     "pos": [
+      87,
+      1,
+      66
+     ],
+     "obs": [
+      "extended"
+     ],
+     "sim": {
+      "before": "sticky_piston extended=false",
+      "on": "sticky_piston extended=false",
+      "off": "sticky_piston extended=false"
+     }
+    },
+    {
+     "name": "target start",
+     "pos": [
+      88,
+      1,
+      66
+     ],
+     "obs": [],
+     "sim": {
+      "before": "dropper",
+      "on": "dropper",
+      "off": "dropper"
+     }
+    },
+    {
+     "name": "target pushed",
+     "pos": [
+      89,
+      1,
+      66
+     ],
+     "obs": [],
+     "sim": {
+      "before": "air",
+      "on": "air",
+      "off": "air"
+     }
+    }
+   ]
+  },
+  {
+   "id": "C.push.observer",
+   "group": "piston push/pull",
+   "desc": "sticky piston pushes (lever ON) and pulls (lever OFF) observer",
+   "origin": [
+    94,
+    1,
+    66
+   ],
+   "probes": [
+    {
+     "name": "piston",
+     "pos": [
+      95,
+      1,
+      66
+     ],
+     "obs": [
+      "extended"
+     ],
+     "sim": {
+      "before": "sticky_piston extended=false",
+      "on": "sticky_piston extended=true",
+      "off": "sticky_piston extended=false"
+     }
+    },
+    {
+     "name": "target start",
+     "pos": [
+      96,
+      1,
+      66
+     ],
+     "obs": [],
+     "sim": {
+      "before": "observer",
+      "on": "piston_head",
+      "off": "observer"
+     }
+    },
+    {
+     "name": "target pushed",
+     "pos": [
+      97,
+      1,
+      66
+     ],
+     "obs": [],
+     "sim": {
+      "before": "air",
+      "on": "observer",
+      "off": "air"
+     }
+    }
+   ]
+  },
+  {
+   "id": "C.push.leaves",
+   "group": "piston push/pull",
+   "desc": "sticky piston pushes (lever ON) and pulls (lever OFF) leaves",
+   "origin": [
+    102,
+    1,
+    66
+   ],
+   "probes": [
+    {
+     "name": "piston",
+     "pos": [
+      103,
+      1,
+      66
+     ],
+     "obs": [
+      "extended"
+     ],
+     "sim": {
+      "before": "sticky_piston extended=false",
+      "on": "sticky_piston extended=true",
+      "off": "sticky_piston extended=false"
+     }
+    },
+    {
+     "name": "target start",
+     "pos": [
+      104,
+      1,
+      66
+     ],
+     "obs": [],
+     "sim": {
+      "before": "oak_leaves",
+      "on": "piston_head",
+      "off": "oak_leaves"
+     }
+    },
+    {
+     "name": "target pushed",
+     "pos": [
+      105,
+      1,
+      66
+     ],
+     "obs": [],
+     "sim": {
+      "before": "air",
+      "on": "oak_leaves",
+      "off": "air"
+     }
+    }
+   ]
+  },
+  {
+   "id": "C.push.partial",
+   "group": "piston push/pull",
+   "desc": "sticky piston pushes (lever ON) and pulls (lever OFF) partial",
+   "origin": [
+    110,
+    1,
+    66
+   ],
+   "probes": [
+    {
+     "name": "piston",
+     "pos": [
+      111,
+      1,
+      66
+     ],
+     "obs": [
+      "extended"
+     ],
+     "sim": {
+      "before": "sticky_piston extended=false",
+      "on": "sticky_piston extended=true",
+      "off": "sticky_piston extended=false"
+     }
+    },
+    {
+     "name": "target start",
+     "pos": [
+      112,
+      1,
+      66
+     ],
+     "obs": [],
+     "sim": {
+      "before": "stone_slab",
+      "on": "piston_head",
+      "off": "stone_slab"
+     }
+    },
+    {
+     "name": "target pushed",
+     "pos": [
+      113,
+      1,
+      66
+     ],
+     "obs": [],
+     "sim": {
+      "before": "air",
+      "on": "stone_slab",
+      "off": "air"
+     }
+    }
+   ]
+  },
+  {
+   "id": "C.push.stairs",
+   "group": "piston push/pull",
+   "desc": "sticky piston pushes (lever ON) and pulls (lever OFF) stairs",
+   "origin": [
+    6,
+    1,
+    82
+   ],
+   "probes": [
+    {
+     "name": "piston",
+     "pos": [
+      7,
+      1,
+      82
+     ],
+     "obs": [
+      "extended"
+     ],
+     "sim": {
+      "before": "sticky_piston extended=false",
+      "on": "sticky_piston extended=true",
+      "off": "sticky_piston extended=false"
+     }
+    },
+    {
+     "name": "target start",
+     "pos": [
+      8,
+      1,
+      82
+     ],
+     "obs": [],
+     "sim": {
+      "before": "stone_brick_stairs",
+      "on": "piston_head",
+      "off": "stone_brick_stairs"
+     }
+    },
+    {
+     "name": "target pushed",
+     "pos": [
+      9,
+      1,
+      82
+     ],
+     "obs": [],
+     "sim": {
+      "before": "air",
+      "on": "stone_brick_stairs",
+      "off": "air"
+     }
+    }
+   ]
+  },
+  {
+   "id": "C.push.pane",
+   "group": "piston push/pull",
+   "desc": "sticky piston pushes (lever ON) and pulls (lever OFF) pane",
+   "origin": [
+    14,
+    1,
+    82
+   ],
+   "probes": [
+    {
+     "name": "piston",
+     "pos": [
+      15,
+      1,
+      82
+     ],
+     "obs": [
+      "extended"
+     ],
+     "sim": {
+      "before": "sticky_piston extended=false",
+      "on": "sticky_piston extended=true",
+      "off": "sticky_piston extended=false"
+     }
+    },
+    {
+     "name": "target start",
+     "pos": [
+      16,
+      1,
+      82
+     ],
+     "obs": [],
+     "sim": {
+      "before": "glass_pane",
+      "on": "piston_head",
+      "off": "glass_pane"
+     }
+    },
+    {
+     "name": "target pushed",
+     "pos": [
+      17,
+      1,
+      82
+     ],
+     "obs": [],
+     "sim": {
+      "before": "air",
+      "on": "glass_pane",
+      "off": "air"
+     }
+    }
+   ]
+  },
+  {
+   "id": "C.push.chest",
+   "group": "piston push/pull",
+   "desc": "sticky piston pushes (lever ON) and pulls (lever OFF) chest",
+   "origin": [
+    22,
+    1,
+    82
+   ],
+   "probes": [
+    {
+     "name": "piston",
+     "pos": [
+      23,
+      1,
+      82
+     ],
+     "obs": [
+      "extended"
+     ],
+     "sim": {
+      "before": "sticky_piston extended=false",
+      "on": "sticky_piston extended=false",
+      "off": "sticky_piston extended=false"
+     }
+    },
+    {
+     "name": "target start",
+     "pos": [
+      24,
+      1,
+      82
+     ],
+     "obs": [],
+     "sim": {
+      "before": "chest",
+      "on": "chest",
+      "off": "chest"
+     }
+    },
+    {
+     "name": "target pushed",
+     "pos": [
+      25,
+      1,
+      82
+     ],
+     "obs": [],
+     "sim": {
+      "before": "air",
+      "on": "air",
+      "off": "air"
+     }
+    }
+   ]
+  },
+  {
+   "id": "C.push.barrel",
+   "group": "piston push/pull",
+   "desc": "sticky piston pushes (lever ON) and pulls (lever OFF) barrel",
+   "origin": [
+    30,
+    1,
+    82
+   ],
+   "probes": [
+    {
+     "name": "piston",
+     "pos": [
+      31,
+      1,
+      82
+     ],
+     "obs": [
+      "extended"
+     ],
+     "sim": {
+      "before": "sticky_piston extended=false",
+      "on": "sticky_piston extended=false",
+      "off": "sticky_piston extended=false"
+     }
+    },
+    {
+     "name": "target start",
+     "pos": [
+      32,
+      1,
+      82
+     ],
+     "obs": [],
+     "sim": {
+      "before": "barrel",
+      "on": "barrel",
+      "off": "barrel"
+     }
+    },
+    {
+     "name": "target pushed",
+     "pos": [
+      33,
+      1,
+      82
+     ],
+     "obs": [],
+     "sim": {
+      "before": "air",
+      "on": "air",
+      "off": "air"
+     }
+    }
+   ]
+  },
+  {
+   "id": "C.push.composter",
+   "group": "piston push/pull",
+   "desc": "sticky piston pushes (lever ON) and pulls (lever OFF) composter",
+   "origin": [
+    38,
+    1,
+    82
+   ],
+   "probes": [
+    {
+     "name": "piston",
+     "pos": [
+      39,
+      1,
+      82
+     ],
+     "obs": [
+      "extended"
+     ],
+     "sim": {
+      "before": "sticky_piston extended=false",
+      "on": "sticky_piston extended=true",
+      "off": "sticky_piston extended=false"
+     }
+    },
+    {
+     "name": "target start",
+     "pos": [
+      40,
+      1,
+      82
+     ],
+     "obs": [],
+     "sim": {
+      "before": "composter",
+      "on": "piston_head",
+      "off": "composter"
+     }
+    },
+    {
+     "name": "target pushed",
+     "pos": [
+      41,
+      1,
+      82
+     ],
+     "obs": [],
+     "sim": {
+      "before": "air",
+      "on": "composter",
+      "off": "air"
+     }
+    }
+   ]
+  },
+  {
+   "id": "C.push.target",
+   "group": "piston push/pull",
+   "desc": "sticky piston pushes (lever ON) and pulls (lever OFF) target",
+   "origin": [
+    46,
+    1,
+    82
+   ],
+   "probes": [
+    {
+     "name": "piston",
+     "pos": [
+      47,
+      1,
+      82
+     ],
+     "obs": [
+      "extended"
+     ],
+     "sim": {
+      "before": "sticky_piston extended=false",
+      "on": "sticky_piston extended=true",
+      "off": "sticky_piston extended=false"
+     }
+    },
+    {
+     "name": "target start",
+     "pos": [
+      48,
+      1,
+      82
+     ],
+     "obs": [],
+     "sim": {
+      "before": "target",
+      "on": "piston_head",
+      "off": "target"
+     }
+    },
+    {
+     "name": "target pushed",
+     "pos": [
+      49,
+      1,
+      82
+     ],
+     "obs": [],
+     "sim": {
+      "before": "air",
+      "on": "target",
+      "off": "air"
+     }
+    }
+   ]
+  },
+  {
+   "id": "C.push.note_block",
+   "group": "piston push/pull",
+   "desc": "sticky piston pushes (lever ON) and pulls (lever OFF) note_block",
+   "origin": [
+    54,
+    1,
+    82
+   ],
+   "probes": [
+    {
+     "name": "piston",
+     "pos": [
+      55,
+      1,
+      82
+     ],
+     "obs": [
+      "extended"
+     ],
+     "sim": {
+      "before": "sticky_piston extended=false",
+      "on": "sticky_piston extended=true",
+      "off": "sticky_piston extended=false"
+     }
+    },
+    {
+     "name": "target start",
+     "pos": [
+      56,
+      1,
+      82
+     ],
+     "obs": [],
+     "sim": {
+      "before": "note_block",
+      "on": "piston_head",
+      "off": "note_block"
+     }
+    },
+    {
+     "name": "target pushed",
+     "pos": [
+      57,
+      1,
+      82
+     ],
+     "obs": [],
+     "sim": {
+      "before": "air",
+      "on": "note_block",
+      "off": "air"
+     }
+    }
+   ]
+  },
+  {
+   "id": "C.push.log",
+   "group": "piston push/pull",
+   "desc": "sticky piston pushes (lever ON) and pulls (lever OFF) log",
+   "origin": [
+    62,
+    1,
+    82
+   ],
+   "probes": [
+    {
+     "name": "piston",
+     "pos": [
+      63,
+      1,
+      82
+     ],
+     "obs": [
+      "extended"
+     ],
+     "sim": {
+      "before": "sticky_piston extended=false",
+      "on": "sticky_piston extended=true",
+      "off": "sticky_piston extended=false"
+     }
+    },
+    {
+     "name": "target start",
+     "pos": [
+      64,
+      1,
+      82
+     ],
+     "obs": [],
+     "sim": {
+      "before": "oak_log",
+      "on": "piston_head",
+      "off": "oak_log"
+     }
+    },
+    {
+     "name": "target pushed",
+     "pos": [
+      65,
+      1,
+      82
+     ],
+     "obs": [],
+     "sim": {
+      "before": "air",
+      "on": "oak_log",
+      "off": "air"
+     }
+    }
+   ]
+  },
+  {
+   "id": "C.push.ice",
+   "group": "piston push/pull",
+   "desc": "sticky piston pushes (lever ON) and pulls (lever OFF) ice",
+   "origin": [
+    70,
+    1,
+    82
+   ],
+   "probes": [
+    {
+     "name": "piston",
+     "pos": [
+      71,
+      1,
+      82
+     ],
+     "obs": [
+      "extended"
+     ],
+     "sim": {
+      "before": "sticky_piston extended=false",
+      "on": "sticky_piston extended=true",
+      "off": "sticky_piston extended=false"
+     }
+    },
+    {
+     "name": "target start",
+     "pos": [
+      72,
+      1,
+      82
+     ],
+     "obs": [],
+     "sim": {
+      "before": "ice",
+      "on": "piston_head",
+      "off": "ice"
+     }
+    },
+    {
+     "name": "target pushed",
+     "pos": [
+      73,
+      1,
+      82
+     ],
+     "obs": [],
+     "sim": {
+      "before": "air",
+      "on": "ice",
+      "off": "air"
+     }
+    }
+   ]
+  },
+  {
+   "id": "C.push.gravel",
+   "group": "piston push/pull",
+   "desc": "sticky piston pushes (lever ON) and pulls (lever OFF) gravel",
+   "origin": [
+    78,
+    1,
+    82
+   ],
+   "probes": [
+    {
+     "name": "piston",
+     "pos": [
+      79,
+      1,
+      82
+     ],
+     "obs": [
+      "extended"
+     ],
+     "sim": {
+      "before": "sticky_piston extended=false",
+      "on": "sticky_piston extended=true",
+      "off": "sticky_piston extended=false"
+     }
+    },
+    {
+     "name": "target start",
+     "pos": [
+      80,
+      1,
+      82
+     ],
+     "obs": [],
+     "sim": {
+      "before": "gravel",
+      "on": "piston_head",
+      "off": "gravel"
+     }
+    },
+    {
+     "name": "target pushed",
+     "pos": [
+      81,
+      1,
+      82
+     ],
+     "obs": [],
+     "sim": {
+      "before": "air",
+      "on": "gravel",
+      "off": "air"
+     }
+    }
+   ]
+  },
+  {
+   "id": "C.push.white_wool",
+   "group": "piston push/pull",
+   "desc": "sticky piston pushes (lever ON) and pulls (lever OFF) white_wool",
+   "origin": [
+    86,
+    1,
+    82
+   ],
+   "probes": [
+    {
+     "name": "piston",
+     "pos": [
+      87,
+      1,
+      82
+     ],
+     "obs": [
+      "extended"
+     ],
+     "sim": {
+      "before": "sticky_piston extended=false",
+      "on": "sticky_piston extended=true",
+      "off": "sticky_piston extended=false"
+     }
+    },
+    {
+     "name": "target start",
+     "pos": [
+      88,
+      1,
+      82
+     ],
+     "obs": [],
+     "sim": {
+      "before": "white_wool",
+      "on": "piston_head",
+      "off": "white_wool"
+     }
+    },
+    {
+     "name": "target pushed",
+     "pos": [
+      89,
+      1,
+      82
+     ],
+     "obs": [],
+     "sim": {
+      "before": "air",
+      "on": "white_wool",
+      "off": "air"
+     }
+    }
+   ]
+  },
+  {
+   "id": "D.glue.stone",
+   "group": "slime glue",
+   "desc": "slime pushed by a piston, stone beside it: dragged along?",
+   "origin": [
+    94,
+    1,
+    82
+   ],
+   "probes": [
+    {
+     "name": "slime start",
+     "pos": [
+      96,
+      1,
+      82
+     ],
+     "obs": [],
+     "sim": {
+      "before": "slime_block",
+      "on": "piston_head",
+      "off": "air"
+     }
+    },
+    {
+     "name": "slime pushed",
+     "pos": [
+      97,
+      1,
+      82
+     ],
+     "obs": [],
+     "sim": {
+      "before": "air",
+      "on": "slime_block",
+      "off": "slime_block"
+     }
+    },
+    {
+     "name": "beside start",
+     "pos": [
+      96,
+      1,
+      83
+     ],
+     "obs": [],
+     "sim": {
+      "before": "stone",
+      "on": "air",
+      "off": "air"
+     }
+    },
+    {
+     "name": "beside pushed",
+     "pos": [
+      97,
+      1,
+      83
+     ],
+     "obs": [],
+     "sim": {
+      "before": "air",
+      "on": "stone",
+      "off": "stone"
+     }
+    }
+   ]
+  },
+  {
+   "id": "D.glue.obsidian",
+   "group": "slime glue",
+   "desc": "slime pushed by a piston, obsidian beside it: dragged along?",
+   "origin": [
+    102,
+    1,
+    82
+   ],
+   "probes": [
+    {
+     "name": "slime start",
+     "pos": [
+      104,
+      1,
+      82
+     ],
+     "obs": [],
+     "sim": {
+      "before": "slime_block",
+      "on": "piston_head",
+      "off": "air"
+     }
+    },
+    {
+     "name": "slime pushed",
+     "pos": [
+      105,
+      1,
+      82
+     ],
+     "obs": [],
+     "sim": {
+      "before": "air",
+      "on": "slime_block",
+      "off": "slime_block"
+     }
+    },
+    {
+     "name": "beside start",
+     "pos": [
+      104,
+      1,
+      83
+     ],
+     "obs": [],
+     "sim": {
+      "before": "obsidian",
+      "on": "obsidian",
+      "off": "obsidian"
+     }
+    },
+    {
+     "name": "beside pushed",
+     "pos": [
+      105,
+      1,
+      83
+     ],
+     "obs": [],
+     "sim": {
+      "before": "air",
+      "on": "air",
+      "off": "air"
+     }
+    }
+   ]
+  },
+  {
+   "id": "D.glue.glass",
+   "group": "slime glue",
+   "desc": "slime pushed by a piston, glass beside it: dragged along?",
+   "origin": [
+    110,
+    1,
+    82
+   ],
+   "probes": [
+    {
+     "name": "slime start",
+     "pos": [
+      112,
+      1,
+      82
+     ],
+     "obs": [],
+     "sim": {
+      "before": "slime_block",
+      "on": "piston_head",
+      "off": "air"
+     }
+    },
+    {
+     "name": "slime pushed",
+     "pos": [
+      113,
+      1,
+      82
+     ],
+     "obs": [],
+     "sim": {
+      "before": "air",
+      "on": "slime_block",
+      "off": "slime_block"
+     }
+    },
+    {
+     "name": "beside start",
+     "pos": [
+      112,
+      1,
+      83
+     ],
+     "obs": [],
+     "sim": {
+      "before": "glass",
+      "on": "air",
+      "off": "air"
+     }
+    },
+    {
+     "name": "beside pushed",
+     "pos": [
+      113,
+      1,
+      83
+     ],
+     "obs": [],
+     "sim": {
+      "before": "air",
+      "on": "glass",
+      "off": "glass"
+     }
+    }
+   ]
+  },
+  {
+   "id": "D.glue.sand",
+   "group": "slime glue",
+   "desc": "slime pushed by a piston, sand beside it: dragged along?",
+   "origin": [
+    6,
+    1,
+    98
+   ],
+   "probes": [
+    {
+     "name": "slime start",
+     "pos": [
+      8,
+      1,
+      98
+     ],
+     "obs": [],
+     "sim": {
+      "before": "slime_block",
+      "on": "piston_head",
+      "off": "air"
+     }
+    },
+    {
+     "name": "slime pushed",
+     "pos": [
+      9,
+      1,
+      98
+     ],
+     "obs": [],
+     "sim": {
+      "before": "air",
+      "on": "slime_block",
+      "off": "slime_block"
+     }
+    },
+    {
+     "name": "beside start",
+     "pos": [
+      8,
+      1,
+      99
+     ],
+     "obs": [],
+     "sim": {
+      "before": "sand",
+      "on": "air",
+      "off": "air"
+     }
+    },
+    {
+     "name": "beside pushed",
+     "pos": [
+      9,
+      1,
+      99
+     ],
+     "obs": [],
+     "sim": {
+      "before": "air",
+      "on": "sand",
+      "off": "sand"
+     }
+    }
+   ]
+  },
+  {
+   "id": "D.glue.slime_block",
+   "group": "slime glue",
+   "desc": "slime pushed by a piston, slime_block beside it: dragged along?",
+   "origin": [
+    14,
+    1,
+    98
+   ],
+   "probes": [
+    {
+     "name": "slime start",
+     "pos": [
+      16,
+      1,
+      98
+     ],
+     "obs": [],
+     "sim": {
+      "before": "slime_block",
+      "on": "piston_head",
+      "off": "air"
+     }
+    },
+    {
+     "name": "slime pushed",
+     "pos": [
+      17,
+      1,
+      98
+     ],
+     "obs": [],
+     "sim": {
+      "before": "air",
+      "on": "slime_block",
+      "off": "slime_block"
+     }
+    },
+    {
+     "name": "beside start",
+     "pos": [
+      16,
+      1,
+      99
+     ],
+     "obs": [],
+     "sim": {
+      "before": "slime_block",
+      "on": "air",
+      "off": "air"
+     }
+    },
+    {
+     "name": "beside pushed",
+     "pos": [
+      17,
+      1,
+      99
+     ],
+     "obs": [],
+     "sim": {
+      "before": "air",
+      "on": "slime_block",
+      "off": "slime_block"
+     }
+    }
+   ]
+  },
+  {
+   "id": "D.glue.honey_block",
+   "group": "slime glue",
+   "desc": "slime pushed by a piston, honey_block beside it: dragged along?",
+   "origin": [
+    22,
+    1,
+    98
+   ],
+   "probes": [
+    {
+     "name": "slime start",
+     "pos": [
+      24,
+      1,
+      98
+     ],
+     "obs": [],
+     "sim": {
+      "before": "slime_block",
+      "on": "piston_head",
+      "off": "air"
+     }
+    },
+    {
+     "name": "slime pushed",
+     "pos": [
+      25,
+      1,
+      98
+     ],
+     "obs": [],
+     "sim": {
+      "before": "air",
+      "on": "slime_block",
+      "off": "slime_block"
+     }
+    },
+    {
+     "name": "beside start",
+     "pos": [
+      24,
+      1,
+      99
+     ],
+     "obs": [],
+     "sim": {
+      "before": "honey_block",
+      "on": "honey_block",
+      "off": "honey_block"
+     }
+    },
+    {
+     "name": "beside pushed",
+     "pos": [
+      25,
+      1,
+      99
+     ],
+     "obs": [],
+     "sim": {
+      "before": "air",
+      "on": "air",
+      "off": "air"
+     }
+    }
+   ]
+  },
+  {
+   "id": "D.glue.soul_sand",
+   "group": "slime glue",
+   "desc": "slime pushed by a piston, soul_sand beside it: dragged along?",
+   "origin": [
+    30,
+    1,
+    98
+   ],
+   "probes": [
+    {
+     "name": "slime start",
+     "pos": [
+      32,
+      1,
+      98
+     ],
+     "obs": [],
+     "sim": {
+      "before": "slime_block",
+      "on": "piston_head",
+      "off": "air"
+     }
+    },
+    {
+     "name": "slime pushed",
+     "pos": [
+      33,
+      1,
+      98
+     ],
+     "obs": [],
+     "sim": {
+      "before": "air",
+      "on": "slime_block",
+      "off": "slime_block"
+     }
+    },
+    {
+     "name": "beside start",
+     "pos": [
+      32,
+      1,
+      99
+     ],
+     "obs": [],
+     "sim": {
+      "before": "soul_sand",
+      "on": "air",
+      "off": "air"
+     }
+    },
+    {
+     "name": "beside pushed",
+     "pos": [
+      33,
+      1,
+      99
+     ],
+     "obs": [],
+     "sim": {
+      "before": "air",
+      "on": "soul_sand",
+      "off": "soul_sand"
+     }
+    }
+   ]
+  },
+  {
+   "id": "D.glue.iron_block",
+   "group": "slime glue",
+   "desc": "slime pushed by a piston, iron_block beside it: dragged along?",
+   "origin": [
+    38,
+    1,
+    98
+   ],
+   "probes": [
+    {
+     "name": "slime start",
+     "pos": [
+      40,
+      1,
+      98
+     ],
+     "obs": [],
+     "sim": {
+      "before": "slime_block",
+      "on": "piston_head",
+      "off": "air"
+     }
+    },
+    {
+     "name": "slime pushed",
+     "pos": [
+      41,
+      1,
+      98
+     ],
+     "obs": [],
+     "sim": {
+      "before": "air",
+      "on": "slime_block",
+      "off": "slime_block"
+     }
+    },
+    {
+     "name": "beside start",
+     "pos": [
+      40,
+      1,
+      99
+     ],
+     "obs": [],
+     "sim": {
+      "before": "iron_block",
+      "on": "air",
+      "off": "air"
+     }
+    },
+    {
+     "name": "beside pushed",
+     "pos": [
+      41,
+      1,
+      99
+     ],
+     "obs": [],
+     "sim": {
+      "before": "air",
+      "on": "iron_block",
+      "off": "iron_block"
+     }
+    }
+   ]
+  },
+  {
+   "id": "D.glue.coal_block",
+   "group": "slime glue",
+   "desc": "slime pushed by a piston, coal_block beside it: dragged along?",
+   "origin": [
+    46,
+    1,
+    98
+   ],
+   "probes": [
+    {
+     "name": "slime start",
+     "pos": [
+      48,
+      1,
+      98
+     ],
+     "obs": [],
+     "sim": {
+      "before": "slime_block",
+      "on": "piston_head",
+      "off": "air"
+     }
+    },
+    {
+     "name": "slime pushed",
+     "pos": [
+      49,
+      1,
+      98
+     ],
+     "obs": [],
+     "sim": {
+      "before": "air",
+      "on": "slime_block",
+      "off": "slime_block"
+     }
+    },
+    {
+     "name": "beside start",
+     "pos": [
+      48,
+      1,
+      99
+     ],
+     "obs": [],
+     "sim": {
+      "before": "coal_block",
+      "on": "air",
+      "off": "air"
+     }
+    },
+    {
+     "name": "beside pushed",
+     "pos": [
+      49,
+      1,
+      99
+     ],
+     "obs": [],
+     "sim": {
+      "before": "air",
+      "on": "coal_block",
+      "off": "coal_block"
+     }
+    }
+   ]
+  },
+  {
+   "id": "D.glue.hay_block",
+   "group": "slime glue",
+   "desc": "slime pushed by a piston, hay_block beside it: dragged along?",
+   "origin": [
+    54,
+    1,
+    98
+   ],
+   "probes": [
+    {
+     "name": "slime start",
+     "pos": [
+      56,
+      1,
+      98
+     ],
+     "obs": [],
+     "sim": {
+      "before": "slime_block",
+      "on": "piston_head",
+      "off": "air"
+     }
+    },
+    {
+     "name": "slime pushed",
+     "pos": [
+      57,
+      1,
+      98
+     ],
+     "obs": [],
+     "sim": {
+      "before": "air",
+      "on": "slime_block",
+      "off": "slime_block"
+     }
+    },
+    {
+     "name": "beside start",
+     "pos": [
+      56,
+      1,
+      99
+     ],
+     "obs": [],
+     "sim": {
+      "before": "hay_block",
+      "on": "air",
+      "off": "air"
+     }
+    },
+    {
+     "name": "beside pushed",
+     "pos": [
+      57,
+      1,
+      99
+     ],
+     "obs": [],
+     "sim": {
+      "before": "air",
+      "on": "hay_block",
+      "off": "hay_block"
+     }
+    }
+   ]
+  },
+  {
+   "id": "D.glue.furnace",
+   "group": "slime glue",
+   "desc": "slime pushed by a piston, furnace beside it: dragged along?",
+   "origin": [
+    62,
+    1,
+    98
+   ],
+   "probes": [
+    {
+     "name": "slime start",
+     "pos": [
+      64,
+      1,
+      98
+     ],
+     "obs": [],
+     "sim": {
+      "before": "slime_block",
+      "on": "piston_head",
+      "off": "air"
+     }
+    },
+    {
+     "name": "slime pushed",
+     "pos": [
+      65,
+      1,
+      98
+     ],
+     "obs": [],
+     "sim": {
+      "before": "air",
+      "on": "slime_block",
+      "off": "slime_block"
+     }
+    },
+    {
+     "name": "beside start",
+     "pos": [
+      64,
+      1,
+      99
+     ],
+     "obs": [],
+     "sim": {
+      "before": "furnace",
+      "on": "furnace",
+      "off": "furnace"
+     }
+    },
+    {
+     "name": "beside pushed",
+     "pos": [
+      65,
+      1,
+      99
+     ],
+     "obs": [],
+     "sim": {
+      "before": "air",
+      "on": "air",
+      "off": "air"
+     }
+    }
+   ]
+  },
+  {
+   "id": "D.glue.hopper",
+   "group": "slime glue",
+   "desc": "slime pushed by a piston, hopper beside it: dragged along?",
+   "origin": [
+    70,
+    1,
+    98
+   ],
+   "probes": [
+    {
+     "name": "slime start",
+     "pos": [
+      72,
+      1,
+      98
+     ],
+     "obs": [],
+     "sim": {
+      "before": "slime_block",
+      "on": "piston_head",
+      "off": "air"
+     }
+    },
+    {
+     "name": "slime pushed",
+     "pos": [
+      73,
+      1,
+      98
+     ],
+     "obs": [],
+     "sim": {
+      "before": "air",
+      "on": "slime_block",
+      "off": "slime_block"
+     }
+    },
+    {
+     "name": "beside start",
+     "pos": [
+      72,
+      1,
+      99
+     ],
+     "obs": [],
+     "sim": {
+      "before": "hopper",
+      "on": "hopper",
+      "off": "hopper"
+     }
+    },
+    {
+     "name": "beside pushed",
+     "pos": [
+      73,
+      1,
+      99
+     ],
+     "obs": [],
+     "sim": {
+      "before": "air",
+      "on": "air",
+      "off": "air"
+     }
+    }
+   ]
+  },
+  {
+   "id": "D.glue.dropper",
+   "group": "slime glue",
+   "desc": "slime pushed by a piston, dropper beside it: dragged along?",
+   "origin": [
+    78,
+    1,
+    98
+   ],
+   "probes": [
+    {
+     "name": "slime start",
+     "pos": [
+      80,
+      1,
+      98
+     ],
+     "obs": [],
+     "sim": {
+      "before": "slime_block",
+      "on": "piston_head",
+      "off": "air"
+     }
+    },
+    {
+     "name": "slime pushed",
+     "pos": [
+      81,
+      1,
+      98
+     ],
+     "obs": [],
+     "sim": {
+      "before": "air",
+      "on": "slime_block",
+      "off": "slime_block"
+     }
+    },
+    {
+     "name": "beside start",
+     "pos": [
+      80,
+      1,
+      99
+     ],
+     "obs": [],
+     "sim": {
+      "before": "dropper",
+      "on": "dropper",
+      "off": "dropper"
+     }
+    },
+    {
+     "name": "beside pushed",
+     "pos": [
+      81,
+      1,
+      99
+     ],
+     "obs": [],
+     "sim": {
+      "before": "air",
+      "on": "air",
+      "off": "air"
+     }
+    }
+   ]
+  },
+  {
+   "id": "D.glue.observer",
+   "group": "slime glue",
+   "desc": "slime pushed by a piston, observer beside it: dragged along?",
+   "origin": [
+    86,
+    1,
+    98
+   ],
+   "probes": [
+    {
+     "name": "slime start",
+     "pos": [
+      88,
+      1,
+      98
+     ],
+     "obs": [],
+     "sim": {
+      "before": "slime_block",
+      "on": "piston_head",
+      "off": "air"
+     }
+    },
+    {
+     "name": "slime pushed",
+     "pos": [
+      89,
+      1,
+      98
+     ],
+     "obs": [],
+     "sim": {
+      "before": "air",
+      "on": "slime_block",
+      "off": "slime_block"
+     }
+    },
+    {
+     "name": "beside start",
+     "pos": [
+      88,
+      1,
+      99
+     ],
+     "obs": [],
+     "sim": {
+      "before": "observer",
+      "on": "air",
+      "off": "air"
+     }
+    },
+    {
+     "name": "beside pushed",
+     "pos": [
+      89,
+      1,
+      99
+     ],
+     "obs": [],
+     "sim": {
+      "before": "air",
+      "on": "observer",
+      "off": "observer"
+     }
+    }
+   ]
+  },
+  {
+   "id": "D.glue.leaves",
+   "group": "slime glue",
+   "desc": "slime pushed by a piston, leaves beside it: dragged along?",
+   "origin": [
+    94,
+    1,
+    98
+   ],
+   "probes": [
+    {
+     "name": "slime start",
+     "pos": [
+      96,
+      1,
+      98
+     ],
+     "obs": [],
+     "sim": {
+      "before": "slime_block",
+      "on": "piston_head",
+      "off": "air"
+     }
+    },
+    {
+     "name": "slime pushed",
+     "pos": [
+      97,
+      1,
+      98
+     ],
+     "obs": [],
+     "sim": {
+      "before": "air",
+      "on": "slime_block",
+      "off": "slime_block"
+     }
+    },
+    {
+     "name": "beside start",
+     "pos": [
+      96,
+      1,
+      99
+     ],
+     "obs": [],
+     "sim": {
+      "before": "oak_leaves",
+      "on": "air",
+      "off": "air"
+     }
+    },
+    {
+     "name": "beside pushed",
+     "pos": [
+      97,
+      1,
+      99
+     ],
+     "obs": [],
+     "sim": {
+      "before": "air",
+      "on": "oak_leaves",
+      "off": "oak_leaves"
+     }
+    }
+   ]
+  },
+  {
+   "id": "D.glue.partial",
+   "group": "slime glue",
+   "desc": "slime pushed by a piston, partial beside it: dragged along?",
+   "origin": [
+    102,
+    1,
+    98
+   ],
+   "probes": [
+    {
+     "name": "slime start",
+     "pos": [
+      104,
+      1,
+      98
+     ],
+     "obs": [],
+     "sim": {
+      "before": "slime_block",
+      "on": "piston_head",
+      "off": "air"
+     }
+    },
+    {
+     "name": "slime pushed",
+     "pos": [
+      105,
+      1,
+      98
+     ],
+     "obs": [],
+     "sim": {
+      "before": "air",
+      "on": "slime_block",
+      "off": "slime_block"
+     }
+    },
+    {
+     "name": "beside start",
+     "pos": [
+      104,
+      1,
+      99
+     ],
+     "obs": [],
+     "sim": {
+      "before": "stone_slab",
+      "on": "air",
+      "off": "air"
+     }
+    },
+    {
+     "name": "beside pushed",
+     "pos": [
+      105,
+      1,
+      99
+     ],
+     "obs": [],
+     "sim": {
+      "before": "air",
+      "on": "stone_slab",
+      "off": "stone_slab"
+     }
+    }
+   ]
+  },
+  {
+   "id": "D.glue.stairs",
+   "group": "slime glue",
+   "desc": "slime pushed by a piston, stairs beside it: dragged along?",
+   "origin": [
+    110,
+    1,
+    98
+   ],
+   "probes": [
+    {
+     "name": "slime start",
+     "pos": [
+      112,
+      1,
+      98
+     ],
+     "obs": [],
+     "sim": {
+      "before": "slime_block",
+      "on": "piston_head",
+      "off": "air"
+     }
+    },
+    {
+     "name": "slime pushed",
+     "pos": [
+      113,
+      1,
+      98
+     ],
+     "obs": [],
+     "sim": {
+      "before": "air",
+      "on": "slime_block",
+      "off": "slime_block"
+     }
+    },
+    {
+     "name": "beside start",
+     "pos": [
+      112,
+      1,
+      99
+     ],
+     "obs": [],
+     "sim": {
+      "before": "stone_brick_stairs",
+      "on": "air",
+      "off": "air"
+     }
+    },
+    {
+     "name": "beside pushed",
+     "pos": [
+      113,
+      1,
+      99
+     ],
+     "obs": [],
+     "sim": {
+      "before": "air",
+      "on": "stone_brick_stairs",
+      "off": "stone_brick_stairs"
+     }
+    }
+   ]
+  },
+  {
+   "id": "D.glue.pane",
+   "group": "slime glue",
+   "desc": "slime pushed by a piston, pane beside it: dragged along?",
+   "origin": [
+    6,
+    1,
+    114
+   ],
+   "probes": [
+    {
+     "name": "slime start",
+     "pos": [
+      8,
+      1,
+      114
+     ],
+     "obs": [],
+     "sim": {
+      "before": "slime_block",
+      "on": "piston_head",
+      "off": "air"
+     }
+    },
+    {
+     "name": "slime pushed",
+     "pos": [
+      9,
+      1,
+      114
+     ],
+     "obs": [],
+     "sim": {
+      "before": "air",
+      "on": "slime_block",
+      "off": "slime_block"
+     }
+    },
+    {
+     "name": "beside start",
+     "pos": [
+      8,
+      1,
+      115
+     ],
+     "obs": [],
+     "sim": {
+      "before": "glass_pane",
+      "on": "air",
+      "off": "air"
+     }
+    },
+    {
+     "name": "beside pushed",
+     "pos": [
+      9,
+      1,
+      115
+     ],
+     "obs": [],
+     "sim": {
+      "before": "air",
+      "on": "glass_pane",
+      "off": "glass_pane"
+     }
+    }
+   ]
+  },
+  {
+   "id": "D.glue.chest",
+   "group": "slime glue",
+   "desc": "slime pushed by a piston, chest beside it: dragged along?",
+   "origin": [
+    14,
+    1,
+    114
+   ],
+   "probes": [
+    {
+     "name": "slime start",
+     "pos": [
+      16,
+      1,
+      114
+     ],
+     "obs": [],
+     "sim": {
+      "before": "slime_block",
+      "on": "piston_head",
+      "off": "air"
+     }
+    },
+    {
+     "name": "slime pushed",
+     "pos": [
+      17,
+      1,
+      114
+     ],
+     "obs": [],
+     "sim": {
+      "before": "air",
+      "on": "slime_block",
+      "off": "slime_block"
+     }
+    },
+    {
+     "name": "beside start",
+     "pos": [
+      16,
+      1,
+      115
+     ],
+     "obs": [],
+     "sim": {
+      "before": "chest",
+      "on": "chest",
+      "off": "chest"
+     }
+    },
+    {
+     "name": "beside pushed",
+     "pos": [
+      17,
+      1,
+      115
+     ],
+     "obs": [],
+     "sim": {
+      "before": "air",
+      "on": "air",
+      "off": "air"
+     }
+    }
+   ]
+  },
+  {
+   "id": "D.glue.barrel",
+   "group": "slime glue",
+   "desc": "slime pushed by a piston, barrel beside it: dragged along?",
+   "origin": [
+    22,
+    1,
+    114
+   ],
+   "probes": [
+    {
+     "name": "slime start",
+     "pos": [
+      24,
+      1,
+      114
+     ],
+     "obs": [],
+     "sim": {
+      "before": "slime_block",
+      "on": "piston_head",
+      "off": "air"
+     }
+    },
+    {
+     "name": "slime pushed",
+     "pos": [
+      25,
+      1,
+      114
+     ],
+     "obs": [],
+     "sim": {
+      "before": "air",
+      "on": "slime_block",
+      "off": "slime_block"
+     }
+    },
+    {
+     "name": "beside start",
+     "pos": [
+      24,
+      1,
+      115
+     ],
+     "obs": [],
+     "sim": {
+      "before": "barrel",
+      "on": "barrel",
+      "off": "barrel"
+     }
+    },
+    {
+     "name": "beside pushed",
+     "pos": [
+      25,
+      1,
+      115
+     ],
+     "obs": [],
+     "sim": {
+      "before": "air",
+      "on": "air",
+      "off": "air"
+     }
+    }
+   ]
+  },
+  {
+   "id": "D.glue.composter",
+   "group": "slime glue",
+   "desc": "slime pushed by a piston, composter beside it: dragged along?",
+   "origin": [
+    30,
+    1,
+    114
+   ],
+   "probes": [
+    {
+     "name": "slime start",
+     "pos": [
+      32,
+      1,
+      114
+     ],
+     "obs": [],
+     "sim": {
+      "before": "slime_block",
+      "on": "piston_head",
+      "off": "air"
+     }
+    },
+    {
+     "name": "slime pushed",
+     "pos": [
+      33,
+      1,
+      114
+     ],
+     "obs": [],
+     "sim": {
+      "before": "air",
+      "on": "slime_block",
+      "off": "slime_block"
+     }
+    },
+    {
+     "name": "beside start",
+     "pos": [
+      32,
+      1,
+      115
+     ],
+     "obs": [],
+     "sim": {
+      "before": "composter",
+      "on": "air",
+      "off": "air"
+     }
+    },
+    {
+     "name": "beside pushed",
+     "pos": [
+      33,
+      1,
+      115
+     ],
+     "obs": [],
+     "sim": {
+      "before": "air",
+      "on": "composter",
+      "off": "composter"
+     }
+    }
+   ]
+  },
+  {
+   "id": "D.glue.target",
+   "group": "slime glue",
+   "desc": "slime pushed by a piston, target beside it: dragged along?",
+   "origin": [
+    38,
+    1,
+    114
+   ],
+   "probes": [
+    {
+     "name": "slime start",
+     "pos": [
+      40,
+      1,
+      114
+     ],
+     "obs": [],
+     "sim": {
+      "before": "slime_block",
+      "on": "piston_head",
+      "off": "air"
+     }
+    },
+    {
+     "name": "slime pushed",
+     "pos": [
+      41,
+      1,
+      114
+     ],
+     "obs": [],
+     "sim": {
+      "before": "air",
+      "on": "slime_block",
+      "off": "slime_block"
+     }
+    },
+    {
+     "name": "beside start",
+     "pos": [
+      40,
+      1,
+      115
+     ],
+     "obs": [],
+     "sim": {
+      "before": "target",
+      "on": "air",
+      "off": "air"
+     }
+    },
+    {
+     "name": "beside pushed",
+     "pos": [
+      41,
+      1,
+      115
+     ],
+     "obs": [],
+     "sim": {
+      "before": "air",
+      "on": "target",
+      "off": "target"
+     }
+    }
+   ]
+  },
+  {
+   "id": "D.glue.note_block",
+   "group": "slime glue",
+   "desc": "slime pushed by a piston, note_block beside it: dragged along?",
+   "origin": [
+    46,
+    1,
+    114
+   ],
+   "probes": [
+    {
+     "name": "slime start",
+     "pos": [
+      48,
+      1,
+      114
+     ],
+     "obs": [],
+     "sim": {
+      "before": "slime_block",
+      "on": "piston_head",
+      "off": "air"
+     }
+    },
+    {
+     "name": "slime pushed",
+     "pos": [
+      49,
+      1,
+      114
+     ],
+     "obs": [],
+     "sim": {
+      "before": "air",
+      "on": "slime_block",
+      "off": "slime_block"
+     }
+    },
+    {
+     "name": "beside start",
+     "pos": [
+      48,
+      1,
+      115
+     ],
+     "obs": [],
+     "sim": {
+      "before": "note_block",
+      "on": "air",
+      "off": "air"
+     }
+    },
+    {
+     "name": "beside pushed",
+     "pos": [
+      49,
+      1,
+      115
+     ],
+     "obs": [],
+     "sim": {
+      "before": "air",
+      "on": "note_block",
+      "off": "note_block"
+     }
+    }
+   ]
+  },
+  {
+   "id": "D.glue.log",
+   "group": "slime glue",
+   "desc": "slime pushed by a piston, log beside it: dragged along?",
+   "origin": [
+    54,
+    1,
+    114
+   ],
+   "probes": [
+    {
+     "name": "slime start",
+     "pos": [
+      56,
+      1,
+      114
+     ],
+     "obs": [],
+     "sim": {
+      "before": "slime_block",
+      "on": "piston_head",
+      "off": "air"
+     }
+    },
+    {
+     "name": "slime pushed",
+     "pos": [
+      57,
+      1,
+      114
+     ],
+     "obs": [],
+     "sim": {
+      "before": "air",
+      "on": "slime_block",
+      "off": "slime_block"
+     }
+    },
+    {
+     "name": "beside start",
+     "pos": [
+      56,
+      1,
+      115
+     ],
+     "obs": [],
+     "sim": {
+      "before": "oak_log",
+      "on": "air",
+      "off": "air"
+     }
+    },
+    {
+     "name": "beside pushed",
+     "pos": [
+      57,
+      1,
+      115
+     ],
+     "obs": [],
+     "sim": {
+      "before": "air",
+      "on": "oak_log",
+      "off": "oak_log"
+     }
+    }
+   ]
+  },
+  {
+   "id": "D.glue.ice",
+   "group": "slime glue",
+   "desc": "slime pushed by a piston, ice beside it: dragged along?",
+   "origin": [
+    62,
+    1,
+    114
+   ],
+   "probes": [
+    {
+     "name": "slime start",
+     "pos": [
+      64,
+      1,
+      114
+     ],
+     "obs": [],
+     "sim": {
+      "before": "slime_block",
+      "on": "piston_head",
+      "off": "air"
+     }
+    },
+    {
+     "name": "slime pushed",
+     "pos": [
+      65,
+      1,
+      114
+     ],
+     "obs": [],
+     "sim": {
+      "before": "air",
+      "on": "slime_block",
+      "off": "slime_block"
+     }
+    },
+    {
+     "name": "beside start",
+     "pos": [
+      64,
+      1,
+      115
+     ],
+     "obs": [],
+     "sim": {
+      "before": "ice",
+      "on": "air",
+      "off": "air"
+     }
+    },
+    {
+     "name": "beside pushed",
+     "pos": [
+      65,
+      1,
+      115
+     ],
+     "obs": [],
+     "sim": {
+      "before": "air",
+      "on": "ice",
+      "off": "ice"
+     }
+    }
+   ]
+  },
+  {
+   "id": "D.glue.gravel",
+   "group": "slime glue",
+   "desc": "slime pushed by a piston, gravel beside it: dragged along?",
+   "origin": [
+    70,
+    1,
+    114
+   ],
+   "probes": [
+    {
+     "name": "slime start",
+     "pos": [
+      72,
+      1,
+      114
+     ],
+     "obs": [],
+     "sim": {
+      "before": "slime_block",
+      "on": "piston_head",
+      "off": "air"
+     }
+    },
+    {
+     "name": "slime pushed",
+     "pos": [
+      73,
+      1,
+      114
+     ],
+     "obs": [],
+     "sim": {
+      "before": "air",
+      "on": "slime_block",
+      "off": "slime_block"
+     }
+    },
+    {
+     "name": "beside start",
+     "pos": [
+      72,
+      1,
+      115
+     ],
+     "obs": [],
+     "sim": {
+      "before": "gravel",
+      "on": "air",
+      "off": "air"
+     }
+    },
+    {
+     "name": "beside pushed",
+     "pos": [
+      73,
+      1,
+      115
+     ],
+     "obs": [],
+     "sim": {
+      "before": "air",
+      "on": "gravel",
+      "off": "gravel"
+     }
+    }
+   ]
+  },
+  {
+   "id": "D.glue.white_wool",
+   "group": "slime glue",
+   "desc": "slime pushed by a piston, white_wool beside it: dragged along?",
+   "origin": [
+    78,
+    1,
+    114
+   ],
+   "probes": [
+    {
+     "name": "slime start",
+     "pos": [
+      80,
+      1,
+      114
+     ],
+     "obs": [],
+     "sim": {
+      "before": "slime_block",
+      "on": "piston_head",
+      "off": "air"
+     }
+    },
+    {
+     "name": "slime pushed",
+     "pos": [
+      81,
+      1,
+      114
+     ],
+     "obs": [],
+     "sim": {
+      "before": "air",
+      "on": "slime_block",
+      "off": "slime_block"
+     }
+    },
+    {
+     "name": "beside start",
+     "pos": [
+      80,
+      1,
+      115
+     ],
+     "obs": [],
+     "sim": {
+      "before": "white_wool",
+      "on": "air",
+      "off": "air"
+     }
+    },
+    {
+     "name": "beside pushed",
+     "pos": [
+      81,
+      1,
+      115
+     ],
+     "obs": [],
+     "sim": {
+      "before": "air",
+      "on": "white_wool",
+      "off": "white_wool"
+     }
+    }
+   ]
+  },
+  {
+   "id": "E.qc.piston.0,1,0",
+   "group": "quasi-connectivity",
+   "desc": "piston, powered conductor above P (direct)",
+   "origin": [
+    86,
+    1,
+    114
+   ],
+   "probes": [
+    {
+     "name": "P",
+     "pos": [
+      86,
+      0,
+      114
+     ],
+     "obs": [
+      "extended"
+     ],
+     "sim": {
+      "before": "piston extended=false",
+      "on": "piston extended=true",
+      "off": "piston extended=false"
+     }
+    },
+    {
+     "name": "pushed",
+     "pos": [
+      86,
+      0,
+      116
+     ],
+     "obs": [],
+     "sim": {
+      "before": "air",
+      "on": "stone",
+      "off": "stone"
+     }
+    }
+   ]
+  },
+  {
+   "id": "E.qc.sticky_piston.0,1,0",
+   "group": "quasi-connectivity",
+   "desc": "sticky_piston, powered conductor above P (direct)",
+   "origin": [
+    94,
+    1,
+    114
+   ],
+   "probes": [
+    {
+     "name": "P",
+     "pos": [
+      94,
+      0,
+      114
+     ],
+     "obs": [
+      "extended"
+     ],
+     "sim": {
+      "before": "sticky_piston extended=false",
+      "on": "sticky_piston extended=true",
+      "off": "sticky_piston extended=false"
+     }
+    },
+    {
+     "name": "pushed",
+     "pos": [
+      94,
+      0,
+      116
+     ],
+     "obs": [],
+     "sim": {
+      "before": "air",
+      "on": "stone",
+      "off": "air"
+     }
+    }
+   ]
+  },
+  {
+   "id": "E.qc.dropper.0,1,0",
+   "group": "quasi-connectivity",
+   "desc": "dropper, powered conductor above P (direct)",
+   "origin": [
+    102,
+    1,
+    114
+   ],
+   "probes": [
+    {
+     "name": "P",
+     "pos": [
+      102,
+      0,
+      114
+     ],
+     "obs": [
+      "triggered"
+     ],
+     "sim": {
+      "before": "dropper triggered=false",
+      "on": "dropper triggered=true",
+      "off": "dropper triggered=false"
+     }
+    }
+   ]
+  },
+  {
+   "id": "E.qc.dispenser.0,1,0",
+   "group": "quasi-connectivity",
+   "desc": "dispenser, powered conductor above P (direct)",
+   "origin": [
+    110,
+    1,
+    114
+   ],
+   "probes": [
+    {
+     "name": "P",
+     "pos": [
+      110,
+      0,
+      114
+     ],
+     "obs": [
+      "triggered"
+     ],
+     "sim": {
+      "before": "dispenser triggered=false",
+      "on": "dispenser triggered=true",
+      "off": "dispenser triggered=false"
+     }
+    }
+   ]
+  },
+  {
+   "id": "E.qc.hopper.0,1,0",
+   "group": "quasi-connectivity",
+   "desc": "hopper, powered conductor above P (direct)",
+   "origin": [
+    6,
+    1,
+    130
+   ],
+   "probes": [
+    {
+     "name": "P",
+     "pos": [
+      6,
+      0,
+      130
+     ],
+     "obs": [
+      "enabled"
+     ],
+     "sim": {
+      "before": "hopper enabled=true",
+      "on": "hopper enabled=false",
+      "off": "hopper enabled=true"
+     }
+    }
+   ]
+  },
+  {
+   "id": "E.qc.piston.0,-1,0",
+   "group": "quasi-connectivity",
+   "desc": "piston, powered conductor below P",
+   "origin": [
+    14,
+    1,
+    130
+   ],
+   "probes": [
+    {
+     "name": "P",
+     "pos": [
+      14,
+      2,
+      130
+     ],
+     "obs": [
+      "extended"
+     ],
+     "sim": {
+      "before": "piston extended=false",
+      "on": "piston extended=true",
+      "off": "piston extended=false"
+     }
+    },
+    {
+     "name": "pushed",
+     "pos": [
+      14,
+      2,
+      132
+     ],
+     "obs": [],
+     "sim": {
+      "before": "air",
+      "on": "stone",
+      "off": "stone"
+     }
+    }
+   ]
+  },
+  {
+   "id": "E.qc.sticky_piston.0,-1,0",
+   "group": "quasi-connectivity",
+   "desc": "sticky_piston, powered conductor below P",
+   "origin": [
+    22,
+    1,
+    130
+   ],
+   "probes": [
+    {
+     "name": "P",
+     "pos": [
+      22,
+      2,
+      130
+     ],
+     "obs": [
+      "extended"
+     ],
+     "sim": {
+      "before": "sticky_piston extended=false",
+      "on": "sticky_piston extended=true",
+      "off": "sticky_piston extended=false"
+     }
+    },
+    {
+     "name": "pushed",
+     "pos": [
+      22,
+      2,
+      132
+     ],
+     "obs": [],
+     "sim": {
+      "before": "air",
+      "on": "stone",
+      "off": "air"
+     }
+    }
+   ]
+  },
+  {
+   "id": "E.qc.dropper.0,-1,0",
+   "group": "quasi-connectivity",
+   "desc": "dropper, powered conductor below P",
+   "origin": [
+    30,
+    1,
+    130
+   ],
+   "probes": [
+    {
+     "name": "P",
+     "pos": [
+      30,
+      2,
+      130
+     ],
+     "obs": [
+      "triggered"
+     ],
+     "sim": {
+      "before": "dropper triggered=false",
+      "on": "dropper triggered=true",
+      "off": "dropper triggered=false"
+     }
+    }
+   ]
+  },
+  {
+   "id": "E.qc.dispenser.0,-1,0",
+   "group": "quasi-connectivity",
+   "desc": "dispenser, powered conductor below P",
+   "origin": [
+    38,
+    1,
+    130
+   ],
+   "probes": [
+    {
+     "name": "P",
+     "pos": [
+      38,
+      2,
+      130
+     ],
+     "obs": [
+      "triggered"
+     ],
+     "sim": {
+      "before": "dispenser triggered=false",
+      "on": "dispenser triggered=true",
+      "off": "dispenser triggered=false"
+     }
+    }
+   ]
+  },
+  {
+   "id": "E.qc.hopper.0,-1,0",
+   "group": "quasi-connectivity",
+   "desc": "hopper, powered conductor below P",
+   "origin": [
+    46,
+    1,
+    130
+   ],
+   "probes": [
+    {
+     "name": "P",
+     "pos": [
+      46,
+      2,
+      130
+     ],
+     "obs": [
+      "enabled"
+     ],
+     "sim": {
+      "before": "hopper enabled=true",
+      "on": "hopper enabled=false",
+      "off": "hopper enabled=true"
+     }
+    }
+   ]
+  },
+  {
+   "id": "E.qc.piston.1,0,0",
+   "group": "quasi-connectivity",
+   "desc": "piston, powered conductor east of P",
+   "origin": [
+    54,
+    1,
+    130
+   ],
+   "probes": [
+    {
+     "name": "P",
+     "pos": [
+      53,
+      1,
+      130
+     ],
+     "obs": [
+      "extended"
+     ],
+     "sim": {
+      "before": "piston extended=false",
+      "on": "piston extended=true",
+      "off": "piston extended=false"
+     }
+    },
+    {
+     "name": "pushed",
+     "pos": [
+      53,
+      1,
+      132
+     ],
+     "obs": [],
+     "sim": {
+      "before": "air",
+      "on": "stone",
+      "off": "stone"
+     }
+    }
+   ]
+  },
+  {
+   "id": "E.qc.sticky_piston.1,0,0",
+   "group": "quasi-connectivity",
+   "desc": "sticky_piston, powered conductor east of P",
+   "origin": [
+    62,
+    1,
+    130
+   ],
+   "probes": [
+    {
+     "name": "P",
+     "pos": [
+      61,
+      1,
+      130
+     ],
+     "obs": [
+      "extended"
+     ],
+     "sim": {
+      "before": "sticky_piston extended=false",
+      "on": "sticky_piston extended=true",
+      "off": "sticky_piston extended=false"
+     }
+    },
+    {
+     "name": "pushed",
+     "pos": [
+      61,
+      1,
+      132
+     ],
+     "obs": [],
+     "sim": {
+      "before": "air",
+      "on": "stone",
+      "off": "air"
+     }
+    }
+   ]
+  },
+  {
+   "id": "E.qc.dropper.1,0,0",
+   "group": "quasi-connectivity",
+   "desc": "dropper, powered conductor east of P",
+   "origin": [
+    70,
+    1,
+    130
+   ],
+   "probes": [
+    {
+     "name": "P",
+     "pos": [
+      69,
+      1,
+      130
+     ],
+     "obs": [
+      "triggered"
+     ],
+     "sim": {
+      "before": "dropper triggered=false",
+      "on": "dropper triggered=true",
+      "off": "dropper triggered=false"
+     }
+    }
+   ]
+  },
+  {
+   "id": "E.qc.dispenser.1,0,0",
+   "group": "quasi-connectivity",
+   "desc": "dispenser, powered conductor east of P",
+   "origin": [
+    78,
+    1,
+    130
+   ],
+   "probes": [
+    {
+     "name": "P",
+     "pos": [
+      77,
+      1,
+      130
+     ],
+     "obs": [
+      "triggered"
+     ],
+     "sim": {
+      "before": "dispenser triggered=false",
+      "on": "dispenser triggered=true",
+      "off": "dispenser triggered=false"
+     }
+    }
+   ]
+  },
+  {
+   "id": "E.qc.hopper.1,0,0",
+   "group": "quasi-connectivity",
+   "desc": "hopper, powered conductor east of P",
+   "origin": [
+    86,
+    1,
+    130
+   ],
+   "probes": [
+    {
+     "name": "P",
+     "pos": [
+      85,
+      1,
+      130
+     ],
+     "obs": [
+      "enabled"
+     ],
+     "sim": {
+      "before": "hopper enabled=true",
+      "on": "hopper enabled=false",
+      "off": "hopper enabled=true"
+     }
+    }
+   ]
+  },
+  {
+   "id": "E.qc.piston.-1,0,0",
+   "group": "quasi-connectivity",
+   "desc": "piston, powered conductor west of P",
+   "origin": [
+    94,
+    1,
+    130
+   ],
+   "probes": [
+    {
+     "name": "P",
+     "pos": [
+      95,
+      1,
+      130
+     ],
+     "obs": [
+      "extended"
+     ],
+     "sim": {
+      "before": "piston extended=false",
+      "on": "piston extended=true",
+      "off": "piston extended=false"
+     }
+    },
+    {
+     "name": "pushed",
+     "pos": [
+      95,
+      1,
+      132
+     ],
+     "obs": [],
+     "sim": {
+      "before": "air",
+      "on": "stone",
+      "off": "stone"
+     }
+    }
+   ]
+  },
+  {
+   "id": "E.qc.sticky_piston.-1,0,0",
+   "group": "quasi-connectivity",
+   "desc": "sticky_piston, powered conductor west of P",
+   "origin": [
+    102,
+    1,
+    130
+   ],
+   "probes": [
+    {
+     "name": "P",
+     "pos": [
+      103,
+      1,
+      130
+     ],
+     "obs": [
+      "extended"
+     ],
+     "sim": {
+      "before": "sticky_piston extended=false",
+      "on": "sticky_piston extended=true",
+      "off": "sticky_piston extended=false"
+     }
+    },
+    {
+     "name": "pushed",
+     "pos": [
+      103,
+      1,
+      132
+     ],
+     "obs": [],
+     "sim": {
+      "before": "air",
+      "on": "stone",
+      "off": "air"
+     }
+    }
+   ]
+  },
+  {
+   "id": "E.qc.dropper.-1,0,0",
+   "group": "quasi-connectivity",
+   "desc": "dropper, powered conductor west of P",
+   "origin": [
+    110,
+    1,
+    130
+   ],
+   "probes": [
+    {
+     "name": "P",
+     "pos": [
+      111,
+      1,
+      130
+     ],
+     "obs": [
+      "triggered"
+     ],
+     "sim": {
+      "before": "dropper triggered=false",
+      "on": "dropper triggered=true",
+      "off": "dropper triggered=false"
+     }
+    }
+   ]
+  },
+  {
+   "id": "E.qc.dispenser.-1,0,0",
+   "group": "quasi-connectivity",
+   "desc": "dispenser, powered conductor west of P",
+   "origin": [
+    6,
+    1,
+    146
+   ],
+   "probes": [
+    {
+     "name": "P",
+     "pos": [
+      7,
+      1,
+      146
+     ],
+     "obs": [
+      "triggered"
+     ],
+     "sim": {
+      "before": "dispenser triggered=false",
+      "on": "dispenser triggered=true",
+      "off": "dispenser triggered=false"
+     }
+    }
+   ]
+  },
+  {
+   "id": "E.qc.hopper.-1,0,0",
+   "group": "quasi-connectivity",
+   "desc": "hopper, powered conductor west of P",
+   "origin": [
+    14,
+    1,
+    146
+   ],
+   "probes": [
+    {
+     "name": "P",
+     "pos": [
+      15,
+      1,
+      146
+     ],
+     "obs": [
+      "enabled"
+     ],
+     "sim": {
+      "before": "hopper enabled=true",
+      "on": "hopper enabled=false",
+      "off": "hopper enabled=true"
+     }
+    }
+   ]
+  },
+  {
+   "id": "E.qc.piston.0,0,-1",
+   "group": "quasi-connectivity",
+   "desc": "piston, powered conductor behind P (north)",
+   "origin": [
+    22,
+    1,
+    146
+   ],
+   "probes": [
+    {
+     "name": "P",
+     "pos": [
+      22,
+      1,
+      147
+     ],
+     "obs": [
+      "extended"
+     ],
+     "sim": {
+      "before": "piston extended=false",
+      "on": "piston extended=true",
+      "off": "piston extended=false"
+     }
+    },
+    {
+     "name": "pushed",
+     "pos": [
+      22,
+      1,
+      149
+     ],
+     "obs": [],
+     "sim": {
+      "before": "air",
+      "on": "stone",
+      "off": "stone"
+     }
+    }
+   ]
+  },
+  {
+   "id": "E.qc.sticky_piston.0,0,-1",
+   "group": "quasi-connectivity",
+   "desc": "sticky_piston, powered conductor behind P (north)",
+   "origin": [
+    30,
+    1,
+    146
+   ],
+   "probes": [
+    {
+     "name": "P",
+     "pos": [
+      30,
+      1,
+      147
+     ],
+     "obs": [
+      "extended"
+     ],
+     "sim": {
+      "before": "sticky_piston extended=false",
+      "on": "sticky_piston extended=true",
+      "off": "sticky_piston extended=false"
+     }
+    },
+    {
+     "name": "pushed",
+     "pos": [
+      30,
+      1,
+      149
+     ],
+     "obs": [],
+     "sim": {
+      "before": "air",
+      "on": "stone",
+      "off": "air"
+     }
+    }
+   ]
+  },
+  {
+   "id": "E.qc.dropper.0,0,-1",
+   "group": "quasi-connectivity",
+   "desc": "dropper, powered conductor behind P (north)",
+   "origin": [
+    38,
+    1,
+    146
+   ],
+   "probes": [
+    {
+     "name": "P",
+     "pos": [
+      38,
+      1,
+      147
+     ],
+     "obs": [
+      "triggered"
+     ],
+     "sim": {
+      "before": "dropper triggered=false",
+      "on": "dropper triggered=true",
+      "off": "dropper triggered=false"
+     }
+    }
+   ]
+  },
+  {
+   "id": "E.qc.dispenser.0,0,-1",
+   "group": "quasi-connectivity",
+   "desc": "dispenser, powered conductor behind P (north)",
+   "origin": [
+    46,
+    1,
+    146
+   ],
+   "probes": [
+    {
+     "name": "P",
+     "pos": [
+      46,
+      1,
+      147
+     ],
+     "obs": [
+      "triggered"
+     ],
+     "sim": {
+      "before": "dispenser triggered=false",
+      "on": "dispenser triggered=true",
+      "off": "dispenser triggered=false"
+     }
+    }
+   ]
+  },
+  {
+   "id": "E.qc.hopper.0,0,-1",
+   "group": "quasi-connectivity",
+   "desc": "hopper, powered conductor behind P (north)",
+   "origin": [
+    54,
+    1,
+    146
+   ],
+   "probes": [
+    {
+     "name": "P",
+     "pos": [
+      54,
+      1,
+      147
+     ],
+     "obs": [
+      "enabled"
+     ],
+     "sim": {
+      "before": "hopper enabled=true",
+      "on": "hopper enabled=false",
+      "off": "hopper enabled=true"
+     }
+    }
+   ]
+  },
+  {
+   "id": "E.qc.piston.0,2,0.kick",
+   "group": "quasi-connectivity",
+   "desc": "piston, powered conductor 2 above P (QC), a note block next to both toggles (a block update reaches P; lamps do not update neighbours)",
+   "origin": [
+    62,
+    1,
+    146
+   ],
+   "probes": [
+    {
+     "name": "P",
+     "pos": [
+      62,
+      -1,
+      146
+     ],
+     "obs": [
+      "extended"
+     ],
+     "sim": {
+      "before": "piston extended=false",
+      "on": "piston extended=true",
+      "off": "piston extended=false"
+     }
+    },
+    {
+     "name": "pushed",
+     "pos": [
+      62,
+      -1,
+      148
+     ],
+     "obs": [],
+     "sim": {
+      "before": "air",
+      "on": "stone",
+      "off": "stone"
+     }
+    }
+   ]
+  },
+  {
+   "id": "E.qc.piston.0,2,0.nokick",
+   "group": "quasi-connectivity",
+   "desc": "piston, powered conductor 2 above P (QC), no block update reaches P (pure BUD)",
+   "origin": [
+    70,
+    1,
+    146
+   ],
+   "probes": [
+    {
+     "name": "P",
+     "pos": [
+      70,
+      -1,
+      146
+     ],
+     "obs": [
+      "extended"
+     ],
+     "sim": {
+      "before": "piston extended=false",
+      "on": "piston extended=false",
+      "off": "piston extended=false"
+     }
+    },
+    {
+     "name": "pushed",
+     "pos": [
+      70,
+      -1,
+      148
+     ],
+     "obs": [],
+     "sim": {
+      "before": "air",
+      "on": "air",
+      "off": "air"
+     }
+    }
+   ]
+  },
+  {
+   "id": "E.qc.sticky_piston.0,2,0.kick",
+   "group": "quasi-connectivity",
+   "desc": "sticky_piston, powered conductor 2 above P (QC), a note block next to both toggles (a block update reaches P; lamps do not update neighbours)",
+   "origin": [
+    78,
+    1,
+    146
+   ],
+   "probes": [
+    {
+     "name": "P",
+     "pos": [
+      78,
+      -1,
+      146
+     ],
+     "obs": [
+      "extended"
+     ],
+     "sim": {
+      "before": "sticky_piston extended=false",
+      "on": "sticky_piston extended=true",
+      "off": "sticky_piston extended=false"
+     }
+    },
+    {
+     "name": "pushed",
+     "pos": [
+      78,
+      -1,
+      148
+     ],
+     "obs": [],
+     "sim": {
+      "before": "air",
+      "on": "stone",
+      "off": "air"
+     }
+    }
+   ]
+  },
+  {
+   "id": "E.qc.sticky_piston.0,2,0.nokick",
+   "group": "quasi-connectivity",
+   "desc": "sticky_piston, powered conductor 2 above P (QC), no block update reaches P (pure BUD)",
+   "origin": [
+    86,
+    1,
+    146
+   ],
+   "probes": [
+    {
+     "name": "P",
+     "pos": [
+      86,
+      -1,
+      146
+     ],
+     "obs": [
+      "extended"
+     ],
+     "sim": {
+      "before": "sticky_piston extended=false",
+      "on": "sticky_piston extended=false",
+      "off": "sticky_piston extended=false"
+     }
+    },
+    {
+     "name": "pushed",
+     "pos": [
+      86,
+      -1,
+      148
+     ],
+     "obs": [],
+     "sim": {
+      "before": "air",
+      "on": "air",
+      "off": "air"
+     }
+    }
+   ]
+  },
+  {
+   "id": "E.qc.dropper.0,2,0.kick",
+   "group": "quasi-connectivity",
+   "desc": "dropper, powered conductor 2 above P (QC), a note block next to both toggles (a block update reaches P; lamps do not update neighbours)",
+   "origin": [
+    94,
+    1,
+    146
+   ],
+   "probes": [
+    {
+     "name": "P",
+     "pos": [
+      94,
+      -1,
+      146
+     ],
+     "obs": [
+      "triggered"
+     ],
+     "sim": {
+      "before": "dropper triggered=false",
+      "on": "dropper triggered=true",
+      "off": "dropper triggered=false"
+     }
+    }
+   ]
+  },
+  {
+   "id": "E.qc.dropper.0,2,0.nokick",
+   "group": "quasi-connectivity",
+   "desc": "dropper, powered conductor 2 above P (QC), no block update reaches P (pure BUD)",
+   "origin": [
+    102,
+    1,
+    146
+   ],
+   "probes": [
+    {
+     "name": "P",
+     "pos": [
+      102,
+      -1,
+      146
+     ],
+     "obs": [
+      "triggered"
+     ],
+     "sim": {
+      "before": "dropper triggered=false",
+      "on": "dropper triggered=false",
+      "off": "dropper triggered=false"
+     }
+    }
+   ]
+  },
+  {
+   "id": "E.qc.dispenser.0,2,0.kick",
+   "group": "quasi-connectivity",
+   "desc": "dispenser, powered conductor 2 above P (QC), a note block next to both toggles (a block update reaches P; lamps do not update neighbours)",
+   "origin": [
+    110,
+    1,
+    146
+   ],
+   "probes": [
+    {
+     "name": "P",
+     "pos": [
+      110,
+      -1,
+      146
+     ],
+     "obs": [
+      "triggered"
+     ],
+     "sim": {
+      "before": "dispenser triggered=false",
+      "on": "dispenser triggered=true",
+      "off": "dispenser triggered=false"
+     }
+    }
+   ]
+  },
+  {
+   "id": "E.qc.dispenser.0,2,0.nokick",
+   "group": "quasi-connectivity",
+   "desc": "dispenser, powered conductor 2 above P (QC), no block update reaches P (pure BUD)",
+   "origin": [
+    6,
+    1,
+    162
+   ],
+   "probes": [
+    {
+     "name": "P",
+     "pos": [
+      6,
+      -1,
+      162
+     ],
+     "obs": [
+      "triggered"
+     ],
+     "sim": {
+      "before": "dispenser triggered=false",
+      "on": "dispenser triggered=false",
+      "off": "dispenser triggered=false"
+     }
+    }
+   ]
+  },
+  {
+   "id": "E.qc.hopper.0,2,0.kick",
+   "group": "quasi-connectivity",
+   "desc": "hopper, powered conductor 2 above P (QC), a note block next to both toggles (a block update reaches P; lamps do not update neighbours)",
+   "origin": [
+    14,
+    1,
+    162
+   ],
+   "probes": [
+    {
+     "name": "P",
+     "pos": [
+      14,
+      -1,
+      162
+     ],
+     "obs": [
+      "enabled"
+     ],
+     "sim": {
+      "before": "hopper enabled=true",
+      "on": "hopper enabled=true",
+      "off": "hopper enabled=true"
+     }
+    }
+   ]
+  },
+  {
+   "id": "E.qc.hopper.0,2,0.nokick",
+   "group": "quasi-connectivity",
+   "desc": "hopper, powered conductor 2 above P (QC), no block update reaches P (pure BUD)",
+   "origin": [
+    22,
+    1,
+    162
+   ],
+   "probes": [
+    {
+     "name": "P",
+     "pos": [
+      22,
+      -1,
+      162
+     ],
+     "obs": [
+      "enabled"
+     ],
+     "sim": {
+      "before": "hopper enabled=true",
+      "on": "hopper enabled=true",
+      "off": "hopper enabled=true"
+     }
+    }
+   ]
+  },
+  {
+   "id": "E.qc.piston.1,1,0.kick",
+   "group": "quasi-connectivity",
+   "desc": "piston, powered conductor above+east of P (QC), a note block next to both toggles (a block update reaches P; lamps do not update neighbours)",
+   "origin": [
+    30,
+    1,
+    162
+   ],
+   "probes": [
+    {
+     "name": "P",
+     "pos": [
+      29,
+      0,
+      162
+     ],
+     "obs": [
+      "extended"
+     ],
+     "sim": {
+      "before": "piston extended=false",
+      "on": "piston extended=true",
+      "off": "piston extended=false"
+     }
+    },
+    {
+     "name": "pushed",
+     "pos": [
+      29,
+      0,
+      164
+     ],
+     "obs": [],
+     "sim": {
+      "before": "air",
+      "on": "stone",
+      "off": "stone"
+     }
+    }
+   ]
+  },
+  {
+   "id": "E.qc.piston.1,1,0.nokick",
+   "group": "quasi-connectivity",
+   "desc": "piston, powered conductor above+east of P (QC), no block update reaches P (pure BUD)",
+   "origin": [
+    38,
+    1,
+    162
+   ],
+   "probes": [
+    {
+     "name": "P",
+     "pos": [
+      37,
+      0,
+      162
+     ],
+     "obs": [
+      "extended"
+     ],
+     "sim": {
+      "before": "piston extended=false",
+      "on": "piston extended=false",
+      "off": "piston extended=false"
+     }
+    },
+    {
+     "name": "pushed",
+     "pos": [
+      37,
+      0,
+      164
+     ],
+     "obs": [],
+     "sim": {
+      "before": "air",
+      "on": "air",
+      "off": "air"
+     }
+    }
+   ]
+  },
+  {
+   "id": "E.qc.sticky_piston.1,1,0.kick",
+   "group": "quasi-connectivity",
+   "desc": "sticky_piston, powered conductor above+east of P (QC), a note block next to both toggles (a block update reaches P; lamps do not update neighbours)",
+   "origin": [
+    46,
+    1,
+    162
+   ],
+   "probes": [
+    {
+     "name": "P",
+     "pos": [
+      45,
+      0,
+      162
+     ],
+     "obs": [
+      "extended"
+     ],
+     "sim": {
+      "before": "sticky_piston extended=false",
+      "on": "sticky_piston extended=true",
+      "off": "sticky_piston extended=false"
+     }
+    },
+    {
+     "name": "pushed",
+     "pos": [
+      45,
+      0,
+      164
+     ],
+     "obs": [],
+     "sim": {
+      "before": "air",
+      "on": "stone",
+      "off": "air"
+     }
+    }
+   ]
+  },
+  {
+   "id": "E.qc.sticky_piston.1,1,0.nokick",
+   "group": "quasi-connectivity",
+   "desc": "sticky_piston, powered conductor above+east of P (QC), no block update reaches P (pure BUD)",
+   "origin": [
+    54,
+    1,
+    162
+   ],
+   "probes": [
+    {
+     "name": "P",
+     "pos": [
+      53,
+      0,
+      162
+     ],
+     "obs": [
+      "extended"
+     ],
+     "sim": {
+      "before": "sticky_piston extended=false",
+      "on": "sticky_piston extended=false",
+      "off": "sticky_piston extended=false"
+     }
+    },
+    {
+     "name": "pushed",
+     "pos": [
+      53,
+      0,
+      164
+     ],
+     "obs": [],
+     "sim": {
+      "before": "air",
+      "on": "air",
+      "off": "air"
+     }
+    }
+   ]
+  },
+  {
+   "id": "E.qc.dropper.1,1,0.kick",
+   "group": "quasi-connectivity",
+   "desc": "dropper, powered conductor above+east of P (QC), a note block next to both toggles (a block update reaches P; lamps do not update neighbours)",
+   "origin": [
+    62,
+    1,
+    162
+   ],
+   "probes": [
+    {
+     "name": "P",
+     "pos": [
+      61,
+      0,
+      162
+     ],
+     "obs": [
+      "triggered"
+     ],
+     "sim": {
+      "before": "dropper triggered=false",
+      "on": "dropper triggered=true",
+      "off": "dropper triggered=false"
+     }
+    }
+   ]
+  },
+  {
+   "id": "E.qc.dropper.1,1,0.nokick",
+   "group": "quasi-connectivity",
+   "desc": "dropper, powered conductor above+east of P (QC), no block update reaches P (pure BUD)",
+   "origin": [
+    70,
+    1,
+    162
+   ],
+   "probes": [
+    {
+     "name": "P",
+     "pos": [
+      69,
+      0,
+      162
+     ],
+     "obs": [
+      "triggered"
+     ],
+     "sim": {
+      "before": "dropper triggered=false",
+      "on": "dropper triggered=false",
+      "off": "dropper triggered=false"
+     }
+    }
+   ]
+  },
+  {
+   "id": "E.qc.dispenser.1,1,0.kick",
+   "group": "quasi-connectivity",
+   "desc": "dispenser, powered conductor above+east of P (QC), a note block next to both toggles (a block update reaches P; lamps do not update neighbours)",
+   "origin": [
+    78,
+    1,
+    162
+   ],
+   "probes": [
+    {
+     "name": "P",
+     "pos": [
+      77,
+      0,
+      162
+     ],
+     "obs": [
+      "triggered"
+     ],
+     "sim": {
+      "before": "dispenser triggered=false",
+      "on": "dispenser triggered=true",
+      "off": "dispenser triggered=false"
+     }
+    }
+   ]
+  },
+  {
+   "id": "E.qc.dispenser.1,1,0.nokick",
+   "group": "quasi-connectivity",
+   "desc": "dispenser, powered conductor above+east of P (QC), no block update reaches P (pure BUD)",
+   "origin": [
+    86,
+    1,
+    162
+   ],
+   "probes": [
+    {
+     "name": "P",
+     "pos": [
+      85,
+      0,
+      162
+     ],
+     "obs": [
+      "triggered"
+     ],
+     "sim": {
+      "before": "dispenser triggered=false",
+      "on": "dispenser triggered=false",
+      "off": "dispenser triggered=false"
+     }
+    }
+   ]
+  },
+  {
+   "id": "E.qc.hopper.1,1,0.kick",
+   "group": "quasi-connectivity",
+   "desc": "hopper, powered conductor above+east of P (QC), a note block next to both toggles (a block update reaches P; lamps do not update neighbours)",
+   "origin": [
+    94,
+    1,
+    162
+   ],
+   "probes": [
+    {
+     "name": "P",
+     "pos": [
+      93,
+      0,
+      162
+     ],
+     "obs": [
+      "enabled"
+     ],
+     "sim": {
+      "before": "hopper enabled=true",
+      "on": "hopper enabled=true",
+      "off": "hopper enabled=true"
+     }
+    }
+   ]
+  },
+  {
+   "id": "E.qc.hopper.1,1,0.nokick",
+   "group": "quasi-connectivity",
+   "desc": "hopper, powered conductor above+east of P (QC), no block update reaches P (pure BUD)",
+   "origin": [
+    102,
+    1,
+    162
+   ],
+   "probes": [
+    {
+     "name": "P",
+     "pos": [
+      101,
+      0,
+      162
+     ],
+     "obs": [
+      "enabled"
+     ],
+     "sim": {
+      "before": "hopper enabled=true",
+      "on": "hopper enabled=true",
+      "off": "hopper enabled=true"
+     }
+    }
+   ]
+  },
+  {
+   "id": "E.qc.piston.-1,1,0.kick",
+   "group": "quasi-connectivity",
+   "desc": "piston, powered conductor above+west of P (QC), a note block next to both toggles (a block update reaches P; lamps do not update neighbours)",
+   "origin": [
+    110,
+    1,
+    162
+   ],
+   "probes": [
+    {
+     "name": "P",
+     "pos": [
+      111,
+      0,
+      162
+     ],
+     "obs": [
+      "extended"
+     ],
+     "sim": {
+      "before": "piston extended=false",
+      "on": "piston extended=true",
+      "off": "piston extended=false"
+     }
+    },
+    {
+     "name": "pushed",
+     "pos": [
+      111,
+      0,
+      164
+     ],
+     "obs": [],
+     "sim": {
+      "before": "air",
+      "on": "stone",
+      "off": "stone"
+     }
+    }
+   ]
+  },
+  {
+   "id": "E.qc.piston.-1,1,0.nokick",
+   "group": "quasi-connectivity",
+   "desc": "piston, powered conductor above+west of P (QC), no block update reaches P (pure BUD)",
+   "origin": [
+    6,
+    1,
+    178
+   ],
+   "probes": [
+    {
+     "name": "P",
+     "pos": [
+      7,
+      0,
+      178
+     ],
+     "obs": [
+      "extended"
+     ],
+     "sim": {
+      "before": "piston extended=false",
+      "on": "piston extended=false",
+      "off": "piston extended=false"
+     }
+    },
+    {
+     "name": "pushed",
+     "pos": [
+      7,
+      0,
+      180
+     ],
+     "obs": [],
+     "sim": {
+      "before": "air",
+      "on": "air",
+      "off": "air"
+     }
+    }
+   ]
+  },
+  {
+   "id": "E.qc.sticky_piston.-1,1,0.kick",
+   "group": "quasi-connectivity",
+   "desc": "sticky_piston, powered conductor above+west of P (QC), a note block next to both toggles (a block update reaches P; lamps do not update neighbours)",
+   "origin": [
+    14,
+    1,
+    178
+   ],
+   "probes": [
+    {
+     "name": "P",
+     "pos": [
+      15,
+      0,
+      178
+     ],
+     "obs": [
+      "extended"
+     ],
+     "sim": {
+      "before": "sticky_piston extended=false",
+      "on": "sticky_piston extended=true",
+      "off": "sticky_piston extended=false"
+     }
+    },
+    {
+     "name": "pushed",
+     "pos": [
+      15,
+      0,
+      180
+     ],
+     "obs": [],
+     "sim": {
+      "before": "air",
+      "on": "stone",
+      "off": "air"
+     }
+    }
+   ]
+  },
+  {
+   "id": "E.qc.sticky_piston.-1,1,0.nokick",
+   "group": "quasi-connectivity",
+   "desc": "sticky_piston, powered conductor above+west of P (QC), no block update reaches P (pure BUD)",
+   "origin": [
+    22,
+    1,
+    178
+   ],
+   "probes": [
+    {
+     "name": "P",
+     "pos": [
+      23,
+      0,
+      178
+     ],
+     "obs": [
+      "extended"
+     ],
+     "sim": {
+      "before": "sticky_piston extended=false",
+      "on": "sticky_piston extended=false",
+      "off": "sticky_piston extended=false"
+     }
+    },
+    {
+     "name": "pushed",
+     "pos": [
+      23,
+      0,
+      180
+     ],
+     "obs": [],
+     "sim": {
+      "before": "air",
+      "on": "air",
+      "off": "air"
+     }
+    }
+   ]
+  },
+  {
+   "id": "E.qc.dropper.-1,1,0.kick",
+   "group": "quasi-connectivity",
+   "desc": "dropper, powered conductor above+west of P (QC), a note block next to both toggles (a block update reaches P; lamps do not update neighbours)",
+   "origin": [
+    30,
+    1,
+    178
+   ],
+   "probes": [
+    {
+     "name": "P",
+     "pos": [
+      31,
+      0,
+      178
+     ],
+     "obs": [
+      "triggered"
+     ],
+     "sim": {
+      "before": "dropper triggered=false",
+      "on": "dropper triggered=true",
+      "off": "dropper triggered=false"
+     }
+    }
+   ]
+  },
+  {
+   "id": "E.qc.dropper.-1,1,0.nokick",
+   "group": "quasi-connectivity",
+   "desc": "dropper, powered conductor above+west of P (QC), no block update reaches P (pure BUD)",
+   "origin": [
+    38,
+    1,
+    178
+   ],
+   "probes": [
+    {
+     "name": "P",
+     "pos": [
+      39,
+      0,
+      178
+     ],
+     "obs": [
+      "triggered"
+     ],
+     "sim": {
+      "before": "dropper triggered=false",
+      "on": "dropper triggered=false",
+      "off": "dropper triggered=false"
+     }
+    }
+   ]
+  },
+  {
+   "id": "E.qc.dispenser.-1,1,0.kick",
+   "group": "quasi-connectivity",
+   "desc": "dispenser, powered conductor above+west of P (QC), a note block next to both toggles (a block update reaches P; lamps do not update neighbours)",
+   "origin": [
+    46,
+    1,
+    178
+   ],
+   "probes": [
+    {
+     "name": "P",
+     "pos": [
+      47,
+      0,
+      178
+     ],
+     "obs": [
+      "triggered"
+     ],
+     "sim": {
+      "before": "dispenser triggered=false",
+      "on": "dispenser triggered=true",
+      "off": "dispenser triggered=false"
+     }
+    }
+   ]
+  },
+  {
+   "id": "E.qc.dispenser.-1,1,0.nokick",
+   "group": "quasi-connectivity",
+   "desc": "dispenser, powered conductor above+west of P (QC), no block update reaches P (pure BUD)",
+   "origin": [
+    54,
+    1,
+    178
+   ],
+   "probes": [
+    {
+     "name": "P",
+     "pos": [
+      55,
+      0,
+      178
+     ],
+     "obs": [
+      "triggered"
+     ],
+     "sim": {
+      "before": "dispenser triggered=false",
+      "on": "dispenser triggered=false",
+      "off": "dispenser triggered=false"
+     }
+    }
+   ]
+  },
+  {
+   "id": "E.qc.hopper.-1,1,0.kick",
+   "group": "quasi-connectivity",
+   "desc": "hopper, powered conductor above+west of P (QC), a note block next to both toggles (a block update reaches P; lamps do not update neighbours)",
+   "origin": [
+    62,
+    1,
+    178
+   ],
+   "probes": [
+    {
+     "name": "P",
+     "pos": [
+      63,
+      0,
+      178
+     ],
+     "obs": [
+      "enabled"
+     ],
+     "sim": {
+      "before": "hopper enabled=true",
+      "on": "hopper enabled=true",
+      "off": "hopper enabled=true"
+     }
+    }
+   ]
+  },
+  {
+   "id": "E.qc.hopper.-1,1,0.nokick",
+   "group": "quasi-connectivity",
+   "desc": "hopper, powered conductor above+west of P (QC), no block update reaches P (pure BUD)",
+   "origin": [
+    70,
+    1,
+    178
+   ],
+   "probes": [
+    {
+     "name": "P",
+     "pos": [
+      71,
+      0,
+      178
+     ],
+     "obs": [
+      "enabled"
+     ],
+     "sim": {
+      "before": "hopper enabled=true",
+      "on": "hopper enabled=true",
+      "off": "hopper enabled=true"
+     }
+    }
+   ]
+  },
+  {
+   "id": "E.qc.piston.0,1,-1.kick",
+   "group": "quasi-connectivity",
+   "desc": "piston, powered conductor above+north of P (QC), a note block next to both toggles (a block update reaches P; lamps do not update neighbours)",
+   "origin": [
+    78,
+    1,
+    178
+   ],
+   "probes": [
+    {
+     "name": "P",
+     "pos": [
+      78,
+      0,
+      179
+     ],
+     "obs": [
+      "extended"
+     ],
+     "sim": {
+      "before": "piston extended=false",
+      "on": "piston extended=true",
+      "off": "piston extended=false"
+     }
+    },
+    {
+     "name": "pushed",
+     "pos": [
+      78,
+      0,
+      181
+     ],
+     "obs": [],
+     "sim": {
+      "before": "air",
+      "on": "stone",
+      "off": "stone"
+     }
+    }
+   ]
+  },
+  {
+   "id": "E.qc.piston.0,1,-1.nokick",
+   "group": "quasi-connectivity",
+   "desc": "piston, powered conductor above+north of P (QC), no block update reaches P (pure BUD)",
+   "origin": [
+    86,
+    1,
+    178
+   ],
+   "probes": [
+    {
+     "name": "P",
+     "pos": [
+      86,
+      0,
+      179
+     ],
+     "obs": [
+      "extended"
+     ],
+     "sim": {
+      "before": "piston extended=false",
+      "on": "piston extended=false",
+      "off": "piston extended=false"
+     }
+    },
+    {
+     "name": "pushed",
+     "pos": [
+      86,
+      0,
+      181
+     ],
+     "obs": [],
+     "sim": {
+      "before": "air",
+      "on": "air",
+      "off": "air"
+     }
+    }
+   ]
+  },
+  {
+   "id": "E.qc.sticky_piston.0,1,-1.kick",
+   "group": "quasi-connectivity",
+   "desc": "sticky_piston, powered conductor above+north of P (QC), a note block next to both toggles (a block update reaches P; lamps do not update neighbours)",
+   "origin": [
+    94,
+    1,
+    178
+   ],
+   "probes": [
+    {
+     "name": "P",
+     "pos": [
+      94,
+      0,
+      179
+     ],
+     "obs": [
+      "extended"
+     ],
+     "sim": {
+      "before": "sticky_piston extended=false",
+      "on": "sticky_piston extended=true",
+      "off": "sticky_piston extended=false"
+     }
+    },
+    {
+     "name": "pushed",
+     "pos": [
+      94,
+      0,
+      181
+     ],
+     "obs": [],
+     "sim": {
+      "before": "air",
+      "on": "stone",
+      "off": "air"
+     }
+    }
+   ]
+  },
+  {
+   "id": "E.qc.sticky_piston.0,1,-1.nokick",
+   "group": "quasi-connectivity",
+   "desc": "sticky_piston, powered conductor above+north of P (QC), no block update reaches P (pure BUD)",
+   "origin": [
+    102,
+    1,
+    178
+   ],
+   "probes": [
+    {
+     "name": "P",
+     "pos": [
+      102,
+      0,
+      179
+     ],
+     "obs": [
+      "extended"
+     ],
+     "sim": {
+      "before": "sticky_piston extended=false",
+      "on": "sticky_piston extended=false",
+      "off": "sticky_piston extended=false"
+     }
+    },
+    {
+     "name": "pushed",
+     "pos": [
+      102,
+      0,
+      181
+     ],
+     "obs": [],
+     "sim": {
+      "before": "air",
+      "on": "air",
+      "off": "air"
+     }
+    }
+   ]
+  },
+  {
+   "id": "E.qc.dropper.0,1,-1.kick",
+   "group": "quasi-connectivity",
+   "desc": "dropper, powered conductor above+north of P (QC), a note block next to both toggles (a block update reaches P; lamps do not update neighbours)",
+   "origin": [
+    110,
+    1,
+    178
+   ],
+   "probes": [
+    {
+     "name": "P",
+     "pos": [
+      110,
+      0,
+      179
+     ],
+     "obs": [
+      "triggered"
+     ],
+     "sim": {
+      "before": "dropper triggered=false",
+      "on": "dropper triggered=true",
+      "off": "dropper triggered=false"
+     }
+    }
+   ]
+  },
+  {
+   "id": "E.qc.dropper.0,1,-1.nokick",
+   "group": "quasi-connectivity",
+   "desc": "dropper, powered conductor above+north of P (QC), no block update reaches P (pure BUD)",
+   "origin": [
+    6,
+    1,
+    194
+   ],
+   "probes": [
+    {
+     "name": "P",
+     "pos": [
+      6,
+      0,
+      195
+     ],
+     "obs": [
+      "triggered"
+     ],
+     "sim": {
+      "before": "dropper triggered=false",
+      "on": "dropper triggered=false",
+      "off": "dropper triggered=false"
+     }
+    }
+   ]
+  },
+  {
+   "id": "E.qc.dispenser.0,1,-1.kick",
+   "group": "quasi-connectivity",
+   "desc": "dispenser, powered conductor above+north of P (QC), a note block next to both toggles (a block update reaches P; lamps do not update neighbours)",
+   "origin": [
+    14,
+    1,
+    194
+   ],
+   "probes": [
+    {
+     "name": "P",
+     "pos": [
+      14,
+      0,
+      195
+     ],
+     "obs": [
+      "triggered"
+     ],
+     "sim": {
+      "before": "dispenser triggered=false",
+      "on": "dispenser triggered=true",
+      "off": "dispenser triggered=false"
+     }
+    }
+   ]
+  },
+  {
+   "id": "E.qc.dispenser.0,1,-1.nokick",
+   "group": "quasi-connectivity",
+   "desc": "dispenser, powered conductor above+north of P (QC), no block update reaches P (pure BUD)",
+   "origin": [
+    22,
+    1,
+    194
+   ],
+   "probes": [
+    {
+     "name": "P",
+     "pos": [
+      22,
+      0,
+      195
+     ],
+     "obs": [
+      "triggered"
+     ],
+     "sim": {
+      "before": "dispenser triggered=false",
+      "on": "dispenser triggered=false",
+      "off": "dispenser triggered=false"
+     }
+    }
+   ]
+  },
+  {
+   "id": "E.qc.hopper.0,1,-1.kick",
+   "group": "quasi-connectivity",
+   "desc": "hopper, powered conductor above+north of P (QC), a note block next to both toggles (a block update reaches P; lamps do not update neighbours)",
+   "origin": [
+    30,
+    1,
+    194
+   ],
+   "probes": [
+    {
+     "name": "P",
+     "pos": [
+      30,
+      0,
+      195
+     ],
+     "obs": [
+      "enabled"
+     ],
+     "sim": {
+      "before": "hopper enabled=true",
+      "on": "hopper enabled=true",
+      "off": "hopper enabled=true"
+     }
+    }
+   ]
+  },
+  {
+   "id": "E.qc.hopper.0,1,-1.nokick",
+   "group": "quasi-connectivity",
+   "desc": "hopper, powered conductor above+north of P (QC), no block update reaches P (pure BUD)",
+   "origin": [
+    38,
+    1,
+    194
+   ],
+   "probes": [
+    {
+     "name": "P",
+     "pos": [
+      38,
+      0,
+      195
+     ],
+     "obs": [
+      "enabled"
+     ],
+     "sim": {
+      "before": "hopper enabled=true",
+      "on": "hopper enabled=true",
+      "off": "hopper enabled=true"
+     }
+    }
+   ]
+  },
+  {
+   "id": "E.qc.piston.0,1,1.kick",
+   "group": "quasi-connectivity",
+   "desc": "piston, powered conductor above+south of P (QC, over the pushed block), a note block next to both toggles (a block update reaches P; lamps do not update neighbours)",
+   "origin": [
+    46,
+    1,
+    194
+   ],
+   "probes": [
+    {
+     "name": "P",
+     "pos": [
+      46,
+      0,
+      193
+     ],
+     "obs": [
+      "extended"
+     ],
+     "sim": {
+      "before": "piston extended=false",
+      "on": "piston extended=true",
+      "off": "piston extended=false"
+     }
+    },
+    {
+     "name": "pushed",
+     "pos": [
+      46,
+      0,
+      195
+     ],
+     "obs": [],
+     "sim": {
+      "before": "air",
+      "on": "stone",
+      "off": "stone"
+     }
+    }
+   ]
+  },
+  {
+   "id": "E.qc.piston.0,1,1.nokick",
+   "group": "quasi-connectivity",
+   "desc": "piston, powered conductor above+south of P (QC, over the pushed block), no block update reaches P (pure BUD)",
+   "origin": [
+    54,
+    1,
+    194
+   ],
+   "probes": [
+    {
+     "name": "P",
+     "pos": [
+      54,
+      0,
+      193
+     ],
+     "obs": [
+      "extended"
+     ],
+     "sim": {
+      "before": "piston extended=false",
+      "on": "piston extended=true",
+      "off": "piston extended=false"
+     }
+    },
+    {
+     "name": "pushed",
+     "pos": [
+      54,
+      0,
+      195
+     ],
+     "obs": [],
+     "sim": {
+      "before": "air",
+      "on": "stone",
+      "off": "stone"
+     }
+    }
+   ]
+  },
+  {
+   "id": "E.qc.sticky_piston.0,1,1.kick",
+   "group": "quasi-connectivity",
+   "desc": "sticky_piston, powered conductor above+south of P (QC, over the pushed block), a note block next to both toggles (a block update reaches P; lamps do not update neighbours)",
+   "origin": [
+    62,
+    1,
+    194
+   ],
+   "probes": [
+    {
+     "name": "P",
+     "pos": [
+      62,
+      0,
+      193
+     ],
+     "obs": [
+      "extended"
+     ],
+     "sim": {
+      "before": "sticky_piston extended=false",
+      "on": "sticky_piston extended=true",
+      "off": "sticky_piston extended=false"
+     }
+    },
+    {
+     "name": "pushed",
+     "pos": [
+      62,
+      0,
+      195
+     ],
+     "obs": [],
+     "sim": {
+      "before": "air",
+      "on": "stone",
+      "off": "air"
+     }
+    }
+   ]
+  },
+  {
+   "id": "E.qc.sticky_piston.0,1,1.nokick",
+   "group": "quasi-connectivity",
+   "desc": "sticky_piston, powered conductor above+south of P (QC, over the pushed block), no block update reaches P (pure BUD)",
+   "origin": [
+    70,
+    1,
+    194
+   ],
+   "probes": [
+    {
+     "name": "P",
+     "pos": [
+      70,
+      0,
+      193
+     ],
+     "obs": [
+      "extended"
+     ],
+     "sim": {
+      "before": "sticky_piston extended=false",
+      "on": "sticky_piston extended=true",
+      "off": "sticky_piston extended=false"
+     }
+    },
+    {
+     "name": "pushed",
+     "pos": [
+      70,
+      0,
+      195
+     ],
+     "obs": [],
+     "sim": {
+      "before": "air",
+      "on": "stone",
+      "off": "air"
+     }
+    }
+   ]
+  },
+  {
+   "id": "E.qc.dropper.0,1,1.kick",
+   "group": "quasi-connectivity",
+   "desc": "dropper, powered conductor above+south of P (QC, over the pushed block), a note block next to both toggles (a block update reaches P; lamps do not update neighbours)",
+   "origin": [
+    78,
+    1,
+    194
+   ],
+   "probes": [
+    {
+     "name": "P",
+     "pos": [
+      78,
+      0,
+      193
+     ],
+     "obs": [
+      "triggered"
+     ],
+     "sim": {
+      "before": "dropper triggered=false",
+      "on": "dropper triggered=true",
+      "off": "dropper triggered=false"
+     }
+    }
+   ]
+  },
+  {
+   "id": "E.qc.dropper.0,1,1.nokick",
+   "group": "quasi-connectivity",
+   "desc": "dropper, powered conductor above+south of P (QC, over the pushed block), no block update reaches P (pure BUD)",
+   "origin": [
+    86,
+    1,
+    194
+   ],
+   "probes": [
+    {
+     "name": "P",
+     "pos": [
+      86,
+      0,
+      193
+     ],
+     "obs": [
+      "triggered"
+     ],
+     "sim": {
+      "before": "dropper triggered=false",
+      "on": "dropper triggered=true",
+      "off": "dropper triggered=true"
+     }
+    }
+   ]
+  },
+  {
+   "id": "E.qc.dispenser.0,1,1.kick",
+   "group": "quasi-connectivity",
+   "desc": "dispenser, powered conductor above+south of P (QC, over the pushed block), a note block next to both toggles (a block update reaches P; lamps do not update neighbours)",
+   "origin": [
+    94,
+    1,
+    194
+   ],
+   "probes": [
+    {
+     "name": "P",
+     "pos": [
+      94,
+      0,
+      193
+     ],
+     "obs": [
+      "triggered"
+     ],
+     "sim": {
+      "before": "dispenser triggered=false",
+      "on": "dispenser triggered=true",
+      "off": "dispenser triggered=false"
+     }
+    }
+   ]
+  },
+  {
+   "id": "E.qc.dispenser.0,1,1.nokick",
+   "group": "quasi-connectivity",
+   "desc": "dispenser, powered conductor above+south of P (QC, over the pushed block), no block update reaches P (pure BUD)",
+   "origin": [
+    102,
+    1,
+    194
+   ],
+   "probes": [
+    {
+     "name": "P",
+     "pos": [
+      102,
+      0,
+      193
+     ],
+     "obs": [
+      "triggered"
+     ],
+     "sim": {
+      "before": "dispenser triggered=false",
+      "on": "dispenser triggered=true",
+      "off": "dispenser triggered=true"
+     }
+    }
+   ]
+  },
+  {
+   "id": "E.qc.hopper.0,1,1.kick",
+   "group": "quasi-connectivity",
+   "desc": "hopper, powered conductor above+south of P (QC, over the pushed block), a note block next to both toggles (a block update reaches P; lamps do not update neighbours)",
+   "origin": [
+    110,
+    1,
+    194
+   ],
+   "probes": [
+    {
+     "name": "P",
+     "pos": [
+      110,
+      0,
+      193
+     ],
+     "obs": [
+      "enabled"
+     ],
+     "sim": {
+      "before": "hopper enabled=true",
+      "on": "hopper enabled=false",
+      "off": "hopper enabled=true"
+     }
+    }
+   ]
+  },
+  {
+   "id": "E.qc.hopper.0,1,1.nokick",
+   "group": "quasi-connectivity",
+   "desc": "hopper, powered conductor above+south of P (QC, over the pushed block), no block update reaches P (pure BUD)",
+   "origin": [
+    6,
+    1,
+    210
+   ],
+   "probes": [
+    {
+     "name": "P",
+     "pos": [
+      6,
+      0,
+      209
+     ],
+     "obs": [
+      "enabled"
+     ],
+     "sim": {
+      "before": "hopper enabled=true",
+      "on": "hopper enabled=false",
+      "off": "hopper enabled=true"
+     }
+    }
+   ]
+  },
+  {
+   "id": "E.qc.piston.1,0,1.kick",
+   "group": "quasi-connectivity",
+   "desc": "piston, powered conductor east+south of P (diagonal, no QC), a note block next to both toggles (a block update reaches P; lamps do not update neighbours)",
+   "origin": [
+    14,
+    1,
+    210
+   ],
+   "probes": [
+    {
+     "name": "P",
+     "pos": [
+      13,
+      1,
+      209
+     ],
+     "obs": [
+      "extended"
+     ],
+     "sim": {
+      "before": "piston extended=false",
+      "on": "piston extended=false",
+      "off": "piston extended=false"
+     }
+    },
+    {
+     "name": "pushed",
+     "pos": [
+      13,
+      1,
+      211
+     ],
+     "obs": [],
+     "sim": {
+      "before": "air",
+      "on": "air",
+      "off": "air"
+     }
+    }
+   ]
+  },
+  {
+   "id": "E.qc.piston.1,0,1.nokick",
+   "group": "quasi-connectivity",
+   "desc": "piston, powered conductor east+south of P (diagonal, no QC), no block update reaches P (pure BUD)",
+   "origin": [
+    22,
+    1,
+    210
+   ],
+   "probes": [
+    {
+     "name": "P",
+     "pos": [
+      21,
+      1,
+      209
+     ],
+     "obs": [
+      "extended"
+     ],
+     "sim": {
+      "before": "piston extended=false",
+      "on": "piston extended=false",
+      "off": "piston extended=false"
+     }
+    },
+    {
+     "name": "pushed",
+     "pos": [
+      21,
+      1,
+      211
+     ],
+     "obs": [],
+     "sim": {
+      "before": "air",
+      "on": "air",
+      "off": "air"
+     }
+    }
+   ]
+  },
+  {
+   "id": "E.qc.sticky_piston.1,0,1.kick",
+   "group": "quasi-connectivity",
+   "desc": "sticky_piston, powered conductor east+south of P (diagonal, no QC), a note block next to both toggles (a block update reaches P; lamps do not update neighbours)",
+   "origin": [
+    30,
+    1,
+    210
+   ],
+   "probes": [
+    {
+     "name": "P",
+     "pos": [
+      29,
+      1,
+      209
+     ],
+     "obs": [
+      "extended"
+     ],
+     "sim": {
+      "before": "sticky_piston extended=false",
+      "on": "sticky_piston extended=false",
+      "off": "sticky_piston extended=false"
+     }
+    },
+    {
+     "name": "pushed",
+     "pos": [
+      29,
+      1,
+      211
+     ],
+     "obs": [],
+     "sim": {
+      "before": "air",
+      "on": "air",
+      "off": "air"
+     }
+    }
+   ]
+  },
+  {
+   "id": "E.qc.sticky_piston.1,0,1.nokick",
+   "group": "quasi-connectivity",
+   "desc": "sticky_piston, powered conductor east+south of P (diagonal, no QC), no block update reaches P (pure BUD)",
+   "origin": [
+    38,
+    1,
+    210
+   ],
+   "probes": [
+    {
+     "name": "P",
+     "pos": [
+      37,
+      1,
+      209
+     ],
+     "obs": [
+      "extended"
+     ],
+     "sim": {
+      "before": "sticky_piston extended=false",
+      "on": "sticky_piston extended=false",
+      "off": "sticky_piston extended=false"
+     }
+    },
+    {
+     "name": "pushed",
+     "pos": [
+      37,
+      1,
+      211
+     ],
+     "obs": [],
+     "sim": {
+      "before": "air",
+      "on": "air",
+      "off": "air"
+     }
+    }
+   ]
+  },
+  {
+   "id": "E.qc.dropper.1,0,1.kick",
+   "group": "quasi-connectivity",
+   "desc": "dropper, powered conductor east+south of P (diagonal, no QC), a note block next to both toggles (a block update reaches P; lamps do not update neighbours)",
+   "origin": [
+    46,
+    1,
+    210
+   ],
+   "probes": [
+    {
+     "name": "P",
+     "pos": [
+      45,
+      1,
+      209
+     ],
+     "obs": [
+      "triggered"
+     ],
+     "sim": {
+      "before": "dropper triggered=false",
+      "on": "dropper triggered=false",
+      "off": "dropper triggered=false"
+     }
+    }
+   ]
+  },
+  {
+   "id": "E.qc.dropper.1,0,1.nokick",
+   "group": "quasi-connectivity",
+   "desc": "dropper, powered conductor east+south of P (diagonal, no QC), no block update reaches P (pure BUD)",
+   "origin": [
+    54,
+    1,
+    210
+   ],
+   "probes": [
+    {
+     "name": "P",
+     "pos": [
+      53,
+      1,
+      209
+     ],
+     "obs": [
+      "triggered"
+     ],
+     "sim": {
+      "before": "dropper triggered=false",
+      "on": "dropper triggered=false",
+      "off": "dropper triggered=false"
+     }
+    }
+   ]
+  },
+  {
+   "id": "E.qc.dispenser.1,0,1.kick",
+   "group": "quasi-connectivity",
+   "desc": "dispenser, powered conductor east+south of P (diagonal, no QC), a note block next to both toggles (a block update reaches P; lamps do not update neighbours)",
+   "origin": [
+    62,
+    1,
+    210
+   ],
+   "probes": [
+    {
+     "name": "P",
+     "pos": [
+      61,
+      1,
+      209
+     ],
+     "obs": [
+      "triggered"
+     ],
+     "sim": {
+      "before": "dispenser triggered=false",
+      "on": "dispenser triggered=false",
+      "off": "dispenser triggered=false"
+     }
+    }
+   ]
+  },
+  {
+   "id": "E.qc.dispenser.1,0,1.nokick",
+   "group": "quasi-connectivity",
+   "desc": "dispenser, powered conductor east+south of P (diagonal, no QC), no block update reaches P (pure BUD)",
+   "origin": [
+    70,
+    1,
+    210
+   ],
+   "probes": [
+    {
+     "name": "P",
+     "pos": [
+      69,
+      1,
+      209
+     ],
+     "obs": [
+      "triggered"
+     ],
+     "sim": {
+      "before": "dispenser triggered=false",
+      "on": "dispenser triggered=false",
+      "off": "dispenser triggered=false"
+     }
+    }
+   ]
+  },
+  {
+   "id": "E.qc.hopper.1,0,1.kick",
+   "group": "quasi-connectivity",
+   "desc": "hopper, powered conductor east+south of P (diagonal, no QC), a note block next to both toggles (a block update reaches P; lamps do not update neighbours)",
+   "origin": [
+    78,
+    1,
+    210
+   ],
+   "probes": [
+    {
+     "name": "P",
+     "pos": [
+      77,
+      1,
+      209
+     ],
+     "obs": [
+      "enabled"
+     ],
+     "sim": {
+      "before": "hopper enabled=true",
+      "on": "hopper enabled=true",
+      "off": "hopper enabled=true"
+     }
+    }
+   ]
+  },
+  {
+   "id": "E.qc.hopper.1,0,1.nokick",
+   "group": "quasi-connectivity",
+   "desc": "hopper, powered conductor east+south of P (diagonal, no QC), no block update reaches P (pure BUD)",
+   "origin": [
+    86,
+    1,
+    210
+   ],
+   "probes": [
+    {
+     "name": "P",
+     "pos": [
+      85,
+      1,
+      209
+     ],
+     "obs": [
+      "enabled"
+     ],
+     "sim": {
+      "before": "hopper enabled=true",
+      "on": "hopper enabled=true",
+      "off": "hopper enabled=true"
+     }
+    }
+   ]
+  },
+  {
+   "id": "E.qc.piston.1,2,0.kick",
+   "group": "quasi-connectivity",
+   "desc": "piston, powered conductor 2 above + east (no QC), a note block next to both toggles (a block update reaches P; lamps do not update neighbours)",
+   "origin": [
+    94,
+    1,
+    210
+   ],
+   "probes": [
+    {
+     "name": "P",
+     "pos": [
+      93,
+      -1,
+      210
+     ],
+     "obs": [
+      "extended"
+     ],
+     "sim": {
+      "before": "piston extended=false",
+      "on": "piston extended=false",
+      "off": "piston extended=false"
+     }
+    },
+    {
+     "name": "pushed",
+     "pos": [
+      93,
+      -1,
+      212
+     ],
+     "obs": [],
+     "sim": {
+      "before": "air",
+      "on": "air",
+      "off": "air"
+     }
+    }
+   ]
+  },
+  {
+   "id": "E.qc.piston.1,2,0.nokick",
+   "group": "quasi-connectivity",
+   "desc": "piston, powered conductor 2 above + east (no QC), no block update reaches P (pure BUD)",
+   "origin": [
+    102,
+    1,
+    210
+   ],
+   "probes": [
+    {
+     "name": "P",
+     "pos": [
+      101,
+      -1,
+      210
+     ],
+     "obs": [
+      "extended"
+     ],
+     "sim": {
+      "before": "piston extended=false",
+      "on": "piston extended=false",
+      "off": "piston extended=false"
+     }
+    },
+    {
+     "name": "pushed",
+     "pos": [
+      101,
+      -1,
+      212
+     ],
+     "obs": [],
+     "sim": {
+      "before": "air",
+      "on": "air",
+      "off": "air"
+     }
+    }
+   ]
+  },
+  {
+   "id": "E.qc.sticky_piston.1,2,0.kick",
+   "group": "quasi-connectivity",
+   "desc": "sticky_piston, powered conductor 2 above + east (no QC), a note block next to both toggles (a block update reaches P; lamps do not update neighbours)",
+   "origin": [
+    110,
+    1,
+    210
+   ],
+   "probes": [
+    {
+     "name": "P",
+     "pos": [
+      109,
+      -1,
+      210
+     ],
+     "obs": [
+      "extended"
+     ],
+     "sim": {
+      "before": "sticky_piston extended=false",
+      "on": "sticky_piston extended=false",
+      "off": "sticky_piston extended=false"
+     }
+    },
+    {
+     "name": "pushed",
+     "pos": [
+      109,
+      -1,
+      212
+     ],
+     "obs": [],
+     "sim": {
+      "before": "air",
+      "on": "air",
+      "off": "air"
+     }
+    }
+   ]
+  },
+  {
+   "id": "E.qc.sticky_piston.1,2,0.nokick",
+   "group": "quasi-connectivity",
+   "desc": "sticky_piston, powered conductor 2 above + east (no QC), no block update reaches P (pure BUD)",
+   "origin": [
+    6,
+    1,
+    226
+   ],
+   "probes": [
+    {
+     "name": "P",
+     "pos": [
+      5,
+      -1,
+      226
+     ],
+     "obs": [
+      "extended"
+     ],
+     "sim": {
+      "before": "sticky_piston extended=false",
+      "on": "sticky_piston extended=false",
+      "off": "sticky_piston extended=false"
+     }
+    },
+    {
+     "name": "pushed",
+     "pos": [
+      5,
+      -1,
+      228
+     ],
+     "obs": [],
+     "sim": {
+      "before": "air",
+      "on": "air",
+      "off": "air"
+     }
+    }
+   ]
+  },
+  {
+   "id": "E.qc.dropper.1,2,0.kick",
+   "group": "quasi-connectivity",
+   "desc": "dropper, powered conductor 2 above + east (no QC), a note block next to both toggles (a block update reaches P; lamps do not update neighbours)",
+   "origin": [
+    14,
+    1,
+    226
+   ],
+   "probes": [
+    {
+     "name": "P",
+     "pos": [
+      13,
+      -1,
+      226
+     ],
+     "obs": [
+      "triggered"
+     ],
+     "sim": {
+      "before": "dropper triggered=false",
+      "on": "dropper triggered=false",
+      "off": "dropper triggered=false"
+     }
+    }
+   ]
+  },
+  {
+   "id": "E.qc.dropper.1,2,0.nokick",
+   "group": "quasi-connectivity",
+   "desc": "dropper, powered conductor 2 above + east (no QC), no block update reaches P (pure BUD)",
+   "origin": [
+    22,
+    1,
+    226
+   ],
+   "probes": [
+    {
+     "name": "P",
+     "pos": [
+      21,
+      -1,
+      226
+     ],
+     "obs": [
+      "triggered"
+     ],
+     "sim": {
+      "before": "dropper triggered=false",
+      "on": "dropper triggered=false",
+      "off": "dropper triggered=false"
+     }
+    }
+   ]
+  },
+  {
+   "id": "E.qc.dispenser.1,2,0.kick",
+   "group": "quasi-connectivity",
+   "desc": "dispenser, powered conductor 2 above + east (no QC), a note block next to both toggles (a block update reaches P; lamps do not update neighbours)",
+   "origin": [
+    30,
+    1,
+    226
+   ],
+   "probes": [
+    {
+     "name": "P",
+     "pos": [
+      29,
+      -1,
+      226
+     ],
+     "obs": [
+      "triggered"
+     ],
+     "sim": {
+      "before": "dispenser triggered=false",
+      "on": "dispenser triggered=false",
+      "off": "dispenser triggered=false"
+     }
+    }
+   ]
+  },
+  {
+   "id": "E.qc.dispenser.1,2,0.nokick",
+   "group": "quasi-connectivity",
+   "desc": "dispenser, powered conductor 2 above + east (no QC), no block update reaches P (pure BUD)",
+   "origin": [
+    38,
+    1,
+    226
+   ],
+   "probes": [
+    {
+     "name": "P",
+     "pos": [
+      37,
+      -1,
+      226
+     ],
+     "obs": [
+      "triggered"
+     ],
+     "sim": {
+      "before": "dispenser triggered=false",
+      "on": "dispenser triggered=false",
+      "off": "dispenser triggered=false"
+     }
+    }
+   ]
+  },
+  {
+   "id": "E.qc.hopper.1,2,0.kick",
+   "group": "quasi-connectivity",
+   "desc": "hopper, powered conductor 2 above + east (no QC), a note block next to both toggles (a block update reaches P; lamps do not update neighbours)",
+   "origin": [
+    46,
+    1,
+    226
+   ],
+   "probes": [
+    {
+     "name": "P",
+     "pos": [
+      45,
+      -1,
+      226
+     ],
+     "obs": [
+      "enabled"
+     ],
+     "sim": {
+      "before": "hopper enabled=true",
+      "on": "hopper enabled=true",
+      "off": "hopper enabled=true"
+     }
+    }
+   ]
+  },
+  {
+   "id": "E.qc.hopper.1,2,0.nokick",
+   "group": "quasi-connectivity",
+   "desc": "hopper, powered conductor 2 above + east (no QC), no block update reaches P (pure BUD)",
+   "origin": [
+    54,
+    1,
+    226
+   ],
+   "probes": [
+    {
+     "name": "P",
+     "pos": [
+      53,
+      -1,
+      226
+     ],
+     "obs": [
+      "enabled"
+     ],
+     "sim": {
+      "before": "hopper enabled=true",
+      "on": "hopper enabled=true",
+      "off": "hopper enabled=true"
+     }
+    }
+   ]
+  },
+  {
+   "id": "E.qc.piston.0,0,1",
+   "group": "quasi-connectivity",
+   "desc": "piston, powered conductor in front of P (south)",
+   "origin": [
+    62,
+    1,
+    226
+   ],
+   "probes": [
+    {
+     "name": "P",
+     "pos": [
+      62,
+      1,
+      225
+     ],
+     "obs": [
+      "extended"
+     ],
+     "sim": {
+      "before": "piston extended=false",
+      "on": "piston extended=false",
+      "off": "piston extended=false"
+     }
+    },
+    {
+     "name": "pushed",
+     "pos": [
+      62,
+      1,
+      227
+     ],
+     "obs": [],
+     "sim": {
+      "before": "air",
+      "on": "air",
+      "off": "air"
+     }
+    }
+   ]
+  },
+  {
+   "id": "E.qc.sticky_piston.0,0,1",
+   "group": "quasi-connectivity",
+   "desc": "sticky_piston, powered conductor in front of P (south)",
+   "origin": [
+    70,
+    1,
+    226
+   ],
+   "probes": [
+    {
+     "name": "P",
+     "pos": [
+      70,
+      1,
+      225
+     ],
+     "obs": [
+      "extended"
+     ],
+     "sim": {
+      "before": "sticky_piston extended=false",
+      "on": "sticky_piston extended=false",
+      "off": "sticky_piston extended=false"
+     }
+    },
+    {
+     "name": "pushed",
+     "pos": [
+      70,
+      1,
+      227
+     ],
+     "obs": [],
+     "sim": {
+      "before": "air",
+      "on": "air",
+      "off": "air"
+     }
+    }
+   ]
+  },
+  {
+   "id": "E.qc.dropper.0,0,1",
+   "group": "quasi-connectivity",
+   "desc": "dropper, powered conductor in front of P (south)",
+   "origin": [
+    78,
+    1,
+    226
+   ],
+   "probes": [
+    {
+     "name": "P",
+     "pos": [
+      78,
+      1,
+      225
+     ],
+     "obs": [
+      "triggered"
+     ],
+     "sim": {
+      "before": "dropper triggered=false",
+      "on": "dropper triggered=false",
+      "off": "dropper triggered=false"
+     }
+    }
+   ]
+  },
+  {
+   "id": "E.qc.dispenser.0,0,1",
+   "group": "quasi-connectivity",
+   "desc": "dispenser, powered conductor in front of P (south)",
+   "origin": [
+    86,
+    1,
+    226
+   ],
+   "probes": [
+    {
+     "name": "P",
+     "pos": [
+      86,
+      1,
+      225
+     ],
+     "obs": [
+      "triggered"
+     ],
+     "sim": {
+      "before": "dispenser triggered=false",
+      "on": "dispenser triggered=false",
+      "off": "dispenser triggered=false"
+     }
+    }
+   ]
+  },
+  {
+   "id": "E.qc.hopper.0,0,1",
+   "group": "quasi-connectivity",
+   "desc": "hopper, powered conductor in front of P (south)",
+   "origin": [
+    94,
+    1,
+    226
+   ],
+   "probes": [
+    {
+     "name": "P",
+     "pos": [
+      94,
+      1,
+      225
+     ],
+     "obs": [
+      "enabled"
+     ],
+     "sim": {
+      "before": "hopper enabled=true",
+      "on": "hopper enabled=true",
+      "off": "hopper enabled=true"
+     }
+    }
+   ]
+  }
+ ]
+}
