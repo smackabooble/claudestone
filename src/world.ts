@@ -272,6 +272,8 @@ export class World {
       if (e && e.isSource && !e.extending && isPistonType(e.moved)) return face === opposite(e.moved.p.facing);
       return false;
     }
+    // lab (real game): dust on leaves and on honey blocks pops (neither has a sturdy top face); glass, ice, slime, soul sand ... are fine
+    if (b.type === 'leaves' || b.type === 'leafblock' || b.type === 'honey_block') return false;
     return def(b).solid;
   }
   private canSurvive(p: Pos, b: Block): boolean {

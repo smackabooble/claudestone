@@ -2252,8 +2252,8 @@
      ],
      "sim": {
       "before": "redstone_wire power=0",
-      "on": "redstone_wire power=0",
-      "off": "redstone_wire power=0"
+      "on": "air",
+      "off": "air"
      }
     },
     {
@@ -2630,8 +2630,8 @@
      ],
      "sim": {
       "before": "redstone_wire power=0",
-      "on": "redstone_wire power=0",
-      "off": "redstone_wire power=0"
+      "on": "air",
+      "off": "air"
      }
     },
     {

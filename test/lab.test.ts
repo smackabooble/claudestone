@@ -32,3 +32,21 @@ test('lab: quasi-connectivity needs a block update (BUD): with the note block ki
   assert.match(on('E.qc.dropper.1,1,0.kick')[0], /triggered=true/);
   assert.match(on('E.qc.dropper.1,1,0.nokick')[0], /triggered=false/);
 });
+
+// real-game run 1 (knowledge/lab-real-1.json, Minecraft 26.3): after the lever ON / OFF the simulator must give the real answers.
+// Not compared: the BEFORE phase (that snapshot was taken after an earlier flick), and one open question (see KNOWN).
+const real = JSON.parse(readFileSync('knowledge/lab-real-1.json', 'utf8')).cells as Record<string, { before: string[]; on: string[]; off: string[] }>;
+const KNOWN: Record<string, string> = {
+  'C.push.leaves': 'real game: leaves pushed by a sticky piston vanish (not understood yet: glued leaves survive being pushed); the sim pushes them',
+};
+test('lab: the simulator matches the real game after lever ON and OFF (193 cells)', () => {
+  const diffs: string[] = [];
+  for (const c of lab.cells) {
+    if (KNOWN[c.id]) continue;
+    for (const ph of ['on', 'off'] as const) {
+      const sim = c.probes.map((p: any) => p.sim[ph]);
+      if (JSON.stringify(sim) !== JSON.stringify(real[c.id][ph])) diffs.push(`${c.id} ${ph}: sim ${sim.join(' | ')} real ${real[c.id][ph].join(' | ')}`);
+    }
+  }
+  assert.deepEqual(diffs, []);
+});
