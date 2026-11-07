@@ -12,6 +12,7 @@ import { buildDoor10 } from '../examples/piston-door-10x10.ts';
 import { buildDoor } from '../examples/piston-door-2x2.ts';
 import { buildDoor4NoGlue } from '../examples/piston-door-4x4-noglue.ts';
 import { buildDoor3 } from '../examples/piston-door-3x3.ts';
+import { buildSandDoor3 } from '../examples/sand-door-3x3.ts';
 import { buildDoor4 } from '../examples/piston-door-4x4.ts';
 import { buildLampDisplay } from '../examples/lamp-display.ts';
 import { buildWaveArm } from '../examples/wave-arm.ts';
@@ -74,6 +75,13 @@ export const DESIGNS: Design[] = [
     realGameVerified: false, settle: 120,
     usage: 'lever ON = open (about 26 ticks), OFF = closed (about 16). Everything touching slime must stay obsidian.',
     build: (w) => ({ lever: buildDoor3(w).lever }),
+  },
+  {
+    name: 'sand-door-3x3',
+    description: '3x3 SAND door (sim only): the plain 3x3 piston door with sand door blocks (8 sand + 2 stone). Falling-block physics are modelled in the sim. Obsidian wall.',
+    realGameVerified: false, settle: 120,
+    usage: 'lever ON = open (about 26 ticks), OFF = closed (about 16). Lower centre sand stands on a stone support that moves down with it (sand glued to slime still falls). Everything touching slime must stay obsidian.',
+    build: (w) => ({ lever: buildSandDoor3(w).lever }),
   },
   {
     name: 'piston-door-4x4-noglue',

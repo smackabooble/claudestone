@@ -49,3 +49,6 @@ Not reachable from this environment: minecraft.wiki, bloxelizer.com (DNS blocked
 
 Sources for the piston/conductivity checks were search-result summaries of minecraft.wiki, techmcdocs.github.io and the Bedrock wiki
 (pages themselves are not fetchable here). The Bedrock wiki describes Bedrock; Java was inferred from it plus the vanilla default rule.
+
+## Falling blocks (sand, gravel)
+Modelled from memory of vanilla (2 gt tick delay, gravity 0.04, drag 0.98, landing on the first solid block); not compared with a real-game trace. Pistons pushing/pulling sand that is about to fall, falling blocks hitting piston heads and falling-block entities being pushed by pistons are NOT modelled. Trust "sand rests on solid blocks and does not fall"; do not trust tick-exact sand ratchets.

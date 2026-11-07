@@ -31,6 +31,9 @@ const DEFS: Record<string, Def> = {
   glass: { solid: true, conductor: false, source: false },
   ice: { solid: true, conductor: false, source: false },
   soul_sand: { solid: true, conductor: true, source: false },
+  sand: { solid: true, conductor: true, source: false },
+  red_sand: { solid: true, conductor: true, source: false },
+  gravel: { solid: true, conductor: true, source: false },
   water: { solid: false, conductor: false, source: false },
   bubble_column: { solid: false, conductor: false, source: false },
   coal_block: { solid: true, conductor: true, source: false },
@@ -134,6 +137,8 @@ export class World {
   rng = new JavaRandom(0);
   /** item entities (only simulated when `itemPhysics` is on: droppers throw real items, water/bubble columns move them, hoppers pick them up) */
   ents3: ItemEnt[] = [];
+  /** falling blocks (sand, gravel): entities between 'block removed' and 'landed' */
+  falling: { type: string; x: number; y: number; z: number; vy: number }[] = [];
   itemPhysics = false;
   private entSeq = 0;
   solidForItems(p: Pos): boolean { const t = this.get(p).type; return def(this.get(p)).solid || t === 'hopper' || t === 'chest'; }
@@ -423,6 +428,7 @@ export class World {
     }
     if (!this.knobs.entitiesFirst) this.tickBlockEntities();
     this.handlingTick = false;
+    this.stepFalling();
     if (this.itemPhysics) { for (const e of this.ents3) stepEntity(this, e); }
     actions?.();
   }
@@ -439,6 +445,7 @@ export class World {
         break;
       }
       case 'comparator': this.cmpTick(p, b); break;
+      case 'sand': case 'red_sand': case 'gravel': this.fallCheck(p, b); break;
       case 'dropper': case 'dispenser': this.dispenseFrom(p, b); break;
       case 'crafter': this.crafterTick(p, b); break;
       case 'stone_pressure_plate': if (b.p.powered) this.plateCheck(p); break;
@@ -512,6 +519,7 @@ export class World {
         else this.cmpRefresh(p, b);
         break;
       case 'piston': case 'sticky_piston': this.checkIfExtend(p, b); break;
+      case 'sand': case 'red_sand': case 'gravel': this.scheduleTick(p, 2, 0); break;                    // FallingBlock.updateShape
       case 'note_block': {
         const on = this.hasNeighborSignal(p);
         if (on !== !!b.p.powered) this.setBlock(p, { type: b.type, p: { ...b.p, powered: on } }, 3);
@@ -588,6 +596,7 @@ export class World {
       case 'hopper': if (old.type !== b.type) this.hopperPowered(p, b); break;
       case 'copper_bulb': if (old.type !== b.type) this.bulbCheck(p); break; // CopperBulbBlock.onPlace -> checkAndFlip
       case 'tnt': if (old.type !== b.type && this.hasNeighborSignal(p)) this.primeTnt(p); break;
+      case 'sand': case 'red_sand': case 'gravel': if (old.type !== b.type) this.scheduleTick(p, 2, 0); break;   // FallingBlock.onPlace
     }
   }
 
@@ -1437,6 +1446,45 @@ export class World {
     const b = this.get(p);
     if (prop === 'type') return b.type;
     return b.p[prop];
+  }
+
+  /** FallingBlock.tick: a sand/gravel block with nothing solid below turns into a falling-block entity */
+  private fallCheck(p: Pos, b: Block): void {
+    const below = this.get(rel(p, 'down'));
+    const free = below.type === 'air' || below.type === 'water' || below.type === 'bubble_column';
+    if (!free) return;
+    this.setBlock(p, AIR, 3);
+    this.falling.push({ type: b.type, x: p[0] + 0.5, y: p[1], z: p[2] + 0.5, vy: 0 });
+  }
+
+  /** FallingBlockEntity.tick: gravity 0.04, drag 0.98; lands on the first solid block below and becomes a block again (if the cell is free) */
+  private stepFalling(): void {
+    for (let i = this.falling.length - 1; i >= 0; i--) {
+      const f = this.falling[i];
+      f.vy -= 0.04;
+      let ny = f.y + f.vy;
+      const cx = Math.floor(f.x), cz = Math.floor(f.z);
+      const solidAt = (y: number) => {
+        const t = this.get([cx, y, cz]).type;
+        return t !== 'air' && t !== 'water' && t !== 'bubble_column' && t !== 'redstone_wire' && t !== 'repeater' && t !== 'comparator' && t !== 'oak_wall_sign' && t !== 'lever' && t !== 'stone_button' && t !== 'redstone_torch' && t !== 'redstone_wall_torch';
+      };
+      // the box (1 high) moves from y to ny: it stops at the top of the first solid cell it would enter
+      const floorCell = Math.floor(ny - 1e-9);
+      let landed = false;
+      for (let y = Math.floor(f.y - 1e-9); y >= floorCell; y--) {
+        if (solidAt(y)) { ny = y + 1; landed = true; break; }
+      }
+      f.y = ny;
+      if (landed) {
+        const cell: Pos = [cx, Math.round(ny), cz];
+        this.falling.splice(i, 1);
+        const here = this.get(cell);
+        if (here.type === 'air' || here.type === 'water') this.setBlock(cell, { type: f.type, p: {} }, 3);
+        else this.log.push({ tick: this.time, event: 'falling block lost (cell not free: ' + here.type + ')', pos: cell });
+        continue;
+      }
+      f.vy *= 0.98;
+    }
   }
 
   /** Water that would spread in the real game: a water block with air beside it (level < 7) or below it. */
