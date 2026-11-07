@@ -5,10 +5,8 @@
  * compare with `npx tsx tools/labtrace.ts compare <rec.txt> <lever x,y,z>`.
  * Every probe is read every tick; the events are state changes with their tick relative to the lever flick.
  */
-import { writeFileSync } from 'node:fs';
 import { World } from '../src/world.ts';
-import { exportSchem } from '../src/export.ts';
-import { buildGrid, observe, probe, inv, type Def, type Probe, type Rel } from './lab-core.ts';
+import { buildGrid, exportTimingLab, probe, inv, type Def, type Probe, type Rel } from './lab-core.ts';
 import type { Pos } from '../src/dirs.ts';
 
 const GEN = ['extended', 'powered', 'lit', 'triggered', 'enabled', 'power', 'locked', 'type'];
@@ -109,33 +107,4 @@ add('T.sand.slide', 'timing', 'sand block pushed sideways off a ledge by a plain
 
 export function buildLab2(w: World) { return buildGrid(w, defs, 7); }
 
-if (import.meta.url === `file://${process.argv[1]}`) {
-  const w = new World();
-  const lab = buildLab2(w);
-  w.run(40);
-  const flat = lab.cells.flatMap((c) => c.probes.map((p) => ({ cell: c.id, p })));
-  const PH = 100;
-  const cur = () => flat.map((f) => observe(w, f.p));
-  const init = cur();
-  const trace: { phase: string; t: number; i: number; v: string }[] = [];
-  const falling: { phase: string; t: number; pos: number[][] }[] = [];
-  const run = (phase: string) => {
-    let last = cur();
-    for (let t = 1; t <= PH; t++) { w.run(1); if (w.falling.length) falling.push({ phase, t, pos: w.falling.map((f: any) => [f.x, f.y, f.z, f.vy]).sort() }); const now = cur(); for (let i = 0; i < now.length; i++) if (now[i] !== last[i]) trace.push({ phase, t, i, v: now[i] }); last = now; }
-  };
-  w.use(lab.lever); run('on');
-  w.use(lab.lever); run('off');
-  const out = exportSchem(w);
-  const events: Record<string, { on: [number, string][]; off: [number, string][] }>[] = [];
-  const cells = lab.cells.map((c) => ({ id: c.id, group: c.group, desc: c.desc, origin: c.origin, probes: c.probes.map((p) => ({ name: p.name, pos: p.pos, obs: p.obs, inv: !!p.inv })) }));
-  let k = 0;
-  const probeEvents = flat.map((f, i) => ({ cell: f.cell, name: f.p.name, init: init[i], on: trace.filter((t) => t.i === i && t.phase === 'on').map((t) => [t.t, t.v]), off: trace.filter((t) => t.i === i && t.phase === 'off').map((t) => [t.t, t.v]) }));
-  void events; void k;
-  // the exported world is the state AFTER both flicks; re-export the fresh lab for the schematic
-  const w2 = new World(); buildLab2(w2);
-  const fresh = exportSchem(w2);
-  writeFileSync('examples/lab2.schem', fresh.buffer);
-  writeFileSync('examples/lab2-cells.txt', JSON.stringify({ lever: lab.lever, box: lab.box, schemOrigin: fresh.origin, cells, events: probeEvents, falling }, null, 0));
-  void out;
-  console.log(`cells ${cells.length}, probes ${flat.length}, blocks ${w2.listBlocks().length}, schematic ${fresh.size.join('x')} origin ${fresh.origin.join(',')}, lever ${lab.lever.join(',')}, box ${lab.box.map((b) => b.join(',')).join(' .. ')}`);
-}
+if (import.meta.url === `file://${process.argv[1]}`) exportTimingLab('lab2', defs, 7);

@@ -53,7 +53,8 @@ test('lab builds: no dust, repeater, comparator or floor torch floats in the air
   const { World } = await import('../src/world.ts');
   const { buildLab } = await import('../examples/lab.ts');
   const { buildLab2 } = await import('../examples/lab2.ts');
-  for (const build of [buildLab, buildLab2]) {
+  const { buildLab3 } = await import('../examples/lab3.ts');
+  for (const build of [buildLab, buildLab2, buildLab3]) {
     const w = new World(); build(w);
     const floating = w.listBlocks().filter((b: any) => ['redstone_wire', 'repeater', 'comparator', 'redstone_torch'].includes(b.type) && w.get([b.pos[0], b.pos[1] - 1, b.pos[2]]).type === 'air');
     assert.deepEqual(floating.map((b: any) => b.pos.join(',')), []);
@@ -63,5 +64,5 @@ test('lab builds: no dust, repeater, comparator or floor torch floats in the air
 test('lab 2: the simulator matches the real tick-by-tick recording of all 24 cells (knowledge/refs/lab2-real-2-rec.txt, 164 probe phases)', async () => {
   const { execSync } = await import('node:child_process');
   const out = execSync('npx tsx tools/labtrace.ts compare knowledge/refs/lab2-real-2-rec.txt -327,4,679', { encoding: 'utf8' });
-  assert.match(out, /probe phases that differ: 0 of 164; cells with a difference: 0 of 24/);
+  assert.match(out, /probe phases that differ: 0 of 164 \(incl\. initial states\); cells with a difference: 0 of 24/);
 });

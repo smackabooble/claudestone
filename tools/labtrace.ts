@@ -10,7 +10,8 @@ import { readFileSync } from 'node:fs';
 interface PrP { name: string; pos: number[]; obs: string[]; inv: boolean }
 interface Fall { phase: string; t: number; pos: number[][] }
 interface Ev { cell: string; name: string; init: string; on: [number, string][]; off: [number, string][] }
-const lab = JSON.parse(readFileSync('examples/lab2-cells.txt', 'utf8')) as { lever: number[]; cells: { id: string; probes: PrP[] }[]; events: Ev[]; falling?: Fall[] };
+const LAB = process.env.LAB ?? 'lab2';
+const lab = JSON.parse(readFileSync(`examples/${LAB}-cells.txt`, 'utf8')) as { lever: number[]; cells: { id: string; probes: PrP[] }[]; events: Ev[]; falling?: Fall[] };
 const mode = process.argv[2];
 
 const fmt = (e: [number, string][]) => e.map(([t, s]) => `${t}:${s.replace(/ \w+=-/g, '')}`).join('  ');
@@ -56,6 +57,7 @@ if (mode === 'sim') {
   const leverKey = lab.lever.map((v, i) => v + off[i]).join(',');
   // second pass with state
   const lines = readFileSync(file, 'utf8').split('\n');
+  const initReal: string[] = [];
   let tNow = -1; const real: { t: number; i: number; v: string }[] = [];
   const probesByKey = new Map<string, number[]>();
   probes.forEach((q, i) => { const k = key(q.p); (probesByKey.get(k) ?? probesByKey.set(k, []).get(k)!).push(i); });
@@ -64,7 +66,7 @@ if (mode === 'sim') {
   const fall = new Map<number, number[][]>();
   const flush = () => { for (const i of touched) { const v = read(probes[i].p); if (started && v !== last[i]) real.push({ t: tNow, i, v }); last[i] = v; } touched.clear(); };
   for (const l of lines) {
-    if (l.startsWith('T ')) { flush(); if (!started) { probes.forEach((q, i) => { last[i] = read(q.p); }); started = true; } tNow = Number(l.slice(2)); continue; }
+    if (l.startsWith('T ')) { flush(); if (!started) { probes.forEach((q, i) => { last[i] = read(q.p); initReal[i] = last[i]; }); started = true; } tNow = Number(l.slice(2)); continue; }
     if (l.startsWith('B ')) {
       const i = l.indexOf(' ', 2); const k = l.slice(2, i); B.set(k, l.slice(i + 1));
       for (const pi of probesByKey.get(k) ?? []) touched.add(pi);
@@ -82,6 +84,8 @@ if (mode === 'sim') {
     if (r.t >= leverOn && (leverOff < 0 || r.t < leverOff)) realEv[r.i].on.push([r.t - leverOn, r.v]);
     else if (leverOff >= 0 && r.t >= leverOff) realEv[r.i].off.push([r.t - leverOff, r.v]);
   }
+  // the state before the first flick must match too
+  const initBad = lab.events.map((e, i) => (e.init !== initReal[i] ? i : -1)).filter((i) => i >= 0);
   const same = (a: [number, string][], b: [number, string][], d: number) => a.length === b.length && a.every((x, j) => x[0] === b[j][0] + d && x[1] === b[j][1]);
   const score = (d: number) => lab.events.reduce((n, e, i) => n + (same(realEv[i].on, e.on, d) ? 1 : 0) + (same(realEv[i].off, e.off, d) ? 1 : 0), 0);
   let delta = process.argv[5] !== undefined ? Number(process.argv[5]) : [-1, 0, 1].reduce((best, d) => (score(d) > score(best) ? d : best), 0);
@@ -96,6 +100,7 @@ if (mode === 'sim') {
       }
     }
   });
+  for (const i of initBad) { bad++; const e = lab.events[i]; const arr = byCell.get(e.cell) ?? []; byCell.set(e.cell, arr); arr.push(`   ${e.name} INITIAL STATE\n      sim : ${e.init.replace(/ \w+=-/g, '')}\n      real: ${initReal[i].replace(/ \w+=-/g, '')}`); }
   for (const [cell, arr] of byCell) console.log(`${cell}\n${arr.join('\n')}`);
   // falling blocks: positions (relative to the lab) every tick; the simulator's numbers come from lab2-cells.txt
   const simF = lab.falling ?? [];
@@ -111,5 +116,5 @@ if (mode === 'sim') {
       }
     }
   }
-  console.log(`\nprobe phases that differ: ${bad} of ${lab.events.length * 2}; cells with a difference: ${byCell.size} of ${lab.cells.length}`);
+  console.log(`\nprobe phases that differ: ${bad} of ${lab.events.length * 2} (incl. initial states); cells with a difference: ${byCell.size} of ${lab.cells.length}`);
 } else console.log('usage: labtrace.ts sim [filter] | compare <rec.txt> <lever x,y,z> [offset]');

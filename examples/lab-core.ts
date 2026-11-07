@@ -1,5 +1,7 @@
 /** Shared layout for the lab builds: a grid of cells, each fed by a stub repeater from one lever bus. See examples/lab.ts / lab2.ts. */
+import { writeFileSync } from 'node:fs';
 import { World } from '../src/world.ts';
+import { exportSchem } from '../src/export.ts';
 import { toBlockState } from '../src/export.ts';
 import type { Pos } from '../src/dirs.ts';
 
@@ -7,7 +9,7 @@ export interface Probe { name: string; pos: Pos; obs: string[]; inv?: boolean }
 export interface Cell { id: string; group: string; desc: string; origin: Pos; probes: Probe[] }
 export type Rel = (dx: number, dy: number, dz: number) => Pos;
 export type Build = (w: World, at: Rel) => Probe[];
-export interface Def { id: string; group: string; desc: string; build: Build }
+export interface Def { id: string; group: string; desc: string; build: Build; /** grid columns the cell occupies (wide cells) */ span?: number }
 
 export const FLOOR_Y = -3;
 export const STEP = 7, ROW_DZ = 9;
@@ -16,8 +18,13 @@ export const probe = (name: string, pos: Pos, ...obs: string[]): Probe => ({ nam
 export const inv = (name: string, pos: Pos): Probe => ({ name, pos, obs: [], inv: true });
 
 export function buildGrid(w: World, defs: Def[], PER_ROW = 17): { lever: Pos; cells: Cell[]; box: [Pos, Pos] } {
-  const rows = Math.ceil(defs.length / PER_ROW);
+  // place cells in rows of PER_ROW columns; a wide cell takes `span` columns
+  const slots: { row: number; col: number }[] = [];
+  { let row = 0, col = 0; for (const d of defs) { const sp = d.span ?? 1; if (col + sp > PER_ROW) { row++; col = 0; } slots.push({ row, col }); col += sp; } }
+  const rows = (slots.length ? slots[slots.length - 1].row : 0) + 1;
   const xMax = 6 + STEP * PER_ROW + 6, zMax = (rows - 1) * ROW_DZ + 8;
+  const rowHasCells = (r: number) => slots.some((q) => q.row === r);
+  void rowHasCells;
   for (let x = -4; x <= xMax; x++) for (let z = -4; z <= zMax; z++) w.setRaw([x, FLOOR_Y, z], 'obsidian');
   const lever: Pos = [-1, 1, 0];
   w.setRaw([-1, 0, 0], 'obsidian');
@@ -31,9 +38,9 @@ export function buildGrid(w: World, defs: Def[], PER_ROW = 17): { lever: Pos; ce
   }
   const cells: Cell[] = [];
   defs.forEach((d, k) => {
-    const row = Math.floor(k / PER_ROW), col = k % PER_ROW;
+    const { row, col } = slots[k];
     const z0 = row * ROW_DZ, x = 6 + STEP * col;
-    if (col === 0) {
+    if (k === 0 || slots[k - 1].row !== row) {
       let run = 0;                                                    // a repeater every 7 cells, never in a stub column (the stub reads the dust above it)
       for (let bx = 1; bx <= 6 + STEP * PER_ROW; bx++) {
         run++;
@@ -77,3 +84,35 @@ export function observe(w: World, p: Probe): string {
   return [name, ...vals].join(' ');
 }
 
+
+/** Build a timing lab, run it in the simulator (lever ON, 100 ticks, lever OFF, 100 ticks) and write examples/<name>.schem + examples/<name>-cells.txt (probes + the per-tick events). */
+export function exportTimingLab(name: string, defs: Def[], perRow: number): void {
+  const w = new World();
+  const lab = buildGrid(w, defs, perRow);
+  w.run(40);
+  const flat = lab.cells.flatMap((c) => c.probes.map((p) => ({ cell: c.id, p })));
+  const PH = 100;
+  const cur = () => flat.map((f) => observe(w, f.p));
+  const init = cur();
+  const trace: { phase: string; t: number; i: number; v: string }[] = [];
+  const falling: { phase: string; t: number; pos: number[][] }[] = [];
+  const run = (phase: string) => {
+    let last = cur();
+    for (let t = 1; t <= PH; t++) {
+      w.run(1);
+      if (w.falling.length) falling.push({ phase, t, pos: w.falling.map((f: any) => [f.x, f.y, f.z, f.vy]).sort() });
+      const now = cur();
+      for (let i = 0; i < now.length; i++) if (now[i] !== last[i]) trace.push({ phase, t, i, v: now[i] });
+      last = now;
+    }
+  };
+  w.use(lab.lever); run('on');
+  w.use(lab.lever); run('off');
+  const cells = lab.cells.map((c) => ({ id: c.id, group: c.group, desc: c.desc, origin: c.origin, probes: c.probes.map((p) => ({ name: p.name, pos: p.pos, obs: p.obs, inv: !!p.inv })) }));
+  const probeEvents = flat.map((f, i) => ({ cell: f.cell, name: f.p.name, init: init[i], on: trace.filter((t) => t.i === i && t.phase === 'on').map((t) => [t.t, t.v]), off: trace.filter((t) => t.i === i && t.phase === 'off').map((t) => [t.t, t.v]) }));
+  const w2 = new World(); buildGrid(w2, defs, perRow);               // the schematic is the FRESH lab (the world above is after both flicks)
+  const fresh = exportSchem(w2);
+  writeFileSync(`examples/${name}.schem`, fresh.buffer);
+  writeFileSync(`examples/${name}-cells.txt`, JSON.stringify({ lever: lab.lever, box: lab.box, schemOrigin: fresh.origin, cells, events: probeEvents, falling }, null, 0));
+  console.log(`cells ${cells.length}, probes ${flat.length}, blocks ${w2.listBlocks().length}, schematic ${fresh.size.join('x')} origin ${fresh.origin.join(',')}, lever ${lab.lever.join(',')}, box ${lab.box.map((b) => b.join(',')).join(' .. ')}`);
+}
