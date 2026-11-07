@@ -18,3 +18,6 @@ Compare: `npx tsx tools/labtrace.ts compare rec.txt <lever x,y,z>` prints every 
 - Why do leaves pushed by a sticky piston vanish (lab 1)? Cases L.* differ in piston type, persistent, distance, neighbours.
 - Real piston extension / retraction ticks, repeater delays and locking, torch / observer / comparator delays, hopper lock / transfer rhythm (8 gt), dropper delay,
   how long sand takes to fall and whether a piston head stops it.
+
+## Falling sand
+The recorder logs every falling-block entity every tick (`F id x y z v vx vy vz block`), and `labtrace compare` prints a table "tick | sim y, vy | real y, vy" for them, so the fall of each sand block (height and speed per tick) can be compared with the simulator's model (gravity 0.04, drag 0.98, 2 gt start delay).

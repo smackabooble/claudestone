@@ -11,6 +11,7 @@
 //         "B x,y,z block{state}"             a block or its state changed (the first lines, before the first T, are the starting state)
 //         "V x,y,z block [slot:itemxcount,..]"  the inventory of a hopper / dropper / chest / crafter changed
 //         "I id x y z v vx vy vz item xcount age <ticks>"   every item entity in the box, every tick (position, motion)
+//         "F id x y z v vx vy vz block"       every FALLING block (sand, gravel) entity in the box, every tick (position and motion)
 //         "PRESS n" / "CLICK tick block x,y,z"   button presses by the script / your right-clicks
 // Do NOT freeze the game. Fast version: only cells that can change (redstone parts, hoppers, droppers, chests, water...) are checked every tick, the whole box every 20 ticks;
 // ticks where nothing happened are not written. Keep the box small anyway.
@@ -88,6 +89,13 @@ rec_items() -> (
   ));
 );
 
+rec_falling() -> (
+  for (entity_area('falling_block', global_c, global_d), (
+    m = _ ~ 'motion';
+    global_buf += ('F ' + (_ ~ 'id') + ' ' + fnum(_ ~ 'x') + ' ' + fnum(_ ~ 'y') + ' ' + fnum(_ ~ 'z') + ' v ' + fnum(m:0) + ' ' + fnum(m:1) + ' ' + fnum(m:2) + ' ' + query(_, 'nbt', 'BlockState.Name'));
+  ));
+);
+
 rec_start(a, b) -> (
   global_lo = [floor(min(a:0, b:0)), floor(min(a:1, b:1)), floor(min(a:2, b:2))];
   global_hi = [floor(max(a:0, b:0)), floor(max(a:1, b:1)), floor(max(a:2, b:2))];
@@ -157,6 +165,7 @@ __on_tick() -> (
     t = tick_time() - global_t0;
     if (t % 20 == 0, rec_scan_all(false), for (global_dyn, rec_cell(_:0, _:1, _:2, false)));
     rec_items();
+    rec_falling();
     if (length(global_buf) > 0, (lines = ['T ' + t]; for (global_buf, lines += _); write_file('rec', 'text', lines)));
   ));
 );

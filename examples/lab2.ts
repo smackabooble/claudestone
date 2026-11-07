@@ -117,9 +117,10 @@ if (import.meta.url === `file://${process.argv[1]}`) {
   const cur = () => flat.map((f) => observe(w, f.p));
   const init = cur();
   const trace: { phase: string; t: number; i: number; v: string }[] = [];
+  const falling: { phase: string; t: number; pos: number[][] }[] = [];
   const run = (phase: string) => {
     let last = cur();
-    for (let t = 1; t <= PH; t++) { w.run(1); const now = cur(); for (let i = 0; i < now.length; i++) if (now[i] !== last[i]) trace.push({ phase, t, i, v: now[i] }); last = now; }
+    for (let t = 1; t <= PH; t++) { w.run(1); if (w.falling.length) falling.push({ phase, t, pos: w.falling.map((f: any) => [f.x, f.y, f.z, f.vy]).sort() }); const now = cur(); for (let i = 0; i < now.length; i++) if (now[i] !== last[i]) trace.push({ phase, t, i, v: now[i] }); last = now; }
   };
   w.use(lab.lever); run('on');
   w.use(lab.lever); run('off');
@@ -133,7 +134,7 @@ if (import.meta.url === `file://${process.argv[1]}`) {
   const w2 = new World(); buildLab2(w2);
   const fresh = exportSchem(w2);
   writeFileSync('examples/lab2.schem', fresh.buffer);
-  writeFileSync('examples/lab2-cells.txt', JSON.stringify({ lever: lab.lever, box: lab.box, schemOrigin: fresh.origin, cells, events: probeEvents }, null, 0));
+  writeFileSync('examples/lab2-cells.txt', JSON.stringify({ lever: lab.lever, box: lab.box, schemOrigin: fresh.origin, cells, events: probeEvents, falling }, null, 0));
   void out;
   console.log(`cells ${cells.length}, probes ${flat.length}, blocks ${w2.listBlocks().length}, schematic ${fresh.size.join('x')} origin ${fresh.origin.join(',')}, lever ${lab.lever.join(',')}, box ${lab.box.map((b) => b.join(',')).join(' .. ')}`);
 }

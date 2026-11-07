@@ -8,8 +8,9 @@
 import { readFileSync } from 'node:fs';
 
 interface PrP { name: string; pos: number[]; obs: string[]; inv: boolean }
+interface Fall { phase: string; t: number; pos: number[][] }
 interface Ev { cell: string; name: string; init: string; on: [number, string][]; off: [number, string][] }
-const lab = JSON.parse(readFileSync('examples/lab2-cells.txt', 'utf8')) as { lever: number[]; cells: { id: string; probes: PrP[] }[]; events: Ev[] };
+const lab = JSON.parse(readFileSync('examples/lab2-cells.txt', 'utf8')) as { lever: number[]; cells: { id: string; probes: PrP[] }[]; events: Ev[]; falling?: Fall[] };
 const mode = process.argv[2];
 
 const fmt = (e: [number, string][]) => e.map(([t, s]) => `${t}:${s.replace(/ \w+=-/g, '')}`).join('  ');
@@ -59,6 +60,7 @@ if (mode === 'sim') {
   probes.forEach((q, i) => { const k = key(q.p); (probesByKey.get(k) ?? probesByKey.set(k, []).get(k)!).push(i); });
   const last: string[] = []; let started = false; let leverOn = -1, leverOff = -1;
   const touched = new Set<number>();
+  const fall = new Map<number, number[][]>();
   const flush = () => { for (const i of touched) { const v = read(probes[i].p); if (started && v !== last[i]) real.push({ t: tNow, i, v }); last[i] = v; } touched.clear(); };
   for (const l of lines) {
     if (l.startsWith('T ')) { flush(); if (!started) { probes.forEach((q, i) => { last[i] = read(q.p); }); started = true; } tNow = Number(l.slice(2)); continue; }
@@ -68,6 +70,7 @@ if (mode === 'sim') {
       if (k === leverKey && started) { const pw = /powered: (true|false)/.exec(l); if (pw?.[1] === 'true' && leverOn < 0) leverOn = tNow; if (pw?.[1] === 'false' && leverOn >= 0 && leverOff < 0) leverOff = tNow; }
       continue;
     }
+    if (l.startsWith('F ') && started) { const q = l.split(' '); const arr = fall.get(tNow) ?? []; fall.set(tNow, arr); arr.push([Number(q[2]) - off[0], Number(q[3]) - off[1], Number(q[4]) - off[2], Number(q[7])]); continue; }
     if (l.startsWith('V ')) { const m = /^V (\S+) (\S+) (\[.*\])\s*$/.exec(l); if (m) { V.set(m[1], m[3]); for (const pi of probesByKey.get(m[1]) ?? []) touched.add(pi); } }
   }
   flush();
@@ -93,5 +96,19 @@ if (mode === 'sim') {
     }
   });
   for (const [cell, arr] of byCell) console.log(`${cell}\n${arr.join('\n')}`);
+  // falling blocks: positions (relative to the lab) every tick; the simulator's numbers come from lab2-cells.txt
+  const simF = lab.falling ?? [];
+  if (simF.length || fall.size) {
+    console.log('\nFALLING BLOCKS (x,y,z of the block bottom; sim | real), tick relative to the flick');
+    for (const ph of ['on', 'off'] as const) {
+      const base = ph === 'on' ? leverOn : leverOff; if (base < 0) continue;
+      const ticks = new Set<number>([...simF.filter((f) => f.phase === ph).map((f) => f.t + delta), ...[...fall.keys()].filter((t) => t >= base && (ph === 'off' || leverOff < 0 || t < leverOff)).map((t) => t - base)]);
+      for (const t of [...ticks].sort((a, b) => a - b)) {
+        const s2 = simF.find((f) => f.phase === ph && f.t + delta === t)?.pos ?? []; const r2 = fall.get(base + t) ?? [];
+        const f3 = (a: number[][]) => a.map((q) => `y=${q[1].toFixed(2)} vy=${q[3]?.toFixed?.(3) ?? '?'}`).join('; ') || '-';
+        console.log(`  ${ph.toUpperCase()} t=${String(t).padStart(3)}  sim: ${f3(s2).padEnd(34)} real: ${f3(r2)}`);
+      }
+    }
+  }
   console.log(`\nprobe phases that differ: ${bad} of ${lab.events.length * 2}; cells with a difference: ${byCell.size} of ${lab.cells.length}`);
 } else console.log('usage: labtrace.ts sim [filter] | compare <rec.txt> <lever x,y,z> [offset]');
