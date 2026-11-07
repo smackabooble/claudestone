@@ -5,9 +5,9 @@ Cells: 8 **leaves** cases (sticky/plain piston, persistent or not, distance 7, l
 repeater delay 1-4, repeater lock, torch, observer, comparator on dust and on a chest, hopper lock, dropper into hopper, sand pushed up / pulled / pushed sideways).
 
 ## Procedure (real game; needs the updated tools/gearrec.sc)
-1. Paste `lab2.schem` in a flat empty area. P = minimum corner. The lever is at P + (3,4,4). Clear P .. P+(65,5,39).
+1. Paste `lab2.schem` in a flat empty area. P = minimum corner. The lever is at P + (3,4,4). Clear P .. P+(65,9,39) (pushed sand goes UP: the box must be taller than the schematic).
 2. `/script load gearrec` (the new version has `/gearrec full`).
-3. `/gearrec full <P> <P+65,5,39>`   (every cell of the box is checked every tick: the game will run slowly while recording, that is fine)
+3. `/gearrec full <P> <P+65,9,39>`   (every cell of the box is checked every tick: the game will run slowly while recording, that is fine)
 4. `/tick freeze`, then right-click the lever (ON), then `/tick step 100` and wait until it has finished.
 5. `/tick freeze` is still on: right-click the lever again (OFF), `/tick step 100`, wait.
 6. `/gearrec stop`, `/tick unfreeze`.

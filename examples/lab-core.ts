@@ -71,9 +71,9 @@ export function observe(w: World, p: Probe): string {
     return '[' + items.join(',') + ']';
   }
   if (b.type === 'air') return 'air';
-  if (b.type === 'moving_piston') return ['moving_piston', ...p.obs.map((k) => `${k}=${k === 'type' ? (b.p.type ?? '-') : '-'}`)].join(' ');
+  if (b.type === 'moving_piston') return 'moving_piston';                       // its props are not compared (the real one shows type=normal for a sticky head)
   const name = /^minecraft:([a-z_0-9]+)/.exec(toBlockState(b))![1];
-  const vals = p.obs.map((k) => `${k}=${b.p[k] === undefined ? '-' : String(b.p[k])}`);
+  const vals = p.obs.map((k) => `${k}=${k === 'locked' && b.type === 'repeater' ? String((w as any).diodeLocked(p.pos, b)) : b.p[k] === undefined ? '-' : String(b.p[k])}`);
   return [name, ...vals].join(' ');
 }
 

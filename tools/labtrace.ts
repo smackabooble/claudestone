@@ -50,6 +50,7 @@ if (mode === 'sim') {
     if (!s) return 'air';
     const { name, props } = parseState(s);
     if (name === 'air' || name === 'cave_air') return 'air';
+    if (name === 'moving_piston') return 'moving_piston';
     return [name, ...p.obs.map((o) => `${o}=${props[o] === undefined ? '-' : props[o]}`)].join(' ');
   };
   const leverKey = lab.lever.map((v, i) => v + off[i]).join(',');

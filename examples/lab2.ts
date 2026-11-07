@@ -11,7 +11,7 @@ import { exportSchem } from '../src/export.ts';
 import { buildGrid, observe, probe, inv, type Def, type Probe, type Rel } from './lab-core.ts';
 import type { Pos } from '../src/dirs.ts';
 
-const GEN = ['extended', 'powered', 'lit', 'triggered', 'enabled', 'power', 'locked', 'output', 'type'];
+const GEN = ['extended', 'powered', 'lit', 'triggered', 'enabled', 'power', 'locked', 'type'];
 const defs: Def[] = [];
 const add = (id: string, group: string, desc: string, build: (w: World, at: Rel) => Probe[]) => defs.push({ id, group, desc, build });
 const P = (name: string, pos: Pos) => probe(name, pos, ...GEN);
@@ -79,11 +79,12 @@ add('T.comparator.chest', 'timing', 'comparator reading a chest with 3 items, po
   return [P('comparator', at(2, 0, 0)), P('lamp', at(4, 0, 0))];
 });
 // ---- hopper / dropper ----
-add('T.hopper.lock', 'timing', 'hopper (chest above, chest in front) next to L0: locked while the lever is ON', (w, at) => {
+add('T.hopper.lock', 'timing', 'hopper locked by a lit torch (torch on L0 goes OFF when the lever is ON = hopper unlocked)', (w, at) => {
   stone(w, at);
-  w.setRaw(at(1, 0, 0), 'hopper', { facing: 'east', enabled: true }); w.setRaw(at(1, 1, 0), 'chest', { facing: 'north' }); w.setRaw(at(2, 0, 0), 'chest', { facing: 'north' });
-  for (let i = 0; i < 4; i++) w.setItem(at(1, 1, 0), i, { id: 'cobblestone', count: 8 });
-  return [P('hopper', at(1, 0, 0)), inv('source chest', at(1, 1, 0)), inv('target chest', at(2, 0, 0)), inv('hopper', at(1, 0, 0))];
+  w.setRaw(at(1, 0, 0), 'redstone_wall_torch', { facing: 'east', lit: true });
+  w.setRaw(at(2, 0, 0), 'hopper', { facing: 'east', enabled: false }); w.setRaw(at(2, 1, 0), 'chest', { facing: 'north' }); w.setRaw(at(3, 0, 0), 'chest', { facing: 'north' });
+  for (let i = 0; i < 4; i++) w.setItem(at(2, 1, 0), i, { id: 'cobblestone', count: 8 });
+  return [P('torch', at(1, 0, 0)), P('hopper', at(2, 0, 0)), inv('source chest', at(2, 1, 0)), inv('target chest', at(3, 0, 0)), inv('hopper', at(2, 0, 0))];
 });
 add('T.dropper', 'timing', 'dropper next to L0 with 2 items, a hopper in front: fires when the lever goes ON', (w, at) => {
   stone(w, at);

@@ -3975,7 +3975,7 @@
      "sim": {
       "before": "oak_leaves",
       "on": "piston_head",
-      "off": "oak_leaves"
+      "off": "air"
      }
     },
     {
@@ -3988,7 +3988,7 @@
      "obs": [],
      "sim": {
       "before": "air",
-      "on": "oak_leaves",
+      "on": "air",
       "off": "air"
      }
     }

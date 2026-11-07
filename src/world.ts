@@ -1162,13 +1162,15 @@ export class World {
         const b1 = this.get(p1);
         if (b1.type === 'air') return true;
         if (!this.isPushable(b1, p1, pushDir, true, pushDir) || same(p1, pistonPos)) return false;
-        if (DESTROY.has(b1.type)) { toDestroy.push(p1); return true; }
+        if (DESTROY.has(b1.type) || b1.type === 'leaves' || b1.type === 'leafblock') { toDestroy.push(p1); return true; }   // real game (lab 2): leaves in the push line are destroyed
         if (toPush.length >= 12) return false;
         toPush.push(p1); l++; j1++;
       }
     };
 
     const bs = this.get(startPos);
+    if (!extending && (bs.type === 'leaves' || bs.type === 'leafblock')) return null;    // real game (lab 2): a sticky piston does not pull leaves
+    if (extending && (bs.type === 'leaves' || bs.type === 'leafblock')) return { push: toPush, destroy: [startPos] };    // real game (lab 2): a piston that pushes leaves destroys them; leaves dragged by slime are moved
     if (!this.isPushable(bs, startPos, pushDir, false, pistonDir)) {
       if (extending && DESTROY.has(bs.type)) { toDestroy.push(startPos); return { push: toPush, destroy: toDestroy }; }
       return null;

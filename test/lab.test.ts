@@ -36,9 +36,7 @@ test('lab: quasi-connectivity needs a block update (BUD): with the note block ki
 // real-game run 1 (knowledge/lab-real-1.json, Minecraft 26.3): after the lever ON / OFF the simulator must give the real answers.
 // Not compared: the BEFORE phase (that snapshot was taken after an earlier flick), and one open question (see KNOWN).
 const real = JSON.parse(readFileSync('knowledge/lab-real-1.json', 'utf8')).cells as Record<string, { before: string[]; on: string[]; off: string[] }>;
-const KNOWN: Record<string, string> = {
-  'C.push.leaves': 'real game: leaves pushed by a sticky piston vanish (not understood yet: glued leaves survive being pushed); the sim pushes them',
-};
+const KNOWN: Record<string, string> = {};
 test('lab: the simulator matches the real game after lever ON and OFF (193 cells)', () => {
   const diffs: string[] = [];
   for (const c of lab.cells) {
@@ -60,4 +58,13 @@ test('lab builds: no dust, repeater, comparator or floor torch floats in the air
     const floating = w.listBlocks().filter((b: any) => ['redstone_wire', 'repeater', 'comparator', 'redstone_torch'].includes(b.type) && w.get([b.pos[0], b.pos[1] - 1, b.pos[2]]).type === 'air');
     assert.deepEqual(floating.map((b: any) => b.pos.join(',')), []);
   }
+});
+
+test('lab 2: the simulator matches the real tick-by-tick recording (knowledge/refs/lab2-real-1-rec.txt) except 3 cells with known reasons', async () => {
+  const { execSync } = await import('node:child_process');
+  const out = execSync('npx tsx tools/labtrace.ts compare knowledge/refs/lab2-real-1-rec.txt -263,-2,809', { encoding: 'utf8' });
+  // T.hopper.lock: the real run used the OLD cell (hopper without torch); T.sand.up / T.sand.sticky: the recording box was too low for the pushed sand
+  const cells = out.split('\n').filter((l) => /^[LT]\.\S+$/.test(l.trim())).map((l) => l.trim()).sort();
+  assert.deepEqual(cells, ['T.hopper.lock', 'T.sand.sticky', 'T.sand.up']);
+  assert.match(out, /real = sim \+ -1/);
 });
