@@ -54,6 +54,12 @@ export function buildGrid(w: World, defs: Def[], PER_ROW = 17): { lever: Pos; ce
     if (ww.sidesDot(sides)) sides = ww.sidesCross();
     w.setRaw(b.pos, 'redstone_wire', { ...b.props, ...sides });
   }
+  // dust, repeaters, comparators and floor torches need a block under them (a floating one pops at the first update): put obsidian under any that float
+  for (const b of w.listBlocks()) {
+    if (!['redstone_wire', 'repeater', 'comparator', 'redstone_torch'].includes(b.type)) continue;
+    const below: Pos = [b.pos[0], b.pos[1] - 1, b.pos[2]];
+    if (w.get(below).type === 'air') w.setRaw(below, 'obsidian');
+  }
   return { lever, cells, box: [[-5, FLOOR_Y, -5], [xMax + 1, 6, zMax + 1]] };
 }
 

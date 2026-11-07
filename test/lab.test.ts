@@ -50,3 +50,14 @@ test('lab: the simulator matches the real game after lever ON and OFF (193 cells
   }
   assert.deepEqual(diffs, []);
 });
+
+test('lab builds: no dust, repeater, comparator or floor torch floats in the air (it would pop on the first update)', async () => {
+  const { World } = await import('../src/world.ts');
+  const { buildLab } = await import('../examples/lab.ts');
+  const { buildLab2 } = await import('../examples/lab2.ts');
+  for (const build of [buildLab, buildLab2]) {
+    const w = new World(); build(w);
+    const floating = w.listBlocks().filter((b: any) => ['redstone_wire', 'repeater', 'comparator', 'redstone_torch'].includes(b.type) && w.get([b.pos[0], b.pos[1] - 1, b.pos[2]]).type === 'air');
+    assert.deepEqual(floating.map((b: any) => b.pos.join(',')), []);
+  }
+});
