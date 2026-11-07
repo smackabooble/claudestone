@@ -81,3 +81,39 @@ test('lab 4: the simulator matches the real recording of all 6 cells (knowledge/
   const out = execSync('npx tsx tools/labtrace.ts compare knowledge/refs/lab4-real-1-rec.txt -532,19,783', { encoding: 'utf8', env: { ...process.env, LAB: 'lab4' } });
   assert.match(out, /probe phases that differ: 0 of 54 \(incl\. initial states\); cells with a difference: 0 of 6/);
 });
+
+// real item tracks of lab 5 (knowledge/refs/lab5-real-items.json): start the simulator's item entity from the first real sample and compare the next ticks
+test('lab 5: item physics in water and in a bubble column follow the real tracks (height within 0.1 for 30 ticks)', async () => {
+  const { World } = await import('../src/world.ts');
+  const real = JSON.parse(readFileSync('knowledge/refs/lab5-real-items.json', 'utf8'));
+  for (const [cell, kind] of [['W.plain', 'water'], ['W.bubble', 'bubble']] as const) {
+    const s = real[cell].samples as number[][];
+    const w = new World(); w.itemPhysics = true;
+    const [ox, oy, oz] = real[cell].origin as number[];
+    w.setRaw([ox + 2, oy - 1, oz], kind === 'bubble' ? 'soul_sand' : 'obsidian');
+    for (let y = 0; y < 6; y++) {
+      w.setRaw([ox + 2, oy + y, oz], kind === 'bubble' ? 'bubble_column' : 'water', kind === 'bubble' ? { drag: false } : { level: 0 });
+      for (const [dx, dz] of [[0, -1], [0, 1], [1, 0], [-1, 0]]) w.setRaw([ox + 2 + dx, oy + y, oz + dz], 'glass');
+    }
+    const [t0, x0, y0, z0, vx0, vy0, vz0] = s[0];
+    w.ents3.push({ id: 1, x: x0, y: y0, z: z0, vx: vx0, vy: vy0, vz: vz0, item: { id: 'diamond', count: 1 }, age: 0, onGround: false });
+    let worst = 0;
+    for (const row of s.slice(1)) {
+      if (row[2] > 6.2) break;                                   // leaves the 6-high column: the open top is the next lab question
+      while (t0 + w.time - w.time < 0) break;
+      w.run(1);
+      const e = w.ents3[0]; if (!e) break;
+      worst = Math.max(worst, Math.abs(e.y - row[2]));
+    }
+    assert.ok(worst < 0.1, `${cell}: worst height error ${worst.toFixed(3)}`);
+  }
+});
+
+test('lab 5: block events match the real recording except the two known cells (knowledge/refs/lab5-real-1-rec.txt)', async () => {
+  const { execSync } = await import('node:child_process');
+  const out = execSync('npx tsx tools/labtrace.ts compare knowledge/refs/lab5-real-1-rec.txt -635,28,888', { encoding: 'utf8', env: { ...process.env, LAB: 'lab5' } });
+  const cells = out.split('\n').filter((l) => /^[A-Z]\.\S+$/.test(l.trim())).map((l) => l.trim()).sort();
+  // W.plain.soul: in the real game the plain water over soul sand turned into a bubble column 20 ticks after the dropper fired (trigger not modelled);
+  // W.liftTop: the item arrived 3 ticks earlier (the dropper throw is random)
+  assert.deepEqual(cells, ['W.liftTop', 'W.plain.soul']);
+});

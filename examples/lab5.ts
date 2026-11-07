@@ -26,7 +26,7 @@ function column(w: World, at: Rel, h: number, kind: 'water' | 'bubble', floor: '
   w.setRaw(at(1, 0, 0), 'dropper', { facing: 'east', triggered: false }); w.setItem(at(1, 0, 0), 0, { id: 'diamond', count: 1 });
   w.setRaw(at(2, -1, 0), floor);
   for (let y = 0; y < h; y++) {
-    w.setRaw(at(2, y, 0), kind === 'bubble' ? 'bubble_column' : 'water', kind === 'bubble' ? {} : { level: 0 });
+    w.setRaw(at(2, y, 0), kind === 'bubble' ? 'bubble_column' : 'water', kind === 'bubble' ? { drag: false } : { level: 0 });
     glass(w, at(2, y, -1)); glass(w, at(2, y, 1)); glass(w, at(3, y, 0));
     if (y > 0) glass(w, at(1, y, 0));
   }

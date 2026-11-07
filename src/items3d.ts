@@ -93,14 +93,12 @@ export function stepEntity(w: WorldLike, e: ItemEnt): void {
   if (fluidH > 0.1) { e.vx *= 0.99; e.vz *= 0.99; e.vy += e.vy < 0.06 ? 5e-4 : 0; }
   else e.vy -= 0.04;
   if (!e.onGround || Math.hypot(e.vx, e.vz) > 1e-2 || (e.age + e.id) % 4 === 0) move(w, e);
-  // bubble columns (BubbleColumnBlock.entityInside)
+  // bubble columns (BubbleColumnBlock.entityInside): the effect is applied for EVERY column cell the item box overlaps (real game, lab 5: while the item straddles two cells it gets +0.06 twice)
   const cx0 = Math.floor(e.x), cz0 = Math.floor(e.z);
   for (let b = Math.floor(e.y + 1e-3); b <= Math.floor(e.y + H - 1e-3); b++) {
-    if (isColumn(w, [cx0, b, cz0])) {
-      const aboveFree = !w.solidForItems([cx0, b + 1, cz0]) && !isWater(w, [cx0, b + 1, cz0]);
-      e.vy = aboveFree ? Math.min(1.8, e.vy + 0.1) : Math.min(0.7, e.vy + 0.06);
-      break;
-    }
+    if (!isColumn(w, [cx0, b, cz0])) continue;
+    const aboveFree = !w.solidForItems([cx0, b + 1, cz0]) && !isWater(w, [cx0, b + 1, cz0]);
+    e.vy = aboveFree ? Math.min(1.8, e.vy + 0.1) : Math.min(0.7, e.vy + 0.06);
   }
   const f = e.onGround ? 0.6 * 0.98 : 0.98;
   e.vx *= f; e.vz *= f; e.vy *= 0.98;
