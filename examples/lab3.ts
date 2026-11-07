@@ -72,7 +72,7 @@ add('P.two', 'update order', 'two pistons (from the west and from the south) pus
 // ---- what a piston head destroys ----
 const destroyList: [string, Record<string, any>][] = [
   ['redstone_wire', {}], ['repeater', { facing: 'west', delay: 1, powered: false }], ['comparator', { facing: 'west', mode: 'compare', powered: false }], ['redstone_torch', { lit: true }],
-  ['lever', { face: 'floor' }], ['stone_button', { face: 'floor', facing: 'north' }], ['stone_pressure_plate', {}], ['redstone_lamp', { lit: false }], ['note_block', { powered: false }],
+  ['lever', { face: 'floor', powered: false }], ['stone_button', { face: 'floor', facing: 'north', powered: false }], ['stone_pressure_plate', { powered: false }], ['redstone_lamp', { lit: false }], ['note_block', { powered: false }],
 ];
 for (const [t, pr] of destroyList) {
   add(`D.destroy.${t}`, 'destroy', `plain piston pushes ${t}: destroyed or moved?`, 1, (w, at) => {

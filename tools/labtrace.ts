@@ -14,6 +14,7 @@ const LAB = process.env.LAB ?? 'lab2';
 const lab = JSON.parse(readFileSync(`examples/${LAB}-cells.txt`, 'utf8')) as { lever: number[]; cells: { id: string; probes: PrP[] }[]; events: Ev[]; falling?: Fall[] };
 const mode = process.argv[2];
 
+const WIN = { on: Number(process.env.ON_WINDOW ?? 1e9), off: Number(process.env.OFF_WINDOW ?? 1e9) };   // compare only the first N ticks of a phase (when the real phase was stepped for fewer than 100 ticks)
 const fmt = (e: [number, string][]) => e.map(([t, s]) => `${t}:${s.replace(/ \w+=-/g, '')}`).join('  ');
 
 if (mode === 'sim') {
@@ -86,6 +87,9 @@ if (mode === 'sim') {
   }
   // the state before the first flick must match too
   const initBad = lab.events.map((e, i) => (e.init !== initReal[i] ? i : -1)).filter((i) => i >= 0);
+  const cut = (a: [number, string][], w: number) => a.filter((x) => x[0] <= w);
+  for (const e of lab.events) { e.on = cut(e.on, WIN.on - 0); e.off = cut(e.off, WIN.off - 0); }
+  for (const r of realEv) { r.on = cut(r.on, WIN.on); r.off = cut(r.off, WIN.off); }
   const same = (a: [number, string][], b: [number, string][], d: number) => a.length === b.length && a.every((x, j) => x[0] === b[j][0] + d && x[1] === b[j][1]);
   const score = (d: number) => lab.events.reduce((n, e, i) => n + (same(realEv[i].on, e.on, d) ? 1 : 0) + (same(realEv[i].off, e.off, d) ? 1 : 0), 0);
   let delta = process.argv[5] !== undefined ? Number(process.argv[5]) : [-1, 0, 1].reduce((best, d) => (score(d) > score(best) ? d : best), 0);

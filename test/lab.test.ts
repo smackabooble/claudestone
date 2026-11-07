@@ -66,3 +66,10 @@ test('lab 2: the simulator matches the real tick-by-tick recording of all 24 cel
   const out = execSync('npx tsx tools/labtrace.ts compare knowledge/refs/lab2-real-2-rec.txt -327,4,679', { encoding: 'utf8' });
   assert.match(out, /probe phases that differ: 0 of 164 \(incl\. initial states\); cells with a difference: 0 of 24/);
 });
+
+test('lab 3: the simulator matches the real recording (knowledge/refs/lab3-real-1-rec.txt); the ON phase was only stepped ~50 ticks, so C.levels and H.chain are compared up to there', async () => {
+  const { execSync } = await import('node:child_process');
+  const out = execSync('npx tsx tools/labtrace.ts compare knowledge/refs/lab3-real-1-rec.txt -461,5,677', { encoding: 'utf8', env: { ...process.env, LAB: 'lab3', ON_WINDOW: '50' } });
+  const cells = out.split('\n').filter((l) => /^[A-Z]\.\S+$/.test(l.trim())).map((l) => l.trim()).sort();
+  assert.deepEqual(cells, ['C.levels', 'H.chain']);          // only their OFF phase differs: the transfers that were still running when the lever was flicked again
+});
