@@ -2,6 +2,7 @@
 // Install: Fabric + fabric-carpet. Put this file in  <world>/scripts/gearrec.sc
 // In game:   /script load gearrec
 //            /gearrec start <x1 y1 z1> <x2 y2 z2>      two opposite corners of the area to watch (keep it small, e.g. the top of one lift: about 8x10x8; ~ works)
+//            /gearrec full <x1 y1 z1> <x2 y2 z2>       same, but EVERY cell of the box is checked every tick (use for a small box: the lab 2 cells; slow but tick-exact)
 //            /gearrec press <x y z of the button> <presses> <gap in ticks>      (optional, e.g. 1 press, or 5 presses 1000 ticks apart)
 //            ...wait until the item is stuck...
 //            /gearrec stop
@@ -17,7 +18,8 @@
 __config() -> {
   'scope' -> 'global',
   'commands' -> {
-    'start <from> <to>' -> 'rec_start',
+    'start <from> <to>' -> 'rec_start_plain',
+    'full <from> <to>' -> 'rec_start_full',
     'stop' -> 'rec_stop',
     'press <pos> <presses> <gap>' -> 'rec_press_cmd'
   },
@@ -41,6 +43,7 @@ global_c = [0, 0, 0];
 global_d = [1, 1, 1];
 global_t0 = 0;
 global_run = 0;
+global_full = false;
 global_dynamic_blocks = ['repeater', 'comparator', 'redstone_wire', 'redstone_torch', 'redstone_wall_torch', 'hopper', 'dropper', 'dispenser', 'crafter', 'chest', 'stone_button', 'observer', 'water', 'bubble_column', 'piston', 'sticky_piston', 'piston_head', 'moving_piston', 'lever'];
 
 fnum(x) -> round(x * 1000) / 1000;
@@ -72,7 +75,7 @@ rec_scan_all(initial) -> (
   dyn = [];
   volume(global_lo, global_hi, (
     rec_cell(_x, _y, _z, initial);
-    if (global_dynamic_blocks ~ str(block([_x, _y, _z])) != null, dyn += [_x, _y, _z]);
+    if (global_full || global_dynamic_blocks ~ str(block([_x, _y, _z])) != null, dyn += [_x, _y, _z]);
   ));
   global_dyn = dyn;
 );
@@ -100,6 +103,16 @@ rec_start(a, b) -> (
   global_buf = [];
   global_on = true;
   print('gearrec: recording ' + global_lo + ' to ' + global_hi + ' - do your test, then /gearrec stop');
+);
+
+rec_start_plain(a, b) -> (
+  global_full = false;
+  rec_start(a, b);
+);
+
+rec_start_full(a, b) -> (
+  global_full = true;
+  rec_start(a, b);
 );
 
 rec_stop() -> (
