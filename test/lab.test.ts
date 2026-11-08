@@ -125,3 +125,12 @@ test('noteblock song: notes sound at 2*t game ticks', () => {
   const got = playSong(w, built, 100).map((n) => n.tick);
   assert.deepEqual(got, [0, 0, 0, 6, 12, 20, 20, 80]);
 });
+
+import { buildTriplePulse } from '../examples/triple-pulse.ts';
+import { World as W2 } from '../src/world.ts';
+test('button -> exactly 3 lamp pulses', () => {
+  const w = new W2(); const b = buildTriplePulse(w); w.run(20); w.use(b.button);
+  let prev = false, ons = 0;
+  for (let t = 0; t < 300; t++) { w.run(1); const l = !!w.get(b.lamp).p.lit; if (l && !prev) ons++; prev = l; }
+  assert.equal(ons, 3);
+});
