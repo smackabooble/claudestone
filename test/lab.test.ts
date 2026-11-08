@@ -141,3 +141,12 @@ test('exported raw-placed dust is connected, never dots', () => {
   const dots = w.listBlocks().filter((b) => b.type === 'redstone_wire').filter((b) => toBlockState({ type: b.type, p: b.props }).includes('east=none,north=none,power=0,south=none,west=none'));
   assert.equal(dots.length, 0);
 });
+
+test('triple pulse: 3 even pulses, 20 gt apart, 8 gt wide', () => {
+  const w = new W2(); const b = buildTriplePulse(w); w.run(20); w.use(b.button);
+  const on: number[] = [], off: number[] = []; let prev = false;
+  for (let t = 0; t < 150; t++) { w.run(1); const l = (w.get(b.out).p.power ?? 0) > 0; if (l && !prev) on.push(t); if (!l && prev) off.push(t); prev = l; }
+  assert.equal(on.length, 3);
+  assert.equal(on[1] - on[0], 20); assert.equal(on[2] - on[1], 20);
+  assert.deepEqual(off.map((o, i) => o - on[i]), [8, 8, 8]);
+});
