@@ -23,6 +23,13 @@ export interface Block {
 
 const AIR: Block = { type: 'air', p: {} };
 
+/** note block instrument from the block below (vanilla NoteBlockInstrument.byState, the blocks this simulator knows) */
+export function noteInstrument(below: string): string {
+  if (below.endsWith('_wool')) return 'guitar';
+  const m: Record<string, string> = { oak_planks: 'bass', stone: 'basedrum', sand: 'snare', red_sand: 'snare', gravel: 'snare', glass: 'hat', gold_block: 'bell', clay: 'flute', packed_ice: 'chime', bone_block: 'xylophone', iron_block: 'iron_xylophone', soul_sand: 'cow_bell', pumpkin: 'didgeridoo', emerald_block: 'bit', hay_block: 'banjo', glowstone: 'pling' };
+  return m[below] ?? 'harp';
+}
+
 interface Def { solid: boolean; conductor: boolean; source: boolean }
 const DEFS: Record<string, Def> = {
   obsidian: { solid: true, conductor: true, source: false },
@@ -41,6 +48,14 @@ const DEFS: Record<string, Def> = {
   gold_block: { solid: true, conductor: true, source: false },
   iron_block: { solid: true, conductor: true, source: false },
   furnace: { solid: true, conductor: true, source: false }, // block entity: pistons cannot push it
+  dirt: { solid: true, conductor: true, source: false },
+  powered_rail: { solid: false, conductor: false, source: false },
+  oak_planks: { solid: true, conductor: true, source: false },
+  clay: { solid: true, conductor: true, source: false },
+  packed_ice: { solid: true, conductor: true, source: false },
+  bone_block: { solid: true, conductor: true, source: false },
+  pumpkin: { solid: true, conductor: true, source: false },
+  glowstone: { solid: true, conductor: true, source: false },
   note_block: { solid: true, conductor: true, source: false }, // right-click changes `note` (a state change observers see); powered state follows redstone
   leaves: { solid: true, conductor: false, source: false }, // full support for dust, but not a redstone conductor
   partial: { solid: false, conductor: false, source: false }, // slabs, rails, composter ...
@@ -136,6 +151,8 @@ export class World {
   drops: { tick: number; pos: Pos; item: Item }[] = [];
   rng = new JavaRandom(0);
   /** item entities (only simulated when `itemPhysics` is on: droppers throw real items, water/bubble columns move them, hoppers pick them up) */
+  /** note blocks that sounded (rising power with air above): tick, position, note 0..24 (F#3..F#5), instrument from the block below */
+  notes: { tick: number; pos: Pos; note: number; instrument: string }[] = [];
   ents3: ItemEnt[] = [];
   /** falling blocks (sand, gravel): entities between 'block removed' and 'landed' */
   falling: { type: string; x: number; y: number; z: number; vy: number }[] = [];
@@ -281,7 +298,7 @@ export class World {
       case 'redstone_wire':
         // vanilla: dust may also sit on a hopper (a non-conductor that pistons cannot move)
         return this.sturdy(rel(p, 'down'), 'up') || this.get(rel(p, 'down')).type === 'hopper';
-      case 'repeater': case 'comparator': case 'redstone_torch': case 'stone_pressure_plate':
+      case 'repeater': case 'comparator': case 'redstone_torch': case 'stone_pressure_plate': case 'powered_rail':
         return this.sturdy(rel(p, 'down'), 'up');
       case 'iron_door': {
         const below = this.get(rel(p, 'down'));
@@ -320,6 +337,7 @@ export class World {
       case 'comparator':
         b.p.facing ??= 'north'; b.p.mode ??= 'compare'; b.p.powered ??= false; b.p.output = 0; break;
       case 'observer': b.p.facing ??= 'north'; b.p.powered ??= false; break;
+      case 'powered_rail': b.p.shape ??= 'north_south'; b.p.powered ??= false; break;
       case 'note_block': b.p.note ??= 0; b.p.instrument ??= 'harp'; b.p.powered ??= false; break;
       case 'piston': case 'sticky_piston': b.p.facing ??= 'north'; b.p.extended = false; break;
       case 'hopper': b.p.facing ??= 'down'; b.p.enabled ??= true; break;
@@ -522,9 +540,14 @@ export class World {
         break;
       case 'piston': case 'sticky_piston': this.checkIfExtend(p, b); break;
       case 'sand': case 'red_sand': case 'gravel': this.scheduleTick(p, 2, 0); break;                    // FallingBlock.updateShape
+      case 'powered_rail': if (this.canSurvive(p, b)) this.railUpdate(p, b); else this.setBlock(p, AIR, 3); break;
       case 'note_block': {
         const on = this.hasNeighborSignal(p);
-        if (on !== !!b.p.powered) this.setBlock(p, { type: b.type, p: { ...b.p, powered: on } }, 3);
+        if (on !== !!b.p.powered) {
+          this.setBlock(p, { type: b.type, p: { ...b.p, powered: on } }, 3);
+          // NoteBlock.playNote: only when the block ABOVE is air (dust, a slab or any block on top keeps it silent)
+          if (on && this.get(rel(p, 'up')).type === 'air') this.notes.push({ tick: this.time, pos: p, note: b.p.note ?? 0, instrument: noteInstrument(this.get(rel(p, 'down')).type) });
+        }
         break;
       }
       case 'hopper': this.hopperPowered(p, b); break;
@@ -599,6 +622,7 @@ export class World {
       case 'copper_bulb': if (old.type !== b.type) this.bulbCheck(p); break; // CopperBulbBlock.onPlace -> checkAndFlip
       case 'tnt': if (old.type !== b.type && this.hasNeighborSignal(p)) this.primeTnt(p); break;
       case 'sand': case 'red_sand': case 'gravel': if (old.type !== b.type) this.scheduleTick(p, 2, 0); break;   // FallingBlock.onPlace
+      case 'powered_rail': if (old.type !== b.type) this.railUpdate(p, b); break;
     }
   }
 
@@ -1450,6 +1474,21 @@ export class World {
     const b = this.get(p);
     if (prop === 'type') return b.type;
     return b.p[prop];
+  }
+
+  /** PoweredRailBlock.updateState: powered by a neighbouring signal or by a powered rail up to 8 rails away along its axis that itself has a signal (no delay) */
+  private railUpdate(p: Pos, b: Block): void {
+    const was = !!b.p.powered;
+    const shape: string = b.p.shape ?? 'north_south';
+    const chain = (from: Pos, forward: boolean, depth: number): boolean => {
+      if (depth >= 8) return false;
+      const d: Dir = shape === 'east_west' ? (forward ? 'east' : 'west') : (forward ? 'south' : 'north');
+      const q = rel(from, d); const bq = this.get(q);
+      if (bq.type !== 'powered_rail' || (bq.p.shape ?? 'north_south') !== shape || !bq.p.powered) return false;
+      return this.hasNeighborSignal(q) ? true : chain(q, forward, depth + 1);
+    };
+    const on = this.hasNeighborSignal(p) || chain(p, true, 0) || chain(p, false, 0);
+    if (on !== was) { this.setBlock(p, { type: b.type, p: { ...b.p, powered: on } }, 3); this.updateNeighborsAt(rel(p, 'down')); }
   }
 
   /** FallingBlock.tick: a sand/gravel block with nothing solid below turns into a falling-block entity */

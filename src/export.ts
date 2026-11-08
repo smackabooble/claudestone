@@ -19,6 +19,7 @@ export function toBlockState(b: Block): string {
     case 'repeater': return st({ delay: p.delay, facing: p.facing, locked: false, powered: !!p.powered });
     case 'comparator': return st({ facing: p.facing, mode: p.mode === 'subtract' ? 'subtract' : 'compare', powered: !!p.powered });
     case 'observer': return st({ facing: p.facing, powered: !!p.powered });
+    case 'powered_rail': return st({ powered: !!p.powered, shape: p.shape ?? 'north_south', waterlogged: false });
     case 'note_block': return st({ instrument: p.instrument ?? 'harp', note: p.note ?? 0, powered: !!p.powered });
     case 'leaves': return `minecraft:oak_leaves[distance=${p.distance ?? 1},persistent=${p.persistent ?? true},waterlogged=false]`;
     case 'pane': return `minecraft:glass_pane[east=${!!p.east},north=${!!p.north},south=${!!p.south},waterlogged=false,west=${!!p.west}]`;

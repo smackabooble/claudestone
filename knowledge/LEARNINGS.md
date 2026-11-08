@@ -388,3 +388,8 @@ Found with the abstract model (extender-long.ts pulseOrder style) + scripted pul
 - Plain water (no column): vy' = 0.98*(vy + 0.0005): the dropper's throw (vy ~0.14-0.2, random) decays to the buoyancy equilibrium 0.0245/tick; a 6-high plain column takes ~70 ticks and the item then sits at the surface. So the old plain-water lifts crawl; real bubble blocks lift at ~0.7 blocks/tick (~14 blocks/s).
 - Plain water source over soul sand DID turn into a bubble column in this lab: 20 ticks after the first dropper fire next to it (all 6 cells at once). In the gear-set lab-1 recording nothing like that happened in 2000 ticks; the trigger is not understood (probably a 20-tick scheduled soul sand tick after a shape update). Do not rely on it: place real bubble_column blocks.
 - Dropper throw velocity is random (vy 0.14-0.2 observed), so item tracks agree statistically only.
+
+## Note blocks / rail+observer fan-out (sim only, not verified in real game)
+- Sim: powered_rail added (instant chain power, 8 range). User's prototype (observer->dirt->powered-rail row->observer per rail->dirt->note block) sounds 16 notes in ONE tick per pulse.
+- CAUTION: observers fire on rail power ON *and* OFF, so each note block sounds twice (rise at pulse start, again when the pulse ends). Fix: make the rail source a long steady level only at start (e.g. observer pulse -> use a T-flip/edge detect), or put a diode so only the rising edge reaches note blocks (e.g. observer output through a repeater lock), or accept double hit only if the 2nd hit is hidden. Needs real-game lab.
+- Comb/dense dust fan-out (examples/noteblocks.ts): exact timing at 2 game ticks per redstone tick, 28 notes (comb) / 88 (dense) per tap.
