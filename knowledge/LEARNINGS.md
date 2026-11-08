@@ -391,5 +391,6 @@ Found with the abstract model (extender-long.ts pulseOrder style) + scripted pul
 
 ## Note blocks / rail+observer fan-out (sim only, not verified in real game)
 - Sim: powered_rail added (instant chain power, 8 range). User's prototype (observer->dirt->powered-rail row->observer per rail->dirt->note block) sounds 16 notes in ONE tick per pulse.
-- CAUTION: observers fire on rail power ON *and* OFF, so each note block sounds twice (rise at pulse start, again when the pulse ends). Fix: make the rail source a long steady level only at start (e.g. observer pulse -> use a T-flip/edge detect), or put a diode so only the rising edge reaches note blocks (e.g. observer output through a repeater lock), or accept double hit only if the 2nd hit is hidden. Needs real-game lab.
+- User (real game): the rail row is pulsed so fast the observers see ONE change, so notes do not double. My earlier "fires twice" worry came from the sim lever test, ignore it.
 - Comb/dense dust fan-out (examples/noteblocks.ts): exact timing at 2 game ticks per redstone tick, 28 notes (comb) / 88 (dense) per tap.
+- Note-block builds: floors and supports MUST be coloured wool (CLAUDE.md), never obsidian; but a wool block directly UNDER a note block makes it a guitar, so instrument blocks are the real ones (harp = dirt). I broke this rule once; reread the colour convention before building.

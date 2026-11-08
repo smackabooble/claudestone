@@ -20,7 +20,7 @@ export interface Song { events: NoteEv[] }
 
 /** instrument -> block below the note block (vanilla) */
 export const INST_BLOCK: Record<string, string> = {
-  harp: 'obsidian', bass: 'oak_planks', basedrum: 'stone', snare: 'sand', hat: 'glass', guitar: 'white_wool', bell: 'gold_block', flute: 'clay', chime: 'packed_ice',
+  harp: 'dirt', bass: 'oak_planks', basedrum: 'stone', snare: 'sand', hat: 'glass', guitar: 'white_wool', bell: 'gold_block', flute: 'clay', chime: 'packed_ice',
   xylophone: 'bone_block', iron_xylophone: 'iron_block', cow_bell: 'soul_sand', didgeridoo: 'pumpkin', bit: 'emerald_block', banjo: 'hay_block', pling: 'glowstone',
 };
 
@@ -74,12 +74,12 @@ export function buildSong(w: World, song: Song, origin: Pos, mode: Mode = 'comb'
   const xEnd = prevX + 4;
   // floor + lever
   const zMax = MAX_SIDE * 2 + 2;
-  for (let xx = -2; xx <= xEnd; xx++) for (let z = -zMax; z <= zMax; z++) put(xx, oy - 2, z, 'obsidian');
-  put(0, oy - 1, 0, 'obsidian');
+  for (let xx = -2; xx <= xEnd; xx++) for (let z = -zMax; z <= zMax; z++) put(xx, oy - 2, z, 'light_gray_wool');
+  put(0, oy - 1, 0, 'purple_wool');
   const lever: Pos = [ox - 0, oy, oz];
   w.setRaw(lever, 'lever', { face: 'floor', powered: false });
   // timeline cells (the dust at the tap cell and bridging dust need a floor: the obsidian plane at oy-2 is one lower, so put a support under every dust/repeater)
-  for (let xx = 1; xx <= xEnd; xx++) put(xx, oy - 1, 0, 'obsidian');
+  for (let xx = 1; xx <= xEnd; xx++) put(xx, oy - 1, 0, 'yellow_wool');
   for (const c of row) {
     if (c.kind === 'rep') put(c.x, oy, 0, 'repeater', { facing: 'west', delay: c.delay, powered: false });     // input from the west = the lever side, output east
     else put(c.x, oy, 0, 'redstone_wire');
@@ -95,19 +95,19 @@ export function buildSong(w: World, song: Song, origin: Pos, mode: Mode = 'comb'
     const cells = tapCells(mode, rows);
     const notes: Pos[] = [];
     // bus + stubs for every row that is needed (a stub ends at the source cell of each quadrant; unused sources get a plain conductor so neighbours can be powered through them)
-    for (const side of [1, -1]) for (let k = 1; k <= 2 * rows; k++) { put(tap.x, oy - 1, side * k, 'obsidian'); put(tap.x, oy, side * k, 'redstone_wire'); }
+    for (const side of [1, -1]) for (let k = 1; k <= 2 * rows; k++) { put(tap.x, oy - 1, side * k, 'orange_wool'); put(tap.x, oy, side * k, 'redstone_wire'); }
     for (let r = 1; r <= rows; r++) for (const sx of [-1, 1]) for (const sz of [1, -1]) {
-      put(tap.x + sx, oy - 1, 2 * r * sz, 'obsidian'); put(tap.x + sx, oy, 2 * r * sz, 'redstone_wire');
+      put(tap.x + sx, oy - 1, 2 * r * sz, 'red_wool'); put(tap.x + sx, oy, 2 * r * sz, 'redstone_wire');
     }
     const used = new Set<string>();
     evs.forEach((e, i) => {
       const [dx, dz] = cells[i];
-      put(tap.x + dx, oy - 1, dz, INST_BLOCK[e.inst] ?? 'obsidian');
+      put(tap.x + dx, oy - 1, dz, INST_BLOCK[e.inst] ?? 'dirt');
       put(tap.x + dx, oy, dz, 'note_block', { note: e.note, instrument: e.inst, powered: false });
       used.add(`${dx},${dz}`); notes.push([ox + tap.x + dx, oy, oz + dz]); nb++;
     });
     // every source of a used row that carries no note gets an obsidian conductor (dense mode: the neighbours are powered through it)
-    for (const [dx, dz, src] of cells) if (src && !used.has(`${dx},${dz}`)) { if (mode === 'dense' && evs.length > 4 * rows) put(tap.x + dx, oy, dz, 'obsidian'); }
+    for (const [dx, dz, src] of cells) if (src && !used.has(`${dx},${dz}`)) { if (mode === 'dense' && evs.length > 4 * rows) put(tap.x + dx, oy, dz, 'magenta_wool'); }
     slots.push({ t: tap.t, x: ox + tap.x, notes });
   }
   return { lever, slots, size: [xEnd + 3, 4, 2 * zMax + 1], noteBlocks: nb };
