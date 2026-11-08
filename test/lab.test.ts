@@ -128,9 +128,9 @@ test('noteblock song: notes sound at 2*t game ticks', () => {
 
 import { buildTriplePulse } from '../examples/triple-pulse.ts';
 import { World as W2 } from '../src/world.ts';
-test('button -> exactly 3 lamp pulses', () => {
+test('button -> exactly 3 pulses (compact, no floor)', () => {
   const w = new W2(); const b = buildTriplePulse(w); w.run(20); w.use(b.button);
   let prev = false, ons = 0;
-  for (let t = 0; t < 300; t++) { w.run(1); const l = !!w.get(b.lamp).p.lit; if (l && !prev) ons++; prev = l; }
+  for (let t = 0; t < 300; t++) { w.run(1); const l = (w.get(b.out).p.power ?? 0) > 0; if (l && !prev) ons++; prev = l; }
   assert.equal(ons, 3);
 });
