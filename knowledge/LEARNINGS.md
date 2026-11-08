@@ -398,3 +398,4 @@ Found with the abstract model (extender-long.ts pulseOrder style) + scripted pul
 - setRaw stores dust as DOTS (no connection update): exporters now call world.settleWires() (exportSchem does it). Dots in a paste = redstone 'placed wrong'. Check dust shapes after every export.
 - Repeater stretches a pulse shorter than its delay to its full delay (d4 -> 8 gt). Use it to make merged pulses equal width; lane offsets = 2*sum(delays) differences.
 - Compact triple pulse = 8x2: observer on button -> block B; lane 1 = dust beside B, lane 2 = repeaters fed from B's other side (diode, no loop), shared dust row, ONE final d4 repeater equalises widths. Dust beside a button is powered by the button itself (keep output dust away from it).
+- N pulses with the button trick: press+release give 2; a lane delayed 20 gt gives 3 (0,20,40), a lane delayed 40 gt gives 4 (0,20,40,60). Even spacing = button hold time (20 gt).

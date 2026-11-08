@@ -26,7 +26,11 @@ export function buildTriplePulse(w: World, delays: number[] = [4, 4, 2]): { butt
   return { button: [0, Y, 0], out: [1, Y, 1] };   // out = the output repeater; it powers whatever you put at (0,1) (no dust there: dust beside the button would pick up the button itself)
 }
 
+export const buildQuadPulse = (w: World) => buildTriplePulse(w, [4, 4, 4, 4, 4]);   // lane 2 delayed 40 gt: 0, 20 (press, release) + 40, 60 = 4 even pulses
+
 if (import.meta.url === `file://${process.argv[1]}`) {
   const w = new World(); buildTriplePulse(w); w.run(10);
   writeFileSync('examples/triple-pulse.schem', exportSchem(w).buffer);
+  const w4 = new World(); buildQuadPulse(w4); w4.run(10);
+  writeFileSync('examples/quad-pulse.schem', exportSchem(w4).buffer);
 }

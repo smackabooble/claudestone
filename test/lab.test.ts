@@ -150,3 +150,13 @@ test('triple pulse: 3 even pulses, 20 gt apart, 8 gt wide', () => {
   assert.equal(on[1] - on[0], 20); assert.equal(on[2] - on[1], 20);
   assert.deepEqual(off.map((o, i) => o - on[i]), [8, 8, 8]);
 });
+
+import { buildQuadPulse } from '../examples/triple-pulse.ts';
+test('quad pulse: 4 even pulses, 20 gt apart, 8 gt wide', () => {
+  const w = new W2(); const b = buildQuadPulse(w); w.run(20); w.use(b.button);
+  const on: number[] = [], off: number[] = []; let prev = false;
+  for (let t = 0; t < 200; t++) { w.run(1); const l = !!w.get(b.out).p.powered; if (l && !prev) on.push(t); if (!l && prev) off.push(t); prev = l; }
+  assert.equal(on.length, 4);
+  assert.deepEqual(on.slice(1).map((o, i) => o - on[i]), [20, 20, 20]);
+  assert.deepEqual(off.map((o, i) => o - on[i]), [8, 8, 8, 8]);
+});
