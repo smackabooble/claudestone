@@ -23,6 +23,6 @@ export function buildTriplePulse(w: World): { button: [number, number, number]; 
 }
 
 if (import.meta.url === `file://${process.argv[1]}`) {
-  const w = new World(); buildTriplePulse(w);
+  const w = new World(); buildTriplePulse(w); w.run(10);   // settle: dust connection shapes are only computed on update
   writeFileSync('examples/triple-pulse.schem', exportSchem(w).buffer);
 }

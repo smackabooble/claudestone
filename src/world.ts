@@ -746,6 +746,15 @@ export class World {
     for (const d of HORIZONTAL) c[d] = this.connectingSide(p, d, above);
     return c;
   }
+  /** Give every pasted (setRaw) dust its proper connection shape (setRaw stores dots); no updates, no power change. Exporters call this so dust never pastes as dots. */
+  settleWires(): void {
+    for (const b of this.listBlocks()) {
+      if (b.type !== 'redstone_wire') continue;
+      const cur = this.get(b.pos);
+      const st = this.wireRegulate({ north: cur.p.north, east: cur.p.east, south: cur.p.south, west: cur.p.west }, b.pos);
+      if (HORIZONTAL.some((d) => st[d] !== cur.p[d])) this.store(b.pos, { type: cur.type, p: { ...cur.p, ...st } });
+    }
+  }
   /** get_regulated_sides: recompute from the world, then extend lone connections into lines. */
   private wireRegulate(inp: Record<string, Conn>, p: Pos): Record<string, Conn> {
     const st = this.wireAllSides(p);

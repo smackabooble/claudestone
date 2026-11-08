@@ -134,3 +134,10 @@ test('button -> exactly 3 pulses (compact, no floor)', () => {
   for (let t = 0; t < 300; t++) { w.run(1); const l = (w.get(b.out).p.power ?? 0) > 0; if (l && !prev) ons++; prev = l; }
   assert.equal(ons, 3);
 });
+
+import { toBlockState } from '../src/export.ts';
+test('exported raw-placed dust is connected, never dots', () => {
+  const w = new W2(); buildTriplePulse(w); w.settleWires();
+  const dots = w.listBlocks().filter((b) => b.type === 'redstone_wire').filter((b) => toBlockState({ type: b.type, p: b.props }).includes('east=none,north=none,power=0,south=none,west=none'));
+  assert.equal(dots.length, 0);
+});

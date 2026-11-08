@@ -53,6 +53,7 @@ export function toBlockState(b: Block): string {
 
 /** Sponge Schematic v2 (.schem) of everything in the world, normalised to the min corner. */
 export function exportSchem(w: World): { buffer: Buffer; size: Pos; origin: Pos } {
+  w.settleWires();
   const bl = w.listBlocks().filter((b) => b.type !== 'moving_piston');
   if (!bl.length) throw new Error('world is empty');
   const min: Pos = [Infinity, Infinity, Infinity], max: Pos = [-Infinity, -Infinity, -Infinity];

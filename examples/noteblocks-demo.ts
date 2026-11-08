@@ -17,6 +17,7 @@ if (import.meta.url === `file://${process.argv[1]}`) {
   const { w, built } = buildDemo();
   console.log(playSong(w, built, 100).map((n) => `${n.tick}:${n.instrument}${n.note}`).join(' '));
   const b2 = buildDemo();
+  b2.w.run(10);   // settle so dust connections are computed
   const { buffer } = exportSchem(b2.w);
   writeFileSync('examples/noteblocks-demo.schem', buffer);
   console.log('wrote examples/noteblocks-demo.schem, lever at', b2.built.lever);
