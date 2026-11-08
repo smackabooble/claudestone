@@ -189,5 +189,5 @@ test('piston train wave: front piston first, short pulses -> a 30-piston train m
   w.setRaw([N, 0, 0], 'stone'); w.setRaw([N, -1, 0], 'obsidian'); w.run(5);
   for (let k = N - 1; k >= 0; k--) { w.use([k, 0, 1]); w.run(2); w.use([k, 0, 1]); w.run(6); }
   const row = Array.from({ length: N + 3 }, (_, x) => { const b = w.get([x, 0, 0]); return b.type === 'sticky_piston' ? 'p' : b.type === 'stone' ? 'X' : b.type === 'air' ? '.' : '?'; }).join('');
-  assert.equal(row, 'p.' + 'p'.repeat(N - 1) + 'X' + '..');
+  assert.equal(row, 'p.' + 'p'.repeat(N - 1) + 'X.');
 });
