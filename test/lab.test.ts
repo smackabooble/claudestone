@@ -160,3 +160,14 @@ test('quad pulse: 4 even pulses, 20 gt apart, 8 gt wide', () => {
   assert.deepEqual(on.slice(1).map((o, i) => o - on[i]), [20, 20, 20]);
   assert.deepEqual(off.map((o, i) => o - on[i]), [8, 8, 8, 8]);
 });
+
+import { buildXor } from '../examples/xor-gate.ts';
+test('xor gate truth table (all 4 inputs, plus toggling back)', () => {
+  const w = new W2(); const g = buildXor(w); w.run(10);
+  const out = () => (w.run(20), w.get(g.out).p.power > 0);
+  assert.equal(out(), false);
+  w.use(g.a); assert.equal(out(), true);
+  w.use(g.b); assert.equal(out(), false);
+  w.use(g.a); assert.equal(out(), true);
+  w.use(g.b); assert.equal(out(), false);
+});
