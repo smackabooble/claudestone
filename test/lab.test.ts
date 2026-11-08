@@ -117,3 +117,11 @@ test('lab 5: block events match the real recording except the two known cells (k
   // W.liftTop: the item arrived 3 ticks earlier (the dropper throw is random)
   assert.deepEqual(cells, ['W.liftTop', 'W.plain.soul']);
 });
+
+import { buildDemo } from '../examples/noteblocks-demo.ts';
+import { playSong } from '../examples/noteblocks.ts';
+test('noteblock song: notes sound at 2*t game ticks', () => {
+  const { w, built } = buildDemo();
+  const got = playSong(w, built, 100).map((n) => n.tick);
+  assert.deepEqual(got, [0, 0, 0, 6, 12, 20, 20, 80]);
+});
