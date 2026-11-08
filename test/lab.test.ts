@@ -171,3 +171,14 @@ test('xor gate truth table (all 4 inputs, plus toggling back)', () => {
   w.use(g.a); assert.equal(out(), true);
   w.use(g.b); assert.equal(out(), false);
 });
+
+import { loadSchematic } from '../src/schematic.ts';
+test("user's torch XOR (knowledge/refs/xor-user.litematic) is a real XOR in the sim", () => {
+  const s = loadSchematic(readFileSync('knowledge/refs/xor-user.litematic'));
+  for (const [a, b] of [[0, 0], [1, 0], [0, 1], [1, 1]]) {
+    const w = new W2();
+    for (const bl of s.blocks as any[]) { if (bl.type === 'glass') continue; const p = { ...(bl.props ?? {}) }; if (bl.type === 'lever') p.powered = false; w.setRaw(bl.pos, bl.type, p); }
+    w.run(30); if (a) w.use([10, 3, 2]); if (b) w.use([10, 3, 4]); w.run(30);
+    assert.equal(!!w.get([4, 4, 3]).p.lit, (a ^ b) === 1, `a=${a} b=${b}`);
+  }
+});
