@@ -182,3 +182,12 @@ test("user's torch XOR (knowledge/refs/xor-user.litematic) is a real XOR in the 
     assert.equal(!!w.get([4, 4, 3]).p.lit, (a ^ b) === 1, `a=${a} b=${b}`);
   }
 });
+
+test('piston train wave: front piston first, short pulses -> a 30-piston train moves 1 cell, nothing pushes more than a couple of blocks (12-block limit avoided)', () => {
+  const N = 30, w = new W2();
+  for (let x = 0; x < N; x++) { w.setRaw([x, -1, 0], 'obsidian'); w.setRaw([x, -1, 1], 'obsidian'); w.setRaw([x, 0, 0], 'sticky_piston', { facing: 'east', extended: false }); w.setRaw([x, 0, 1], 'lever', { face: 'floor', facing: 'north', powered: false }); }
+  w.setRaw([N, 0, 0], 'stone'); w.setRaw([N, -1, 0], 'obsidian'); w.run(5);
+  for (let k = N - 1; k >= 0; k--) { w.use([k, 0, 1]); w.run(2); w.use([k, 0, 1]); w.run(6); }
+  const row = Array.from({ length: N + 3 }, (_, x) => { const b = w.get([x, 0, 0]); return b.type === 'sticky_piston' ? 'p' : b.type === 'stone' ? 'X' : b.type === 'air' ? '.' : '?'; }).join('');
+  assert.equal(row, 'p.' + 'p'.repeat(N - 1) + 'X' + '..');
+});
