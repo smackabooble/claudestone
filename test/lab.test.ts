@@ -191,3 +191,15 @@ test('piston train wave: front piston first, short pulses -> a 30-piston train m
   const row = Array.from({ length: N + 3 }, (_, x) => { const b = w.get([x, 0, 0]); return b.type === 'sticky_piston' ? 'p' : b.type === 'stone' ? 'X' : b.type === 'air' ? '.' : '?'; }).join('');
   assert.equal(row, 'p.' + 'p'.repeat(N - 1) + 'X.');
 });
+
+import { buildTrain } from '../examples/piston-train.ts';
+test('piston train schematic: lever ON runs a wave (payload +1), lever OFF another (+2); all 30 pistons retracted afterwards', () => {
+  const w = new W2(); const t = buildTrain(w); w.run(10);
+  const xOf = () => { for (let x = 0; x < 40; x++) if (w.get([x, 0, 0]).type === 'red_wool') return x; return -1; };
+  assert.equal(xOf(), 30);
+  w.use(t.lever); w.run(400); assert.equal(xOf(), 31);
+  w.use(t.lever); w.run(400); assert.equal(xOf(), 32);
+  let pistons = 0;
+  for (let x = 0; x < 40; x++) { const b = w.get([x, 0, 0]); if (b.type === 'sticky_piston') { pistons++; assert.equal(!!b.p.extended, false); } }
+  assert.equal(pistons, 30);
+});
