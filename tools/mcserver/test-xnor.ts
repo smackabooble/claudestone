@@ -1,7 +1,7 @@
 /** REAL-GAME check of examples/xnor-gate.ts: paste into the real server, flip both levers through all 4 combinations, read the lamp. Run: npx tsx tools/mcserver/test-xnor.ts */
 import { World } from '../../src/world.ts';
 import { buildXnor } from '../../examples/xnor-gate.ts';
-import { rcon, pasteWorld, blockIs, clickBlock } from './mc.ts';
+import { rcon, pasteWorld, blockIs, clickBlock, cleanup } from './mc.ts';
 import { toBlockState } from '../../src/export.ts';
 
 const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
@@ -28,4 +28,4 @@ async function main() {
   }
   console.log(ok ? 'REAL GAME: XNOR truth table correct' : 'REAL GAME: MISMATCH');
 }
-main().catch((e) => { console.error(e); process.exit(1); });
+main().catch((e) => { console.error(e); process.exitCode = 1; }).finally(() => cleanup([-8, 98, -8], [24, 110, 12], [[12, 102, 3]]));

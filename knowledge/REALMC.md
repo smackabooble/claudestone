@@ -12,3 +12,4 @@ Purpose: verify builds in the REAL game without the user. Real results beat the 
 - Minecraft 26.x needs Java 25 (class file 69). The container default is Java 21.
 - Real-game lamps/torches/dust shapes arrive in their pasted state; the server runs block updates only for neighbours, same as setRaw (paste rest states!).
 - Web search (Nov 2026): no Java redstone behaviour changes found 1.21 -> 26.3 in the changelogs I could reach; Carpet has a 26.3 release.
+- Real-server tests CLEAN UP after themselves (mc.ts cleanup(): air over the build box, bot platform, kill the fake player); always do this in a finally block.

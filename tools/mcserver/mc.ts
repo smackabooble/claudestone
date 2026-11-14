@@ -65,3 +65,10 @@ export async function clickBlock(stand: Pos, target: Pos): Promise<void> {
   await rcon(`player Lab look at ${target[0] + 0.5} ${target[1] + 0.5} ${target[2] + 0.5}`);
   await rcon('player Lab use once');
 }
+
+/** remove a finished build: air over the box, the bot's standing platform, and the fake player itself */
+export async function cleanup(a: Pos, b: Pos, stands: Pos[] = []): Promise<void> {
+  await clearBox(a, b);
+  for (const st of stands) await rcon(`setblock ${st[0]} ${st[1] - 1} ${st[2]} minecraft:air`);
+  await rcon('player Lab kill').catch(() => '');
+}
