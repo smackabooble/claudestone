@@ -31,7 +31,7 @@ const server = new McpServer({ name: 'claudestone', version: '0.2.0' }, {
     'Headless redstone simulator (Java 1.20 rules). FIRST call `learnings` to load what earlier sessions learned (conventions, ' +
     'glue rules, extender timing, door theory). Repeater/comparator `facing` is the INPUT side. Place supports before dust. ' +
     'Everything next to slime/honey must be obsidian. Otherwise build with COLOURED WOOL, one colour per part of the build (trunk, delay rows, taps, ...), and use obsidian only where a block must be immovable. Use `list_designs`/`build_design` for finished, tested builds. ' +
-    'Only the double piston extenders are confirmed in the real game; say so honestly. Record new lessons with `add_learning`. Keep replies short.',
+    'Only the double piston extenders are confirmed in the real game; say so honestly. Record new lessons with `add_learning`. Keep replies short. AT THE END OF EVERY BUILD run the final check in knowledge/BUILD-CHECKLIST.md (re-read learnings/rules, check for mistakes or bad ideas, record or correct lessons) and tell the user what it found.',
 });
 
 server.registerTool('reset', {
