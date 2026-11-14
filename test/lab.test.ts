@@ -212,3 +212,13 @@ test('xnor gate (user xor + output torch): lamp lit when A == B', () => {
     assert.equal(!!w.get(g.lamp).p.lit, a === b, `a=${a} b=${b}`);
   }
 });
+
+import { buildLatch } from '../examples/rep-latch.ts';
+test('repeater D latch holds while locked (also verified in the real game)', () => {
+  const w = new W2(); const c = buildLatch(w); w.run(20);
+  const m = () => { w.run(20); return !!w.get(c.M).p.powered; };
+  w.use(c.D); assert.equal(m(), true);          // transparent
+  w.use(c.G); assert.equal(m(), true);          // locked, still 1
+  w.use(c.D); assert.equal(m(), true);          // D=0 while locked: holds 1
+  w.use(c.G); assert.equal(m(), false);         // unlocked: follows D (0)
+});
