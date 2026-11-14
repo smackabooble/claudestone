@@ -1,4 +1,4 @@
-A,B,C,D,XOR(A,B),XOR(C,D),XNOR out
+A,B,C,D,XOR_AB,XOR_CD,XNOR_out
 0,0,0,0,0,0,1
 0,0,0,1,0,1,0
 0,0,1,0,0,1,0
