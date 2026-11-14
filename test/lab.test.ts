@@ -222,3 +222,14 @@ test('repeater D latch holds while locked (also verified in the real game)', () 
   w.use(c.D); assert.equal(m(), true);          // D=0 while locked: holds 1
   w.use(c.G); assert.equal(m(), false);         // unlocked: follows D (0)
 });
+
+import { buildFF } from '../examples/ff-bit.ts';
+test('flip-flop bit on the two-phase clock: Q only changes when STEP is flipped (also verified in the real game)', () => {
+  const w = new W2(); const c = buildFF(w); w.settleWires(); w.pasteUpdates(); w.run(60);
+  const q = () => (w.get(c.S).p.powered ? 1 : 0);
+  assert.equal(q(), 0);
+  w.use(c.D); w.run(40); assert.equal(q(), 0);      // D set, no step: Q unchanged
+  w.use(c.STEP); w.run(120); assert.equal(q(), 1);   // step 1
+  w.use(c.D); w.run(40); assert.equal(q(), 1);      // D cleared, no step: Q holds
+  w.use(c.STEP); w.run(120); assert.equal(q(), 0);   // step 2 takes D=0
+});

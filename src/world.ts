@@ -746,6 +746,10 @@ export class World {
     for (const d of HORIZONTAL) c[d] = this.connectingSide(p, d, above);
     return c;
   }
+  /** Like pasting a schematic WITH block updates: every block notifies its neighbours once (torches/repeaters/locks then settle to their real rest state). Call after building with setRaw when the rest state depends on propagation (e.g. locks held by torches). */
+  pasteUpdates(): void {
+    for (const b of this.listBlocks()) { this.updateNeighborsAt(b.pos); const bb = this.get(b.pos); if (bb.type === 'redstone_torch' || bb.type === 'redstone_wall_torch' || bb.type === 'repeater' || bb.type === 'comparator') this.scheduleTick(b.pos, 2, 0); }
+  }
   /** Give every pasted (setRaw) dust its proper connection shape (setRaw stores dots); no updates, no power change. Exporters call this so dust never pastes as dots. */
   settleWires(): void {
     for (const b of this.listBlocks()) {
