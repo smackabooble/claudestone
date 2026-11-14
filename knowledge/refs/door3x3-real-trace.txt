@@ -1,0 +1,810 @@
+69,-59,151 dirt{}
+61,-57,145 polished_andesite{}
+62,-57,145 polished_andesite{}
+63,-57,145 observer{powered: false, facing: east}
+64,-57,145 hopper{enabled: true, facing: east}
+65,-57,145 polished_andesite{}
+61,-56,145 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+62,-56,145 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+63,-56,145 repeater{powered: false, facing: west, delay: 4, locked: false}
+64,-56,145 sticky_piston{extended: false, facing: up}
+65,-56,145 observer{powered: false, facing: up}
+61,-55,145 observer{powered: false, facing: down}
+63,-55,145 observer{powered: false, facing: down}
+64,-55,145 sticky_piston{extended: false, facing: up}
+65,-55,145 observer{powered: false, facing: east}
+66,-55,145 hopper{enabled: true, facing: down}
+61,-54,145 polished_andesite{}
+62,-54,145 sticky_piston{extended: false, facing: east}
+63,-54,145 iron_block{}
+64,-54,145 iron_block{}
+65,-54,145 iron_block{}
+66,-54,145 observer{powered: false, facing: up}
+61,-53,145 sticky_piston{extended: false, facing: east}
+62,-53,145 iron_block{}
+66,-53,145 iron_block{}
+67,-53,145 sticky_piston{extended: false, facing: west}
+61,-52,145 sticky_piston{extended: false, facing: east}
+62,-52,145 iron_block{}
+66,-52,145 iron_block{}
+67,-52,145 sticky_piston{extended: false, facing: west}
+61,-51,145 sticky_piston{extended: false, facing: east}
+62,-51,145 iron_block{}
+66,-51,145 iron_block{}
+67,-51,145 polished_andesite{}
+61,-50,145 polished_andesite{}
+63,-50,145 iron_block{}
+64,-50,145 iron_block{}
+65,-50,145 iron_block{}
+66,-50,143 lever{face: wall, powered: false, facing: north}
+66,-50,144 polished_andesite{}
+66,-50,145 polished_andesite{}
+67,-50,145 redstone_wire{east: side, power: 0, south: none, north: none, west: up}
+61,-49,145 redstone_wire{east: side, power: 0, south: side, north: side, west: side}
+62,-49,145 polished_andesite{}
+63,-49,145 observer{powered: false, facing: east}
+64,-49,145 sticky_piston{extended: false, facing: down}
+65,-49,145 sticky_piston{extended: false, facing: down}
+66,-49,144 redstone_wire{east: none, power: 0, south: side, north: side, west: none}
+66,-49,145 redstone_wire{east: side, power: 0, south: none, north: side, west: up}
+65,-48,145 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+60,-47,141 dirt{}
+T 1
+T 2
+T 3
+T 4
+T 5
+T 6
+T 7
+T 8
+T 9
+T 10
+T 11
+T 12
+T 13
+T 14
+T 15
+T 16
+T 17
+T 18
+T 19
+T 20
+T 21
+T 22
+T 23
+T 24
+T 25
+T 26
+T 27
+T 28
+T 29
+T 30
+T 31
+T 32
+T 33
+T 34
+T 35
+T 36
+T 37
+T 38
+T 39
+T 40
+T 41
+T 42
+T 43
+T 44
+T 45
+T 46
+T 47
+T 48
+T 49
+T 50
+T 51
+T 52
+T 53
+T 54
+T 55
+CLICK 55 lever [66, -50, 143]
+T 56
+65,-53,145 moving_piston{type: normal, facing: west}
+66,-53,145 moving_piston{type: sticky, facing: west}
+67,-53,145 sticky_piston{extended: true, facing: west}
+65,-52,145 moving_piston{type: normal, facing: west}
+66,-52,145 moving_piston{type: sticky, facing: west}
+67,-52,145 sticky_piston{extended: true, facing: west}
+64,-51,145 moving_piston{type: normal, facing: down}
+65,-51,145 moving_piston{type: normal, facing: down}
+64,-50,145 moving_piston{type: sticky, facing: down}
+65,-50,145 moving_piston{type: sticky, facing: down}
+66,-50,143 lever{face: wall, powered: true, facing: north}
+67,-50,145 redstone_wire{east: side, power: 13, south: none, north: none, west: up}
+64,-49,145 sticky_piston{extended: true, facing: down}
+65,-49,145 sticky_piston{extended: true, facing: down}
+66,-49,144 redstone_wire{east: none, power: 15, south: side, north: side, west: none}
+66,-49,145 redstone_wire{east: side, power: 14, south: none, north: side, west: side}
+65,-48,145 redstone_wire{east: side, power: 13, south: none, north: none, west: side}
+T 57
+T 58
+66,-55,145 hopper{enabled: false, facing: down}
+66,-54,145 observer{powered: true, facing: up}
+65,-53,145 iron_block{}
+66,-53,145 piston_head{type: sticky, short: false, facing: west}
+61,-52,145 sticky_piston{extended: true, facing: east}
+62,-52,145 moving_piston{type: sticky, facing: east}
+63,-52,145 moving_piston{type: normal, facing: east}
+65,-52,145 iron_block{}
+66,-52,145 piston_head{type: sticky, short: false, facing: west}
+61,-51,145 sticky_piston{extended: true, facing: east}
+62,-51,145 moving_piston{type: sticky, facing: east}
+63,-51,145 moving_piston{type: normal, facing: east}
+64,-51,145 iron_block{}
+65,-51,145 iron_block{}
+64,-50,145 piston_head{type: sticky, short: false, facing: down}
+65,-50,145 piston_head{type: sticky, short: false, facing: down}
+61,-49,145 redstone_wire{east: side, power: 15, south: side, north: side, west: side}
+63,-49,145 observer{powered: true, facing: east}
+T 59
+T 60
+64,-55,145 sticky_piston{extended: true, facing: up}
+65,-55,145 observer{powered: true, facing: east}
+66,-55,145 hopper{enabled: true, facing: down}
+64,-54,145 moving_piston{type: sticky, facing: up}
+66,-54,145 observer{powered: false, facing: up}
+64,-53,145 moving_piston{type: normal, facing: up}
+61,-52,145 moving_piston{type: sticky, facing: east}
+62,-52,145 air{}
+63,-52,145 iron_block{}
+61,-51,145 moving_piston{type: sticky, facing: east}
+62,-51,145 air{}
+63,-51,145 iron_block{}
+61,-49,145 redstone_wire{east: side, power: 0, south: side, north: side, west: side}
+63,-49,145 observer{powered: false, facing: east}
+T 61
+T 62
+64,-57,145 hopper{enabled: false, facing: east}
+65,-56,145 observer{powered: true, facing: up}
+64,-55,145 moving_piston{type: sticky, facing: up}
+65,-55,145 observer{powered: false, facing: east}
+64,-54,145 air{}
+64,-53,145 iron_block{}
+61,-52,145 sticky_piston{extended: false, facing: east}
+61,-51,145 sticky_piston{extended: false, facing: east}
+T 63
+T 64
+63,-57,145 observer{powered: true, facing: east}
+64,-57,145 hopper{enabled: true, facing: east}
+61,-56,145 redstone_wire{east: side, power: 14, south: none, north: none, west: side}
+62,-56,145 redstone_wire{east: side, power: 15, south: none, north: none, west: side}
+65,-56,145 observer{powered: false, facing: up}
+64,-55,145 sticky_piston{extended: false, facing: up}
+T 65
+T 66
+63,-57,145 observer{powered: false, facing: east}
+61,-56,145 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+62,-56,145 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+61,-55,145 observer{powered: true, facing: down}
+62,-54,145 sticky_piston{extended: true, facing: east}
+63,-54,145 moving_piston{type: sticky, facing: east}
+64,-54,145 moving_piston{type: normal, facing: east}
+61,-53,145 sticky_piston{extended: true, facing: east}
+62,-53,145 moving_piston{type: sticky, facing: east}
+63,-53,145 moving_piston{type: normal, facing: east}
+T 67
+T 68
+61,-55,145 observer{powered: false, facing: down}
+62,-54,145 moving_piston{type: sticky, facing: east}
+63,-54,145 air{}
+64,-54,145 iron_block{}
+61,-53,145 moving_piston{type: sticky, facing: east}
+62,-53,145 air{}
+63,-53,145 iron_block{}
+T 69
+T 70
+62,-54,145 sticky_piston{extended: false, facing: east}
+61,-53,145 sticky_piston{extended: false, facing: east}
+T 71
+T 72
+63,-56,145 repeater{powered: true, facing: west, delay: 4, locked: false}
+64,-56,145 sticky_piston{extended: true, facing: up}
+64,-55,145 moving_piston{type: sticky, facing: up}
+64,-54,145 moving_piston{type: normal, facing: up}
+64,-53,145 moving_piston{type: normal, facing: up}
+64,-52,145 moving_piston{type: normal, facing: up}
+T 73
+T 74
+63,-55,145 observer{powered: true, facing: down}
+64,-55,145 piston_head{type: sticky, short: false, facing: up}
+64,-54,145 sticky_piston{extended: false, facing: up}
+64,-53,145 iron_block{}
+64,-52,145 iron_block{}
+T 75
+T 76
+63,-55,145 observer{powered: false, facing: down}
+T 77
+T 78
+T 79
+T 80
+63,-56,145 repeater{powered: false, facing: west, delay: 4, locked: false}
+64,-56,145 moving_piston{type: sticky, facing: up}
+64,-55,145 moving_piston{type: normal, facing: up}
+64,-54,145 air{}
+T 81
+T 82
+64,-56,145 sticky_piston{extended: false, facing: up}
+63,-55,145 observer{powered: true, facing: down}
+64,-55,145 sticky_piston{extended: false, facing: up}
+T 83
+T 84
+63,-55,145 observer{powered: false, facing: down}
+T 85
+T 86
+T 87
+T 88
+T 89
+T 90
+T 91
+T 92
+T 93
+T 94
+T 95
+T 96
+T 97
+T 98
+T 99
+T 100
+T 101
+T 102
+T 103
+T 104
+T 105
+T 106
+T 107
+T 108
+T 109
+T 110
+CLICK 110 lever [66, -50, 143]
+T 111
+65,-53,145 air{}
+66,-53,145 moving_piston{type: normal, facing: west}
+67,-53,145 moving_piston{type: sticky, facing: west}
+65,-52,145 air{}
+66,-52,145 moving_piston{type: normal, facing: west}
+67,-52,145 moving_piston{type: sticky, facing: west}
+64,-51,145 air{}
+65,-51,145 air{}
+64,-50,145 moving_piston{type: normal, facing: down}
+65,-50,145 moving_piston{type: normal, facing: down}
+66,-50,143 lever{face: wall, powered: false, facing: north}
+67,-50,145 redstone_wire{east: side, power: 0, south: none, north: none, west: up}
+64,-49,145 moving_piston{type: sticky, facing: down}
+65,-49,145 moving_piston{type: sticky, facing: down}
+66,-49,144 redstone_wire{east: none, power: 0, south: side, north: side, west: none}
+66,-49,145 redstone_wire{east: side, power: 0, south: none, north: side, west: side}
+65,-48,145 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+T 112
+T 113
+66,-55,145 hopper{enabled: false, facing: down}
+66,-54,145 observer{powered: true, facing: up}
+66,-53,145 iron_block{}
+67,-53,145 sticky_piston{extended: false, facing: west}
+61,-52,145 sticky_piston{extended: true, facing: east}
+62,-52,145 moving_piston{type: sticky, facing: east}
+66,-52,145 iron_block{}
+67,-52,145 sticky_piston{extended: false, facing: west}
+61,-51,145 sticky_piston{extended: true, facing: east}
+62,-51,145 moving_piston{type: sticky, facing: east}
+64,-50,145 iron_block{}
+65,-50,145 iron_block{}
+61,-49,145 redstone_wire{east: side, power: 15, south: side, north: side, west: side}
+63,-49,145 observer{powered: true, facing: east}
+64,-49,145 sticky_piston{extended: false, facing: down}
+65,-49,145 sticky_piston{extended: false, facing: down}
+66,-49,145 redstone_wire{east: side, power: 0, south: none, north: side, west: up}
+T 114
+T 115
+64,-55,145 sticky_piston{extended: true, facing: up}
+65,-55,145 observer{powered: true, facing: east}
+66,-55,145 hopper{enabled: true, facing: down}
+64,-54,145 moving_piston{type: sticky, facing: up}
+66,-54,145 observer{powered: false, facing: up}
+61,-52,145 moving_piston{type: sticky, facing: east}
+62,-52,145 moving_piston{type: normal, facing: east}
+63,-52,145 air{}
+61,-51,145 moving_piston{type: sticky, facing: east}
+62,-51,145 moving_piston{type: normal, facing: east}
+63,-51,145 air{}
+61,-49,145 redstone_wire{east: side, power: 0, south: side, north: side, west: side}
+63,-49,145 observer{powered: false, facing: east}
+T 116
+T 117
+64,-57,145 hopper{enabled: false, facing: east}
+65,-56,145 observer{powered: true, facing: up}
+64,-55,145 moving_piston{type: sticky, facing: up}
+65,-55,145 observer{powered: false, facing: east}
+64,-54,145 moving_piston{type: normal, facing: up}
+64,-53,145 air{}
+61,-52,145 sticky_piston{extended: false, facing: east}
+62,-52,145 iron_block{}
+61,-51,145 sticky_piston{extended: false, facing: east}
+62,-51,145 iron_block{}
+T 118
+T 119
+63,-57,145 observer{powered: true, facing: east}
+64,-57,145 hopper{enabled: true, facing: east}
+61,-56,145 redstone_wire{east: side, power: 14, south: none, north: none, west: side}
+62,-56,145 redstone_wire{east: side, power: 15, south: none, north: none, west: side}
+65,-56,145 observer{powered: false, facing: up}
+64,-55,145 sticky_piston{extended: false, facing: up}
+64,-54,145 iron_block{}
+T 120
+T 121
+63,-57,145 observer{powered: false, facing: east}
+61,-56,145 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+62,-56,145 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+61,-55,145 observer{powered: true, facing: down}
+62,-54,145 sticky_piston{extended: true, facing: east}
+63,-54,145 moving_piston{type: sticky, facing: east}
+61,-53,145 sticky_piston{extended: true, facing: east}
+62,-53,145 moving_piston{type: sticky, facing: east}
+T 122
+T 123
+61,-55,145 observer{powered: false, facing: down}
+62,-54,145 moving_piston{type: sticky, facing: east}
+63,-54,145 moving_piston{type: normal, facing: east}
+64,-54,145 air{}
+61,-53,145 moving_piston{type: sticky, facing: east}
+62,-53,145 moving_piston{type: normal, facing: east}
+63,-53,145 air{}
+T 124
+T 125
+62,-54,145 sticky_piston{extended: false, facing: east}
+63,-54,145 iron_block{}
+61,-53,145 sticky_piston{extended: false, facing: east}
+62,-53,145 iron_block{}
+T 126
+T 127
+63,-56,145 repeater{powered: true, facing: west, delay: 4, locked: false}
+64,-56,145 sticky_piston{extended: true, facing: up}
+64,-55,145 moving_piston{type: sticky, facing: up}
+64,-54,145 moving_piston{type: normal, facing: up}
+T 128
+T 129
+63,-55,145 observer{powered: true, facing: down}
+64,-55,145 piston_head{type: sticky, short: false, facing: up}
+64,-54,145 sticky_piston{extended: false, facing: up}
+T 130
+64,-54,145 sticky_piston{extended: true, facing: up}
+64,-53,145 moving_piston{type: sticky, facing: up}
+T 131
+63,-55,145 observer{powered: false, facing: down}
+64,-54,145 moving_piston{type: sticky, facing: up}
+64,-53,145 moving_piston{type: normal, facing: up}
+64,-52,145 air{}
+T 132
+T 133
+64,-54,145 sticky_piston{extended: false, facing: up}
+64,-53,145 iron_block{}
+T 134
+T 135
+63,-56,145 repeater{powered: false, facing: west, delay: 4, locked: false}
+64,-56,145 moving_piston{type: sticky, facing: up}
+64,-55,145 moving_piston{type: normal, facing: up}
+64,-54,145 air{}
+T 136
+T 137
+64,-56,145 sticky_piston{extended: false, facing: up}
+63,-55,145 observer{powered: true, facing: down}
+64,-55,145 sticky_piston{extended: false, facing: up}
+T 138
+64,-55,145 sticky_piston{extended: true, facing: up}
+64,-54,145 moving_piston{type: sticky, facing: up}
+T 139
+63,-55,145 observer{powered: false, facing: down}
+T 140
+64,-54,145 piston_head{type: sticky, short: false, facing: up}
+T 141
+64,-55,145 moving_piston{type: sticky, facing: up}
+64,-54,145 moving_piston{type: normal, facing: up}
+64,-53,145 air{}
+T 142
+T 143
+64,-55,145 sticky_piston{extended: false, facing: up}
+64,-54,145 iron_block{}
+T 144
+T 145
+T 146
+T 147
+T 148
+T 149
+T 150
+T 151
+T 152
+T 153
+T 154
+T 155
+T 156
+T 157
+T 158
+T 159
+T 160
+T 161
+T 162
+T 163
+T 164
+T 165
+T 166
+CLICK 166 lever [66, -50, 143]
+T 167
+65,-53,145 moving_piston{type: normal, facing: west}
+66,-53,145 moving_piston{type: sticky, facing: west}
+67,-53,145 sticky_piston{extended: true, facing: west}
+65,-52,145 moving_piston{type: normal, facing: west}
+66,-52,145 moving_piston{type: sticky, facing: west}
+67,-52,145 sticky_piston{extended: true, facing: west}
+64,-51,145 moving_piston{type: normal, facing: down}
+65,-51,145 moving_piston{type: normal, facing: down}
+64,-50,145 moving_piston{type: sticky, facing: down}
+65,-50,145 moving_piston{type: sticky, facing: down}
+66,-50,143 lever{face: wall, powered: true, facing: north}
+67,-50,145 redstone_wire{east: side, power: 13, south: none, north: none, west: up}
+64,-49,145 sticky_piston{extended: true, facing: down}
+65,-49,145 sticky_piston{extended: true, facing: down}
+66,-49,144 redstone_wire{east: none, power: 15, south: side, north: side, west: none}
+66,-49,145 redstone_wire{east: side, power: 14, south: none, north: side, west: side}
+65,-48,145 redstone_wire{east: side, power: 13, south: none, north: none, west: side}
+T 168
+T 169
+66,-55,145 hopper{enabled: false, facing: down}
+66,-54,145 observer{powered: true, facing: up}
+65,-53,145 iron_block{}
+66,-53,145 piston_head{type: sticky, short: false, facing: west}
+61,-52,145 sticky_piston{extended: true, facing: east}
+62,-52,145 moving_piston{type: sticky, facing: east}
+63,-52,145 moving_piston{type: normal, facing: east}
+65,-52,145 iron_block{}
+66,-52,145 piston_head{type: sticky, short: false, facing: west}
+61,-51,145 sticky_piston{extended: true, facing: east}
+62,-51,145 moving_piston{type: sticky, facing: east}
+63,-51,145 moving_piston{type: normal, facing: east}
+64,-51,145 iron_block{}
+65,-51,145 iron_block{}
+64,-50,145 piston_head{type: sticky, short: false, facing: down}
+65,-50,145 piston_head{type: sticky, short: false, facing: down}
+61,-49,145 redstone_wire{east: side, power: 15, south: side, north: side, west: side}
+63,-49,145 observer{powered: true, facing: east}
+T 170
+T 171
+64,-55,145 sticky_piston{extended: true, facing: up}
+65,-55,145 observer{powered: true, facing: east}
+66,-55,145 hopper{enabled: true, facing: down}
+64,-54,145 moving_piston{type: sticky, facing: up}
+66,-54,145 observer{powered: false, facing: up}
+64,-53,145 moving_piston{type: normal, facing: up}
+61,-52,145 moving_piston{type: sticky, facing: east}
+62,-52,145 air{}
+63,-52,145 iron_block{}
+61,-51,145 moving_piston{type: sticky, facing: east}
+62,-51,145 air{}
+63,-51,145 iron_block{}
+61,-49,145 redstone_wire{east: side, power: 0, south: side, north: side, west: side}
+63,-49,145 observer{powered: false, facing: east}
+T 172
+T 173
+64,-57,145 hopper{enabled: false, facing: east}
+65,-56,145 observer{powered: true, facing: up}
+64,-55,145 moving_piston{type: sticky, facing: up}
+65,-55,145 observer{powered: false, facing: east}
+64,-54,145 air{}
+64,-53,145 iron_block{}
+61,-52,145 sticky_piston{extended: false, facing: east}
+61,-51,145 sticky_piston{extended: false, facing: east}
+T 174
+T 175
+63,-57,145 observer{powered: true, facing: east}
+64,-57,145 hopper{enabled: true, facing: east}
+61,-56,145 redstone_wire{east: side, power: 14, south: none, north: none, west: side}
+62,-56,145 redstone_wire{east: side, power: 15, south: none, north: none, west: side}
+65,-56,145 observer{powered: false, facing: up}
+64,-55,145 sticky_piston{extended: false, facing: up}
+T 176
+T 177
+63,-57,145 observer{powered: false, facing: east}
+61,-56,145 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+62,-56,145 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+61,-55,145 observer{powered: true, facing: down}
+62,-54,145 sticky_piston{extended: true, facing: east}
+63,-54,145 moving_piston{type: sticky, facing: east}
+64,-54,145 moving_piston{type: normal, facing: east}
+61,-53,145 sticky_piston{extended: true, facing: east}
+62,-53,145 moving_piston{type: sticky, facing: east}
+63,-53,145 moving_piston{type: normal, facing: east}
+T 178
+T 179
+61,-55,145 observer{powered: false, facing: down}
+62,-54,145 moving_piston{type: sticky, facing: east}
+63,-54,145 air{}
+64,-54,145 iron_block{}
+61,-53,145 moving_piston{type: sticky, facing: east}
+62,-53,145 air{}
+63,-53,145 iron_block{}
+T 180
+T 181
+62,-54,145 sticky_piston{extended: false, facing: east}
+61,-53,145 sticky_piston{extended: false, facing: east}
+T 182
+T 183
+63,-56,145 repeater{powered: true, facing: west, delay: 4, locked: false}
+64,-56,145 sticky_piston{extended: true, facing: up}
+64,-55,145 moving_piston{type: sticky, facing: up}
+64,-54,145 moving_piston{type: normal, facing: up}
+64,-53,145 moving_piston{type: normal, facing: up}
+64,-52,145 moving_piston{type: normal, facing: up}
+T 184
+T 185
+63,-55,145 observer{powered: true, facing: down}
+64,-55,145 piston_head{type: sticky, short: false, facing: up}
+64,-54,145 sticky_piston{extended: false, facing: up}
+64,-53,145 iron_block{}
+64,-52,145 iron_block{}
+T 186
+T 187
+63,-55,145 observer{powered: false, facing: down}
+T 188
+T 189
+T 190
+T 191
+63,-56,145 repeater{powered: false, facing: west, delay: 4, locked: false}
+64,-56,145 moving_piston{type: sticky, facing: up}
+64,-55,145 moving_piston{type: normal, facing: up}
+64,-54,145 air{}
+T 192
+T 193
+64,-56,145 sticky_piston{extended: false, facing: up}
+63,-55,145 observer{powered: true, facing: down}
+64,-55,145 sticky_piston{extended: false, facing: up}
+T 194
+T 195
+63,-55,145 observer{powered: false, facing: down}
+T 196
+T 197
+T 198
+T 199
+T 200
+T 201
+T 202
+T 203
+T 204
+T 205
+T 206
+T 207
+T 208
+T 209
+T 210
+T 211
+T 212
+T 213
+T 214
+T 215
+T 216
+T 217
+T 218
+T 219
+CLICK 219 lever [66, -50, 143]
+T 220
+65,-53,145 air{}
+66,-53,145 moving_piston{type: normal, facing: west}
+67,-53,145 moving_piston{type: sticky, facing: west}
+65,-52,145 air{}
+66,-52,145 moving_piston{type: normal, facing: west}
+67,-52,145 moving_piston{type: sticky, facing: west}
+64,-51,145 air{}
+65,-51,145 air{}
+64,-50,145 moving_piston{type: normal, facing: down}
+65,-50,145 moving_piston{type: normal, facing: down}
+66,-50,143 lever{face: wall, powered: false, facing: north}
+67,-50,145 redstone_wire{east: side, power: 0, south: none, north: none, west: up}
+64,-49,145 moving_piston{type: sticky, facing: down}
+65,-49,145 moving_piston{type: sticky, facing: down}
+66,-49,144 redstone_wire{east: none, power: 0, south: side, north: side, west: none}
+66,-49,145 redstone_wire{east: side, power: 0, south: none, north: side, west: side}
+65,-48,145 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+T 221
+T 222
+66,-55,145 hopper{enabled: false, facing: down}
+66,-54,145 observer{powered: true, facing: up}
+66,-53,145 iron_block{}
+67,-53,145 sticky_piston{extended: false, facing: west}
+61,-52,145 sticky_piston{extended: true, facing: east}
+62,-52,145 moving_piston{type: sticky, facing: east}
+66,-52,145 iron_block{}
+67,-52,145 sticky_piston{extended: false, facing: west}
+61,-51,145 sticky_piston{extended: true, facing: east}
+62,-51,145 moving_piston{type: sticky, facing: east}
+64,-50,145 iron_block{}
+65,-50,145 iron_block{}
+61,-49,145 redstone_wire{east: side, power: 15, south: side, north: side, west: side}
+63,-49,145 observer{powered: true, facing: east}
+64,-49,145 sticky_piston{extended: false, facing: down}
+65,-49,145 sticky_piston{extended: false, facing: down}
+66,-49,145 redstone_wire{east: side, power: 0, south: none, north: side, west: up}
+T 223
+T 224
+64,-55,145 sticky_piston{extended: true, facing: up}
+65,-55,145 observer{powered: true, facing: east}
+66,-55,145 hopper{enabled: true, facing: down}
+64,-54,145 moving_piston{type: sticky, facing: up}
+66,-54,145 observer{powered: false, facing: up}
+61,-52,145 moving_piston{type: sticky, facing: east}
+62,-52,145 moving_piston{type: normal, facing: east}
+63,-52,145 air{}
+61,-51,145 moving_piston{type: sticky, facing: east}
+62,-51,145 moving_piston{type: normal, facing: east}
+63,-51,145 air{}
+61,-49,145 redstone_wire{east: side, power: 0, south: side, north: side, west: side}
+63,-49,145 observer{powered: false, facing: east}
+T 225
+T 226
+64,-57,145 hopper{enabled: false, facing: east}
+65,-56,145 observer{powered: true, facing: up}
+64,-55,145 moving_piston{type: sticky, facing: up}
+65,-55,145 observer{powered: false, facing: east}
+64,-54,145 moving_piston{type: normal, facing: up}
+64,-53,145 air{}
+61,-52,145 sticky_piston{extended: false, facing: east}
+62,-52,145 iron_block{}
+61,-51,145 sticky_piston{extended: false, facing: east}
+62,-51,145 iron_block{}
+T 227
+T 228
+63,-57,145 observer{powered: true, facing: east}
+64,-57,145 hopper{enabled: true, facing: east}
+61,-56,145 redstone_wire{east: side, power: 14, south: none, north: none, west: side}
+62,-56,145 redstone_wire{east: side, power: 15, south: none, north: none, west: side}
+65,-56,145 observer{powered: false, facing: up}
+64,-55,145 sticky_piston{extended: false, facing: up}
+64,-54,145 iron_block{}
+T 229
+T 230
+63,-57,145 observer{powered: false, facing: east}
+61,-56,145 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+62,-56,145 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+61,-55,145 observer{powered: true, facing: down}
+62,-54,145 sticky_piston{extended: true, facing: east}
+63,-54,145 moving_piston{type: sticky, facing: east}
+61,-53,145 sticky_piston{extended: true, facing: east}
+62,-53,145 moving_piston{type: sticky, facing: east}
+T 231
+T 232
+61,-55,145 observer{powered: false, facing: down}
+62,-54,145 moving_piston{type: sticky, facing: east}
+63,-54,145 moving_piston{type: normal, facing: east}
+64,-54,145 air{}
+61,-53,145 moving_piston{type: sticky, facing: east}
+62,-53,145 moving_piston{type: normal, facing: east}
+63,-53,145 air{}
+T 233
+T 234
+62,-54,145 sticky_piston{extended: false, facing: east}
+63,-54,145 iron_block{}
+61,-53,145 sticky_piston{extended: false, facing: east}
+62,-53,145 iron_block{}
+T 235
+T 236
+63,-56,145 repeater{powered: true, facing: west, delay: 4, locked: false}
+64,-56,145 sticky_piston{extended: true, facing: up}
+64,-55,145 moving_piston{type: sticky, facing: up}
+64,-54,145 moving_piston{type: normal, facing: up}
+T 237
+T 238
+63,-55,145 observer{powered: true, facing: down}
+64,-55,145 piston_head{type: sticky, short: false, facing: up}
+64,-54,145 sticky_piston{extended: false, facing: up}
+T 239
+64,-54,145 sticky_piston{extended: true, facing: up}
+64,-53,145 moving_piston{type: sticky, facing: up}
+T 240
+63,-55,145 observer{powered: false, facing: down}
+64,-54,145 moving_piston{type: sticky, facing: up}
+64,-53,145 moving_piston{type: normal, facing: up}
+64,-52,145 air{}
+T 241
+T 242
+64,-54,145 sticky_piston{extended: false, facing: up}
+64,-53,145 iron_block{}
+T 243
+T 244
+63,-56,145 repeater{powered: false, facing: west, delay: 4, locked: false}
+64,-56,145 moving_piston{type: sticky, facing: up}
+64,-55,145 moving_piston{type: normal, facing: up}
+64,-54,145 air{}
+T 245
+T 246
+64,-56,145 sticky_piston{extended: false, facing: up}
+63,-55,145 observer{powered: true, facing: down}
+64,-55,145 sticky_piston{extended: false, facing: up}
+T 247
+64,-55,145 sticky_piston{extended: true, facing: up}
+64,-54,145 moving_piston{type: sticky, facing: up}
+T 248
+63,-55,145 observer{powered: false, facing: down}
+T 249
+64,-54,145 piston_head{type: sticky, short: false, facing: up}
+T 250
+64,-55,145 moving_piston{type: sticky, facing: up}
+64,-54,145 moving_piston{type: normal, facing: up}
+64,-53,145 air{}
+T 251
+T 252
+64,-55,145 sticky_piston{extended: false, facing: up}
+64,-54,145 iron_block{}
+T 253
+T 254
+T 255
+T 256
+T 257
+T 258
+T 259
+T 260
+T 261
+T 262
+T 263
+T 264
+T 265
+T 266
+T 267
+T 268
+T 269
+T 270
+T 271
+T 272
+T 273
+T 274
+T 275
+T 276
+T 277
+T 278
+T 279
+T 280
+T 281
+T 282
+T 283
+T 284
+T 285
+T 286
+T 287
+T 288
+T 289
+T 290
+T 291
+T 292
+T 293
+T 294
+T 295
+T 296
+T 297
+T 298
+T 299
+T 300
+T 301
+T 302
+T 303
+T 304
+T 305
+T 306
+T 307
+T 308
+T 309
+T 310
+T 311
+T 312
+T 313
+T 314
+T 315
+T 316
+T 317
+T 318
+T 319
+T 320
+T 321
+T 322
+T 323

@@ -1,0 +1,787 @@
+73,-47,171 obsidian{}
+73,-47,172 obsidian{}
+73,-47,173 obsidian{}
+73,-47,174 obsidian{}
+73,-47,175 obsidian{}
+74,-47,171 obsidian{}
+74,-47,172 obsidian{}
+74,-47,173 obsidian{}
+74,-47,174 obsidian{}
+74,-47,175 obsidian{}
+75,-47,171 obsidian{}
+75,-47,172 obsidian{}
+75,-47,173 obsidian{}
+75,-47,174 obsidian{}
+75,-47,175 obsidian{}
+76,-47,171 obsidian{}
+76,-47,172 obsidian{}
+76,-47,173 obsidian{}
+76,-47,174 obsidian{}
+76,-47,175 obsidian{}
+77,-47,171 obsidian{}
+77,-47,172 obsidian{}
+77,-47,173 obsidian{}
+77,-47,174 obsidian{}
+77,-47,175 obsidian{}
+78,-47,171 obsidian{}
+78,-47,172 obsidian{}
+78,-47,173 obsidian{}
+78,-47,174 obsidian{}
+78,-47,175 obsidian{}
+79,-47,171 obsidian{}
+79,-47,172 obsidian{}
+79,-47,173 obsidian{}
+79,-47,174 obsidian{}
+79,-47,175 obsidian{}
+80,-47,171 obsidian{}
+80,-47,172 obsidian{}
+80,-47,173 obsidian{}
+80,-47,174 obsidian{}
+80,-47,175 obsidian{}
+81,-47,171 obsidian{}
+81,-47,172 obsidian{}
+81,-47,173 obsidian{}
+81,-47,174 obsidian{}
+81,-47,175 obsidian{}
+82,-47,171 obsidian{}
+82,-47,172 obsidian{}
+82,-47,173 obsidian{}
+82,-47,174 obsidian{}
+82,-47,175 obsidian{}
+83,-47,171 obsidian{}
+83,-47,172 obsidian{}
+83,-47,173 obsidian{}
+83,-47,174 obsidian{}
+83,-47,175 obsidian{}
+84,-47,171 obsidian{}
+84,-47,172 obsidian{}
+84,-47,173 obsidian{}
+84,-47,174 obsidian{}
+84,-47,175 obsidian{}
+85,-47,171 obsidian{}
+85,-47,172 obsidian{}
+85,-47,173 obsidian{}
+85,-47,174 obsidian{}
+85,-47,175 obsidian{}
+86,-47,171 obsidian{}
+86,-47,172 obsidian{}
+86,-47,173 obsidian{}
+86,-47,174 obsidian{}
+86,-47,175 obsidian{}
+87,-47,171 obsidian{}
+87,-47,172 obsidian{}
+87,-47,173 obsidian{}
+87,-47,174 obsidian{}
+87,-47,175 obsidian{}
+88,-47,171 obsidian{}
+88,-47,172 obsidian{}
+88,-47,173 obsidian{}
+88,-47,174 obsidian{}
+88,-47,175 obsidian{}
+89,-47,171 obsidian{}
+89,-47,172 obsidian{}
+89,-47,173 obsidian{}
+89,-47,174 obsidian{}
+89,-47,175 obsidian{}
+90,-47,171 obsidian{}
+90,-47,172 obsidian{}
+90,-47,173 obsidian{}
+90,-47,174 obsidian{}
+90,-47,175 obsidian{}
+91,-47,171 obsidian{}
+91,-47,172 obsidian{}
+91,-47,173 obsidian{}
+91,-47,174 obsidian{}
+91,-47,175 obsidian{}
+92,-47,171 obsidian{}
+92,-47,172 obsidian{}
+92,-47,173 obsidian{}
+92,-47,174 obsidian{}
+92,-47,175 obsidian{}
+93,-47,171 obsidian{}
+93,-47,172 obsidian{}
+93,-47,173 obsidian{}
+93,-47,174 obsidian{}
+93,-47,175 obsidian{}
+94,-47,171 obsidian{}
+94,-47,172 obsidian{}
+94,-47,173 obsidian{}
+94,-47,174 obsidian{}
+94,-47,175 obsidian{}
+95,-47,171 obsidian{}
+95,-47,172 obsidian{}
+95,-47,173 obsidian{}
+95,-47,174 obsidian{}
+95,-47,175 obsidian{}
+96,-47,171 obsidian{}
+96,-47,172 obsidian{}
+96,-47,173 obsidian{}
+96,-47,174 obsidian{}
+96,-47,175 obsidian{}
+97,-47,171 obsidian{}
+97,-47,172 obsidian{}
+97,-47,173 obsidian{}
+97,-47,174 obsidian{}
+97,-47,175 obsidian{}
+98,-47,171 obsidian{}
+98,-47,172 obsidian{}
+98,-47,173 obsidian{}
+98,-47,174 obsidian{}
+98,-47,175 obsidian{}
+99,-47,171 obsidian{}
+99,-47,172 obsidian{}
+99,-47,173 obsidian{}
+99,-47,174 obsidian{}
+99,-47,175 obsidian{}
+100,-47,171 obsidian{}
+100,-47,172 obsidian{}
+100,-47,173 obsidian{}
+100,-47,174 obsidian{}
+100,-47,175 obsidian{}
+101,-47,171 obsidian{}
+101,-47,172 obsidian{}
+101,-47,173 obsidian{}
+101,-47,174 obsidian{}
+101,-47,175 obsidian{}
+102,-47,171 obsidian{}
+102,-47,172 obsidian{}
+102,-47,173 obsidian{}
+102,-47,174 obsidian{}
+102,-47,175 obsidian{}
+103,-47,171 obsidian{}
+103,-47,172 obsidian{}
+103,-47,173 obsidian{}
+103,-47,174 obsidian{}
+103,-47,175 obsidian{}
+104,-47,171 obsidian{}
+104,-47,172 obsidian{}
+104,-47,173 obsidian{}
+104,-47,174 obsidian{}
+104,-47,175 obsidian{}
+105,-47,171 obsidian{}
+105,-47,172 obsidian{}
+105,-47,173 obsidian{}
+105,-47,174 obsidian{}
+105,-47,175 obsidian{}
+106,-47,171 obsidian{}
+106,-47,172 obsidian{}
+106,-47,173 obsidian{}
+106,-47,174 obsidian{}
+106,-47,175 obsidian{}
+107,-47,171 obsidian{}
+107,-47,172 obsidian{}
+107,-47,173 obsidian{}
+107,-47,174 obsidian{}
+107,-47,175 obsidian{}
+108,-47,171 obsidian{}
+108,-47,172 obsidian{}
+108,-47,173 obsidian{}
+108,-47,174 obsidian{}
+108,-47,175 obsidian{}
+109,-47,171 obsidian{}
+109,-47,172 obsidian{}
+109,-47,173 obsidian{}
+109,-47,174 obsidian{}
+109,-47,175 obsidian{}
+110,-47,171 obsidian{}
+110,-47,172 obsidian{}
+110,-47,173 obsidian{}
+110,-47,174 obsidian{}
+110,-47,175 obsidian{}
+111,-47,171 obsidian{}
+111,-47,172 obsidian{}
+111,-47,173 obsidian{}
+111,-47,174 obsidian{}
+111,-47,175 obsidian{}
+112,-47,171 obsidian{}
+112,-47,172 obsidian{}
+112,-47,173 obsidian{}
+112,-47,174 obsidian{}
+112,-47,175 obsidian{}
+113,-47,171 obsidian{}
+113,-47,172 obsidian{}
+113,-47,173 obsidian{}
+113,-47,174 obsidian{}
+113,-47,175 obsidian{}
+114,-47,171 obsidian{}
+114,-47,172 obsidian{}
+114,-47,173 obsidian{}
+114,-47,174 obsidian{}
+114,-47,175 obsidian{}
+115,-47,171 obsidian{}
+115,-47,172 obsidian{}
+115,-47,173 obsidian{}
+115,-47,174 obsidian{}
+115,-47,175 obsidian{}
+116,-47,171 obsidian{}
+116,-47,172 obsidian{}
+116,-47,173 obsidian{}
+116,-47,174 obsidian{}
+116,-47,175 obsidian{}
+117,-47,171 obsidian{}
+117,-47,172 obsidian{}
+117,-47,173 obsidian{}
+117,-47,174 obsidian{}
+117,-47,175 obsidian{}
+118,-47,171 obsidian{}
+118,-47,172 obsidian{}
+118,-47,173 obsidian{}
+118,-47,174 obsidian{}
+118,-47,175 obsidian{}
+119,-47,171 obsidian{}
+119,-47,172 obsidian{}
+119,-47,173 obsidian{}
+119,-47,174 obsidian{}
+119,-47,175 obsidian{}
+120,-47,171 obsidian{}
+120,-47,172 obsidian{}
+120,-47,173 obsidian{}
+120,-47,174 obsidian{}
+120,-47,175 obsidian{}
+121,-47,171 obsidian{}
+121,-47,172 obsidian{}
+121,-47,173 obsidian{}
+121,-47,174 obsidian{}
+121,-47,175 obsidian{}
+122,-47,171 obsidian{}
+122,-47,172 obsidian{}
+122,-47,173 obsidian{}
+122,-47,174 obsidian{}
+122,-47,175 obsidian{}
+123,-47,171 obsidian{}
+123,-47,172 obsidian{}
+123,-47,173 obsidian{}
+123,-47,174 obsidian{}
+123,-47,175 obsidian{}
+124,-47,171 obsidian{}
+124,-47,172 obsidian{}
+124,-47,173 obsidian{}
+124,-47,174 obsidian{}
+124,-47,175 obsidian{}
+125,-47,171 obsidian{}
+125,-47,172 obsidian{}
+125,-47,173 obsidian{}
+125,-47,174 obsidian{}
+125,-47,175 obsidian{}
+126,-47,171 obsidian{}
+126,-47,172 obsidian{}
+126,-47,173 obsidian{}
+126,-47,174 obsidian{}
+126,-47,175 obsidian{}
+127,-47,171 obsidian{}
+127,-47,172 obsidian{}
+127,-47,173 obsidian{}
+127,-47,174 obsidian{}
+127,-47,175 obsidian{}
+74,-46,174 obsidian{}
+75,-46,174 lever{face: wall, powered: false, facing: east}
+76,-46,174 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+77,-46,174 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+78,-46,174 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+79,-46,174 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+80,-46,174 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+81,-46,174 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+82,-46,174 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+83,-46,172 piston{extended: false, facing: east}
+83,-46,173 redstone_wire{east: none, power: 0, south: side, north: side, west: none}
+83,-46,174 redstone_wire{east: side, power: 0, south: none, north: side, west: side}
+84,-46,174 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+85,-46,174 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+86,-46,174 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+87,-46,174 repeater{powered: false, facing: west, delay: 1, locked: false}
+88,-46,174 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+89,-46,174 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+90,-46,174 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+91,-46,174 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+92,-46,174 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+93,-46,172 piston{extended: false, facing: east}
+93,-46,173 stone{}
+93,-46,174 redstone_wire{east: side, power: 0, south: none, north: up, west: side}
+94,-46,174 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+95,-46,174 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+96,-46,174 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+97,-46,174 repeater{powered: false, facing: west, delay: 1, locked: false}
+98,-46,174 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+99,-46,174 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+100,-46,172 sticky_piston{extended: false, facing: east}
+100,-46,173 redstone_wire{east: none, power: 0, south: side, north: side, west: none}
+100,-46,174 redstone_wire{east: side, power: 0, south: none, north: side, west: side}
+101,-46,172 stone{}
+101,-46,174 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+102,-46,174 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+103,-46,172 piston{extended: false, facing: east}
+103,-46,173 stone{}
+103,-46,174 redstone_wire{east: side, power: 0, south: none, north: up, west: side}
+104,-46,174 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+105,-46,174 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+106,-46,174 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+107,-46,174 repeater{powered: false, facing: west, delay: 1, locked: false}
+108,-46,174 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+109,-46,174 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+110,-46,174 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+111,-46,174 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+112,-46,174 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+113,-46,172 piston{extended: false, facing: east}
+113,-46,173 stone{}
+113,-46,174 redstone_wire{east: side, power: 0, south: none, north: up, west: side}
+114,-46,174 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+115,-46,174 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+116,-46,174 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+117,-46,174 repeater{powered: false, facing: west, delay: 1, locked: false}
+118,-46,174 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+119,-46,174 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+120,-46,172 sticky_piston{extended: false, facing: east}
+120,-46,173 redstone_wire{east: none, power: 0, south: side, north: side, west: none}
+120,-46,174 redstone_wire{east: side, power: 0, south: none, north: side, west: side}
+121,-46,172 stone{}
+121,-46,174 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+122,-46,174 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+123,-46,172 piston{extended: false, facing: east}
+123,-46,173 stone{}
+123,-46,174 redstone_wire{east: side, power: 0, south: none, north: up, west: side}
+124,-46,174 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+125,-46,174 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+126,-46,174 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+127,-46,171 iron_block{}
+127,-46,174 repeater{powered: false, facing: west, delay: 1, locked: false}
+93,-45,173 redstone_wire{east: none, power: 0, south: side, north: side, west: none}
+103,-45,173 redstone_wire{east: none, power: 0, south: side, north: side, west: none}
+113,-45,172 stone{}
+113,-45,173 redstone_wire{east: none, power: 0, south: side, north: side, west: none}
+123,-45,172 stone{}
+123,-45,173 redstone_wire{east: none, power: 0, south: side, north: side, west: none}
+127,-45,171 iron_block{}
+127,-44,171 iron_block{}
+T 1
+T 2
+T 3
+T 4
+T 5
+T 6
+T 7
+T 8
+T 9
+T 10
+T 11
+T 12
+T 13
+T 14
+T 15
+T 16
+T 17
+T 18
+T 19
+T 20
+T 21
+T 22
+T 23
+T 24
+T 25
+T 26
+T 27
+T 28
+T 29
+T 30
+T 31
+T 32
+T 33
+T 34
+T 35
+T 36
+T 37
+T 38
+T 39
+T 40
+T 41
+T 42
+T 43
+T 44
+T 45
+T 46
+T 47
+T 48
+T 49
+T 50
+T 51
+T 52
+T 53
+T 54
+T 55
+T 56
+T 57
+T 58
+T 59
+T 60
+T 61
+T 62
+T 63
+T 64
+T 65
+T 66
+T 67
+T 68
+T 69
+T 70
+T 71
+T 72
+T 73
+T 74
+T 75
+T 76
+T 77
+T 78
+T 79
+T 80
+T 81
+T 82
+T 83
+CLICK 83 lever [75, -46, 174]
+T 84
+75,-46,174 lever{face: wall, powered: true, facing: east}
+76,-46,174 redstone_wire{east: side, power: 15, south: none, north: none, west: side}
+77,-46,174 redstone_wire{east: side, power: 14, south: none, north: none, west: side}
+78,-46,174 redstone_wire{east: side, power: 13, south: none, north: none, west: side}
+79,-46,174 redstone_wire{east: side, power: 12, south: none, north: none, west: side}
+80,-46,174 redstone_wire{east: side, power: 11, south: none, north: none, west: side}
+81,-46,174 redstone_wire{east: side, power: 10, south: none, north: none, west: side}
+82,-46,174 redstone_wire{east: side, power: 9, south: none, north: none, west: side}
+83,-46,172 piston{extended: true, facing: east}
+83,-46,173 redstone_wire{east: none, power: 7, south: side, north: side, west: none}
+83,-46,174 redstone_wire{east: side, power: 8, south: none, north: side, west: side}
+84,-46,172 moving_piston{type: normal, facing: east}
+84,-46,174 redstone_wire{east: side, power: 7, south: none, north: none, west: side}
+85,-46,174 redstone_wire{east: side, power: 6, south: none, north: none, west: side}
+86,-46,174 redstone_wire{east: side, power: 5, south: none, north: none, west: side}
+T 85
+87,-46,174 repeater{powered: true, facing: west, delay: 1, locked: false}
+88,-46,174 redstone_wire{east: side, power: 15, south: none, north: none, west: side}
+89,-46,174 redstone_wire{east: side, power: 14, south: none, north: none, west: side}
+90,-46,174 redstone_wire{east: side, power: 13, south: none, north: none, west: side}
+91,-46,174 redstone_wire{east: side, power: 12, south: none, north: none, west: side}
+92,-46,174 redstone_wire{east: side, power: 11, south: none, north: none, west: side}
+93,-46,172 piston{extended: true, facing: east}
+93,-46,174 redstone_wire{east: side, power: 10, south: none, north: up, west: side}
+94,-46,172 moving_piston{type: normal, facing: east}
+94,-46,174 redstone_wire{east: side, power: 9, south: none, north: none, west: side}
+95,-46,174 redstone_wire{east: side, power: 8, south: none, north: none, west: side}
+96,-46,174 redstone_wire{east: side, power: 7, south: none, north: none, west: side}
+93,-45,173 redstone_wire{east: none, power: 9, south: side, north: side, west: none}
+T 86
+84,-46,172 piston_head{type: normal, short: false, facing: east}
+T 87
+94,-46,172 piston_head{type: normal, short: false, facing: east}
+97,-46,174 repeater{powered: true, facing: west, delay: 1, locked: false}
+98,-46,174 redstone_wire{east: side, power: 15, south: none, north: none, west: side}
+99,-46,174 redstone_wire{east: side, power: 14, south: none, north: none, west: side}
+100,-46,172 sticky_piston{extended: true, facing: east}
+100,-46,173 redstone_wire{east: none, power: 12, south: side, north: side, west: none}
+100,-46,174 redstone_wire{east: side, power: 13, south: none, north: side, west: side}
+101,-46,172 moving_piston{type: sticky, facing: east}
+101,-46,174 redstone_wire{east: side, power: 12, south: none, north: none, west: side}
+102,-46,172 moving_piston{type: normal, facing: east}
+102,-46,174 redstone_wire{east: side, power: 11, south: none, north: none, west: side}
+103,-46,172 piston{extended: true, facing: east}
+103,-46,174 redstone_wire{east: side, power: 10, south: none, north: up, west: side}
+104,-46,172 moving_piston{type: normal, facing: east}
+104,-46,174 redstone_wire{east: side, power: 9, south: none, north: none, west: side}
+105,-46,174 redstone_wire{east: side, power: 8, south: none, north: none, west: side}
+106,-46,174 redstone_wire{east: side, power: 7, south: none, north: none, west: side}
+103,-45,173 redstone_wire{east: none, power: 9, south: side, north: side, west: none}
+T 88
+T 89
+101,-46,172 piston_head{type: sticky, short: false, facing: east}
+102,-46,172 stone{}
+104,-46,172 piston_head{type: normal, short: false, facing: east}
+107,-46,174 repeater{powered: true, facing: west, delay: 1, locked: false}
+108,-46,174 redstone_wire{east: side, power: 15, south: none, north: none, west: side}
+109,-46,174 redstone_wire{east: side, power: 14, south: none, north: none, west: side}
+110,-46,174 redstone_wire{east: side, power: 13, south: none, north: none, west: side}
+111,-46,174 redstone_wire{east: side, power: 12, south: none, north: none, west: side}
+112,-46,174 redstone_wire{east: side, power: 11, south: none, north: none, west: side}
+113,-46,172 piston{extended: true, facing: east}
+113,-46,174 redstone_wire{east: side, power: 10, south: none, north: up, west: side}
+114,-46,172 moving_piston{type: normal, facing: east}
+114,-46,174 redstone_wire{east: side, power: 9, south: none, north: none, west: side}
+115,-46,174 redstone_wire{east: side, power: 8, south: none, north: none, west: side}
+116,-46,174 redstone_wire{east: side, power: 7, south: none, north: none, west: side}
+113,-45,173 redstone_wire{east: none, power: 9, south: side, north: side, west: none}
+T 90
+T 91
+114,-46,172 piston_head{type: normal, short: false, facing: east}
+117,-46,174 repeater{powered: true, facing: west, delay: 1, locked: false}
+118,-46,174 redstone_wire{east: side, power: 15, south: none, north: none, west: side}
+119,-46,174 redstone_wire{east: side, power: 14, south: none, north: none, west: side}
+120,-46,172 sticky_piston{extended: true, facing: east}
+120,-46,173 redstone_wire{east: none, power: 12, south: side, north: side, west: none}
+120,-46,174 redstone_wire{east: side, power: 13, south: none, north: side, west: side}
+121,-46,172 moving_piston{type: sticky, facing: east}
+121,-46,174 redstone_wire{east: side, power: 12, south: none, north: none, west: side}
+122,-46,172 moving_piston{type: normal, facing: east}
+122,-46,174 redstone_wire{east: side, power: 11, south: none, north: none, west: side}
+123,-46,172 piston{extended: true, facing: east}
+123,-46,174 redstone_wire{east: side, power: 10, south: none, north: up, west: side}
+124,-46,172 moving_piston{type: normal, facing: east}
+124,-46,174 redstone_wire{east: side, power: 9, south: none, north: none, west: side}
+125,-46,174 redstone_wire{east: side, power: 8, south: none, north: none, west: side}
+126,-46,174 redstone_wire{east: side, power: 7, south: none, north: none, west: side}
+123,-45,173 redstone_wire{east: none, power: 9, south: side, north: side, west: none}
+T 92
+T 93
+121,-46,172 piston_head{type: sticky, short: false, facing: east}
+122,-46,172 stone{}
+124,-46,172 piston_head{type: normal, short: false, facing: east}
+127,-46,174 repeater{powered: true, facing: west, delay: 1, locked: false}
+T 94
+T 95
+T 96
+T 97
+T 98
+T 99
+T 100
+T 101
+T 102
+T 103
+T 104
+T 105
+T 106
+T 107
+T 108
+T 109
+T 110
+T 111
+T 112
+T 113
+T 114
+T 115
+T 116
+T 117
+T 118
+T 119
+T 120
+T 121
+T 122
+T 123
+T 124
+T 125
+T 126
+T 127
+T 128
+T 129
+T 130
+T 131
+T 132
+T 133
+T 134
+T 135
+T 136
+T 137
+T 138
+T 139
+T 140
+T 141
+T 142
+T 143
+T 144
+T 145
+T 146
+T 147
+T 148
+T 149
+T 150
+T 151
+T 152
+T 153
+T 154
+T 155
+T 156
+T 157
+T 158
+T 159
+T 160
+T 161
+T 162
+T 163
+T 164
+T 165
+T 166
+T 167
+CLICK 167 lever [75, -46, 174]
+T 168
+75,-46,174 lever{face: wall, powered: false, facing: east}
+76,-46,174 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+77,-46,174 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+78,-46,174 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+79,-46,174 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+80,-46,174 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+81,-46,174 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+82,-46,174 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+83,-46,172 moving_piston{type: normal, facing: east}
+83,-46,173 redstone_wire{east: none, power: 0, south: side, north: side, west: none}
+83,-46,174 redstone_wire{east: side, power: 0, south: none, north: side, west: side}
+84,-46,172 air{}
+84,-46,174 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+85,-46,174 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+86,-46,174 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+T 169
+87,-46,174 repeater{powered: false, facing: west, delay: 1, locked: false}
+88,-46,174 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+89,-46,174 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+90,-46,174 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+91,-46,174 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+92,-46,174 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+93,-46,172 moving_piston{type: normal, facing: east}
+93,-46,174 redstone_wire{east: side, power: 0, south: none, north: up, west: side}
+94,-46,172 air{}
+94,-46,174 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+95,-46,174 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+96,-46,174 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+93,-45,173 redstone_wire{east: none, power: 0, south: side, north: side, west: none}
+T 170
+83,-46,172 piston{extended: false, facing: east}
+T 171
+93,-46,172 piston{extended: false, facing: east}
+97,-46,174 repeater{powered: false, facing: west, delay: 1, locked: false}
+98,-46,174 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+99,-46,174 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+100,-46,172 moving_piston{type: sticky, facing: east}
+100,-46,173 redstone_wire{east: none, power: 0, south: side, north: side, west: none}
+100,-46,174 redstone_wire{east: side, power: 0, south: none, north: side, west: side}
+101,-46,172 moving_piston{type: normal, facing: east}
+101,-46,174 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+102,-46,172 air{}
+102,-46,174 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+103,-46,172 moving_piston{type: normal, facing: east}
+103,-46,174 redstone_wire{east: side, power: 0, south: none, north: up, west: side}
+104,-46,172 air{}
+104,-46,174 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+105,-46,174 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+106,-46,174 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+103,-45,173 redstone_wire{east: none, power: 0, south: side, north: side, west: none}
+T 172
+T 173
+100,-46,172 sticky_piston{extended: false, facing: east}
+101,-46,172 stone{}
+103,-46,172 piston{extended: false, facing: east}
+107,-46,174 repeater{powered: false, facing: west, delay: 1, locked: false}
+108,-46,174 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+109,-46,174 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+110,-46,174 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+111,-46,174 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+112,-46,174 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+113,-46,172 moving_piston{type: normal, facing: east}
+113,-46,174 redstone_wire{east: side, power: 0, south: none, north: up, west: side}
+114,-46,172 air{}
+114,-46,174 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+115,-46,174 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+116,-46,174 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+113,-45,173 redstone_wire{east: none, power: 0, south: side, north: side, west: none}
+T 174
+T 175
+113,-46,172 piston{extended: false, facing: east}
+117,-46,174 repeater{powered: false, facing: west, delay: 1, locked: false}
+118,-46,174 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+119,-46,174 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+120,-46,172 moving_piston{type: sticky, facing: east}
+120,-46,173 redstone_wire{east: none, power: 0, south: side, north: side, west: none}
+120,-46,174 redstone_wire{east: side, power: 0, south: none, north: side, west: side}
+121,-46,172 moving_piston{type: normal, facing: east}
+121,-46,174 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+122,-46,172 air{}
+122,-46,174 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+123,-46,172 moving_piston{type: normal, facing: east}
+123,-46,174 redstone_wire{east: side, power: 0, south: none, north: up, west: side}
+124,-46,172 air{}
+124,-46,174 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+125,-46,174 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+126,-46,174 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+123,-45,173 redstone_wire{east: none, power: 0, south: side, north: side, west: none}
+T 176
+T 177
+120,-46,172 sticky_piston{extended: false, facing: east}
+121,-46,172 stone{}
+123,-46,172 piston{extended: false, facing: east}
+127,-46,174 repeater{powered: false, facing: west, delay: 1, locked: false}
+T 178
+T 179
+T 180
+T 181
+T 182
+T 183
+T 184
+T 185
+T 186
+T 187
+T 188
+T 189
+T 190
+T 191
+T 192
+T 193
+T 194
+T 195
+T 196
+T 197
+T 198
+T 199
+T 200
+T 201
+T 202
+T 203
+T 204
+T 205
+T 206
+T 207
+T 208
+T 209
+T 210
+T 211
+T 212
+T 213
+T 214
+T 215
+T 216
+T 217
+T 218
+T 219
+T 220
+T 221
+T 222
+T 223
+T 224
+T 225
+T 226
+T 227
+T 228
+T 229
+T 230
+T 231
+T 232
+T 233
+T 234
+T 235
+T 236
+T 237
+T 238
+T 239
+T 240
+T 241
+T 242
+T 243
+T 244
+T 245
+T 246
+T 247
+T 248
+T 249
+T 250
+T 251
+T 252
+T 253
+T 254
+T 255
+T 256
+T 257
+T 258
+T 259
+T 260
+T 261

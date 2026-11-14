@@ -1,4 +1,5 @@
 import { readFileSync } from 'node:fs';
+import { dirname } from 'node:path';
 import { simulate, type Spec } from './sim.ts';
 
 const file = process.argv[2];
@@ -7,7 +8,8 @@ if (!file) {
   process.exit(2);
 }
 const spec = JSON.parse(readFileSync(file, 'utf8')) as Spec;
-const r = simulate(spec);
+const r = simulate(spec, dirname(file));
+for (const w of r.warnings) console.error(`warning: ${w}`);
 console.log(r.timeline.join('\n'));
 if (r.failures.length) {
   console.log('\nFAILED:\n' + r.failures.join('\n'));

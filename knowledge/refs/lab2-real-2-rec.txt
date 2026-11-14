@@ -1,0 +1,4357 @@
+B -330,0,675 obsidian{}
+B -330,0,676 obsidian{}
+B -330,0,677 obsidian{}
+B -330,0,678 obsidian{}
+B -330,0,679 obsidian{}
+B -330,0,680 obsidian{}
+B -330,0,681 obsidian{}
+B -330,0,682 obsidian{}
+B -330,0,683 obsidian{}
+B -330,0,684 obsidian{}
+B -330,0,685 obsidian{}
+B -330,0,686 obsidian{}
+B -330,0,687 obsidian{}
+B -330,0,688 obsidian{}
+B -330,0,689 obsidian{}
+B -330,0,690 obsidian{}
+B -330,0,691 obsidian{}
+B -330,0,692 obsidian{}
+B -330,0,693 obsidian{}
+B -330,0,694 obsidian{}
+B -330,0,695 obsidian{}
+B -330,0,696 obsidian{}
+B -330,0,697 obsidian{}
+B -330,0,698 obsidian{}
+B -330,0,699 obsidian{}
+B -330,0,700 obsidian{}
+B -330,0,701 obsidian{}
+B -330,0,702 obsidian{}
+B -330,0,703 obsidian{}
+B -330,0,704 obsidian{}
+B -330,0,705 obsidian{}
+B -330,0,706 obsidian{}
+B -330,0,707 obsidian{}
+B -330,0,708 obsidian{}
+B -330,0,709 obsidian{}
+B -330,0,710 obsidian{}
+B -330,0,711 obsidian{}
+B -330,0,712 obsidian{}
+B -330,0,713 obsidian{}
+B -330,0,714 obsidian{}
+B -329,0,675 obsidian{}
+B -329,0,676 obsidian{}
+B -329,0,677 obsidian{}
+B -329,0,678 obsidian{}
+B -329,0,679 obsidian{}
+B -329,0,680 obsidian{}
+B -329,0,681 obsidian{}
+B -329,0,682 obsidian{}
+B -329,0,683 obsidian{}
+B -329,0,684 obsidian{}
+B -329,0,685 obsidian{}
+B -329,0,686 obsidian{}
+B -329,0,687 obsidian{}
+B -329,0,688 obsidian{}
+B -329,0,689 obsidian{}
+B -329,0,690 obsidian{}
+B -329,0,691 obsidian{}
+B -329,0,692 obsidian{}
+B -329,0,693 obsidian{}
+B -329,0,694 obsidian{}
+B -329,0,695 obsidian{}
+B -329,0,696 obsidian{}
+B -329,0,697 obsidian{}
+B -329,0,698 obsidian{}
+B -329,0,699 obsidian{}
+B -329,0,700 obsidian{}
+B -329,0,701 obsidian{}
+B -329,0,702 obsidian{}
+B -329,0,703 obsidian{}
+B -329,0,704 obsidian{}
+B -329,0,705 obsidian{}
+B -329,0,706 obsidian{}
+B -329,0,707 obsidian{}
+B -329,0,708 obsidian{}
+B -329,0,709 obsidian{}
+B -329,0,710 obsidian{}
+B -329,0,711 obsidian{}
+B -329,0,712 obsidian{}
+B -329,0,713 obsidian{}
+B -329,0,714 obsidian{}
+B -328,0,675 obsidian{}
+B -328,0,676 obsidian{}
+B -328,0,677 obsidian{}
+B -328,0,678 obsidian{}
+B -328,0,679 obsidian{}
+B -328,0,680 obsidian{}
+B -328,0,681 obsidian{}
+B -328,0,682 obsidian{}
+B -328,0,683 obsidian{}
+B -328,0,684 obsidian{}
+B -328,0,685 obsidian{}
+B -328,0,686 obsidian{}
+B -328,0,687 obsidian{}
+B -328,0,688 obsidian{}
+B -328,0,689 obsidian{}
+B -328,0,690 obsidian{}
+B -328,0,691 obsidian{}
+B -328,0,692 obsidian{}
+B -328,0,693 obsidian{}
+B -328,0,694 obsidian{}
+B -328,0,695 obsidian{}
+B -328,0,696 obsidian{}
+B -328,0,697 obsidian{}
+B -328,0,698 obsidian{}
+B -328,0,699 obsidian{}
+B -328,0,700 obsidian{}
+B -328,0,701 obsidian{}
+B -328,0,702 obsidian{}
+B -328,0,703 obsidian{}
+B -328,0,704 obsidian{}
+B -328,0,705 obsidian{}
+B -328,0,706 obsidian{}
+B -328,0,707 obsidian{}
+B -328,0,708 obsidian{}
+B -328,0,709 obsidian{}
+B -328,0,710 obsidian{}
+B -328,0,711 obsidian{}
+B -328,0,712 obsidian{}
+B -328,0,713 obsidian{}
+B -328,0,714 obsidian{}
+B -327,0,675 obsidian{}
+B -327,0,676 obsidian{}
+B -327,0,677 obsidian{}
+B -327,0,678 obsidian{}
+B -327,0,679 obsidian{}
+B -327,0,680 obsidian{}
+B -327,0,681 obsidian{}
+B -327,0,682 obsidian{}
+B -327,0,683 obsidian{}
+B -327,0,684 obsidian{}
+B -327,0,685 obsidian{}
+B -327,0,686 obsidian{}
+B -327,0,687 obsidian{}
+B -327,0,688 obsidian{}
+B -327,0,689 obsidian{}
+B -327,0,690 obsidian{}
+B -327,0,691 obsidian{}
+B -327,0,692 obsidian{}
+B -327,0,693 obsidian{}
+B -327,0,694 obsidian{}
+B -327,0,695 obsidian{}
+B -327,0,696 obsidian{}
+B -327,0,697 obsidian{}
+B -327,0,698 obsidian{}
+B -327,0,699 obsidian{}
+B -327,0,700 obsidian{}
+B -327,0,701 obsidian{}
+B -327,0,702 obsidian{}
+B -327,0,703 obsidian{}
+B -327,0,704 obsidian{}
+B -327,0,705 obsidian{}
+B -327,0,706 obsidian{}
+B -327,0,707 obsidian{}
+B -327,0,708 obsidian{}
+B -327,0,709 obsidian{}
+B -327,0,710 obsidian{}
+B -327,0,711 obsidian{}
+B -327,0,712 obsidian{}
+B -327,0,713 obsidian{}
+B -327,0,714 obsidian{}
+B -326,0,675 obsidian{}
+B -326,0,676 obsidian{}
+B -326,0,677 obsidian{}
+B -326,0,678 obsidian{}
+B -326,0,679 obsidian{}
+B -326,0,680 obsidian{}
+B -326,0,681 obsidian{}
+B -326,0,682 obsidian{}
+B -326,0,683 obsidian{}
+B -326,0,684 obsidian{}
+B -326,0,685 obsidian{}
+B -326,0,686 obsidian{}
+B -326,0,687 obsidian{}
+B -326,0,688 obsidian{}
+B -326,0,689 obsidian{}
+B -326,0,690 obsidian{}
+B -326,0,691 obsidian{}
+B -326,0,692 obsidian{}
+B -326,0,693 obsidian{}
+B -326,0,694 obsidian{}
+B -326,0,695 obsidian{}
+B -326,0,696 obsidian{}
+B -326,0,697 obsidian{}
+B -326,0,698 obsidian{}
+B -326,0,699 obsidian{}
+B -326,0,700 obsidian{}
+B -326,0,701 obsidian{}
+B -326,0,702 obsidian{}
+B -326,0,703 obsidian{}
+B -326,0,704 obsidian{}
+B -326,0,705 obsidian{}
+B -326,0,706 obsidian{}
+B -326,0,707 obsidian{}
+B -326,0,708 obsidian{}
+B -326,0,709 obsidian{}
+B -326,0,710 obsidian{}
+B -326,0,711 obsidian{}
+B -326,0,712 obsidian{}
+B -326,0,713 obsidian{}
+B -326,0,714 obsidian{}
+B -325,0,675 obsidian{}
+B -325,0,676 obsidian{}
+B -325,0,677 obsidian{}
+B -325,0,678 obsidian{}
+B -325,0,679 obsidian{}
+B -325,0,680 obsidian{}
+B -325,0,681 obsidian{}
+B -325,0,682 obsidian{}
+B -325,0,683 obsidian{}
+B -325,0,684 obsidian{}
+B -325,0,685 obsidian{}
+B -325,0,686 obsidian{}
+B -325,0,687 obsidian{}
+B -325,0,688 obsidian{}
+B -325,0,689 obsidian{}
+B -325,0,690 obsidian{}
+B -325,0,691 obsidian{}
+B -325,0,692 obsidian{}
+B -325,0,693 obsidian{}
+B -325,0,694 obsidian{}
+B -325,0,695 obsidian{}
+B -325,0,696 obsidian{}
+B -325,0,697 obsidian{}
+B -325,0,698 obsidian{}
+B -325,0,699 obsidian{}
+B -325,0,700 obsidian{}
+B -325,0,701 obsidian{}
+B -325,0,702 obsidian{}
+B -325,0,703 obsidian{}
+B -325,0,704 obsidian{}
+B -325,0,705 obsidian{}
+B -325,0,706 obsidian{}
+B -325,0,707 obsidian{}
+B -325,0,708 obsidian{}
+B -325,0,709 obsidian{}
+B -325,0,710 obsidian{}
+B -325,0,711 obsidian{}
+B -325,0,712 obsidian{}
+B -325,0,713 obsidian{}
+B -325,0,714 obsidian{}
+B -324,0,675 obsidian{}
+B -324,0,676 obsidian{}
+B -324,0,677 obsidian{}
+B -324,0,678 obsidian{}
+B -324,0,679 obsidian{}
+B -324,0,680 obsidian{}
+B -324,0,681 obsidian{}
+B -324,0,682 obsidian{}
+B -324,0,683 obsidian{}
+B -324,0,684 obsidian{}
+B -324,0,685 obsidian{}
+B -324,0,686 obsidian{}
+B -324,0,687 obsidian{}
+B -324,0,688 obsidian{}
+B -324,0,689 obsidian{}
+B -324,0,690 obsidian{}
+B -324,0,691 obsidian{}
+B -324,0,692 obsidian{}
+B -324,0,693 obsidian{}
+B -324,0,694 obsidian{}
+B -324,0,695 obsidian{}
+B -324,0,696 obsidian{}
+B -324,0,697 obsidian{}
+B -324,0,698 obsidian{}
+B -324,0,699 obsidian{}
+B -324,0,700 obsidian{}
+B -324,0,701 obsidian{}
+B -324,0,702 obsidian{}
+B -324,0,703 obsidian{}
+B -324,0,704 obsidian{}
+B -324,0,705 obsidian{}
+B -324,0,706 obsidian{}
+B -324,0,707 obsidian{}
+B -324,0,708 obsidian{}
+B -324,0,709 obsidian{}
+B -324,0,710 obsidian{}
+B -324,0,711 obsidian{}
+B -324,0,712 obsidian{}
+B -324,0,713 obsidian{}
+B -324,0,714 obsidian{}
+B -323,0,675 obsidian{}
+B -323,0,676 obsidian{}
+B -323,0,677 obsidian{}
+B -323,0,678 obsidian{}
+B -323,0,679 obsidian{}
+B -323,0,680 obsidian{}
+B -323,0,681 obsidian{}
+B -323,0,682 obsidian{}
+B -323,0,683 obsidian{}
+B -323,0,684 obsidian{}
+B -323,0,685 obsidian{}
+B -323,0,686 obsidian{}
+B -323,0,687 obsidian{}
+B -323,0,688 obsidian{}
+B -323,0,689 obsidian{}
+B -323,0,690 obsidian{}
+B -323,0,691 obsidian{}
+B -323,0,692 obsidian{}
+B -323,0,693 obsidian{}
+B -323,0,694 obsidian{}
+B -323,0,695 obsidian{}
+B -323,0,696 obsidian{}
+B -323,0,697 obsidian{}
+B -323,0,698 obsidian{}
+B -323,0,699 obsidian{}
+B -323,0,700 obsidian{}
+B -323,0,701 obsidian{}
+B -323,0,702 obsidian{}
+B -323,0,703 obsidian{}
+B -323,0,704 obsidian{}
+B -323,0,705 obsidian{}
+B -323,0,706 obsidian{}
+B -323,0,707 obsidian{}
+B -323,0,708 obsidian{}
+B -323,0,709 obsidian{}
+B -323,0,710 obsidian{}
+B -323,0,711 obsidian{}
+B -323,0,712 obsidian{}
+B -323,0,713 obsidian{}
+B -323,0,714 obsidian{}
+B -322,0,675 obsidian{}
+B -322,0,676 obsidian{}
+B -322,0,677 obsidian{}
+B -322,0,678 obsidian{}
+B -322,0,679 obsidian{}
+B -322,0,680 obsidian{}
+B -322,0,681 obsidian{}
+B -322,0,682 obsidian{}
+B -322,0,683 obsidian{}
+B -322,0,684 obsidian{}
+B -322,0,685 obsidian{}
+B -322,0,686 obsidian{}
+B -322,0,687 obsidian{}
+B -322,0,688 obsidian{}
+B -322,0,689 obsidian{}
+B -322,0,690 obsidian{}
+B -322,0,691 obsidian{}
+B -322,0,692 obsidian{}
+B -322,0,693 obsidian{}
+B -322,0,694 obsidian{}
+B -322,0,695 obsidian{}
+B -322,0,696 obsidian{}
+B -322,0,697 obsidian{}
+B -322,0,698 obsidian{}
+B -322,0,699 obsidian{}
+B -322,0,700 obsidian{}
+B -322,0,701 obsidian{}
+B -322,0,702 obsidian{}
+B -322,0,703 obsidian{}
+B -322,0,704 obsidian{}
+B -322,0,705 obsidian{}
+B -322,0,706 obsidian{}
+B -322,0,707 obsidian{}
+B -322,0,708 obsidian{}
+B -322,0,709 obsidian{}
+B -322,0,710 obsidian{}
+B -322,0,711 obsidian{}
+B -322,0,712 obsidian{}
+B -322,0,713 obsidian{}
+B -322,0,714 obsidian{}
+B -321,0,675 obsidian{}
+B -321,0,676 obsidian{}
+B -321,0,677 obsidian{}
+B -321,0,678 obsidian{}
+B -321,0,679 obsidian{}
+B -321,0,680 obsidian{}
+B -321,0,681 obsidian{}
+B -321,0,682 obsidian{}
+B -321,0,683 obsidian{}
+B -321,0,684 obsidian{}
+B -321,0,685 obsidian{}
+B -321,0,686 obsidian{}
+B -321,0,687 obsidian{}
+B -321,0,688 obsidian{}
+B -321,0,689 obsidian{}
+B -321,0,690 obsidian{}
+B -321,0,691 obsidian{}
+B -321,0,692 obsidian{}
+B -321,0,693 obsidian{}
+B -321,0,694 obsidian{}
+B -321,0,695 obsidian{}
+B -321,0,696 obsidian{}
+B -321,0,697 obsidian{}
+B -321,0,698 obsidian{}
+B -321,0,699 obsidian{}
+B -321,0,700 obsidian{}
+B -321,0,701 obsidian{}
+B -321,0,702 obsidian{}
+B -321,0,703 obsidian{}
+B -321,0,704 obsidian{}
+B -321,0,705 obsidian{}
+B -321,0,706 obsidian{}
+B -321,0,707 obsidian{}
+B -321,0,708 obsidian{}
+B -321,0,709 obsidian{}
+B -321,0,710 obsidian{}
+B -321,0,711 obsidian{}
+B -321,0,712 obsidian{}
+B -321,0,713 obsidian{}
+B -321,0,714 obsidian{}
+B -320,0,675 obsidian{}
+B -320,0,676 obsidian{}
+B -320,0,677 obsidian{}
+B -320,0,678 obsidian{}
+B -320,0,679 obsidian{}
+B -320,0,680 obsidian{}
+B -320,0,681 obsidian{}
+B -320,0,682 obsidian{}
+B -320,0,683 obsidian{}
+B -320,0,684 obsidian{}
+B -320,0,685 obsidian{}
+B -320,0,686 obsidian{}
+B -320,0,687 obsidian{}
+B -320,0,688 obsidian{}
+B -320,0,689 obsidian{}
+B -320,0,690 obsidian{}
+B -320,0,691 obsidian{}
+B -320,0,692 obsidian{}
+B -320,0,693 obsidian{}
+B -320,0,694 obsidian{}
+B -320,0,695 obsidian{}
+B -320,0,696 obsidian{}
+B -320,0,697 obsidian{}
+B -320,0,698 obsidian{}
+B -320,0,699 obsidian{}
+B -320,0,700 obsidian{}
+B -320,0,701 obsidian{}
+B -320,0,702 obsidian{}
+B -320,0,703 obsidian{}
+B -320,0,704 obsidian{}
+B -320,0,705 obsidian{}
+B -320,0,706 obsidian{}
+B -320,0,707 obsidian{}
+B -320,0,708 obsidian{}
+B -320,0,709 obsidian{}
+B -320,0,710 obsidian{}
+B -320,0,711 obsidian{}
+B -320,0,712 obsidian{}
+B -320,0,713 obsidian{}
+B -320,0,714 obsidian{}
+B -319,0,675 obsidian{}
+B -319,0,676 obsidian{}
+B -319,0,677 obsidian{}
+B -319,0,678 obsidian{}
+B -319,0,679 obsidian{}
+B -319,0,680 obsidian{}
+B -319,0,681 obsidian{}
+B -319,0,682 obsidian{}
+B -319,0,683 obsidian{}
+B -319,0,684 obsidian{}
+B -319,0,685 obsidian{}
+B -319,0,686 obsidian{}
+B -319,0,687 obsidian{}
+B -319,0,688 obsidian{}
+B -319,0,689 obsidian{}
+B -319,0,690 obsidian{}
+B -319,0,691 obsidian{}
+B -319,0,692 obsidian{}
+B -319,0,693 obsidian{}
+B -319,0,694 obsidian{}
+B -319,0,695 obsidian{}
+B -319,0,696 obsidian{}
+B -319,0,697 obsidian{}
+B -319,0,698 obsidian{}
+B -319,0,699 obsidian{}
+B -319,0,700 obsidian{}
+B -319,0,701 obsidian{}
+B -319,0,702 obsidian{}
+B -319,0,703 obsidian{}
+B -319,0,704 obsidian{}
+B -319,0,705 obsidian{}
+B -319,0,706 obsidian{}
+B -319,0,707 obsidian{}
+B -319,0,708 obsidian{}
+B -319,0,709 obsidian{}
+B -319,0,710 obsidian{}
+B -319,0,711 obsidian{}
+B -319,0,712 obsidian{}
+B -319,0,713 obsidian{}
+B -319,0,714 obsidian{}
+B -318,0,675 obsidian{}
+B -318,0,676 obsidian{}
+B -318,0,677 obsidian{}
+B -318,0,678 obsidian{}
+B -318,0,679 obsidian{}
+B -318,0,680 obsidian{}
+B -318,0,681 obsidian{}
+B -318,0,682 obsidian{}
+B -318,0,683 obsidian{}
+B -318,0,684 obsidian{}
+B -318,0,685 obsidian{}
+B -318,0,686 obsidian{}
+B -318,0,687 obsidian{}
+B -318,0,688 obsidian{}
+B -318,0,689 obsidian{}
+B -318,0,690 obsidian{}
+B -318,0,691 obsidian{}
+B -318,0,692 obsidian{}
+B -318,0,693 obsidian{}
+B -318,0,694 obsidian{}
+B -318,0,695 obsidian{}
+B -318,0,696 obsidian{}
+B -318,0,697 obsidian{}
+B -318,0,698 obsidian{}
+B -318,0,699 obsidian{}
+B -318,0,700 obsidian{}
+B -318,0,701 obsidian{}
+B -318,0,702 obsidian{}
+B -318,0,703 obsidian{}
+B -318,0,704 obsidian{}
+B -318,0,705 obsidian{}
+B -318,0,706 obsidian{}
+B -318,0,707 obsidian{}
+B -318,0,708 obsidian{}
+B -318,0,709 obsidian{}
+B -318,0,710 obsidian{}
+B -318,0,711 obsidian{}
+B -318,0,712 obsidian{}
+B -318,0,713 obsidian{}
+B -318,0,714 obsidian{}
+B -317,0,675 obsidian{}
+B -317,0,676 obsidian{}
+B -317,0,677 obsidian{}
+B -317,0,678 obsidian{}
+B -317,0,679 obsidian{}
+B -317,0,680 obsidian{}
+B -317,0,681 obsidian{}
+B -317,0,682 obsidian{}
+B -317,0,683 obsidian{}
+B -317,0,684 obsidian{}
+B -317,0,685 obsidian{}
+B -317,0,686 obsidian{}
+B -317,0,687 obsidian{}
+B -317,0,688 obsidian{}
+B -317,0,689 obsidian{}
+B -317,0,690 obsidian{}
+B -317,0,691 obsidian{}
+B -317,0,692 obsidian{}
+B -317,0,693 obsidian{}
+B -317,0,694 obsidian{}
+B -317,0,695 obsidian{}
+B -317,0,696 obsidian{}
+B -317,0,697 obsidian{}
+B -317,0,698 obsidian{}
+B -317,0,699 obsidian{}
+B -317,0,700 obsidian{}
+B -317,0,701 obsidian{}
+B -317,0,702 obsidian{}
+B -317,0,703 obsidian{}
+B -317,0,704 obsidian{}
+B -317,0,705 obsidian{}
+B -317,0,706 obsidian{}
+B -317,0,707 obsidian{}
+B -317,0,708 obsidian{}
+B -317,0,709 obsidian{}
+B -317,0,710 obsidian{}
+B -317,0,711 obsidian{}
+B -317,0,712 obsidian{}
+B -317,0,713 obsidian{}
+B -317,0,714 obsidian{}
+B -316,0,675 obsidian{}
+B -316,0,676 obsidian{}
+B -316,0,677 obsidian{}
+B -316,0,678 obsidian{}
+B -316,0,679 obsidian{}
+B -316,0,680 obsidian{}
+B -316,0,681 obsidian{}
+B -316,0,682 obsidian{}
+B -316,0,683 obsidian{}
+B -316,0,684 obsidian{}
+B -316,0,685 obsidian{}
+B -316,0,686 obsidian{}
+B -316,0,687 obsidian{}
+B -316,0,688 obsidian{}
+B -316,0,689 obsidian{}
+B -316,0,690 obsidian{}
+B -316,0,691 obsidian{}
+B -316,0,692 obsidian{}
+B -316,0,693 obsidian{}
+B -316,0,694 obsidian{}
+B -316,0,695 obsidian{}
+B -316,0,696 obsidian{}
+B -316,0,697 obsidian{}
+B -316,0,698 obsidian{}
+B -316,0,699 obsidian{}
+B -316,0,700 obsidian{}
+B -316,0,701 obsidian{}
+B -316,0,702 obsidian{}
+B -316,0,703 obsidian{}
+B -316,0,704 obsidian{}
+B -316,0,705 obsidian{}
+B -316,0,706 obsidian{}
+B -316,0,707 obsidian{}
+B -316,0,708 obsidian{}
+B -316,0,709 obsidian{}
+B -316,0,710 obsidian{}
+B -316,0,711 obsidian{}
+B -316,0,712 obsidian{}
+B -316,0,713 obsidian{}
+B -316,0,714 obsidian{}
+B -315,0,675 obsidian{}
+B -315,0,676 obsidian{}
+B -315,0,677 obsidian{}
+B -315,0,678 obsidian{}
+B -315,0,679 obsidian{}
+B -315,0,680 obsidian{}
+B -315,0,681 obsidian{}
+B -315,0,682 obsidian{}
+B -315,0,683 obsidian{}
+B -315,0,684 obsidian{}
+B -315,0,685 obsidian{}
+B -315,0,686 obsidian{}
+B -315,0,687 obsidian{}
+B -315,0,688 obsidian{}
+B -315,0,689 obsidian{}
+B -315,0,690 obsidian{}
+B -315,0,691 obsidian{}
+B -315,0,692 obsidian{}
+B -315,0,693 obsidian{}
+B -315,0,694 obsidian{}
+B -315,0,695 obsidian{}
+B -315,0,696 obsidian{}
+B -315,0,697 obsidian{}
+B -315,0,698 obsidian{}
+B -315,0,699 obsidian{}
+B -315,0,700 obsidian{}
+B -315,0,701 obsidian{}
+B -315,0,702 obsidian{}
+B -315,0,703 obsidian{}
+B -315,0,704 obsidian{}
+B -315,0,705 obsidian{}
+B -315,0,706 obsidian{}
+B -315,0,707 obsidian{}
+B -315,0,708 obsidian{}
+B -315,0,709 obsidian{}
+B -315,0,710 obsidian{}
+B -315,0,711 obsidian{}
+B -315,0,712 obsidian{}
+B -315,0,713 obsidian{}
+B -315,0,714 obsidian{}
+B -314,0,675 obsidian{}
+B -314,0,676 obsidian{}
+B -314,0,677 obsidian{}
+B -314,0,678 obsidian{}
+B -314,0,679 obsidian{}
+B -314,0,680 obsidian{}
+B -314,0,681 obsidian{}
+B -314,0,682 obsidian{}
+B -314,0,683 obsidian{}
+B -314,0,684 obsidian{}
+B -314,0,685 obsidian{}
+B -314,0,686 obsidian{}
+B -314,0,687 obsidian{}
+B -314,0,688 obsidian{}
+B -314,0,689 obsidian{}
+B -314,0,690 obsidian{}
+B -314,0,691 obsidian{}
+B -314,0,692 obsidian{}
+B -314,0,693 obsidian{}
+B -314,0,694 obsidian{}
+B -314,0,695 obsidian{}
+B -314,0,696 obsidian{}
+B -314,0,697 obsidian{}
+B -314,0,698 obsidian{}
+B -314,0,699 obsidian{}
+B -314,0,700 obsidian{}
+B -314,0,701 obsidian{}
+B -314,0,702 obsidian{}
+B -314,0,703 obsidian{}
+B -314,0,704 obsidian{}
+B -314,0,705 obsidian{}
+B -314,0,706 obsidian{}
+B -314,0,707 obsidian{}
+B -314,0,708 obsidian{}
+B -314,0,709 obsidian{}
+B -314,0,710 obsidian{}
+B -314,0,711 obsidian{}
+B -314,0,712 obsidian{}
+B -314,0,713 obsidian{}
+B -314,0,714 obsidian{}
+B -313,0,675 obsidian{}
+B -313,0,676 obsidian{}
+B -313,0,677 obsidian{}
+B -313,0,678 obsidian{}
+B -313,0,679 obsidian{}
+B -313,0,680 obsidian{}
+B -313,0,681 obsidian{}
+B -313,0,682 obsidian{}
+B -313,0,683 obsidian{}
+B -313,0,684 obsidian{}
+B -313,0,685 obsidian{}
+B -313,0,686 obsidian{}
+B -313,0,687 obsidian{}
+B -313,0,688 obsidian{}
+B -313,0,689 obsidian{}
+B -313,0,690 obsidian{}
+B -313,0,691 obsidian{}
+B -313,0,692 obsidian{}
+B -313,0,693 obsidian{}
+B -313,0,694 obsidian{}
+B -313,0,695 obsidian{}
+B -313,0,696 obsidian{}
+B -313,0,697 obsidian{}
+B -313,0,698 obsidian{}
+B -313,0,699 obsidian{}
+B -313,0,700 obsidian{}
+B -313,0,701 obsidian{}
+B -313,0,702 obsidian{}
+B -313,0,703 obsidian{}
+B -313,0,704 obsidian{}
+B -313,0,705 obsidian{}
+B -313,0,706 obsidian{}
+B -313,0,707 obsidian{}
+B -313,0,708 obsidian{}
+B -313,0,709 obsidian{}
+B -313,0,710 obsidian{}
+B -313,0,711 obsidian{}
+B -313,0,712 obsidian{}
+B -313,0,713 obsidian{}
+B -313,0,714 obsidian{}
+B -312,0,675 obsidian{}
+B -312,0,676 obsidian{}
+B -312,0,677 obsidian{}
+B -312,0,678 obsidian{}
+B -312,0,679 obsidian{}
+B -312,0,680 obsidian{}
+B -312,0,681 obsidian{}
+B -312,0,682 obsidian{}
+B -312,0,683 obsidian{}
+B -312,0,684 obsidian{}
+B -312,0,685 obsidian{}
+B -312,0,686 obsidian{}
+B -312,0,687 obsidian{}
+B -312,0,688 obsidian{}
+B -312,0,689 obsidian{}
+B -312,0,690 obsidian{}
+B -312,0,691 obsidian{}
+B -312,0,692 obsidian{}
+B -312,0,693 obsidian{}
+B -312,0,694 obsidian{}
+B -312,0,695 obsidian{}
+B -312,0,696 obsidian{}
+B -312,0,697 obsidian{}
+B -312,0,698 obsidian{}
+B -312,0,699 obsidian{}
+B -312,0,700 obsidian{}
+B -312,0,701 obsidian{}
+B -312,0,702 obsidian{}
+B -312,0,703 obsidian{}
+B -312,0,704 obsidian{}
+B -312,0,705 obsidian{}
+B -312,0,706 obsidian{}
+B -312,0,707 obsidian{}
+B -312,0,708 obsidian{}
+B -312,0,709 obsidian{}
+B -312,0,710 obsidian{}
+B -312,0,711 obsidian{}
+B -312,0,712 obsidian{}
+B -312,0,713 obsidian{}
+B -312,0,714 obsidian{}
+B -311,0,675 obsidian{}
+B -311,0,676 obsidian{}
+B -311,0,677 obsidian{}
+B -311,0,678 obsidian{}
+B -311,0,679 obsidian{}
+B -311,0,680 obsidian{}
+B -311,0,681 obsidian{}
+B -311,0,682 obsidian{}
+B -311,0,683 obsidian{}
+B -311,0,684 obsidian{}
+B -311,0,685 obsidian{}
+B -311,0,686 obsidian{}
+B -311,0,687 obsidian{}
+B -311,0,688 obsidian{}
+B -311,0,689 obsidian{}
+B -311,0,690 obsidian{}
+B -311,0,691 obsidian{}
+B -311,0,692 obsidian{}
+B -311,0,693 obsidian{}
+B -311,0,694 obsidian{}
+B -311,0,695 obsidian{}
+B -311,0,696 obsidian{}
+B -311,0,697 obsidian{}
+B -311,0,698 obsidian{}
+B -311,0,699 obsidian{}
+B -311,0,700 obsidian{}
+B -311,0,701 obsidian{}
+B -311,0,702 obsidian{}
+B -311,0,703 obsidian{}
+B -311,0,704 obsidian{}
+B -311,0,705 obsidian{}
+B -311,0,706 obsidian{}
+B -311,0,707 obsidian{}
+B -311,0,708 obsidian{}
+B -311,0,709 obsidian{}
+B -311,0,710 obsidian{}
+B -311,0,711 obsidian{}
+B -311,0,712 obsidian{}
+B -311,0,713 obsidian{}
+B -311,0,714 obsidian{}
+B -310,0,675 obsidian{}
+B -310,0,676 obsidian{}
+B -310,0,677 obsidian{}
+B -310,0,678 obsidian{}
+B -310,0,679 obsidian{}
+B -310,0,680 obsidian{}
+B -310,0,681 obsidian{}
+B -310,0,682 obsidian{}
+B -310,0,683 obsidian{}
+B -310,0,684 obsidian{}
+B -310,0,685 obsidian{}
+B -310,0,686 obsidian{}
+B -310,0,687 obsidian{}
+B -310,0,688 obsidian{}
+B -310,0,689 obsidian{}
+B -310,0,690 obsidian{}
+B -310,0,691 obsidian{}
+B -310,0,692 obsidian{}
+B -310,0,693 obsidian{}
+B -310,0,694 obsidian{}
+B -310,0,695 obsidian{}
+B -310,0,696 obsidian{}
+B -310,0,697 obsidian{}
+B -310,0,698 obsidian{}
+B -310,0,699 obsidian{}
+B -310,0,700 obsidian{}
+B -310,0,701 obsidian{}
+B -310,0,702 obsidian{}
+B -310,0,703 obsidian{}
+B -310,0,704 obsidian{}
+B -310,0,705 obsidian{}
+B -310,0,706 obsidian{}
+B -310,0,707 obsidian{}
+B -310,0,708 obsidian{}
+B -310,0,709 obsidian{}
+B -310,0,710 obsidian{}
+B -310,0,711 obsidian{}
+B -310,0,712 obsidian{}
+B -310,0,713 obsidian{}
+B -310,0,714 obsidian{}
+B -309,0,675 obsidian{}
+B -309,0,676 obsidian{}
+B -309,0,677 obsidian{}
+B -309,0,678 obsidian{}
+B -309,0,679 obsidian{}
+B -309,0,680 obsidian{}
+B -309,0,681 obsidian{}
+B -309,0,682 obsidian{}
+B -309,0,683 obsidian{}
+B -309,0,684 obsidian{}
+B -309,0,685 obsidian{}
+B -309,0,686 obsidian{}
+B -309,0,687 obsidian{}
+B -309,0,688 obsidian{}
+B -309,0,689 obsidian{}
+B -309,0,690 obsidian{}
+B -309,0,691 obsidian{}
+B -309,0,692 obsidian{}
+B -309,0,693 obsidian{}
+B -309,0,694 obsidian{}
+B -309,0,695 obsidian{}
+B -309,0,696 obsidian{}
+B -309,0,697 obsidian{}
+B -309,0,698 obsidian{}
+B -309,0,699 obsidian{}
+B -309,0,700 obsidian{}
+B -309,0,701 obsidian{}
+B -309,0,702 obsidian{}
+B -309,0,703 obsidian{}
+B -309,0,704 obsidian{}
+B -309,0,705 obsidian{}
+B -309,0,706 obsidian{}
+B -309,0,707 obsidian{}
+B -309,0,708 obsidian{}
+B -309,0,709 obsidian{}
+B -309,0,710 obsidian{}
+B -309,0,711 obsidian{}
+B -309,0,712 obsidian{}
+B -309,0,713 obsidian{}
+B -309,0,714 obsidian{}
+B -308,0,675 obsidian{}
+B -308,0,676 obsidian{}
+B -308,0,677 obsidian{}
+B -308,0,678 obsidian{}
+B -308,0,679 obsidian{}
+B -308,0,680 obsidian{}
+B -308,0,681 obsidian{}
+B -308,0,682 obsidian{}
+B -308,0,683 obsidian{}
+B -308,0,684 obsidian{}
+B -308,0,685 obsidian{}
+B -308,0,686 obsidian{}
+B -308,0,687 obsidian{}
+B -308,0,688 obsidian{}
+B -308,0,689 obsidian{}
+B -308,0,690 obsidian{}
+B -308,0,691 obsidian{}
+B -308,0,692 obsidian{}
+B -308,0,693 obsidian{}
+B -308,0,694 obsidian{}
+B -308,0,695 obsidian{}
+B -308,0,696 obsidian{}
+B -308,0,697 obsidian{}
+B -308,0,698 obsidian{}
+B -308,0,699 obsidian{}
+B -308,0,700 obsidian{}
+B -308,0,701 obsidian{}
+B -308,0,702 obsidian{}
+B -308,0,703 obsidian{}
+B -308,0,704 obsidian{}
+B -308,0,705 obsidian{}
+B -308,0,706 obsidian{}
+B -308,0,707 obsidian{}
+B -308,0,708 obsidian{}
+B -308,0,709 obsidian{}
+B -308,0,710 obsidian{}
+B -308,0,711 obsidian{}
+B -308,0,712 obsidian{}
+B -308,0,713 obsidian{}
+B -308,0,714 obsidian{}
+B -307,0,675 obsidian{}
+B -307,0,676 obsidian{}
+B -307,0,677 obsidian{}
+B -307,0,678 obsidian{}
+B -307,0,679 obsidian{}
+B -307,0,680 obsidian{}
+B -307,0,681 obsidian{}
+B -307,0,682 obsidian{}
+B -307,0,683 obsidian{}
+B -307,0,684 obsidian{}
+B -307,0,685 obsidian{}
+B -307,0,686 obsidian{}
+B -307,0,687 obsidian{}
+B -307,0,688 obsidian{}
+B -307,0,689 obsidian{}
+B -307,0,690 obsidian{}
+B -307,0,691 obsidian{}
+B -307,0,692 obsidian{}
+B -307,0,693 obsidian{}
+B -307,0,694 obsidian{}
+B -307,0,695 obsidian{}
+B -307,0,696 obsidian{}
+B -307,0,697 obsidian{}
+B -307,0,698 obsidian{}
+B -307,0,699 obsidian{}
+B -307,0,700 obsidian{}
+B -307,0,701 obsidian{}
+B -307,0,702 obsidian{}
+B -307,0,703 obsidian{}
+B -307,0,704 obsidian{}
+B -307,0,705 obsidian{}
+B -307,0,706 obsidian{}
+B -307,0,707 obsidian{}
+B -307,0,708 obsidian{}
+B -307,0,709 obsidian{}
+B -307,0,710 obsidian{}
+B -307,0,711 obsidian{}
+B -307,0,712 obsidian{}
+B -307,0,713 obsidian{}
+B -307,0,714 obsidian{}
+B -306,0,675 obsidian{}
+B -306,0,676 obsidian{}
+B -306,0,677 obsidian{}
+B -306,0,678 obsidian{}
+B -306,0,679 obsidian{}
+B -306,0,680 obsidian{}
+B -306,0,681 obsidian{}
+B -306,0,682 obsidian{}
+B -306,0,683 obsidian{}
+B -306,0,684 obsidian{}
+B -306,0,685 obsidian{}
+B -306,0,686 obsidian{}
+B -306,0,687 obsidian{}
+B -306,0,688 obsidian{}
+B -306,0,689 obsidian{}
+B -306,0,690 obsidian{}
+B -306,0,691 obsidian{}
+B -306,0,692 obsidian{}
+B -306,0,693 obsidian{}
+B -306,0,694 obsidian{}
+B -306,0,695 obsidian{}
+B -306,0,696 obsidian{}
+B -306,0,697 obsidian{}
+B -306,0,698 obsidian{}
+B -306,0,699 obsidian{}
+B -306,0,700 obsidian{}
+B -306,0,701 obsidian{}
+B -306,0,702 obsidian{}
+B -306,0,703 obsidian{}
+B -306,0,704 obsidian{}
+B -306,0,705 obsidian{}
+B -306,0,706 obsidian{}
+B -306,0,707 obsidian{}
+B -306,0,708 obsidian{}
+B -306,0,709 obsidian{}
+B -306,0,710 obsidian{}
+B -306,0,711 obsidian{}
+B -306,0,712 obsidian{}
+B -306,0,713 obsidian{}
+B -306,0,714 obsidian{}
+B -305,0,675 obsidian{}
+B -305,0,676 obsidian{}
+B -305,0,677 obsidian{}
+B -305,0,678 obsidian{}
+B -305,0,679 obsidian{}
+B -305,0,680 obsidian{}
+B -305,0,681 obsidian{}
+B -305,0,682 obsidian{}
+B -305,0,683 obsidian{}
+B -305,0,684 obsidian{}
+B -305,0,685 obsidian{}
+B -305,0,686 obsidian{}
+B -305,0,687 obsidian{}
+B -305,0,688 obsidian{}
+B -305,0,689 obsidian{}
+B -305,0,690 obsidian{}
+B -305,0,691 obsidian{}
+B -305,0,692 obsidian{}
+B -305,0,693 obsidian{}
+B -305,0,694 obsidian{}
+B -305,0,695 obsidian{}
+B -305,0,696 obsidian{}
+B -305,0,697 obsidian{}
+B -305,0,698 obsidian{}
+B -305,0,699 obsidian{}
+B -305,0,700 obsidian{}
+B -305,0,701 obsidian{}
+B -305,0,702 obsidian{}
+B -305,0,703 obsidian{}
+B -305,0,704 obsidian{}
+B -305,0,705 obsidian{}
+B -305,0,706 obsidian{}
+B -305,0,707 obsidian{}
+B -305,0,708 obsidian{}
+B -305,0,709 obsidian{}
+B -305,0,710 obsidian{}
+B -305,0,711 obsidian{}
+B -305,0,712 obsidian{}
+B -305,0,713 obsidian{}
+B -305,0,714 obsidian{}
+B -304,0,675 obsidian{}
+B -304,0,676 obsidian{}
+B -304,0,677 obsidian{}
+B -304,0,678 obsidian{}
+B -304,0,679 obsidian{}
+B -304,0,680 obsidian{}
+B -304,0,681 obsidian{}
+B -304,0,682 obsidian{}
+B -304,0,683 obsidian{}
+B -304,0,684 obsidian{}
+B -304,0,685 obsidian{}
+B -304,0,686 obsidian{}
+B -304,0,687 obsidian{}
+B -304,0,688 obsidian{}
+B -304,0,689 obsidian{}
+B -304,0,690 obsidian{}
+B -304,0,691 obsidian{}
+B -304,0,692 obsidian{}
+B -304,0,693 obsidian{}
+B -304,0,694 obsidian{}
+B -304,0,695 obsidian{}
+B -304,0,696 obsidian{}
+B -304,0,697 obsidian{}
+B -304,0,698 obsidian{}
+B -304,0,699 obsidian{}
+B -304,0,700 obsidian{}
+B -304,0,701 obsidian{}
+B -304,0,702 obsidian{}
+B -304,0,703 obsidian{}
+B -304,0,704 obsidian{}
+B -304,0,705 obsidian{}
+B -304,0,706 obsidian{}
+B -304,0,707 obsidian{}
+B -304,0,708 obsidian{}
+B -304,0,709 obsidian{}
+B -304,0,710 obsidian{}
+B -304,0,711 obsidian{}
+B -304,0,712 obsidian{}
+B -304,0,713 obsidian{}
+B -304,0,714 obsidian{}
+B -303,0,675 obsidian{}
+B -303,0,676 obsidian{}
+B -303,0,677 obsidian{}
+B -303,0,678 obsidian{}
+B -303,0,679 obsidian{}
+B -303,0,680 obsidian{}
+B -303,0,681 obsidian{}
+B -303,0,682 obsidian{}
+B -303,0,683 obsidian{}
+B -303,0,684 obsidian{}
+B -303,0,685 obsidian{}
+B -303,0,686 obsidian{}
+B -303,0,687 obsidian{}
+B -303,0,688 obsidian{}
+B -303,0,689 obsidian{}
+B -303,0,690 obsidian{}
+B -303,0,691 obsidian{}
+B -303,0,692 obsidian{}
+B -303,0,693 obsidian{}
+B -303,0,694 obsidian{}
+B -303,0,695 obsidian{}
+B -303,0,696 obsidian{}
+B -303,0,697 obsidian{}
+B -303,0,698 obsidian{}
+B -303,0,699 obsidian{}
+B -303,0,700 obsidian{}
+B -303,0,701 obsidian{}
+B -303,0,702 obsidian{}
+B -303,0,703 obsidian{}
+B -303,0,704 obsidian{}
+B -303,0,705 obsidian{}
+B -303,0,706 obsidian{}
+B -303,0,707 obsidian{}
+B -303,0,708 obsidian{}
+B -303,0,709 obsidian{}
+B -303,0,710 obsidian{}
+B -303,0,711 obsidian{}
+B -303,0,712 obsidian{}
+B -303,0,713 obsidian{}
+B -303,0,714 obsidian{}
+B -302,0,675 obsidian{}
+B -302,0,676 obsidian{}
+B -302,0,677 obsidian{}
+B -302,0,678 obsidian{}
+B -302,0,679 obsidian{}
+B -302,0,680 obsidian{}
+B -302,0,681 obsidian{}
+B -302,0,682 obsidian{}
+B -302,0,683 obsidian{}
+B -302,0,684 obsidian{}
+B -302,0,685 obsidian{}
+B -302,0,686 obsidian{}
+B -302,0,687 obsidian{}
+B -302,0,688 obsidian{}
+B -302,0,689 obsidian{}
+B -302,0,690 obsidian{}
+B -302,0,691 obsidian{}
+B -302,0,692 obsidian{}
+B -302,0,693 obsidian{}
+B -302,0,694 obsidian{}
+B -302,0,695 obsidian{}
+B -302,0,696 obsidian{}
+B -302,0,697 obsidian{}
+B -302,0,698 obsidian{}
+B -302,0,699 obsidian{}
+B -302,0,700 obsidian{}
+B -302,0,701 obsidian{}
+B -302,0,702 obsidian{}
+B -302,0,703 obsidian{}
+B -302,0,704 obsidian{}
+B -302,0,705 obsidian{}
+B -302,0,706 obsidian{}
+B -302,0,707 obsidian{}
+B -302,0,708 obsidian{}
+B -302,0,709 obsidian{}
+B -302,0,710 obsidian{}
+B -302,0,711 obsidian{}
+B -302,0,712 obsidian{}
+B -302,0,713 obsidian{}
+B -302,0,714 obsidian{}
+B -301,0,675 obsidian{}
+B -301,0,676 obsidian{}
+B -301,0,677 obsidian{}
+B -301,0,678 obsidian{}
+B -301,0,679 obsidian{}
+B -301,0,680 obsidian{}
+B -301,0,681 obsidian{}
+B -301,0,682 obsidian{}
+B -301,0,683 obsidian{}
+B -301,0,684 obsidian{}
+B -301,0,685 obsidian{}
+B -301,0,686 obsidian{}
+B -301,0,687 obsidian{}
+B -301,0,688 obsidian{}
+B -301,0,689 obsidian{}
+B -301,0,690 obsidian{}
+B -301,0,691 obsidian{}
+B -301,0,692 obsidian{}
+B -301,0,693 obsidian{}
+B -301,0,694 obsidian{}
+B -301,0,695 obsidian{}
+B -301,0,696 obsidian{}
+B -301,0,697 obsidian{}
+B -301,0,698 obsidian{}
+B -301,0,699 obsidian{}
+B -301,0,700 obsidian{}
+B -301,0,701 obsidian{}
+B -301,0,702 obsidian{}
+B -301,0,703 obsidian{}
+B -301,0,704 obsidian{}
+B -301,0,705 obsidian{}
+B -301,0,706 obsidian{}
+B -301,0,707 obsidian{}
+B -301,0,708 obsidian{}
+B -301,0,709 obsidian{}
+B -301,0,710 obsidian{}
+B -301,0,711 obsidian{}
+B -301,0,712 obsidian{}
+B -301,0,713 obsidian{}
+B -301,0,714 obsidian{}
+B -300,0,675 obsidian{}
+B -300,0,676 obsidian{}
+B -300,0,677 obsidian{}
+B -300,0,678 obsidian{}
+B -300,0,679 obsidian{}
+B -300,0,680 obsidian{}
+B -300,0,681 obsidian{}
+B -300,0,682 obsidian{}
+B -300,0,683 obsidian{}
+B -300,0,684 obsidian{}
+B -300,0,685 obsidian{}
+B -300,0,686 obsidian{}
+B -300,0,687 obsidian{}
+B -300,0,688 obsidian{}
+B -300,0,689 obsidian{}
+B -300,0,690 obsidian{}
+B -300,0,691 obsidian{}
+B -300,0,692 obsidian{}
+B -300,0,693 obsidian{}
+B -300,0,694 obsidian{}
+B -300,0,695 obsidian{}
+B -300,0,696 obsidian{}
+B -300,0,697 obsidian{}
+B -300,0,698 obsidian{}
+B -300,0,699 obsidian{}
+B -300,0,700 obsidian{}
+B -300,0,701 obsidian{}
+B -300,0,702 obsidian{}
+B -300,0,703 obsidian{}
+B -300,0,704 obsidian{}
+B -300,0,705 obsidian{}
+B -300,0,706 obsidian{}
+B -300,0,707 obsidian{}
+B -300,0,708 obsidian{}
+B -300,0,709 obsidian{}
+B -300,0,710 obsidian{}
+B -300,0,711 obsidian{}
+B -300,0,712 obsidian{}
+B -300,0,713 obsidian{}
+B -300,0,714 obsidian{}
+B -299,0,675 obsidian{}
+B -299,0,676 obsidian{}
+B -299,0,677 obsidian{}
+B -299,0,678 obsidian{}
+B -299,0,679 obsidian{}
+B -299,0,680 obsidian{}
+B -299,0,681 obsidian{}
+B -299,0,682 obsidian{}
+B -299,0,683 obsidian{}
+B -299,0,684 obsidian{}
+B -299,0,685 obsidian{}
+B -299,0,686 obsidian{}
+B -299,0,687 obsidian{}
+B -299,0,688 obsidian{}
+B -299,0,689 obsidian{}
+B -299,0,690 obsidian{}
+B -299,0,691 obsidian{}
+B -299,0,692 obsidian{}
+B -299,0,693 obsidian{}
+B -299,0,694 obsidian{}
+B -299,0,695 obsidian{}
+B -299,0,696 obsidian{}
+B -299,0,697 obsidian{}
+B -299,0,698 obsidian{}
+B -299,0,699 obsidian{}
+B -299,0,700 obsidian{}
+B -299,0,701 obsidian{}
+B -299,0,702 obsidian{}
+B -299,0,703 obsidian{}
+B -299,0,704 obsidian{}
+B -299,0,705 obsidian{}
+B -299,0,706 obsidian{}
+B -299,0,707 obsidian{}
+B -299,0,708 obsidian{}
+B -299,0,709 obsidian{}
+B -299,0,710 obsidian{}
+B -299,0,711 obsidian{}
+B -299,0,712 obsidian{}
+B -299,0,713 obsidian{}
+B -299,0,714 obsidian{}
+B -298,0,675 obsidian{}
+B -298,0,676 obsidian{}
+B -298,0,677 obsidian{}
+B -298,0,678 obsidian{}
+B -298,0,679 obsidian{}
+B -298,0,680 obsidian{}
+B -298,0,681 obsidian{}
+B -298,0,682 obsidian{}
+B -298,0,683 obsidian{}
+B -298,0,684 obsidian{}
+B -298,0,685 obsidian{}
+B -298,0,686 obsidian{}
+B -298,0,687 obsidian{}
+B -298,0,688 obsidian{}
+B -298,0,689 obsidian{}
+B -298,0,690 obsidian{}
+B -298,0,691 obsidian{}
+B -298,0,692 obsidian{}
+B -298,0,693 obsidian{}
+B -298,0,694 obsidian{}
+B -298,0,695 obsidian{}
+B -298,0,696 obsidian{}
+B -298,0,697 obsidian{}
+B -298,0,698 obsidian{}
+B -298,0,699 obsidian{}
+B -298,0,700 obsidian{}
+B -298,0,701 obsidian{}
+B -298,0,702 obsidian{}
+B -298,0,703 obsidian{}
+B -298,0,704 obsidian{}
+B -298,0,705 obsidian{}
+B -298,0,706 obsidian{}
+B -298,0,707 obsidian{}
+B -298,0,708 obsidian{}
+B -298,0,709 obsidian{}
+B -298,0,710 obsidian{}
+B -298,0,711 obsidian{}
+B -298,0,712 obsidian{}
+B -298,0,713 obsidian{}
+B -298,0,714 obsidian{}
+B -297,0,675 obsidian{}
+B -297,0,676 obsidian{}
+B -297,0,677 obsidian{}
+B -297,0,678 obsidian{}
+B -297,0,679 obsidian{}
+B -297,0,680 obsidian{}
+B -297,0,681 obsidian{}
+B -297,0,682 obsidian{}
+B -297,0,683 obsidian{}
+B -297,0,684 obsidian{}
+B -297,0,685 obsidian{}
+B -297,0,686 obsidian{}
+B -297,0,687 obsidian{}
+B -297,0,688 obsidian{}
+B -297,0,689 obsidian{}
+B -297,0,690 obsidian{}
+B -297,0,691 obsidian{}
+B -297,0,692 obsidian{}
+B -297,0,693 obsidian{}
+B -297,0,694 obsidian{}
+B -297,0,695 obsidian{}
+B -297,0,696 obsidian{}
+B -297,0,697 obsidian{}
+B -297,0,698 obsidian{}
+B -297,0,699 obsidian{}
+B -297,0,700 obsidian{}
+B -297,0,701 obsidian{}
+B -297,0,702 obsidian{}
+B -297,0,703 obsidian{}
+B -297,0,704 obsidian{}
+B -297,0,705 obsidian{}
+B -297,0,706 obsidian{}
+B -297,0,707 obsidian{}
+B -297,0,708 obsidian{}
+B -297,0,709 obsidian{}
+B -297,0,710 obsidian{}
+B -297,0,711 obsidian{}
+B -297,0,712 obsidian{}
+B -297,0,713 obsidian{}
+B -297,0,714 obsidian{}
+B -296,0,675 obsidian{}
+B -296,0,676 obsidian{}
+B -296,0,677 obsidian{}
+B -296,0,678 obsidian{}
+B -296,0,679 obsidian{}
+B -296,0,680 obsidian{}
+B -296,0,681 obsidian{}
+B -296,0,682 obsidian{}
+B -296,0,683 obsidian{}
+B -296,0,684 obsidian{}
+B -296,0,685 obsidian{}
+B -296,0,686 obsidian{}
+B -296,0,687 obsidian{}
+B -296,0,688 obsidian{}
+B -296,0,689 obsidian{}
+B -296,0,690 obsidian{}
+B -296,0,691 obsidian{}
+B -296,0,692 obsidian{}
+B -296,0,693 obsidian{}
+B -296,0,694 obsidian{}
+B -296,0,695 obsidian{}
+B -296,0,696 obsidian{}
+B -296,0,697 obsidian{}
+B -296,0,698 obsidian{}
+B -296,0,699 obsidian{}
+B -296,0,700 obsidian{}
+B -296,0,701 obsidian{}
+B -296,0,702 obsidian{}
+B -296,0,703 obsidian{}
+B -296,0,704 obsidian{}
+B -296,0,705 obsidian{}
+B -296,0,706 obsidian{}
+B -296,0,707 obsidian{}
+B -296,0,708 obsidian{}
+B -296,0,709 obsidian{}
+B -296,0,710 obsidian{}
+B -296,0,711 obsidian{}
+B -296,0,712 obsidian{}
+B -296,0,713 obsidian{}
+B -296,0,714 obsidian{}
+B -295,0,675 obsidian{}
+B -295,0,676 obsidian{}
+B -295,0,677 obsidian{}
+B -295,0,678 obsidian{}
+B -295,0,679 obsidian{}
+B -295,0,680 obsidian{}
+B -295,0,681 obsidian{}
+B -295,0,682 obsidian{}
+B -295,0,683 obsidian{}
+B -295,0,684 obsidian{}
+B -295,0,685 obsidian{}
+B -295,0,686 obsidian{}
+B -295,0,687 obsidian{}
+B -295,0,688 obsidian{}
+B -295,0,689 obsidian{}
+B -295,0,690 obsidian{}
+B -295,0,691 obsidian{}
+B -295,0,692 obsidian{}
+B -295,0,693 obsidian{}
+B -295,0,694 obsidian{}
+B -295,0,695 obsidian{}
+B -295,0,696 obsidian{}
+B -295,0,697 obsidian{}
+B -295,0,698 obsidian{}
+B -295,0,699 obsidian{}
+B -295,0,700 obsidian{}
+B -295,0,701 obsidian{}
+B -295,0,702 obsidian{}
+B -295,0,703 obsidian{}
+B -295,0,704 obsidian{}
+B -295,0,705 obsidian{}
+B -295,0,706 obsidian{}
+B -295,0,707 obsidian{}
+B -295,0,708 obsidian{}
+B -295,0,709 obsidian{}
+B -295,0,710 obsidian{}
+B -295,0,711 obsidian{}
+B -295,0,712 obsidian{}
+B -295,0,713 obsidian{}
+B -295,0,714 obsidian{}
+B -294,0,675 obsidian{}
+B -294,0,676 obsidian{}
+B -294,0,677 obsidian{}
+B -294,0,678 obsidian{}
+B -294,0,679 obsidian{}
+B -294,0,680 obsidian{}
+B -294,0,681 obsidian{}
+B -294,0,682 obsidian{}
+B -294,0,683 obsidian{}
+B -294,0,684 obsidian{}
+B -294,0,685 obsidian{}
+B -294,0,686 obsidian{}
+B -294,0,687 obsidian{}
+B -294,0,688 obsidian{}
+B -294,0,689 obsidian{}
+B -294,0,690 obsidian{}
+B -294,0,691 obsidian{}
+B -294,0,692 obsidian{}
+B -294,0,693 obsidian{}
+B -294,0,694 obsidian{}
+B -294,0,695 obsidian{}
+B -294,0,696 obsidian{}
+B -294,0,697 obsidian{}
+B -294,0,698 obsidian{}
+B -294,0,699 obsidian{}
+B -294,0,700 obsidian{}
+B -294,0,701 obsidian{}
+B -294,0,702 obsidian{}
+B -294,0,703 obsidian{}
+B -294,0,704 obsidian{}
+B -294,0,705 obsidian{}
+B -294,0,706 obsidian{}
+B -294,0,707 obsidian{}
+B -294,0,708 obsidian{}
+B -294,0,709 obsidian{}
+B -294,0,710 obsidian{}
+B -294,0,711 obsidian{}
+B -294,0,712 obsidian{}
+B -294,0,713 obsidian{}
+B -294,0,714 obsidian{}
+B -293,0,675 obsidian{}
+B -293,0,676 obsidian{}
+B -293,0,677 obsidian{}
+B -293,0,678 obsidian{}
+B -293,0,679 obsidian{}
+B -293,0,680 obsidian{}
+B -293,0,681 obsidian{}
+B -293,0,682 obsidian{}
+B -293,0,683 obsidian{}
+B -293,0,684 obsidian{}
+B -293,0,685 obsidian{}
+B -293,0,686 obsidian{}
+B -293,0,687 obsidian{}
+B -293,0,688 obsidian{}
+B -293,0,689 obsidian{}
+B -293,0,690 obsidian{}
+B -293,0,691 obsidian{}
+B -293,0,692 obsidian{}
+B -293,0,693 obsidian{}
+B -293,0,694 obsidian{}
+B -293,0,695 obsidian{}
+B -293,0,696 obsidian{}
+B -293,0,697 obsidian{}
+B -293,0,698 obsidian{}
+B -293,0,699 obsidian{}
+B -293,0,700 obsidian{}
+B -293,0,701 obsidian{}
+B -293,0,702 obsidian{}
+B -293,0,703 obsidian{}
+B -293,0,704 obsidian{}
+B -293,0,705 obsidian{}
+B -293,0,706 obsidian{}
+B -293,0,707 obsidian{}
+B -293,0,708 obsidian{}
+B -293,0,709 obsidian{}
+B -293,0,710 obsidian{}
+B -293,0,711 obsidian{}
+B -293,0,712 obsidian{}
+B -293,0,713 obsidian{}
+B -293,0,714 obsidian{}
+B -292,0,675 obsidian{}
+B -292,0,676 obsidian{}
+B -292,0,677 obsidian{}
+B -292,0,678 obsidian{}
+B -292,0,679 obsidian{}
+B -292,0,680 obsidian{}
+B -292,0,681 obsidian{}
+B -292,0,682 obsidian{}
+B -292,0,683 obsidian{}
+B -292,0,684 obsidian{}
+B -292,0,685 obsidian{}
+B -292,0,686 obsidian{}
+B -292,0,687 obsidian{}
+B -292,0,688 obsidian{}
+B -292,0,689 obsidian{}
+B -292,0,690 obsidian{}
+B -292,0,691 obsidian{}
+B -292,0,692 obsidian{}
+B -292,0,693 obsidian{}
+B -292,0,694 obsidian{}
+B -292,0,695 obsidian{}
+B -292,0,696 obsidian{}
+B -292,0,697 obsidian{}
+B -292,0,698 obsidian{}
+B -292,0,699 obsidian{}
+B -292,0,700 obsidian{}
+B -292,0,701 obsidian{}
+B -292,0,702 obsidian{}
+B -292,0,703 obsidian{}
+B -292,0,704 obsidian{}
+B -292,0,705 obsidian{}
+B -292,0,706 obsidian{}
+B -292,0,707 obsidian{}
+B -292,0,708 obsidian{}
+B -292,0,709 obsidian{}
+B -292,0,710 obsidian{}
+B -292,0,711 obsidian{}
+B -292,0,712 obsidian{}
+B -292,0,713 obsidian{}
+B -292,0,714 obsidian{}
+B -291,0,675 obsidian{}
+B -291,0,676 obsidian{}
+B -291,0,677 obsidian{}
+B -291,0,678 obsidian{}
+B -291,0,679 obsidian{}
+B -291,0,680 obsidian{}
+B -291,0,681 obsidian{}
+B -291,0,682 obsidian{}
+B -291,0,683 obsidian{}
+B -291,0,684 obsidian{}
+B -291,0,685 obsidian{}
+B -291,0,686 obsidian{}
+B -291,0,687 obsidian{}
+B -291,0,688 obsidian{}
+B -291,0,689 obsidian{}
+B -291,0,690 obsidian{}
+B -291,0,691 obsidian{}
+B -291,0,692 obsidian{}
+B -291,0,693 obsidian{}
+B -291,0,694 obsidian{}
+B -291,0,695 obsidian{}
+B -291,0,696 obsidian{}
+B -291,0,697 obsidian{}
+B -291,0,698 obsidian{}
+B -291,0,699 obsidian{}
+B -291,0,700 obsidian{}
+B -291,0,701 obsidian{}
+B -291,0,702 obsidian{}
+B -291,0,703 obsidian{}
+B -291,0,704 obsidian{}
+B -291,0,705 obsidian{}
+B -291,0,706 obsidian{}
+B -291,0,707 obsidian{}
+B -291,0,708 obsidian{}
+B -291,0,709 obsidian{}
+B -291,0,710 obsidian{}
+B -291,0,711 obsidian{}
+B -291,0,712 obsidian{}
+B -291,0,713 obsidian{}
+B -291,0,714 obsidian{}
+B -290,0,675 obsidian{}
+B -290,0,676 obsidian{}
+B -290,0,677 obsidian{}
+B -290,0,678 obsidian{}
+B -290,0,679 obsidian{}
+B -290,0,680 obsidian{}
+B -290,0,681 obsidian{}
+B -290,0,682 obsidian{}
+B -290,0,683 obsidian{}
+B -290,0,684 obsidian{}
+B -290,0,685 obsidian{}
+B -290,0,686 obsidian{}
+B -290,0,687 obsidian{}
+B -290,0,688 obsidian{}
+B -290,0,689 obsidian{}
+B -290,0,690 obsidian{}
+B -290,0,691 obsidian{}
+B -290,0,692 obsidian{}
+B -290,0,693 obsidian{}
+B -290,0,694 obsidian{}
+B -290,0,695 obsidian{}
+B -290,0,696 obsidian{}
+B -290,0,697 obsidian{}
+B -290,0,698 obsidian{}
+B -290,0,699 obsidian{}
+B -290,0,700 obsidian{}
+B -290,0,701 obsidian{}
+B -290,0,702 obsidian{}
+B -290,0,703 obsidian{}
+B -290,0,704 obsidian{}
+B -290,0,705 obsidian{}
+B -290,0,706 obsidian{}
+B -290,0,707 obsidian{}
+B -290,0,708 obsidian{}
+B -290,0,709 obsidian{}
+B -290,0,710 obsidian{}
+B -290,0,711 obsidian{}
+B -290,0,712 obsidian{}
+B -290,0,713 obsidian{}
+B -290,0,714 obsidian{}
+B -289,0,675 obsidian{}
+B -289,0,676 obsidian{}
+B -289,0,677 obsidian{}
+B -289,0,678 obsidian{}
+B -289,0,679 obsidian{}
+B -289,0,680 obsidian{}
+B -289,0,681 obsidian{}
+B -289,0,682 obsidian{}
+B -289,0,683 obsidian{}
+B -289,0,684 obsidian{}
+B -289,0,685 obsidian{}
+B -289,0,686 obsidian{}
+B -289,0,687 obsidian{}
+B -289,0,688 obsidian{}
+B -289,0,689 obsidian{}
+B -289,0,690 obsidian{}
+B -289,0,691 obsidian{}
+B -289,0,692 obsidian{}
+B -289,0,693 obsidian{}
+B -289,0,694 obsidian{}
+B -289,0,695 obsidian{}
+B -289,0,696 obsidian{}
+B -289,0,697 obsidian{}
+B -289,0,698 obsidian{}
+B -289,0,699 obsidian{}
+B -289,0,700 obsidian{}
+B -289,0,701 obsidian{}
+B -289,0,702 obsidian{}
+B -289,0,703 obsidian{}
+B -289,0,704 obsidian{}
+B -289,0,705 obsidian{}
+B -289,0,706 obsidian{}
+B -289,0,707 obsidian{}
+B -289,0,708 obsidian{}
+B -289,0,709 obsidian{}
+B -289,0,710 obsidian{}
+B -289,0,711 obsidian{}
+B -289,0,712 obsidian{}
+B -289,0,713 obsidian{}
+B -289,0,714 obsidian{}
+B -288,0,675 obsidian{}
+B -288,0,676 obsidian{}
+B -288,0,677 obsidian{}
+B -288,0,678 obsidian{}
+B -288,0,679 obsidian{}
+B -288,0,680 obsidian{}
+B -288,0,681 obsidian{}
+B -288,0,682 obsidian{}
+B -288,0,683 obsidian{}
+B -288,0,684 obsidian{}
+B -288,0,685 obsidian{}
+B -288,0,686 obsidian{}
+B -288,0,687 obsidian{}
+B -288,0,688 obsidian{}
+B -288,0,689 obsidian{}
+B -288,0,690 obsidian{}
+B -288,0,691 obsidian{}
+B -288,0,692 obsidian{}
+B -288,0,693 obsidian{}
+B -288,0,694 obsidian{}
+B -288,0,695 obsidian{}
+B -288,0,696 obsidian{}
+B -288,0,697 obsidian{}
+B -288,0,698 obsidian{}
+B -288,0,699 obsidian{}
+B -288,0,700 obsidian{}
+B -288,0,701 obsidian{}
+B -288,0,702 obsidian{}
+B -288,0,703 obsidian{}
+B -288,0,704 obsidian{}
+B -288,0,705 obsidian{}
+B -288,0,706 obsidian{}
+B -288,0,707 obsidian{}
+B -288,0,708 obsidian{}
+B -288,0,709 obsidian{}
+B -288,0,710 obsidian{}
+B -288,0,711 obsidian{}
+B -288,0,712 obsidian{}
+B -288,0,713 obsidian{}
+B -288,0,714 obsidian{}
+B -287,0,675 obsidian{}
+B -287,0,676 obsidian{}
+B -287,0,677 obsidian{}
+B -287,0,678 obsidian{}
+B -287,0,679 obsidian{}
+B -287,0,680 obsidian{}
+B -287,0,681 obsidian{}
+B -287,0,682 obsidian{}
+B -287,0,683 obsidian{}
+B -287,0,684 obsidian{}
+B -287,0,685 obsidian{}
+B -287,0,686 obsidian{}
+B -287,0,687 obsidian{}
+B -287,0,688 obsidian{}
+B -287,0,689 obsidian{}
+B -287,0,690 obsidian{}
+B -287,0,691 obsidian{}
+B -287,0,692 obsidian{}
+B -287,0,693 obsidian{}
+B -287,0,694 obsidian{}
+B -287,0,695 obsidian{}
+B -287,0,696 obsidian{}
+B -287,0,697 obsidian{}
+B -287,0,698 obsidian{}
+B -287,0,699 obsidian{}
+B -287,0,700 obsidian{}
+B -287,0,701 obsidian{}
+B -287,0,702 obsidian{}
+B -287,0,703 obsidian{}
+B -287,0,704 obsidian{}
+B -287,0,705 obsidian{}
+B -287,0,706 obsidian{}
+B -287,0,707 obsidian{}
+B -287,0,708 obsidian{}
+B -287,0,709 obsidian{}
+B -287,0,710 obsidian{}
+B -287,0,711 obsidian{}
+B -287,0,712 obsidian{}
+B -287,0,713 obsidian{}
+B -287,0,714 obsidian{}
+B -286,0,675 obsidian{}
+B -286,0,676 obsidian{}
+B -286,0,677 obsidian{}
+B -286,0,678 obsidian{}
+B -286,0,679 obsidian{}
+B -286,0,680 obsidian{}
+B -286,0,681 obsidian{}
+B -286,0,682 obsidian{}
+B -286,0,683 obsidian{}
+B -286,0,684 obsidian{}
+B -286,0,685 obsidian{}
+B -286,0,686 obsidian{}
+B -286,0,687 obsidian{}
+B -286,0,688 obsidian{}
+B -286,0,689 obsidian{}
+B -286,0,690 obsidian{}
+B -286,0,691 obsidian{}
+B -286,0,692 obsidian{}
+B -286,0,693 obsidian{}
+B -286,0,694 obsidian{}
+B -286,0,695 obsidian{}
+B -286,0,696 obsidian{}
+B -286,0,697 obsidian{}
+B -286,0,698 obsidian{}
+B -286,0,699 obsidian{}
+B -286,0,700 obsidian{}
+B -286,0,701 obsidian{}
+B -286,0,702 obsidian{}
+B -286,0,703 obsidian{}
+B -286,0,704 obsidian{}
+B -286,0,705 obsidian{}
+B -286,0,706 obsidian{}
+B -286,0,707 obsidian{}
+B -286,0,708 obsidian{}
+B -286,0,709 obsidian{}
+B -286,0,710 obsidian{}
+B -286,0,711 obsidian{}
+B -286,0,712 obsidian{}
+B -286,0,713 obsidian{}
+B -286,0,714 obsidian{}
+B -285,0,675 obsidian{}
+B -285,0,676 obsidian{}
+B -285,0,677 obsidian{}
+B -285,0,678 obsidian{}
+B -285,0,679 obsidian{}
+B -285,0,680 obsidian{}
+B -285,0,681 obsidian{}
+B -285,0,682 obsidian{}
+B -285,0,683 obsidian{}
+B -285,0,684 obsidian{}
+B -285,0,685 obsidian{}
+B -285,0,686 obsidian{}
+B -285,0,687 obsidian{}
+B -285,0,688 obsidian{}
+B -285,0,689 obsidian{}
+B -285,0,690 obsidian{}
+B -285,0,691 obsidian{}
+B -285,0,692 obsidian{}
+B -285,0,693 obsidian{}
+B -285,0,694 obsidian{}
+B -285,0,695 obsidian{}
+B -285,0,696 obsidian{}
+B -285,0,697 obsidian{}
+B -285,0,698 obsidian{}
+B -285,0,699 obsidian{}
+B -285,0,700 obsidian{}
+B -285,0,701 obsidian{}
+B -285,0,702 obsidian{}
+B -285,0,703 obsidian{}
+B -285,0,704 obsidian{}
+B -285,0,705 obsidian{}
+B -285,0,706 obsidian{}
+B -285,0,707 obsidian{}
+B -285,0,708 obsidian{}
+B -285,0,709 obsidian{}
+B -285,0,710 obsidian{}
+B -285,0,711 obsidian{}
+B -285,0,712 obsidian{}
+B -285,0,713 obsidian{}
+B -285,0,714 obsidian{}
+B -284,0,675 obsidian{}
+B -284,0,676 obsidian{}
+B -284,0,677 obsidian{}
+B -284,0,678 obsidian{}
+B -284,0,679 obsidian{}
+B -284,0,680 obsidian{}
+B -284,0,681 obsidian{}
+B -284,0,682 obsidian{}
+B -284,0,683 obsidian{}
+B -284,0,684 obsidian{}
+B -284,0,685 obsidian{}
+B -284,0,686 obsidian{}
+B -284,0,687 obsidian{}
+B -284,0,688 obsidian{}
+B -284,0,689 obsidian{}
+B -284,0,690 obsidian{}
+B -284,0,691 obsidian{}
+B -284,0,692 obsidian{}
+B -284,0,693 obsidian{}
+B -284,0,694 obsidian{}
+B -284,0,695 obsidian{}
+B -284,0,696 obsidian{}
+B -284,0,697 obsidian{}
+B -284,0,698 obsidian{}
+B -284,0,699 obsidian{}
+B -284,0,700 obsidian{}
+B -284,0,701 obsidian{}
+B -284,0,702 obsidian{}
+B -284,0,703 obsidian{}
+B -284,0,704 obsidian{}
+B -284,0,705 obsidian{}
+B -284,0,706 obsidian{}
+B -284,0,707 obsidian{}
+B -284,0,708 obsidian{}
+B -284,0,709 obsidian{}
+B -284,0,710 obsidian{}
+B -284,0,711 obsidian{}
+B -284,0,712 obsidian{}
+B -284,0,713 obsidian{}
+B -284,0,714 obsidian{}
+B -283,0,675 obsidian{}
+B -283,0,676 obsidian{}
+B -283,0,677 obsidian{}
+B -283,0,678 obsidian{}
+B -283,0,679 obsidian{}
+B -283,0,680 obsidian{}
+B -283,0,681 obsidian{}
+B -283,0,682 obsidian{}
+B -283,0,683 obsidian{}
+B -283,0,684 obsidian{}
+B -283,0,685 obsidian{}
+B -283,0,686 obsidian{}
+B -283,0,687 obsidian{}
+B -283,0,688 obsidian{}
+B -283,0,689 obsidian{}
+B -283,0,690 obsidian{}
+B -283,0,691 obsidian{}
+B -283,0,692 obsidian{}
+B -283,0,693 obsidian{}
+B -283,0,694 obsidian{}
+B -283,0,695 obsidian{}
+B -283,0,696 obsidian{}
+B -283,0,697 obsidian{}
+B -283,0,698 obsidian{}
+B -283,0,699 obsidian{}
+B -283,0,700 obsidian{}
+B -283,0,701 obsidian{}
+B -283,0,702 obsidian{}
+B -283,0,703 obsidian{}
+B -283,0,704 obsidian{}
+B -283,0,705 obsidian{}
+B -283,0,706 obsidian{}
+B -283,0,707 obsidian{}
+B -283,0,708 obsidian{}
+B -283,0,709 obsidian{}
+B -283,0,710 obsidian{}
+B -283,0,711 obsidian{}
+B -283,0,712 obsidian{}
+B -283,0,713 obsidian{}
+B -283,0,714 obsidian{}
+B -282,0,675 obsidian{}
+B -282,0,676 obsidian{}
+B -282,0,677 obsidian{}
+B -282,0,678 obsidian{}
+B -282,0,679 obsidian{}
+B -282,0,680 obsidian{}
+B -282,0,681 obsidian{}
+B -282,0,682 obsidian{}
+B -282,0,683 obsidian{}
+B -282,0,684 obsidian{}
+B -282,0,685 obsidian{}
+B -282,0,686 obsidian{}
+B -282,0,687 obsidian{}
+B -282,0,688 obsidian{}
+B -282,0,689 obsidian{}
+B -282,0,690 obsidian{}
+B -282,0,691 obsidian{}
+B -282,0,692 obsidian{}
+B -282,0,693 obsidian{}
+B -282,0,694 obsidian{}
+B -282,0,695 obsidian{}
+B -282,0,696 obsidian{}
+B -282,0,697 obsidian{}
+B -282,0,698 obsidian{}
+B -282,0,699 obsidian{}
+B -282,0,700 obsidian{}
+B -282,0,701 obsidian{}
+B -282,0,702 obsidian{}
+B -282,0,703 obsidian{}
+B -282,0,704 obsidian{}
+B -282,0,705 obsidian{}
+B -282,0,706 obsidian{}
+B -282,0,707 obsidian{}
+B -282,0,708 obsidian{}
+B -282,0,709 obsidian{}
+B -282,0,710 obsidian{}
+B -282,0,711 obsidian{}
+B -282,0,712 obsidian{}
+B -282,0,713 obsidian{}
+B -282,0,714 obsidian{}
+B -281,0,675 obsidian{}
+B -281,0,676 obsidian{}
+B -281,0,677 obsidian{}
+B -281,0,678 obsidian{}
+B -281,0,679 obsidian{}
+B -281,0,680 obsidian{}
+B -281,0,681 obsidian{}
+B -281,0,682 obsidian{}
+B -281,0,683 obsidian{}
+B -281,0,684 obsidian{}
+B -281,0,685 obsidian{}
+B -281,0,686 obsidian{}
+B -281,0,687 obsidian{}
+B -281,0,688 obsidian{}
+B -281,0,689 obsidian{}
+B -281,0,690 obsidian{}
+B -281,0,691 obsidian{}
+B -281,0,692 obsidian{}
+B -281,0,693 obsidian{}
+B -281,0,694 obsidian{}
+B -281,0,695 obsidian{}
+B -281,0,696 obsidian{}
+B -281,0,697 obsidian{}
+B -281,0,698 obsidian{}
+B -281,0,699 obsidian{}
+B -281,0,700 obsidian{}
+B -281,0,701 obsidian{}
+B -281,0,702 obsidian{}
+B -281,0,703 obsidian{}
+B -281,0,704 obsidian{}
+B -281,0,705 obsidian{}
+B -281,0,706 obsidian{}
+B -281,0,707 obsidian{}
+B -281,0,708 obsidian{}
+B -281,0,709 obsidian{}
+B -281,0,710 obsidian{}
+B -281,0,711 obsidian{}
+B -281,0,712 obsidian{}
+B -281,0,713 obsidian{}
+B -281,0,714 obsidian{}
+B -280,0,675 obsidian{}
+B -280,0,676 obsidian{}
+B -280,0,677 obsidian{}
+B -280,0,678 obsidian{}
+B -280,0,679 obsidian{}
+B -280,0,680 obsidian{}
+B -280,0,681 obsidian{}
+B -280,0,682 obsidian{}
+B -280,0,683 obsidian{}
+B -280,0,684 obsidian{}
+B -280,0,685 obsidian{}
+B -280,0,686 obsidian{}
+B -280,0,687 obsidian{}
+B -280,0,688 obsidian{}
+B -280,0,689 obsidian{}
+B -280,0,690 obsidian{}
+B -280,0,691 obsidian{}
+B -280,0,692 obsidian{}
+B -280,0,693 obsidian{}
+B -280,0,694 obsidian{}
+B -280,0,695 obsidian{}
+B -280,0,696 obsidian{}
+B -280,0,697 obsidian{}
+B -280,0,698 obsidian{}
+B -280,0,699 obsidian{}
+B -280,0,700 obsidian{}
+B -280,0,701 obsidian{}
+B -280,0,702 obsidian{}
+B -280,0,703 obsidian{}
+B -280,0,704 obsidian{}
+B -280,0,705 obsidian{}
+B -280,0,706 obsidian{}
+B -280,0,707 obsidian{}
+B -280,0,708 obsidian{}
+B -280,0,709 obsidian{}
+B -280,0,710 obsidian{}
+B -280,0,711 obsidian{}
+B -280,0,712 obsidian{}
+B -280,0,713 obsidian{}
+B -280,0,714 obsidian{}
+B -279,0,675 obsidian{}
+B -279,0,676 obsidian{}
+B -279,0,677 obsidian{}
+B -279,0,678 obsidian{}
+B -279,0,679 obsidian{}
+B -279,0,680 obsidian{}
+B -279,0,681 obsidian{}
+B -279,0,682 obsidian{}
+B -279,0,683 obsidian{}
+B -279,0,684 obsidian{}
+B -279,0,685 obsidian{}
+B -279,0,686 obsidian{}
+B -279,0,687 obsidian{}
+B -279,0,688 obsidian{}
+B -279,0,689 obsidian{}
+B -279,0,690 obsidian{}
+B -279,0,691 obsidian{}
+B -279,0,692 obsidian{}
+B -279,0,693 obsidian{}
+B -279,0,694 obsidian{}
+B -279,0,695 obsidian{}
+B -279,0,696 obsidian{}
+B -279,0,697 obsidian{}
+B -279,0,698 obsidian{}
+B -279,0,699 obsidian{}
+B -279,0,700 obsidian{}
+B -279,0,701 obsidian{}
+B -279,0,702 obsidian{}
+B -279,0,703 obsidian{}
+B -279,0,704 obsidian{}
+B -279,0,705 obsidian{}
+B -279,0,706 obsidian{}
+B -279,0,707 obsidian{}
+B -279,0,708 obsidian{}
+B -279,0,709 obsidian{}
+B -279,0,710 obsidian{}
+B -279,0,711 obsidian{}
+B -279,0,712 obsidian{}
+B -279,0,713 obsidian{}
+B -279,0,714 obsidian{}
+B -278,0,675 obsidian{}
+B -278,0,676 obsidian{}
+B -278,0,677 obsidian{}
+B -278,0,678 obsidian{}
+B -278,0,679 obsidian{}
+B -278,0,680 obsidian{}
+B -278,0,681 obsidian{}
+B -278,0,682 obsidian{}
+B -278,0,683 obsidian{}
+B -278,0,684 obsidian{}
+B -278,0,685 obsidian{}
+B -278,0,686 obsidian{}
+B -278,0,687 obsidian{}
+B -278,0,688 obsidian{}
+B -278,0,689 obsidian{}
+B -278,0,690 obsidian{}
+B -278,0,691 obsidian{}
+B -278,0,692 obsidian{}
+B -278,0,693 obsidian{}
+B -278,0,694 obsidian{}
+B -278,0,695 obsidian{}
+B -278,0,696 obsidian{}
+B -278,0,697 obsidian{}
+B -278,0,698 obsidian{}
+B -278,0,699 obsidian{}
+B -278,0,700 obsidian{}
+B -278,0,701 obsidian{}
+B -278,0,702 obsidian{}
+B -278,0,703 obsidian{}
+B -278,0,704 obsidian{}
+B -278,0,705 obsidian{}
+B -278,0,706 obsidian{}
+B -278,0,707 obsidian{}
+B -278,0,708 obsidian{}
+B -278,0,709 obsidian{}
+B -278,0,710 obsidian{}
+B -278,0,711 obsidian{}
+B -278,0,712 obsidian{}
+B -278,0,713 obsidian{}
+B -278,0,714 obsidian{}
+B -277,0,675 obsidian{}
+B -277,0,676 obsidian{}
+B -277,0,677 obsidian{}
+B -277,0,678 obsidian{}
+B -277,0,679 obsidian{}
+B -277,0,680 obsidian{}
+B -277,0,681 obsidian{}
+B -277,0,682 obsidian{}
+B -277,0,683 obsidian{}
+B -277,0,684 obsidian{}
+B -277,0,685 obsidian{}
+B -277,0,686 obsidian{}
+B -277,0,687 obsidian{}
+B -277,0,688 obsidian{}
+B -277,0,689 obsidian{}
+B -277,0,690 obsidian{}
+B -277,0,691 obsidian{}
+B -277,0,692 obsidian{}
+B -277,0,693 obsidian{}
+B -277,0,694 obsidian{}
+B -277,0,695 obsidian{}
+B -277,0,696 obsidian{}
+B -277,0,697 obsidian{}
+B -277,0,698 obsidian{}
+B -277,0,699 obsidian{}
+B -277,0,700 obsidian{}
+B -277,0,701 obsidian{}
+B -277,0,702 obsidian{}
+B -277,0,703 obsidian{}
+B -277,0,704 obsidian{}
+B -277,0,705 obsidian{}
+B -277,0,706 obsidian{}
+B -277,0,707 obsidian{}
+B -277,0,708 obsidian{}
+B -277,0,709 obsidian{}
+B -277,0,710 obsidian{}
+B -277,0,711 obsidian{}
+B -277,0,712 obsidian{}
+B -277,0,713 obsidian{}
+B -277,0,714 obsidian{}
+B -276,0,675 obsidian{}
+B -276,0,676 obsidian{}
+B -276,0,677 obsidian{}
+B -276,0,678 obsidian{}
+B -276,0,679 obsidian{}
+B -276,0,680 obsidian{}
+B -276,0,681 obsidian{}
+B -276,0,682 obsidian{}
+B -276,0,683 obsidian{}
+B -276,0,684 obsidian{}
+B -276,0,685 obsidian{}
+B -276,0,686 obsidian{}
+B -276,0,687 obsidian{}
+B -276,0,688 obsidian{}
+B -276,0,689 obsidian{}
+B -276,0,690 obsidian{}
+B -276,0,691 obsidian{}
+B -276,0,692 obsidian{}
+B -276,0,693 obsidian{}
+B -276,0,694 obsidian{}
+B -276,0,695 obsidian{}
+B -276,0,696 obsidian{}
+B -276,0,697 obsidian{}
+B -276,0,698 obsidian{}
+B -276,0,699 obsidian{}
+B -276,0,700 obsidian{}
+B -276,0,701 obsidian{}
+B -276,0,702 obsidian{}
+B -276,0,703 obsidian{}
+B -276,0,704 obsidian{}
+B -276,0,705 obsidian{}
+B -276,0,706 obsidian{}
+B -276,0,707 obsidian{}
+B -276,0,708 obsidian{}
+B -276,0,709 obsidian{}
+B -276,0,710 obsidian{}
+B -276,0,711 obsidian{}
+B -276,0,712 obsidian{}
+B -276,0,713 obsidian{}
+B -276,0,714 obsidian{}
+B -275,0,675 obsidian{}
+B -275,0,676 obsidian{}
+B -275,0,677 obsidian{}
+B -275,0,678 obsidian{}
+B -275,0,679 obsidian{}
+B -275,0,680 obsidian{}
+B -275,0,681 obsidian{}
+B -275,0,682 obsidian{}
+B -275,0,683 obsidian{}
+B -275,0,684 obsidian{}
+B -275,0,685 obsidian{}
+B -275,0,686 obsidian{}
+B -275,0,687 obsidian{}
+B -275,0,688 obsidian{}
+B -275,0,689 obsidian{}
+B -275,0,690 obsidian{}
+B -275,0,691 obsidian{}
+B -275,0,692 obsidian{}
+B -275,0,693 obsidian{}
+B -275,0,694 obsidian{}
+B -275,0,695 obsidian{}
+B -275,0,696 obsidian{}
+B -275,0,697 obsidian{}
+B -275,0,698 obsidian{}
+B -275,0,699 obsidian{}
+B -275,0,700 obsidian{}
+B -275,0,701 obsidian{}
+B -275,0,702 obsidian{}
+B -275,0,703 obsidian{}
+B -275,0,704 obsidian{}
+B -275,0,705 obsidian{}
+B -275,0,706 obsidian{}
+B -275,0,707 obsidian{}
+B -275,0,708 obsidian{}
+B -275,0,709 obsidian{}
+B -275,0,710 obsidian{}
+B -275,0,711 obsidian{}
+B -275,0,712 obsidian{}
+B -275,0,713 obsidian{}
+B -275,0,714 obsidian{}
+B -274,0,675 obsidian{}
+B -274,0,676 obsidian{}
+B -274,0,677 obsidian{}
+B -274,0,678 obsidian{}
+B -274,0,679 obsidian{}
+B -274,0,680 obsidian{}
+B -274,0,681 obsidian{}
+B -274,0,682 obsidian{}
+B -274,0,683 obsidian{}
+B -274,0,684 obsidian{}
+B -274,0,685 obsidian{}
+B -274,0,686 obsidian{}
+B -274,0,687 obsidian{}
+B -274,0,688 obsidian{}
+B -274,0,689 obsidian{}
+B -274,0,690 obsidian{}
+B -274,0,691 obsidian{}
+B -274,0,692 obsidian{}
+B -274,0,693 obsidian{}
+B -274,0,694 obsidian{}
+B -274,0,695 obsidian{}
+B -274,0,696 obsidian{}
+B -274,0,697 obsidian{}
+B -274,0,698 obsidian{}
+B -274,0,699 obsidian{}
+B -274,0,700 obsidian{}
+B -274,0,701 obsidian{}
+B -274,0,702 obsidian{}
+B -274,0,703 obsidian{}
+B -274,0,704 obsidian{}
+B -274,0,705 obsidian{}
+B -274,0,706 obsidian{}
+B -274,0,707 obsidian{}
+B -274,0,708 obsidian{}
+B -274,0,709 obsidian{}
+B -274,0,710 obsidian{}
+B -274,0,711 obsidian{}
+B -274,0,712 obsidian{}
+B -274,0,713 obsidian{}
+B -274,0,714 obsidian{}
+B -273,0,675 obsidian{}
+B -273,0,676 obsidian{}
+B -273,0,677 obsidian{}
+B -273,0,678 obsidian{}
+B -273,0,679 obsidian{}
+B -273,0,680 obsidian{}
+B -273,0,681 obsidian{}
+B -273,0,682 obsidian{}
+B -273,0,683 obsidian{}
+B -273,0,684 obsidian{}
+B -273,0,685 obsidian{}
+B -273,0,686 obsidian{}
+B -273,0,687 obsidian{}
+B -273,0,688 obsidian{}
+B -273,0,689 obsidian{}
+B -273,0,690 obsidian{}
+B -273,0,691 obsidian{}
+B -273,0,692 obsidian{}
+B -273,0,693 obsidian{}
+B -273,0,694 obsidian{}
+B -273,0,695 obsidian{}
+B -273,0,696 obsidian{}
+B -273,0,697 obsidian{}
+B -273,0,698 obsidian{}
+B -273,0,699 obsidian{}
+B -273,0,700 obsidian{}
+B -273,0,701 obsidian{}
+B -273,0,702 obsidian{}
+B -273,0,703 obsidian{}
+B -273,0,704 obsidian{}
+B -273,0,705 obsidian{}
+B -273,0,706 obsidian{}
+B -273,0,707 obsidian{}
+B -273,0,708 obsidian{}
+B -273,0,709 obsidian{}
+B -273,0,710 obsidian{}
+B -273,0,711 obsidian{}
+B -273,0,712 obsidian{}
+B -273,0,713 obsidian{}
+B -273,0,714 obsidian{}
+B -272,0,675 obsidian{}
+B -272,0,676 obsidian{}
+B -272,0,677 obsidian{}
+B -272,0,678 obsidian{}
+B -272,0,679 obsidian{}
+B -272,0,680 obsidian{}
+B -272,0,681 obsidian{}
+B -272,0,682 obsidian{}
+B -272,0,683 obsidian{}
+B -272,0,684 obsidian{}
+B -272,0,685 obsidian{}
+B -272,0,686 obsidian{}
+B -272,0,687 obsidian{}
+B -272,0,688 obsidian{}
+B -272,0,689 obsidian{}
+B -272,0,690 obsidian{}
+B -272,0,691 obsidian{}
+B -272,0,692 obsidian{}
+B -272,0,693 obsidian{}
+B -272,0,694 obsidian{}
+B -272,0,695 obsidian{}
+B -272,0,696 obsidian{}
+B -272,0,697 obsidian{}
+B -272,0,698 obsidian{}
+B -272,0,699 obsidian{}
+B -272,0,700 obsidian{}
+B -272,0,701 obsidian{}
+B -272,0,702 obsidian{}
+B -272,0,703 obsidian{}
+B -272,0,704 obsidian{}
+B -272,0,705 obsidian{}
+B -272,0,706 obsidian{}
+B -272,0,707 obsidian{}
+B -272,0,708 obsidian{}
+B -272,0,709 obsidian{}
+B -272,0,710 obsidian{}
+B -272,0,711 obsidian{}
+B -272,0,712 obsidian{}
+B -272,0,713 obsidian{}
+B -272,0,714 obsidian{}
+B -271,0,675 obsidian{}
+B -271,0,676 obsidian{}
+B -271,0,677 obsidian{}
+B -271,0,678 obsidian{}
+B -271,0,679 obsidian{}
+B -271,0,680 obsidian{}
+B -271,0,681 obsidian{}
+B -271,0,682 obsidian{}
+B -271,0,683 obsidian{}
+B -271,0,684 obsidian{}
+B -271,0,685 obsidian{}
+B -271,0,686 obsidian{}
+B -271,0,687 obsidian{}
+B -271,0,688 obsidian{}
+B -271,0,689 obsidian{}
+B -271,0,690 obsidian{}
+B -271,0,691 obsidian{}
+B -271,0,692 obsidian{}
+B -271,0,693 obsidian{}
+B -271,0,694 obsidian{}
+B -271,0,695 obsidian{}
+B -271,0,696 obsidian{}
+B -271,0,697 obsidian{}
+B -271,0,698 obsidian{}
+B -271,0,699 obsidian{}
+B -271,0,700 obsidian{}
+B -271,0,701 obsidian{}
+B -271,0,702 obsidian{}
+B -271,0,703 obsidian{}
+B -271,0,704 obsidian{}
+B -271,0,705 obsidian{}
+B -271,0,706 obsidian{}
+B -271,0,707 obsidian{}
+B -271,0,708 obsidian{}
+B -271,0,709 obsidian{}
+B -271,0,710 obsidian{}
+B -271,0,711 obsidian{}
+B -271,0,712 obsidian{}
+B -271,0,713 obsidian{}
+B -271,0,714 obsidian{}
+B -270,0,675 obsidian{}
+B -270,0,676 obsidian{}
+B -270,0,677 obsidian{}
+B -270,0,678 obsidian{}
+B -270,0,679 obsidian{}
+B -270,0,680 obsidian{}
+B -270,0,681 obsidian{}
+B -270,0,682 obsidian{}
+B -270,0,683 obsidian{}
+B -270,0,684 obsidian{}
+B -270,0,685 obsidian{}
+B -270,0,686 obsidian{}
+B -270,0,687 obsidian{}
+B -270,0,688 obsidian{}
+B -270,0,689 obsidian{}
+B -270,0,690 obsidian{}
+B -270,0,691 obsidian{}
+B -270,0,692 obsidian{}
+B -270,0,693 obsidian{}
+B -270,0,694 obsidian{}
+B -270,0,695 obsidian{}
+B -270,0,696 obsidian{}
+B -270,0,697 obsidian{}
+B -270,0,698 obsidian{}
+B -270,0,699 obsidian{}
+B -270,0,700 obsidian{}
+B -270,0,701 obsidian{}
+B -270,0,702 obsidian{}
+B -270,0,703 obsidian{}
+B -270,0,704 obsidian{}
+B -270,0,705 obsidian{}
+B -270,0,706 obsidian{}
+B -270,0,707 obsidian{}
+B -270,0,708 obsidian{}
+B -270,0,709 obsidian{}
+B -270,0,710 obsidian{}
+B -270,0,711 obsidian{}
+B -270,0,712 obsidian{}
+B -270,0,713 obsidian{}
+B -270,0,714 obsidian{}
+B -269,0,675 obsidian{}
+B -269,0,676 obsidian{}
+B -269,0,677 obsidian{}
+B -269,0,678 obsidian{}
+B -269,0,679 obsidian{}
+B -269,0,680 obsidian{}
+B -269,0,681 obsidian{}
+B -269,0,682 obsidian{}
+B -269,0,683 obsidian{}
+B -269,0,684 obsidian{}
+B -269,0,685 obsidian{}
+B -269,0,686 obsidian{}
+B -269,0,687 obsidian{}
+B -269,0,688 obsidian{}
+B -269,0,689 obsidian{}
+B -269,0,690 obsidian{}
+B -269,0,691 obsidian{}
+B -269,0,692 obsidian{}
+B -269,0,693 obsidian{}
+B -269,0,694 obsidian{}
+B -269,0,695 obsidian{}
+B -269,0,696 obsidian{}
+B -269,0,697 obsidian{}
+B -269,0,698 obsidian{}
+B -269,0,699 obsidian{}
+B -269,0,700 obsidian{}
+B -269,0,701 obsidian{}
+B -269,0,702 obsidian{}
+B -269,0,703 obsidian{}
+B -269,0,704 obsidian{}
+B -269,0,705 obsidian{}
+B -269,0,706 obsidian{}
+B -269,0,707 obsidian{}
+B -269,0,708 obsidian{}
+B -269,0,709 obsidian{}
+B -269,0,710 obsidian{}
+B -269,0,711 obsidian{}
+B -269,0,712 obsidian{}
+B -269,0,713 obsidian{}
+B -269,0,714 obsidian{}
+B -268,0,675 obsidian{}
+B -268,0,676 obsidian{}
+B -268,0,677 obsidian{}
+B -268,0,678 obsidian{}
+B -268,0,679 obsidian{}
+B -268,0,680 obsidian{}
+B -268,0,681 obsidian{}
+B -268,0,682 obsidian{}
+B -268,0,683 obsidian{}
+B -268,0,684 obsidian{}
+B -268,0,685 obsidian{}
+B -268,0,686 obsidian{}
+B -268,0,687 obsidian{}
+B -268,0,688 obsidian{}
+B -268,0,689 obsidian{}
+B -268,0,690 obsidian{}
+B -268,0,691 obsidian{}
+B -268,0,692 obsidian{}
+B -268,0,693 obsidian{}
+B -268,0,694 obsidian{}
+B -268,0,695 obsidian{}
+B -268,0,696 obsidian{}
+B -268,0,697 obsidian{}
+B -268,0,698 obsidian{}
+B -268,0,699 obsidian{}
+B -268,0,700 obsidian{}
+B -268,0,701 obsidian{}
+B -268,0,702 obsidian{}
+B -268,0,703 obsidian{}
+B -268,0,704 obsidian{}
+B -268,0,705 obsidian{}
+B -268,0,706 obsidian{}
+B -268,0,707 obsidian{}
+B -268,0,708 obsidian{}
+B -268,0,709 obsidian{}
+B -268,0,710 obsidian{}
+B -268,0,711 obsidian{}
+B -268,0,712 obsidian{}
+B -268,0,713 obsidian{}
+B -268,0,714 obsidian{}
+B -267,0,675 obsidian{}
+B -267,0,676 obsidian{}
+B -267,0,677 obsidian{}
+B -267,0,678 obsidian{}
+B -267,0,679 obsidian{}
+B -267,0,680 obsidian{}
+B -267,0,681 obsidian{}
+B -267,0,682 obsidian{}
+B -267,0,683 obsidian{}
+B -267,0,684 obsidian{}
+B -267,0,685 obsidian{}
+B -267,0,686 obsidian{}
+B -267,0,687 obsidian{}
+B -267,0,688 obsidian{}
+B -267,0,689 obsidian{}
+B -267,0,690 obsidian{}
+B -267,0,691 obsidian{}
+B -267,0,692 obsidian{}
+B -267,0,693 obsidian{}
+B -267,0,694 obsidian{}
+B -267,0,695 obsidian{}
+B -267,0,696 obsidian{}
+B -267,0,697 obsidian{}
+B -267,0,698 obsidian{}
+B -267,0,699 obsidian{}
+B -267,0,700 obsidian{}
+B -267,0,701 obsidian{}
+B -267,0,702 obsidian{}
+B -267,0,703 obsidian{}
+B -267,0,704 obsidian{}
+B -267,0,705 obsidian{}
+B -267,0,706 obsidian{}
+B -267,0,707 obsidian{}
+B -267,0,708 obsidian{}
+B -267,0,709 obsidian{}
+B -267,0,710 obsidian{}
+B -267,0,711 obsidian{}
+B -267,0,712 obsidian{}
+B -267,0,713 obsidian{}
+B -267,0,714 obsidian{}
+B -266,0,675 obsidian{}
+B -266,0,676 obsidian{}
+B -266,0,677 obsidian{}
+B -266,0,678 obsidian{}
+B -266,0,679 obsidian{}
+B -266,0,680 obsidian{}
+B -266,0,681 obsidian{}
+B -266,0,682 obsidian{}
+B -266,0,683 obsidian{}
+B -266,0,684 obsidian{}
+B -266,0,685 obsidian{}
+B -266,0,686 obsidian{}
+B -266,0,687 obsidian{}
+B -266,0,688 obsidian{}
+B -266,0,689 obsidian{}
+B -266,0,690 obsidian{}
+B -266,0,691 obsidian{}
+B -266,0,692 obsidian{}
+B -266,0,693 obsidian{}
+B -266,0,694 obsidian{}
+B -266,0,695 obsidian{}
+B -266,0,696 obsidian{}
+B -266,0,697 obsidian{}
+B -266,0,698 obsidian{}
+B -266,0,699 obsidian{}
+B -266,0,700 obsidian{}
+B -266,0,701 obsidian{}
+B -266,0,702 obsidian{}
+B -266,0,703 obsidian{}
+B -266,0,704 obsidian{}
+B -266,0,705 obsidian{}
+B -266,0,706 obsidian{}
+B -266,0,707 obsidian{}
+B -266,0,708 obsidian{}
+B -266,0,709 obsidian{}
+B -266,0,710 obsidian{}
+B -266,0,711 obsidian{}
+B -266,0,712 obsidian{}
+B -266,0,713 obsidian{}
+B -266,0,714 obsidian{}
+B -265,0,675 obsidian{}
+B -265,0,676 obsidian{}
+B -265,0,677 obsidian{}
+B -265,0,678 obsidian{}
+B -265,0,679 obsidian{}
+B -265,0,680 obsidian{}
+B -265,0,681 obsidian{}
+B -265,0,682 obsidian{}
+B -265,0,683 obsidian{}
+B -265,0,684 obsidian{}
+B -265,0,685 obsidian{}
+B -265,0,686 obsidian{}
+B -265,0,687 obsidian{}
+B -265,0,688 obsidian{}
+B -265,0,689 obsidian{}
+B -265,0,690 obsidian{}
+B -265,0,691 obsidian{}
+B -265,0,692 obsidian{}
+B -265,0,693 obsidian{}
+B -265,0,694 obsidian{}
+B -265,0,695 obsidian{}
+B -265,0,696 obsidian{}
+B -265,0,697 obsidian{}
+B -265,0,698 obsidian{}
+B -265,0,699 obsidian{}
+B -265,0,700 obsidian{}
+B -265,0,701 obsidian{}
+B -265,0,702 obsidian{}
+B -265,0,703 obsidian{}
+B -265,0,704 obsidian{}
+B -265,0,705 obsidian{}
+B -265,0,706 obsidian{}
+B -265,0,707 obsidian{}
+B -265,0,708 obsidian{}
+B -265,0,709 obsidian{}
+B -265,0,710 obsidian{}
+B -265,0,711 obsidian{}
+B -265,0,712 obsidian{}
+B -265,0,713 obsidian{}
+B -265,0,714 obsidian{}
+B -327,3,679 obsidian{}
+B -326,3,679 obsidian{}
+B -326,3,680 obsidian{}
+B -326,3,681 obsidian{}
+B -326,3,682 obsidian{}
+B -326,3,683 obsidian{}
+B -326,3,684 obsidian{}
+B -326,3,685 obsidian{}
+B -326,3,686 obsidian{}
+B -326,3,687 obsidian{}
+B -326,3,688 obsidian{}
+B -326,3,689 obsidian{}
+B -326,3,690 obsidian{}
+B -326,3,691 obsidian{}
+B -326,3,692 obsidian{}
+B -326,3,693 obsidian{}
+B -326,3,694 obsidian{}
+B -326,3,695 obsidian{}
+B -326,3,696 obsidian{}
+B -326,3,697 obsidian{}
+B -326,3,698 obsidian{}
+B -326,3,699 obsidian{}
+B -326,3,700 obsidian{}
+B -326,3,701 obsidian{}
+B -326,3,702 obsidian{}
+B -326,3,703 obsidian{}
+B -326,3,704 obsidian{}
+B -326,3,705 obsidian{}
+B -326,3,706 obsidian{}
+B -325,3,679 obsidian{}
+B -325,3,688 obsidian{}
+B -325,3,697 obsidian{}
+B -325,3,706 obsidian{}
+B -324,3,679 obsidian{}
+B -324,3,688 obsidian{}
+B -324,3,697 obsidian{}
+B -324,3,706 obsidian{}
+B -323,3,679 obsidian{}
+B -323,3,688 obsidian{}
+B -323,3,697 obsidian{}
+B -323,3,706 obsidian{}
+B -322,3,679 obsidian{}
+B -322,3,688 obsidian{}
+B -322,3,697 obsidian{}
+B -322,3,706 obsidian{}
+B -321,3,679 obsidian{}
+B -321,3,688 obsidian{}
+B -321,3,697 obsidian{}
+B -321,3,706 obsidian{}
+B -320,3,679 obsidian{}
+B -320,3,680 obsidian{}
+B -320,3,688 obsidian{}
+B -320,3,689 obsidian{}
+B -320,3,697 obsidian{}
+B -320,3,698 obsidian{}
+B -320,3,700 obsidian{}
+B -320,3,701 obsidian{}
+B -320,3,706 obsidian{}
+B -320,3,707 obsidian{}
+B -319,3,679 obsidian{}
+B -319,3,688 obsidian{}
+B -319,3,697 obsidian{}
+B -319,3,699 obsidian{}
+B -319,3,700 obsidian{}
+B -319,3,701 obsidian{}
+B -319,3,706 obsidian{}
+B -319,3,708 obsidian{}
+B -318,3,679 obsidian{}
+B -318,3,688 obsidian{}
+B -318,3,697 obsidian{}
+B -318,3,706 obsidian{}
+B -317,3,679 obsidian{}
+B -317,3,688 obsidian{}
+B -317,3,697 obsidian{}
+B -317,3,706 obsidian{}
+B -316,3,679 obsidian{}
+B -316,3,688 obsidian{}
+B -316,3,697 obsidian{}
+B -316,3,706 obsidian{}
+B -315,3,679 obsidian{}
+B -315,3,688 obsidian{}
+B -315,3,697 obsidian{}
+B -315,3,706 obsidian{}
+B -314,3,679 obsidian{}
+B -314,3,688 obsidian{}
+B -314,3,697 obsidian{}
+B -314,3,706 obsidian{}
+B -313,3,679 obsidian{}
+B -313,3,680 obsidian{}
+B -313,3,688 obsidian{}
+B -313,3,689 obsidian{}
+B -313,3,697 obsidian{}
+B -313,3,698 obsidian{}
+B -313,3,706 obsidian{}
+B -313,3,707 obsidian{}
+B -312,3,679 obsidian{}
+B -312,3,688 obsidian{}
+B -312,3,697 obsidian{}
+B -312,3,706 obsidian{}
+B -311,3,679 obsidian{}
+B -311,3,688 obsidian{}
+B -311,3,697 obsidian{}
+B -311,3,706 obsidian{}
+B -310,3,679 obsidian{}
+B -310,3,688 obsidian{}
+B -310,3,697 obsidian{}
+B -310,3,706 obsidian{}
+B -309,3,679 obsidian{}
+B -309,3,688 obsidian{}
+B -309,3,697 obsidian{}
+B -309,3,706 obsidian{}
+B -308,3,679 obsidian{}
+B -308,3,688 obsidian{}
+B -308,3,697 obsidian{}
+B -308,3,706 obsidian{}
+B -307,3,679 obsidian{}
+B -307,3,688 obsidian{}
+B -307,3,697 obsidian{}
+B -307,3,706 obsidian{}
+B -306,3,679 obsidian{}
+B -306,3,680 obsidian{}
+B -306,3,688 obsidian{}
+B -306,3,689 obsidian{}
+B -306,3,697 obsidian{}
+B -306,3,698 obsidian{}
+B -306,3,706 obsidian{}
+B -306,3,707 obsidian{}
+B -305,3,679 obsidian{}
+B -305,3,688 obsidian{}
+B -305,3,697 obsidian{}
+B -305,3,706 obsidian{}
+B -304,3,679 obsidian{}
+B -304,3,688 obsidian{}
+B -304,3,697 obsidian{}
+B -304,3,706 obsidian{}
+B -304,3,708 obsidian{}
+B -303,3,679 obsidian{}
+B -303,3,688 obsidian{}
+B -303,3,697 obsidian{}
+B -303,3,706 obsidian{}
+B -302,3,679 obsidian{}
+B -302,3,688 obsidian{}
+B -302,3,697 obsidian{}
+B -302,3,706 obsidian{}
+B -301,3,679 obsidian{}
+B -301,3,688 obsidian{}
+B -301,3,697 obsidian{}
+B -301,3,706 obsidian{}
+B -300,3,679 obsidian{}
+B -300,3,688 obsidian{}
+B -300,3,697 obsidian{}
+B -300,3,706 obsidian{}
+B -299,3,679 obsidian{}
+B -299,3,680 obsidian{}
+B -299,3,688 obsidian{}
+B -299,3,689 obsidian{}
+B -299,3,697 obsidian{}
+B -299,3,698 obsidian{}
+B -299,3,706 obsidian{}
+B -298,3,679 obsidian{}
+B -298,3,688 obsidian{}
+B -298,3,690 obsidian{}
+B -298,3,697 obsidian{}
+B -298,3,699 obsidian{}
+B -298,3,706 obsidian{}
+B -297,3,679 obsidian{}
+B -297,3,688 obsidian{}
+B -297,3,697 obsidian{}
+B -297,3,699 obsidian{}
+B -297,3,706 obsidian{}
+B -296,3,679 obsidian{}
+B -296,3,688 obsidian{}
+B -296,3,697 obsidian{}
+B -296,3,706 obsidian{}
+B -295,3,679 obsidian{}
+B -295,3,688 obsidian{}
+B -295,3,697 obsidian{}
+B -295,3,706 obsidian{}
+B -294,3,679 obsidian{}
+B -294,3,688 obsidian{}
+B -294,3,697 obsidian{}
+B -294,3,706 obsidian{}
+B -293,3,679 obsidian{}
+B -293,3,688 obsidian{}
+B -293,3,697 obsidian{}
+B -293,3,706 obsidian{}
+B -292,3,679 obsidian{}
+B -292,3,680 obsidian{}
+B -292,3,688 obsidian{}
+B -292,3,689 obsidian{}
+B -292,3,697 obsidian{}
+B -292,3,698 obsidian{}
+B -292,3,706 obsidian{}
+B -291,3,679 obsidian{}
+B -291,3,688 obsidian{}
+B -291,3,690 obsidian{}
+B -291,3,697 obsidian{}
+B -291,3,706 obsidian{}
+B -290,3,679 obsidian{}
+B -290,3,688 obsidian{}
+B -290,3,697 obsidian{}
+B -290,3,699 obsidian{}
+B -290,3,706 obsidian{}
+B -289,3,679 obsidian{}
+B -289,3,688 obsidian{}
+B -289,3,697 obsidian{}
+B -289,3,706 obsidian{}
+B -288,3,679 obsidian{}
+B -288,3,688 obsidian{}
+B -288,3,697 obsidian{}
+B -288,3,706 obsidian{}
+B -287,3,679 obsidian{}
+B -287,3,688 obsidian{}
+B -287,3,697 obsidian{}
+B -287,3,706 obsidian{}
+B -286,3,679 obsidian{}
+B -286,3,688 obsidian{}
+B -286,3,697 obsidian{}
+B -286,3,706 obsidian{}
+B -285,3,679 obsidian{}
+B -285,3,680 obsidian{}
+B -285,3,688 obsidian{}
+B -285,3,689 obsidian{}
+B -285,3,697 obsidian{}
+B -285,3,698 obsidian{}
+B -285,3,706 obsidian{}
+B -284,3,679 obsidian{}
+B -284,3,688 obsidian{}
+B -284,3,690 obsidian{}
+B -284,3,697 obsidian{}
+B -284,3,706 obsidian{}
+B -283,3,679 obsidian{}
+B -283,3,688 obsidian{}
+B -283,3,697 obsidian{}
+B -283,3,706 obsidian{}
+B -282,3,679 obsidian{}
+B -282,3,688 obsidian{}
+B -282,3,697 obsidian{}
+B -282,3,706 obsidian{}
+B -281,3,679 obsidian{}
+B -281,3,688 obsidian{}
+B -281,3,697 obsidian{}
+B -281,3,706 obsidian{}
+B -280,3,679 obsidian{}
+B -280,3,688 obsidian{}
+B -280,3,697 obsidian{}
+B -280,3,706 obsidian{}
+B -279,3,679 obsidian{}
+B -279,3,688 obsidian{}
+B -279,3,697 obsidian{}
+B -279,3,706 obsidian{}
+B -278,3,679 obsidian{}
+B -278,3,680 obsidian{}
+B -278,3,688 obsidian{}
+B -278,3,689 obsidian{}
+B -278,3,697 obsidian{}
+B -278,3,698 obsidian{}
+B -278,3,706 obsidian{}
+B -277,3,679 obsidian{}
+B -277,3,688 obsidian{}
+B -277,3,690 obsidian{}
+B -277,3,697 obsidian{}
+B -277,3,706 obsidian{}
+B -276,3,679 obsidian{}
+B -276,3,688 obsidian{}
+B -276,3,697 obsidian{}
+B -276,3,699 chest{waterlogged: false, type: single, facing: north}
+B -276,3,706 obsidian{}
+B -275,3,679 obsidian{}
+B -275,3,688 obsidian{}
+B -275,3,697 obsidian{}
+B -275,3,706 obsidian{}
+B -274,3,679 obsidian{}
+B -274,3,688 obsidian{}
+B -274,3,697 obsidian{}
+B -274,3,706 obsidian{}
+B -273,3,679 obsidian{}
+B -273,3,688 obsidian{}
+B -273,3,697 obsidian{}
+B -273,3,706 obsidian{}
+B -272,3,679 obsidian{}
+B -272,3,688 obsidian{}
+B -272,3,697 obsidian{}
+B -272,3,706 obsidian{}
+B -271,3,679 obsidian{}
+B -271,3,688 obsidian{}
+B -271,3,697 obsidian{}
+B -271,3,706 obsidian{}
+B -327,4,679 lever{face: floor, powered: false, facing: north}
+B -326,4,679 redstone_wire{east: side, power: 0, south: side, north: none, west: side}
+B -326,4,680 redstone_wire{east: none, power: 0, south: side, north: side, west: none}
+B -326,4,681 redstone_wire{east: none, power: 0, south: side, north: side, west: none}
+B -326,4,682 redstone_wire{east: none, power: 0, south: side, north: side, west: none}
+B -326,4,683 redstone_wire{east: none, power: 0, south: side, north: side, west: none}
+B -326,4,684 redstone_wire{east: none, power: 0, south: side, north: side, west: none}
+B -326,4,685 repeater{powered: false, facing: north, delay: 1, locked: false}
+B -326,4,686 redstone_wire{east: none, power: 0, south: side, north: side, west: none}
+B -326,4,687 redstone_wire{east: none, power: 0, south: side, north: side, west: none}
+B -326,4,688 redstone_wire{east: side, power: 0, south: side, north: side, west: none}
+B -326,4,689 redstone_wire{east: none, power: 0, south: side, north: side, west: none}
+B -326,4,690 redstone_wire{east: none, power: 0, south: side, north: side, west: none}
+B -326,4,691 redstone_wire{east: none, power: 0, south: side, north: side, west: none}
+B -326,4,692 repeater{powered: false, facing: north, delay: 1, locked: false}
+B -326,4,693 redstone_wire{east: none, power: 0, south: side, north: side, west: none}
+B -326,4,694 redstone_wire{east: none, power: 0, south: side, north: side, west: none}
+B -326,4,695 redstone_wire{east: none, power: 0, south: side, north: side, west: none}
+B -326,4,696 redstone_wire{east: none, power: 0, south: side, north: side, west: none}
+B -326,4,697 redstone_wire{east: side, power: 0, south: side, north: side, west: none}
+B -326,4,698 redstone_wire{east: none, power: 0, south: side, north: side, west: none}
+B -326,4,699 repeater{powered: false, facing: north, delay: 1, locked: false}
+B -326,4,700 redstone_wire{east: none, power: 0, south: side, north: side, west: none}
+B -326,4,701 redstone_wire{east: none, power: 0, south: side, north: side, west: none}
+B -326,4,702 redstone_wire{east: none, power: 0, south: side, north: side, west: none}
+B -326,4,703 redstone_wire{east: none, power: 0, south: side, north: side, west: none}
+B -326,4,704 redstone_wire{east: none, power: 0, south: side, north: side, west: none}
+B -326,4,705 redstone_wire{east: none, power: 0, south: side, north: side, west: none}
+B -326,4,706 redstone_wire{east: side, power: 0, south: none, north: side, west: none}
+B -325,4,679 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -325,4,688 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -325,4,697 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -325,4,706 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -324,4,679 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -324,4,688 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -324,4,697 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -324,4,706 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -323,4,679 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -323,4,688 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -323,4,697 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -323,4,706 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -322,4,679 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -322,4,688 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -322,4,697 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -322,4,706 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -321,4,679 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -321,4,688 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -321,4,697 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -321,4,706 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -320,4,679 redstone_wire{east: side, power: 0, south: side, north: none, west: side}
+B -320,4,680 repeater{powered: false, facing: north, delay: 1, locked: false}
+B -320,4,681 stone{}
+B -320,4,688 redstone_wire{east: side, power: 0, south: side, north: none, west: side}
+B -320,4,689 repeater{powered: false, facing: north, delay: 1, locked: false}
+B -320,4,690 stone{}
+B -320,4,697 redstone_wire{east: side, power: 0, south: side, north: none, west: side}
+B -320,4,698 repeater{powered: false, facing: north, delay: 1, locked: false}
+B -320,4,699 stone{}
+B -320,4,700 redstone_wire{east: none, power: 0, south: side, north: side, west: none}
+B -320,4,701 redstone_wire{east: side, power: 0, south: none, north: side, west: none}
+B -320,4,706 redstone_wire{east: side, power: 0, south: side, north: none, west: side}
+B -320,4,707 repeater{powered: false, facing: north, delay: 1, locked: false}
+B -320,4,708 stone{}
+B -319,4,679 repeater{powered: false, facing: west, delay: 1, locked: false}
+B -319,4,681 sticky_piston{extended: false, facing: east}
+B -319,4,688 repeater{powered: false, facing: west, delay: 1, locked: false}
+B -319,4,690 sticky_piston{extended: false, facing: east}
+B -319,4,697 repeater{powered: false, facing: west, delay: 1, locked: false}
+B -319,4,699 repeater{powered: false, facing: west, delay: 4, locked: false}
+B -319,4,700 repeater{powered: false, facing: south, delay: 1, locked: false}
+B -319,4,701 redstone_wire{east: none, power: 0, south: none, north: side, west: side}
+B -319,4,706 repeater{powered: false, facing: west, delay: 1, locked: false}
+B -319,4,708 piston{extended: false, facing: up}
+B -318,4,679 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -318,4,681 oak_leaves{waterlogged: false, distance: 1, persistent: true}
+B -318,4,688 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -318,4,690 stone{}
+B -318,4,697 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -318,4,699 redstone_lamp{lit: false}
+B -318,4,706 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -317,4,679 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -317,4,688 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -317,4,697 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -317,4,706 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -316,4,679 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -316,4,688 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -316,4,697 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -316,4,706 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -315,4,679 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -315,4,688 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -315,4,697 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -315,4,706 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -314,4,679 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -314,4,688 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -314,4,697 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -314,4,706 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -313,4,679 redstone_wire{east: side, power: 0, south: side, north: none, west: side}
+B -313,4,680 repeater{powered: false, facing: north, delay: 1, locked: false}
+B -313,4,681 stone{}
+B -313,4,688 redstone_wire{east: side, power: 0, south: side, north: none, west: side}
+B -313,4,689 repeater{powered: false, facing: north, delay: 1, locked: false}
+B -313,4,690 stone{}
+B -313,4,697 redstone_wire{east: side, power: 0, south: side, north: none, west: side}
+B -313,4,698 repeater{powered: false, facing: north, delay: 1, locked: false}
+B -313,4,699 stone{}
+B -313,4,706 redstone_wire{east: side, power: 0, south: side, north: none, west: side}
+B -313,4,707 repeater{powered: false, facing: north, delay: 1, locked: false}
+B -313,4,708 stone{}
+B -312,4,679 repeater{powered: false, facing: west, delay: 1, locked: false}
+B -312,4,681 sticky_piston{extended: false, facing: east}
+B -312,4,688 repeater{powered: false, facing: west, delay: 1, locked: false}
+B -312,4,690 piston{extended: false, facing: east}
+B -312,4,697 repeater{powered: false, facing: west, delay: 1, locked: false}
+B -312,4,699 redstone_wall_torch{lit: true, facing: east}
+B -312,4,706 repeater{powered: false, facing: west, delay: 1, locked: false}
+B -312,4,708 sticky_piston{extended: false, facing: up}
+B -311,4,679 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -311,4,681 oak_leaves{waterlogged: false, distance: 1, persistent: false}
+B -311,4,688 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -311,4,690 stone{}
+B -311,4,697 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -311,4,699 stone{}
+B -311,4,706 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -310,4,679 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -310,4,688 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -310,4,697 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -310,4,699 redstone_lamp{lit: false}
+B -310,4,706 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -309,4,679 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -309,4,688 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -309,4,697 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -309,4,706 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -308,4,679 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -308,4,688 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -308,4,697 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -308,4,706 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -307,4,679 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -307,4,688 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -307,4,697 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -307,4,706 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -306,4,679 redstone_wire{east: side, power: 0, south: side, north: none, west: side}
+B -306,4,680 repeater{powered: false, facing: north, delay: 1, locked: false}
+B -306,4,681 stone{}
+B -306,4,688 redstone_wire{east: side, power: 0, south: side, north: none, west: side}
+B -306,4,689 repeater{powered: false, facing: north, delay: 1, locked: false}
+B -306,4,690 stone{}
+B -306,4,697 redstone_wire{east: side, power: 0, south: side, north: none, west: side}
+B -306,4,698 repeater{powered: false, facing: north, delay: 1, locked: false}
+B -306,4,699 stone{}
+B -306,4,706 redstone_wire{east: side, power: 0, south: side, north: none, west: side}
+B -306,4,707 repeater{powered: false, facing: north, delay: 1, locked: false}
+B -306,4,708 stone{}
+B -305,4,679 repeater{powered: false, facing: west, delay: 1, locked: false}
+B -305,4,681 sticky_piston{extended: false, facing: east}
+B -305,4,688 repeater{powered: false, facing: west, delay: 1, locked: false}
+B -305,4,690 sticky_piston{extended: false, facing: east}
+B -305,4,697 repeater{powered: false, facing: west, delay: 1, locked: false}
+B -305,4,699 redstone_lamp{lit: false}
+B -305,4,706 repeater{powered: false, facing: west, delay: 1, locked: false}
+B -305,4,708 piston{extended: false, facing: east}
+B -304,4,679 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -304,4,681 oak_leaves{waterlogged: false, distance: 7, persistent: true}
+B -304,4,688 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -304,4,690 stone{}
+B -304,4,697 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -304,4,699 observer{powered: false, facing: west}
+B -304,4,706 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -304,4,708 sand{}
+B -303,4,679 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -303,4,688 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -303,4,697 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -303,4,699 stone{}
+B -303,4,706 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -302,4,679 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -302,4,688 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -302,4,697 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -302,4,699 redstone_lamp{lit: false}
+B -302,4,706 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -301,4,679 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -301,4,688 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -301,4,697 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -301,4,706 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -300,4,679 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -300,4,688 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -300,4,697 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -300,4,706 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -299,4,679 redstone_wire{east: side, power: 0, south: side, north: none, west: side}
+B -299,4,680 repeater{powered: false, facing: north, delay: 1, locked: false}
+B -299,4,681 stone{}
+B -299,4,688 redstone_wire{east: side, power: 0, south: side, north: none, west: side}
+B -299,4,689 repeater{powered: false, facing: north, delay: 1, locked: false}
+B -299,4,690 stone{}
+B -299,4,697 redstone_wire{east: side, power: 0, south: side, north: none, west: side}
+B -299,4,698 repeater{powered: false, facing: north, delay: 1, locked: false}
+B -299,4,699 stone{}
+B -299,4,706 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -298,4,679 repeater{powered: false, facing: west, delay: 1, locked: false}
+B -298,4,681 piston{extended: false, facing: east}
+B -298,4,688 repeater{powered: false, facing: west, delay: 1, locked: false}
+B -298,4,690 repeater{powered: false, facing: west, delay: 1, locked: false}
+B -298,4,697 repeater{powered: false, facing: west, delay: 1, locked: false}
+B -298,4,699 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -298,4,706 repeater{powered: false, facing: west, delay: 1, locked: false}
+B -297,4,679 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -297,4,681 oak_leaves{waterlogged: false, distance: 1, persistent: true}
+B -297,4,688 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -297,4,690 redstone_lamp{lit: false}
+B -297,4,697 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -297,4,699 comparator{mode: compare, powered: false, facing: west}
+B -297,4,706 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -296,4,679 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -296,4,688 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -296,4,697 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -296,4,699 stone{}
+B -296,4,706 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -295,4,679 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -295,4,688 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -295,4,697 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -295,4,699 redstone_lamp{lit: false}
+B -295,4,706 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -294,4,679 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -294,4,688 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -294,4,697 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -294,4,706 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -293,4,679 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -293,4,688 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -293,4,697 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -293,4,706 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -292,4,679 redstone_wire{east: side, power: 0, south: side, north: none, west: side}
+B -292,4,680 repeater{powered: false, facing: north, delay: 1, locked: false}
+B -292,4,681 stone{}
+B -292,4,688 redstone_wire{east: side, power: 0, south: side, north: none, west: side}
+B -292,4,689 repeater{powered: false, facing: north, delay: 1, locked: false}
+B -292,4,690 stone{}
+B -292,4,697 redstone_wire{east: side, power: 0, south: side, north: none, west: side}
+B -292,4,698 repeater{powered: false, facing: north, delay: 1, locked: false}
+B -292,4,699 stone{}
+B -292,4,706 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -291,4,679 repeater{powered: false, facing: west, delay: 1, locked: false}
+B -291,4,681 piston{extended: false, facing: east}
+B -291,4,688 repeater{powered: false, facing: west, delay: 1, locked: false}
+B -291,4,690 repeater{powered: false, facing: west, delay: 2, locked: false}
+B -291,4,697 repeater{powered: false, facing: west, delay: 1, locked: false}
+B -291,4,699 chest{waterlogged: false, type: single, facing: north}
+V -291,4,699 chest [0:cobblestonex3]
+B -291,4,706 repeater{powered: false, facing: west, delay: 1, locked: false}
+B -290,4,679 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -290,4,681 oak_leaves{waterlogged: false, distance: 1, persistent: false}
+B -290,4,688 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -290,4,690 redstone_lamp{lit: false}
+B -290,4,697 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -290,4,699 comparator{mode: compare, powered: false, facing: west}
+B -290,4,706 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -289,4,679 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -289,4,688 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -289,4,697 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -289,4,699 stone{}
+B -289,4,706 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -288,4,679 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -288,4,688 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -288,4,697 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -288,4,699 redstone_lamp{lit: false}
+B -288,4,706 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -287,4,679 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -287,4,688 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -287,4,697 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -287,4,706 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -286,4,679 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -286,4,688 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -286,4,697 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -286,4,706 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -285,4,679 redstone_wire{east: side, power: 0, south: side, north: none, west: side}
+B -285,4,680 repeater{powered: false, facing: north, delay: 1, locked: false}
+B -285,4,681 stone{}
+B -285,4,688 redstone_wire{east: side, power: 0, south: side, north: none, west: side}
+B -285,4,689 repeater{powered: false, facing: north, delay: 1, locked: false}
+B -285,4,690 stone{}
+B -285,4,697 redstone_wire{east: side, power: 0, south: side, north: none, west: side}
+B -285,4,698 repeater{powered: false, facing: north, delay: 1, locked: false}
+B -285,4,699 stone{}
+B -285,4,706 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -284,4,679 repeater{powered: false, facing: west, delay: 1, locked: false}
+B -284,4,681 sticky_piston{extended: false, facing: east}
+B -284,4,688 repeater{powered: false, facing: west, delay: 1, locked: false}
+B -284,4,690 repeater{powered: false, facing: west, delay: 3, locked: false}
+B -284,4,697 repeater{powered: false, facing: west, delay: 1, locked: false}
+B -284,4,699 redstone_wall_torch{lit: true, facing: east}
+B -284,4,706 repeater{powered: false, facing: west, delay: 1, locked: false}
+B -283,4,679 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -283,4,681 oak_leaves{waterlogged: false, distance: 1, persistent: true}
+B -283,4,688 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -283,4,690 redstone_lamp{lit: false}
+B -283,4,697 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -283,4,699 hopper{enabled: false, facing: east}
+B -283,4,706 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -282,4,679 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -282,4,682 oak_log{axis: y}
+B -282,4,688 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -282,4,697 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -282,4,699 chest{waterlogged: false, type: single, facing: north}
+B -282,4,706 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -281,4,679 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -281,4,688 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -281,4,697 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -281,4,706 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -280,4,679 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -280,4,688 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -280,4,697 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -280,4,706 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -279,4,679 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -279,4,688 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -279,4,697 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -279,4,706 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -278,4,679 redstone_wire{east: side, power: 0, south: side, north: none, west: side}
+B -278,4,680 repeater{powered: false, facing: north, delay: 1, locked: false}
+B -278,4,681 stone{}
+B -278,4,688 redstone_wire{east: side, power: 0, south: side, north: none, west: side}
+B -278,4,689 repeater{powered: false, facing: north, delay: 1, locked: false}
+B -278,4,690 stone{}
+B -278,4,697 redstone_wire{east: side, power: 0, south: side, north: none, west: side}
+B -278,4,698 repeater{powered: false, facing: north, delay: 1, locked: false}
+B -278,4,699 stone{}
+B -278,4,706 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -277,4,679 repeater{powered: false, facing: west, delay: 1, locked: false}
+B -277,4,681 sticky_piston{extended: false, facing: east}
+B -277,4,688 repeater{powered: false, facing: west, delay: 1, locked: false}
+B -277,4,690 repeater{powered: false, facing: west, delay: 4, locked: false}
+B -277,4,697 repeater{powered: false, facing: west, delay: 1, locked: false}
+B -277,4,699 dropper{triggered: false, facing: east}
+V -277,4,699 dropper [0:cobblestonex2]
+B -277,4,706 repeater{powered: false, facing: west, delay: 1, locked: false}
+B -276,4,679 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -276,4,681 oak_leaves{waterlogged: false, distance: 1, persistent: true}
+B -276,4,688 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -276,4,690 redstone_lamp{lit: false}
+B -276,4,697 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -276,4,699 hopper{enabled: true, facing: down}
+B -276,4,706 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -275,4,679 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -275,4,681 oak_leaves{waterlogged: false, distance: 1, persistent: true}
+B -275,4,688 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -275,4,697 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -275,4,706 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -274,4,679 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -274,4,688 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -274,4,697 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -274,4,706 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -273,4,679 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -273,4,688 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -273,4,697 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -273,4,706 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -272,4,679 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -272,4,688 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -272,4,697 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -272,4,706 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -271,4,679 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -271,4,688 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -271,4,697 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -271,4,706 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -319,5,708 sand{}
+B -312,5,708 sand{}
+B -283,5,699 chest{waterlogged: false, type: single, facing: north}
+V -283,5,699 chest [0:cobblestonex8,1:cobblestonex8,2:cobblestonex8,3:cobblestonex8]
+CLICK 73 lever [-327, 4, 679]
+T 198
+B -327,4,679 lever{face: floor, powered: true, facing: north}
+B -326,4,679 redstone_wire{east: side, power: 15, south: side, north: none, west: side}
+B -326,4,680 redstone_wire{east: none, power: 14, south: side, north: side, west: none}
+B -326,4,681 redstone_wire{east: none, power: 13, south: side, north: side, west: none}
+B -326,4,682 redstone_wire{east: none, power: 12, south: side, north: side, west: none}
+B -326,4,683 redstone_wire{east: none, power: 11, south: side, north: side, west: none}
+B -326,4,684 redstone_wire{east: none, power: 10, south: side, north: side, west: none}
+B -325,4,679 redstone_wire{east: side, power: 14, south: none, north: none, west: side}
+B -324,4,679 redstone_wire{east: side, power: 13, south: none, north: none, west: side}
+B -323,4,679 redstone_wire{east: side, power: 12, south: none, north: none, west: side}
+B -322,4,679 redstone_wire{east: side, power: 11, south: none, north: none, west: side}
+B -321,4,679 redstone_wire{east: side, power: 10, south: none, north: none, west: side}
+B -320,4,679 redstone_wire{east: side, power: 9, south: side, north: none, west: side}
+T 199
+B -326,4,685 repeater{powered: true, facing: north, delay: 1, locked: false}
+B -326,4,686 redstone_wire{east: none, power: 15, south: side, north: side, west: none}
+B -326,4,687 redstone_wire{east: none, power: 14, south: side, north: side, west: none}
+B -326,4,688 redstone_wire{east: side, power: 13, south: side, north: side, west: none}
+B -326,4,689 redstone_wire{east: none, power: 12, south: side, north: side, west: none}
+B -326,4,690 redstone_wire{east: none, power: 11, south: side, north: side, west: none}
+B -326,4,691 redstone_wire{east: none, power: 10, south: side, north: side, west: none}
+B -325,4,688 redstone_wire{east: side, power: 12, south: none, north: none, west: side}
+B -324,4,688 redstone_wire{east: side, power: 11, south: none, north: none, west: side}
+B -323,4,688 redstone_wire{east: side, power: 10, south: none, north: none, west: side}
+B -322,4,688 redstone_wire{east: side, power: 9, south: none, north: none, west: side}
+B -321,4,688 redstone_wire{east: side, power: 8, south: none, north: none, west: side}
+B -320,4,680 repeater{powered: true, facing: north, delay: 1, locked: false}
+B -320,4,688 redstone_wire{east: side, power: 7, south: side, north: none, west: side}
+B -319,4,679 repeater{powered: true, facing: west, delay: 1, locked: false}
+B -319,4,681 sticky_piston{extended: true, facing: east}
+B -318,4,679 redstone_wire{east: side, power: 15, south: none, north: none, west: side}
+B -318,4,681 moving_piston{type: sticky, facing: east}
+B -317,4,679 redstone_wire{east: side, power: 14, south: none, north: none, west: side}
+B -316,4,679 redstone_wire{east: side, power: 13, south: none, north: none, west: side}
+B -315,4,679 redstone_wire{east: side, power: 12, south: none, north: none, west: side}
+B -314,4,679 redstone_wire{east: side, power: 11, south: none, north: none, west: side}
+B -313,4,679 redstone_wire{east: side, power: 10, south: side, north: none, west: side}
+I 13 -317.365 4.346 681.517 v 0.023 0.157 0.073 oak_sapling x1 age 1
+T 200
+I 13 -316.865 4.462 681.59 v 0.023 0.114 0.072 oak_sapling x1 age 2
+T 201
+B -326,4,692 repeater{powered: true, facing: north, delay: 1, locked: false}
+B -326,4,693 redstone_wire{east: none, power: 15, south: side, north: side, west: none}
+B -326,4,694 redstone_wire{east: none, power: 14, south: side, north: side, west: none}
+B -326,4,695 redstone_wire{east: none, power: 13, south: side, north: side, west: none}
+B -326,4,696 redstone_wire{east: none, power: 12, south: side, north: side, west: none}
+B -326,4,697 redstone_wire{east: side, power: 11, south: side, north: side, west: none}
+B -326,4,698 redstone_wire{east: none, power: 10, south: side, north: side, west: none}
+B -325,4,697 redstone_wire{east: side, power: 10, south: none, north: none, west: side}
+B -324,4,697 redstone_wire{east: side, power: 9, south: none, north: none, west: side}
+B -323,4,697 redstone_wire{east: side, power: 8, south: none, north: none, west: side}
+B -322,4,697 redstone_wire{east: side, power: 7, south: none, north: none, west: side}
+B -321,4,697 redstone_wire{east: side, power: 6, south: none, north: none, west: side}
+B -320,4,689 repeater{powered: true, facing: north, delay: 1, locked: false}
+B -320,4,697 redstone_wire{east: side, power: 5, south: side, north: none, west: side}
+B -319,4,688 repeater{powered: true, facing: west, delay: 1, locked: false}
+B -319,4,690 sticky_piston{extended: true, facing: east}
+B -318,4,681 piston_head{type: sticky, short: false, facing: east}
+B -318,4,688 redstone_wire{east: side, power: 15, south: none, north: none, west: side}
+B -318,4,690 moving_piston{type: sticky, facing: east}
+B -317,4,688 redstone_wire{east: side, power: 14, south: none, north: none, west: side}
+B -317,4,690 moving_piston{type: normal, facing: east}
+B -316,4,688 redstone_wire{east: side, power: 13, south: none, north: none, west: side}
+B -315,4,688 redstone_wire{east: side, power: 12, south: none, north: none, west: side}
+B -314,4,688 redstone_wire{east: side, power: 11, south: none, north: none, west: side}
+B -313,4,680 repeater{powered: true, facing: north, delay: 1, locked: false}
+B -313,4,688 redstone_wire{east: side, power: 10, south: side, north: none, west: side}
+B -312,4,679 repeater{powered: true, facing: west, delay: 1, locked: false}
+B -312,4,681 sticky_piston{extended: true, facing: east}
+B -311,4,679 redstone_wire{east: side, power: 15, south: none, north: none, west: side}
+B -311,4,681 moving_piston{type: sticky, facing: east}
+B -310,4,679 redstone_wire{east: side, power: 14, south: none, north: none, west: side}
+B -309,4,679 redstone_wire{east: side, power: 13, south: none, north: none, west: side}
+B -308,4,679 redstone_wire{east: side, power: 12, south: none, north: none, west: side}
+B -307,4,679 redstone_wire{east: side, power: 11, south: none, north: none, west: side}
+B -306,4,679 redstone_wire{east: side, power: 10, south: side, north: none, west: side}
+I 13 -316.842 4.537 681.662 v 0.022 0.073 0.07 oak_sapling x1 age 3
+T 202
+I 13 -316.82 4.57 681.732 v 0.022 0.032 0.069 oak_sapling x1 age 4
+T 203
+B -326,4,699 repeater{powered: true, facing: north, delay: 1, locked: false}
+B -326,4,700 redstone_wire{east: none, power: 15, south: side, north: side, west: none}
+B -326,4,701 redstone_wire{east: none, power: 14, south: side, north: side, west: none}
+B -326,4,702 redstone_wire{east: none, power: 13, south: side, north: side, west: none}
+B -326,4,703 redstone_wire{east: none, power: 12, south: side, north: side, west: none}
+B -326,4,704 redstone_wire{east: none, power: 11, south: side, north: side, west: none}
+B -326,4,705 redstone_wire{east: none, power: 10, south: side, north: side, west: none}
+B -326,4,706 redstone_wire{east: side, power: 9, south: none, north: side, west: none}
+B -325,4,706 redstone_wire{east: side, power: 8, south: none, north: none, west: side}
+B -324,4,706 redstone_wire{east: side, power: 7, south: none, north: none, west: side}
+B -323,4,706 redstone_wire{east: side, power: 6, south: none, north: none, west: side}
+B -322,4,706 redstone_wire{east: side, power: 5, south: none, north: none, west: side}
+B -321,4,706 redstone_wire{east: side, power: 4, south: none, north: none, west: side}
+B -320,4,698 repeater{powered: true, facing: north, delay: 1, locked: false}
+B -320,4,700 redstone_wire{east: none, power: 15, south: side, north: side, west: none}
+B -320,4,701 redstone_wire{east: side, power: 14, south: none, north: side, west: none}
+B -320,4,706 redstone_wire{east: side, power: 3, south: side, north: none, west: side}
+B -319,4,697 repeater{powered: true, facing: west, delay: 1, locked: false}
+B -319,4,701 redstone_wire{east: none, power: 13, south: none, north: side, west: side}
+B -318,4,690 piston_head{type: sticky, short: false, facing: east}
+B -318,4,697 redstone_wire{east: side, power: 15, south: none, north: none, west: side}
+B -317,4,690 stone{}
+B -317,4,697 redstone_wire{east: side, power: 14, south: none, north: none, west: side}
+B -316,4,697 redstone_wire{east: side, power: 13, south: none, north: none, west: side}
+B -315,4,697 redstone_wire{east: side, power: 12, south: none, north: none, west: side}
+B -314,4,697 redstone_wire{east: side, power: 11, south: none, north: none, west: side}
+B -313,4,689 repeater{powered: true, facing: north, delay: 1, locked: false}
+B -313,4,697 redstone_wire{east: side, power: 10, south: side, north: none, west: side}
+B -312,4,688 repeater{powered: true, facing: west, delay: 1, locked: false}
+B -312,4,690 piston{extended: true, facing: east}
+B -311,4,681 piston_head{type: sticky, short: false, facing: east}
+B -311,4,688 redstone_wire{east: side, power: 15, south: none, north: none, west: side}
+B -311,4,690 moving_piston{type: normal, facing: east}
+B -310,4,688 redstone_wire{east: side, power: 14, south: none, north: none, west: side}
+B -310,4,690 moving_piston{type: normal, facing: east}
+B -309,4,688 redstone_wire{east: side, power: 13, south: none, north: none, west: side}
+B -308,4,688 redstone_wire{east: side, power: 12, south: none, north: none, west: side}
+B -307,4,688 redstone_wire{east: side, power: 11, south: none, north: none, west: side}
+B -306,4,680 repeater{powered: true, facing: north, delay: 1, locked: false}
+B -306,4,688 redstone_wire{east: side, power: 10, south: side, north: none, west: side}
+B -305,4,679 repeater{powered: true, facing: west, delay: 1, locked: false}
+B -305,4,681 sticky_piston{extended: true, facing: east}
+B -304,4,679 redstone_wire{east: side, power: 15, south: none, north: none, west: side}
+B -304,4,681 moving_piston{type: sticky, facing: east}
+B -303,4,679 redstone_wire{east: side, power: 14, south: none, north: none, west: side}
+B -302,4,679 redstone_wire{east: side, power: 13, south: none, north: none, west: side}
+B -301,4,679 redstone_wire{east: side, power: 12, south: none, north: none, west: side}
+B -300,4,679 redstone_wire{east: side, power: 11, south: none, north: none, west: side}
+B -299,4,679 redstone_wire{east: side, power: 10, south: side, north: none, west: side}
+I 13 -316.798 4.562 681.801 v 0.021 -0.008 0.067 oak_sapling x1 age 5
+T 204
+I 13 -316.777 4.515 681.868 v 0.021 -0.047 0.066 oak_sapling x1 age 6
+T 205
+B -320,4,707 repeater{powered: true, facing: north, delay: 1, locked: false}
+B -319,4,699 repeater{powered: false, facing: west, delay: 4, locked: true}
+B -319,4,700 repeater{powered: true, facing: south, delay: 1, locked: false}
+B -319,4,706 repeater{powered: true, facing: west, delay: 1, locked: false}
+B -319,4,708 piston{extended: true, facing: up}
+B -318,4,706 redstone_wire{east: side, power: 15, south: none, north: none, west: side}
+B -317,4,706 redstone_wire{east: side, power: 14, south: none, north: none, west: side}
+B -316,4,706 redstone_wire{east: side, power: 13, south: none, north: none, west: side}
+B -315,4,706 redstone_wire{east: side, power: 12, south: none, north: none, west: side}
+B -314,4,706 redstone_wire{east: side, power: 11, south: none, north: none, west: side}
+B -313,4,698 repeater{powered: true, facing: north, delay: 1, locked: false}
+B -313,4,706 redstone_wire{east: side, power: 10, south: side, north: none, west: side}
+B -312,4,697 repeater{powered: true, facing: west, delay: 1, locked: false}
+B -311,4,690 piston_head{type: normal, short: false, facing: east}
+B -311,4,697 redstone_wire{east: side, power: 15, south: none, north: none, west: side}
+B -310,4,690 stone{}
+B -310,4,697 redstone_wire{east: side, power: 14, south: none, north: none, west: side}
+B -309,4,697 redstone_wire{east: side, power: 13, south: none, north: none, west: side}
+B -308,4,697 redstone_wire{east: side, power: 12, south: none, north: none, west: side}
+B -307,4,697 redstone_wire{east: side, power: 11, south: none, north: none, west: side}
+B -306,4,689 repeater{powered: true, facing: north, delay: 1, locked: false}
+B -306,4,697 redstone_wire{east: side, power: 10, south: side, north: none, west: side}
+B -305,4,688 repeater{powered: true, facing: west, delay: 1, locked: false}
+B -305,4,690 sticky_piston{extended: true, facing: east}
+B -304,4,681 piston_head{type: sticky, short: false, facing: east}
+B -304,4,688 redstone_wire{east: side, power: 15, south: none, north: none, west: side}
+B -304,4,690 moving_piston{type: sticky, facing: east}
+B -303,4,688 redstone_wire{east: side, power: 14, south: none, north: none, west: side}
+B -303,4,690 moving_piston{type: normal, facing: east}
+B -302,4,688 redstone_wire{east: side, power: 13, south: none, north: none, west: side}
+B -301,4,688 redstone_wire{east: side, power: 12, south: none, north: none, west: side}
+B -300,4,688 redstone_wire{east: side, power: 11, south: none, north: none, west: side}
+B -299,4,680 repeater{powered: true, facing: north, delay: 1, locked: false}
+B -299,4,688 redstone_wire{east: side, power: 10, south: side, north: none, west: side}
+B -298,4,679 repeater{powered: true, facing: west, delay: 1, locked: false}
+B -298,4,681 piston{extended: true, facing: east}
+B -297,4,679 redstone_wire{east: side, power: 15, south: none, north: none, west: side}
+B -297,4,681 moving_piston{type: normal, facing: east}
+B -296,4,679 redstone_wire{east: side, power: 14, south: none, north: none, west: side}
+B -295,4,679 redstone_wire{east: side, power: 13, south: none, north: none, west: side}
+B -294,4,679 redstone_wire{east: side, power: 12, south: none, north: none, west: side}
+B -293,4,679 redstone_wire{east: side, power: 11, south: none, north: none, west: side}
+B -292,4,679 redstone_wire{east: side, power: 10, south: side, north: none, west: side}
+B -319,5,708 moving_piston{type: normal, facing: up}
+B -319,6,708 moving_piston{type: normal, facing: up}
+I 13 -316.756 4.428 681.934 v 0.02 -0.085 0.065 oak_sapling x1 age 7
+T 206
+I 13 -316.736 4.303 681.999 v 0.02 -0.122 0.063 oak_sapling x1 age 8
+T 207
+B -313,4,707 repeater{powered: true, facing: north, delay: 1, locked: false}
+B -312,4,699 redstone_wall_torch{lit: false, facing: east}
+B -312,4,706 repeater{powered: true, facing: west, delay: 1, locked: false}
+B -312,4,708 sticky_piston{extended: true, facing: up}
+B -311,4,706 redstone_wire{east: side, power: 15, south: none, north: none, west: side}
+B -310,4,706 redstone_wire{east: side, power: 14, south: none, north: none, west: side}
+B -309,4,706 redstone_wire{east: side, power: 13, south: none, north: none, west: side}
+B -308,4,706 redstone_wire{east: side, power: 12, south: none, north: none, west: side}
+B -307,4,706 redstone_wire{east: side, power: 11, south: none, north: none, west: side}
+B -306,4,698 repeater{powered: true, facing: north, delay: 1, locked: false}
+B -306,4,706 redstone_wire{east: side, power: 10, south: side, north: none, west: side}
+B -305,4,697 repeater{powered: true, facing: west, delay: 1, locked: false}
+B -305,4,699 redstone_lamp{lit: true}
+B -304,4,690 piston_head{type: sticky, short: false, facing: east}
+B -304,4,697 redstone_wire{east: side, power: 15, south: none, north: none, west: side}
+B -303,4,690 stone{}
+B -303,4,697 redstone_wire{east: side, power: 14, south: none, north: none, west: side}
+B -302,4,697 redstone_wire{east: side, power: 13, south: none, north: none, west: side}
+B -301,4,697 redstone_wire{east: side, power: 12, south: none, north: none, west: side}
+B -300,4,697 redstone_wire{east: side, power: 11, south: none, north: none, west: side}
+B -299,4,689 repeater{powered: true, facing: north, delay: 1, locked: false}
+B -299,4,697 redstone_wire{east: side, power: 10, south: side, north: none, west: side}
+B -298,4,688 repeater{powered: true, facing: west, delay: 1, locked: false}
+B -297,4,681 piston_head{type: normal, short: false, facing: east}
+B -297,4,688 redstone_wire{east: side, power: 15, south: none, north: none, west: side}
+B -296,4,688 redstone_wire{east: side, power: 14, south: none, north: none, west: side}
+B -295,4,688 redstone_wire{east: side, power: 13, south: none, north: none, west: side}
+B -294,4,688 redstone_wire{east: side, power: 12, south: none, north: none, west: side}
+B -293,4,688 redstone_wire{east: side, power: 11, south: none, north: none, west: side}
+B -292,4,680 repeater{powered: true, facing: north, delay: 1, locked: false}
+B -292,4,688 redstone_wire{east: side, power: 10, south: side, north: none, west: side}
+B -291,4,679 repeater{powered: true, facing: west, delay: 1, locked: false}
+B -291,4,681 piston{extended: true, facing: east}
+B -290,4,679 redstone_wire{east: side, power: 15, south: none, north: none, west: side}
+B -290,4,681 moving_piston{type: normal, facing: east}
+B -289,4,679 redstone_wire{east: side, power: 14, south: none, north: none, west: side}
+B -288,4,679 redstone_wire{east: side, power: 13, south: none, north: none, west: side}
+B -287,4,679 redstone_wire{east: side, power: 12, south: none, north: none, west: side}
+B -286,4,679 redstone_wire{east: side, power: 11, south: none, north: none, west: side}
+B -285,4,679 redstone_wire{east: side, power: 10, south: side, north: none, west: side}
+B -319,5,708 piston_head{type: normal, short: false, facing: up}
+B -312,5,708 moving_piston{type: sticky, facing: up}
+B -319,6,708 sand{}
+B -312,6,708 moving_piston{type: normal, facing: up}
+I 13 -316.716 4.141 682.062 v 0.02 -0.159 0.062 oak_sapling x1 age 9
+T 208
+I 13 -316.696 3.942 682.124 v 0.019 -0.195 0.061 oak_sapling x1 age 10
+T 209
+B -306,4,707 repeater{powered: true, facing: north, delay: 1, locked: false}
+B -305,4,706 repeater{powered: true, facing: west, delay: 1, locked: false}
+B -305,4,708 piston{extended: true, facing: east}
+B -304,4,699 observer{powered: true, facing: west}
+B -304,4,706 redstone_wire{east: side, power: 15, south: none, north: none, west: side}
+B -304,4,708 moving_piston{type: normal, facing: east}
+B -303,4,706 redstone_wire{east: side, power: 14, south: none, north: none, west: side}
+B -303,4,708 moving_piston{type: normal, facing: east}
+B -302,4,699 redstone_lamp{lit: true}
+B -302,4,706 redstone_wire{east: side, power: 13, south: none, north: none, west: side}
+B -301,4,706 redstone_wire{east: side, power: 12, south: none, north: none, west: side}
+B -300,4,706 redstone_wire{east: side, power: 11, south: none, north: none, west: side}
+B -299,4,698 repeater{powered: true, facing: north, delay: 1, locked: false}
+B -299,4,706 redstone_wire{east: side, power: 10, south: none, north: none, west: side}
+B -298,4,690 repeater{powered: true, facing: west, delay: 1, locked: false}
+B -298,4,697 repeater{powered: true, facing: west, delay: 1, locked: false}
+B -298,4,699 redstone_wire{east: side, power: 15, south: none, north: none, west: side}
+B -297,4,690 redstone_lamp{lit: true}
+B -297,4,697 redstone_wire{east: side, power: 15, south: none, north: none, west: side}
+B -296,4,697 redstone_wire{east: side, power: 14, south: none, north: none, west: side}
+B -295,4,697 redstone_wire{east: side, power: 13, south: none, north: none, west: side}
+B -294,4,697 redstone_wire{east: side, power: 12, south: none, north: none, west: side}
+B -293,4,697 redstone_wire{east: side, power: 11, south: none, north: none, west: side}
+B -292,4,689 repeater{powered: true, facing: north, delay: 1, locked: false}
+B -292,4,697 redstone_wire{east: side, power: 10, south: side, north: none, west: side}
+B -291,4,688 repeater{powered: true, facing: west, delay: 1, locked: false}
+B -290,4,681 piston_head{type: normal, short: false, facing: east}
+B -290,4,688 redstone_wire{east: side, power: 15, south: none, north: none, west: side}
+B -289,4,688 redstone_wire{east: side, power: 14, south: none, north: none, west: side}
+B -288,4,688 redstone_wire{east: side, power: 13, south: none, north: none, west: side}
+B -287,4,688 redstone_wire{east: side, power: 12, south: none, north: none, west: side}
+B -286,4,688 redstone_wire{east: side, power: 11, south: none, north: none, west: side}
+B -285,4,680 repeater{powered: true, facing: north, delay: 1, locked: false}
+B -285,4,688 redstone_wire{east: side, power: 10, south: side, north: none, west: side}
+B -284,4,679 repeater{powered: true, facing: west, delay: 1, locked: false}
+B -284,4,681 sticky_piston{extended: true, facing: east}
+B -283,4,679 redstone_wire{east: side, power: 15, south: none, north: none, west: side}
+B -283,4,681 moving_piston{type: sticky, facing: east}
+B -282,4,679 redstone_wire{east: side, power: 14, south: none, north: none, west: side}
+B -281,4,679 redstone_wire{east: side, power: 13, south: none, north: none, west: side}
+B -280,4,679 redstone_wire{east: side, power: 12, south: none, north: none, west: side}
+B -279,4,679 redstone_wire{east: side, power: 11, south: none, north: none, west: side}
+B -278,4,679 redstone_wire{east: side, power: 10, south: side, north: none, west: side}
+B -312,5,708 piston_head{type: sticky, short: false, facing: up}
+B -312,6,708 sand{}
+I 13 -316.677 3.707 682.185 v 0.019 -0.23 0.06 oak_sapling x1 age 11
+T 210
+I 13 -316.658 3.436 682.245 v 0.018 -0.265 0.058 oak_sapling x1 age 12
+T 211
+B -304,4,699 observer{powered: false, facing: west}
+B -304,4,708 piston_head{type: normal, short: false, facing: east}
+B -303,4,708 sand{}
+B -298,4,706 repeater{powered: true, facing: west, delay: 1, locked: false}
+B -297,4,699 comparator{mode: compare, powered: true, facing: west}
+B -297,4,706 redstone_wire{east: side, power: 15, south: none, north: none, west: side}
+B -296,4,706 redstone_wire{east: side, power: 14, south: none, north: none, west: side}
+B -295,4,699 redstone_lamp{lit: true}
+B -295,4,706 redstone_wire{east: side, power: 13, south: none, north: none, west: side}
+B -294,4,706 redstone_wire{east: side, power: 12, south: none, north: none, west: side}
+B -293,4,706 redstone_wire{east: side, power: 11, south: none, north: none, west: side}
+B -292,4,698 repeater{powered: true, facing: north, delay: 1, locked: false}
+B -292,4,706 redstone_wire{east: side, power: 10, south: none, north: none, west: side}
+B -291,4,697 repeater{powered: true, facing: west, delay: 1, locked: false}
+B -290,4,697 redstone_wire{east: side, power: 15, south: none, north: none, west: side}
+B -289,4,697 redstone_wire{east: side, power: 14, south: none, north: none, west: side}
+B -288,4,697 redstone_wire{east: side, power: 13, south: none, north: none, west: side}
+B -287,4,697 redstone_wire{east: side, power: 12, south: none, north: none, west: side}
+B -286,4,697 redstone_wire{east: side, power: 11, south: none, north: none, west: side}
+B -285,4,689 repeater{powered: true, facing: north, delay: 1, locked: false}
+B -285,4,697 redstone_wire{east: side, power: 10, south: side, north: none, west: side}
+B -284,4,688 repeater{powered: true, facing: west, delay: 1, locked: false}
+B -283,4,681 piston_head{type: sticky, short: false, facing: east}
+B -283,4,688 redstone_wire{east: side, power: 15, south: none, north: none, west: side}
+B -282,4,688 redstone_wire{east: side, power: 14, south: none, north: none, west: side}
+B -281,4,688 redstone_wire{east: side, power: 13, south: none, north: none, west: side}
+B -280,4,688 redstone_wire{east: side, power: 12, south: none, north: none, west: side}
+B -279,4,688 redstone_wire{east: side, power: 11, south: none, north: none, west: side}
+B -278,4,680 repeater{powered: true, facing: north, delay: 1, locked: false}
+B -278,4,688 redstone_wire{east: side, power: 10, south: side, north: none, west: side}
+B -277,4,679 repeater{powered: true, facing: west, delay: 1, locked: false}
+B -277,4,681 sticky_piston{extended: true, facing: east}
+B -276,4,679 redstone_wire{east: side, power: 15, south: none, north: none, west: side}
+B -276,4,681 moving_piston{type: sticky, facing: east}
+B -275,4,679 redstone_wire{east: side, power: 14, south: none, north: none, west: side}
+B -274,4,679 redstone_wire{east: side, power: 13, south: none, north: none, west: side}
+B -273,4,679 redstone_wire{east: side, power: 12, south: none, north: none, west: side}
+B -272,4,679 redstone_wire{east: side, power: 11, south: none, north: none, west: side}
+B -271,4,679 redstone_wire{east: side, power: 10, south: none, north: none, west: side}
+I 13 -316.64 3.131 682.303 v 0.018 -0.299 0.057 oak_sapling x1 age 13
+T 212
+B -275,4,681 oak_leaves{waterlogged: false, distance: 7, persistent: true}
+I 13 -316.621 2.792 682.361 v 0.018 -0.332 0.056 oak_sapling x1 age 14
+T 213
+B -303,4,708 air{}
+B -291,4,690 repeater{powered: true, facing: west, delay: 2, locked: false}
+B -291,4,706 repeater{powered: true, facing: west, delay: 1, locked: false}
+B -290,4,690 redstone_lamp{lit: true}
+B -290,4,699 comparator{mode: compare, powered: true, facing: west}
+B -290,4,706 redstone_wire{east: side, power: 15, south: none, north: none, west: side}
+B -289,4,706 redstone_wire{east: side, power: 14, south: none, north: none, west: side}
+B -288,4,699 redstone_lamp{lit: true}
+B -288,4,706 redstone_wire{east: side, power: 13, south: none, north: none, west: side}
+B -287,4,706 redstone_wire{east: side, power: 12, south: none, north: none, west: side}
+B -286,4,706 redstone_wire{east: side, power: 11, south: none, north: none, west: side}
+B -285,4,698 repeater{powered: true, facing: north, delay: 1, locked: false}
+B -285,4,706 redstone_wire{east: side, power: 10, south: none, north: none, west: side}
+B -284,4,697 repeater{powered: true, facing: west, delay: 1, locked: false}
+B -283,4,697 redstone_wire{east: side, power: 15, south: none, north: none, west: side}
+B -282,4,697 redstone_wire{east: side, power: 14, south: none, north: none, west: side}
+B -281,4,697 redstone_wire{east: side, power: 13, south: none, north: none, west: side}
+B -280,4,697 redstone_wire{east: side, power: 12, south: none, north: none, west: side}
+B -279,4,697 redstone_wire{east: side, power: 11, south: none, north: none, west: side}
+B -278,4,689 repeater{powered: true, facing: north, delay: 1, locked: false}
+B -278,4,697 redstone_wire{east: side, power: 10, south: side, north: none, west: side}
+B -277,4,688 repeater{powered: true, facing: west, delay: 1, locked: false}
+B -276,4,681 piston_head{type: sticky, short: false, facing: east}
+B -276,4,688 redstone_wire{east: side, power: 15, south: none, north: none, west: side}
+B -275,4,688 redstone_wire{east: side, power: 14, south: none, north: none, west: side}
+B -274,4,688 redstone_wire{east: side, power: 13, south: none, north: none, west: side}
+B -273,4,688 redstone_wire{east: side, power: 12, south: none, north: none, west: side}
+B -272,4,688 redstone_wire{east: side, power: 11, south: none, north: none, west: side}
+B -271,4,688 redstone_wire{east: side, power: 10, south: none, north: none, west: side}
+I 13 -316.604 2.42 682.417 v 0.017 -0.365 0.055 oak_sapling x1 age 15
+F 14 -302.5 3.96 708.5 v 0 -0.039 0 null
+T 214
+I 13 -316.586 2.015 682.472 v 0.017 -0.397 0.054 oak_sapling x1 age 16
+F 14 -302.5 3.881 708.5 v 0 -0.078 0 null
+T 215
+B -302,4,699 redstone_lamp{lit: false}
+B -284,4,699 redstone_wall_torch{lit: false, facing: east}
+B -284,4,706 repeater{powered: true, facing: west, delay: 1, locked: false}
+B -283,4,699 hopper{enabled: true, facing: east}
+V -283,4,699 hopper [0:cobblestonex1]
+B -283,4,706 redstone_wire{east: side, power: 15, south: none, north: none, west: side}
+B -282,4,706 redstone_wire{east: side, power: 14, south: none, north: none, west: side}
+B -281,4,706 redstone_wire{east: side, power: 13, south: none, north: none, west: side}
+B -280,4,706 redstone_wire{east: side, power: 12, south: none, north: none, west: side}
+B -279,4,706 redstone_wire{east: side, power: 11, south: none, north: none, west: side}
+B -278,4,698 repeater{powered: true, facing: north, delay: 1, locked: false}
+B -278,4,706 redstone_wire{east: side, power: 10, south: none, north: none, west: side}
+B -277,4,697 repeater{powered: true, facing: west, delay: 1, locked: false}
+B -277,4,699 dropper{triggered: true, facing: east}
+B -276,4,697 redstone_wire{east: side, power: 15, south: none, north: none, west: side}
+B -275,4,697 redstone_wire{east: side, power: 14, south: none, north: none, west: side}
+B -274,4,697 redstone_wire{east: side, power: 13, south: none, north: none, west: side}
+B -273,4,697 redstone_wire{east: side, power: 12, south: none, north: none, west: side}
+B -272,4,697 redstone_wire{east: side, power: 11, south: none, north: none, west: side}
+B -271,4,697 redstone_wire{east: side, power: 10, south: none, north: none, west: side}
+V -283,5,699 chest [0:cobblestonex7,1:cobblestonex8,2:cobblestonex8,3:cobblestonex8]
+I 13 -316.569 1.579 682.526 v 0.017 -0.428 0.053 oak_sapling x1 age 17
+F 14 -302.5 3.763 708.5 v 0 -0.115 0 null
+T 216
+I 13 -316.552 1.111 682.579 v 0.016 -0.459 0.052 oak_sapling x1 age 18
+F 14 -302.5 3.608 708.5 v 0 -0.152 0 null
+T 217
+B -284,4,690 repeater{powered: true, facing: west, delay: 3, locked: false}
+B -283,4,690 redstone_lamp{lit: true}
+B -277,4,706 repeater{powered: true, facing: west, delay: 1, locked: false}
+B -276,4,706 redstone_wire{east: side, power: 15, south: none, north: none, west: side}
+B -275,4,706 redstone_wire{east: side, power: 14, south: none, north: none, west: side}
+B -274,4,706 redstone_wire{east: side, power: 13, south: none, north: none, west: side}
+B -273,4,706 redstone_wire{east: side, power: 12, south: none, north: none, west: side}
+B -272,4,706 redstone_wire{east: side, power: 11, south: none, north: none, west: side}
+B -271,4,706 redstone_wire{east: side, power: 10, south: none, north: none, west: side}
+I 13 -316.536 1 682.63 v 0.01 0 0.03 oak_sapling x1 age 19
+F 14 -302.5 3.416 708.5 v 0 -0.188 0 null
+T 218
+I 13 -316.526 1 682.661 v 0.006 0 0.018 oak_sapling x1 age 20
+F 14 -302.5 3.187 708.5 v 0 -0.224 0 null
+T 219
+V -277,4,699 dropper [0:cobblestonex1]
+V -276,4,699 hopper [0:cobblestonex1]
+I 13 -316.521 1 682.679 v 0.003 0 0.011 oak_sapling x1 age 21
+F 14 -302.5 2.924 708.5 v 0 -0.258 0 null
+T 220
+I 13 -316.517 1 682.689 v 0.002 0 0.006 oak_sapling x1 age 22
+F 14 -302.5 2.625 708.5 v 0 -0.293 0 null
+T 221
+B -277,4,690 repeater{powered: true, facing: west, delay: 4, locked: false}
+B -276,4,690 redstone_lamp{lit: true}
+I 13 -316.515 1 682.696 v 0.001 0 0.004 oak_sapling x1 age 23
+F 14 -302.5 2.293 708.5 v 0 -0.326 0 null
+T 222
+I 13 -316.514 1 682.699 v 0.001 0 0.002 oak_sapling x1 age 24
+F 14 -302.5 1.927 708.5 v 0 -0.359 0 null
+T 223
+V -282,4,699 chest [0:cobblestonex1]
+V -283,5,699 chest [0:cobblestonex6,1:cobblestonex8,2:cobblestonex8,3:cobblestonex8]
+I 13 -316.514 1 682.699 v 0.001 -0.04 0.002 oak_sapling x1 age 25
+F 14 -302.5 1.528 708.5 v 0 -0.391 0 null
+T 224
+I 13 -316.514 1 682.699 v 0.001 -0.08 0.002 oak_sapling x1 age 26
+F 14 -302.5 1.098 708.5 v 0 -0.422 0 null
+T 225
+B -303,1,708 sand{}
+I 13 -316.514 1 682.701 v 0 0 0.001 oak_sapling x1 age 27
+T 226
+V -276,3,699 chest [0:cobblestonex1]
+V -276,4,699 hopper []
+I 13 -316.514 1 682.701 v 0 -0.04 0.001 oak_sapling x1 age 28
+T 227
+I 13 -316.514 1 682.701 v 0 -0.08 0.001 oak_sapling x1 age 29
+T 228
+I 13 -316.514 1 682.701 v 0 -0.12 0.001 oak_sapling x1 age 30
+T 229
+I 13 -316.513 1 682.703 v 0 0 0.001 oak_sapling x1 age 31
+T 230
+I 13 -316.513 1 682.703 v 0 -0.04 0.001 oak_sapling x1 age 32
+T 231
+V -282,4,699 chest [0:cobblestonex2]
+V -283,5,699 chest [0:cobblestonex5,1:cobblestonex8,2:cobblestonex8,3:cobblestonex8]
+I 13 -316.513 1 682.703 v 0 -0.08 0.001 oak_sapling x1 age 33
+T 232
+I 13 -316.513 1 682.703 v 0 -0.12 0.001 oak_sapling x1 age 34
+T 233
+I 13 -316.513 1 682.703 v 0 0 0 oak_sapling x1 age 35
+T 234
+I 13 -316.513 1 682.703 v 0 -0.04 0 oak_sapling x1 age 36
+T 235
+I 13 -316.513 1 682.703 v 0 -0.08 0 oak_sapling x1 age 37
+T 236
+I 13 -316.513 1 682.703 v 0 -0.12 0 oak_sapling x1 age 38
+T 237
+I 13 -316.513 1 682.704 v 0 0 0 oak_sapling x1 age 39
+T 238
+I 13 -316.513 1 682.704 v 0 -0.04 0 oak_sapling x1 age 40
+T 239
+V -282,4,699 chest [0:cobblestonex3]
+V -283,5,699 chest [0:cobblestonex4,1:cobblestonex8,2:cobblestonex8,3:cobblestonex8]
+I 13 -316.513 1 682.704 v 0 -0.08 0 oak_sapling x1 age 41
+T 240
+I 13 -316.513 1 682.704 v 0 -0.12 0 oak_sapling x1 age 42
+T 241
+I 13 -316.513 1 682.704 v 0 0 0 oak_sapling x1 age 43
+T 242
+I 13 -316.513 1 682.704 v 0 -0.04 0 oak_sapling x1 age 44
+T 243
+I 13 -316.513 1 682.704 v 0 -0.08 0 oak_sapling x1 age 45
+T 244
+I 13 -316.513 1 682.704 v 0 -0.12 0 oak_sapling x1 age 46
+T 245
+I 13 -316.513 1 682.704 v 0 0 0 oak_sapling x1 age 47
+T 246
+I 13 -316.513 1 682.704 v 0 -0.04 0 oak_sapling x1 age 48
+T 247
+V -282,4,699 chest [0:cobblestonex4]
+V -283,5,699 chest [0:cobblestonex3,1:cobblestonex8,2:cobblestonex8,3:cobblestonex8]
+I 13 -316.513 1 682.704 v 0 -0.08 0 oak_sapling x1 age 49
+T 248
+I 13 -316.513 1 682.704 v 0 -0.12 0 oak_sapling x1 age 50
+T 249
+I 13 -316.513 1 682.704 v 0 0 0 oak_sapling x1 age 51
+T 250
+I 13 -316.513 1 682.704 v 0 -0.04 0 oak_sapling x1 age 52
+T 251
+I 13 -316.513 1 682.704 v 0 -0.08 0 oak_sapling x1 age 53
+T 252
+I 13 -316.513 1 682.704 v 0 -0.12 0 oak_sapling x1 age 54
+T 253
+I 13 -316.513 1 682.704 v 0 0 0 oak_sapling x1 age 55
+T 254
+I 13 -316.513 1 682.704 v 0 -0.04 0 oak_sapling x1 age 56
+T 255
+V -282,4,699 chest [0:cobblestonex5]
+V -283,5,699 chest [0:cobblestonex2,1:cobblestonex8,2:cobblestonex8,3:cobblestonex8]
+I 13 -316.513 1 682.704 v 0 -0.08 0 oak_sapling x1 age 57
+T 256
+I 13 -316.513 1 682.704 v 0 -0.12 0 oak_sapling x1 age 58
+T 257
+I 13 -316.513 1 682.704 v 0 0 0 oak_sapling x1 age 59
+T 258
+I 13 -316.513 1 682.704 v 0 -0.04 0 oak_sapling x1 age 60
+T 259
+I 13 -316.513 1 682.704 v 0 -0.08 0 oak_sapling x1 age 61
+T 260
+I 13 -316.513 1 682.704 v 0 -0.12 0 oak_sapling x1 age 62
+T 261
+I 13 -316.513 1 682.704 v 0 0 0 oak_sapling x1 age 63
+T 262
+I 13 -316.513 1 682.704 v 0 -0.04 0 oak_sapling x1 age 64
+T 263
+V -282,4,699 chest [0:cobblestonex6]
+V -283,5,699 chest [0:cobblestonex1,1:cobblestonex8,2:cobblestonex8,3:cobblestonex8]
+I 13 -316.513 1 682.704 v 0 -0.08 0 oak_sapling x1 age 65
+T 264
+I 13 -316.513 1 682.704 v 0 -0.12 0 oak_sapling x1 age 66
+T 265
+I 13 -316.513 1 682.704 v 0 0 0 oak_sapling x1 age 67
+T 266
+I 13 -316.513 1 682.704 v 0 -0.04 0 oak_sapling x1 age 68
+T 267
+I 13 -316.513 1 682.704 v 0 -0.08 0 oak_sapling x1 age 69
+T 268
+I 13 -316.513 1 682.704 v 0 -0.12 0 oak_sapling x1 age 70
+T 269
+I 13 -316.513 1 682.704 v 0 0 0 oak_sapling x1 age 71
+T 270
+I 13 -316.513 1 682.704 v 0 -0.04 0 oak_sapling x1 age 72
+T 271
+V -282,4,699 chest [0:cobblestonex7]
+V -283,5,699 chest [1:cobblestonex8,2:cobblestonex8,3:cobblestonex8]
+I 13 -316.513 1 682.704 v 0 -0.08 0 oak_sapling x1 age 73
+T 272
+I 13 -316.513 1 682.704 v 0 -0.12 0 oak_sapling x1 age 74
+T 273
+I 13 -316.513 1 682.704 v 0 0 0 oak_sapling x1 age 75
+T 274
+I 13 -316.513 1 682.704 v 0 -0.04 0 oak_sapling x1 age 76
+T 275
+I 13 -316.513 1 682.704 v 0 -0.08 0 oak_sapling x1 age 77
+T 276
+I 13 -316.513 1 682.704 v 0 -0.12 0 oak_sapling x1 age 78
+T 277
+I 13 -316.513 1 682.704 v 0 0 0 oak_sapling x1 age 79
+T 278
+I 13 -316.513 1 682.704 v 0 -0.04 0 oak_sapling x1 age 80
+T 279
+V -282,4,699 chest [0:cobblestonex8]
+V -283,5,699 chest [1:cobblestonex7,2:cobblestonex8,3:cobblestonex8]
+I 13 -316.513 1 682.704 v 0 -0.08 0 oak_sapling x1 age 81
+T 280
+I 13 -316.513 1 682.704 v 0 -0.12 0 oak_sapling x1 age 82
+T 281
+I 13 -316.513 1 682.704 v 0 0 0 oak_sapling x1 age 83
+T 282
+I 13 -316.513 1 682.704 v 0 -0.04 0 oak_sapling x1 age 84
+T 283
+I 13 -316.513 1 682.704 v 0 -0.08 0 oak_sapling x1 age 85
+T 284
+I 13 -316.513 1 682.704 v 0 -0.12 0 oak_sapling x1 age 86
+T 285
+I 13 -316.513 1 682.704 v 0 0 0 oak_sapling x1 age 87
+T 286
+I 13 -316.513 1 682.704 v 0 -0.04 0 oak_sapling x1 age 88
+T 287
+V -282,4,699 chest [0:cobblestonex9]
+V -283,5,699 chest [1:cobblestonex6,2:cobblestonex8,3:cobblestonex8]
+I 13 -316.513 1 682.704 v 0 -0.08 0 oak_sapling x1 age 89
+T 288
+I 13 -316.513 1 682.704 v 0 -0.12 0 oak_sapling x1 age 90
+T 289
+I 13 -316.513 1 682.704 v 0 0 0 oak_sapling x1 age 91
+T 290
+I 13 -316.513 1 682.704 v 0 -0.04 0 oak_sapling x1 age 92
+T 291
+I 13 -316.513 1 682.704 v 0 -0.08 0 oak_sapling x1 age 93
+T 292
+I 13 -316.513 1 682.704 v 0 -0.12 0 oak_sapling x1 age 94
+T 293
+I 13 -316.513 1 682.704 v 0 0 0 oak_sapling x1 age 95
+T 294
+I 13 -316.513 1 682.704 v 0 -0.04 0 oak_sapling x1 age 96
+T 295
+V -282,4,699 chest [0:cobblestonex10]
+V -283,5,699 chest [1:cobblestonex5,2:cobblestonex8,3:cobblestonex8]
+I 13 -316.513 1 682.704 v 0 -0.08 0 oak_sapling x1 age 97
+T 296
+I 13 -316.513 1 682.704 v 0 -0.12 0 oak_sapling x1 age 98
+T 297
+I 13 -316.513 1 682.704 v 0 0 0 oak_sapling x1 age 99
+CLICK 831 lever [-327, 4, 679]
+T 946
+B -327,4,679 lever{face: floor, powered: false, facing: north}
+B -326,4,679 redstone_wire{east: side, power: 0, south: side, north: none, west: side}
+B -326,4,680 redstone_wire{east: none, power: 0, south: side, north: side, west: none}
+B -326,4,681 redstone_wire{east: none, power: 0, south: side, north: side, west: none}
+B -326,4,682 redstone_wire{east: none, power: 0, south: side, north: side, west: none}
+B -326,4,683 redstone_wire{east: none, power: 0, south: side, north: side, west: none}
+B -326,4,684 redstone_wire{east: none, power: 0, south: side, north: side, west: none}
+B -325,4,679 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -324,4,679 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -323,4,679 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -322,4,679 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -321,4,679 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -320,4,679 redstone_wire{east: side, power: 0, south: side, north: none, west: side}
+I 13 -316.513 1 682.704 v 0 -0.04 0 oak_sapling x1 age 100
+T 947
+B -326,4,685 repeater{powered: false, facing: north, delay: 1, locked: false}
+B -326,4,686 redstone_wire{east: none, power: 0, south: side, north: side, west: none}
+B -326,4,687 redstone_wire{east: none, power: 0, south: side, north: side, west: none}
+B -326,4,688 redstone_wire{east: side, power: 0, south: side, north: side, west: none}
+B -326,4,689 redstone_wire{east: none, power: 0, south: side, north: side, west: none}
+B -326,4,690 redstone_wire{east: none, power: 0, south: side, north: side, west: none}
+B -326,4,691 redstone_wire{east: none, power: 0, south: side, north: side, west: none}
+B -325,4,688 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -324,4,688 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -323,4,688 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -322,4,688 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -321,4,688 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -320,4,680 repeater{powered: false, facing: north, delay: 1, locked: false}
+B -320,4,688 redstone_wire{east: side, power: 0, south: side, north: none, west: side}
+B -319,4,679 repeater{powered: false, facing: west, delay: 1, locked: false}
+B -319,4,681 moving_piston{type: sticky, facing: east}
+B -318,4,679 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -318,4,681 air{}
+B -317,4,679 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -316,4,679 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -315,4,679 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -314,4,679 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -313,4,679 redstone_wire{east: side, power: 0, south: side, north: none, west: side}
+I 13 -316.513 1 682.704 v 0 -0.08 0 oak_sapling x1 age 101
+T 948
+I 13 -316.513 1 682.704 v 0 -0.12 0 oak_sapling x1 age 102
+T 949
+B -326,4,692 repeater{powered: false, facing: north, delay: 1, locked: false}
+B -326,4,693 redstone_wire{east: none, power: 0, south: side, north: side, west: none}
+B -326,4,694 redstone_wire{east: none, power: 0, south: side, north: side, west: none}
+B -326,4,695 redstone_wire{east: none, power: 0, south: side, north: side, west: none}
+B -326,4,696 redstone_wire{east: none, power: 0, south: side, north: side, west: none}
+B -326,4,697 redstone_wire{east: side, power: 0, south: side, north: side, west: none}
+B -326,4,698 redstone_wire{east: none, power: 0, south: side, north: side, west: none}
+B -325,4,697 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -324,4,697 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -323,4,697 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -322,4,697 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -321,4,697 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -320,4,689 repeater{powered: false, facing: north, delay: 1, locked: false}
+B -320,4,697 redstone_wire{east: side, power: 0, south: side, north: none, west: side}
+B -319,4,681 sticky_piston{extended: false, facing: east}
+B -319,4,688 repeater{powered: false, facing: west, delay: 1, locked: false}
+B -319,4,690 moving_piston{type: sticky, facing: east}
+B -318,4,688 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -318,4,690 moving_piston{type: normal, facing: east}
+B -317,4,688 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -317,4,690 air{}
+B -316,4,688 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -315,4,688 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -314,4,688 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -313,4,680 repeater{powered: false, facing: north, delay: 1, locked: false}
+B -313,4,688 redstone_wire{east: side, power: 0, south: side, north: none, west: side}
+B -312,4,679 repeater{powered: false, facing: west, delay: 1, locked: false}
+B -312,4,681 moving_piston{type: sticky, facing: east}
+B -311,4,679 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -311,4,681 air{}
+B -310,4,679 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -309,4,679 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -308,4,679 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -307,4,679 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -306,4,679 redstone_wire{east: side, power: 0, south: side, north: none, west: side}
+I 13 -316.513 1 682.704 v 0 0 0 oak_sapling x1 age 103
+T 950
+I 13 -316.513 1 682.704 v 0 -0.04 0 oak_sapling x1 age 104
+T 951
+B -326,4,699 repeater{powered: false, facing: north, delay: 1, locked: false}
+B -326,4,700 redstone_wire{east: none, power: 0, south: side, north: side, west: none}
+B -326,4,701 redstone_wire{east: none, power: 0, south: side, north: side, west: none}
+B -326,4,702 redstone_wire{east: none, power: 0, south: side, north: side, west: none}
+B -326,4,703 redstone_wire{east: none, power: 0, south: side, north: side, west: none}
+B -326,4,704 redstone_wire{east: none, power: 0, south: side, north: side, west: none}
+B -326,4,705 redstone_wire{east: none, power: 0, south: side, north: side, west: none}
+B -326,4,706 redstone_wire{east: side, power: 0, south: none, north: side, west: none}
+B -325,4,706 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -324,4,706 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -323,4,706 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -322,4,706 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -321,4,706 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -320,4,698 repeater{powered: false, facing: north, delay: 1, locked: false}
+B -320,4,700 redstone_wire{east: none, power: 0, south: side, north: side, west: none}
+B -320,4,701 redstone_wire{east: side, power: 0, south: none, north: side, west: none}
+B -320,4,706 redstone_wire{east: side, power: 0, south: side, north: none, west: side}
+B -319,4,690 sticky_piston{extended: false, facing: east}
+B -319,4,697 repeater{powered: false, facing: west, delay: 1, locked: false}
+B -319,4,701 redstone_wire{east: none, power: 0, south: none, north: side, west: side}
+B -318,4,690 stone{}
+B -318,4,697 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -317,4,697 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -316,4,697 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -315,4,697 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -314,4,697 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -313,4,689 repeater{powered: false, facing: north, delay: 1, locked: false}
+B -313,4,697 redstone_wire{east: side, power: 0, south: side, north: none, west: side}
+B -312,4,681 sticky_piston{extended: false, facing: east}
+B -312,4,688 repeater{powered: false, facing: west, delay: 1, locked: false}
+B -312,4,690 moving_piston{type: normal, facing: east}
+B -311,4,688 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -311,4,690 air{}
+B -310,4,688 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -309,4,688 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -308,4,688 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -307,4,688 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -306,4,680 repeater{powered: false, facing: north, delay: 1, locked: false}
+B -306,4,688 redstone_wire{east: side, power: 0, south: side, north: none, west: side}
+B -305,4,679 repeater{powered: false, facing: west, delay: 1, locked: false}
+B -305,4,681 moving_piston{type: sticky, facing: east}
+B -304,4,679 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -304,4,681 air{}
+B -303,4,679 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -302,4,679 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -301,4,679 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -300,4,679 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -299,4,679 redstone_wire{east: side, power: 0, south: side, north: none, west: side}
+V -282,4,699 chest [0:cobblestonex11]
+V -283,5,699 chest [1:cobblestonex4,2:cobblestonex8,3:cobblestonex8]
+I 13 -316.513 1 682.704 v 0 -0.08 0 oak_sapling x1 age 105
+T 952
+I 13 -316.513 1 682.704 v 0 -0.12 0 oak_sapling x1 age 106
+T 953
+B -320,4,707 repeater{powered: false, facing: north, delay: 1, locked: false}
+B -319,4,699 repeater{powered: false, facing: west, delay: 4, locked: false}
+B -319,4,700 repeater{powered: false, facing: south, delay: 1, locked: false}
+B -319,4,706 repeater{powered: false, facing: west, delay: 1, locked: false}
+B -319,4,708 moving_piston{type: normal, facing: up}
+B -318,4,706 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -317,4,706 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -316,4,706 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -315,4,706 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -314,4,706 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -313,4,698 repeater{powered: false, facing: north, delay: 1, locked: false}
+B -313,4,706 redstone_wire{east: side, power: 0, south: side, north: none, west: side}
+B -312,4,690 piston{extended: false, facing: east}
+B -312,4,697 repeater{powered: false, facing: west, delay: 1, locked: false}
+B -311,4,697 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -310,4,697 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -309,4,697 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -308,4,697 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -307,4,697 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -306,4,689 repeater{powered: false, facing: north, delay: 1, locked: false}
+B -306,4,697 redstone_wire{east: side, power: 0, south: side, north: none, west: side}
+B -305,4,681 sticky_piston{extended: false, facing: east}
+B -305,4,688 repeater{powered: false, facing: west, delay: 1, locked: false}
+B -305,4,690 moving_piston{type: sticky, facing: east}
+B -304,4,688 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -304,4,690 moving_piston{type: normal, facing: east}
+B -303,4,688 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -303,4,690 air{}
+B -302,4,688 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -301,4,688 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -300,4,688 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -299,4,680 repeater{powered: false, facing: north, delay: 1, locked: false}
+B -299,4,688 redstone_wire{east: side, power: 0, south: side, north: none, west: side}
+B -298,4,679 repeater{powered: false, facing: west, delay: 1, locked: false}
+B -298,4,681 moving_piston{type: normal, facing: east}
+B -297,4,679 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -297,4,681 air{}
+B -296,4,679 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -295,4,679 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -294,4,679 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -293,4,679 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -292,4,679 redstone_wire{east: side, power: 0, south: side, north: none, west: side}
+B -319,5,708 air{}
+I 13 -316.513 1 682.704 v 0 0 0 oak_sapling x1 age 107
+T 954
+I 13 -316.513 1 682.704 v 0 -0.04 0 oak_sapling x1 age 108
+T 955
+B -319,4,708 piston{extended: false, facing: up}
+B -313,4,707 repeater{powered: false, facing: north, delay: 1, locked: false}
+B -312,4,699 redstone_wall_torch{lit: true, facing: east}
+B -312,4,706 repeater{powered: false, facing: west, delay: 1, locked: false}
+B -312,4,708 moving_piston{type: sticky, facing: up}
+B -311,4,706 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -310,4,706 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -309,4,706 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -308,4,706 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -307,4,706 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -306,4,698 repeater{powered: false, facing: north, delay: 1, locked: false}
+B -306,4,706 redstone_wire{east: side, power: 0, south: side, north: none, west: side}
+B -305,4,690 sticky_piston{extended: false, facing: east}
+B -305,4,697 repeater{powered: false, facing: west, delay: 1, locked: false}
+B -304,4,690 stone{}
+B -304,4,697 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -303,4,697 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -302,4,697 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -301,4,697 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -300,4,697 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -299,4,689 repeater{powered: false, facing: north, delay: 1, locked: false}
+B -299,4,697 redstone_wire{east: side, power: 0, south: side, north: none, west: side}
+B -298,4,681 piston{extended: false, facing: east}
+B -298,4,688 repeater{powered: false, facing: west, delay: 1, locked: false}
+B -297,4,688 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -296,4,688 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -295,4,688 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -294,4,688 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -293,4,688 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -292,4,680 repeater{powered: false, facing: north, delay: 1, locked: false}
+B -292,4,688 redstone_wire{east: side, power: 0, south: side, north: none, west: side}
+B -291,4,679 repeater{powered: false, facing: west, delay: 1, locked: false}
+B -291,4,681 moving_piston{type: normal, facing: east}
+B -290,4,679 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -290,4,681 air{}
+B -289,4,679 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -288,4,679 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -287,4,679 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -286,4,679 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -285,4,679 redstone_wire{east: side, power: 0, south: side, north: none, west: side}
+B -312,5,708 moving_piston{type: normal, facing: up}
+B -319,6,708 air{}
+B -312,6,708 air{}
+I 13 -316.513 1 682.704 v 0 -0.08 0 oak_sapling x1 age 109
+F 15 -318.5 5.96 708.5 v 0 -0.039 0 null
+T 956
+I 13 -316.513 1 682.704 v 0 -0.12 0 oak_sapling x1 age 110
+F 15 -318.5 5.881 708.5 v 0 -0.078 0 null
+T 957
+B -312,4,708 sticky_piston{extended: false, facing: up}
+B -306,4,707 repeater{powered: false, facing: north, delay: 1, locked: false}
+B -305,4,706 repeater{powered: false, facing: west, delay: 1, locked: false}
+B -305,4,708 moving_piston{type: normal, facing: east}
+B -304,4,706 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -304,4,708 air{}
+B -303,4,706 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -302,4,706 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -301,4,706 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -300,4,706 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -299,4,698 repeater{powered: false, facing: north, delay: 1, locked: false}
+B -299,4,706 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -298,4,690 repeater{powered: false, facing: west, delay: 1, locked: false}
+B -298,4,697 repeater{powered: false, facing: west, delay: 1, locked: false}
+B -298,4,699 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -297,4,697 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -296,4,697 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -295,4,697 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -294,4,697 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -293,4,697 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -292,4,689 repeater{powered: false, facing: north, delay: 1, locked: false}
+B -292,4,697 redstone_wire{east: side, power: 0, south: side, north: none, west: side}
+B -291,4,681 piston{extended: false, facing: east}
+B -291,4,688 repeater{powered: false, facing: west, delay: 1, locked: false}
+B -290,4,688 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -289,4,688 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -288,4,688 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -287,4,688 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -286,4,688 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -285,4,680 repeater{powered: false, facing: north, delay: 1, locked: false}
+B -285,4,688 redstone_wire{east: side, power: 0, south: side, north: none, west: side}
+B -284,4,679 repeater{powered: false, facing: west, delay: 1, locked: false}
+B -284,4,681 moving_piston{type: sticky, facing: east}
+B -283,4,679 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -283,4,681 air{}
+B -282,4,679 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -281,4,679 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -280,4,679 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -279,4,679 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -278,4,679 redstone_wire{east: side, power: 0, south: side, north: none, west: side}
+B -312,5,708 sand{}
+I 13 -316.513 1 682.704 v 0 0 0 oak_sapling x1 age 111
+F 15 -318.5 5.763 708.5 v 0 -0.115 0 null
+T 958
+I 13 -316.513 1 682.704 v 0 -0.04 0 oak_sapling x1 age 112
+F 15 -318.5 5.608 708.5 v 0 -0.152 0 null
+T 959
+B -305,4,699 redstone_lamp{lit: false}
+B -305,4,708 piston{extended: false, facing: east}
+B -298,4,706 repeater{powered: false, facing: west, delay: 1, locked: false}
+B -297,4,699 comparator{mode: compare, powered: false, facing: west}
+B -297,4,706 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -296,4,706 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -295,4,706 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -294,4,706 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -293,4,706 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -292,4,698 repeater{powered: false, facing: north, delay: 1, locked: false}
+B -292,4,706 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -291,4,697 repeater{powered: false, facing: west, delay: 1, locked: false}
+B -290,4,697 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -289,4,697 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -288,4,697 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -287,4,697 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -286,4,697 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -285,4,689 repeater{powered: false, facing: north, delay: 1, locked: false}
+B -285,4,697 redstone_wire{east: side, power: 0, south: side, north: none, west: side}
+B -284,4,681 sticky_piston{extended: false, facing: east}
+B -284,4,688 repeater{powered: false, facing: west, delay: 1, locked: false}
+B -283,4,688 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -282,4,688 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+V -282,4,699 chest [0:cobblestonex12]
+B -281,4,688 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -280,4,688 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -279,4,688 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -278,4,680 repeater{powered: false, facing: north, delay: 1, locked: false}
+B -278,4,688 redstone_wire{east: side, power: 0, south: side, north: none, west: side}
+B -277,4,679 repeater{powered: false, facing: west, delay: 1, locked: false}
+B -277,4,681 moving_piston{type: sticky, facing: east}
+B -276,4,679 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -276,4,681 air{}
+B -275,4,679 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -274,4,679 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -273,4,679 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -272,4,679 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -271,4,679 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+V -283,5,699 chest [1:cobblestonex3,2:cobblestonex8,3:cobblestonex8]
+I 13 -316.513 1 682.704 v 0 -0.08 0 oak_sapling x1 age 113
+F 15 -318.5 5.416 708.5 v 0 -0.188 0 null
+T 960
+I 13 -316.513 1 682.704 v 0 -0.12 0 oak_sapling x1 age 114
+F 15 -318.5 5.187 708.5 v 0 -0.224 0 null
+T 961
+B -304,4,699 observer{powered: true, facing: west}
+B -302,4,699 redstone_lamp{lit: true}
+B -297,4,690 redstone_lamp{lit: false}
+B -291,4,690 repeater{powered: false, facing: west, delay: 2, locked: false}
+B -291,4,706 repeater{powered: false, facing: west, delay: 1, locked: false}
+B -290,4,706 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -289,4,706 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -288,4,706 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -287,4,706 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -286,4,706 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -285,4,698 repeater{powered: false, facing: north, delay: 1, locked: false}
+B -285,4,706 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -284,4,697 repeater{powered: false, facing: west, delay: 1, locked: false}
+B -283,4,697 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -282,4,697 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -281,4,697 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -280,4,697 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -279,4,697 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -278,4,689 repeater{powered: false, facing: north, delay: 1, locked: false}
+B -278,4,697 redstone_wire{east: side, power: 0, south: side, north: none, west: side}
+B -277,4,681 sticky_piston{extended: false, facing: east}
+B -277,4,688 repeater{powered: false, facing: west, delay: 1, locked: false}
+B -276,4,688 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -275,4,688 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -274,4,688 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -273,4,688 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -272,4,688 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -271,4,688 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -319,5,708 sand{}
+I 13 -316.513 1 682.704 v 0 0 0 oak_sapling x1 age 115
+T 962
+I 13 -316.513 1 682.704 v 0 -0.04 0 oak_sapling x1 age 116
+T 963
+B -304,4,699 observer{powered: false, facing: west}
+B -295,4,699 redstone_lamp{lit: false}
+B -284,4,699 redstone_wall_torch{lit: true, facing: east}
+B -284,4,706 repeater{powered: false, facing: west, delay: 1, locked: false}
+B -283,4,699 hopper{enabled: false, facing: east}
+B -283,4,706 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -282,4,706 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -281,4,706 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -280,4,706 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -279,4,706 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -278,4,698 repeater{powered: false, facing: north, delay: 1, locked: false}
+B -278,4,706 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -277,4,697 repeater{powered: false, facing: west, delay: 1, locked: false}
+B -277,4,699 dropper{triggered: false, facing: east}
+B -276,4,697 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -275,4,697 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -274,4,697 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -273,4,697 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -272,4,697 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -271,4,697 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+I 13 -316.513 1 682.704 v 0 -0.08 0 oak_sapling x1 age 117
+T 964
+I 13 -316.513 1 682.704 v 0 -0.12 0 oak_sapling x1 age 118
+T 965
+B -290,4,690 redstone_lamp{lit: false}
+B -284,4,690 repeater{powered: false, facing: west, delay: 3, locked: false}
+B -277,4,706 repeater{powered: false, facing: west, delay: 1, locked: false}
+B -276,4,706 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -275,4,706 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -274,4,706 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -273,4,706 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -272,4,706 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -271,4,706 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+I 13 -316.513 1 682.704 v 0 0 0 oak_sapling x1 age 119
+T 966
+I 13 -316.513 1 682.704 v 0 -0.04 0 oak_sapling x1 age 120
+T 967
+B -302,4,699 redstone_lamp{lit: false}
+I 13 -316.513 1 682.704 v 0 -0.08 0 oak_sapling x1 age 121
+T 968
+I 13 -316.513 1 682.704 v 0 -0.12 0 oak_sapling x1 age 122
+T 969
+B -283,4,690 redstone_lamp{lit: false}
+B -277,4,690 repeater{powered: false, facing: west, delay: 4, locked: false}
+I 13 -316.513 1 682.704 v 0 0 0 oak_sapling x1 age 123
+T 970
+I 13 -316.513 1 682.704 v 0 -0.04 0 oak_sapling x1 age 124
+T 971
+I 13 -316.513 1 682.704 v 0 -0.08 0 oak_sapling x1 age 125
+T 972
+I 13 -316.513 1 682.704 v 0 -0.12 0 oak_sapling x1 age 126
+T 973
+B -276,4,690 redstone_lamp{lit: false}
+I 13 -316.513 1 682.704 v 0 0 0 oak_sapling x1 age 127
+T 974
+I 13 -316.513 1 682.704 v 0 -0.04 0 oak_sapling x1 age 128
+T 975
+I 13 -316.513 1 682.704 v 0 -0.08 0 oak_sapling x1 age 129
+T 976
+I 13 -316.513 1 682.704 v 0 -0.12 0 oak_sapling x1 age 130
+T 977
+I 13 -316.513 1 682.704 v 0 0 0 oak_sapling x1 age 131
+T 978
+I 13 -316.513 1 682.704 v 0 -0.04 0 oak_sapling x1 age 132
+T 979
+I 13 -316.513 1 682.704 v 0 -0.08 0 oak_sapling x1 age 133
+T 980
+I 13 -316.513 1 682.704 v 0 -0.12 0 oak_sapling x1 age 134
+T 981
+I 13 -316.513 1 682.704 v 0 0 0 oak_sapling x1 age 135
+T 982
+I 13 -316.513 1 682.704 v 0 -0.04 0 oak_sapling x1 age 136
+T 983
+I 13 -316.513 1 682.704 v 0 -0.08 0 oak_sapling x1 age 137
+T 984
+I 13 -316.513 1 682.704 v 0 -0.12 0 oak_sapling x1 age 138
+T 985
+I 13 -316.513 1 682.704 v 0 0 0 oak_sapling x1 age 139
+T 986
+I 13 -316.513 1 682.704 v 0 -0.04 0 oak_sapling x1 age 140
+T 987
+I 13 -316.513 1 682.704 v 0 -0.08 0 oak_sapling x1 age 141
+T 988
+I 13 -316.513 1 682.704 v 0 -0.12 0 oak_sapling x1 age 142
+T 989
+I 13 -316.513 1 682.704 v 0 0 0 oak_sapling x1 age 143
+T 990
+I 13 -316.513 1 682.704 v 0 -0.04 0 oak_sapling x1 age 144
+T 991
+I 13 -316.513 1 682.704 v 0 -0.08 0 oak_sapling x1 age 145
+T 992
+I 13 -316.513 1 682.704 v 0 -0.12 0 oak_sapling x1 age 146
+T 993
+I 13 -316.513 1 682.704 v 0 0 0 oak_sapling x1 age 147
+T 994
+I 13 -316.513 1 682.704 v 0 -0.04 0 oak_sapling x1 age 148
+T 995
+I 13 -316.513 1 682.704 v 0 -0.08 0 oak_sapling x1 age 149
+T 996
+I 13 -316.513 1 682.704 v 0 -0.12 0 oak_sapling x1 age 150
+T 997
+I 13 -316.513 1 682.704 v 0 0 0 oak_sapling x1 age 151
+T 998
+I 13 -316.513 1 682.704 v 0 -0.04 0 oak_sapling x1 age 152
+T 999
+I 13 -316.513 1 682.704 v 0 -0.08 0 oak_sapling x1 age 153
+T 1000
+I 13 -316.513 1 682.704 v 0 -0.12 0 oak_sapling x1 age 154
+T 1001
+I 13 -316.513 1 682.704 v 0 0 0 oak_sapling x1 age 155
+T 1002
+I 13 -316.513 1 682.704 v 0 -0.04 0 oak_sapling x1 age 156
+T 1003
+I 13 -316.513 1 682.704 v 0 -0.08 0 oak_sapling x1 age 157
+T 1004
+I 13 -316.513 1 682.704 v 0 -0.12 0 oak_sapling x1 age 158

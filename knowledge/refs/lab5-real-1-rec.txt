@@ -1,0 +1,2512 @@
+B -638,24,884 obsidian{}
+B -638,24,885 obsidian{}
+B -638,24,886 obsidian{}
+B -638,24,887 obsidian{}
+B -638,24,888 obsidian{}
+B -638,24,889 obsidian{}
+B -638,24,890 obsidian{}
+B -638,24,891 obsidian{}
+B -638,24,892 obsidian{}
+B -638,24,893 obsidian{}
+B -638,24,894 obsidian{}
+B -638,24,895 obsidian{}
+B -638,24,896 obsidian{}
+B -637,24,884 obsidian{}
+B -637,24,885 obsidian{}
+B -637,24,886 obsidian{}
+B -637,24,887 obsidian{}
+B -637,24,888 obsidian{}
+B -637,24,889 obsidian{}
+B -637,24,890 obsidian{}
+B -637,24,891 obsidian{}
+B -637,24,892 obsidian{}
+B -637,24,893 obsidian{}
+B -637,24,894 obsidian{}
+B -637,24,895 obsidian{}
+B -637,24,896 obsidian{}
+B -636,24,884 obsidian{}
+B -636,24,885 obsidian{}
+B -636,24,886 obsidian{}
+B -636,24,887 obsidian{}
+B -636,24,888 obsidian{}
+B -636,24,889 obsidian{}
+B -636,24,890 obsidian{}
+B -636,24,891 obsidian{}
+B -636,24,892 obsidian{}
+B -636,24,893 obsidian{}
+B -636,24,894 obsidian{}
+B -636,24,895 obsidian{}
+B -636,24,896 obsidian{}
+B -635,24,884 obsidian{}
+B -635,24,885 obsidian{}
+B -635,24,886 obsidian{}
+B -635,24,887 obsidian{}
+B -635,24,888 obsidian{}
+B -635,24,889 obsidian{}
+B -635,24,890 obsidian{}
+B -635,24,891 obsidian{}
+B -635,24,892 obsidian{}
+B -635,24,893 obsidian{}
+B -635,24,894 obsidian{}
+B -635,24,895 obsidian{}
+B -635,24,896 obsidian{}
+B -634,24,884 obsidian{}
+B -634,24,885 obsidian{}
+B -634,24,886 obsidian{}
+B -634,24,887 obsidian{}
+B -634,24,888 obsidian{}
+B -634,24,889 obsidian{}
+B -634,24,890 obsidian{}
+B -634,24,891 obsidian{}
+B -634,24,892 obsidian{}
+B -634,24,893 obsidian{}
+B -634,24,894 obsidian{}
+B -634,24,895 obsidian{}
+B -634,24,896 obsidian{}
+B -633,24,884 obsidian{}
+B -633,24,885 obsidian{}
+B -633,24,886 obsidian{}
+B -633,24,887 obsidian{}
+B -633,24,888 obsidian{}
+B -633,24,889 obsidian{}
+B -633,24,890 obsidian{}
+B -633,24,891 obsidian{}
+B -633,24,892 obsidian{}
+B -633,24,893 obsidian{}
+B -633,24,894 obsidian{}
+B -633,24,895 obsidian{}
+B -633,24,896 obsidian{}
+B -632,24,884 obsidian{}
+B -632,24,885 obsidian{}
+B -632,24,886 obsidian{}
+B -632,24,887 obsidian{}
+B -632,24,888 obsidian{}
+B -632,24,889 obsidian{}
+B -632,24,890 obsidian{}
+B -632,24,891 obsidian{}
+B -632,24,892 obsidian{}
+B -632,24,893 obsidian{}
+B -632,24,894 obsidian{}
+B -632,24,895 obsidian{}
+B -632,24,896 obsidian{}
+B -631,24,884 obsidian{}
+B -631,24,885 obsidian{}
+B -631,24,886 obsidian{}
+B -631,24,887 obsidian{}
+B -631,24,888 obsidian{}
+B -631,24,889 obsidian{}
+B -631,24,890 obsidian{}
+B -631,24,891 obsidian{}
+B -631,24,892 obsidian{}
+B -631,24,893 obsidian{}
+B -631,24,894 obsidian{}
+B -631,24,895 obsidian{}
+B -631,24,896 obsidian{}
+B -630,24,884 obsidian{}
+B -630,24,885 obsidian{}
+B -630,24,886 obsidian{}
+B -630,24,887 obsidian{}
+B -630,24,888 obsidian{}
+B -630,24,889 obsidian{}
+B -630,24,890 obsidian{}
+B -630,24,891 obsidian{}
+B -630,24,892 obsidian{}
+B -630,24,893 obsidian{}
+B -630,24,894 obsidian{}
+B -630,24,895 obsidian{}
+B -630,24,896 obsidian{}
+B -629,24,884 obsidian{}
+B -629,24,885 obsidian{}
+B -629,24,886 obsidian{}
+B -629,24,887 obsidian{}
+B -629,24,888 obsidian{}
+B -629,24,889 obsidian{}
+B -629,24,890 obsidian{}
+B -629,24,891 obsidian{}
+B -629,24,892 obsidian{}
+B -629,24,893 obsidian{}
+B -629,24,894 obsidian{}
+B -629,24,895 obsidian{}
+B -629,24,896 obsidian{}
+B -628,24,884 obsidian{}
+B -628,24,885 obsidian{}
+B -628,24,886 obsidian{}
+B -628,24,887 obsidian{}
+B -628,24,888 obsidian{}
+B -628,24,889 obsidian{}
+B -628,24,890 obsidian{}
+B -628,24,891 obsidian{}
+B -628,24,892 obsidian{}
+B -628,24,893 obsidian{}
+B -628,24,894 obsidian{}
+B -628,24,895 obsidian{}
+B -628,24,896 obsidian{}
+B -627,24,884 obsidian{}
+B -627,24,885 obsidian{}
+B -627,24,886 obsidian{}
+B -627,24,887 obsidian{}
+B -627,24,888 obsidian{}
+B -627,24,889 obsidian{}
+B -627,24,890 obsidian{}
+B -627,24,891 obsidian{}
+B -627,24,892 obsidian{}
+B -627,24,893 obsidian{}
+B -627,24,894 obsidian{}
+B -627,24,895 obsidian{}
+B -627,24,896 obsidian{}
+B -626,24,884 obsidian{}
+B -626,24,885 obsidian{}
+B -626,24,886 obsidian{}
+B -626,24,887 obsidian{}
+B -626,24,888 obsidian{}
+B -626,24,889 obsidian{}
+B -626,24,890 obsidian{}
+B -626,24,891 obsidian{}
+B -626,24,892 obsidian{}
+B -626,24,893 obsidian{}
+B -626,24,894 obsidian{}
+B -626,24,895 obsidian{}
+B -626,24,896 obsidian{}
+B -625,24,884 obsidian{}
+B -625,24,885 obsidian{}
+B -625,24,886 obsidian{}
+B -625,24,887 obsidian{}
+B -625,24,888 obsidian{}
+B -625,24,889 obsidian{}
+B -625,24,890 obsidian{}
+B -625,24,891 obsidian{}
+B -625,24,892 obsidian{}
+B -625,24,893 obsidian{}
+B -625,24,894 obsidian{}
+B -625,24,895 obsidian{}
+B -625,24,896 obsidian{}
+B -624,24,884 obsidian{}
+B -624,24,885 obsidian{}
+B -624,24,886 obsidian{}
+B -624,24,887 obsidian{}
+B -624,24,888 obsidian{}
+B -624,24,889 obsidian{}
+B -624,24,890 obsidian{}
+B -624,24,891 obsidian{}
+B -624,24,892 obsidian{}
+B -624,24,893 obsidian{}
+B -624,24,894 obsidian{}
+B -624,24,895 obsidian{}
+B -624,24,896 obsidian{}
+B -623,24,884 obsidian{}
+B -623,24,885 obsidian{}
+B -623,24,886 obsidian{}
+B -623,24,887 obsidian{}
+B -623,24,888 obsidian{}
+B -623,24,889 obsidian{}
+B -623,24,890 obsidian{}
+B -623,24,891 obsidian{}
+B -623,24,892 obsidian{}
+B -623,24,893 obsidian{}
+B -623,24,894 obsidian{}
+B -623,24,895 obsidian{}
+B -623,24,896 obsidian{}
+B -622,24,884 obsidian{}
+B -622,24,885 obsidian{}
+B -622,24,886 obsidian{}
+B -622,24,887 obsidian{}
+B -622,24,888 obsidian{}
+B -622,24,889 obsidian{}
+B -622,24,890 obsidian{}
+B -622,24,891 obsidian{}
+B -622,24,892 obsidian{}
+B -622,24,893 obsidian{}
+B -622,24,894 obsidian{}
+B -622,24,895 obsidian{}
+B -622,24,896 obsidian{}
+B -621,24,884 obsidian{}
+B -621,24,885 obsidian{}
+B -621,24,886 obsidian{}
+B -621,24,887 obsidian{}
+B -621,24,888 obsidian{}
+B -621,24,889 obsidian{}
+B -621,24,890 obsidian{}
+B -621,24,891 obsidian{}
+B -621,24,892 obsidian{}
+B -621,24,893 obsidian{}
+B -621,24,894 obsidian{}
+B -621,24,895 obsidian{}
+B -621,24,896 obsidian{}
+B -620,24,884 obsidian{}
+B -620,24,885 obsidian{}
+B -620,24,886 obsidian{}
+B -620,24,887 obsidian{}
+B -620,24,888 obsidian{}
+B -620,24,889 obsidian{}
+B -620,24,890 obsidian{}
+B -620,24,891 obsidian{}
+B -620,24,892 obsidian{}
+B -620,24,893 obsidian{}
+B -620,24,894 obsidian{}
+B -620,24,895 obsidian{}
+B -620,24,896 obsidian{}
+B -619,24,884 obsidian{}
+B -619,24,885 obsidian{}
+B -619,24,886 obsidian{}
+B -619,24,887 obsidian{}
+B -619,24,888 obsidian{}
+B -619,24,889 obsidian{}
+B -619,24,890 obsidian{}
+B -619,24,891 obsidian{}
+B -619,24,892 obsidian{}
+B -619,24,893 obsidian{}
+B -619,24,894 obsidian{}
+B -619,24,895 obsidian{}
+B -619,24,896 obsidian{}
+B -618,24,884 obsidian{}
+B -618,24,885 obsidian{}
+B -618,24,886 obsidian{}
+B -618,24,887 obsidian{}
+B -618,24,888 obsidian{}
+B -618,24,889 obsidian{}
+B -618,24,890 obsidian{}
+B -618,24,891 obsidian{}
+B -618,24,892 obsidian{}
+B -618,24,893 obsidian{}
+B -618,24,894 obsidian{}
+B -618,24,895 obsidian{}
+B -618,24,896 obsidian{}
+B -617,24,884 obsidian{}
+B -617,24,885 obsidian{}
+B -617,24,886 obsidian{}
+B -617,24,887 obsidian{}
+B -617,24,888 obsidian{}
+B -617,24,889 obsidian{}
+B -617,24,890 obsidian{}
+B -617,24,891 obsidian{}
+B -617,24,892 obsidian{}
+B -617,24,893 obsidian{}
+B -617,24,894 obsidian{}
+B -617,24,895 obsidian{}
+B -617,24,896 obsidian{}
+B -616,24,884 obsidian{}
+B -616,24,885 obsidian{}
+B -616,24,886 obsidian{}
+B -616,24,887 obsidian{}
+B -616,24,888 obsidian{}
+B -616,24,889 obsidian{}
+B -616,24,890 obsidian{}
+B -616,24,891 obsidian{}
+B -616,24,892 obsidian{}
+B -616,24,893 obsidian{}
+B -616,24,894 obsidian{}
+B -616,24,895 obsidian{}
+B -616,24,896 obsidian{}
+B -615,24,884 obsidian{}
+B -615,24,885 obsidian{}
+B -615,24,886 obsidian{}
+B -615,24,887 obsidian{}
+B -615,24,888 obsidian{}
+B -615,24,889 obsidian{}
+B -615,24,890 obsidian{}
+B -615,24,891 obsidian{}
+B -615,24,892 obsidian{}
+B -615,24,893 obsidian{}
+B -615,24,894 obsidian{}
+B -615,24,895 obsidian{}
+B -615,24,896 obsidian{}
+B -614,24,884 obsidian{}
+B -614,24,885 obsidian{}
+B -614,24,886 obsidian{}
+B -614,24,887 obsidian{}
+B -614,24,888 obsidian{}
+B -614,24,889 obsidian{}
+B -614,24,890 obsidian{}
+B -614,24,891 obsidian{}
+B -614,24,892 obsidian{}
+B -614,24,893 obsidian{}
+B -614,24,894 obsidian{}
+B -614,24,895 obsidian{}
+B -614,24,896 obsidian{}
+B -613,24,884 obsidian{}
+B -613,24,885 obsidian{}
+B -613,24,886 obsidian{}
+B -613,24,887 obsidian{}
+B -613,24,888 obsidian{}
+B -613,24,889 obsidian{}
+B -613,24,890 obsidian{}
+B -613,24,891 obsidian{}
+B -613,24,892 obsidian{}
+B -613,24,893 obsidian{}
+B -613,24,894 obsidian{}
+B -613,24,895 obsidian{}
+B -613,24,896 obsidian{}
+B -612,24,884 obsidian{}
+B -612,24,885 obsidian{}
+B -612,24,886 obsidian{}
+B -612,24,887 obsidian{}
+B -612,24,888 obsidian{}
+B -612,24,889 obsidian{}
+B -612,24,890 obsidian{}
+B -612,24,891 obsidian{}
+B -612,24,892 obsidian{}
+B -612,24,893 obsidian{}
+B -612,24,894 obsidian{}
+B -612,24,895 obsidian{}
+B -612,24,896 obsidian{}
+B -611,24,884 obsidian{}
+B -611,24,885 obsidian{}
+B -611,24,886 obsidian{}
+B -611,24,887 obsidian{}
+B -611,24,888 obsidian{}
+B -611,24,889 obsidian{}
+B -611,24,890 obsidian{}
+B -611,24,891 obsidian{}
+B -611,24,892 obsidian{}
+B -611,24,893 obsidian{}
+B -611,24,894 obsidian{}
+B -611,24,895 obsidian{}
+B -611,24,896 obsidian{}
+B -610,24,884 obsidian{}
+B -610,24,885 obsidian{}
+B -610,24,886 obsidian{}
+B -610,24,887 obsidian{}
+B -610,24,888 obsidian{}
+B -610,24,889 obsidian{}
+B -610,24,890 obsidian{}
+B -610,24,891 obsidian{}
+B -610,24,892 obsidian{}
+B -610,24,893 obsidian{}
+B -610,24,894 obsidian{}
+B -610,24,895 obsidian{}
+B -610,24,896 obsidian{}
+B -609,24,884 obsidian{}
+B -609,24,885 obsidian{}
+B -609,24,886 obsidian{}
+B -609,24,887 obsidian{}
+B -609,24,888 obsidian{}
+B -609,24,889 obsidian{}
+B -609,24,890 obsidian{}
+B -609,24,891 obsidian{}
+B -609,24,892 obsidian{}
+B -609,24,893 obsidian{}
+B -609,24,894 obsidian{}
+B -609,24,895 obsidian{}
+B -609,24,896 obsidian{}
+B -608,24,884 obsidian{}
+B -608,24,885 obsidian{}
+B -608,24,886 obsidian{}
+B -608,24,887 obsidian{}
+B -608,24,888 obsidian{}
+B -608,24,889 obsidian{}
+B -608,24,890 obsidian{}
+B -608,24,891 obsidian{}
+B -608,24,892 obsidian{}
+B -608,24,893 obsidian{}
+B -608,24,894 obsidian{}
+B -608,24,895 obsidian{}
+B -608,24,896 obsidian{}
+B -607,24,884 obsidian{}
+B -607,24,885 obsidian{}
+B -607,24,886 obsidian{}
+B -607,24,887 obsidian{}
+B -607,24,888 obsidian{}
+B -607,24,889 obsidian{}
+B -607,24,890 obsidian{}
+B -607,24,891 obsidian{}
+B -607,24,892 obsidian{}
+B -607,24,893 obsidian{}
+B -607,24,894 obsidian{}
+B -607,24,895 obsidian{}
+B -607,24,896 obsidian{}
+B -606,24,884 obsidian{}
+B -606,24,885 obsidian{}
+B -606,24,886 obsidian{}
+B -606,24,887 obsidian{}
+B -606,24,888 obsidian{}
+B -606,24,889 obsidian{}
+B -606,24,890 obsidian{}
+B -606,24,891 obsidian{}
+B -606,24,892 obsidian{}
+B -606,24,893 obsidian{}
+B -606,24,894 obsidian{}
+B -606,24,895 obsidian{}
+B -606,24,896 obsidian{}
+B -605,24,884 obsidian{}
+B -605,24,885 obsidian{}
+B -605,24,886 obsidian{}
+B -605,24,887 obsidian{}
+B -605,24,888 obsidian{}
+B -605,24,889 obsidian{}
+B -605,24,890 obsidian{}
+B -605,24,891 obsidian{}
+B -605,24,892 obsidian{}
+B -605,24,893 obsidian{}
+B -605,24,894 obsidian{}
+B -605,24,895 obsidian{}
+B -605,24,896 obsidian{}
+B -604,24,884 obsidian{}
+B -604,24,885 obsidian{}
+B -604,24,886 obsidian{}
+B -604,24,887 obsidian{}
+B -604,24,888 obsidian{}
+B -604,24,889 obsidian{}
+B -604,24,890 obsidian{}
+B -604,24,891 obsidian{}
+B -604,24,892 obsidian{}
+B -604,24,893 obsidian{}
+B -604,24,894 obsidian{}
+B -604,24,895 obsidian{}
+B -604,24,896 obsidian{}
+B -603,24,884 obsidian{}
+B -603,24,885 obsidian{}
+B -603,24,886 obsidian{}
+B -603,24,887 obsidian{}
+B -603,24,888 obsidian{}
+B -603,24,889 obsidian{}
+B -603,24,890 obsidian{}
+B -603,24,891 obsidian{}
+B -603,24,892 obsidian{}
+B -603,24,893 obsidian{}
+B -603,24,894 obsidian{}
+B -603,24,895 obsidian{}
+B -603,24,896 obsidian{}
+B -602,24,884 obsidian{}
+B -602,24,885 obsidian{}
+B -602,24,886 obsidian{}
+B -602,24,887 obsidian{}
+B -602,24,888 obsidian{}
+B -602,24,889 obsidian{}
+B -602,24,890 obsidian{}
+B -602,24,891 obsidian{}
+B -602,24,892 obsidian{}
+B -602,24,893 obsidian{}
+B -602,24,894 obsidian{}
+B -602,24,895 obsidian{}
+B -602,24,896 obsidian{}
+B -601,24,884 obsidian{}
+B -601,24,885 obsidian{}
+B -601,24,886 obsidian{}
+B -601,24,887 obsidian{}
+B -601,24,888 obsidian{}
+B -601,24,889 obsidian{}
+B -601,24,890 obsidian{}
+B -601,24,891 obsidian{}
+B -601,24,892 obsidian{}
+B -601,24,893 obsidian{}
+B -601,24,894 obsidian{}
+B -601,24,895 obsidian{}
+B -601,24,896 obsidian{}
+B -600,24,884 obsidian{}
+B -600,24,885 obsidian{}
+B -600,24,886 obsidian{}
+B -600,24,887 obsidian{}
+B -600,24,888 obsidian{}
+B -600,24,889 obsidian{}
+B -600,24,890 obsidian{}
+B -600,24,891 obsidian{}
+B -600,24,892 obsidian{}
+B -600,24,893 obsidian{}
+B -600,24,894 obsidian{}
+B -600,24,895 obsidian{}
+B -600,24,896 obsidian{}
+B -599,24,884 obsidian{}
+B -599,24,885 obsidian{}
+B -599,24,886 obsidian{}
+B -599,24,887 obsidian{}
+B -599,24,888 obsidian{}
+B -599,24,889 obsidian{}
+B -599,24,890 obsidian{}
+B -599,24,891 obsidian{}
+B -599,24,892 obsidian{}
+B -599,24,893 obsidian{}
+B -599,24,894 obsidian{}
+B -599,24,895 obsidian{}
+B -599,24,896 obsidian{}
+B -598,24,884 obsidian{}
+B -598,24,885 obsidian{}
+B -598,24,886 obsidian{}
+B -598,24,887 obsidian{}
+B -598,24,888 obsidian{}
+B -598,24,889 obsidian{}
+B -598,24,890 obsidian{}
+B -598,24,891 obsidian{}
+B -598,24,892 obsidian{}
+B -598,24,893 obsidian{}
+B -598,24,894 obsidian{}
+B -598,24,895 obsidian{}
+B -598,24,896 obsidian{}
+B -597,24,884 obsidian{}
+B -597,24,885 obsidian{}
+B -597,24,886 obsidian{}
+B -597,24,887 obsidian{}
+B -597,24,888 obsidian{}
+B -597,24,889 obsidian{}
+B -597,24,890 obsidian{}
+B -597,24,891 obsidian{}
+B -597,24,892 obsidian{}
+B -597,24,893 obsidian{}
+B -597,24,894 obsidian{}
+B -597,24,895 obsidian{}
+B -597,24,896 obsidian{}
+B -596,24,884 obsidian{}
+B -596,24,885 obsidian{}
+B -596,24,886 obsidian{}
+B -596,24,887 obsidian{}
+B -596,24,888 obsidian{}
+B -596,24,889 obsidian{}
+B -596,24,890 obsidian{}
+B -596,24,891 obsidian{}
+B -596,24,892 obsidian{}
+B -596,24,893 obsidian{}
+B -596,24,894 obsidian{}
+B -596,24,895 obsidian{}
+B -596,24,896 obsidian{}
+B -595,24,884 obsidian{}
+B -595,24,885 obsidian{}
+B -595,24,886 obsidian{}
+B -595,24,887 obsidian{}
+B -595,24,888 obsidian{}
+B -595,24,889 obsidian{}
+B -595,24,890 obsidian{}
+B -595,24,891 obsidian{}
+B -595,24,892 obsidian{}
+B -595,24,893 obsidian{}
+B -595,24,894 obsidian{}
+B -595,24,895 obsidian{}
+B -595,24,896 obsidian{}
+B -594,24,884 obsidian{}
+B -594,24,885 obsidian{}
+B -594,24,886 obsidian{}
+B -594,24,887 obsidian{}
+B -594,24,888 obsidian{}
+B -594,24,889 obsidian{}
+B -594,24,890 obsidian{}
+B -594,24,891 obsidian{}
+B -594,24,892 obsidian{}
+B -594,24,893 obsidian{}
+B -594,24,894 obsidian{}
+B -594,24,895 obsidian{}
+B -594,24,896 obsidian{}
+B -593,24,884 obsidian{}
+B -593,24,885 obsidian{}
+B -593,24,886 obsidian{}
+B -593,24,887 obsidian{}
+B -593,24,888 obsidian{}
+B -593,24,889 obsidian{}
+B -593,24,890 obsidian{}
+B -593,24,891 obsidian{}
+B -593,24,892 obsidian{}
+B -593,24,893 obsidian{}
+B -593,24,894 obsidian{}
+B -593,24,895 obsidian{}
+B -593,24,896 obsidian{}
+B -592,24,884 obsidian{}
+B -592,24,885 obsidian{}
+B -592,24,886 obsidian{}
+B -592,24,887 obsidian{}
+B -592,24,888 obsidian{}
+B -592,24,889 obsidian{}
+B -592,24,890 obsidian{}
+B -592,24,891 obsidian{}
+B -592,24,892 obsidian{}
+B -592,24,893 obsidian{}
+B -592,24,894 obsidian{}
+B -592,24,895 obsidian{}
+B -592,24,896 obsidian{}
+B -591,24,884 obsidian{}
+B -591,24,885 obsidian{}
+B -591,24,886 obsidian{}
+B -591,24,887 obsidian{}
+B -591,24,888 obsidian{}
+B -591,24,889 obsidian{}
+B -591,24,890 obsidian{}
+B -591,24,891 obsidian{}
+B -591,24,892 obsidian{}
+B -591,24,893 obsidian{}
+B -591,24,894 obsidian{}
+B -591,24,895 obsidian{}
+B -591,24,896 obsidian{}
+B -590,24,884 obsidian{}
+B -590,24,885 obsidian{}
+B -590,24,886 obsidian{}
+B -590,24,887 obsidian{}
+B -590,24,888 obsidian{}
+B -590,24,889 obsidian{}
+B -590,24,890 obsidian{}
+B -590,24,891 obsidian{}
+B -590,24,892 obsidian{}
+B -590,24,893 obsidian{}
+B -590,24,894 obsidian{}
+B -590,24,895 obsidian{}
+B -590,24,896 obsidian{}
+B -589,24,884 obsidian{}
+B -589,24,885 obsidian{}
+B -589,24,886 obsidian{}
+B -589,24,887 obsidian{}
+B -589,24,888 obsidian{}
+B -589,24,889 obsidian{}
+B -589,24,890 obsidian{}
+B -589,24,891 obsidian{}
+B -589,24,892 obsidian{}
+B -589,24,893 obsidian{}
+B -589,24,894 obsidian{}
+B -589,24,895 obsidian{}
+B -589,24,896 obsidian{}
+B -588,24,884 obsidian{}
+B -588,24,885 obsidian{}
+B -588,24,886 obsidian{}
+B -588,24,887 obsidian{}
+B -588,24,888 obsidian{}
+B -588,24,889 obsidian{}
+B -588,24,890 obsidian{}
+B -588,24,891 obsidian{}
+B -588,24,892 obsidian{}
+B -588,24,893 obsidian{}
+B -588,24,894 obsidian{}
+B -588,24,895 obsidian{}
+B -588,24,896 obsidian{}
+B -587,24,884 obsidian{}
+B -587,24,885 obsidian{}
+B -587,24,886 obsidian{}
+B -587,24,887 obsidian{}
+B -587,24,888 obsidian{}
+B -587,24,889 obsidian{}
+B -587,24,890 obsidian{}
+B -587,24,891 obsidian{}
+B -587,24,892 obsidian{}
+B -587,24,893 obsidian{}
+B -587,24,894 obsidian{}
+B -587,24,895 obsidian{}
+B -587,24,896 obsidian{}
+B -586,24,884 obsidian{}
+B -586,24,885 obsidian{}
+B -586,24,886 obsidian{}
+B -586,24,887 obsidian{}
+B -586,24,888 obsidian{}
+B -586,24,889 obsidian{}
+B -586,24,890 obsidian{}
+B -586,24,891 obsidian{}
+B -586,24,892 obsidian{}
+B -586,24,893 obsidian{}
+B -586,24,894 obsidian{}
+B -586,24,895 obsidian{}
+B -586,24,896 obsidian{}
+B -585,24,884 obsidian{}
+B -585,24,885 obsidian{}
+B -585,24,886 obsidian{}
+B -585,24,887 obsidian{}
+B -585,24,888 obsidian{}
+B -585,24,889 obsidian{}
+B -585,24,890 obsidian{}
+B -585,24,891 obsidian{}
+B -585,24,892 obsidian{}
+B -585,24,893 obsidian{}
+B -585,24,894 obsidian{}
+B -585,24,895 obsidian{}
+B -585,24,896 obsidian{}
+B -584,24,884 obsidian{}
+B -584,24,885 obsidian{}
+B -584,24,886 obsidian{}
+B -584,24,887 obsidian{}
+B -584,24,888 obsidian{}
+B -584,24,889 obsidian{}
+B -584,24,890 obsidian{}
+B -584,24,891 obsidian{}
+B -584,24,892 obsidian{}
+B -584,24,893 obsidian{}
+B -584,24,894 obsidian{}
+B -584,24,895 obsidian{}
+B -584,24,896 obsidian{}
+B -583,24,884 obsidian{}
+B -583,24,885 obsidian{}
+B -583,24,886 obsidian{}
+B -583,24,887 obsidian{}
+B -583,24,888 obsidian{}
+B -583,24,889 obsidian{}
+B -583,24,890 obsidian{}
+B -583,24,891 obsidian{}
+B -583,24,892 obsidian{}
+B -583,24,893 obsidian{}
+B -583,24,894 obsidian{}
+B -583,24,895 obsidian{}
+B -583,24,896 obsidian{}
+B -582,24,884 obsidian{}
+B -582,24,885 obsidian{}
+B -582,24,886 obsidian{}
+B -582,24,887 obsidian{}
+B -582,24,888 obsidian{}
+B -582,24,889 obsidian{}
+B -582,24,890 obsidian{}
+B -582,24,891 obsidian{}
+B -582,24,892 obsidian{}
+B -582,24,893 obsidian{}
+B -582,24,894 obsidian{}
+B -582,24,895 obsidian{}
+B -582,24,896 obsidian{}
+B -581,24,884 obsidian{}
+B -581,24,885 obsidian{}
+B -581,24,886 obsidian{}
+B -581,24,887 obsidian{}
+B -581,24,888 obsidian{}
+B -581,24,889 obsidian{}
+B -581,24,890 obsidian{}
+B -581,24,891 obsidian{}
+B -581,24,892 obsidian{}
+B -581,24,893 obsidian{}
+B -581,24,894 obsidian{}
+B -581,24,895 obsidian{}
+B -581,24,896 obsidian{}
+B -580,24,884 obsidian{}
+B -580,24,885 obsidian{}
+B -580,24,886 obsidian{}
+B -580,24,887 obsidian{}
+B -580,24,888 obsidian{}
+B -580,24,889 obsidian{}
+B -580,24,890 obsidian{}
+B -580,24,891 obsidian{}
+B -580,24,892 obsidian{}
+B -580,24,893 obsidian{}
+B -580,24,894 obsidian{}
+B -580,24,895 obsidian{}
+B -580,24,896 obsidian{}
+B -579,24,884 obsidian{}
+B -579,24,885 obsidian{}
+B -579,24,886 obsidian{}
+B -579,24,887 obsidian{}
+B -579,24,888 obsidian{}
+B -579,24,889 obsidian{}
+B -579,24,890 obsidian{}
+B -579,24,891 obsidian{}
+B -579,24,892 obsidian{}
+B -579,24,893 obsidian{}
+B -579,24,894 obsidian{}
+B -579,24,895 obsidian{}
+B -579,24,896 obsidian{}
+B -578,24,884 obsidian{}
+B -578,24,885 obsidian{}
+B -578,24,886 obsidian{}
+B -578,24,887 obsidian{}
+B -578,24,888 obsidian{}
+B -578,24,889 obsidian{}
+B -578,24,890 obsidian{}
+B -578,24,891 obsidian{}
+B -578,24,892 obsidian{}
+B -578,24,893 obsidian{}
+B -578,24,894 obsidian{}
+B -578,24,895 obsidian{}
+B -578,24,896 obsidian{}
+B -577,24,884 obsidian{}
+B -577,24,885 obsidian{}
+B -577,24,886 obsidian{}
+B -577,24,887 obsidian{}
+B -577,24,888 obsidian{}
+B -577,24,889 obsidian{}
+B -577,24,890 obsidian{}
+B -577,24,891 obsidian{}
+B -577,24,892 obsidian{}
+B -577,24,893 obsidian{}
+B -577,24,894 obsidian{}
+B -577,24,895 obsidian{}
+B -577,24,896 obsidian{}
+B -576,24,884 obsidian{}
+B -576,24,885 obsidian{}
+B -576,24,886 obsidian{}
+B -576,24,887 obsidian{}
+B -576,24,888 obsidian{}
+B -576,24,889 obsidian{}
+B -576,24,890 obsidian{}
+B -576,24,891 obsidian{}
+B -576,24,892 obsidian{}
+B -576,24,893 obsidian{}
+B -576,24,894 obsidian{}
+B -576,24,895 obsidian{}
+B -576,24,896 obsidian{}
+B -575,24,884 obsidian{}
+B -575,24,885 obsidian{}
+B -575,24,886 obsidian{}
+B -575,24,887 obsidian{}
+B -575,24,888 obsidian{}
+B -575,24,889 obsidian{}
+B -575,24,890 obsidian{}
+B -575,24,891 obsidian{}
+B -575,24,892 obsidian{}
+B -575,24,893 obsidian{}
+B -575,24,894 obsidian{}
+B -575,24,895 obsidian{}
+B -575,24,896 obsidian{}
+B -574,24,884 obsidian{}
+B -574,24,885 obsidian{}
+B -574,24,886 obsidian{}
+B -574,24,887 obsidian{}
+B -574,24,888 obsidian{}
+B -574,24,889 obsidian{}
+B -574,24,890 obsidian{}
+B -574,24,891 obsidian{}
+B -574,24,892 obsidian{}
+B -574,24,893 obsidian{}
+B -574,24,894 obsidian{}
+B -574,24,895 obsidian{}
+B -574,24,896 obsidian{}
+B -573,24,884 obsidian{}
+B -573,24,885 obsidian{}
+B -573,24,886 obsidian{}
+B -573,24,887 obsidian{}
+B -573,24,888 obsidian{}
+B -573,24,889 obsidian{}
+B -573,24,890 obsidian{}
+B -573,24,891 obsidian{}
+B -573,24,892 obsidian{}
+B -573,24,893 obsidian{}
+B -573,24,894 obsidian{}
+B -573,24,895 obsidian{}
+B -573,24,896 obsidian{}
+B -635,27,888 obsidian{}
+B -634,27,888 obsidian{}
+B -633,27,888 obsidian{}
+B -632,27,888 obsidian{}
+B -631,27,888 obsidian{}
+B -630,27,888 obsidian{}
+B -629,27,888 obsidian{}
+B -628,27,888 obsidian{}
+B -628,27,889 obsidian{}
+B -627,27,888 obsidian{}
+B -626,27,888 obsidian{}
+B -626,27,890 obsidian{}
+B -625,27,888 obsidian{}
+B -624,27,888 obsidian{}
+B -623,27,888 obsidian{}
+B -622,27,888 obsidian{}
+B -621,27,888 obsidian{}
+B -621,27,889 obsidian{}
+B -620,27,888 obsidian{}
+B -619,27,888 obsidian{}
+B -619,27,890 soul_sand{}
+B -618,27,888 obsidian{}
+B -617,27,888 obsidian{}
+B -616,27,888 obsidian{}
+B -615,27,888 obsidian{}
+B -614,27,888 obsidian{}
+B -614,27,889 obsidian{}
+B -613,27,888 obsidian{}
+B -612,27,888 obsidian{}
+B -612,27,890 soul_sand{}
+B -611,27,888 obsidian{}
+B -610,27,888 obsidian{}
+B -609,27,888 obsidian{}
+B -608,27,888 obsidian{}
+B -607,27,888 obsidian{}
+B -607,27,889 obsidian{}
+B -606,27,888 obsidian{}
+B -605,27,888 obsidian{}
+B -605,27,890 soul_sand{}
+B -604,27,888 obsidian{}
+B -603,27,888 obsidian{}
+B -602,27,888 obsidian{}
+B -601,27,888 obsidian{}
+B -600,27,888 obsidian{}
+B -599,27,888 obsidian{}
+B -598,27,888 obsidian{}
+B -597,27,888 obsidian{}
+B -596,27,888 obsidian{}
+B -595,27,888 obsidian{}
+B -594,27,888 obsidian{}
+B -593,27,888 obsidian{}
+B -593,27,889 obsidian{}
+B -592,27,888 obsidian{}
+B -591,27,888 obsidian{}
+B -591,27,890 obsidian{}
+B -590,27,888 obsidian{}
+B -590,27,890 obsidian{}
+B -589,27,888 obsidian{}
+B -589,27,890 obsidian{}
+B -588,27,888 obsidian{}
+B -588,27,890 obsidian{}
+B -587,27,888 obsidian{}
+B -587,27,890 obsidian{}
+B -586,27,888 obsidian{}
+B -586,27,890 obsidian{}
+B -585,27,888 obsidian{}
+B -584,27,888 obsidian{}
+B -583,27,888 obsidian{}
+B -582,27,888 obsidian{}
+B -581,27,888 obsidian{}
+B -580,27,888 obsidian{}
+B -579,27,888 obsidian{}
+B -635,28,888 lever{face: floor, powered: false, facing: north}
+B -634,28,888 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -633,28,888 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -632,28,888 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -631,28,888 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -630,28,888 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -629,28,888 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -628,28,888 redstone_wire{east: side, power: 0, south: side, north: none, west: side}
+B -628,28,889 repeater{powered: false, facing: north, delay: 1, locked: false}
+B -628,28,890 stone{}
+B -627,28,888 repeater{powered: false, facing: west, delay: 1, locked: false}
+B -627,28,890 dropper{triggered: false, facing: east}
+V -627,28,890 dropper [0:diamondx1]
+B -626,28,888 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -626,28,889 glass{}
+B -626,28,890 water{level: 0}
+B -626,28,891 glass{}
+B -625,28,888 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -625,28,890 glass{}
+B -624,28,888 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -623,28,888 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -622,28,888 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -621,28,888 redstone_wire{east: side, power: 0, south: side, north: none, west: side}
+B -621,28,889 repeater{powered: false, facing: north, delay: 1, locked: false}
+B -621,28,890 stone{}
+B -620,28,888 repeater{powered: false, facing: west, delay: 1, locked: false}
+B -620,28,890 dropper{triggered: false, facing: east}
+V -620,28,890 dropper [0:diamondx1]
+B -619,28,888 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -619,28,889 glass{}
+B -619,28,890 water{level: 0}
+B -619,28,891 glass{}
+B -618,28,888 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -618,28,890 glass{}
+B -617,28,888 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -616,28,888 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -615,28,888 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -614,28,888 redstone_wire{east: side, power: 0, south: side, north: none, west: side}
+B -614,28,889 repeater{powered: false, facing: north, delay: 1, locked: false}
+B -614,28,890 stone{}
+B -613,28,888 repeater{powered: false, facing: west, delay: 1, locked: false}
+B -613,28,890 dropper{triggered: false, facing: east}
+V -613,28,890 dropper [0:diamondx1]
+B -612,28,888 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -612,28,889 glass{}
+B -612,28,890 bubble_column{drag: false}
+B -612,28,891 glass{}
+B -611,28,888 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -611,28,890 glass{}
+B -610,28,888 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -609,28,888 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -608,28,888 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -607,28,888 redstone_wire{east: side, power: 0, south: side, north: none, west: side}
+B -607,28,889 repeater{powered: false, facing: north, delay: 1, locked: false}
+B -607,28,890 stone{}
+B -606,28,888 repeater{powered: false, facing: west, delay: 1, locked: false}
+B -606,28,890 dropper{triggered: false, facing: east}
+V -606,28,890 dropper [0:diamondx1]
+B -605,28,888 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -605,28,889 glass{}
+B -605,28,890 bubble_column{drag: false}
+B -605,28,891 glass{}
+B -604,28,888 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -604,28,890 glass{}
+B -603,28,888 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -602,28,888 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -601,28,888 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -600,28,888 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -599,28,888 repeater{powered: false, facing: west, delay: 1, locked: false}
+B -598,28,888 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -597,28,888 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -596,28,888 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -595,28,888 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -594,28,888 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -593,28,888 redstone_wire{east: side, power: 0, south: side, north: none, west: side}
+B -593,28,889 repeater{powered: false, facing: north, delay: 1, locked: false}
+B -593,28,890 stone{}
+B -592,28,888 repeater{powered: false, facing: west, delay: 1, locked: false}
+B -592,28,890 dropper{triggered: false, facing: east}
+V -592,28,890 dropper [0:diamondx1]
+B -591,28,888 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -591,28,889 glass{}
+B -591,28,890 water{level: 0}
+B -591,28,891 glass{}
+B -590,28,888 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -590,28,889 glass{}
+B -590,28,890 water{level: 1}
+B -590,28,891 glass{}
+B -589,28,888 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -589,28,889 glass{}
+B -589,28,890 water{level: 2}
+B -589,28,891 glass{}
+B -588,28,888 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -588,28,889 glass{}
+B -588,28,890 water{level: 3}
+B -588,28,891 glass{}
+B -587,28,888 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -587,28,889 glass{}
+B -587,28,890 water{level: 4}
+B -587,28,891 glass{}
+B -586,28,888 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -586,28,889 glass{}
+B -586,28,890 glass{}
+B -586,28,891 glass{}
+B -585,28,888 repeater{powered: false, facing: west, delay: 1, locked: false}
+B -584,28,888 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -583,28,888 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -582,28,888 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -581,28,888 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -580,28,888 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -579,28,888 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -627,29,890 glass{}
+B -626,29,889 glass{}
+B -626,29,890 water{level: 0}
+B -626,29,891 glass{}
+B -625,29,890 glass{}
+B -620,29,890 glass{}
+B -619,29,889 glass{}
+B -619,29,890 water{level: 0}
+B -619,29,891 glass{}
+B -618,29,890 glass{}
+B -613,29,890 glass{}
+B -612,29,889 glass{}
+B -612,29,890 bubble_column{drag: false}
+B -612,29,891 glass{}
+B -611,29,890 glass{}
+B -606,29,890 glass{}
+B -605,29,889 glass{}
+B -605,29,890 bubble_column{drag: false}
+B -605,29,891 glass{}
+B -604,29,890 glass{}
+B -627,30,890 glass{}
+B -626,30,889 glass{}
+B -626,30,890 water{level: 0}
+B -626,30,891 glass{}
+B -625,30,890 glass{}
+B -620,30,890 glass{}
+B -619,30,889 glass{}
+B -619,30,890 water{level: 0}
+B -619,30,891 glass{}
+B -618,30,890 glass{}
+B -613,30,890 glass{}
+B -612,30,889 glass{}
+B -612,30,890 bubble_column{drag: false}
+B -612,30,891 glass{}
+B -611,30,890 glass{}
+B -606,30,890 glass{}
+B -605,30,889 glass{}
+B -605,30,890 bubble_column{drag: false}
+B -605,30,891 glass{}
+B -604,30,890 glass{}
+B -627,31,890 glass{}
+B -626,31,889 glass{}
+B -626,31,890 water{level: 0}
+B -626,31,891 glass{}
+B -625,31,890 glass{}
+B -620,31,890 glass{}
+B -619,31,889 glass{}
+B -619,31,890 water{level: 0}
+B -619,31,891 glass{}
+B -618,31,890 glass{}
+B -613,31,890 glass{}
+B -612,31,889 glass{}
+B -612,31,890 bubble_column{drag: false}
+B -612,31,891 glass{}
+B -611,31,890 glass{}
+B -606,31,890 glass{}
+B -605,31,889 glass{}
+B -605,31,890 bubble_column{drag: false}
+B -605,31,891 glass{}
+B -604,31,890 hopper{enabled: true, facing: east}
+B -603,31,890 chest{waterlogged: false, type: single, facing: north}
+B -627,32,890 glass{}
+B -626,32,889 glass{}
+B -626,32,890 water{level: 0}
+B -626,32,891 glass{}
+B -625,32,890 glass{}
+B -620,32,890 glass{}
+B -619,32,889 glass{}
+B -619,32,890 water{level: 0}
+B -619,32,891 glass{}
+B -618,32,890 glass{}
+B -613,32,890 glass{}
+B -612,32,889 glass{}
+B -612,32,890 bubble_column{drag: false}
+B -612,32,891 glass{}
+B -611,32,890 glass{}
+B -606,32,890 glass{}
+B -605,32,889 glass{}
+B -605,32,890 bubble_column{drag: false}
+B -605,32,891 glass{}
+B -604,32,889 glass{}
+B -604,32,890 water{level: 1}
+B -604,32,891 glass{}
+B -603,32,890 glass{}
+B -627,33,890 glass{}
+B -626,33,889 glass{}
+B -626,33,890 water{level: 0}
+B -626,33,891 glass{}
+B -625,33,890 glass{}
+B -620,33,890 glass{}
+B -619,33,889 glass{}
+B -619,33,890 water{level: 0}
+B -619,33,891 glass{}
+B -618,33,890 glass{}
+B -613,33,890 glass{}
+B -612,33,889 glass{}
+B -612,33,890 bubble_column{drag: false}
+B -612,33,891 glass{}
+B -611,33,890 glass{}
+B -605,33,890 white_wool{}
+B -604,33,890 white_wool{}
+CLICK 118 lever [-635, 28, 888]
+T 199
+B -635,28,888 lever{face: floor, powered: true, facing: north}
+B -634,28,888 redstone_wire{east: side, power: 15, south: none, north: none, west: side}
+B -633,28,888 redstone_wire{east: side, power: 14, south: none, north: none, west: side}
+B -632,28,888 redstone_wire{east: side, power: 13, south: none, north: none, west: side}
+B -631,28,888 redstone_wire{east: side, power: 12, south: none, north: none, west: side}
+B -630,28,888 redstone_wire{east: side, power: 11, south: none, north: none, west: side}
+B -629,28,888 redstone_wire{east: side, power: 10, south: none, north: none, west: side}
+B -628,28,888 redstone_wire{east: side, power: 9, south: side, north: none, west: side}
+T 200
+B -628,28,889 repeater{powered: true, facing: north, delay: 1, locked: false}
+B -627,28,888 repeater{powered: true, facing: west, delay: 1, locked: false}
+B -627,28,890 dropper{triggered: true, facing: east}
+B -626,28,888 redstone_wire{east: side, power: 15, south: none, north: none, west: side}
+B -625,28,888 redstone_wire{east: side, power: 14, south: none, north: none, west: side}
+B -624,28,888 redstone_wire{east: side, power: 13, south: none, north: none, west: side}
+B -623,28,888 redstone_wire{east: side, power: 12, south: none, north: none, west: side}
+B -622,28,888 redstone_wire{east: side, power: 11, south: none, north: none, west: side}
+B -621,28,888 redstone_wire{east: side, power: 10, south: side, north: none, west: side}
+T 202
+B -621,28,889 repeater{powered: true, facing: north, delay: 1, locked: false}
+B -620,28,888 repeater{powered: true, facing: west, delay: 1, locked: false}
+B -620,28,890 dropper{triggered: true, facing: east}
+B -619,28,888 redstone_wire{east: side, power: 15, south: none, north: none, west: side}
+B -618,28,888 redstone_wire{east: side, power: 14, south: none, north: none, west: side}
+B -617,28,888 redstone_wire{east: side, power: 13, south: none, north: none, west: side}
+B -616,28,888 redstone_wire{east: side, power: 12, south: none, north: none, west: side}
+B -615,28,888 redstone_wire{east: side, power: 11, south: none, north: none, west: side}
+B -614,28,888 redstone_wire{east: side, power: 10, south: side, north: none, west: side}
+T 204
+V -627,28,890 dropper []
+B -614,28,889 repeater{powered: true, facing: north, delay: 1, locked: false}
+B -613,28,888 repeater{powered: true, facing: west, delay: 1, locked: false}
+B -613,28,890 dropper{triggered: true, facing: east}
+B -612,28,888 redstone_wire{east: side, power: 15, south: none, north: none, west: side}
+B -611,28,888 redstone_wire{east: side, power: 14, south: none, north: none, west: side}
+B -610,28,888 redstone_wire{east: side, power: 13, south: none, north: none, west: side}
+B -609,28,888 redstone_wire{east: side, power: 12, south: none, north: none, west: side}
+B -608,28,888 redstone_wire{east: side, power: 11, south: none, north: none, west: side}
+B -607,28,888 redstone_wire{east: side, power: 10, south: side, north: none, west: side}
+I 27 -625.568 28.487 890.577 v 0.227 0.14 0.075 diamond x1 age 1
+T 205
+I 27 -625.344 28.627 890.652 v 0.22 0.137 0.073 diamond x1 age 2
+T 206
+V -620,28,890 dropper []
+B -607,28,889 repeater{powered: true, facing: north, delay: 1, locked: false}
+B -606,28,888 repeater{powered: true, facing: west, delay: 1, locked: false}
+B -606,28,890 dropper{triggered: true, facing: east}
+B -605,28,888 redstone_wire{east: side, power: 15, south: none, north: none, west: side}
+B -604,28,888 redstone_wire{east: side, power: 14, south: none, north: none, west: side}
+B -603,28,888 redstone_wire{east: side, power: 13, south: none, north: none, west: side}
+B -602,28,888 redstone_wire{east: side, power: 12, south: none, north: none, west: side}
+B -601,28,888 redstone_wire{east: side, power: 11, south: none, north: none, west: side}
+B -600,28,888 redstone_wire{east: side, power: 10, south: none, north: none, west: side}
+I 27 -625.126 28.764 890.724 v 0.214 0.135 0.071 diamond x1 age 3
+I 28 -618.594 28.544 890.446 v 0.202 0.196 -0.053 diamond x1 age 1
+T 207
+I 27 -625.125 28.899 890.794 v 0 0.132 0.069 diamond x1 age 4
+I 28 -618.394 28.74 890.394 v 0.196 0.192 -0.051 diamond x1 age 2
+T 208
+V -613,28,890 dropper []
+B -599,28,888 repeater{powered: true, facing: west, delay: 1, locked: false}
+B -598,28,888 redstone_wire{east: side, power: 15, south: none, north: none, west: side}
+B -597,28,888 redstone_wire{east: side, power: 14, south: none, north: none, west: side}
+B -596,28,888 redstone_wire{east: side, power: 13, south: none, north: none, west: side}
+B -595,28,888 redstone_wire{east: side, power: 12, south: none, north: none, west: side}
+B -594,28,888 redstone_wire{east: side, power: 11, south: none, north: none, west: side}
+B -593,28,888 redstone_wire{east: side, power: 10, south: side, north: none, west: side}
+I 27 -625.125 29.031 890.862 v 0 0.129 0.067 diamond x1 age 5
+I 28 -618.2 28.932 890.343 v 0.19 0.188 -0.05 diamond x1 age 3
+I 29 -611.526 28.588 890.576 v 0.269 0.299 0.074 diamond x1 age 1
+T 209
+I 27 -625.125 29.16 890.875 v 0 0.127 0 diamond x1 age 6
+I 28 -618.125 29.121 890.293 v 0 0.185 -0.048 diamond x1 age 4
+I 29 -611.26 28.887 890.649 v 0.261 0.41 0.072 diamond x1 age 2
+T 210
+V -606,28,890 dropper []
+B -593,28,889 repeater{powered: true, facing: north, delay: 1, locked: false}
+B -592,28,888 repeater{powered: true, facing: west, delay: 1, locked: false}
+B -592,28,890 dropper{triggered: true, facing: east}
+B -591,28,888 redstone_wire{east: side, power: 15, south: none, north: none, west: side}
+B -590,28,888 redstone_wire{east: side, power: 14, south: none, north: none, west: side}
+B -589,28,888 redstone_wire{east: side, power: 13, south: none, north: none, west: side}
+B -588,28,888 redstone_wire{east: side, power: 12, south: none, north: none, west: side}
+B -587,28,888 redstone_wire{east: side, power: 11, south: none, north: none, west: side}
+B -586,28,888 redstone_wire{east: side, power: 10, south: none, north: none, west: side}
+I 27 -625.125 29.287 890.875 v 0 0.124 0 diamond x1 age 7
+I 28 -618.125 29.305 890.245 v 0 0.181 -0.047 diamond x1 age 5
+I 29 -611.125 29.297 890.72 v 0 0.461 0.07 diamond x1 age 3
+I 30 -604.59 28.522 890.476 v 0.206 0.234 -0.023 diamond x1 age 1
+T 211
+I 27 -625.125 29.411 890.875 v 0 0.122 0 diamond x1 age 8
+I 28 -618.125 29.486 890.199 v 0 0.177 -0.046 diamond x1 age 6
+I 29 -611.125 29.758 890.79 v 0 0.569 0.068 diamond x1 age 4
+I 30 -604.387 28.756 890.454 v 0.2 0.347 -0.022 diamond x1 age 2
+T 212
+B -585,28,888 repeater{powered: true, facing: west, delay: 1, locked: false}
+B -584,28,888 redstone_wire{east: side, power: 15, south: none, north: none, west: side}
+B -583,28,888 redstone_wire{east: side, power: 14, south: none, north: none, west: side}
+B -582,28,888 redstone_wire{east: side, power: 13, south: none, north: none, west: side}
+B -581,28,888 redstone_wire{east: side, power: 12, south: none, north: none, west: side}
+B -580,28,888 redstone_wire{east: side, power: 11, south: none, north: none, west: side}
+B -579,28,888 redstone_wire{east: side, power: 10, south: none, north: none, west: side}
+I 27 -625.125 29.533 890.875 v 0 0.119 0 diamond x1 age 9
+I 28 -618.125 29.664 890.154 v 0 0.174 -0.044 diamond x1 age 7
+I 29 -611.125 30.327 890.857 v 0 0.617 0.066 diamond x1 age 5
+I 30 -604.189 29.103 890.432 v 0.194 0.399 -0.022 diamond x1 age 3
+T 213
+I 27 -625.125 29.652 890.875 v 0 0.117 0 diamond x1 age 10
+I 28 -618.125 29.837 890.125 v 0 0.17 0 diamond x1 age 8
+I 29 -611.125 30.944 890.875 v 0 0.686 0 diamond x1 age 6
+I 30 -604.125 29.502 890.41 v 0 0.45 -0.021 diamond x1 age 4
+T 214
+V -592,28,890 dropper []
+I 27 -625.125 29.769 890.875 v 0 0.115 0 diamond x1 age 11
+I 28 -618.125 30.008 890.125 v 0 0.167 0 diamond x1 age 9
+I 29 -611.125 31.63 890.875 v 0 0.686 0 diamond x1 age 7
+I 30 -604.125 29.952 890.389 v 0 0.558 -0.02 diamond x1 age 5
+I 31 -590.425 28.545 890.558 v 0.381 0.198 0.057 diamond x1 age 1
+T 215
+I 27 -625.125 29.883 890.875 v 0 0.112 0 diamond x1 age 12
+I 28 -618.125 30.174 890.125 v 0 0.164 0 diamond x1 age 10
+I 29 -611.125 32.316 890.875 v 0 0.686 0 diamond x1 age 8
+I 30 -604.125 30.51 890.369 v 0 0.606 -0.02 diamond x1 age 6
+I 31 -590.034 28.743 890.614 v 0.397 0.194 0.055 diamond x1 age 2
+T 216
+I 27 -625.125 29.995 890.875 v 0 0.11 0 diamond x1 age 13
+I 28 -618.125 30.338 890.125 v 0 0.16 0 diamond x1 age 11
+I 29 -611.125 33.002 890.875 v 0 0.77 0 diamond x1 age 9
+I 30 -604.125 31.116 890.349 v 0 0.653 -0.019 diamond x1 age 7
+I 31 -589.627 28.937 890.668 v 0.399 0.19 0.053 diamond x1 age 3
+T 217
+I 27 -625.125 30.105 890.875 v 0 0.108 0 diamond x1 age 14
+I 28 -618.125 30.498 890.125 v 0 0.157 0 diamond x1 age 12
+I 29 -611.125 33.772 890.875 v 0 0.853 0 diamond x1 age 10
+I 30 -604.125 31.768 890.33 v 0.014 0.686 -0.019 diamond x1 age 8
+I 31 -589.227 29.086 890.722 v 0.391 0.147 0.052 diamond x1 age 4
+T 218
+V -604,31,890 hopper [0:diamondx1]
+I 27 -625.125 30.213 890.875 v 0 0.106 0 diamond x1 age 15
+I 28 -618.125 30.655 890.125 v 0 0.154 0 diamond x1 age 13
+I 29 -611.125 34.625 890.875 v 0 0.836 0 diamond x1 age 11
+I 31 -588.836 29.193 890.774 v 0.383 0.105 0.051 diamond x1 age 5
+T 219
+I 27 -625.125 30.319 890.875 v 0 0.104 0 diamond x1 age 16
+I 28 -618.125 30.809 890.125 v 0 0.151 0 diamond x1 age 14
+I 29 -611.125 35.421 890.875 v 0 0.78 0 diamond x1 age 12
+I 31 -588.453 29.258 890.825 v 0.376 0.063 0.05 diamond x1 age 6
+T 220
+I 27 -625.125 30.422 890.875 v 0 0.101 0 diamond x1 age 17
+I 28 -618.125 30.96 890.125 v 0 0.148 0 diamond x1 age 15
+I 29 -611.125 36.161 890.875 v 0 0.725 0 diamond x1 age 13
+I 31 -588.077 29.281 890.876 v 0.368 0.023 0.049 diamond x1 age 7
+T 221
+I 27 -625.125 30.524 890.875 v 0 0.099 0 diamond x1 age 18
+I 28 -618.125 31.108 890.125 v 0 0.145 0 diamond x1 age 16
+I 29 -611.125 36.846 890.875 v 0 0.671 0 diamond x1 age 14
+I 31 -587.709 29.264 890.925 v 0.361 -0.017 0.048 diamond x1 age 8
+T 222
+B -619,28,890 bubble_column{drag: false}
+B -619,29,890 bubble_column{drag: false}
+B -619,30,890 bubble_column{drag: false}
+B -619,31,890 bubble_column{drag: false}
+B -619,32,890 bubble_column{drag: false}
+B -619,33,890 bubble_column{drag: false}
+I 27 -625.125 30.623 890.875 v 0 0.097 0 diamond x1 age 19
+I 28 -618.125 31.253 890.125 v 0 0.201 0 diamond x1 age 17
+I 29 -611.125 37.477 890.875 v 0 0.619 0 diamond x1 age 15
+I 31 -587.348 29.207 890.973 v 0.354 -0.056 0.047 diamond x1 age 9
+T 223
+I 27 -625.125 30.721 890.875 v 0 0.095 0 diamond x1 age 20
+I 28 -618.125 31.454 890.125 v 0 0.256 0 diamond x1 age 18
+I 29 -611.125 38.056 890.875 v 0 0.567 0 diamond x1 age 16
+I 31 -586.994 29.112 891.021 v 0.347 -0.094 0.046 diamond x1 age 10
+T 224
+I 27 -625.125 30.816 890.875 v 0 0.094 0 diamond x1 age 21
+I 28 -618.125 31.709 890.125 v 0 0.309 0 diamond x1 age 19
+I 29 -611.125 38.583 890.875 v 0 0.517 0 diamond x1 age 17
+I 31 -586.648 29 891.067 v 0.204 0 0.027 diamond x1 age 11
+T 225
+I 27 -625.125 30.91 890.875 v 0 0.092 0 diamond x1 age 22
+I 29 -611.125 39.06 890.875 v 0 0.467 0 diamond x1 age 18
+I 28 -618.125 32.018 890.125 v 0 0.362 0 diamond x1 age 20
+I 31 -586.444 29 891.094 v 0.12 0 0.016 diamond x1 age 12
+T 226
+V -604,31,890 hopper []
+V -603,31,890 chest [0:diamondx1]
+I 27 -625.125 31.001 890.875 v 0 0.09 0 diamond x1 age 23
+I 29 -611.125 39.487 890.875 v 0 0.419 0 diamond x1 age 19
+I 28 -618.125 32.38 890.125 v 0 0.413 0 diamond x1 age 21
+I 31 -586.324 29 891.11 v 0.07 0 0.009 diamond x1 age 13
+T 227
+I 27 -625.125 31.091 890.875 v 0 0.088 0 diamond x1 age 24
+I 29 -611.125 39.866 890.875 v 0 0.371 0 diamond x1 age 20
+I 28 -618.125 32.794 890.125 v 0 0.562 0 diamond x1 age 22
+I 31 -586.254 29 891.12 v 0.041 0 0.006 diamond x1 age 14
+T 228
+I 27 -625.125 31.179 890.875 v 0 0.086 0 diamond x1 age 25
+I 29 -611.125 40.197 890.875 v 0 0.324 0 diamond x1 age 21
+I 28 -618.125 33.356 890.125 v 0 0.649 0 diamond x1 age 23
+I 31 -586.212 29 891.125 v 0.024 0 0.003 diamond x1 age 15
+T 229
+I 27 -625.125 31.266 890.875 v 0 0.085 0 diamond x1 age 26
+I 29 -611.125 40.481 890.875 v 0 0.279 0 diamond x1 age 22
+I 28 -618.125 34.004 890.125 v 0 0.636 0 diamond x1 age 24
+I 31 -586.188 29 891.128 v 0.014 0 0.002 diamond x1 age 16
+T 230
+I 27 -625.125 31.35 890.875 v 0 0.083 0 diamond x1 age 27
+I 29 -611.125 40.72 890.875 v 0 0.234 0 diamond x1 age 23
+I 28 -618.125 34.6 890.125 v 0 0.584 0 diamond x1 age 25
+I 31 -586.174 29 891.13 v 0.008 0 0.001 diamond x1 age 17
+T 231
+I 27 -625.125 31.433 890.875 v 0 0.081 0 diamond x1 age 28
+I 29 -611.125 40.914 890.875 v 0 0.19 0 diamond x1 age 24
+I 28 -618.125 35.144 890.125 v 0 0.533 0 diamond x1 age 26
+I 31 -586.165 29 891.131 v 0.005 0 0.001 diamond x1 age 18
+T 232
+I 27 -625.125 31.514 890.875 v 0 0.08 0 diamond x1 age 29
+I 29 -611.125 41.064 890.875 v 0 0.147 0 diamond x1 age 25
+I 28 -618.125 35.637 890.125 v 0 0.483 0 diamond x1 age 27
+I 31 -586.16 29 891.132 v 0.003 0 0 diamond x1 age 19
+T 233
+I 27 -625.125 31.594 890.875 v 0 0.078 0 diamond x1 age 30
+I 29 -611.125 41.171 890.875 v 0 0.105 0 diamond x1 age 26
+I 28 -618.125 36.08 890.125 v 0 0.434 0 diamond x1 age 28
+I 31 -586.16 29 891.132 v 0.003 -0.04 0 diamond x1 age 20
+T 234
+I 27 -625.125 31.672 890.875 v 0 0.076 0 diamond x1 age 31
+I 29 -611.125 41.236 890.875 v 0 0.064 0 diamond x1 age 27
+I 28 -618.125 36.474 890.125 v 0 0.386 0 diamond x1 age 29
+I 31 -586.157 29 891.132 v 0.002 0 0 diamond x1 age 21
+T 235
+I 27 -625.125 31.748 890.875 v 0 0.075 0 diamond x1 age 32
+I 29 -611.125 41.259 890.875 v 0 0.023 0 diamond x1 age 28
+I 28 -618.125 36.82 890.125 v 0 0.339 0 diamond x1 age 30
+I 31 -586.157 29 891.132 v 0.002 -0.04 0 diamond x1 age 22
+T 236
+I 27 -625.125 31.823 890.875 v 0 0.073 0 diamond x1 age 33
+I 29 -611.125 41.242 890.875 v 0 -0.017 0 diamond x1 age 29
+I 28 -618.125 37.12 890.125 v 0 0.293 0 diamond x1 age 31
+I 31 -586.157 29 891.132 v 0.002 -0.08 0 diamond x1 age 23
+T 237
+I 27 -625.125 31.897 890.875 v 0 0.072 0 diamond x1 age 34
+I 29 -611.125 41.186 890.875 v 0 -0.055 0 diamond x1 age 30
+I 28 -618.125 37.373 890.125 v 0 0.248 0 diamond x1 age 32
+I 31 -586.157 29 891.132 v 0.002 -0.12 0 diamond x1 age 24
+T 238
+I 27 -625.125 31.969 890.875 v 0 0.071 0 diamond x1 age 35
+I 29 -611.125 41.09 890.875 v 0 -0.093 0 diamond x1 age 31
+I 28 -618.125 37.582 890.125 v 0 0.204 0 diamond x1 age 33
+I 31 -586.156 29 891.133 v 0.001 0 0 diamond x1 age 25
+T 239
+I 27 -625.125 32.039 890.875 v 0 0.069 0 diamond x1 age 36
+I 29 -611.125 40.957 890.875 v 0 -0.131 0 diamond x1 age 32
+I 28 -618.125 37.746 890.125 v 0 0.161 0 diamond x1 age 34
+I 31 -586.156 29 891.133 v 0.001 -0.04 0 diamond x1 age 26
+T 240
+I 27 -625.125 32.108 890.875 v 0 0.068 0 diamond x1 age 37
+I 29 -611.125 40.786 890.875 v 0 -0.167 0 diamond x1 age 33
+I 28 -618.125 37.867 890.125 v 0 0.118 0 diamond x1 age 35
+I 31 -586.156 29 891.133 v 0.001 -0.08 0 diamond x1 age 27
+T 241
+I 27 -625.125 32.176 890.875 v 0 0.066 0 diamond x1 age 38
+I 29 -611.125 40.579 890.875 v 0 -0.203 0 diamond x1 age 34
+I 28 -618.125 37.945 890.125 v 0 0.077 0 diamond x1 age 36
+I 31 -586.156 29 891.133 v 0.001 -0.12 0 diamond x1 age 28
+T 242
+I 27 -625.125 32.242 890.875 v 0 0.065 0 diamond x1 age 39
+I 29 -611.125 40.335 890.875 v 0 -0.238 0 diamond x1 age 35
+I 28 -618.125 37.982 890.125 v 0 0.036 0 diamond x1 age 37
+I 31 -586.155 29 891.133 v 0.001 0 0 diamond x1 age 29
+T 243
+I 27 -625.125 32.307 890.875 v 0 0.064 0 diamond x1 age 40
+I 29 -611.125 40.057 890.875 v 0 -0.273 0 diamond x1 age 36
+I 28 -618.125 37.978 890.125 v 0 -0.004 0 diamond x1 age 38
+I 31 -586.155 29 891.133 v 0.001 -0.04 0 diamond x1 age 30
+T 244
+I 27 -625.125 32.371 890.875 v 0 0.062 0 diamond x1 age 41
+I 29 -611.125 39.744 890.875 v 0 -0.307 0 diamond x1 age 37
+I 28 -618.125 37.935 890.125 v 0 -0.043 0 diamond x1 age 39
+I 31 -586.155 29 891.133 v 0.001 -0.08 0 diamond x1 age 31
+T 245
+I 27 -625.125 32.434 890.875 v 0 0.061 0 diamond x1 age 42
+I 29 -611.125 39.398 890.875 v 0 -0.34 0 diamond x1 age 38
+I 28 -618.125 37.852 890.125 v 0 -0.081 0 diamond x1 age 40
+I 31 -586.155 29 891.133 v 0.001 -0.12 0 diamond x1 age 32
+T 246
+I 27 -625.125 32.495 890.875 v 0 0.06 0 diamond x1 age 43
+I 29 -611.125 39.018 890.875 v 0 -0.372 0 diamond x1 age 39
+I 28 -618.125 37.731 890.125 v 0 -0.119 0 diamond x1 age 41
+I 31 -586.154 29 891.133 v 0 0 0 diamond x1 age 33
+T 247
+I 27 -625.125 32.555 890.875 v 0 0.059 0 diamond x1 age 44
+I 29 -611.125 38.606 890.875 v 0 -0.404 0 diamond x1 age 40
+I 28 -618.125 37.572 890.125 v 0 -0.156 0 diamond x1 age 42
+I 31 -586.154 29 891.133 v 0 -0.04 0 diamond x1 age 34
+T 248
+I 27 -625.125 32.615 890.875 v 0 0.059 0 diamond x1 age 45
+I 29 -611.125 38.162 890.875 v 0 -0.435 0 diamond x1 age 41
+I 28 -618.125 37.376 890.125 v 0 -0.192 0 diamond x1 age 43
+I 31 -586.154 29 891.133 v 0 -0.08 0 diamond x1 age 35
+T 249
+I 27 -625.125 32.674 890.875 v 0 0.058 0 diamond x1 age 46
+I 29 -611.125 37.687 890.875 v 0 -0.465 0 diamond x1 age 42
+I 28 -618.125 37.144 890.125 v 0 -0.227 0 diamond x1 age 44
+I 31 -586.154 29 891.133 v 0 -0.12 0 diamond x1 age 36
+T 250
+I 27 -625.125 32.733 890.875 v 0 0.057 0 diamond x1 age 47
+I 29 -611.125 37.182 890.875 v 0 -0.495 0 diamond x1 age 43
+I 28 -618.125 36.877 890.125 v 0 -0.262 0 diamond x1 age 45
+I 31 -586.154 29 891.133 v 0 0 0 diamond x1 age 37
+T 251
+I 27 -625.125 32.79 890.875 v 0 0.057 0 diamond x1 age 48
+I 29 -611.125 36.647 890.875 v 0 -0.525 0 diamond x1 age 44
+I 28 -618.125 36.576 890.125 v 0 -0.296 0 diamond x1 age 46
+I 31 -586.154 29 891.133 v 0 -0.04 0 diamond x1 age 38
+T 252
+I 27 -625.125 32.848 890.875 v 0 0.056 0 diamond x1 age 49
+I 29 -611.125 36.082 890.875 v 0 -0.553 0 diamond x1 age 45
+I 28 -618.125 36.24 890.125 v 0 -0.329 0 diamond x1 age 47
+I 31 -586.154 29 891.133 v 0 -0.08 0 diamond x1 age 39
+T 253
+I 27 -625.125 32.904 890.875 v 0 0.055 0 diamond x1 age 50
+I 29 -611.125 35.489 890.875 v 0 -0.581 0 diamond x1 age 46
+I 28 -618.125 35.871 890.125 v 0 -0.362 0 diamond x1 age 48
+I 31 -586.154 29 891.133 v 0 -0.12 0 diamond x1 age 40
+T 254
+I 27 -625.125 32.96 890.875 v 0 0.055 0 diamond x1 age 51
+I 29 -611.125 34.867 890.875 v 0 -0.609 0 diamond x1 age 47
+I 28 -618.125 35.469 890.125 v 0 -0.394 0 diamond x1 age 49
+I 31 -586.154 29 891.133 v 0 0 0 diamond x1 age 41
+T 255
+I 27 -625.125 33.015 890.875 v 0 0.054 0 diamond x1 age 52
+I 29 -611.125 34.218 890.875 v 0 -0.636 0 diamond x1 age 48
+I 28 -618.125 35.036 890.125 v 0 -0.425 0 diamond x1 age 50
+I 31 -586.154 29 891.133 v 0 -0.04 0 diamond x1 age 42
+T 256
+I 27 -625.125 33.07 890.875 v 0 0.054 0 diamond x1 age 53
+I 29 -611.125 33.542 890.875 v 0 -0.565 0 diamond x1 age 49
+I 28 -618.125 34.571 890.125 v 0 -0.456 0 diamond x1 age 51
+I 31 -586.154 29 891.133 v 0 -0.08 0 diamond x1 age 43
+T 257
+I 27 -625.125 33.124 890.875 v 0 0.053 0 diamond x1 age 54
+I 29 -611.125 32.978 890.875 v 0 -0.396 0 diamond x1 age 50
+I 28 -618.125 34.075 890.125 v 0 -0.486 0 diamond x1 age 52
+I 31 -586.154 29 891.133 v 0 -0.12 0 diamond x1 age 44
+T 258
+I 27 -625.125 33.177 890.875 v 0 0.052 0 diamond x1 age 55
+I 29 -611.125 32.583 890.875 v 0 -0.329 0 diamond x1 age 51
+I 28 -618.125 33.55 890.125 v 0 -0.417 0 diamond x1 age 53
+I 31 -586.154 29 891.133 v 0 0 0 diamond x1 age 45
+T 259
+I 27 -625.125 33.23 890.875 v 0 0.052 0 diamond x1 age 56
+I 29 -611.125 32.254 890.875 v 0 -0.263 0 diamond x1 age 52
+I 28 -618.125 33.133 890.125 v 0 -0.31 0 diamond x1 age 54
+I 31 -586.154 29 891.133 v 0 -0.04 0 diamond x1 age 46
+T 260
+I 27 -625.125 33.282 890.875 v 0 0.051 0 diamond x1 age 57
+I 29 -611.125 31.992 890.875 v 0 -0.14 0 diamond x1 age 53
+I 28 -618.125 32.823 890.125 v 0 -0.147 0 diamond x1 age 55
+I 31 -586.154 29 891.133 v 0 -0.08 0 diamond x1 age 47
+T 261
+I 27 -625.125 33.334 890.875 v 0 0.051 0 diamond x1 age 58
+I 29 -611.125 31.853 890.875 v 0 -0.019 0 diamond x1 age 54
+I 28 -618.125 32.677 890.125 v 0 -0.085 0 diamond x1 age 56
+I 31 -586.154 29 891.133 v 0 -0.12 0 diamond x1 age 48
+T 262
+I 27 -625.125 33.385 890.875 v 0 0.05 0 diamond x1 age 59
+I 29 -611.125 31.835 890.875 v 0 0.1 0 diamond x1 age 55
+I 28 -618.125 32.593 890.125 v 0 -0.024 0 diamond x1 age 57
+I 31 -586.154 29 891.133 v 0 0 0 diamond x1 age 49
+T 263
+I 27 -625.125 33.436 890.875 v 0 0.05 0 diamond x1 age 60
+I 29 -611.125 31.935 890.875 v 0 0.215 0 diamond x1 age 56
+I 28 -618.125 32.57 890.125 v 0 0.036 0 diamond x1 age 58
+I 31 -586.154 29 891.133 v 0 -0.04 0 diamond x1 age 50
+T 264
+I 27 -625.125 33.486 890.875 v 0 0.049 0 diamond x1 age 61
+I 28 -618.125 32.606 890.125 v 0 0.095 0 diamond x1 age 59
+I 29 -611.125 32.15 890.875 v 0 0.27 0 diamond x1 age 57
+I 31 -586.154 29 891.133 v 0 -0.08 0 diamond x1 age 51
+T 265
+I 27 -625.125 33.536 890.875 v 0 0.049 0 diamond x1 age 62
+I 28 -618.125 32.701 890.125 v 0 0.152 0 diamond x1 age 60
+I 29 -611.125 32.42 890.875 v 0 0.323 0 diamond x1 age 58
+I 31 -586.154 29 891.133 v 0 -0.12 0 diamond x1 age 52
+T 266
+I 27 -625.125 33.585 890.875 v 0 0.048 0 diamond x1 age 63
+I 28 -618.125 32.853 890.125 v 0 0.305 0 diamond x1 age 61
+I 29 -611.125 32.743 890.875 v 0 0.376 0 diamond x1 age 59
+I 31 -586.154 29 891.133 v 0 0 0 diamond x1 age 53
+T 267
+I 27 -625.125 33.634 890.875 v 0 0.048 0 diamond x1 age 64
+I 28 -618.125 33.158 890.125 v 0 0.397 0 diamond x1 age 62
+I 29 -611.125 33.119 890.875 v 0 0.466 0 diamond x1 age 60
+I 31 -586.154 29 891.133 v 0 -0.04 0 diamond x1 age 54
+T 268
+I 27 -625.125 33.682 890.875 v 0 0.047 0 diamond x1 age 65
+I 28 -618.125 33.555 890.125 v 0 0.487 0 diamond x1 age 63
+I 29 -611.125 33.585 890.875 v 0 0.555 0 diamond x1 age 61
+I 31 -586.154 29 891.133 v 0 -0.08 0 diamond x1 age 55
+T 269
+I 27 -625.125 33.73 890.875 v 0 0.047 0 diamond x1 age 66
+I 28 -618.125 34.043 890.125 v 0 0.478 0 diamond x1 age 64
+I 29 -611.125 34.14 890.875 v 0 0.544 0 diamond x1 age 62
+I 31 -586.154 29 891.133 v 0 -0.12 0 diamond x1 age 56
+T 270
+I 27 -625.125 33.777 890.875 v 0 0.046 0 diamond x1 age 67
+I 28 -618.125 34.48 890.125 v 0 0.429 0 diamond x1 age 65
+I 29 -611.125 34.644 890.875 v 0 0.494 0 diamond x1 age 63
+I 31 -586.154 29 891.133 v 0 0 0 diamond x1 age 57
+T 271
+I 27 -625.125 33.824 890.875 v 0 0.046 0 diamond x1 age 68
+I 28 -618.125 34.869 890.125 v 0 0.381 0 diamond x1 age 66
+I 29 -611.125 35.097 890.875 v 0 0.445 0 diamond x1 age 64
+I 31 -586.154 29 891.133 v 0 -0.04 0 diamond x1 age 58
+T 272
+I 27 -625.125 33.83 890.875 v 0 0.006 0 diamond x1 age 69
+I 28 -618.125 35.21 890.125 v 0 0.334 0 diamond x1 age 67
+I 29 -611.125 35.502 890.875 v 0 0.396 0 diamond x1 age 65
+I 31 -586.154 29 891.133 v 0 -0.08 0 diamond x1 age 59
+T 273
+I 27 -625.125 33.795 890.875 v 0 -0.034 0 diamond x1 age 70
+I 28 -618.125 35.504 890.125 v 0 0.288 0 diamond x1 age 68
+I 29 -611.125 35.858 890.875 v 0 0.349 0 diamond x1 age 66
+I 31 -586.154 29 891.133 v 0 -0.12 0 diamond x1 age 60
+T 274
+I 27 -625.125 33.722 890.875 v 0 -0.072 0 diamond x1 age 71
+I 28 -618.125 35.753 890.125 v 0 0.243 0 diamond x1 age 69
+I 29 -611.125 36.168 890.875 v 0 0.303 0 diamond x1 age 67
+I 31 -586.154 29 891.133 v 0 0 0 diamond x1 age 61
+T 275
+I 27 -625.125 33.65 890.875 v 0 -0.07 0 diamond x1 age 72
+I 28 -618.125 35.956 890.125 v 0 0.199 0 diamond x1 age 70
+I 29 -611.125 36.431 890.875 v 0 0.258 0 diamond x1 age 68
+I 31 -586.154 29 891.133 v 0 -0.04 0 diamond x1 age 62
+T 276
+I 27 -625.125 33.581 890.875 v 0 -0.068 0 diamond x1 age 73
+I 28 -618.125 36.115 890.125 v 0 0.156 0 diamond x1 age 71
+I 29 -611.125 36.649 890.875 v 0 0.214 0 diamond x1 age 69
+I 31 -586.154 29 891.133 v 0 -0.08 0 diamond x1 age 63
+T 277
+I 27 -625.125 33.513 890.875 v 0 -0.066 0 diamond x1 age 74
+I 28 -618.125 36.231 890.125 v 0 0.114 0 diamond x1 age 72
+I 29 -611.125 36.822 890.875 v 0 0.17 0 diamond x1 age 70
+I 31 -586.154 29 891.133 v 0 -0.12 0 diamond x1 age 64
+T 278
+I 27 -625.125 33.447 890.875 v 0 -0.065 0 diamond x1 age 75
+I 28 -618.125 36.305 890.125 v 0 0.072 0 diamond x1 age 73
+I 29 -611.125 36.952 890.875 v 0 0.127 0 diamond x1 age 71
+I 31 -586.154 29 891.133 v 0 0 0 diamond x1 age 65
+T 279
+I 27 -625.125 33.383 890.875 v 0 -0.063 0 diamond x1 age 76
+I 28 -618.125 36.338 890.125 v 0 0.032 0 diamond x1 age 74
+I 29 -611.125 37.04 890.875 v 0 0.086 0 diamond x1 age 72
+I 31 -586.154 29 891.133 v 0 -0.04 0 diamond x1 age 66
+T 280
+I 27 -625.125 33.321 890.875 v 0 -0.061 0 diamond x1 age 77
+I 28 -618.125 36.329 890.125 v 0 -0.008 0 diamond x1 age 75
+I 29 -611.125 37.086 890.875 v 0 0.045 0 diamond x1 age 73
+I 31 -586.154 29 891.133 v 0 -0.08 0 diamond x1 age 67
+T 281
+I 27 -625.125 33.26 890.875 v 0 -0.059 0 diamond x1 age 78
+I 28 -618.125 36.281 890.125 v 0 -0.047 0 diamond x1 age 76
+I 29 -611.125 37.09 890.875 v 0 0.005 0 diamond x1 age 74
+I 31 -586.154 29 891.133 v 0 -0.12 0 diamond x1 age 68
+T 282
+I 27 -625.125 33.201 890.875 v 0 -0.058 0 diamond x1 age 79
+I 28 -618.125 36.194 890.125 v 0 -0.085 0 diamond x1 age 77
+I 29 -611.125 37.055 890.875 v 0 -0.035 0 diamond x1 age 75
+I 31 -586.154 29 891.133 v 0 0 0 diamond x1 age 69
+T 283
+I 27 -625.125 33.144 890.875 v 0 -0.056 0 diamond x1 age 80
+I 28 -618.125 36.068 890.125 v 0 -0.123 0 diamond x1 age 78
+I 29 -611.125 36.981 890.875 v 0 -0.073 0 diamond x1 age 76
+I 31 -586.154 29 891.133 v 0 -0.04 0 diamond x1 age 70
+T 284
+I 27 -625.125 33.089 890.875 v 0 -0.054 0 diamond x1 age 81
+I 28 -618.125 35.905 890.125 v 0 -0.16 0 diamond x1 age 79
+I 29 -611.125 36.867 890.875 v 0 -0.111 0 diamond x1 age 77
+I 31 -586.154 29 891.133 v 0 -0.08 0 diamond x1 age 71
+T 285
+I 27 -625.125 33.035 890.875 v 0 -0.053 0 diamond x1 age 82
+I 28 -618.125 35.706 890.125 v 0 -0.196 0 diamond x1 age 80
+I 29 -611.125 36.717 890.875 v 0 -0.148 0 diamond x1 age 78
+I 31 -586.154 29 891.133 v 0 -0.12 0 diamond x1 age 72
+T 286
+I 27 -625.125 32.983 890.875 v 0 -0.051 0 diamond x1 age 83
+I 28 -618.125 35.47 890.125 v 0 -0.231 0 diamond x1 age 81
+I 29 -611.125 36.529 890.875 v 0 -0.184 0 diamond x1 age 79
+I 31 -586.154 29 891.133 v 0 0 0 diamond x1 age 73
+T 287
+I 27 -625.125 32.932 890.875 v 0 -0.05 0 diamond x1 age 84
+I 28 -618.125 35.199 890.125 v 0 -0.266 0 diamond x1 age 82
+I 29 -611.125 36.305 890.875 v 0 -0.22 0 diamond x1 age 80
+I 31 -586.154 29 891.133 v 0 -0.04 0 diamond x1 age 74
+T 288
+I 27 -625.125 32.883 890.875 v 0 -0.048 0 diamond x1 age 85
+I 28 -618.125 34.894 890.125 v 0 -0.299 0 diamond x1 age 83
+I 29 -611.125 36.045 890.875 v 0 -0.254 0 diamond x1 age 81
+I 31 -586.154 29 891.133 v 0 -0.08 0 diamond x1 age 75
+T 289
+I 27 -625.125 32.835 890.875 v 0 -0.047 0 diamond x1 age 86
+I 28 -618.125 34.554 890.125 v 0 -0.333 0 diamond x1 age 84
+I 29 -611.125 35.751 890.875 v 0 -0.288 0 diamond x1 age 82
+I 31 -586.154 29 891.133 v 0 -0.12 0 diamond x1 age 76
+T 290
+I 27 -625.125 32.789 890.875 v 0 -0.045 0 diamond x1 age 87
+I 28 -618.125 34.181 890.125 v 0 -0.365 0 diamond x1 age 85
+I 29 -611.125 35.422 890.875 v 0 -0.322 0 diamond x1 age 83
+I 31 -586.154 29 891.133 v 0 0 0 diamond x1 age 77
+T 291
+I 27 -625.125 32.744 890.875 v 0 -0.044 0 diamond x1 age 88
+I 28 -618.125 33.776 890.125 v 0 -0.299 0 diamond x1 age 86
+I 29 -611.125 35.06 890.875 v 0 -0.355 0 diamond x1 age 84
+I 31 -586.154 29 891.133 v 0 -0.04 0 diamond x1 age 78
+T 292
+I 27 -625.125 32.7 890.875 v 0 -0.043 0 diamond x1 age 89
+I 28 -618.125 33.478 890.125 v 0 -0.195 0 diamond x1 age 87
+I 29 -611.125 34.666 890.875 v 0 -0.387 0 diamond x1 age 85
+I 31 -586.154 29 891.133 v 0 -0.08 0 diamond x1 age 79
+T 293
+I 27 -625.125 32.658 890.875 v 0 -0.041 0 diamond x1 age 90
+I 28 -618.125 33.284 890.125 v 0 -0.092 0 diamond x1 age 88
+I 29 -611.125 34.239 890.875 v 0 -0.418 0 diamond x1 age 86
+I 31 -586.154 29 891.133 v 0 -0.12 0 diamond x1 age 80
+T 294
+I 27 -625.125 32.617 890.875 v 0 -0.04 0 diamond x1 age 91
+I 28 -618.125 33.192 890.125 v 0 0.008 0 diamond x1 age 89
+I 29 -611.125 33.781 890.875 v 0 -0.351 0 diamond x1 age 87
+I 31 -586.154 29 891.133 v 0 0 0 diamond x1 age 81
+T 295
+I 27 -625.125 32.578 890.875 v 0 -0.039 0 diamond x1 age 92
+I 28 -618.125 33.2 890.125 v 0 0.106 0 diamond x1 age 90
+I 29 -611.125 33.43 890.875 v 0 -0.246 0 diamond x1 age 88
+I 31 -586.154 29 891.133 v 0 -0.04 0 diamond x1 age 82
+T 296
+I 27 -625.125 32.54 890.875 v 0 -0.037 0 diamond x1 age 93
+I 28 -618.125 33.307 890.125 v 0 0.202 0 diamond x1 age 91
+I 29 -611.125 33.185 890.875 v 0 -0.142 0 diamond x1 age 89
+I 31 -586.154 29 891.133 v 0 -0.08 0 diamond x1 age 83
+T 297
+I 27 -625.125 32.503 890.875 v 0 -0.036 0 diamond x1 age 94
+I 28 -618.125 33.509 890.125 v 0 0.296 0 diamond x1 age 92
+I 29 -611.125 33.043 890.875 v 0 -0.041 0 diamond x1 age 90
+I 31 -586.154 29 891.133 v 0 -0.12 0 diamond x1 age 84
+T 298
+I 27 -625.125 32.467 890.875 v 0 -0.035 0 diamond x1 age 95
+I 28 -618.125 33.805 890.125 v 0 0.388 0 diamond x1 age 93
+I 29 -611.125 33.003 890.875 v 0 0.058 0 diamond x1 age 91
+I 31 -586.154 29 891.133 v 0 0 0 diamond x1 age 85
+T 299
+I 27 -625.125 32.433 890.875 v 0 -0.034 0 diamond x1 age 96
+I 28 -618.125 34.154 890.125 v 0 0.341 0 diamond x1 age 94
+I 29 -611.125 33.062 890.875 v 0 0.156 0 diamond x1 age 92
+I 31 -586.154 29 891.133 v 0 -0.04 0 diamond x1 age 86
+T 300
+I 27 -625.125 32.399 890.875 v 0 -0.033 0 diamond x1 age 97
+I 28 -618.125 34.455 890.125 v 0 0.295 0 diamond x1 age 95
+I 29 -611.125 33.218 890.875 v 0 0.251 0 diamond x1 age 93
+I 31 -586.154 29 891.133 v 0 -0.08 0 diamond x1 age 87
+T 301
+I 27 -625.125 32.367 890.875 v 0 -0.031 0 diamond x1 age 98
+I 28 -618.125 34.71 890.125 v 0 0.25 0 diamond x1 age 96
+I 29 -611.125 33.468 890.875 v 0 0.344 0 diamond x1 age 94
+I 31 -586.154 29 891.133 v 0 -0.12 0 diamond x1 age 88
+T 302
+I 27 -625.125 32.336 890.875 v 0 -0.03 0 diamond x1 age 99
+I 28 -618.125 34.921 890.125 v 0 0.206 0 diamond x1 age 97
+I 29 -611.125 33.812 890.875 v 0 0.435 0 diamond x1 age 95
+I 31 -586.154 29 891.133 v 0 0 0 diamond x1 age 89
+T 303
+I 27 -625.125 32.307 890.875 v 0 -0.029 0 diamond x1 age 100
+I 28 -618.125 35.087 890.125 v 0 0.163 0 diamond x1 age 98
+I 29 -611.125 34.207 890.875 v 0 0.387 0 diamond x1 age 96
+I 31 -586.154 29 891.133 v 0 -0.04 0 diamond x1 age 90
+T 304
+I 27 -625.125 32.278 890.875 v 0 -0.028 0 diamond x1 age 101
+I 28 -618.125 35.209 890.125 v 0 0.12 0 diamond x1 age 99
+I 29 -611.125 34.554 890.875 v 0 0.34 0 diamond x1 age 97
+I 31 -586.154 29 891.133 v 0 -0.08 0 diamond x1 age 91
+T 305
+I 27 -625.125 32.25 890.875 v 0 -0.027 0 diamond x1 age 102
+I 28 -618.125 35.29 890.125 v 0 0.079 0 diamond x1 age 100
+I 29 -611.125 34.854 890.875 v 0 0.294 0 diamond x1 age 98
+I 31 -586.154 29 891.133 v 0 -0.12 0 diamond x1 age 92
+T 306
+I 27 -625.125 32.224 890.875 v 0 -0.026 0 diamond x1 age 103
+I 28 -618.125 35.328 890.125 v 0 0.038 0 diamond x1 age 101
+I 29 -611.125 35.108 890.875 v 0 0.249 0 diamond x1 age 99
+I 31 -586.154 29 891.133 v 0 0 0 diamond x1 age 93
+T 307
+I 27 -625.125 32.198 890.875 v 0 -0.025 0 diamond x1 age 104
+I 28 -618.125 35.326 890.125 v 0 -0.002 0 diamond x1 age 102
+I 29 -611.125 35.316 890.875 v 0 0.205 0 diamond x1 age 100
+I 31 -586.154 29 891.133 v 0 -0.04 0 diamond x1 age 94
+T 308
+I 27 -625.125 32.173 890.875 v 0 -0.024 0 diamond x1 age 105
+I 28 -618.125 35.284 890.125 v 0 -0.041 0 diamond x1 age 103
+I 29 -611.125 35.481 890.875 v 0 0.161 0 diamond x1 age 101
+I 31 -586.154 29 891.133 v 0 -0.08 0 diamond x1 age 95
+T 309
+I 27 -625.125 32.15 890.875 v 0 -0.023 0 diamond x1 age 106
+I 28 -618.125 35.203 890.125 v 0 -0.08 0 diamond x1 age 104
+I 29 -611.125 35.602 890.875 v 0 0.119 0 diamond x1 age 102
+I 31 -586.154 29 891.133 v 0 -0.12 0 diamond x1 age 96
+T 310
+I 27 -625.125 32.127 890.875 v 0 -0.022 0 diamond x1 age 107
+I 28 -618.125 35.083 890.125 v 0 -0.117 0 diamond x1 age 105
+I 29 -611.125 35.681 890.875 v 0 0.077 0 diamond x1 age 103
+I 31 -586.154 29 891.133 v 0 0 0 diamond x1 age 97
+T 311
+I 27 -625.125 32.106 890.875 v 0 -0.021 0 diamond x1 age 108
+I 28 -618.125 34.926 890.125 v 0 -0.154 0 diamond x1 age 106
+I 29 -611.125 35.719 890.875 v 0 0.037 0 diamond x1 age 104
+I 31 -586.154 29 891.133 v 0 -0.04 0 diamond x1 age 98
+T 312
+I 27 -625.125 32.085 890.875 v 0 -0.02 0 diamond x1 age 109
+I 28 -618.125 34.732 890.125 v 0 -0.19 0 diamond x1 age 107
+I 29 -611.125 35.715 890.875 v 0 -0.003 0 diamond x1 age 105
+I 31 -586.154 29 891.133 v 0 -0.08 0 diamond x1 age 99
+T 313
+I 27 -625.125 32.065 890.875 v 0 -0.019 0 diamond x1 age 110
+I 28 -618.125 34.502 890.125 v 0 -0.226 0 diamond x1 age 108
+I 29 -611.125 35.672 890.875 v 0 -0.042 0 diamond x1 age 106
+I 31 -586.154 29 891.133 v 0 -0.12 0 diamond x1 age 100
+T 314
+I 27 -625.125 32.046 890.875 v 0 -0.019 0 diamond x1 age 111
+I 28 -618.125 34.236 890.125 v 0 -0.26 0 diamond x1 age 109
+I 29 -611.125 35.59 890.875 v 0 -0.081 0 diamond x1 age 107
+I 31 -586.154 29 891.133 v 0 0 0 diamond x1 age 101
+T 315
+I 27 -625.125 32.028 890.875 v 0 -0.018 0 diamond x1 age 112
+I 28 -618.125 33.936 890.125 v 0 -0.196 0 diamond x1 age 110
+I 29 -611.125 35.469 890.875 v 0 -0.118 0 diamond x1 age 108
+I 31 -586.154 29 891.133 v 0 -0.04 0 diamond x1 age 102
+T 316
+I 27 -625.125 32.011 890.875 v 0 -0.017 0 diamond x1 age 113
+I 28 -618.125 33.699 890.125 v 0 -0.134 0 diamond x1 age 111
+I 29 -611.125 35.311 890.875 v 0 -0.155 0 diamond x1 age 109
+I 31 -586.154 29 891.133 v 0 -0.08 0 diamond x1 age 103
+T 317
+I 27 -625.125 31.995 890.875 v 0 -0.016 0 diamond x1 age 114
+I 28 -618.125 33.566 890.125 v 0 -0.032 0 diamond x1 age 112
+I 29 -611.125 35.115 890.875 v 0 -0.191 0 diamond x1 age 110
+I 31 -586.154 29 891.133 v 0 -0.12 0 diamond x1 age 104
+T 318
+I 27 -625.125 31.979 890.875 v 0 -0.015 0 diamond x1 age 115
+I 28 -618.125 33.534 890.125 v 0 0.067 0 diamond x1 age 113
+I 29 -611.125 34.884 890.875 v 0 -0.227 0 diamond x1 age 111
+I 31 -586.154 29 891.133 v 0 0 0 diamond x1 age 105
+T 319
+I 27 -625.125 31.964 890.875 v 0 -0.014 0 diamond x1 age 116
+I 28 -618.125 33.601 890.125 v 0 0.163 0 diamond x1 age 114
+I 29 -611.125 34.617 890.875 v 0 -0.261 0 diamond x1 age 112
+I 31 -586.154 29 891.133 v 0 -0.04 0 diamond x1 age 106
+T 320
+I 27 -625.125 31.951 890.875 v 0 -0.014 0 diamond x1 age 117
+I 28 -618.125 33.765 890.125 v 0 0.258 0 diamond x1 age 115
+I 29 -611.125 34.316 890.875 v 0 -0.295 0 diamond x1 age 113
+I 31 -586.154 29 891.133 v 0 -0.08 0 diamond x1 age 107
+T 321
+I 27 -625.125 31.937 890.875 v 0 -0.013 0 diamond x1 age 118
+I 28 -618.125 34.023 890.125 v 0 0.253 0 diamond x1 age 116
+I 29 -611.125 33.981 890.875 v 0 -0.231 0 diamond x1 age 114
+I 31 -586.154 29 891.133 v 0 -0.12 0 diamond x1 age 108
+T 322
+I 27 -625.125 31.925 890.875 v 0 -0.012 0 diamond x1 age 119
+I 28 -618.125 34.236 890.125 v 0 0.209 0 diamond x1 age 117
+I 29 -611.125 33.71 890.875 v 0 -0.167 0 diamond x1 age 115
+I 31 -586.154 29 891.133 v 0 0 0 diamond x1 age 109
+T 323
+I 27 -625.125 31.913 890.875 v 0 -0.011 0 diamond x1 age 120
+I 28 -618.125 34.404 890.125 v 0 0.165 0 diamond x1 age 118
+I 29 -611.125 33.544 890.875 v 0 -0.065 0 diamond x1 age 116
+I 31 -586.154 29 891.133 v 0 -0.04 0 diamond x1 age 110
+T 324
+I 27 -625.125 31.903 890.875 v 0 -0.011 0 diamond x1 age 121
+I 28 -618.125 34.53 890.125 v 0 0.123 0 diamond x1 age 119
+I 29 -611.125 33.479 890.875 v 0 0.034 0 diamond x1 age 117
+I 31 -586.154 29 891.133 v 0 -0.08 0 diamond x1 age 111
+T 325
+I 27 -625.125 31.892 890.875 v 0 -0.01 0 diamond x1 age 122
+I 28 -618.125 34.613 890.125 v 0 0.081 0 diamond x1 age 120
+I 29 -611.125 33.514 890.875 v 0 0.132 0 diamond x1 age 118
+I 31 -586.154 29 891.133 v 0 -0.12 0 diamond x1 age 112
+T 326
+I 27 -625.125 31.883 890.875 v 0 -0.009 0 diamond x1 age 123
+I 28 -618.125 34.654 890.125 v 0 0.04 0 diamond x1 age 121
+I 29 -611.125 33.646 890.875 v 0 0.228 0 diamond x1 age 119
+I 31 -586.154 29 891.133 v 0 0 0 diamond x1 age 113
+T 327
+I 27 -625.125 31.874 890.875 v 0 -0.009 0 diamond x1 age 124
+I 28 -618.125 34.654 890.125 v 0 0 0 diamond x1 age 122
+I 29 -611.125 33.874 890.875 v 0 0.321 0 diamond x1 age 120
+I 31 -586.154 29 891.133 v 0 -0.04 0 diamond x1 age 114
+T 328
+I 27 -625.125 31.866 890.875 v 0 -0.008 0 diamond x1 age 125
+I 28 -618.125 34.614 890.125 v 0 -0.039 0 diamond x1 age 123
+I 29 -611.125 34.155 890.875 v 0 0.275 0 diamond x1 age 121
+I 31 -586.154 29 891.133 v 0 -0.08 0 diamond x1 age 115
+T 329
+I 27 -625.125 31.859 890.875 v 0 -0.007 0 diamond x1 age 126
+I 28 -618.125 34.536 890.125 v 0 -0.077 0 diamond x1 age 124
+I 29 -611.125 34.39 890.875 v 0 0.231 0 diamond x1 age 122
+I 31 -586.154 29 891.133 v 0 -0.12 0 diamond x1 age 116
+T 330
+I 27 -625.125 31.852 890.875 v 0 -0.007 0 diamond x1 age 127
+I 28 -618.125 34.418 890.125 v 0 -0.115 0 diamond x1 age 125
+I 29 -611.125 34.581 890.875 v 0 0.187 0 diamond x1 age 123
+I 31 -586.154 29 891.133 v 0 0 0 diamond x1 age 117
+T 331
+I 27 -625.125 31.846 890.875 v 0 -0.006 0 diamond x1 age 128
+I 28 -618.125 34.263 890.125 v 0 -0.152 0 diamond x1 age 126
+I 29 -611.125 34.728 890.875 v 0 0.144 0 diamond x1 age 124
+I 31 -586.154 29 891.133 v 0 -0.04 0 diamond x1 age 118
+T 332
+I 27 -625.125 31.84 890.875 v 0 -0.005 0 diamond x1 age 129
+I 28 -618.125 34.071 890.125 v 0 -0.188 0 diamond x1 age 127
+I 29 -611.125 34.832 890.875 v 0 0.102 0 diamond x1 age 125
+I 31 -586.154 29 891.133 v 0 -0.08 0 diamond x1 age 119
+T 333
+I 27 -625.125 31.835 890.875 v 0 -0.005 0 diamond x1 age 130
+I 28 -618.125 33.843 890.125 v 0 -0.125 0 diamond x1 age 128
+I 29 -611.125 34.893 890.875 v 0 0.061 0 diamond x1 age 126
+I 31 -586.154 29 891.133 v 0 -0.12 0 diamond x1 age 120
+T 334
+I 27 -625.125 31.831 890.875 v 0 -0.004 0 diamond x1 age 131
+I 28 -618.125 33.678 890.125 v 0 -0.064 0 diamond x1 age 129
+I 29 -611.125 34.914 890.875 v 0 0.02 0 diamond x1 age 127
+I 31 -586.154 29 891.133 v 0 0 0 diamond x1 age 121
+T 335
+I 27 -625.125 31.827 890.875 v 0 -0.004 0 diamond x1 age 132
+I 28 -618.125 33.614 890.125 v 0 0.036 0 diamond x1 age 130
+I 29 -611.125 34.894 890.875 v 0 -0.019 0 diamond x1 age 128
+I 31 -586.154 29 891.133 v 0 -0.04 0 diamond x1 age 122
+T 336
+I 27 -625.125 31.824 890.875 v 0 -0.003 0 diamond x1 age 133
+I 28 -618.125 33.651 890.125 v 0 0.133 0 diamond x1 age 131
+I 29 -611.125 34.835 890.875 v 0 -0.058 0 diamond x1 age 129
+I 31 -586.154 29 891.133 v 0 -0.08 0 diamond x1 age 123
+T 337
+I 27 -625.125 31.822 890.875 v 0 -0.003 0 diamond x1 age 134
+I 28 -618.125 33.784 890.125 v 0 0.229 0 diamond x1 age 132
+I 29 -611.125 34.737 890.875 v 0 -0.096 0 diamond x1 age 130
+I 31 -586.154 29 891.133 v 0 -0.12 0 diamond x1 age 124
+T 338
+I 27 -625.125 31.819 890.875 v 0 -0.002 0 diamond x1 age 135
+I 28 -618.125 34.013 890.125 v 0 0.224 0 diamond x1 age 133
+I 29 -611.125 34.601 890.875 v 0 -0.133 0 diamond x1 age 131
+I 31 -586.154 29 891.133 v 0 0 0 diamond x1 age 125
+T 339
+I 27 -625.125 31.818 890.875 v 0 -0.001 0 diamond x1 age 136
+I 28 -618.125 34.197 890.125 v 0 0.18 0 diamond x1 age 134
+I 29 -611.125 34.427 890.875 v 0 -0.17 0 diamond x1 age 132
+I 31 -586.154 29 891.133 v 0 -0.04 0 diamond x1 age 126
+T 340
+I 27 -625.125 31.817 890.875 v 0 -0.001 0 diamond x1 age 137
+I 28 -618.125 34.337 890.125 v 0 0.138 0 diamond x1 age 135
+I 29 -611.125 34.217 890.875 v 0 -0.206 0 diamond x1 age 133
+I 31 -586.154 29 891.133 v 0 -0.08 0 diamond x1 age 127
+T 341
+I 27 -625.125 31.817 890.875 v 0 0 0 diamond x1 age 138
+I 28 -618.125 34.435 890.125 v 0 0.096 0 diamond x1 age 136
+I 29 -611.125 33.971 890.875 v 0 -0.143 0 diamond x1 age 134
+I 31 -586.154 29 891.133 v 0 -0.12 0 diamond x1 age 128
+T 342
+I 27 -625.125 31.817 890.875 v 0 0 0 diamond x1 age 139
+I 28 -618.125 34.491 890.125 v 0 0.055 0 diamond x1 age 137
+I 29 -611.125 33.788 890.875 v 0 -0.081 0 diamond x1 age 135
+I 31 -586.154 29 891.133 v 0 0 0 diamond x1 age 129
+T 343
+I 27 -625.125 31.817 890.875 v 0 0.001 0 diamond x1 age 140
+I 28 -618.125 34.505 890.125 v 0 0.014 0 diamond x1 age 138
+I 29 -611.125 33.708 890.875 v 0 0.019 0 diamond x1 age 136
+I 31 -586.154 29 891.133 v 0 -0.04 0 diamond x1 age 130
+T 344
+I 27 -625.125 31.818 890.875 v 0 0.001 0 diamond x1 age 141
+I 28 -618.125 34.48 890.125 v 0 -0.025 0 diamond x1 age 139
+I 29 -611.125 33.727 890.875 v 0 0.117 0 diamond x1 age 137
+I 31 -586.154 29 891.133 v 0 -0.08 0 diamond x1 age 131
+T 345
+I 27 -625.125 31.82 890.875 v 0 0.001 0 diamond x1 age 142
+I 28 -618.125 34.415 890.125 v 0 -0.064 0 diamond x1 age 140
+I 29 -611.125 33.844 890.875 v 0 0.213 0 diamond x1 age 138
+I 31 -586.154 29 891.133 v 0 -0.12 0 diamond x1 age 132
+T 346
+I 27 -625.125 31.822 890.875 v 0 0.002 0 diamond x1 age 143
+I 28 -618.125 34.311 890.125 v 0 -0.102 0 diamond x1 age 141
+I 29 -611.125 34.017 890.875 v 0 0.169 0 diamond x1 age 139
+I 31 -586.154 29 891.133 v 0 0 0 diamond x1 age 133
+T 347
+I 27 -625.125 31.824 890.875 v 0 0.002 0 diamond x1 age 144
+I 28 -618.125 34.169 890.125 v 0 -0.139 0 diamond x1 age 142
+I 29 -611.125 34.146 890.875 v 0 0.127 0 diamond x1 age 140
+I 31 -586.154 29 891.133 v 0 -0.04 0 diamond x1 age 134
+T 348
+I 27 -625.125 31.827 890.875 v 0 0.003 0 diamond x1 age 145
+I 28 -618.125 33.99 890.125 v 0 -0.077 0 diamond x1 age 143
+I 29 -611.125 34.232 890.875 v 0 0.085 0 diamond x1 age 141
+I 31 -586.154 29 891.133 v 0 -0.08 0 diamond x1 age 135
+CLICK 648 lever [-635, 28, 888]
+T 741
+B -635,28,888 lever{face: floor, powered: false, facing: north}
+B -634,28,888 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -633,28,888 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -632,28,888 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -631,28,888 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -630,28,888 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -629,28,888 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -628,28,888 redstone_wire{east: side, power: 0, south: side, north: none, west: side}
+I 27 -625.125 31.83 890.875 v 0 0.003 0 diamond x1 age 146
+I 28 -618.125 33.873 890.125 v 0 -0.017 0 diamond x1 age 144
+I 29 -611.125 34.277 890.875 v 0 0.044 0 diamond x1 age 142
+I 31 -586.154 29 891.133 v 0 -0.12 0 diamond x1 age 136
+T 742
+B -628,28,889 repeater{powered: false, facing: north, delay: 1, locked: false}
+B -627,28,888 repeater{powered: false, facing: west, delay: 1, locked: false}
+B -627,28,890 dropper{triggered: false, facing: east}
+B -626,28,888 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -625,28,888 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -624,28,888 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -623,28,888 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -622,28,888 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -621,28,888 redstone_wire{east: side, power: 0, south: side, north: none, west: side}
+I 27 -625.125 31.834 890.875 v 0 0.004 0 diamond x1 age 147
+I 28 -618.125 33.816 890.125 v 0 0.042 0 diamond x1 age 145
+I 29 -611.125 34.281 890.875 v 0 0.004 0 diamond x1 age 143
+I 31 -586.154 29 891.133 v 0 0 0 diamond x1 age 137
+T 743
+I 27 -625.125 31.838 890.875 v 0 0.004 0 diamond x1 age 148
+I 28 -618.125 33.818 890.125 v 0 0.1 0 diamond x1 age 146
+I 29 -611.125 34.245 890.875 v 0 -0.035 0 diamond x1 age 144
+I 31 -586.154 29 891.133 v 0 -0.04 0 diamond x1 age 138
+T 744
+B -621,28,889 repeater{powered: false, facing: north, delay: 1, locked: false}
+B -620,28,888 repeater{powered: false, facing: west, delay: 1, locked: false}
+B -620,28,890 dropper{triggered: false, facing: east}
+B -619,28,888 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -618,28,888 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -617,28,888 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -616,28,888 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -615,28,888 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -614,28,888 redstone_wire{east: side, power: 0, south: side, north: none, west: side}
+I 27 -625.125 31.843 890.875 v 0 0.005 0 diamond x1 age 149
+I 28 -618.125 33.878 890.125 v 0 0.157 0 diamond x1 age 147
+I 29 -611.125 34.17 890.875 v 0 -0.074 0 diamond x1 age 145
+I 31 -586.154 29 891.133 v 0 -0.08 0 diamond x1 age 139
+T 745
+I 27 -625.125 31.848 890.875 v 0 0.005 0 diamond x1 age 150
+I 28 -618.125 33.995 890.125 v 0 0.213 0 diamond x1 age 148
+I 29 -611.125 34.056 890.875 v 0 -0.112 0 diamond x1 age 146
+I 31 -586.154 29 891.133 v 0 -0.12 0 diamond x1 age 140
+T 746
+B -614,28,889 repeater{powered: false, facing: north, delay: 1, locked: false}
+B -613,28,888 repeater{powered: false, facing: west, delay: 1, locked: false}
+B -613,28,890 dropper{triggered: false, facing: east}
+B -612,28,888 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -611,28,888 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -610,28,888 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -609,28,888 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -608,28,888 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -607,28,888 redstone_wire{east: side, power: 0, south: side, north: none, west: side}
+I 27 -625.125 31.854 890.875 v 0 0.005 0 diamond x1 age 151
+I 28 -618.125 34.167 890.125 v 0 0.169 0 diamond x1 age 149
+I 29 -611.125 33.904 890.875 v 0 -0.051 0 diamond x1 age 147
+I 31 -586.154 29 891.133 v 0 0 0 diamond x1 age 141
+T 747
+I 27 -625.125 31.859 890.875 v 0 0.006 0 diamond x1 age 152
+I 28 -618.125 34.296 890.125 v 0 0.127 0 diamond x1 age 150
+I 29 -611.125 33.814 890.875 v 0 0.009 0 diamond x1 age 148
+I 31 -586.154 29 891.133 v 0 -0.04 0 diamond x1 age 142
+T 748
+B -607,28,889 repeater{powered: false, facing: north, delay: 1, locked: false}
+B -606,28,888 repeater{powered: false, facing: west, delay: 1, locked: false}
+B -606,28,890 dropper{triggered: false, facing: east}
+B -605,28,888 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -604,28,888 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -603,28,888 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -602,28,888 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -601,28,888 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -600,28,888 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+I 27 -625.125 31.866 890.875 v 0 0.006 0 diamond x1 age 153
+I 28 -618.125 34.383 890.125 v 0 0.085 0 diamond x1 age 151
+I 29 -611.125 33.783 890.875 v 0 0.068 0 diamond x1 age 149
+I 31 -586.154 29 891.133 v 0 -0.08 0 diamond x1 age 143
+T 749
+I 27 -625.125 31.872 890.875 v 0 0.006 0 diamond x1 age 154
+I 28 -618.125 34.428 890.125 v 0 0.044 0 diamond x1 age 152
+I 29 -611.125 33.851 890.875 v 0 0.165 0 diamond x1 age 150
+I 31 -586.154 29 891.133 v 0 -0.12 0 diamond x1 age 144
+T 750
+B -599,28,888 repeater{powered: false, facing: west, delay: 1, locked: false}
+B -598,28,888 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -597,28,888 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -596,28,888 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -595,28,888 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -594,28,888 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -593,28,888 redstone_wire{east: side, power: 0, south: side, north: none, west: side}
+I 27 -625.125 31.879 890.875 v 0 0.007 0 diamond x1 age 155
+I 28 -618.125 34.431 890.125 v 0 0.004 0 diamond x1 age 153
+I 29 -611.125 33.975 890.875 v 0 0.22 0 diamond x1 age 151
+I 31 -586.154 29 891.133 v 0 0 0 diamond x1 age 145
+T 751
+I 27 -625.125 31.886 890.875 v 0 0.007 0 diamond x1 age 156
+I 28 -618.125 34.395 890.125 v 0 -0.035 0 diamond x1 age 154
+I 29 -611.125 34.155 890.875 v 0 0.176 0 diamond x1 age 152
+I 31 -586.154 29 891.133 v 0 -0.04 0 diamond x1 age 146
+T 752
+B -593,28,889 repeater{powered: false, facing: north, delay: 1, locked: false}
+B -592,28,888 repeater{powered: false, facing: west, delay: 1, locked: false}
+B -592,28,890 dropper{triggered: false, facing: east}
+B -591,28,888 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -590,28,888 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -589,28,888 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -588,28,888 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -587,28,888 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -586,28,888 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+I 27 -625.125 31.894 890.875 v 0 0.008 0 diamond x1 age 157
+I 28 -618.125 34.32 890.125 v 0 -0.074 0 diamond x1 age 155
+I 29 -611.125 34.292 890.875 v 0 0.134 0 diamond x1 age 153
+I 31 -586.154 29 891.133 v 0 -0.08 0 diamond x1 age 147
+T 753
+I 27 -625.125 31.902 890.875 v 0 0.008 0 diamond x1 age 158
+I 28 -618.125 34.206 890.125 v 0 -0.112 0 diamond x1 age 156
+I 29 -611.125 34.385 890.875 v 0 0.092 0 diamond x1 age 154
+I 31 -586.154 29 891.133 v 0 -0.12 0 diamond x1 age 148
+T 754
+B -585,28,888 repeater{powered: false, facing: west, delay: 1, locked: false}
+B -584,28,888 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -583,28,888 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -582,28,888 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -581,28,888 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -580,28,888 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+B -579,28,888 redstone_wire{east: side, power: 0, south: none, north: none, west: side}
+I 27 -625.125 31.91 890.875 v 0 0.008 0 diamond x1 age 159
+I 28 -618.125 34.054 890.125 v 0 -0.149 0 diamond x1 age 157
+I 29 -611.125 34.437 890.875 v 0 0.051 0 diamond x1 age 155
+I 31 -586.154 29 891.133 v 0 0 0 diamond x1 age 149
+T 755
+I 27 -625.125 31.919 890.875 v 0 0.009 0 diamond x1 age 160
+I 28 -618.125 33.865 890.125 v 0 -0.087 0 diamond x1 age 158
+I 29 -611.125 34.448 890.875 v 0 0.011 0 diamond x1 age 156
+I 31 -586.154 29 891.133 v 0 -0.04 0 diamond x1 age 150
+T 756
+I 27 -625.125 31.928 890.875 v 0 0.009 0 diamond x1 age 161
+I 28 -618.125 33.739 890.125 v 0 -0.026 0 diamond x1 age 159
+I 29 -611.125 34.419 890.875 v 0 -0.029 0 diamond x1 age 157
+I 31 -586.154 29 891.133 v 0 -0.08 0 diamond x1 age 151
+T 757
+I 27 -625.125 31.937 890.875 v 0 0.009 0 diamond x1 age 162
+I 28 -618.125 33.713 890.125 v 0 0.073 0 diamond x1 age 160
+I 29 -611.125 34.35 890.875 v 0 -0.067 0 diamond x1 age 158
+I 31 -586.154 29 891.133 v 0 -0.12 0 diamond x1 age 152
+T 758
+I 27 -625.125 31.947 890.875 v 0 0.009 0 diamond x1 age 163
+I 28 -618.125 33.785 890.125 v 0 0.169 0 diamond x1 age 161
+I 29 -611.125 34.242 890.875 v 0 -0.105 0 diamond x1 age 159
+I 31 -586.154 29 891.133 v 0 0 0 diamond x1 age 153
+T 759
+I 27 -625.125 31.957 890.875 v 0 0.01 0 diamond x1 age 164
+I 28 -618.125 33.955 890.125 v 0 0.264 0 diamond x1 age 162
+I 29 -611.125 34.097 890.875 v 0 -0.142 0 diamond x1 age 160
+I 31 -586.154 29 891.133 v 0 -0.04 0 diamond x1 age 154
+T 760
+I 27 -625.125 31.967 890.875 v 0 0.01 0 diamond x1 age 165
+I 28 -618.125 34.178 890.125 v 0 0.219 0 diamond x1 age 163
+I 29 -611.125 33.914 890.875 v 0 -0.081 0 diamond x1 age 161
+I 31 -586.154 29 891.133 v 0 -0.08 0 diamond x1 age 155
+T 761
+I 27 -625.125 31.978 890.875 v 0 0.01 0 diamond x1 age 166
+I 28 -618.125 34.358 890.125 v 0 0.176 0 diamond x1 age 164
+I 29 -611.125 33.794 890.875 v 0 -0.02 0 diamond x1 age 162
+I 31 -586.154 29 891.133 v 0 -0.12 0 diamond x1 age 156
+T 762
+I 27 -625.125 31.989 890.875 v 0 0.011 0 diamond x1 age 167
+I 28 -618.125 34.494 890.125 v 0 0.133 0 diamond x1 age 165
+I 29 -611.125 33.733 890.875 v 0 0.039 0 diamond x1 age 163
+I 31 -586.154 29 891.133 v 0 0 0 diamond x1 age 157
+T 763
+I 27 -625.125 32 890.875 v 0 0.011 0 diamond x1 age 168
+I 28 -618.125 34.587 890.125 v 0 0.091 0 diamond x1 age 166
+I 29 -611.125 33.773 890.875 v 0 0.137 0 diamond x1 age 164
+I 31 -586.154 29 891.133 v 0 -0.04 0 diamond x1 age 158
+T 764
+I 27 -625.125 32.011 890.875 v 0 0.011 0 diamond x1 age 169
+I 28 -618.125 34.638 890.125 v 0 0.05 0 diamond x1 age 167
+I 29 -611.125 33.909 890.875 v 0 0.232 0 diamond x1 age 165
+I 31 -586.154 29 891.133 v 0 -0.08 0 diamond x1 age 159
+T 765
+I 27 -625.125 32.023 890.875 v 0 0.011 0 diamond x1 age 170
+I 28 -618.125 34.648 890.125 v 0 0.01 0 diamond x1 age 168
+I 29 -611.125 34.101 890.875 v 0 0.188 0 diamond x1 age 166
+I 31 -586.154 29 891.133 v 0 -0.12 0 diamond x1 age 160
+T 766
+I 27 -625.125 32.035 890.875 v 0 0.012 0 diamond x1 age 171
+I 28 -618.125 34.618 890.125 v 0 -0.029 0 diamond x1 age 169
+I 29 -611.125 34.249 890.875 v 0 0.145 0 diamond x1 age 167
+I 31 -586.154 29 891.133 v 0 0 0 diamond x1 age 161
+T 767
+I 27 -625.125 32.047 890.875 v 0 0.012 0 diamond x1 age 172
+I 28 -618.125 34.549 890.125 v 0 -0.068 0 diamond x1 age 170
+I 29 -611.125 34.354 890.875 v 0 0.103 0 diamond x1 age 168
+I 31 -586.154 29 891.133 v 0 -0.04 0 diamond x1 age 162
+T 768
+I 27 -625.125 32.059 890.875 v 0 0.012 0 diamond x1 age 173
+I 28 -618.125 34.44 890.125 v 0 -0.106 0 diamond x1 age 171
+I 29 -611.125 34.417 890.875 v 0 0.062 0 diamond x1 age 169
+I 31 -586.154 29 891.133 v 0 -0.08 0 diamond x1 age 163
+T 769
+I 27 -625.125 32.072 890.875 v 0 0.012 0 diamond x1 age 174
+I 28 -618.125 34.295 890.125 v 0 -0.143 0 diamond x1 age 172
+I 29 -611.125 34.439 890.875 v 0 0.021 0 diamond x1 age 170
+I 31 -586.154 29 891.133 v 0 -0.12 0 diamond x1 age 164
+T 770
+I 27 -625.125 32.085 890.875 v 0 0.013 0 diamond x1 age 175
+I 28 -618.125 34.112 890.125 v 0 -0.179 0 diamond x1 age 173
+I 29 -611.125 34.42 890.875 v 0 -0.018 0 diamond x1 age 171
+I 31 -586.154 29 891.133 v 0 0 0 diamond x1 age 165
+T 771
+I 27 -625.125 32.098 890.875 v 0 0.013 0 diamond x1 age 176
+I 28 -618.125 33.892 890.125 v 0 -0.117 0 diamond x1 age 174
+I 29 -611.125 34.362 890.875 v 0 -0.057 0 diamond x1 age 172
+I 31 -586.154 29 891.133 v 0 -0.04 0 diamond x1 age 166
+T 772
+I 27 -625.125 32.112 890.875 v 0 0.013 0 diamond x1 age 177
+I 28 -618.125 33.735 890.125 v 0 -0.056 0 diamond x1 age 175
+I 29 -611.125 34.264 890.875 v 0 -0.095 0 diamond x1 age 173
+I 31 -586.154 29 891.133 v 0 -0.08 0 diamond x1 age 167
+T 773
+I 27 -625.125 32.125 890.875 v 0 0.013 0 diamond x1 age 178
+I 28 -618.125 33.68 890.125 v 0 0.044 0 diamond x1 age 176
+I 29 -611.125 34.129 890.875 v 0 -0.133 0 diamond x1 age 174
+I 31 -586.154 29 891.133 v 0 -0.12 0 diamond x1 age 168
+T 774
+I 27 -625.125 32.139 890.875 v 0 0.014 0 diamond x1 age 179
+I 28 -618.125 33.724 890.125 v 0 0.141 0 diamond x1 age 177
+I 29 -611.125 33.957 890.875 v 0 -0.071 0 diamond x1 age 175
+I 31 -586.154 29 891.133 v 0 0 0 diamond x1 age 169
+T 775
+I 27 -625.125 32.153 890.875 v 0 0.014 0 diamond x1 age 180
+I 28 -618.125 33.866 890.125 v 0 0.237 0 diamond x1 age 178
+I 29 -611.125 33.845 890.875 v 0 -0.011 0 diamond x1 age 176
+I 31 -586.154 29 891.133 v 0 -0.04 0 diamond x1 age 170
+T 776
+I 27 -625.125 32.168 890.875 v 0 0.014 0 diamond x1 age 181
+I 28 -618.125 34.062 890.125 v 0 0.193 0 diamond x1 age 179
+I 29 -611.125 33.795 890.875 v 0 0.048 0 diamond x1 age 177
+I 31 -586.154 29 891.133 v 0 -0.08 0 diamond x1 age 171
+T 777
+I 27 -625.125 32.182 890.875 v 0 0.014 0 diamond x1 age 182
+I 28 -618.125 34.215 890.125 v 0 0.15 0 diamond x1 age 180
+I 29 -611.125 33.803 890.875 v 0 0.106 0 diamond x1 age 178
+I 31 -586.154 29 891.133 v 0 -0.12 0 diamond x1 age 172
+T 778
+I 27 -625.125 32.197 890.875 v 0 0.014 0 diamond x1 age 183
+I 28 -618.125 34.325 890.125 v 0 0.107 0 diamond x1 age 181
+I 29 -611.125 33.869 890.875 v 0 0.163 0 diamond x1 age 179
+I 31 -586.154 29 891.133 v 0 0 0 diamond x1 age 173
+T 779
+I 27 -625.125 32.212 890.875 v 0 0.015 0 diamond x1 age 184
+I 28 -618.125 34.392 890.125 v 0 0.066 0 diamond x1 age 182
+I 29 -611.125 33.991 890.875 v 0 0.218 0 diamond x1 age 180
+I 31 -586.154 29 891.133 v 0 -0.04 0 diamond x1 age 174
+T 780
+I 27 -625.125 32.227 890.875 v 0 0.015 0 diamond x1 age 185
+I 28 -618.125 34.418 890.125 v 0 0.026 0 diamond x1 age 183
+I 29 -611.125 34.17 890.875 v 0 0.175 0 diamond x1 age 181
+I 31 -586.154 29 891.133 v 0 -0.08 0 diamond x1 age 175
+T 781
+I 27 -625.125 32.242 890.875 v 0 0.015 0 diamond x1 age 186
+I 28 -618.125 34.404 890.125 v 0 -0.014 0 diamond x1 age 184
+I 29 -611.125 34.304 890.875 v 0 0.132 0 diamond x1 age 182
+I 31 -586.154 29 891.133 v 0 -0.12 0 diamond x1 age 176
+T 782
+I 27 -625.125 32.258 890.875 v 0 0.015 0 diamond x1 age 187
+I 28 -618.125 34.35 890.125 v 0 -0.053 0 diamond x1 age 185
+I 29 -611.125 34.396 890.875 v 0 0.09 0 diamond x1 age 183
+I 31 -586.154 29 891.133 v 0 0 0 diamond x1 age 177
+T 783
+I 27 -625.125 32.274 890.875 v 0 0.015 0 diamond x1 age 188
+I 28 -618.125 34.257 890.125 v 0 -0.091 0 diamond x1 age 186
+I 29 -611.125 34.446 890.875 v 0 0.049 0 diamond x1 age 184
+I 31 -586.154 29 891.133 v 0 -0.04 0 diamond x1 age 178
+T 784
+I 27 -625.125 32.29 890.875 v 0 0.016 0 diamond x1 age 189
+I 28 -618.125 34.125 890.125 v 0 -0.129 0 diamond x1 age 187
+I 29 -611.125 34.455 890.875 v 0 0.009 0 diamond x1 age 185
+I 31 -586.154 29 891.133 v 0 -0.08 0 diamond x1 age 179
+T 785
+I 27 -625.125 32.306 890.875 v 0 0.016 0 diamond x1 age 190
+I 28 -618.125 33.957 890.125 v 0 -0.067 0 diamond x1 age 188
+I 29 -611.125 34.424 890.875 v 0 -0.03 0 diamond x1 age 186
+I 31 -586.154 29 891.133 v 0 -0.12 0 diamond x1 age 180
+T 786
+I 27 -625.125 32.322 890.875 v 0 0.016 0 diamond x1 age 191
+I 28 -618.125 33.85 890.125 v 0 -0.007 0 diamond x1 age 189
+I 29 -611.125 34.354 890.875 v 0 -0.069 0 diamond x1 age 187
+I 31 -586.154 29 891.133 v 0 0 0 diamond x1 age 181
+T 787
+I 27 -625.125 32.338 890.875 v 0 0.016 0 diamond x1 age 192
+I 28 -618.125 33.803 890.125 v 0 0.052 0 diamond x1 age 190
+I 29 -611.125 34.245 890.875 v 0 -0.107 0 diamond x1 age 188
+I 31 -586.154 29 891.133 v 0 -0.04 0 diamond x1 age 182
+T 788
+I 27 -625.125 32.355 890.875 v 0 0.016 0 diamond x1 age 193
+I 28 -618.125 33.814 890.125 v 0 0.11 0 diamond x1 age 191
+I 29 -611.125 34.098 890.875 v 0 -0.144 0 diamond x1 age 189
+I 31 -586.154 29 891.133 v 0 -0.08 0 diamond x1 age 183
+T 789
+I 27 -625.125 32.372 890.875 v 0 0.016 0 diamond x1 age 194
+I 28 -618.125 33.884 890.125 v 0 0.166 0 diamond x1 age 192
+I 29 -611.125 33.914 890.875 v 0 -0.082 0 diamond x1 age 190
+I 31 -586.154 29 891.133 v 0 -0.12 0 diamond x1 age 184
+T 790
+I 27 -625.125 32.389 890.875 v 0 0.017 0 diamond x1 age 195
+I 28 -618.125 34.01 890.125 v 0 0.124 0 diamond x1 age 193
+I 29 -611.125 33.792 890.875 v 0 -0.022 0 diamond x1 age 191
+I 31 -586.154 29 891.133 v 0 0 0 diamond x1 age 185
+T 791
+I 27 -625.125 32.406 890.875 v 0 0.017 0 diamond x1 age 196
+I 28 -618.125 34.094 890.125 v 0 0.082 0 diamond x1 age 194
+I 29 -611.125 33.73 890.875 v 0 0.037 0 diamond x1 age 192
+I 31 -586.154 29 891.133 v 0 -0.04 0 diamond x1 age 186
+T 792
+I 27 -625.125 32.423 890.875 v 0 0.017 0 diamond x1 age 197
+I 28 -618.125 34.136 890.125 v 0 0.041 0 diamond x1 age 195
+I 29 -611.125 33.768 890.875 v 0 0.135 0 diamond x1 age 193
+I 31 -586.154 29 891.133 v 0 -0.08 0 diamond x1 age 187
+T 793
+I 27 -625.125 32.441 890.875 v 0 0.017 0 diamond x1 age 198
+I 28 -618.125 34.137 890.125 v 0 0.001 0 diamond x1 age 196
+I 29 -611.125 33.903 890.875 v 0 0.23 0 diamond x1 age 194
+I 31 -586.154 29 891.133 v 0 -0.12 0 diamond x1 age 188
+T 794
+I 27 -625.125 32.458 890.875 v 0 0.017 0 diamond x1 age 199
+I 28 -618.125 34.099 890.125 v 0 -0.038 0 diamond x1 age 197
+I 29 -611.125 34.093 890.875 v 0 0.187 0 diamond x1 age 195
+I 31 -586.154 29 891.133 v 0 0 0 diamond x1 age 189
+T 795
+I 27 -625.125 32.476 890.875 v 0 0.017 0 diamond x1 age 200
+I 28 -618.125 34.02 890.125 v 0 -0.076 0 diamond x1 age 198
+I 29 -611.125 34.24 890.875 v 0 0.144 0 diamond x1 age 196
+I 31 -586.154 29 891.133 v 0 -0.04 0 diamond x1 age 190
+T 796
+I 27 -625.125 32.494 890.875 v 0 0.018 0 diamond x1 age 201
+I 28 -618.125 33.904 890.125 v 0 -0.016 0 diamond x1 age 199
+I 29 -611.125 34.344 890.875 v 0 0.102 0 diamond x1 age 197
+I 31 -586.154 29 891.133 v 0 -0.08 0 diamond x1 age 191
+T 797
+I 27 -625.125 32.512 890.875 v 0 0.018 0 diamond x1 age 202
+I 28 -618.125 33.848 890.125 v 0 0.043 0 diamond x1 age 200
+I 29 -611.125 34.405 890.875 v 0 0.06 0 diamond x1 age 198
+I 31 -586.154 29 891.133 v 0 -0.12 0 diamond x1 age 192
+T 798
+I 27 -625.125 32.53 890.875 v 0 0.018 0 diamond x1 age 203
+I 28 -618.125 33.851 890.125 v 0 0.101 0 diamond x1 age 201
+I 29 -611.125 34.426 890.875 v 0 0.02 0 diamond x1 age 199
+I 31 -586.154 29 891.133 v 0 0 0 diamond x1 age 193
+T 799
+I 27 -625.125 32.548 890.875 v 0 0.018 0 diamond x1 age 204
+I 28 -618.125 33.912 890.125 v 0 0.158 0 diamond x1 age 202
+I 29 -611.125 34.406 890.875 v 0 -0.02 0 diamond x1 age 200
+I 31 -586.154 29 891.133 v 0 -0.04 0 diamond x1 age 194
+T 800
+I 27 -625.125 32.567 890.875 v 0 0.018 0 diamond x1 age 205
+I 28 -618.125 34.029 890.125 v 0 0.115 0 diamond x1 age 203
+I 29 -611.125 34.346 890.875 v 0 -0.058 0 diamond x1 age 201
+I 31 -586.154 29 891.133 v 0 -0.08 0 diamond x1 age 195
+T 801
+I 27 -625.125 32.585 890.875 v 0 0.018 0 diamond x1 age 206
+I 28 -618.125 34.105 890.125 v 0 0.074 0 diamond x1 age 204
+I 29 -611.125 34.248 890.875 v 0 -0.096 0 diamond x1 age 202
+I 31 -586.154 29 891.133 v 0 -0.12 0 diamond x1 age 196
+T 802
+I 27 -625.125 32.604 890.875 v 0 0.018 0 diamond x1 age 207
+I 28 -618.125 34.139 890.125 v 0 0.033 0 diamond x1 age 205
+I 29 -611.125 34.111 890.875 v 0 -0.134 0 diamond x1 age 203
+I 31 -586.154 29 891.133 v 0 0 0 diamond x1 age 197
+T 803
+I 27 -625.125 32.623 890.875 v 0 0.018 0 diamond x1 age 208
+I 28 -618.125 34.132 890.125 v 0 -0.007 0 diamond x1 age 206
+I 29 -611.125 33.938 890.875 v 0 -0.072 0 diamond x1 age 204
+I 31 -586.154 29 891.133 v 0 -0.04 0 diamond x1 age 198
+T 804
+I 27 -625.125 32.642 890.875 v 0 0.019 0 diamond x1 age 209
+I 28 -618.125 34.085 890.125 v 0 -0.046 0 diamond x1 age 207
+I 29 -611.125 33.825 890.875 v 0 -0.012 0 diamond x1 age 205
+I 31 -586.154 29 891.133 v 0 -0.08 0 diamond x1 age 199
+T 805
+I 27 -625.125 32.661 890.875 v 0 0.019 0 diamond x1 age 210
+I 28 -618.125 33.999 890.125 v 0 0.014 0 diamond x1 age 208
+I 29 -611.125 33.773 890.875 v 0 0.047 0 diamond x1 age 206
+I 31 -586.154 29 891.133 v 0 -0.12 0 diamond x1 age 200
+T 806
+I 27 -625.125 32.68 890.875 v 0 0.019 0 diamond x1 age 211
+I 28 -618.125 33.973 890.125 v 0 0.072 0 diamond x1 age 209
+I 29 -611.125 33.821 890.875 v 0 0.145 0 diamond x1 age 207
+I 31 -586.154 29 891.133 v 0 0 0 diamond x1 age 201
+T 807
+I 27 -625.125 32.699 890.875 v 0 0.019 0 diamond x1 age 212
+I 28 -618.125 34.006 890.125 v 0 0.032 0 diamond x1 age 210
+I 29 -611.125 33.926 890.875 v 0 0.201 0 diamond x1 age 208
+I 31 -586.154 29 891.133 v 0 -0.04 0 diamond x1 age 202
+T 808
+I 27 -625.125 32.719 890.875 v 0 0.019 0 diamond x1 age 213
+I 28 -618.125 33.997 890.125 v 0 0.09 0 diamond x1 age 211
+I 29 -611.125 34.086 890.875 v 0 0.157 0 diamond x1 age 209
+I 31 -586.154 29 891.133 v 0 -0.08 0 diamond x1 age 203
+T 809
+I 27 -625.125 32.738 890.875 v 0 0.019 0 diamond x1 age 214
+I 28 -618.125 34.047 890.125 v 0 0.049 0 diamond x1 age 212
+I 29 -611.125 34.203 890.875 v 0 0.115 0 diamond x1 age 210
+I 31 -586.154 29 891.133 v 0 -0.12 0 diamond x1 age 204
+T 810
+I 27 -625.125 32.758 890.875 v 0 0.019 0 diamond x1 age 215
+I 28 -618.125 34.056 890.125 v 0 0.009 0 diamond x1 age 213
+I 29 -611.125 34.278 890.875 v 0 0.073 0 diamond x1 age 211
+I 31 -586.154 29 891.133 v 0 0 0 diamond x1 age 205
+T 811
+I 27 -625.125 32.778 890.875 v 0 0.019 0 diamond x1 age 216
+I 28 -618.125 34.025 890.125 v 0 -0.031 0 diamond x1 age 214
+I 29 -611.125 34.312 890.875 v 0 0.033 0 diamond x1 age 212
+I 31 -586.154 29 891.133 v 0 -0.04 0 diamond x1 age 206
+T 812
+I 27 -625.125 32.797 890.875 v 0 0.019 0 diamond x1 age 217
+I 28 -618.125 33.955 890.125 v 0 0.029 0 diamond x1 age 215
+I 29 -611.125 34.305 890.875 v 0 -0.007 0 diamond x1 age 213
+I 31 -586.154 29 891.133 v 0 -0.08 0 diamond x1 age 207
+T 813
+I 27 -625.125 32.817 890.875 v 0 0.02 0 diamond x1 age 218
+I 28 -618.125 33.943 890.125 v 0 0.087 0 diamond x1 age 216
+I 29 -611.125 34.257 890.875 v 0 -0.046 0 diamond x1 age 214
+I 31 -586.154 29 891.133 v 0 -0.12 0 diamond x1 age 208
+T 814
+I 27 -625.125 32.837 890.875 v 0 0.02 0 diamond x1 age 219
+I 28 -618.125 33.991 890.125 v 0 0.144 0 diamond x1 age 217
+I 29 -611.125 34.171 890.875 v 0 -0.084 0 diamond x1 age 215
+I 31 -586.154 29 891.133 v 0 0 0 diamond x1 age 209
+T 815
+I 27 -625.125 32.858 890.875 v 0 0.02 0 diamond x1 age 220
+I 28 -618.125 34.095 890.125 v 0 0.102 0 diamond x1 age 218
+I 29 -611.125 34.047 890.875 v 0 -0.122 0 diamond x1 age 216
+I 31 -586.154 29 891.133 v 0 -0.04 0 diamond x1 age 210
+T 816
+I 27 -625.125 32.878 890.875 v 0 0.02 0 diamond x1 age 221
+I 28 -618.125 34.157 890.125 v 0 0.061 0 diamond x1 age 219
+I 29 -611.125 33.885 890.875 v 0 -0.061 0 diamond x1 age 217
+I 31 -586.154 29 891.133 v 0 -0.08 0 diamond x1 age 211
+T 817
+I 27 -625.125 32.898 890.875 v 0 0.02 0 diamond x1 age 222
+I 28 -618.125 34.177 890.125 v 0 0.02 0 diamond x1 age 220
+I 29 -611.125 33.784 890.875 v 0 -0.001 0 diamond x1 age 218
+I 31 -586.154 29 891.133 v 0 -0.12 0 diamond x1 age 212
+T 818
+I 27 -625.125 32.919 890.875 v 0 0.02 0 diamond x1 age 223
+I 28 -618.125 34.158 890.125 v 0 -0.019 0 diamond x1 age 221
+I 29 -611.125 33.784 890.875 v 0 0.098 0 diamond x1 age 219
+I 31 -586.154 29 891.133 v 0 0 0 diamond x1 age 213
+T 819
+I 27 -625.125 32.939 890.875 v 0 0.02 0 diamond x1 age 224
+I 28 -618.125 34.099 890.125 v 0 -0.058 0 diamond x1 age 222
+I 29 -611.125 33.882 890.875 v 0 0.194 0 diamond x1 age 220
+I 31 -586.154 29 891.133 v 0 -0.04 0 diamond x1 age 214
+T 820
+I 27 -625.125 32.96 890.875 v 0 0.02 0 diamond x1 age 225
+I 28 -618.125 34.001 890.125 v 0 -0.096 0 diamond x1 age 223
+I 29 -611.125 34.036 890.875 v 0 0.151 0 diamond x1 age 221
+I 31 -586.154 29 891.133 v 0 -0.08 0 diamond x1 age 215
+T 821
+I 27 -625.125 32.98 890.875 v 0 0.02 0 diamond x1 age 226
+I 28 -618.125 33.865 890.125 v 0 -0.035 0 diamond x1 age 224
+I 29 -611.125 34.147 890.875 v 0 0.109 0 diamond x1 age 222
+I 31 -586.154 29 891.133 v 0 -0.12 0 diamond x1 age 216
+T 822
+I 27 -625.125 33.001 890.875 v 0 0.02 0 diamond x1 age 227
+I 28 -618.125 33.789 890.125 v 0 0.024 0 diamond x1 age 225
+I 29 -611.125 34.215 890.875 v 0 0.067 0 diamond x1 age 223
+I 31 -586.154 29 891.133 v 0 0 0 diamond x1 age 217
+T 823
+I 27 -625.125 33.022 890.875 v 0 0.02 0 diamond x1 age 228
+I 28 -618.125 33.773 890.125 v 0 0.082 0 diamond x1 age 226
+I 29 -611.125 34.242 890.875 v 0 0.027 0 diamond x1 age 224
+I 31 -586.154 29 891.133 v 0 -0.04 0 diamond x1 age 218
+T 824
+I 27 -625.125 33.043 890.875 v 0 0.021 0 diamond x1 age 229
+I 28 -618.125 33.856 890.125 v 0 0.179 0 diamond x1 age 227
+I 29 -611.125 34.229 890.875 v 0 -0.013 0 diamond x1 age 225
+I 31 -586.154 29 891.133 v 0 -0.08 0 diamond x1 age 219
+T 825
+I 27 -625.125 33.064 890.875 v 0 0.021 0 diamond x1 age 230
+I 28 -618.125 33.995 890.125 v 0 0.234 0 diamond x1 age 228
+I 29 -611.125 34.176 890.875 v 0 -0.052 0 diamond x1 age 226
+I 31 -586.154 29 891.133 v 0 -0.12 0 diamond x1 age 220
+T 826
+I 27 -625.125 33.085 890.875 v 0 0.021 0 diamond x1 age 231
+I 28 -618.125 34.189 890.125 v 0 0.19 0 diamond x1 age 229
+I 29 -611.125 34.084 890.875 v 0 -0.09 0 diamond x1 age 227
+I 31 -586.154 29 891.133 v 0 0 0 diamond x1 age 221
+T 827
+I 27 -625.125 33.106 890.875 v 0 0.021 0 diamond x1 age 232
+I 28 -618.125 34.339 890.125 v 0 0.147 0 diamond x1 age 230
+I 29 -611.125 33.954 890.875 v 0 -0.03 0 diamond x1 age 228
+I 31 -586.154 29 891.133 v 0 -0.04 0 diamond x1 age 222
+T 828
+I 27 -625.125 33.128 890.875 v 0 0.021 0 diamond x1 age 233
+I 28 -618.125 34.446 890.125 v 0 0.105 0 diamond x1 age 231
+I 29 -611.125 33.884 890.875 v 0 0.03 0 diamond x1 age 229
+I 31 -586.154 29 891.133 v 0 -0.08 0 diamond x1 age 223
+T 829
+I 27 -625.125 33.149 890.875 v 0 0.021 0 diamond x1 age 234
+I 28 -618.125 34.511 890.125 v 0 0.064 0 diamond x1 age 232
+I 29 -611.125 33.874 890.875 v 0 0.088 0 diamond x1 age 230
+I 31 -586.154 29 891.133 v 0 -0.12 0 diamond x1 age 224
+T 830
+I 27 -625.125 33.17 890.875 v 0 0.021 0 diamond x1 age 235
+I 28 -618.125 34.535 890.125 v 0 0.023 0 diamond x1 age 233
+I 29 -611.125 33.922 890.875 v 0 0.145 0 diamond x1 age 231
+I 31 -586.154 29 891.133 v 0 0 0 diamond x1 age 225
+T 831
+I 27 -625.125 33.192 890.875 v 0 0.021 0 diamond x1 age 236
+I 28 -618.125 34.518 890.125 v 0 -0.016 0 diamond x1 age 234
+I 29 -611.125 34.027 890.875 v 0 0.103 0 diamond x1 age 232
+I 31 -586.154 29 891.133 v 0 -0.04 0 diamond x1 age 226
+T 832
+I 27 -625.125 33.213 890.875 v 0 0.021 0 diamond x1 age 237
+I 28 -618.125 34.461 890.125 v 0 -0.055 0 diamond x1 age 235
+I 29 -611.125 34.09 890.875 v 0 0.062 0 diamond x1 age 233
+I 31 -586.154 29 891.133 v 0 -0.08 0 diamond x1 age 227
+T 833
+I 27 -625.125 33.235 890.875 v 0 0.021 0 diamond x1 age 238
+I 28 -618.125 34.366 890.125 v 0 -0.093 0 diamond x1 age 236
+I 29 -611.125 34.112 890.875 v 0 0.021 0 diamond x1 age 234
+I 31 -586.154 29 891.133 v 0 -0.12 0 diamond x1 age 228
+T 834
+I 27 -625.125 33.257 890.875 v 0 0.021 0 diamond x1 age 239
+I 28 -618.125 34.233 890.125 v 0 -0.131 0 diamond x1 age 237
+I 29 -611.125 34.093 890.875 v 0 -0.018 0 diamond x1 age 235
+I 31 -586.154 29 891.133 v 0 0 0 diamond x1 age 229
+T 835
+I 27 -625.125 33.278 890.875 v 0 0.021 0 diamond x1 age 240
+I 28 -618.125 34.062 890.125 v 0 -0.167 0 diamond x1 age 238
+I 29 -611.125 34.035 890.875 v 0 -0.057 0 diamond x1 age 236
+I 31 -586.154 29 891.133 v 0 -0.04 0 diamond x1 age 230
+T 836
+I 27 -625.125 33.3 890.875 v 0 0.021 0 diamond x1 age 241
+I 28 -618.125 33.855 890.125 v 0 -0.105 0 diamond x1 age 239
+I 29 -611.125 33.938 890.875 v 0 0.003 0 diamond x1 age 237
+I 31 -586.154 29 891.133 v 0 -0.08 0 diamond x1 age 231
+T 837
+I 27 -625.125 33.322 890.875 v 0 0.021 0 diamond x1 age 242
+I 28 -618.125 33.71 890.125 v 0 -0.044 0 diamond x1 age 240
+I 29 -611.125 33.901 890.875 v 0 0.062 0 diamond x1 age 238
+I 31 -586.154 29 891.133 v 0 -0.12 0 diamond x1 age 232
+T 838
+I 27 -625.125 33.344 890.875 v 0 0.022 0 diamond x1 age 243
+I 28 -618.125 33.666 890.125 v 0 0.055 0 diamond x1 age 241
+I 29 -611.125 33.922 890.875 v 0 0.119 0 diamond x1 age 239
+I 31 -586.154 29 891.133 v 0 0 0 diamond x1 age 233
+T 839
+I 27 -625.125 33.366 890.875 v 0 0.022 0 diamond x1 age 244
+I 28 -618.125 33.721 890.125 v 0 0.153 0 diamond x1 age 242
+I 29 -611.125 34.001 890.875 v 0 0.077 0 diamond x1 age 240
+I 31 -586.154 29 891.133 v 0 -0.04 0 diamond x1 age 234
+T 840
+I 27 -625.125 33.388 890.875 v 0 0.022 0 diamond x1 age 245
+I 28 -618.125 33.874 890.125 v 0 0.247 0 diamond x1 age 243
+I 29 -611.125 34.039 890.875 v 0 0.037 0 diamond x1 age 241
+I 31 -586.154 29 891.133 v 0 -0.08 0 diamond x1 age 235

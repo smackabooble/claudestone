@@ -1,0 +1,59 @@
+CLOSED, door plane z=0
+  8 XXXXXXXXXXXXXXXXXX
+  7 XXXXXXXXXXXXXXXXXX
+  6 XXXXXXX....XXXXXXX
+  5 XXX...X....X...XXX
+  4 XXX...X####X...XXX
+  3 XXX0..X####X..0XXX
+  2 XXXX.oX####Xo.XXXX
+  1 XXX...X####X...XXX
+  0 XXXXXXX....XXXXXXX
+ -1 ..................
+ -2 .....0......0.....
+ -3 .....X.o..o.X.....
+ -4 ..................
+
+OPEN, door plane z=0
+  8 XXXXXXXXXXXXXXXXXX
+  7 XXXXXXXXXXXXXXXXXX
+  6 XXXXXXX####XXXXXXX
+  5 XXX...X####X...XXX
+  4 XXX...X....X...XXX
+  3 XXX0..X....X..0XXX
+  2 XXXX.oX....Xo.XXXX
+  1 XXX...X....X...XXX
+  0 XXXXXXX####XXXXXXX
+ -1 .......####.......
+ -2 .....0......0.....
+ -3 .....X.o..o.X.....
+ -4 ..................
+
+CLOSED, glue plane z=1
+  8 XXXXXXXXXXXXXXXXXX
+  7 XXXXXXXXXXXXXXXXXX
+  6 XXXXX........XXXXX
+  5 XXX............XXX
+  4 XXX..hhhhssss..XXX
+  3 XXX0rPXhhssXPr0XXX
+  2 XXXXXPXsshhXPXXXXX
+  1 XXX...XsshhX...XXX
+  0 XXXXXXX=..=XXXXXXX
+ -1 .......P..P.......
+ -2 .....0r=..=r0.....
+ -3 .....XXP..PXX.....
+ -4 ..................
+
+OPEN, glue plane z=1
+  8 XXXXXXXXXXXXXXXXXX
+  7 XXXXXXXXXXXXXXXXXX
+  6 XXXXXhhhhssssXXXXX
+  5 XXX..=.hhss.=..XXX
+  4 XXX..P......P..XXX
+  3 XXX0r=X....X=r0XXX
+  2 XXXXXPX....XPXXXXX
+  1 XXX...X....X...XXX
+  0 XXXXXXXsshhXXXXXXX
+ -1 .......sshh.......
+ -2 .....0rP..Pr0.....
+ -3 .....XXP..PXX.....
+ -4 ..................
