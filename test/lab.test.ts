@@ -203,3 +203,12 @@ test('piston train schematic: lever ON runs a wave (payload +1), lever OFF anoth
   for (let x = 0; x < 40; x++) { const b = w.get([x, 0, 0]); if (b.type === 'sticky_piston') { pistons++; assert.equal(!!b.p.extended, false); } }
   assert.equal(pistons, 30);
 });
+
+import { buildXnor } from '../examples/xnor-gate.ts';
+test('xnor gate (user xor + output torch): lamp lit when A == B', () => {
+  for (const [a, b] of [[0, 0], [1, 0], [0, 1], [1, 1]]) {
+    const w = new W2(); const g = buildXnor(w); w.run(40);
+    if (a) w.use(g.a); if (b) w.use(g.b); w.run(40);
+    assert.equal(!!w.get(g.lamp).p.lit, a === b, `a=${a} b=${b}`);
+  }
+});
