@@ -39,5 +39,5 @@ motd=claudestone redstone lab
 max-players=2
 pause-when-empty-seconds=-1
 P
-mkdir -p world/datapacks
+mkdir -p world/datapacks world/scripts && cp "$(dirname "$0")"/dump.sc world/scripts/ && cp "$(dirname "$0")"/../*.sc world/scripts/ 2>/dev/null || true
 echo "setup done: $MC_VERSION loader $LOADER installer $INSTALLER in $MC_DIR"; ls -la . mods

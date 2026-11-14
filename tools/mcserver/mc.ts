@@ -59,8 +59,8 @@ export async function pasteWorld(w: World, origin: Pos): Promise<number> {
  * Click a block like a PLAYER (Carpet fake player "Lab"). `setblock` on a lever does NOT update the block it is attached to (no strong-power update), so real
  * redstone ignores it: always flip levers/buttons with this. `stand` = where the bot stands (an obsidian platform is put under it), it must be within ~4 blocks of `target`.
  */
-export async function clickBlock(stand0: Pos, target: Pos): Promise<void> {
-  const stand: Pos = [stand0[0], target[1] - 1, stand0[2]];   // the bot must stand one level BELOW a floor lever (clicks from the same level or above missed it in the real game); only x/z of `stand0` matter
+export async function clickBlock(stand0: Pos, target: Pos, exactStand = false): Promise<void> {
+  const stand: Pos = exactStand ? stand0 : [stand0[0], target[1] - 1, stand0[2]];   // the bot must stand one level BELOW a floor lever (clicks from the same level or above missed it in the real game); only x/z of `stand0` matter
   await rcon(`setblock ${stand[0]} ${stand[1] - 1} ${stand[2]} minecraft:obsidian`);
   // (re)spawn the bot and wait until it exists: right after `player Lab kill` the name is still taken for a moment and the spawn silently fails
   for (let i = 0; i < 10; i++) {
@@ -73,14 +73,17 @@ export async function clickBlock(stand0: Pos, target: Pos): Promise<void> {
   const stateOf = async () => (await rcon(`script run print(block_state(${target.join(",")}))`)).match(/\{.*?\}/)?.[0] ?? '';
   const before = await stateOf();
   const wall = /face: wall/.test(before);
-  // wall levers/buttons are hit near the middle of the block, floor ones near the bottom. One click, verify, one retry with the other aim (never more: every hit toggles)
-  // the bot must stand 2 blocks from the lever: from 1 block away the aim ray passes just above the lever hitbox
-  for (const dy of wall ? [0.5, 0.25] : [0.15, 0.25]) {
-    await rcon(`player Lab look at ${target[0] + 0.5} ${target[1] + dy} ${target[2] + 0.5}`);
+  // aim at the middle of the HITBOX: floor lever near the bottom, ceiling near the top, wall lever pushed back towards its wall (a ray at the block centre passes in front of it)
+  const face = before.match(/face: (\w+)/)?.[1] ?? 'floor', facing = before.match(/facing: (\w+)/)?.[1] ?? 'north';
+  const F: Record<string, [number, number]> = { north: [0, -1], south: [0, 1], west: [-1, 0], east: [1, 0] };
+  const [fx, fz] = F[facing] ?? [0, 0];
+  const aims: [number, number, number][] = face === 'wall' ? [[0.5 - 0.3 * fx, 0.5, 0.5 - 0.3 * fz], [0.5 - 0.2 * fx, 0.45, 0.5 - 0.2 * fz]] : face === 'ceiling' ? [[0.5, 0.85, 0.5], [0.5, 0.75, 0.5]] : [[0.5, 0.15, 0.5], [0.5, 0.25, 0.5]];
+  for (const [ax, ay, az] of aims) {
+    await rcon(`player Lab look at ${target[0] + ax} ${target[1] + ay} ${target[2] + az}`);
     await new Promise((r) => setTimeout(r, 250));      // the new rotation is only applied on the bot's next tick: clicking at once uses the OLD aim (that was the flakiness)
     await rcon('player Lab use once');
     await new Promise((r) => setTimeout(r, 600));
-    const after = await stateOf(); if (process.env.MC_DEBUG) console.log("  click dy", dy, before, "->", after);
+    const after = await stateOf(); if (process.env.MC_DEBUG) console.log('  click aim', ax, ay, az, before, '->', after);
     if (after !== before) return;
   }
 }
