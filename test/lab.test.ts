@@ -233,3 +233,15 @@ test('flip-flop bit on the two-phase clock: Q only changes when STEP is flipped 
   w.use(c.D); w.run(40); assert.equal(q(), 1);      // D cleared, no step: Q holds
   w.use(c.STEP); w.run(120); assert.equal(q(), 0);   // step 2 takes D=0
 });
+
+import { buildLfsr } from '../examples/lfsr4.ts';
+test('4-bit LFSR: seeded, 15 different states then repeats; every step follows next=[Q3^Q4,Q1,Q2,Q3] (also checked step by step in the real game)', () => {
+  const w = new W2(); const c = buildLfsr(w); w.settleWires(); w.pasteUpdates(); w.run(80);
+  const bits = () => c.S.map((p) => (w.get(p).p.powered ? 1 : 0)).join('');
+  w.use(c.SEED); w.run(30);
+  const seq: string[] = [bits()];
+  for (let i = 0; i < 17; i++) { w.use(c.STEP); w.run(120); seq.push(bits()); if (i === 0) { w.use(c.SEED); w.run(30); } }
+  for (let i = 2; i < seq.length; i++) { const [a, b, cc, d] = seq[i - 1].split('').map(Number); assert.equal(seq[i], `${cc ^ d}${a}${b}${cc}`, `step ${i}`); }
+  assert.equal(new Set(seq.slice(1, 16)).size, 15);
+  assert.equal(seq[16], seq[1]);                    // period 15
+});
