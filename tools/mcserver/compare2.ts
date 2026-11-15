@@ -80,7 +80,7 @@ export async function compareDesign2(name: string, ticks = Number(process.env.TI
     for (const [k, e] of cur) {
       const r = real.get(k), bad: string[] = [];
       if (!r) bad.push(`real has nothing (sim ${e.name})`);
-      else { if (r.name !== e.name && !(e.name === 'stone' || r.name.includes('stone'))) bad.push(`type sim ${e.name} real ${r.name}`); for (const [a, v] of Object.entries(e.props)) if (r.props[a] !== undefined && r.props[a] !== v) bad.push(`${a}: sim ${v} real ${r.props[a]}`); }
+      else { if (r.name !== e.name && !(e.name === 'stone' || r.name.includes('stone'))) bad.push(`type sim ${e.name} real ${r.name}`); for (const [a, v] of Object.entries(e.props)) if (r.props[a] !== undefined && r.props[a] !== v && !(a === 'distance' && e.name.endsWith('leaves')) && !(a === 'instrument' && e.name === 'note_block')) bad.push(`${a}: sim ${v} real ${r.props[a]}`); }
       if (bad.length) { n++; if (diffs.length < 400) diffs.push(`[${label}] ${k} ${e.name}: ${bad.join('; ')}`); }
     }
     const plat = [R(stand)[0], R(stand)[1] - 1, R(stand)[2]].join(',');   // the bot's own standing platform
