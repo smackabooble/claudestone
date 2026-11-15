@@ -1,30 +1,49 @@
 # REAL MINECRAFT LAB SERVER (Fabric + Carpet, void world, Minecraft 26.3 = the user's version)
 
-Purpose: verify builds in the REAL game without the user. Real results beat the simulator.
-- Setup (once per container): `tools/mcserver/setup.sh` (downloads Java 25 JRE to /home/user/jdk25, Fabric server + Carpet into /home/user/mcserver, void flat world, RCON on 127.0.0.1:25575, EULA accepted by the user on 2026-11-14). Start: `tools/mcserver/start.sh`. Stop: `rcon('stop')`.
-- API: `tools/mcserver/mc.ts`: `rcon(cmd)`, `pasteWorld(simWorld, origin)`, `blockIs(pos, 'minecraft:x[state]')` (execute if block), `clickBlock(stand, target)` (Carpet fake player "Lab").
-- Read any real block state: `rcon('script run print(block_state(x,y,z))')` -> `{lit: true, facing: west}`. Per-tick recording: use tools/gearrec.sc through `script load` (not wired to rcon helpers yet).
-- Example: `npx tsx tools/mcserver/test-xnor.ts` pastes the XNOR at y=100 and flips levers through all 4 combinations: REAL GAME truth table correct.
+Purpose: verify builds and fix the simulator against the REAL game without the user. Real results beat the simulator. Everything here lives in `tools/mcserver/`.
+Status of trust: the simulator now matches the real game tick by tick on most things we tried (see "Results"); the open problem is the lum3ndo door reopening (bottom).
 
-## Learned
-- Levers/buttons MUST be flipped by a player click (`clickBlock`). `setblock` of a lever with powered=true does not make the block it is attached to notify its neighbours, so torches/dust on that block never react (looks like a design bug but is not).
-- The server must run with `pause-when-empty-seconds=-1` or it freezes 60 s after the last player leaves. Chunks need `forceload add x1 z1 x2 z2`, otherwise commands say "That position is not loaded".
-- Minecraft 26.x needs Java 25 (class file 69). The container default is Java 21.
-- Real-game lamps/torches/dust shapes arrive in their pasted state; the server runs block updates only for neighbours, same as setRaw (paste rest states!).
-- Web search (Nov 2026): no Java redstone behaviour changes found 1.21 -> 26.3 in the changelogs I could reach; Carpet has a 26.3 release.
-- Real-server tests CLEAN UP after themselves (mc.ts cleanup(): air over the build box, bot platform, kill the fake player); always do this in a finally block.
+## 1. Set up and run
+- Once per container: `tools/mcserver/setup.sh` (Java 25 JRE into /home/user/jdk25, Fabric server + Carpet 26.3 into /home/user/mcserver, void flat world, RCON 127.0.0.1:25575, EULA accepted by the user on 2026-11-14, whitelist on with KALAKARITZU only, copies the Carpet apps `*.sc`).
+- Start: `tools/mcserver/start.sh` (the server dies between turns of the cloud session now and then: just start it again at the beginning of every command that needs it). Stop: `rcon('stop')`.
+- The container is reclaimed after inactivity: everything outside the repo (server, Java, world) is lost and rebuilt by setup.sh in 1-2 minutes. The server cannot be joined by the user (localhost only, the VM blocks UDP, so playit.gg did not work; the user decided not to pursue it).
+- Minecraft 26.x needs Java 25. The server needs `pause-when-empty-seconds=-1` and `forceload` on the test area.
 
-## Sim vs real diff (tools/mcserver/compare.ts, compare-all.ts) - first full run 2026-11-14: ALL IDENTICAL
-8 scenarios (XNOR idle / A / A+B, comparator XOR A / A+B, triple + quad pulse after a button press, 12-piston train after one lever flip): every block's type and every state property equal between the simulator and real Minecraft 26.3 (steady state after the run). Run `npx tsx tools/mcserver/compare-all.ts` after any sim change.
-- Bot clicking gotchas (cost an hour): the aim (`player Lab look at`) only applies on the bot's NEXT tick, so wait ~250 ms before `use once` (else it clicks with the old rotation); stand ONE level below a floor lever and 2 blocks away (from 1 block the ray passes above the hitbox); aim y +0.15 for floor levers, +0.5 for wall levers; right after `player Lab kill` the name is taken, so spawn in a retry loop; read states with commas `block_state(x,y,z)` (spaces silently fail and made the harness double-click).
-- PASTING INTO A LIVE SERVER CAN START A MACHINE: observer-driven builds (the piston train) ran a full wave by themselves right after the paste (observers placed next to freshly placed parts). The compare harness therefore restores every cell to the sim's initial state after the paste (normalise loop). A lone observer or a frozen-tick paste did NOT pulse, so the exact trigger is unknown. If the user pastes an observer build and it starts moving, this is why.
-- Steady-state only so far; per-tick timing (tools/gearrec.sc + labtrace) is the next comparison.
+## 2. Tools (what exists)
+| file | what it does |
+|---|---|
+| `mc.ts` | `rcon(cmd)`, `pasteWorld(sim, origin)` (setblock, with updates), `pasteNoUpdates(cells, items, tag)` (EXACT paste, see 3), `clickBlock(stand, target)` (Carpet fake player "Lab"), `pullLever(pos)` (player-phase pull without the bot), `blockIs`, `cleanup` |
+| `dump.sc` | Carpet app: `/dump x1 y1 z1 x2 y2 z2 name` writes every non-air block (state) AND container contents to `world/scripts/dump.data/<name>.txt` |
+| `paste.sc` | Carpet app: `/paste name` places blocks + container items from `paste.data/<name>.txt` with `without_updates` |
+| `compare.ts`, `compare-all.ts` | steady-state sim vs real for small builds (XNOR, XOR, pulses, piston train): all identical |
+| `compare2.ts` | steady-state sim vs real for every registered design in `src/designs.ts` (lever ON then OFF, N ticks each); `TICKS=1500`, `ALL=1` |
+| `tickdiff.ts` | PER-TICK sim vs real (slow motion, one snapshot per tick); see 4 |
+| `replay.ts` | OFFLINE sim vs a saved real recording, seconds, no server; see 4 |
+| `tracereal.ts` | replay the user's own Carpet traces in my server (they start mid-motion, so only a rough tool) |
+| `test-xnor.ts`, `test-lfsr.ts` | real-game checks of the XNOR gate and the 4-bit LFSR (15 states) |
 
-## All registered designs: sim vs REAL (tools/mcserver/compare2.ts, 2026-11-14, 1500 ticks per phase, ON then OFF, every block diffed via dump.sc)
-IDENTICAL after ON and OFF (17 designs): double/triple/quad piston extender, double extender vertical, piston doors 2x2 / 3x3 / 4x4 / 4x4-noglue, sand door 3x3, extender-10-fast / -stacked / -wave / 12-wave / 10-wave-fast / 12-wave-fast.
-DIFFERENT (sim bug candidates): piston-door-6x6 (about 56 cells after ON: in the z=52 row the sim has the glue blocks at the outer columns, the real game has them in the middle columns), piston-door-8x8 (~128), piston-door-10x10 (162 after ON and OFF), extender-10 (4 cells after ON, 0 after OFF), piston-door-5x5 (0..29: changes from run to run, so it depends on the game tick the lever is clicked in = timing-fragile design or a timing bug).
-NOT TESTED (no standing cell for the bot near the lever): lamp-display, piston-elevator-6, diamond-gear-set.
-- Run: `TICKS=1500 npx tsx tools/mcserver/compare2.ts [design ...]`, `ALL=1` prints every differing cell. Next step: per-tick comparison on the smallest failing case (6x6 door) to find the first tick/cell where sim and real diverge, then fix the sim.
-- Wall levers can only be hit from their open side (aim is pushed back towards the wall); floor levers from 2-4 blocks away one level below.
-- Original abfielder compact 4x4 (knowledge/refs/compact-4x4-abfielder.litematic, not the recoloured copy) vs REAL 26.3: identical after lever ON and OFF (tools/mcserver/compare-ref4x4.ts). It works in the sim (test/ref-compact3.test.ts: closes with 16 blocks and reopens, 3 cycles).
-- lum3ndo 5x5 (start = user's real OPEN state door-10x10-abfielder-real-open.litematic, lever (6,2,0), 400 ticks per phase) sim vs REAL 26.3, leaves `distance` and note-block `instrument` ignored (paste artefacts): 29 differing cells after ON (close), 43 after OFF. Mostly pistons/stones/observers in the x=18 column and the top rows that exist in one world but not the other, plus 3 pistons/observers with another facing = a different piston ended there. So the sim still does NOT reproduce this door; the old hand-found bugs (stairs, target block) are fixed but more remain. Next: per-tick sim-vs-real diff (tick sprint stepping) from the lever click to find the first diverging cell.
+## 3. Gotchas (each cost real time)
+- Levers/buttons must be flipped by a player click. `setblock` of a lever does not notify the block it is attached to. The bot: stand 2 blocks away and ONE level below a floor lever, aim at the hitbox (floor y+0.15, wall pushed back towards its wall), wait ~250 ms between `look at` and `use once` (the rotation applies next tick), spawn in a retry loop after `player Lab kill`, read states with commas `block_state(x,y,z)` (spaces silently fail). A bot click runs in the entity phase, a player's click before the level tick (`pullLever` emulates it; it made no difference to the door result).
+- A normal paste of a running machine is NOT faithful: extended pistons without power retract at once, observers placed next to fresh parts pulse and start the machine, supports/power order matters (113 of 589 cells of the user's closed door were lost). Use `pasteNoUpdates` (Carpet `without_updates`): the snapshot is reproduced block for block, including unpowered extended pistons and stale dust/comparator states, which then only change when a real update reaches them. Always check the "paste fidelity" line of tickdiff. (Older fallback: tickdiff `ORDER=B CONVERGE=6`.)
+- Comparator block-entity data (OutputSignal), hopper cooldowns and scheduled ticks are not captured by any paste.
+- `tick freeze` + `tick step` gave inconsistent results. Reliable: `tick rate 1`, then read `time query gametime` and `/dump` between ticks; keep a snapshot only if the game time did not change during the dump. `tick sprint N` to settle quickly.
+- Real-server nondeterminism: the same paste + click gives identical runs 2 times out of 3 and a 1-2 tick shift of one observer chain in the third. Treat one-off differences as noise.
+- Real tests must clean up (cleanup(): air over the build box, remove the bot platform, kill the bot) in a `finally`.
+- Importer/export facts found with the real game: top slabs (stand-in `leaves` with `slab:true`) export as `stone_slab[type=top]`, hold dust on top only, dust climbing a slab side is `side`; campfire keeps `signal_fire`; concrete powder imports as `sand` (falls); container items are part of the machine (the door's barrel of 27 shovels sets a comparator level).
+
+## 4. Per-tick workflow (how the simulator gets fixed)
+1. `NOUPD=1 RAW=1 CASE=closed SAVE=knowledge/refs/real/<name>.json DOOR="4,8,4,8,3" FIX=<reference file> TICKS=100 npx tsx tools/mcserver/tickdiff.ts` : exact paste of the file, bot/slow-motion lever flip, snapshot per tick, sim built from the real settled dump, per-tick diff, optional recording.
+2. `npx tsx tools/mcserver/replay.ts knowledge/refs/real/<name>.json 0 60` : offline diff; objective = total differing cells. Debug env: `WATCH="x,y,z;..."`, `DEBUGP="x,y,z"` (every recompute of one dust and who caused it), `DEBUGT=n` (ticking blocks), `DEBUGSIG=1`, `SHOW=n`.
+3. First differing tick -> read the cells -> fix the rule in `src/world.ts` -> rerun -> add a regression test in `test/lab.test.ts` -> note in LEARNINGS.md.
+
+## 5. Results (2026-11-14/15)
+- XNOR, comparator XOR, 3/4-pulse, 12-piston train, 4-bit LFSR: sim == real.
+- 25 registered designs (compare2): 17 identical after ON and OFF (extenders, doors 2x2..4x4, sand door, wave extenders); differing: doors 5x5/6x6/8x8/10x10 and extender-10 (before the lum3ndo fixes; not rerun); not testable (no bot spot): lamp-display, elevator-6, gear-set.
+- abfielder compact 4x4: identical in sim and real.
+- lum3ndo 5x5: from the user's REAL open state the lever closes it and the sim ends EXACTLY in the user's REAL closed file (test in test/lab.test.ts), and sim == real tick by tick for close (90-220 ticks) and for a first reopen with the old paste.
+- Reopening from the user's exact closed state: real server 4/25 doorway cells filled after 200 ticks (13 cells from the user's open file), sim 10/25 (53 cells away). UNSOLVED. First consequential difference (ticks 3-5): a stale dust line (23..26,110,21 in recording coordinates) is recomputed in the sim but stays stale in the real game, starting a piston chain 1-2 ticks early in the sim. A micro test shows the dust algorithm itself matches, so a source/notification specific to the door is missing. Ideas not yet tried: comparator OutputSignal in the BE, observer `updateNeighborsInFront` notification order.
+- The note-block triggers of compact-5x5-lum3ndo.litematic do nothing in sim and real; the lever (6,2,0 of the real fixtures) is what closes the door.
+
+## 6. Other facts
+- Web search (Nov 2026): no Java redstone behaviour changes found 1.21 -> 26.3 in the changelogs reachable; Carpet has a 26.3 release.
+- The user's own Carpet traces (knowledge/refs/lum3ndo-real-trace*.txt) start while the door is still moving, so their "initial state" is not a clean start; their doorway counts are still ground truth (reopen: 16 filled at T+0 -> 0 at T+16).
