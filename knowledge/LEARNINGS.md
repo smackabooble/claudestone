@@ -459,3 +459,9 @@ Result: from the user's REAL open state + lever ON the sim ends EXACTLY in the u
 - Repeater lock latch needs the lock repeater BESIDE the data repeater (x-direction) = inside the neighbour pixel when the pixel is 2 wide. Repeater rings need turns (impossible in 2x2). Vertical torch latches need 3-4 cells in y.
 - Fan-out of one signal to both columns of a pixel: dust leaks into the neighbour pixel (powered wool/dust at the same y,z), repeater hops land in the neighbour pixel, torch hops invert.
 - Ways out to try: wider pixels (4x4 lamps), or memory spread across z-layers with borrowed columns, or a different storage tech (piston/hopper).
+
+## Lamp screen: 3x3-lamp pixel lamp stage DONE (2026-11-15, sim == real 26.3)
+- examples/lamp-screen3.ts. Per lamp column two chains: P (lamp r0): wool z1, repeater z2, wool z3, repeater z4, torch z5 (the inversion), input z6. T (lamps r1+r2): wall torch z1 (lights r1, strongly powers wool above = r2), wool z2, repeater z3, input z4. r2 z2/z4 = gray wool supports for the next pixel row's r0 repeaters. Both chains invert once (input powered = pixel off). Real test: tools/mcserver/test-lampscreen3.ts (4x4 pixels, 5 patterns OK); sim test in lab.test.ts.
+- Trick that made it fit: a repeater chain's support cell must be solid, so the two chains use opposite parities (P repeaters at even z over the previous pixel's r2 supports, T repeater at odd z over P's wool) and the inversion is placed as a torch behind a repeater.
+- 3 wide gives lateral room inside a pixel (a lock/hop repeater has both ends in the same pixel), which 2 wide never had.
+- Next: 6 inputs per pixel need ONE memory output fanned out (lateral hops inside the 3-wide pixel), then D latch (locked repeater, lock beside it inside the pixel), then row/column select.

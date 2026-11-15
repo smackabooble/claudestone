@@ -275,3 +275,15 @@ test('lamp screen phase 1: 2x2 pixels, torch-fed, independent, no bleed', () => 
     for (let y = 0; y < H; y++) for (let x = 0; x < W; x++) for (const l of s.pixelLamps(x, y)) assert.equal(!!w.get(l).p.lit, !pat[y][x]);
   }
 });
+
+import { buildScreen3 } from '../examples/lamp-screen3.ts';
+test('lamp screen 3x3 pixels: lamp stage, independent, no bleed', () => {
+  const W = 3, H = 3, w = new World(); const s = buildScreen3(w, W, H); w.settleWires(); w.pasteUpdates(); w.run(60);
+  let seed = 9; const r = () => ((seed = (seed * 1103515245 + 12345) & 0x7fffffff) / 0x7fffffff);
+  for (let n = 0; n < 4; n++) {
+    const pat = Array.from({ length: H }, () => Array.from({ length: W }, () => r() < 0.5));
+    for (let y = 0; y < H; y++) for (let x = 0; x < W; x++) for (const p of s.inputs(x, y)) w.setBlock(p, pat[y][x] ? { type: 'redstone_block', p: {} } : { type: 'purple_wool', p: {} }, 3);
+    w.run(40);
+    for (let y = 0; y < H; y++) for (let x = 0; x < W; x++) for (const l of s.pixelLamps(x, y)) assert.equal(!!w.get(l).p.lit, !pat[y][x]);
+  }
+});
