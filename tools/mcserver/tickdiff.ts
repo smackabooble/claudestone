@@ -7,7 +7,7 @@ import { readFileSync } from 'node:fs';
 import { loadSchematic } from '../../src/schematic.ts';
 import { World } from '../../src/world.ts';
 import { toBlockState } from '../../src/export.ts';
-import { rcon, pasteWorld, clickBlock, cleanup } from './mc.ts';
+import { rcon, pasteWorld, clickBlock, cleanup, pullLever } from './mc.ts';
 import { dumpReal, parseState, findStand, lastItems } from './compare2.ts';
 import { convertState } from '../../src/schematic.ts';
 import type { Pos } from '../../src/dirs.ts';
@@ -41,7 +41,7 @@ function diff(sim: Map<string, Cell>, real: Map<string, Cell>): string[] {
   return out;
 }
 
-export async function tickDiff(label: string, build: (w: World) => { lever: Pos; raw?: Map<string, string>; items?: { pos: Pos; items: { slot: number; id: string; count: number }[] }[] }, settle: number, ticks: number, offsets = [-3, -2, -1, 0, 1, 2], verbose = 3) {
+export async function tickDiff(label: string, build: (w: World) => { lever: Pos; raw?: Map<string, string>; items?: { pos: Pos; items: { slot: number; id: string; count: number }[] }[] }, settle: number, ticks: number, offsets = [-3, -2, -1, 0, 1, 2, 3, 4], verbose = 3) {
   const w = new World(); const built = build(w); const lever = built.lever; w.run(settle); w.settleWires();
   const bl = w.listBlocks().filter((b) => b.type !== 'moving_piston');
   const mn = [0, 1, 2].map((i) => Math.min(...bl.map((b) => b.pos[i]))), mx = [0, 1, 2].map((i) => Math.max(...bl.map((b) => b.pos[i])));
@@ -53,8 +53,11 @@ export async function tickDiff(label: string, build: (w: World) => { lever: Pos;
   await cleanup(lo, hi);
   if (built.raw) {     // paste the ORIGINAL vanilla blocks of the file (rails, tripwire hooks, composters, concrete powder ...), not the simulator's approximations; solid first, soft parts next, observers last
     const soft = (t: string) => ['redstone_wire', 'repeater', 'comparator', 'redstone_torch', 'redstone_wall_torch', 'lever', 'stone_button', 'redstone_lamp'].includes(t);
-    const order = (b: { type: string }) => (b.type === 'observer' ? 2 : soft(b.type) ? 1 : 0);
-    for (const ps of [0, 1, 2]) { for (const b of bl) { if (order(b) !== ps) continue; const rp = R(b.pos); const st = built.raw.get(b.pos.join(',')) ?? toBlockState({ type: b.type, p: b.props }); await rcon(`setblock ${rp.join(' ')} ${st} replace`); } if (ps === 1) await sleep(1500); }
+    const pistonish = (t: string) => t === 'piston' || t === 'sticky_piston' || t === 'piston_head';
+    // ORDER=B: structure + power sources first, dust/repeaters next, PISTONS AND HEADS after their power exists (a piston pasted extended without power retracts at once and the pasted closed state is destroyed), observers last
+    const order = process.env.ORDER === 'B' ? (b: { type: string }) => (b.type === 'observer' ? 3 : pistonish(b.type) ? 2 : soft(b.type) ? 1 : 0) : (b: { type: string }) => (b.type === 'observer' ? 2 : soft(b.type) ? 1 : 0);
+    const passes = process.env.ORDER === 'B' ? [0, 1, 2, 3] : [0, 1, 2];
+    for (const ps of passes) { for (const b of bl) { if (order(b) !== ps) continue; const rp = R(b.pos); const st = built.raw.get(b.pos.join(',')) ?? toBlockState({ type: b.type, p: b.props }); await rcon(`setblock ${rp.join(' ')} ${st} replace`); } if (ps === 1) await sleep(1500); }
   } else await pasteWorld(w, shift);
   for (const it of built.items ?? []) for (const x of it.items) { const r = await rcon(`item replace block ${R(it.pos).join(' ')} container.${x.slot} with minecraft:${x.id} ${x.count}`); if (process.env.DBG && x.slot === 0) console.log('item replace', R(it.pos).join(' '), x.id, '->', r); }   // container contents (the door's barrel of shovels sets a comparator level)
   await sleep(2500);
@@ -67,7 +70,20 @@ export async function tickDiff(label: string, build: (w: World) => { lever: Pos;
     await clickBlock(R(stp), R(tgt), true); await sleep(800); await rcon('tick sprint 600'); for (let i = 0; i < 600; i++) { await sleep(100); if (!(await rcon('tick query')).includes('sprint')) break; }
     await rcon('player Lab kill').catch(() => ''); await rcon(`setblock ${R(stp)[0]} ${R(stp)[1] - 1} ${R(stp)[2]} minecraft:air`); await sleep(1200);
   }
-  const settled = await dumpReal(lo, hi, 'tsettled');
+  let settled = await dumpReal(lo, hi, 'tsettled');
+  // CONVERGE: re-place every cell that did not survive the paste (extended pistons without power retract at once, etc.) and let it settle again, until the real world equals the file's own state
+  if (built.raw && process.env.CONVERGE) {
+    for (let round = 0; round < Number(process.env.CONVERGE); round++) {
+      const realS = realAsSim(settled); const lostCells = bl.filter((b) => realS.get(R(b.pos).join(','))?.name !== b.type);
+      const extras = [...realS.keys()].filter((k) => !bl.some((b) => R(b.pos).join(',') === k));
+      console.log(`  converge round ${round}: ${lostCells.length} cells missing, ${extras.length} extra`);
+      if (!lostCells.length && !extras.length) break;
+      for (const k of extras) await rcon(`setblock ${k.split(',').join(' ')} minecraft:air`);
+      for (const ps of [0, 1, 2]) for (const b of lostCells) { const soft2 = ['redstone_wire', 'repeater', 'comparator', 'redstone_torch', 'redstone_wall_torch', 'lever', 'stone_button', 'redstone_lamp'].includes(b.type); const o2 = b.type === 'observer' ? 2 : soft2 ? 1 : 0; if (o2 !== ps) continue; await rcon(`setblock ${R(b.pos).join(' ')} ${built.raw.get(b.pos.join(',')) ?? toBlockState({ type: b.type, p: b.props })} replace`); }
+      await sleep(1000); await rcon('tick sprint 200'); for (let i = 0; i < 600; i++) { await sleep(100); if (!(await rcon('tick query')).includes('sprint')) break; }
+      settled = await dumpReal(lo, hi, 'tsettled');
+    }
+  }
   const w2 = new World(); const warns: string[] = [];
   for (const [k, c] of settled) {
     if (c.name === 'moving_piston' || c.name === 'piston_head' && false) continue;
@@ -79,6 +95,12 @@ export async function tickDiff(label: string, build: (w: World) => { lever: Pos;
   w2.settleWires();
   const w3 = w2;                                   // the simulator world used for the comparison
   const start = simCells(w3, R);
+  if (built.raw) {   // PASTE FIDELITY: how far is the settled real world from the file's own state?
+    const fileCells = new Map(bl.map((b) => [R(b.pos).join(','), { name: b.type, props: str(b.props) }] as const)); const realS = realAsSim(settled);
+    let n = 0; const lost: string[] = []; for (const [k, c] of fileCells) { const r = realS.get(k); if (r?.name !== c.name) { n++; if (lost.length < 6) lost.push(`${k} file ${c.name} real ${r?.name ?? '-'}`); } }
+    for (const [k, c] of realS) if (!fileCells.has(k) && c.name !== 'moving_piston') n++;
+    console.log(`paste fidelity (settled real world vs the file's own state, block types): ${n} cells differ${lost.length ? ' e.g. ' + lost.join(' | ') : ''}`);
+  }
   const base = diff(start, realAsSim(settled));
   console.log(`${label}: ${bl.length} blocks pasted, ${settled.size} in the settled real world; baseline differences (real settled vs sim built from it): ${base.length}${base.length ? ' (e.g. ' + base.slice(0, 3).join(' | ') + ')' : ''}`);
   if (process.env.BASE) for (const d of base) console.log('   base:', d);
@@ -100,7 +122,7 @@ export async function tickDiff(label: string, build: (w: World) => { lever: Pos;
   const snap = async (tag: string) => { for (let i = 0; i < 4; i++) { const t0 = await gameTime(); const m = await dumpReal(lo, hi, tag); const t1 = await gameTime(); if (t0 === t1) { if (!snaps.has(t0)) snaps.set(t0, m); return t0; } } return -1; };
   const leverState = async () => (await rcon(`script run print(block_state(${lv.join(',')}))`)).match(/\{.*?\}/)?.[0] ?? '';
   const tPre = await snap('tpre');
-  await rcon('player Lab use once');
+  if (process.env.PULL) await pullLever(lv); else await rcon('player Lab use once');   // PULL=1: emulate a PLAYER's click phase (between ticks), see mc.ts pullLever
   for (let i = 0; i < 100000; i++) { await snap('tn'); if (snaps.size >= ticks + 6) break; }
   await rcon('tick rate 20');
   if (process.env.DBG) for (const k of [...snaps.keys()].sort((a, b) => a - b)) console.log('snap', k, JSON.stringify(snaps.get(k)!.get(lv.join(','))));

@@ -94,3 +94,16 @@ export async function cleanup(a: Pos, b: Pos, stands: Pos[] = []): Promise<void>
   for (const st of stands) await rcon(`setblock ${st[0]} ${st[1] - 1} ${st[2]} minecraft:air`);
   await rcon('player Lab kill').catch(() => '');
 }
+
+/**
+ * Pull a lever WITHOUT the bot, in the phase where a real player's click is handled (between game ticks, like a network packet): toggle `powered` with the same flags as LeverBlock.pull
+ * and notify the neighbours of the block it is attached to (`update`), which setblock alone does not do. A bot click runs inside the entity phase of the tick instead and starts pistons 1 tick later.
+ */
+export async function pullLever(p: Pos): Promise<void> {
+  const st = (await rcon(`script run print(block_state(${p.join(',')}))`)).match(/\{(.*?)\}/)?.[1] ?? '';
+  const get = (k: string) => st.match(new RegExp(`${k}: (\\w+)`))?.[1] ?? '';
+  const face = get('face'), facing = get('facing'), powered = get('powered') === 'true';
+  const F: Record<string, [number, number, number]> = { north: [0, 0, -1], south: [0, 0, 1], west: [-1, 0, 0], east: [1, 0, 0] };
+  const att: Pos = face === 'floor' ? [p[0], p[1] - 1, p[2]] : face === 'ceiling' ? [p[0], p[1] + 1, p[2]] : [p[0] - F[facing][0], p[1], p[2] - F[facing][2]];
+  await rcon(`script run set(${p.join(',')}, 'lever', {'face'->'${face}','facing'->'${facing}','powered'->${!powered}}); update(${att.join(',')})`);
+}
