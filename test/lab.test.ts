@@ -245,3 +245,17 @@ test('4-bit LFSR: seeded, 15 different states then repeats; every step follows n
   assert.equal(new Set(seq.slice(1, 16)).size, 15);
   assert.equal(seq[16], seq[1]);                    // period 15
 });
+
+test('lum3ndo 5x5: from the user\'s REAL open state (with the barrel of shovels) the lever closes the door and the result equals the user\'s REAL closed state exactly (found with per-tick real-server diffs)', () => {
+  const open = loadSchematic(readFileSync('knowledge/refs/door-10x10-abfielder-real-open.litematic')), closed = loadSchematic(readFileSync('knowledge/refs/door-10x10-abfielder-real-closed.litematic'));
+  const w = new W2(); for (const b of open.blocks as any[]) w.setRaw(b.pos, b.type, b.props);
+  for (const it of open.items ?? []) for (const x of it.items) w.setItem(it.pos, x.slot, { id: x.id, count: x.count });
+  w.settleWires(); w.run(60); w.use([6, 2, 0]); w.run(400);
+  const want = new Map(closed.blocks.map((b: any) => [b.pos.join(','), b.type])), got = new Map(w.listBlocks().map((b) => [b.pos.join(','), b.type] as const));
+  const bad: string[] = [];
+  for (const [k, t] of want) if (got.get(k) !== t) bad.push(`${k} real ${t} sim ${got.get(k)}`);
+  for (const [k, t] of got) if (!want.has(k) && t !== 'moving_piston') bad.push(`${k} sim ${t} real -`);
+  assert.deepEqual(bad, []);
+  let filled = 0; for (let x = 4; x <= 8; x++) for (let y = 4; y <= 8; y++) if (w.get([x, y, 3]).type !== 'air') filled++;
+  assert.equal(filled, 25);
+});

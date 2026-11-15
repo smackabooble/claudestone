@@ -14,15 +14,20 @@ const DUMP_DIR = '/home/user/mcserver/world/scripts/dump.data';
 const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
 type Cell = { name: string; props: Record<string, string> };
 
-const parseState = (s: string): Cell => {
+export const parseState = (s: string): Cell => {
   const m = s.match(/^minecraft:([a-z_0-9]+)(?:\[(.*)\])?$/)!; const props: Record<string, string> = {};
   if (m[2]) for (const kv of m[2].split(',')) { const [k, v] = kv.split('='); props[k] = v; }
   return { name: m[1], props };
 };
-async function dumpReal(lo: Pos, hi: Pos, tag: string): Promise<Map<string, Cell>> {
+export const lastItems = new Map<string, { slot: number; id: string; count: number }[]>();   // container contents of the last dumpReal (key x,y,z)
+let dumpLoaded = false;
+export async function dumpReal(lo: Pos, hi: Pos, tag: string): Promise<Map<string, Cell>> {
+  if (!dumpLoaded) { await rcon('script unload dump').catch(() => ''); await rcon('script load dump'); dumpLoaded = true; }   // always run the current tools/mcserver/dump.sc
   await rcon(`dump ${lo.join(' ')} ${hi.join(' ')} ${tag}`);
-  const out = new Map<string, Cell>();
+  const out = new Map<string, Cell>(); lastItems.clear();
   for (const line of readFileSync(`${DUMP_DIR}/${tag}.txt`, 'utf8').split('\n')) {
+    const v = line.match(/^V (-?\d+) (-?\d+) (-?\d+) (\d+) (\S+) (\d+)$/);
+    if (v) { const k = `${v[1]},${v[2]},${v[3]}`; const a = lastItems.get(k) ?? []; a.push({ slot: Number(v[4]), id: v[5].replace(/^minecraft:/, ''), count: Number(v[6]) }); lastItems.set(k, a); continue; }
     const m = line.match(/^(-?\d+) (-?\d+) (-?\d+) (\S+) \{(.*)\}$/); if (!m) continue;
     const props: Record<string, string> = {};
     if (m[5]) for (const kv of m[5].split(', ')) { const i = kv.indexOf(':'); props[kv.slice(0, i)] = kv.slice(i + 2); }
@@ -30,12 +35,12 @@ async function dumpReal(lo: Pos, hi: Pos, tag: string): Promise<Map<string, Cell
   }
   return out;
 }
-async function runTicks(n: number): Promise<void> {
+export async function runTicks(n: number): Promise<void> {
   await rcon(`tick sprint ${n}`);
   for (let i = 0; i < 600; i++) { await sleep(100); if (!(await rcon('tick query')).includes('sprint')) return; }
 }
 /** a free cell for the bot 2-3 blocks from the lever, one level below it, with air above and a clear line */
-function findStand(w: World, lever: Pos): Pos | null {
+export function findStand(w: World, lever: Pos): Pos | null {
   const air = (p: Pos) => w.get(p).type === 'air';
   const lb = w.get(lever), F: Record<string, [number, number]> = { north: [0, -1], south: [0, 1], west: [-1, 0], east: [1, 0] };
   const open = lb.p.face === 'wall' ? F[lb.p.facing] : undefined;    // a wall lever can only be clicked from its open side

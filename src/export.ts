@@ -21,7 +21,8 @@ export function toBlockState(b: Block): string {
     case 'observer': return st({ facing: p.facing, powered: !!p.powered });
     case 'powered_rail': return st({ powered: !!p.powered, shape: p.shape ?? 'north_south', waterlogged: false });
     case 'note_block': return st({ instrument: p.instrument ?? 'harp', note: p.note ?? 0, powered: !!p.powered });
-    case 'leaves': return `minecraft:oak_leaves[distance=${p.distance ?? 1},persistent=${p.persistent ?? true},waterlogged=false]`;
+    case 'leaves': if (p.slab) return 'minecraft:stone_slab[type=top,waterlogged=false]';   // the importer's stand-in for top slabs / upside-down stairs (full top face: dust can sit on it)
+      return `minecraft:oak_leaves[distance=${p.distance ?? 1},persistent=${p.persistent ?? true},waterlogged=false]`;
     case 'pane': return `minecraft:glass_pane[east=${!!p.east},north=${!!p.north},south=${!!p.south},waterlogged=false,west=${!!p.west}]`;
     case 'target': return 'minecraft:target[power=0]';
     case 'stairs': return `minecraft:stone_brick_stairs[facing=${p.facing ?? 'north'},half=bottom,shape=${p.shape ?? 'straight'},waterlogged=false]`;

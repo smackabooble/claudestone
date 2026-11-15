@@ -1,7 +1,7 @@
 import { parseNbt, type Tag } from './nbt.ts';
 import type { Pos } from './dirs.ts';
 
-export interface SpecBlock { pos: Pos; type: string; props?: Record<string, any>; soft?: boolean; /** original vanilla name when the block was approximated */ orig?: string }
+export interface SpecBlock { pos: Pos; type: string; props?: Record<string, any>; soft?: boolean; /** original vanilla name when the block was approximated */ orig?: string; /** the full original vanilla block state string from the file (litematic only), e.g. minecraft:activator_rail[powered=false,shape=north_south] */ raw?: string }
 export interface SpecItems { pos: Pos; items: { slot: number; id: string; count: number }[] }
 export interface Loaded { blocks: SpecBlock[]; size: Pos; warnings: string[]; /** container contents from the file's tile entities (litematic only) */ items?: SpecItems[] }
 
@@ -9,7 +9,7 @@ type C = { [k: string]: Tag };
 const num = (v: Tag): number => Number(v as number | bigint);
 
 const DIRECT = new Set([
-  'stone', 'tripwire_hook', 'composter', 'log', 'leafblock', 'hay_block', 'target', 'pane', 'glass', 'obsidian', 'furnace', 'leaves', 'partial', 'campfire', 'stairs', 'slime_block', 'redstone_wire', 'redstone_block', 'lever', 'repeater',
+  'stone', 'tripwire_hook', 'composter', 'log', 'leafblock', 'hay_block', 'target', 'pane', 'glass', 'obsidian', 'furnace', 'leaves', 'partial', 'stairs', 'slime_block', 'redstone_wire', 'redstone_block', 'lever', 'repeater',
   'comparator', 'observer', 'redstone_torch', 'redstone_wall_torch', 'redstone_lamp', 'piston',
   'sticky_piston', 'hopper', 'dropper', 'dispenser', 'crafter', 'chest', 'barrel', 'stone_button', 'honey_block', 'tnt', 'stone_pressure_plate', 'sand', 'red_sand', 'gravel', 'dirt', 'oak_planks', 'clay', 'packed_ice', 'bone_block', 'pumpkin', 'glowstone',
 ]);
@@ -62,12 +62,13 @@ export function convertState(full: string, warn: (m: string) => void): { type: s
       // partial = not a full block (slabs, stairs, rails, composter ...): cannot hold dust, does not conduct
       if (/_leaves$/.test(name)) return { type: 'leafblock', props: { distance: Number(raw.distance ?? 7) }, orig: name };
       if (/_(log|wood)$/.test(name) || /^stripped_.*_(log|wood)$/.test(name)) return { type: 'log', props: {}, orig: name };
+      if (/_concrete_powder$/.test(name)) { warn(`${name} treated as sand (falls like sand; water hardening not modelled)`); return { type: 'sand', props: {}, orig: name }; }
       if (name === 'campfire' || name === 'soul_campfire') { warn(`${name} treated as campfire (block entity, partial)`); return { type: 'campfire', props: { facing: raw.facing ?? 'north', signal_fire: raw.signal_fire === true }, orig: name }; }
       // top slabs / upside-down stairs have a FULL top face (dust can sit on them) but do not conduct; double slabs are full blocks
       if (/_slab$/.test(name) && raw.type === 'double') return { type: 'stone', props: {}, orig: name };
       if ((/_slab$/.test(name) && raw.type === 'top') || (/_stairs$/.test(name) && raw.half === 'top')) {
         warn(`${name}[top] treated as leaves (supports dust on top, does not conduct)`);
-        return { type: 'leaves', props: {}, orig: name };
+        return { type: 'leaves', props: { slab: true }, orig: name };
       }
       if (/_stairs$/.test(name)) { warn(`${name} imported as a bottom stair (shape follows neighbouring stairs, observers see shape changes)`); return { type: 'stairs', props: { facing: raw.facing ?? 'north', half: 'bottom', shape: raw.shape ?? 'straight' }, orig: name }; }
       if (/_(slab|carpet|trapdoor|wall|fence|fence_gate|button|pressure_plate)$|(^|_)rail$|^(cauldron|lectern|flower_pot|snow)$/.test(name)) {
@@ -120,7 +121,7 @@ function fromLitematic(root: C, warnings: string[]): Loaded {
   const out: SpecBlock[] = [];
   const regions = root.Regions as C;
   let min: Pos = [Infinity, Infinity, Infinity], max: Pos = [-Infinity, -Infinity, -Infinity];
-  const parsed: { pos: Pos; type: string; props: Record<string, any>; orig?: string }[] = [];
+  const parsed: { pos: Pos; type: string; props: Record<string, any>; orig?: string; raw?: string }[] = [];
   const rawItems: SpecItems[] = [];
   for (const reg of Object.values(regions) as C[]) {
     const P = reg.Position as C, S = reg.Size as C;
@@ -149,7 +150,7 @@ function fromLitematic(root: C, warnings: string[]): Loaded {
       const c = convertState(pal[idx], warn);
       if (!c) continue;
       const x = ox + (i % ax), z = oz + (Math.floor(i / ax) % az), y = oy + Math.floor(i / (ax * az));
-      parsed.push({ pos: [x, y, z], type: c.type, props: c.props, orig: c.orig });
+      parsed.push({ pos: [x, y, z], type: c.type, props: c.props, orig: c.orig, raw: pal[idx] });
       min = [Math.min(min[0], x), Math.min(min[1], y), Math.min(min[2], z)];
       max = [Math.max(max[0], x), Math.max(max[1], y), Math.max(max[2], z)];
     }

@@ -290,6 +290,7 @@ export class World {
       return false;
     }
     // lab (real game): dust on leaves and on honey blocks pops (neither has a sturdy top face); glass, ice, slime, soul sand ... are fine
+    if (b.type === 'leaves' && b.p.slab) return face === 'up';    // the importer's stand-in for TOP slabs / upside-down stairs: full top face only
     if (b.type === 'leaves' || b.type === 'leafblock' || b.type === 'honey_block') return false;
     return def(b).solid;
   }
@@ -725,7 +726,8 @@ export class World {
     const p1 = rel(p, dir);
     const b = this.get(p1);
     if (nonSolidAbove) {
-      if ((def(b).solid || b.type === 'hopper') && this.wireConnectsTo(this.get(rel(p1, 'up')), null)) return 'up';
+      // RedStoneWireBlock.getConnectingSide: dust climbs onto a neighbour that can hold dust; UP only if that neighbour's face towards us is sturdy (full), else SIDE (e.g. a top slab)
+      if ((def(b).solid || b.type === 'hopper') && this.wireConnectsTo(this.get(rel(p1, 'up')), null)) return this.sturdy(p1, opposite(dir)) ? 'up' : 'side';
     }
     if (this.wireConnectsTo(b, dir) ||
         (!def(b).conductor && this.wireConnectsTo(this.get(rel(p1, 'down')), null))) return 'side';

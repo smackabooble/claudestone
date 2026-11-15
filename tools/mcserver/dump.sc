@@ -11,7 +11,11 @@ do_dump(from, to, name) -> (
   volume(from, to,
     b = block(_);
     if(b != 'air' && b != 'cave_air' && b != 'void_air',
-      lines += str('%d %d %d %s %s', _x, _y, _z, b, block_state(_))
+      lines += str('%d %d %d %s %s', _x, _y, _z, b, block_state(_));
+      n = inventory_size(_);
+      if(n != null && n > 0,
+        for(range(n), it = inventory_get(_x, _y, _z, _); if(it != null, lines += str('V %d %d %d %d %s %d', _x, _y, _z, _, it:0, it:1)))
+      )
     )
   );
   write_file(name, 'text', lines);
