@@ -107,3 +107,16 @@ export async function pullLever(p: Pos): Promise<void> {
   const att: Pos = face === 'floor' ? [p[0], p[1] - 1, p[2]] : face === 'ceiling' ? [p[0], p[1] + 1, p[2]] : [p[0] - F[facing][0], p[1], p[2] - F[facing][2]];
   await rcon(`script run set(${p.join(',')}, 'lever', {'face'->'${face}','facing'->'${facing}','powered'->${!powered}}); update(${att.join(',')})`);
 }
+
+/** paste cells (vanilla state strings, real coordinates) + container items EXACTLY, without any block update (tools/mcserver/paste.sc): a running machine's snapshot stays as it was */
+export async function pasteNoUpdates(cells: { pos: Pos; state: string }[], items: { pos: Pos; slot: number; id: string; count: number }[] = [], tag = 'paste1'): Promise<number> {
+  const { writeFileSync, mkdirSync } = await import('node:fs');
+  const dir = '/home/user/mcserver/world/scripts/paste.data'; mkdirSync(dir, { recursive: true });
+  const lines: string[] = [];
+  for (const c of cells) { const m = c.state.match(/^minecraft:([a-z_0-9]+)(?:\[(.*)\])?$/)!; lines.push(`${c.pos.join(' ')} ${m[1]}${m[2] ? ' ' + m[2] : ''}`); }
+  for (const i of items) lines.push(`V ${i.pos.join(' ')} ${i.slot} ${i.id} ${i.count}`);
+  writeFileSync(`${dir}/${tag}.txt`, lines.join('\n') + '\n');
+  await rcon('script unload paste').catch(() => ''); await rcon('script load paste');
+  const r = await rcon(`paste ${tag}`);
+  return Number(r.match(/(\d+)/)?.[1] ?? 0);
+}

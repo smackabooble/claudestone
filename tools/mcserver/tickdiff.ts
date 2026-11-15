@@ -7,7 +7,7 @@ import { readFileSync } from 'node:fs';
 import { loadSchematic } from '../../src/schematic.ts';
 import { World } from '../../src/world.ts';
 import { toBlockState } from '../../src/export.ts';
-import { rcon, pasteWorld, clickBlock, cleanup, pullLever } from './mc.ts';
+import { rcon, pasteWorld, clickBlock, cleanup, pullLever, pasteNoUpdates } from './mc.ts';
 import { dumpReal, parseState, findStand, lastItems } from './compare2.ts';
 import { convertState } from '../../src/schematic.ts';
 import type { Pos } from '../../src/dirs.ts';
@@ -17,20 +17,27 @@ type Cell = { name: string; props: Record<string, string> };
 const IGN = (n: string, a: string) => (a === 'distance' && (n === 'leafblock' || n.endsWith('leaves'))) || (a === 'instrument' && n === 'note_block') || (n === 'redstone_wire' && ['north', 'east', 'south', 'west'].includes(a) && !process.env.SHAPES);
 
 const str = (p: Record<string, any>) => Object.fromEntries(Object.entries(p).map(([k, v]) => [k, String(v)]));
-function simCells(w: World, R: (p: Pos) => Pos): Map<string, Cell> {
-  return new Map(w.listBlocks().map((b) => [R(b.pos).join(','), b.type === 'moving_piston' ? { name: 'moving_piston', props: {} } : { name: b.type, props: str(b.props) }] as const));
+const INVT = new Set(['chest', 'barrel', 'hopper', 'dropper', 'dispenser', 'crafter']);
+const fmtInv = (its: { slot: number; id: string; count: number }[]) => its.filter((i) => i && i.id).sort((a, b) => a.slot - b.slot).map((i) => `${i.slot}:${i.id}x${i.count}`).join(',');
+export function simCells(w: World, R: (p: Pos) => Pos): Map<string, Cell> {
+  return new Map(w.listBlocks().map((b) => {
+    if (b.type === 'moving_piston') return [R(b.pos).join(','), { name: 'moving_piston', props: {} }] as const;
+    const props = str(b.props);
+    if (INVT.has(b.type)) { const its = (w.items(b.pos) ?? []).map((i, slot) => (i ? { slot, id: String((i as any).id).replace(/^minecraft:/, ''), count: (i as any).count } : null)).filter(Boolean) as any[]; props.inv = fmtInv(its); }
+    return [R(b.pos).join(','), { name: b.type, props }] as const;
+  }));
 }
 /** a real dump as the simulator would import it (same names and properties as simCells), so approximated blocks (tinted glass -> glass, cherry log -> log ...) compare equal */
-function realAsSim(real: Map<string, Cell>): Map<string, Cell> {
+export function realAsSim(real: Map<string, Cell>): Map<string, Cell> {
   const out = new Map<string, Cell>();
   for (const [k, c] of real) {
     if (c.name === 'moving_piston') { out.set(k, c); continue; }
     const full = `minecraft:${c.name}${Object.keys(c.props).length ? '[' + Object.entries(c.props).map(([a, v]) => `${a}=${v}`).join(',') + ']' : ''}`;
-    const cv = convertState(full, () => {}); if (!cv) continue; out.set(k, { name: cv.type, props: str(cv.props) });
+    const cv = convertState(full, () => {}); if (!cv) continue; const pr = str(cv.props); if (INVT.has(cv.type)) pr.inv = c.props.inv ?? ''; out.set(k, { name: cv.type, props: pr });
   }
   return out;
 }
-function diff(sim: Map<string, Cell>, real: Map<string, Cell>): string[] {
+export function diff(sim: Map<string, Cell>, real: Map<string, Cell>): string[] {
   const out: string[] = [];
   for (const [k, e] of sim) {
     const r = real.get(k); if (!r) { out.push(`${k} sim ${e.name}, real nothing`); continue; }
@@ -51,7 +58,10 @@ export async function tickDiff(label: string, build: (w: World) => { lever: Pos;
   const stand = findStand(w, lever); if (!stand) throw new Error('no stand for the bot');
   await rcon('tick unfreeze'); await rcon('tick rate 20'); await rcon(`forceload add ${lo[0]} ${lo[2]} ${hi[0]} ${hi[2]}`); await sleep(2000);
   await cleanup(lo, hi);
-  if (built.raw) {     // paste the ORIGINAL vanilla blocks of the file (rails, tripwire hooks, composters, concrete powder ...), not the simulator's approximations; solid first, soft parts next, observers last
+  if (built.raw && process.env.NOUPD) {   // exact snapshot paste without block updates (paste.sc); no settling needed
+    const n = await pasteNoUpdates(bl.map((b) => ({ pos: R(b.pos), state: built.raw!.get(b.pos.join(',')) ?? toBlockState({ type: b.type, p: b.props }) })), (built.items ?? []).flatMap((it) => it.items.map((x) => ({ pos: R(it.pos), slot: x.slot, id: x.id, count: x.count }))));
+    console.log(`pasted ${n} blocks without updates`);
+  } else if (built.raw) {     // paste the ORIGINAL vanilla blocks of the file (rails, tripwire hooks, composters, concrete powder ...), not the simulator's approximations; solid first, soft parts next, observers last
     const soft = (t: string) => ['redstone_wire', 'repeater', 'comparator', 'redstone_torch', 'redstone_wall_torch', 'lever', 'stone_button', 'redstone_lamp'].includes(t);
     const pistonish = (t: string) => t === 'piston' || t === 'sticky_piston' || t === 'piston_head';
     // ORDER=B: structure + power sources first, dust/repeaters next, PISTONS AND HEADS after their power exists (a piston pasted extended without power retracts at once and the pasted closed state is destroyed), observers last
@@ -71,6 +81,7 @@ export async function tickDiff(label: string, build: (w: World) => { lever: Pos;
     await rcon('player Lab kill').catch(() => ''); await rcon(`setblock ${R(stp)[0]} ${R(stp)[1] - 1} ${R(stp)[2]} minecraft:air`); await sleep(1200);
   }
   let settled = await dumpReal(lo, hi, 'tsettled');
+  const lastItemsCopy = new Map<string, string>(); for (const [k, its] of lastItems) lastItemsCopy.set(k, fmtInv(its));
   // CONVERGE: re-place every cell that did not survive the paste (extended pistons without power retract at once, etc.) and let it settle again, until the real world equals the file's own state
   if (built.raw && process.env.CONVERGE) {
     for (let round = 0; round < Number(process.env.CONVERGE); round++) {
@@ -81,7 +92,7 @@ export async function tickDiff(label: string, build: (w: World) => { lever: Pos;
       for (const k of extras) await rcon(`setblock ${k.split(',').join(' ')} minecraft:air`);
       for (const ps of [0, 1, 2]) for (const b of lostCells) { const soft2 = ['redstone_wire', 'repeater', 'comparator', 'redstone_torch', 'redstone_wall_torch', 'lever', 'stone_button', 'redstone_lamp'].includes(b.type); const o2 = b.type === 'observer' ? 2 : soft2 ? 1 : 0; if (o2 !== ps) continue; await rcon(`setblock ${R(b.pos).join(' ')} ${built.raw.get(b.pos.join(',')) ?? toBlockState({ type: b.type, p: b.props })} replace`); }
       await sleep(1000); await rcon('tick sprint 200'); for (let i = 0; i < 600; i++) { await sleep(100); if (!(await rcon('tick query')).includes('sprint')) break; }
-      settled = await dumpReal(lo, hi, 'tsettled');
+      settled = await dumpReal(lo, hi, 'tsettled'); lastItemsCopy.clear(); for (const [k, its] of lastItems) lastItemsCopy.set(k, fmtInv(its));
     }
   }
   const w2 = new World(); const warns: string[] = [];
@@ -119,7 +130,7 @@ export async function tickDiff(label: string, build: (w: World) => { lever: Pos;
   const gameTime = async () => Number((await rcon('time query gametime')).match(/(\d+)/)?.[1]);
   await rcon('tick rate 1'); await sleep(1500);
   const snaps = new Map<number, Map<string, Cell>>();
-  const snap = async (tag: string) => { for (let i = 0; i < 4; i++) { const t0 = await gameTime(); const m = await dumpReal(lo, hi, tag); const t1 = await gameTime(); if (t0 === t1) { if (!snaps.has(t0)) snaps.set(t0, m); return t0; } } return -1; };
+  const snap = async (tag: string) => { for (let i = 0; i < 4; i++) { const t0 = await gameTime(); const m = await dumpReal(lo, hi, tag); for (const [k, its] of lastItems) { const c = m.get(k); if (c) c.props.inv = fmtInv(its); } const t1 = await gameTime(); if (t0 === t1) { if (!snaps.has(t0)) snaps.set(t0, m); return t0; } } return -1; };
   const leverState = async () => (await rcon(`script run print(block_state(${lv.join(',')}))`)).match(/\{.*?\}/)?.[0] ?? '';
   const tPre = await snap('tpre');
   if (process.env.PULL) await pullLever(lv); else await rcon('player Lab use once');   // PULL=1: emulate a PLAYER's click phase (between ticks), see mc.ts pullLever
@@ -133,6 +144,13 @@ export async function tickDiff(label: string, build: (w: World) => { lever: Pos;
   console.log(`lever flipped in game tick ${k0} (first snapshot ${keys[0]}, last ${keys[keys.length - 1]}, ${keys.length} snapshots)`);
   const realSnaps: Map<string, Cell>[] = []; for (let t = 1; t <= ticks; t++) { const m = snaps.get(k0 + t - 1); if (!m) { console.log(`(missing snapshot for tick ${t}, stopping there)`); break; } realSnaps.push(realAsSim(m)); }
   ticks = realSnaps.length;
+  if (process.env.SAVE) {   // save the recording so the simulator can be tuned offline against it (tools/mcserver/replay.ts), no server needed
+    const { writeFileSync } = await import('node:fs');
+    const enc = (m: Map<string, Cell>) => [...m].map(([k, c]) => [k, c.name, c.props]);
+    const settledEnc: [string, string, Record<string, string>][] = [...settled].map(([k, c]) => [k, c.name, { ...c.props, ...(lastItemsCopy.get(k) ? { inv: lastItemsCopy.get(k)! } : {}) }]);
+    writeFileSync(process.env.SAVE, JSON.stringify({ label, shift, lever: lv, settled: settledEnc, items: [...lastItemsCopy].map(([k, v]) => [k, v]), snaps: realSnaps.map(enc) }));
+    console.log(`saved ${realSnaps.length} real ticks to ${process.env.SAVE}`);
+  }
   const plat = `${st[0]},${st[1] - 1},${st[2]}`; for (const m of realSnaps) m.delete(plat);
   let best = { off: 0, score: Infinity };
   const simSnaps: Map<string, Cell>[] = []; w3.use(lever); for (let t = 0; t <= ticks + 3; t++) { simSnaps.push(simCells(w3, R)); w3.run(1); }
@@ -148,6 +166,10 @@ export async function tickDiff(label: string, build: (w: World) => { lever: Pos;
     if (t < Number(process.env.SHOW ?? 3) || d.length && (first === t + 1 || t % 10 === 0)) { console.log(`tick ${t + 1}: ${d.length} cells differ`); for (const x of d.slice(0, Number(process.env.VERB ?? verbose))) console.log('      ', x); }
   }
   console.log(first < 0 ? `ALL ${ticks} TICKS IDENTICAL` : `first differing tick: ${first}`);
+  if (process.env.DOOR) {   // DOOR="x1,x2,y1,y2,z" in sim coordinates: how many cells of the doorway are filled at the end, real vs sim
+    const [x1, x2, y1, y2, zz] = process.env.DOOR.split(',').map(Number); const cnt = (m: Map<string, Cell> | undefined) => { if (!m) return -1; let n = 0; for (let x = x1; x <= x2; x++) for (let y = y1; y <= y2; y++) { const c = m.get(R([x, y, zz]).join(',')); if (c && c.name !== 'air') n++; } return n; };
+    console.log(`doorway cells filled at the end: real ${cnt(realSnaps[ticks - 1])}, sim ${cnt(simSnaps[Math.max(0, ticks - 1 + best.off)])}   (start: ${cnt(realSnaps[0])})`);
+  }
   if (process.env.FIX) {   // compare the FINAL real and sim states with a reference file (e.g. the user's real open state): number of differing cells (types only)
     const ref = loadSchematic(readFileSync(new URL(`../../knowledge/refs/${process.env.FIX}.litematic`, import.meta.url)));
     const want = new Map(ref.blocks.filter((b: any) => b.type !== 'moving_piston').map((b: any) => [R(b.pos as Pos).join(','), b.type] as const));
