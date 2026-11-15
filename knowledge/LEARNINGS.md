@@ -454,3 +454,8 @@ Result: from the user's REAL open state + lever ON the sim ends EXACTLY in the u
 - Pixel = 2x2 lamps. Per column: lamp z0, wall torch z1 (bottom row; lights its lamp, strongly powers the wool above = top lamp, so no bleed and no coupling), wool z2, repeater z3 (bottom row only; the top row z3 is wool = support for the next pixel's repeater), input block z4. Torch inverts: input powered = pixel OFF.
 - 2 columns need the same signal: dust fan-out at z4 leaks (dust next to the NEIGHBOUR pixel's powered wool). Phase 1 uses one lever per column; phase 2 must fan out one memory output to both (idea: memory cell output torch/repeater chain in the free top row).
 - Test: test/lab.test.ts (sim) and tools/mcserver/test-lampscreen.ts (real: swap z4 cyan wool <-> redstone block, 4x4 pixels, 5 patterns, all correct).
+
+## Lamp screen phase 2 blocked: no memory cell fits a 2-wide pixel (2026-11-15, paper design)
+- Repeater lock latch needs the lock repeater BESIDE the data repeater (x-direction) = inside the neighbour pixel when the pixel is 2 wide. Repeater rings need turns (impossible in 2x2). Vertical torch latches need 3-4 cells in y.
+- Fan-out of one signal to both columns of a pixel: dust leaks into the neighbour pixel (powered wool/dust at the same y,z), repeater hops land in the neighbour pixel, torch hops invert.
+- Ways out to try: wider pixels (4x4 lamps), or memory spread across z-layers with borrowed columns, or a different storage tech (piston/hopper).
