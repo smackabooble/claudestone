@@ -3,6 +3,8 @@
  * with the simulator after the same tick. Prints, per tick, how many cells differ and the first differing cells: the first tick with a difference is where the simulator's rules are wrong.
  * Usage: npx tsx tools/mcserver/tickdiff.ts   (edit the CASE at the bottom or import tickDiff)
  */
+import { readFileSync } from 'node:fs';
+import { loadSchematic } from '../../src/schematic.ts';
 import { World } from '../../src/world.ts';
 import { toBlockState } from '../../src/export.ts';
 import { rcon, pasteWorld, clickBlock, cleanup } from './mc.ts';
@@ -124,6 +126,13 @@ export async function tickDiff(label: string, build: (w: World) => { lever: Pos;
     if (t < Number(process.env.SHOW ?? 3) || d.length && (first === t + 1 || t % 10 === 0)) { console.log(`tick ${t + 1}: ${d.length} cells differ`); for (const x of d.slice(0, Number(process.env.VERB ?? verbose))) console.log('      ', x); }
   }
   console.log(first < 0 ? `ALL ${ticks} TICKS IDENTICAL` : `first differing tick: ${first}`);
+  if (process.env.FIX) {   // compare the FINAL real and sim states with a reference file (e.g. the user's real open state): number of differing cells (types only)
+    const ref = loadSchematic(readFileSync(new URL(`../../knowledge/refs/${process.env.FIX}.litematic`, import.meta.url)));
+    const want = new Map(ref.blocks.filter((b: any) => b.type !== 'moving_piston').map((b: any) => [R(b.pos as Pos).join(','), b.type] as const));
+    const fin = (m: Map<string, Cell> | undefined) => { if (!m) return -1; let n = 0; for (const [k, t] of want) if (m.get(k)?.name !== t) n++; for (const [k, c] of m) if (!want.has(k) && c.name !== 'moving_piston') n++; return n; };
+    if (process.env.FIXLIST) { const m = realSnaps[ticks - 1]; const out: string[] = []; for (const [k, t] of want) if (m.get(k)?.name !== t) out.push(`${k} ref ${t} real ${m.get(k)?.name ?? '-'}`); for (const [k, c] of m) if (!want.has(k) && c.name !== 'moving_piston') out.push(`${k} ref - real ${c.name}`); console.log(out.slice(0, Number(process.env.FIXLIST)).join('\n')); }
+    console.log(`final state vs ${process.env.FIX}: real differs in ${fin(realSnaps[ticks - 1])} cells, sim differs in ${fin(simSnaps[Math.max(0, ticks - 1 + best.off)])} cells`);
+  }
   await rcon('tick unfreeze'); await cleanup(lo, hi, [st]);
   return { first, best };
 }
@@ -132,9 +141,10 @@ if (import.meta.url === `file://${process.argv[1]}`) {
   const { readFileSync } = await import('node:fs');
   const { loadSchematic } = await import('../../src/schematic.ts');
   const which = process.env.CASE ?? 'lever';
-  const s = loadSchematic(readFileSync(new URL(which === 'notes' ? '../../knowledge/refs/compact-5x5-lum3ndo.litematic' : '../../knowledge/refs/door-10x10-abfielder-real-open.litematic', import.meta.url)));
+  const file = which === 'notes' ? 'compact-5x5-lum3ndo' : which === 'closed' ? 'door-10x10-abfielder-real-closed' : 'door-10x10-abfielder-real-open';
+  const s = loadSchematic(readFileSync(new URL(`../../knowledge/refs/${file}.litematic`, import.meta.url)));
   const target: Pos = process.env.TARGET ? (process.env.TARGET.split(',').map(Number) as Pos) : which === 'notes' ? [1, 1, 0] : [6, 2, 0];
-  await tickDiff(`${which === 'notes' ? 'compact-5x5-lum3ndo' : 'lum3ndo 5x5 (real open state)'}, click ${target.join(',')}`, (w) => {
+  await tickDiff(`${file}, click ${target.join(',')}`, (w) => {
     for (const b of s.blocks) w.setRaw(b.pos, b.type, b.props);
     return { lever: target, raw: process.env.RAW ? new Map(s.blocks.filter((b: any) => b.raw).map((b: any) => [b.pos.join(','), b.raw as string])) : undefined, items: process.env.RAW ? s.items : undefined };
   }, Number(process.env.SETTLE ?? 40), Number(process.env.TICKS ?? 60));
