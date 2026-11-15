@@ -259,3 +259,19 @@ test('lum3ndo 5x5: from the user\'s REAL open state (with the barrel of shovels)
   let filled = 0; for (let x = 4; x <= 8; x++) for (let y = 4; y <= 8; y++) if (w.get([x, y, 3]).type !== 'air') filled++;
   assert.equal(filled, 25);
 });
+
+import { World } from '../src/world.ts';
+import { buildScreen as buildLampScreen } from '../examples/lamp-screen.ts';
+test('lamp screen phase 1: 2x2 pixels, torch-fed, independent, no bleed', () => {
+  const W = 4, H = 4, w = new World(); const s = buildLampScreen(w, W, H); w.settleWires(); w.pasteUpdates(); w.run(60);
+  let seed = 5; const r = () => ((seed = (seed * 1103515245 + 12345) & 0x7fffffff) / 0x7fffffff);
+  for (let n = 0; n < 4; n++) {
+    const pat = Array.from({ length: H }, () => Array.from({ length: W }, () => r() < 0.5));
+    for (let y = 0; y < H; y++) for (let x = 0; x < W; x++) for (let dx = 0; dx < 2; dx++) {
+      const lv = [s.lever[y][x][0] + dx, s.lever[y][x][1], 5] as [number, number, number];
+      if (!!w.get(lv).p.powered !== pat[y][x]) w.use(lv);
+    }
+    w.run(40);
+    for (let y = 0; y < H; y++) for (let x = 0; x < W; x++) for (const l of s.pixelLamps(x, y)) assert.equal(!!w.get(l).p.lit, !pat[y][x]);
+  }
+});
