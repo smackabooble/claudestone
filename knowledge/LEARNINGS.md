@@ -444,3 +444,7 @@ Result: from the user's REAL open state + lever ON the sim ends EXACTLY in the u
 - A lamp STRONGLY powered (repeater/comparator/observer pointing into it) is a conductor: its 4 neighbouring lamps light too. Real server: repeater into lamp A lit A, left, right and top lamp.
 - So a flush wall must be fed by a block (repeater -> wool -> lamp), a torch, or weak dust, never a repeater directly.
 - In 1x1 columns, repeaters at depth 2 in every row are impossible (each needs a solid block under it = the row below's depth-2 cell). Alternating phases forces some rows to repeater-at-depth-1 (bleed). Torch-fed rows strongly power the block above them (couples rows). Needs a different relay: sticky piston + redstone block, or a wider pitch behind the wall.
+
+## Lamp screen: piston pixel (2026-11-15, sim == real 26.3)
+- Pixel = lamp z0, redstone block z2, sticky piston z3 facing the lamp, power behind. Powered: block pushed to z1 -> only that lamp lights (NO bleed; redstone blocks give no direct signal). Retract pulls it back. A row of 10 works for all patterns (sim); single column verified in real.
+- Stacking rows FAILS: quasi-connectivity. A piston is also powered by anything powering the cell above it; the stale redstone block at z2 of the row above is adjacent to that cell, so every piston sees power. Need a stale position that is not a signal source (or a non-quasi mover).
