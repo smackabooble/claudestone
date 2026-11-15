@@ -26,3 +26,4 @@ DIFFERENT (sim bug candidates): piston-door-6x6 (about 56 cells after ON: in the
 NOT TESTED (no standing cell for the bot near the lever): lamp-display, piston-elevator-6, diamond-gear-set.
 - Run: `TICKS=1500 npx tsx tools/mcserver/compare2.ts [design ...]`, `ALL=1` prints every differing cell. Next step: per-tick comparison on the smallest failing case (6x6 door) to find the first tick/cell where sim and real diverge, then fix the sim.
 - Wall levers can only be hit from their open side (aim is pushed back towards the wall); floor levers from 2-4 blocks away one level below.
+- Original abfielder compact 4x4 (knowledge/refs/compact-4x4-abfielder.litematic, not the recoloured copy) vs REAL 26.3: identical after lever ON and OFF (tools/mcserver/compare-ref4x4.ts). It works in the sim (test/ref-compact3.test.ts: closes with 16 blocks and reopens, 3 cycles).

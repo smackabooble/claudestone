@@ -50,8 +50,8 @@ function findStand(w: World, lever: Pos): Pos | null {
   return null;
 }
 
-export async function compareDesign2(name: string, ticks = Number(process.env.TICKS ?? 300)): Promise<{ name: string; diffs: string[]; note: string }> {
-  const d = DESIGNS.find((x) => x.name === name)!;
+export async function compareDesign2(name: string, ticks = Number(process.env.TICKS ?? 300), custom?: { build: (w: World) => { lever: Pos }; settle: number }): Promise<{ name: string; diffs: string[]; note: string }> {
+  const d = custom ?? DESIGNS.find((x) => x.name === name)!;
   const w = new World(); const { lever } = d.build(w); w.run(d.settle); w.settleWires();
   const bl = w.listBlocks().filter((b) => b.type !== 'moving_piston');
   const mn = [0, 1, 2].map((i) => Math.min(...bl.map((b) => b.pos[i]))), mx = [0, 1, 2].map((i) => Math.max(...bl.map((b) => b.pos[i])));
