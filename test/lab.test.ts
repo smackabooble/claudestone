@@ -287,3 +287,8 @@ test('lamp screen 3x3 pixels: lamp stage, independent, no bleed', () => {
     for (let y = 0; y < H; y++) for (let x = 0; x < W; x++) for (const l of s.pixelLamps(x, y)) assert.equal(!!w.get(l).p.lit, !pat[y][x]);
   }
 });
+
+import { buildFlyer } from '../examples/flyers.ts';
+test('observer-free flying machines fly west and stay intact', () => {
+  for (const n of ['search1', 'search2']) { const w = new World(); const f = buildFlyer(w, n); const d = f.simDisplacement(150); assert.ok(d <= -8, `${n} moved ${d}`); }
+});

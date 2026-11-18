@@ -465,3 +465,8 @@ Result: from the user's REAL open state + lever ON the sim ends EXACTLY in the u
 - Trick that made it fit: a repeater chain's support cell must be solid, so the two chains use opposite parities (P repeaters at even z over the previous pixel's r2 supports, T repeater at odd z over P's wool) and the inversion is placed as a torch behind a repeater.
 - 3 wide gives lateral room inside a pixel (a lock/hop repeater has both ends in the same pixel), which 2 wide never had.
 - Next: 6 inputs per pixel need ONE memory output fanned out (lateral hops inside the 3-wide pixel), then D latch (locked repeater, lock beside it inside the pixel), then row/column select.
+
+## Observer-free flying machines (2026-11-18)
+- Found by search in the sim (tools: random + hill-climb over a 2D grid of sticky/plain pistons in 4 directions, slime, redstone blocks; exhaustive search of <=3 pistons in 6x2/5x2/6x3 found NOTHING, 4+ pistons needed). examples/flyers.ts: `search1` and `search2`, 8 blocks (3 sticky pistons... see grid), pistons + slime + redstone blocks only, they start by a block update on a redstone block and fly west forever.
+- REAL 26.3 (exact no-update paste, start = re-place one redstone block, tools/mcserver/test-flyer.ts): after 150 ticks displaced -9/-10, same as the sim (-10). Speed only ~1 block per 12-15 ticks (~1.5 blocks/s): NOT fast. Optimizing by hill-climb gave 12 ticks/block at best; true fast machines (observers ~1 block / 2 ticks) were not reachable without observers in this search. Not 0-tick either.
+- Mid-motion dumps of the real server are flaky (blocks=1 snapshots): only trust the value after the machine rests.
