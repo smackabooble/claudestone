@@ -8,6 +8,8 @@ export const FLYERS: Record<string, { grid: G; note: string }> = {
   search2: { grid: `. P> S P< . . . .
 . R S R . . . .
 . . S P< . . . .`, note: 'optimizer variant, 8 blocks, west, ~1 block per 12 ticks' },
+  thumb: { grid: `. R . . R .
+. S P< P> S P<`, note: 'UseFool thumbnail read from a screenshot (sim and REAL 26.3: does NOT fly)' },
 };
 const D: Record<string, string> = { '>': 'east', '<': 'west', '^': 'up', v: 'down' };
 export function buildFlyer(w: World, name: string, ox = 40, oy = 5) {
