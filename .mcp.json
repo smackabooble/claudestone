@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "claudestone": {
+      "command": "npx",
+      "args": [
+        "tsx",
+        "src/mcp.ts"
+      ]
+    }
+  }
+}
